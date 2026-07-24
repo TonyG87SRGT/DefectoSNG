@@ -34,6 +34,69 @@ let currentView = {
 };
 
 
+const FAVORITES_KEY = "defectosng-favorites";
+
+
+function getFavorites() {
+  try {
+    return JSON.parse(
+      localStorage.getItem(FAVORITES_KEY)
+    ) || [];
+  } catch {
+    return [];
+  }
+}
+
+
+function saveFavorites(favorites) {
+  localStorage.setItem(
+    FAVORITES_KEY,
+    JSON.stringify(favorites)
+  );
+
+  updateFavoriteBadge();
+}
+
+
+function isFavorite(articleId) {
+  return getFavorites().includes(articleId);
+}
+
+
+function toggleFavorite(articleId) {
+  let favorites = getFavorites();
+
+  if (favorites.includes(articleId)) {
+    favorites = favorites.filter(
+      id => id !== articleId
+    );
+  } else {
+    favorites.push(articleId);
+  }
+
+  saveFavorites(favorites);
+
+  return favorites.includes(articleId);
+}
+
+
+function updateFavoriteBadge() {
+  const badge =
+    document.getElementById("favorite-badge");
+
+  if (!badge) return;
+
+  const count = getFavorites().length;
+
+  badge.textContent = count;
+
+  badge.classList.toggle(
+    "visible",
+    count > 0
+  );
+}
+
+
 async function loadData() {
   try {
     const [vik, uzk, pvk] = await Promise.all([
@@ -47,6 +110,7 @@ async function loadData() {
     database.pvk = pvk;
 
     renderHome();
+    updateFavoriteBadge();
 
   } catch (error) {
     console.error(error);
@@ -244,6 +308,7 @@ function renderMethod(methodKey) {
 
 function renderArticle(methodKey, article) {
   const method = methods[methodKey];
+  const favorite = isFavorite(article.id);
 
   currentView = {
     type: "article",
@@ -274,7 +339,19 @@ function renderArticle(methodKey, article) {
         ${article.category}
       </span>
 
-      <h2>${article.title}</h2>
+      <div class="article-title-row">
+
+        <h2>${article.title}</h2>
+
+        <button
+          class="favorite-button ${favorite ? "active" : ""}"
+          id="favorite-button"
+          aria-label="Добавить в избранное"
+        >
+          ${favorite ? "★" : "☆"}
+        </button>
+
+      </div>
 
       ${
         article.summary
@@ -293,8 +370,24 @@ function renderArticle(methodKey, article) {
       "click",
       () => renderMethod(methodKey)
     );
-}
 
+  document
+    .getElementById("favorite-button")
+    .addEventListener("click", event => {
+
+      const nowFavorite =
+        toggleFavorite(article.id);
+
+      event.currentTarget.classList.toggle(
+        "active",
+        nowFavorite
+      );
+
+      event.currentTarget.textContent =
+        nowFavorite ? "★" : "☆";
+
+    });
+}
 
 function renderStructuredArticle(article) {
   return article.sections
@@ -532,6 +625,131 @@ function renderSearch(query) {
 }
 
 
+function renderFavorites() {
+  currentView = {
+    type: "favorites",
+    method: null
+  };
+
+  setActiveNav("favorites");
+
+  const favoriteIds = getFavorites();
+
+  const favorites = getAllArticles().filter(
+    article => favoriteIds.includes(article.id)
+  );
+
+  content.innerHTML = `
+    <div class="page-header">
+
+      <button class="back-button" id="back-button">
+        ‹
+      </button>
+
+      <div>
+        <h2>Избранное</h2>
+        <p>
+          Сохранённые материалы:
+          ${favorites.length}
+        </p>
+      </div>
+
+    </div>
+
+    ${
+      favorites.length
+
+      ? `
+        <div class="article-list">
+
+          ${favorites.map(article => `
+            <button
+              class="article-card"
+              data-favorite-article="${article.id}"
+              data-favorite-method="${article.methodKey}"
+            >
+
+              <div class="article-card-row">
+
+                <div class="article-card-content">
+
+                  <span class="article-category">
+                    ${methods[article.methodKey].short}
+                    ·
+                    ${article.category}
+                  </span>
+
+                  <h3>${article.title}</h3>
+
+                  <p>
+                    ${
+                      article.summary ||
+                      article.text ||
+                      "Открыть материал"
+                    }
+                  </p>
+
+                </div>
+
+                <span class="saved-star">★</span>
+
+              </div>
+
+            </button>
+          `).join("")}
+
+        </div>
+      `
+
+      : `
+        <div class="empty-state">
+
+          <span class="favorite-empty-icon">
+            ☆
+          </span>
+
+          Здесь пока ничего нет.
+
+          <div class="favorite-hint">
+            Открой нужную карточку и нажми
+            звёздочку рядом с её названием.
+          </div>
+
+        </div>
+      `
+    }
+  `;
+
+  document
+    .getElementById("back-button")
+    .addEventListener("click", renderHome);
+
+  document
+    .querySelectorAll("[data-favorite-article]")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const methodKey =
+          button.dataset.favoriteMethod;
+
+        const article =
+          database[methodKey].find(
+            item =>
+              item.id ===
+              button.dataset.favoriteArticle
+          );
+
+        if (article) {
+          renderArticle(methodKey, article);
+        }
+
+      });
+
+    });
+}
+
+
 function renderComingSoon(section) {
   const names = {
     favorites: "Избранное",
@@ -603,9 +821,7 @@ navButtons.forEach(button => {
 
     if (action === "favorites") {
 
-      setActiveNav("favorites");
-
-      renderComingSoon("favorites");
+      renderFavorites();
 
     }
 
