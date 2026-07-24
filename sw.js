@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.3';
+const CACHE_NAME = 'defectosng-v0.4';
 
 const APP_FILES = [
   '/',
@@ -14,6 +14,7 @@ const APP_FILES = [
   '/icons/apple-touch-icon.png'
 ];
 
+// Установка новой версии и предварительное кэширование
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -23,12 +24,16 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
+// Активация новой версии и удаление старых кэшей DefectoSNG
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
         keys
-          .filter(key => key !== CACHE_NAME)
+          .filter(key =>
+            key.startsWith('defectosng-') &&
+            key !== CACHE_NAME
+          )
           .map(key => caches.delete(key))
       )
     )
@@ -37,19 +42,37 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
+// При наличии интернета берём свежую версию.
+// Без интернета используем сохранённую копию.
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
     fetch(event.request)
       .then(response => {
-        const copy = response.clone();
+        if (response && response.status === 200) {
+          const copy = response.clone();
 
-        caches.open(CACHE_NAME)
-          .then(cache => cache.put(event.request, copy));
+          caches.open(CACHE_NAME)
+            .then(cache => cache.put(event.request, copy));
+        }
 
         return response;
       })
-      .catch(() => caches.match(event.request))
+      .catch(async () => {
+        const cached = await caches.match(event.request);
+
+        if (cached) {
+          return cached;
+        }
+
+        // Если пользователь открыл страницу офлайн,
+        // которой нет в кэше, показываем главное приложение.
+        if (event.request.mode === 'navigate') {
+          return caches.match('/index.html');
+        }
+
+        return Response.error();
+      })
   );
 });
