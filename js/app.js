@@ -439,6 +439,54 @@ function renderStructuredArticle(article) {
         `;
       }
 
+      if (section.type === "table") {
+        return `
+          <section class="article-section article-table-section">
+
+            ${
+              section.title
+                ? `<h3>${section.title}</h3>`
+                : ""
+            }
+
+            <div class="article-table-scroll">
+
+              <table class="article-table">
+
+                <thead>
+                  <tr>
+                    ${(section.headers || [])
+                      .map(header => `<th>${header}</th>`)
+                      .join("")}
+                  </tr>
+                </thead>
+
+                <tbody>
+                  ${(section.rows || [])
+                    .map(row => `
+                      <tr>
+                        ${row
+                          .map(cell => `<td>${cell}</td>`)
+                          .join("")}
+                      </tr>
+                    `)
+                    .join("")}
+                </tbody>
+
+              </table>
+
+            </div>
+
+            ${
+              section.note
+                ? `<p class="article-table-note">${section.note}</p>`
+                : ""
+            }
+
+          </section>
+        `;
+      }
+
       if (section.type === "image") {
         return `
           <figure class="article-image">
