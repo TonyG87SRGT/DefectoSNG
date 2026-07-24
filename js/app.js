@@ -275,7 +275,7 @@ function renderMethod(methodKey) {
 
           <h3>${article.title}</h3>
 
-          <p>${article.text}</p>
+          <p>${article.summary || article.text || "Открыть материал"}</p>
 
         </button>
       `).join("")}
@@ -439,6 +439,42 @@ function renderStructuredArticle(article) {
         `;
       }
 
+      if (section.type === "image") {
+        return `
+          <figure class="article-image">
+
+            <img
+              src="${section.src}"
+              alt="${section.alt || section.title || ""}"
+              loading="lazy"
+              class="zoomable-image"
+              data-full-image="${section.src}"
+            >
+
+            ${
+              section.title || section.caption
+                ? `
+                  <figcaption>
+                    ${
+                      section.title
+                        ? `<strong>${section.title}</strong>`
+                        : ""
+                    }
+
+                    ${
+                      section.caption
+                        ? `<span>${section.caption}</span>`
+                        : ""
+                    }
+                  </figcaption>
+                `
+                : ""
+            }
+
+          </figure>
+        `;
+      }
+
       if (section.type === "documents") {
         return `
           <section class="article-documents">
@@ -583,7 +619,7 @@ function renderSearch(query) {
 
               <h3>${article.title}</h3>
 
-              <p>${article.text}</p>
+              <p>${article.summary || article.text || "Открыть материал"}</p>
 
             </button>
           `).join("")}
@@ -845,3 +881,42 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+
+// Полноэкранный просмотр изображений
+document.addEventListener("click", event => {
+
+  const image = event.target.closest(".zoomable-image");
+
+  if (image) {
+
+    const overlay = document.createElement("div");
+    overlay.className = "image-viewer";
+
+    overlay.innerHTML = `
+      <button
+        class="image-viewer-close"
+        aria-label="Закрыть изображение"
+      >
+        ×
+      </button>
+
+      <img
+        src="${image.dataset.fullImage}"
+        alt="${image.alt || ""}"
+      >
+    `;
+
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", e => {
+      if (
+        e.target === overlay ||
+        e.target.closest(".image-viewer-close")
+      ) {
+        overlay.remove();
+      }
+    });
+
+  }
+
+});
