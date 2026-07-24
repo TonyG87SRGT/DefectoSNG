@@ -250,6 +250,10 @@ function renderArticle(methodKey, article) {
     method: methodKey
   };
 
+  const articleBody = article.sections
+    ? renderStructuredArticle(article)
+    : `<p>${article.text || ""}</p>`;
+
   content.innerHTML = `
     <div class="page-header">
 
@@ -264,7 +268,6 @@ function renderArticle(methodKey, article) {
 
     </div>
 
-
     <article class="article-view">
 
       <span class="article-category">
@@ -273,7 +276,13 @@ function renderArticle(methodKey, article) {
 
       <h2>${article.title}</h2>
 
-      <p>${article.text}</p>
+      ${
+        article.summary
+          ? `<p class="article-summary">${article.summary}</p>`
+          : ""
+      }
+
+      ${articleBody}
 
     </article>
   `;
@@ -287,13 +296,104 @@ function renderArticle(methodKey, article) {
 }
 
 
+function renderStructuredArticle(article) {
+  return article.sections
+    .map(section => {
+
+      if (section.type === "text") {
+        return `
+          <section class="article-section">
+            <h3>${section.title}</h3>
+            <p>${section.content}</p>
+          </section>
+        `;
+      }
+
+      if (section.type === "steps") {
+        return `
+          <section class="article-section">
+            <h3>${section.title}</h3>
+
+            <ol>
+              ${section.items
+                .map(item => `<li>${item}</li>`)
+                .join("")}
+            </ol>
+          </section>
+        `;
+      }
+
+      if (section.type === "list") {
+        return `
+          <section class="article-section">
+            <h3>${section.title}</h3>
+
+            <ul>
+              ${section.items
+                .map(item => `<li>${item}</li>`)
+                .join("")}
+            </ul>
+          </section>
+        `;
+      }
+
+      if (section.type === "warning") {
+        return `
+          <section class="article-warning">
+            <h3>⚠ ${section.title}</h3>
+            <p>${section.content}</p>
+          </section>
+        `;
+      }
+
+      if (section.type === "documents") {
+        return `
+          <section class="article-documents">
+            <h3>▤ ${section.title}</h3>
+
+            <ul>
+              ${section.items
+                .map(item => `<li>${item}</li>`)
+                .join("")}
+            </ul>
+          </section>
+        `;
+      }
+
+      return "";
+
+    })
+    .join("");
+}
+
+function getSectionSearchText(sections = []) {
+  return sections
+    .map(section => {
+      return [
+        section.title || "",
+        section.content || "",
+        ...(section.items || [])
+      ].join(" ");
+    })
+    .join(" ");
+}
+
+
 function getAllArticles() {
   return Object.entries(database).flatMap(
     ([methodKey, articles]) => {
 
       return articles.map(article => ({
         ...article,
-        methodKey
+        methodKey,
+        searchText: [
+          article.title || "",
+          article.category || "",
+          article.text || "",
+          article.summary || "",
+          ...(article.tags || []),
+          getSectionSearchText(article.sections)
+        ].join(" ")
       }));
 
     }
@@ -321,17 +421,45 @@ function renderSearch(query) {
   const results = getAllArticles().filter(article => {
 
     const searchableText = [
-      article.title,
-      article.category,
-      article.text,
-      ...(article.tags || []),
+      article.searchText || "",
       methods[article.methodKey].short,
       methods[article.methodKey].title
     ]
       .join(" ")
       .toLowerCase();
 
-    return searchableText.includes(normalizedQuery);
+    const normalizeSearch = value =>
+      value
+        .toLowerCase()
+        .replace(/ё/g, "е")
+        .replace(/№/g, " ")
+        .replace(/[^a-zа-я0-9]+/gi, " ")
+        .trim();
+
+    const normalizedText = normalizeSearch(searchableText);
+    const normalizedWords = normalizedText.split(/\s+/);
+
+    const queryWords = normalizeSearch(normalizedQuery)
+      .split(/\s+/)
+      .filter(Boolean);
+
+    return queryWords.every(queryWord => {
+
+      if (queryWord.length <= 2) {
+        return normalizedWords.includes(queryWord);
+      }
+
+      const stem = queryWord.slice(
+        0,
+        Math.max(4, queryWord.length - 2)
+      );
+
+      return normalizedWords.some(word =>
+        word === queryWord ||
+        word.startsWith(stem)
+      );
+
+    });
 
   });
 
