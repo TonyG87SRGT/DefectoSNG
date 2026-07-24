@@ -1,19 +1,489 @@
-const cards = document.querySelectorAll(".card");
+const content = document.getElementById("app-content");
+const searchInput = document.getElementById("search");
+const navButtons = document.querySelectorAll(".nav-button");
 
-cards.forEach(card => {
+const methods = {
+  vik: {
+    short: "ВИК",
+    title: "Визуальный и измерительный контроль",
+    icon: "⌕"
+  },
 
-card.addEventListener("click", () => {
+  uzk: {
+    short: "УЗК",
+    title: "Ультразвуковой контроль",
+    icon: "◉"
+  },
 
-alert("Раздел находится в разработке");
+  pvk: {
+    short: "ПВК",
+    title: "Капиллярный контроль",
+    icon: "◌"
+  }
+};
+
+const database = {
+  vik: [],
+  uzk: [],
+  pvk: []
+};
+
+let currentView = {
+  type: "home",
+  method: null
+};
+
+
+async function loadData() {
+  try {
+    const [vik, uzk, pvk] = await Promise.all([
+      fetch("data/vik.json").then(response => response.json()),
+      fetch("data/uzk.json").then(response => response.json()),
+      fetch("data/pvk.json").then(response => response.json())
+    ]);
+
+    database.vik = vik;
+    database.uzk = uzk;
+    database.pvk = pvk;
+
+    renderHome();
+
+  } catch (error) {
+    console.error(error);
+
+    content.innerHTML = `
+      <div class="empty-state">
+        Не удалось загрузить данные справочника.
+      </div>
+    `;
+  }
+}
+
+
+function setActiveNav(action) {
+  navButtons.forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.action === action
+    );
+  });
+}
+
+
+function renderHome() {
+  currentView = {
+    type: "home",
+    method: null
+  };
+
+  setActiveNav("home");
+
+  content.innerHTML = `
+    <p class="section-label">Методы контроля</p>
+
+    <div class="method-grid">
+
+      <button class="method-card vik" data-method="vik">
+
+        <div class="method-icon">⌕</div>
+
+        <div class="method-info">
+          <h2>ВИК</h2>
+          <p>Визуальный и измерительный контроль</p>
+        </div>
+
+        <div class="arrow">›</div>
+
+      </button>
+
+
+      <button class="method-card uzk" data-method="uzk">
+
+        <div class="method-icon">◉</div>
+
+        <div class="method-info">
+          <h2>УЗК</h2>
+          <p>Ультразвуковой контроль</p>
+        </div>
+
+        <div class="arrow">›</div>
+
+      </button>
+
+
+      <button class="method-card pvk" data-method="pvk">
+
+        <div class="method-icon">◌</div>
+
+        <div class="method-info">
+          <h2>ПВК</h2>
+          <p>Капиллярный контроль</p>
+        </div>
+
+        <div class="arrow">›</div>
+
+      </button>
+
+    </div>
+
+
+    <p class="section-label quick-title">
+      Быстрый доступ
+    </p>
+
+    <div class="quick-grid">
+
+      <button class="quick-card" data-quick="favorites">
+        <span>☆</span>
+        <small>Избранное</small>
+      </button>
+
+      <button class="quick-card" data-quick="calculators">
+        <span>∑</span>
+        <small>Калькуляторы</small>
+      </button>
+
+      <button class="quick-card" data-quick="documents">
+        <span>▤</span>
+        <small>Документы</small>
+      </button>
+
+    </div>
+  `;
+
+  document
+    .querySelectorAll("[data-method]")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+        renderMethod(button.dataset.method);
+      });
+
+    });
+
+
+  document
+    .querySelectorAll("[data-quick]")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+        renderComingSoon(button.dataset.quick);
+      });
+
+    });
+}
+
+
+function renderMethod(methodKey) {
+  const method = methods[methodKey];
+  const articles = database[methodKey];
+
+  currentView = {
+    type: "method",
+    method: methodKey
+  };
+
+  content.innerHTML = `
+    <div class="page-header">
+
+      <button class="back-button" id="back-button">
+        ‹
+      </button>
+
+      <div>
+        <h2>${method.short}</h2>
+        <p>${method.title}</p>
+      </div>
+
+    </div>
+
+    <div class="article-list">
+
+      ${articles.map(article => `
+        <button
+          class="article-card"
+          data-article="${article.id}"
+        >
+
+          <span class="article-category">
+            ${article.category}
+          </span>
+
+          <h3>${article.title}</h3>
+
+          <p>${article.text}</p>
+
+        </button>
+      `).join("")}
+
+    </div>
+  `;
+
+  document
+    .getElementById("back-button")
+    .addEventListener("click", renderHome);
+
+
+  document
+    .querySelectorAll("[data-article]")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const article = articles.find(
+          item => item.id === button.dataset.article
+        );
+
+        renderArticle(methodKey, article);
+
+      });
+
+    });
+}
+
+
+function renderArticle(methodKey, article) {
+  const method = methods[methodKey];
+
+  currentView = {
+    type: "article",
+    method: methodKey
+  };
+
+  content.innerHTML = `
+    <div class="page-header">
+
+      <button class="back-button" id="back-button">
+        ‹
+      </button>
+
+      <div>
+        <h2>${method.short}</h2>
+        <p>${method.title}</p>
+      </div>
+
+    </div>
+
+
+    <article class="article-view">
+
+      <span class="article-category">
+        ${article.category}
+      </span>
+
+      <h2>${article.title}</h2>
+
+      <p>${article.text}</p>
+
+    </article>
+  `;
+
+  document
+    .getElementById("back-button")
+    .addEventListener(
+      "click",
+      () => renderMethod(methodKey)
+    );
+}
+
+
+function getAllArticles() {
+  return Object.entries(database).flatMap(
+    ([methodKey, articles]) => {
+
+      return articles.map(article => ({
+        ...article,
+        methodKey
+      }));
+
+    }
+  );
+}
+
+
+function renderSearch(query) {
+  const normalizedQuery = query
+    .trim()
+    .toLowerCase();
+
+  if (!normalizedQuery) {
+    renderHome();
+    return;
+  }
+
+  currentView = {
+    type: "search",
+    method: null
+  };
+
+  setActiveNav("search");
+
+  const results = getAllArticles().filter(article => {
+
+    const searchableText = [
+      article.title,
+      article.category,
+      article.text,
+      ...(article.tags || []),
+      methods[article.methodKey].short,
+      methods[article.methodKey].title
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return searchableText.includes(normalizedQuery);
+
+  });
+
+
+  content.innerHTML = `
+    <div class="search-status">
+      Найдено: ${results.length}
+    </div>
+
+    ${
+      results.length
+
+      ? `
+        <div class="article-list">
+
+          ${results.map(article => `
+            <button
+              class="article-card"
+              data-search-article="${article.id}"
+              data-search-method="${article.methodKey}"
+            >
+
+              <span class="article-category">
+                ${methods[article.methodKey].short}
+                ·
+                ${article.category}
+              </span>
+
+              <h3>${article.title}</h3>
+
+              <p>${article.text}</p>
+
+            </button>
+          `).join("")}
+
+        </div>
+      `
+
+      : `
+        <div class="empty-state">
+          Ничего не найдено.<br><br>
+          Попробуй изменить запрос.
+        </div>
+      `
+    }
+  `;
+
+
+  document
+    .querySelectorAll("[data-search-article]")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const methodKey =
+          button.dataset.searchMethod;
+
+        const article =
+          database[methodKey].find(
+            item =>
+              item.id ===
+              button.dataset.searchArticle
+          );
+
+        renderArticle(methodKey, article);
+
+      });
+
+    });
+}
+
+
+function renderComingSoon(section) {
+  const names = {
+    favorites: "Избранное",
+    calculators: "Калькуляторы",
+    documents: "Документы"
+  };
+
+  content.innerHTML = `
+    <div class="page-header">
+
+      <button class="back-button" id="back-button">
+        ‹
+      </button>
+
+      <div>
+        <h2>${names[section]}</h2>
+        <p>Раздел DefectoSNG</p>
+      </div>
+
+    </div>
+
+    <div class="empty-state">
+      Этот раздел появится в одной из следующих версий.
+    </div>
+  `;
+
+  document
+    .getElementById("back-button")
+    .addEventListener("click", renderHome);
+}
+
+
+searchInput.addEventListener("input", event => {
+  renderSearch(event.target.value);
+});
+
+
+navButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const action = button.dataset.action;
+
+    if (action === "home") {
+
+      searchInput.value = "";
+      renderHome();
+
+    }
+
+    if (action === "search") {
+
+      setActiveNav("search");
+      searchInput.focus();
+
+      if (!searchInput.value.trim()) {
+
+        content.innerHTML = `
+          <div class="empty-state">
+            Введи название дефекта, метода,
+            настройки или оборудования
+            в строку поиска.
+          </div>
+        `;
+
+      }
+
+    }
+
+    if (action === "favorites") {
+
+      setActiveNav("favorites");
+
+      renderComingSoon("favorites");
+
+    }
+
+  });
 
 });
 
-});
 
-const search = document.getElementById("search");
-
-search.addEventListener("input",(e)=>{
-
-console.log(e.target.value);
-
-});
+loadData();
