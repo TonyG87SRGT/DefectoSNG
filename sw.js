@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.4.1';
+const CACHE_NAME = 'defectosng-v0.4.2';
 
 const APP_FILES = [
   '/',
@@ -12,7 +12,8 @@ const APP_FILES = [
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/icons/apple-touch-icon.png',
-  '/images/articles/uzk/echo-pulse-principle.png'
+  '/images/articles/uzk/echo-pulse-principle.png',
+  '/images/articles/uzk/dac-vrc-comparison.png'
 ];
 
 // Установка новой версии и предварительное кэширование
