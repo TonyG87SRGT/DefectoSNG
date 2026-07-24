@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.4';
+const CACHE_NAME = 'defectosng-v0.4.1';
 
 const APP_FILES = [
   '/',
@@ -11,7 +11,8 @@ const APP_FILES = [
   '/data/pvk.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
-  '/icons/apple-touch-icon.png'
+  '/icons/apple-touch-icon.png',
+  '/images/articles/uzk/echo-pulse-principle.png'
 ];
 
 // Установка новой версии и предварительное кэширование
