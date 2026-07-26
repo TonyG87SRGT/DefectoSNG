@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.4.2';
+const CACHE_NAME = 'defectosng-v0.4.3';
 
 const APP_FILES = [
   '/',
@@ -13,6 +13,7 @@ const APP_FILES = [
   '/icons/icon-512.png',
   '/icons/apple-touch-icon.png',
   '/images/articles/uzk/echo-pulse-principle.png',
+  '/images/articles/uzk/pep-overview.png',
   '/images/articles/uzk/dac-vrc-comparison.png'
 ];
 
