@@ -19,7 +19,8 @@ const methods = {
     short: "ПВК",
     title: "Капиллярный контроль",
     icon: "◌"
-  }
+  },
+  
   vibration: {
   short: "ВД",
   title: "Вибродиагностика",
