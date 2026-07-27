@@ -143,7 +143,7 @@ function renderHome() {
   setActiveNav("home");
 
   content.innerHTML = `
-    <p class="section-label">Методы контроля</p>
+    <p class="section-label">Методы контроля и диагностики</p>
 
     <div class="method-grid">
 
