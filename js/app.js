@@ -202,10 +202,10 @@ function renderHome() {
         <small>Избранное</small>
       </button>
 
-      <button class="quick-card" data-quick="calculators">
-        <span>∑</span>
-        <small>Калькуляторы</small>
-      </button>
+      <button class="quick-card" data-quick="tools">
+    <span>🧰</span>
+    <small>Инструменты</small>
+</button>
 
       <button class="quick-card" data-quick="documents">
         <span>▤</span>
