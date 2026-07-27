@@ -20,12 +20,18 @@ const methods = {
     title: "Капиллярный контроль",
     icon: "◌"
   }
+  vibration: {
+  short: "ВД",
+  title: "Вибродиагностика",
+  icon: "📈"
+}
 };
 
 const database = {
   vik: [],
   uzk: [],
-  pvk: []
+  pvk: [],
+  vibration: []
 };
 
 let currentView = {
@@ -99,15 +105,17 @@ function updateFavoriteBadge() {
 
 async function loadData() {
   try {
-    const [vik, uzk, pvk] = await Promise.all([
-      fetch("data/vik.json").then(response => response.json()),
-      fetch("data/uzk.json").then(response => response.json()),
-      fetch("data/pvk.json").then(response => response.json())
-    ]);
-
+    const [vik, uzk, pvk, vibration] = await Promise.all([
+  fetch("data/vik.json").then(response => response.json()),
+  fetch("data/uzk.json").then(response => response.json()),
+  fetch("data/pvk.json").then(response => response.json()),
+  fetch("data/vibration.json").then(response => response.json())
+]);
     database.vik = vik;
     database.uzk = uzk;
     database.pvk = pvk;
+    database.vibration = vibration;
+    
 
     renderHome();
     updateFavoriteBadge();
@@ -187,6 +195,21 @@ function renderHome() {
         <div class="arrow">›</div>
 
       </button>
+      
+      <button
+  class="method-card vibration"
+  data-method="vibration">
+
+  <div class="method-icon">📈</div>
+
+  <div class="method-info">
+    <h2>ВД</h2>
+    <p>Вибродиагностика</p>
+  </div>
+
+  <div class="arrow">›</div>
+
+</button>
 
     </div>
 
