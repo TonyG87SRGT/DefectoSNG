@@ -227,14 +227,21 @@ function renderHome() {
 
 
   document
-    .querySelectorAll("[data-quick]")
-    .forEach(button => {
+  .querySelectorAll("[data-quick]")
+  .forEach(button => {
 
-      button.addEventListener("click", () => {
-        renderComingSoon(button.dataset.quick);
-      });
+    button.addEventListener("click", () => {
+
+      if (button.dataset.quick === "tools") {
+        renderTools();
+        return;
+      }
+
+      renderComingSoon(button.dataset.quick);
 
     });
+
+  });
 }
 
 
