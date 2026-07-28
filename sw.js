@@ -1,10 +1,12 @@
-const CACHE_NAME = 'defectosng-v0.5.2';
+const CACHE_NAME = 'defectosng-v0.6.0';
 
 const APP_FILES = [
   '/',
   '/index.html',
   '/css/style.css',
   '/js/app.js',
+  '/js/tools.js',
+  '/js/ringWeld.js',
   '/manifest.json',
   '/data/vik.json',
   '/data/uzk.json',
@@ -16,48 +18,52 @@ const APP_FILES = [
   '/images/articles/uzk/echo-pulse-principle.png',
   '/images/articles/uzk/pep-overview.png',
   '/images/articles/uzk/dac-vrc-comparison.png',
+  '/images/articles/uzk/beam-input.PNG',
+  '/images/articles/uzk/beam-zones.PNG',
+  '/images/articles/uzk/dead-zone.PNG',
   '/images/defects/undercut.jpg'
 ];
 
-// Установка новой версии и предварительное кэширование
+// Новая версия устанавливается в фоне, но ждёт подтверждения пользователя.
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(APP_FILES))
   );
-
-  self.skipWaiting();
 });
 
-// Активация новой версии и удаление старых кэшей DefectoSNG
+// После активации удаляем только старые кэши DefectoSNG.
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
+    caches.keys()
+      .then(keys => Promise.all(
         keys
-          .filter(key =>
-            key.startsWith('defectosng-') &&
-            key !== CACHE_NAME
-          )
+          .filter(key => key.startsWith('defectosng-') && key !== CACHE_NAME)
           .map(key => caches.delete(key))
-      )
-    )
+      ))
+      .then(() => self.clients.claim())
   );
-
-  self.clients.claim();
 });
 
-// При наличии интернета берём свежую версию.
-// Без интернета используем сохранённую копию.
+// Переходим на ожидающую версию только после нажатия кнопки «Обновить».
+self.addEventListener('message', event => {
+  if (event.data?.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
+// При наличии интернета берём свежую версию, без интернета — кэш.
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+
+  const requestUrl = new URL(event.request.url);
+  const isSameOrigin = requestUrl.origin === self.location.origin;
 
   event.respondWith(
     fetch(event.request)
       .then(response => {
-        if (response && response.status === 200) {
+        if (isSameOrigin && response && response.status === 200) {
           const copy = response.clone();
-
           caches.open(CACHE_NAME)
             .then(cache => cache.put(event.request, copy));
         }
@@ -67,12 +73,8 @@ self.addEventListener('fetch', event => {
       .catch(async () => {
         const cached = await caches.match(event.request);
 
-        if (cached) {
-          return cached;
-        }
+        if (cached) return cached;
 
-        // Если пользователь открыл страницу офлайн,
-        // которой нет в кэше, показываем главное приложение.
         if (event.request.mode === 'navigate') {
           return caches.match('/index.html');
         }
