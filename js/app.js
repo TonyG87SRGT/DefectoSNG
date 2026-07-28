@@ -418,6 +418,20 @@ function renderArticle(methodKey, article) {
         nowFavorite ? "★" : "☆";
 
     });
+
+  document
+    .querySelectorAll("[data-related-article]")
+    .forEach(button => {
+      button.addEventListener("click", () => {
+        const relatedId = button.dataset.relatedArticle;
+        const relatedArticle = database[methodKey]
+          .find(item => item.id === relatedId);
+
+        if (relatedArticle) {
+          renderArticle(methodKey, relatedArticle);
+        }
+      });
+    });
 }
 
 function renderStructuredArticle(article) {
@@ -551,6 +565,45 @@ function renderStructuredArticle(article) {
             }
 
           </figure>
+        `;
+      }
+
+      if (section.type === "tip") {
+        return `
+          <section class="article-callout article-tip">
+            <h3>💡 ${section.title}</h3>
+            <p>${section.content}</p>
+          </section>
+        `;
+      }
+
+      if (section.type === "practice") {
+        return `
+          <section class="article-callout article-practice">
+            <h3>🔧 ${section.title}</h3>
+            <p>${section.content}</p>
+          </section>
+        `;
+      }
+
+      if (section.type === "related") {
+        return `
+          <section class="article-related">
+            <h3>↗ ${section.title}</h3>
+
+            <div class="article-related-list">
+              ${(section.items || [])
+                .map(item => `
+                  <button
+                    class="article-related-link"
+                    data-related-article="${item.id}"
+                  >
+                    ${item.title}
+                  </button>
+                `)
+                .join("")}
+            </div>
+          </section>
         `;
       }
 
