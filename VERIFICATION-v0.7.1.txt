@@ -1,0 +1,9 @@
+DefectoSNG v0.7.1 — результаты проверки
+
+[OK] data/vik.json является корректным JSON.
+[OK] sw.js проходит проверку синтаксиса JavaScript.
+[OK] images/defects/porosity.webp существует.
+[OK] Размер porosity.webp: около 125 КБ.
+[OK] Разрешение porosity.webp: 1200 × 800 px.
+[OK] Ссылка на старый porosity.png удалена из проекта.
+[OK] Версия кэша: defectosng-v0.7.1.
