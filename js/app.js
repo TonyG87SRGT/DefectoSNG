@@ -1120,17 +1120,107 @@ navButtons.forEach(button => {
 
 loadData();
 
-// PWA: регистрация Service Worker
+// PWA: регистрация Service Worker и управляемое обновление приложения
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/sw.js')
-      .then(registration => {
-        console.log('Service Worker registered:', registration.scope);
-      })
-      .catch(error => {
-        console.error('Service Worker registration failed:', error);
+  let refreshing = false;
+  let updatePromptShownFor = null;
+
+  function showPwaUpdatePrompt(worker) {
+    if (!worker || updatePromptShownFor === worker) return;
+
+    updatePromptShownFor = worker;
+
+    const previousPrompt = document.getElementById('pwa-update-prompt');
+    if (previousPrompt) previousPrompt.remove();
+
+    const prompt = document.createElement('div');
+    prompt.id = 'pwa-update-prompt';
+    prompt.className = 'pwa-update-prompt';
+    prompt.setAttribute('role', 'status');
+    prompt.setAttribute('aria-live', 'polite');
+
+    prompt.innerHTML = `
+      <div class="pwa-update-prompt__text">
+        <strong>Доступна новая версия</strong>
+        <span>Обновите DefectoSNG, чтобы получить последние изменения.</span>
+      </div>
+      <div class="pwa-update-prompt__actions">
+        <button type="button" class="pwa-update-prompt__button" data-update-pwa>
+          Обновить
+        </button>
+        <button type="button" class="pwa-update-prompt__dismiss" data-dismiss-pwa-update aria-label="Закрыть">
+          ×
+        </button>
+      </div>
+    `;
+
+    document.body.appendChild(prompt);
+
+    requestAnimationFrame(() => {
+      prompt.classList.add('visible');
+    });
+
+    prompt.querySelector('[data-update-pwa]').addEventListener('click', () => {
+      const updateButton = prompt.querySelector('[data-update-pwa]');
+      updateButton.disabled = true;
+      updateButton.textContent = 'Обновление…';
+      worker.postMessage({ type: 'SKIP_WAITING' });
+    });
+
+    prompt.querySelector('[data-dismiss-pwa-update]').addEventListener('click', () => {
+      prompt.classList.remove('visible');
+      window.setTimeout(() => prompt.remove(), 250);
+    });
+  }
+
+  function watchInstallingWorker(registration) {
+    const worker = registration.installing;
+    if (!worker) return;
+
+    worker.addEventListener('statechange', () => {
+      if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+        showPwaUpdatePrompt(registration.waiting || worker);
+      }
+    });
+  }
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
+
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('/sw.js');
+      console.log('Service Worker registered:', registration.scope);
+
+      if (registration.waiting) {
+        showPwaUpdatePrompt(registration.waiting);
+      }
+
+      registration.addEventListener('updatefound', () => {
+        watchInstallingWorker(registration);
       });
+
+      // Проверяем обновление при возвращении в приложение.
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          registration.update().catch(error => {
+            console.warn('Service Worker update check failed:', error);
+          });
+        }
+      });
+
+      // И дополнительно — раз в час при долгой работе приложения.
+      window.setInterval(() => {
+        registration.update().catch(error => {
+          console.warn('Service Worker update check failed:', error);
+        });
+      }, 60 * 60 * 1000);
+    } catch (error) {
+      console.error('Service Worker registration failed:', error);
+    }
   });
 }
 
