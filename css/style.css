@@ -934,3 +934,63 @@ button {
 .article-related-link:active {
   transform: translateY(1px);
 }
+
+
+/* ===== Article passport / quick facts ===== */
+
+.article-facts {
+  margin: 18px 0 24px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(59, 130, 246, .06);
+}
+
+.article-facts h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: #8fbcff;
+}
+
+.article-facts-grid {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.article-fact {
+  display: grid;
+  grid-template-columns: minmax(110px, .8fr) minmax(0, 1.2fr);
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+}
+
+.article-fact:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.article-fact dt {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.article-fact dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+}
+
+@media (max-width: 420px) {
+  .article-fact {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .article-fact dd {
+    text-align: left;
+  }
+}
