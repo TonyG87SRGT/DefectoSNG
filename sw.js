@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.7.0';
+const CACHE_NAME = 'defectosng-v0.8.0';
 
 const APP_FILES = [
   '/',
@@ -22,7 +22,8 @@ const APP_FILES = [
   '/images/articles/uzk/beam-zones.PNG',
   '/images/articles/uzk/dead-zone.PNG',
   '/images/defects/undercut.jpg',
-  '/images/defects/porosity.png'
+  '/images/defects/porosity.webp',
+  '/images/defects/cracks.webp'
 ];
 
 // Новая версия устанавливается в фоне, но ждёт подтверждения пользователя.
