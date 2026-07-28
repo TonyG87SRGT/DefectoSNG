@@ -438,6 +438,25 @@ function renderStructuredArticle(article) {
   return article.sections
     .map(section => {
 
+      if (section.type === "facts") {
+        return `
+          <section class="article-facts">
+            ${section.title ? `<h3>${section.title}</h3>` : ""}
+
+            <dl class="article-facts-grid">
+              ${(section.items || [])
+                .map(item => `
+                  <div class="article-fact">
+                    <dt>${item.label}</dt>
+                    <dd>${item.value}</dd>
+                  </div>
+                `)
+                .join("")}
+            </dl>
+          </section>
+        `;
+      }
+
       if (section.type === "text") {
         return `
           <section class="article-section">
