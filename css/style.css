@@ -985,12 +985,23 @@ button {
 }
 
 @media (max-width: 420px) {
+  .article-facts {
+    padding: 14px;
+  }
+
   .article-fact {
-    grid-template-columns: 1fr;
-    gap: 4px;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .article-fact dt,
+  .article-fact dd {
+    font-size: 13px;
+    line-height: 1.35;
   }
 
   .article-fact dd {
     text-align: left;
+    overflow-wrap: anywhere;
   }
 }
