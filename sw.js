@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.4.3';
+const CACHE_NAME = 'defectosng-v0.5.0';
 
 const APP_FILES = [
   '/',
@@ -9,6 +9,7 @@ const APP_FILES = [
   '/data/vik.json',
   '/data/uzk.json',
   '/data/pvk.json',
+  '/data/vibration.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/icons/apple-touch-icon.png',
