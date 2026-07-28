@@ -271,7 +271,7 @@ function renderHome() {
 
 function renderMethod(methodKey) {
   const method = methods[methodKey];
-  const articles = database[methodKey];
+  const articles = database[methodKey].filter(article => !article.parentId);
 
   currentView = {
     type: "method",
@@ -329,10 +329,101 @@ function renderMethod(methodKey) {
           item => item.id === button.dataset.article
         );
 
-        renderArticle(methodKey, article);
+        openArticle(methodKey, article);
 
       });
 
+    });
+}
+
+
+function openArticle(methodKey, article) {
+  if (!article) return;
+
+  const childArticles = database[methodKey].filter(
+    item => item.parentId === article.id
+  );
+
+  if (childArticles.length) {
+    renderArticleGroup(methodKey, article, childArticles);
+    return;
+  }
+
+  renderArticle(methodKey, article);
+}
+
+
+function renderArticleGroup(methodKey, groupArticle, childArticles) {
+  const method = methods[methodKey];
+
+  currentView = {
+    type: "article-group",
+    method: methodKey,
+    groupId: groupArticle.id
+  };
+
+  content.innerHTML = `
+    <div class="page-header">
+
+      <button class="back-button" id="back-button">
+        ‹
+      </button>
+
+      <div>
+        <h2>${method.short}</h2>
+        <p>${method.title}</p>
+      </div>
+
+    </div>
+
+    <div class="article-group-header">
+      <span class="article-category">
+        ${groupArticle.category}
+      </span>
+
+      <h2>${groupArticle.title}</h2>
+
+      ${
+        groupArticle.text || groupArticle.summary
+          ? `<p>${groupArticle.summary || groupArticle.text}</p>`
+          : ""
+      }
+    </div>
+
+    <div class="article-list">
+      ${childArticles.map(article => `
+        <button
+          class="article-card"
+          data-group-article="${article.id}"
+        >
+          <span class="article-category">
+            ${article.category}
+          </span>
+
+          <h3>${article.title}</h3>
+
+          <p>${article.summary || article.text || "Открыть материал"}</p>
+        </button>
+      `).join("")}
+    </div>
+  `;
+
+  document
+    .getElementById("back-button")
+    .addEventListener("click", () => renderMethod(methodKey));
+
+  document
+    .querySelectorAll("[data-group-article]")
+    .forEach(button => {
+      button.addEventListener("click", () => {
+        const article = childArticles.find(
+          item => item.id === button.dataset.groupArticle
+        );
+
+        if (article) {
+          renderArticle(methodKey, article);
+        }
+      });
     });
 }
 
@@ -397,10 +488,20 @@ function renderArticle(methodKey, article) {
 
   document
     .getElementById("back-button")
-    .addEventListener(
-      "click",
-      () => renderMethod(methodKey)
-    );
+    .addEventListener("click", () => {
+      if (article.parentId) {
+        const parentArticle = database[methodKey].find(
+          item => item.id === article.parentId
+        );
+
+        if (parentArticle) {
+          openArticle(methodKey, parentArticle);
+          return;
+        }
+      }
+
+      renderMethod(methodKey);
+    });
 
   document
     .getElementById("favorite-button")
@@ -428,7 +529,7 @@ function renderArticle(methodKey, article) {
           .find(item => item.id === relatedId);
 
         if (relatedArticle) {
-          renderArticle(methodKey, relatedArticle);
+          openArticle(methodKey, relatedArticle);
         }
       });
     });
@@ -804,7 +905,7 @@ function renderSearch(query) {
               button.dataset.searchArticle
           );
 
-        renderArticle(methodKey, article);
+        openArticle(methodKey, article);
 
       });
 
@@ -928,7 +1029,7 @@ function renderFavorites() {
           );
 
         if (article) {
-          renderArticle(methodKey, article);
+          openArticle(methodKey, article);
         }
 
       });
