@@ -868,3 +868,69 @@ button {
   color: var(--muted);
   font-size: 14px;
 }
+
+/* ===== Practical article blocks v0.5 ===== */
+
+.article-callout,
+.article-related {
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 14px;
+}
+
+.article-callout h3,
+.article-related h3 {
+  margin: 0 0 9px;
+  font-size: 16px;
+}
+
+.article-callout p {
+  margin: 0;
+  color: #d7dde5;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.article-tip {
+  border: 1px solid rgba(34, 197, 94, .30);
+  background: rgba(34, 197, 94, .07);
+}
+
+.article-tip h3 {
+  color: #74d99a;
+}
+
+.article-practice {
+  border: 1px solid rgba(168, 85, 247, .30);
+  background: rgba(168, 85, 247, .07);
+}
+
+.article-practice h3 {
+  color: #c69af8;
+}
+
+.article-related {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, .025);
+}
+
+.article-related-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.article-related-link {
+  padding: 9px 12px;
+  border: 1px solid rgba(59, 130, 246, .35);
+  border-radius: 10px;
+  background: rgba(59, 130, 246, .08);
+  color: #8fbcff;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.article-related-link:active {
+  transform: translateY(1px);
+}
