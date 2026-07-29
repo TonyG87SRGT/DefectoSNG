@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.9.2';
+const CACHE_NAME = 'defectosng-v0.9.3';
 
 const APP_FILES = [
   '/',
@@ -25,7 +25,8 @@ const APP_FILES = [
   '/images/defects/porosity.webp',
   '/images/defects/cracks.webp',
   '/images/defects/lack-of-fusion.webp',
-  '/images/defects/slag-inclusions.webp'
+  '/images/defects/slag-inclusions.webp',
+  '/images/defects/unfilled-crater.webp'
 ];
 
 // Новая версия устанавливается в фоне, но ждёт подтверждения пользователя.
