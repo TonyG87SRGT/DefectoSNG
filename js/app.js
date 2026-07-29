@@ -470,6 +470,20 @@ function normalizeAtlasSearch(value) {
     .trim();
 }
 
+function formatDefectCount(count) {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  let word = "дефектов";
+
+  if (mod10 === 1 && mod100 !== 11) {
+    word = "дефект";
+  } else if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) {
+    word = "дефекта";
+  }
+
+  return count === 1 ? `Показан ${count} ${word}` : `Показано ${count} ${word}`;
+}
+
 function renderAtlas(initialState = {}) {
   const atlasArticles = getAtlasArticles();
   let activeCategory = initialState.category || "all";
@@ -494,7 +508,7 @@ function renderAtlas(initialState = {}) {
       <button class="back-button" id="back-button" aria-label="Вернуться в раздел ВИК">‹</button>
       <div>
         <h2>Атлас дефектов сварных соединений</h2>
-        <p>Сравните обнаруженный дефект с фотографиями и схемами. Нажмите на карточку, чтобы открыть подробное описание, причины возникновения и способы контроля.</p>
+        <p>Сравните обнаруженный дефект с фотографиями и схемами. Используйте поиск или выберите подходящую группу.</p>
       </div>
     </div>
 
@@ -504,7 +518,7 @@ function renderAtlas(initialState = {}) {
         <input
           id="atlas-search"
           type="search"
-          placeholder="Поиск по названию и признакам..."
+          placeholder="Найти дефект..."
           autocomplete="off"
           value="${query.replace(/"/g, "&quot;")}"
           aria-label="Поиск дефекта в атласе"
@@ -556,7 +570,7 @@ function renderAtlas(initialState = {}) {
     });
 
     results.innerHTML = filtered.length ? `
-      <div class="atlas-count">Показано дефектов: ${filtered.length}</div>
+      <div class="atlas-count">${formatDefectCount(filtered.length)}</div>
       <div class="atlas-grid">
         ${filtered.map(article => {
           const hasPhoto = Boolean(article.atlas.photo);
@@ -564,10 +578,11 @@ function renderAtlas(initialState = {}) {
           const defaultKind = hasPhoto ? "photo" : "scheme";
           const defaultSrc = article.atlas[defaultKind];
           const defaultLabel = defaultKind === "photo" ? "Фотография" : "Техническая схема";
+          const primaryCategory = article.atlas.categories?.[0] || "other";
 
           return `
             <article
-              class="atlas-card"
+              class="atlas-card atlas-category-${primaryCategory}"
               data-atlas-article="${article.id}"
               role="link"
               tabindex="0"
@@ -579,6 +594,7 @@ function renderAtlas(initialState = {}) {
                   alt="${defaultLabel} дефекта «${article.title}»"
                   loading="lazy"
                   decoding="async"
+                  class="atlas-media-image atlas-media-${defaultKind}"
                   data-atlas-image
                 >
 
@@ -648,6 +664,8 @@ function renderAtlas(initialState = {}) {
 
         image.src = button.dataset.imageSrc;
         image.alt = button.dataset.imageAlt;
+        image.classList.toggle("atlas-media-photo", button.dataset.imageKind === "photo");
+        image.classList.toggle("atlas-media-scheme", button.dataset.imageKind === "scheme");
 
         toggleButtons.forEach(item => {
           const active = item === button;
@@ -688,6 +706,7 @@ function renderAtlas(initialState = {}) {
         item.setAttribute("aria-pressed", String(active));
       });
       drawCards();
+      button.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
     });
   });
 

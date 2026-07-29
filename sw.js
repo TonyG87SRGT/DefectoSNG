@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.10.0';
+const CACHE_NAME = 'defectosng-v0.10.1';
 
 const APP_FILES = [
   '/',
