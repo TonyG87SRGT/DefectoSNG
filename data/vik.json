@@ -236,7 +236,23 @@
       "дефект",
       "измерение"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "depressions"
+      ],
+      "shortFeature": "Канавка вдоль границы сварного шва",
+      "photo": "images/defects/undercut.jpg",
+      "tags": [
+        "ВИК",
+        "Поверхностный"
+      ],
+      "aliases": [
+        "канавка у шва",
+        "углубление у линии сплавления"
+      ]
+    }
   },
   {
     "id": "vik-porosity",
@@ -456,7 +472,25 @@
       "сварной шов",
       "дефект"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "cracks-holes",
+        "internal"
+      ],
+      "shortFeature": "Округлые полости или отверстия в металле шва",
+      "photo": "images/atlas/porosity-photo.webp",
+      "scheme": "images/atlas/porosity-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Поверхностный"
+      ],
+      "aliases": [
+        "газовые поры",
+        "пористость"
+      ]
+    }
   },
   {
     "id": "vik-cracks",
@@ -696,7 +730,24 @@
       "мпд",
       "узк"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "cracks-holes"
+      ],
+      "shortFeature": "Линейный разрыв металла шва или зоны сплавления",
+      "photo": "images/atlas/cracks-photo.webp",
+      "scheme": "images/atlas/cracks-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Поверхностный"
+      ],
+      "aliases": [
+        "трещина",
+        "разрыв металла"
+      ]
+    }
   },
   {
     "id": "vik-lack-of-fusion",
@@ -940,7 +991,24 @@
       "узк",
       "рк"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "internal"
+      ],
+      "shortFeature": "Отсутствие сплавления между кромками или слоями",
+      "photo": "images/atlas/lack-of-fusion-photo.webp",
+      "scheme": "images/atlas/lack-of-fusion-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Внутренний"
+      ],
+      "aliases": [
+        "несплавление",
+        "непровар корня"
+      ]
+    }
   },
   {
     "id": "vik-slag-inclusions",
@@ -1183,7 +1251,24 @@
       "дефект",
       "многопроходная сварка"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "internal"
+      ],
+      "shortFeature": "Неметаллические включения внутри металла шва",
+      "photo": "images/atlas/slag-inclusions-photo.webp",
+      "scheme": "images/atlas/slag-inclusions-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Внутренний"
+      ],
+      "aliases": [
+        "шлаки",
+        "включения шлака"
+      ]
+    }
   },
   {
     "id": "vik-unfilled-crater",
@@ -1433,7 +1518,25 @@
       "ВИК",
       "трещины"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "cracks-holes",
+        "depressions"
+      ],
+      "shortFeature": "Углубление в месте окончания сварного шва",
+      "photo": "images/atlas/unfilled-crater-photo.webp",
+      "scheme": "images/atlas/unfilled-crater-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Поверхностный"
+      ],
+      "aliases": [
+        "кратер",
+        "незаполненный кратер"
+      ]
+    }
   },
   {
     "id": "vik-burn-through",
@@ -1685,7 +1788,23 @@
       "сварка",
       "герметичность"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "cracks-holes"
+      ],
+      "shortFeature": "Сквозное отверстие из-за расплавления металла",
+      "photo": "images/defects/burn-through.webp",
+      "tags": [
+        "ВИК",
+        "Сквозной"
+      ],
+      "aliases": [
+        "прожог металла",
+        "сквозное отверстие"
+      ]
+    }
   },
   {
     "id": "vik-overlap",
@@ -1945,7 +2064,24 @@
       "несплавление",
       "сварка"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "excess-metal",
+        "shape"
+      ],
+      "shortFeature": "Металл шва натёк на основной металл без сплавления",
+      "photo": "images/defects/overlap.webp",
+      "tags": [
+        "ВИК",
+        "Поверхностный"
+      ],
+      "aliases": [
+        "натёк",
+        "наплыв металла"
+      ]
+    }
   },
   {
     "id": "vik-edge-misalignment",
@@ -2174,7 +2310,24 @@
       "измерение",
       "сборка"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "shape"
+      ],
+      "shortFeature": "Одна соединяемая кромка смещена относительно другой",
+      "photo": "images/atlas/edge-misalignment-photo.webp",
+      "scheme": "images/atlas/edge-misalignment-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Форма соединения"
+      ],
+      "aliases": [
+        "смещение деталей",
+        "несовпадение кромок"
+      ]
+    }
   },
   {
     "id": "vik-uneven-reinforcement",
@@ -2402,7 +2555,25 @@
       "геометрия шва",
       "дефекты сварки"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "excess-metal",
+        "shape"
+      ],
+      "shortFeature": "Заметные перепады высоты усиления по длине шва",
+      "photo": "images/atlas/uneven-reinforcement-photo.webp",
+      "scheme": "images/atlas/uneven-reinforcement-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Форма шва"
+      ],
+      "aliases": [
+        "неровное усиление",
+        "перепад высоты шва"
+      ]
+    }
   },
   {
     "id": "vik-interpass-depression",
@@ -2624,7 +2795,25 @@
       "геометрия шва",
       "дефекты сварки"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "depressions",
+        "shape"
+      ],
+      "shortFeature": "Продольное углубление между соседними валиками",
+      "photo": "images/atlas/interpass-depression-photo.webp",
+      "scheme": "images/atlas/interpass-depression-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Поверхностный"
+      ],
+      "aliases": [
+        "межваликовое западание",
+        "углубление между валиками"
+      ]
+    }
   },
   {
     "id": "vik-metal-spatter",
@@ -2840,7 +3029,24 @@
       "поверхность",
       "дефекты сварки"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "excess-metal"
+      ],
+      "shortFeature": "Застывшие капли металла рядом со сварным швом",
+      "photo": "images/atlas/metal-spatter-photo.webp",
+      "scheme": "images/atlas/metal-spatter-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Поверхностный"
+      ],
+      "aliases": [
+        "брызги сварки",
+        "капли металла"
+      ]
+    }
   },
   {
     "id": "vik-fistula",
@@ -3081,6 +3287,23 @@
       "ВИК",
       "ПВК"
     ],
-    "parentId": "vik-defects"
+    "parentId": "vik-defects",
+    "atlas": {
+      "enabled": true,
+      "categories": [
+        "cracks-holes"
+      ],
+      "shortFeature": "Узкое отверстие, сообщающееся с внутренней полостью",
+      "photo": "images/atlas/fistula-photo.webp",
+      "scheme": "images/atlas/fistula-scheme.webp",
+      "tags": [
+        "ВИК",
+        "Поверхностный"
+      ],
+      "aliases": [
+        "свищевое отверстие",
+        "канал"
+      ]
+    }
   }
 ]

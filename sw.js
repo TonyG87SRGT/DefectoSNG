@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.9.10';
+const CACHE_NAME = 'defectosng-v0.10.0';
 
 const APP_FILES = [
   '/',
@@ -33,7 +33,27 @@ const APP_FILES = [
   '/images/defects/uneven-reinforcement.webp',
   '/images/defects/interpass-depression.webp',
   '/images/defects/metal-spatter.webp',
-  '/images/defects/fistula.webp'
+  '/images/defects/fistula.webp',
+  '/images/atlas/cracks-photo.webp',
+  '/images/atlas/cracks-scheme.webp',
+  '/images/atlas/edge-misalignment-photo.webp',
+  '/images/atlas/edge-misalignment-scheme.webp',
+  '/images/atlas/fistula-photo.webp',
+  '/images/atlas/fistula-scheme.webp',
+  '/images/atlas/interpass-depression-photo.webp',
+  '/images/atlas/interpass-depression-scheme.webp',
+  '/images/atlas/lack-of-fusion-photo.webp',
+  '/images/atlas/lack-of-fusion-scheme.webp',
+  '/images/atlas/metal-spatter-photo.webp',
+  '/images/atlas/metal-spatter-scheme.webp',
+  '/images/atlas/porosity-photo.webp',
+  '/images/atlas/porosity-scheme.webp',
+  '/images/atlas/slag-inclusions-photo.webp',
+  '/images/atlas/slag-inclusions-scheme.webp',
+  '/images/atlas/uneven-reinforcement-photo.webp',
+  '/images/atlas/uneven-reinforcement-scheme.webp',
+  '/images/atlas/unfilled-crater-photo.webp',
+  '/images/atlas/unfilled-crater-scheme.webp'
 ];
 
 // Новая версия устанавливается в фоне, но ждёт подтверждения пользователя.

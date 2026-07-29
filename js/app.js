@@ -43,6 +43,15 @@ let currentView = {
 
 const FAVORITES_KEY = "defectosng-favorites";
 
+const ATLAS_CATEGORIES = [
+  { id: "all", label: "Все" },
+  { id: "cracks-holes", label: "Трещины и отверстия" },
+  { id: "depressions", label: "Канавки и углубления" },
+  { id: "excess-metal", label: "Лишний металл" },
+  { id: "shape", label: "Отклонения формы" },
+  { id: "internal", label: "Внутренние дефекты" }
+];
+
 
 function getFavorites() {
   try {
@@ -118,7 +127,23 @@ async function loadData() {
     database.vibration = vibration;
     
 
-    renderHome();
+    const route = window.location.hash;
+
+    if (route === "#atlas") {
+      renderAtlas({ skipHistory: true });
+    } else if (route.startsWith("#article=")) {
+      const articleId = decodeURIComponent(route.slice("#article=".length));
+      const article = database.vik.find(item => item.id === articleId);
+
+      if (article?.atlas?.enabled) {
+        renderArticle("vik", article, { returnTo: "atlas", skipHistory: true });
+      } else {
+        renderHome();
+      }
+    } else {
+      renderHome();
+    }
+
     updateFavoriteBadge();
 
   } catch (error) {
@@ -337,8 +362,13 @@ function renderMethod(methodKey) {
 }
 
 
-function openArticle(methodKey, article) {
+function openArticle(methodKey, article, options = {}) {
   if (!article) return;
+
+  if (methodKey === "vik" && article.id === "vik-defects") {
+    renderAtlas();
+    return;
+  }
 
   const childArticles = database[methodKey].filter(
     item => item.parentId === article.id
@@ -428,14 +458,262 @@ function renderArticleGroup(methodKey, groupArticle, childArticles) {
 }
 
 
-function renderArticle(methodKey, article) {
+function getAtlasArticles() {
+  return database.vik.filter(article => article.atlas?.enabled);
+}
+
+function normalizeAtlasSearch(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/ё/g, "е")
+    .replace(/[^a-zа-я0-9]+/gi, " ")
+    .trim();
+}
+
+function renderAtlas(initialState = {}) {
+  const atlasArticles = getAtlasArticles();
+  let activeCategory = initialState.category || "all";
+  let query = initialState.query || "";
+
+  currentView = {
+    type: "atlas",
+    method: "vik"
+  };
+
+  if (!initialState.skipHistory) {
+    if (!history.state) {
+      history.replaceState({ view: "method", method: "vik" }, "", "#vik");
+    }
+    history.pushState({ view: "atlas" }, "", "#atlas");
+  }
+
+  setActiveNav("home");
+
+  content.innerHTML = `
+    <div class="page-header atlas-page-header">
+      <button class="back-button" id="back-button" aria-label="Вернуться в раздел ВИК">‹</button>
+      <div>
+        <h2>Атлас дефектов сварных соединений</h2>
+        <p>Сравните обнаруженный дефект с фотографиями и схемами. Нажмите на карточку, чтобы открыть подробное описание, причины возникновения и способы контроля.</p>
+      </div>
+    </div>
+
+    <section class="atlas-controls" aria-label="Поиск и фильтры атласа">
+      <label class="atlas-search">
+        <span aria-hidden="true">⌕</span>
+        <input
+          id="atlas-search"
+          type="search"
+          placeholder="Поиск по названию и признакам..."
+          autocomplete="off"
+          value="${query.replace(/"/g, "&quot;")}"
+          aria-label="Поиск дефекта в атласе"
+        >
+      </label>
+
+      <div class="atlas-filters" role="group" aria-label="Категории дефектов">
+        ${ATLAS_CATEGORIES.map(category => `
+          <button
+            class="atlas-filter ${category.id === activeCategory ? "active" : ""}"
+            type="button"
+            data-atlas-filter="${category.id}"
+            aria-pressed="${category.id === activeCategory}"
+          >${category.label}</button>
+        `).join("")}
+      </div>
+    </section>
+
+    <div id="atlas-results" aria-live="polite"></div>
+
+    <aside class="atlas-info-block">
+      <h3>Не удалось определить дефект?</h3>
+      <p>Используйте фотографии и схемы только для предварительного сравнения. Окончательная идентификация и оценка выполняются специалистом с учётом результатов контроля и требований нормативной документации.</p>
+    </aside>
+  `;
+
+  const results = document.getElementById("atlas-results");
+  const atlasSearch = document.getElementById("atlas-search");
+
+  function drawCards() {
+    const normalizedQuery = normalizeAtlasSearch(query);
+    const filtered = atlasArticles.filter(article => {
+      const matchesCategory = activeCategory === "all" ||
+        article.atlas.categories.includes(activeCategory);
+
+      const searchable = normalizeAtlasSearch([
+        article.title,
+        article.summary,
+        article.atlas.shortFeature,
+        ...(article.atlas.aliases || []),
+        ...(article.atlas.tags || [])
+      ].join(" "));
+
+      const matchesQuery = !normalizedQuery || normalizedQuery
+        .split(/\s+/)
+        .every(word => searchable.includes(word));
+
+      return matchesCategory && matchesQuery;
+    });
+
+    results.innerHTML = filtered.length ? `
+      <div class="atlas-count">Показано дефектов: ${filtered.length}</div>
+      <div class="atlas-grid">
+        ${filtered.map(article => {
+          const hasPhoto = Boolean(article.atlas.photo);
+          const hasScheme = Boolean(article.atlas.scheme);
+          const defaultKind = hasPhoto ? "photo" : "scheme";
+          const defaultSrc = article.atlas[defaultKind];
+          const defaultLabel = defaultKind === "photo" ? "Фотография" : "Техническая схема";
+
+          return `
+            <article
+              class="atlas-card"
+              data-atlas-article="${article.id}"
+              role="link"
+              tabindex="0"
+              aria-label="Открыть статью: ${article.title}"
+            >
+              <div class="atlas-card-media">
+                <img
+                  src="${defaultSrc}"
+                  alt="${defaultLabel} дефекта «${article.title}»"
+                  loading="lazy"
+                  decoding="async"
+                  data-atlas-image
+                >
+
+                ${hasPhoto && hasScheme ? `
+                  <div class="atlas-image-toggle" role="group" aria-label="Вид изображения для дефекта ${article.title}">
+                    <button
+                      type="button"
+                      class="active"
+                      data-image-kind="photo"
+                      data-image-src="${article.atlas.photo}"
+                      data-image-alt="Фотография дефекта «${article.title}»"
+                      aria-pressed="true"
+                    >Фото</button>
+                    <button
+                      type="button"
+                      data-image-kind="scheme"
+                      data-image-src="${article.atlas.scheme}"
+                      data-image-alt="Техническая схема дефекта «${article.title}»"
+                      aria-pressed="false"
+                    >Схема</button>
+                  </div>
+                ` : ""}
+              </div>
+
+              <div class="atlas-card-body">
+                <h3>${article.title}</h3>
+                <p>${article.atlas.shortFeature}</p>
+                <div class="atlas-tags">
+                  ${(article.atlas.tags || []).map(tag => `<span>${tag}</span>`).join("")}
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("")}
+      </div>
+    ` : `
+      <div class="atlas-empty">
+        <p>По вашему запросу дефекты не найдены.</p>
+        <button type="button" id="atlas-reset">Сбросить поиск</button>
+      </div>
+    `;
+
+    results.querySelectorAll("[data-atlas-article]").forEach(card => {
+      const open = () => {
+        const article = atlasArticles.find(item => item.id === card.dataset.atlasArticle);
+        if (article) renderArticle("vik", article, { returnTo: "atlas" });
+      };
+
+      card.addEventListener("click", event => {
+        if (!event.target.closest("[data-image-kind]")) open();
+      });
+
+      card.addEventListener("keydown", event => {
+        if ((event.key === "Enter" || event.key === " ") && !event.target.closest("[data-image-kind]")) {
+          event.preventDefault();
+          open();
+        }
+      });
+    });
+
+    results.querySelectorAll("[data-image-kind]").forEach(button => {
+      button.addEventListener("click", event => {
+        event.stopPropagation();
+        const card = button.closest(".atlas-card");
+        const image = card.querySelector("[data-atlas-image]");
+        const toggleButtons = card.querySelectorAll("[data-image-kind]");
+
+        image.src = button.dataset.imageSrc;
+        image.alt = button.dataset.imageAlt;
+
+        toggleButtons.forEach(item => {
+          const active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+      });
+    });
+
+    const reset = document.getElementById("atlas-reset");
+    if (reset) {
+      reset.addEventListener("click", () => {
+        query = "";
+        activeCategory = "all";
+        atlasSearch.value = "";
+        document.querySelectorAll("[data-atlas-filter]").forEach(button => {
+          const active = button.dataset.atlasFilter === "all";
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        drawCards();
+        atlasSearch.focus();
+      });
+    }
+  }
+
+  atlasSearch.addEventListener("input", event => {
+    query = event.target.value;
+    drawCards();
+  });
+
+  document.querySelectorAll("[data-atlas-filter]").forEach(button => {
+    button.addEventListener("click", () => {
+      activeCategory = button.dataset.atlasFilter;
+      document.querySelectorAll("[data-atlas-filter]").forEach(item => {
+        const active = item === button;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+      drawCards();
+    });
+  });
+
+  document.getElementById("back-button")
+    .addEventListener("click", () => history.back());
+
+  drawCards();
+}
+
+function renderArticle(methodKey, article, options = {}) {
   const method = methods[methodKey];
   const favorite = isFavorite(article.id);
 
   currentView = {
     type: "article",
-    method: methodKey
+    method: methodKey,
+    returnTo: options.returnTo || null
   };
+
+  if (options.returnTo === "atlas" && !options.skipHistory) {
+    history.pushState(
+      { view: "article", method: methodKey, articleId: article.id, returnTo: "atlas" },
+      "",
+      `#article=${encodeURIComponent(article.id)}`
+    );
+  }
 
   const articleBody = article.sections
     ? renderStructuredArticle(article)
@@ -489,6 +767,11 @@ function renderArticle(methodKey, article) {
   document
     .getElementById("back-button")
     .addEventListener("click", () => {
+      if (options.returnTo === "atlas") {
+        history.back();
+        return;
+      }
+
       if (article.parentId) {
         const parentArticle = database[methodKey].find(
           item => item.id === article.parentId
@@ -529,7 +812,7 @@ function renderArticle(methodKey, article) {
           .find(item => item.id === relatedId);
 
         if (relatedArticle) {
-          openArticle(methodKey, relatedArticle);
+          renderArticle(methodKey, relatedArticle, options);
         }
       });
     });
@@ -773,6 +1056,9 @@ function getAllArticles() {
           article.text || "",
           article.summary || "",
           ...(article.tags || []),
+          article.atlas?.shortFeature || "",
+          ...(article.atlas?.aliases || []),
+          ...(article.atlas?.tags || []),
           getSectionSearchText(article.sections)
         ].join(" ")
       }));
@@ -1223,6 +1509,35 @@ if ('serviceWorker' in navigator) {
     }
   });
 }
+
+window.addEventListener("popstate", event => {
+  const state = event.state;
+
+  if (state?.view === "atlas" || window.location.hash === "#atlas") {
+    renderAtlas({ skipHistory: true });
+    return;
+  }
+
+  if (state?.view === "article" && state.articleId) {
+    const article = database[state.method || "vik"]
+      ?.find(item => item.id === state.articleId);
+
+    if (article) {
+      renderArticle(state.method || "vik", article, {
+        returnTo: state.returnTo || null,
+        skipHistory: true
+      });
+      return;
+    }
+  }
+
+  if (state?.view === "method" && state.method) {
+    renderMethod(state.method);
+    return;
+  }
+
+  renderHome();
+});
 
 // Полноэкранный просмотр изображений
 document.addEventListener("click", event => {
