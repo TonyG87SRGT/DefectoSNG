@@ -13,7 +13,7 @@
       {
         "type": "image",
         "title": "Принцип эхо-импульсного метода",
-        "src": "images/articles/uzk/echo-pulse-principle.png",
+        "src": "images/articles/uzk/echo-pulse-principle.webp",
         "alt": "Учебная схема принципа эхо-импульсного метода ультразвукового контроля",
         "caption": "Условная схема распространения ультразвукового импульса, отражения от несплошности и формирования эхо-сигнала."
       },
@@ -120,7 +120,7 @@
       {
         "type": "image",
         "title": "DAC и ВРЧ — наглядное сравнение",
-        "src": "images/articles/uzk/dac-vrc-comparison.png",
+        "src": "images/articles/uzk/dac-vrc-comparison.webp",
         "alt": "Учебная схема сравнения DAC и временной регулировки чувствительности ВРЧ TCG при ультразвуковом контроле",
         "caption": "DAC задаёт кривую сравнения амплитуды в зависимости от акустического пути, а ВРЧ (TCG) изменяет усиление по времени для компенсации этой зависимости."
       },
@@ -200,7 +200,7 @@
       {
         "type": "image",
         "title": "DAC и ВРЧ — наглядное сравнение",
-        "src": "images/articles/uzk/dac-vrc-comparison.png",
+        "src": "images/articles/uzk/dac-vrc-comparison.webp",
         "alt": "Учебная схема сравнения DAC и временной регулировки чувствительности ВРЧ TCG при ультразвуковом контроле",
         "caption": "Сравнение двух подходов: кривая DAC используется как зависимый от пути уровень сравнения, а ВРЧ (TCG) корректирует усиление на соответствующих участках развертки."
       },
@@ -310,7 +310,7 @@
       {
         "type": "image",
         "title": "Прямой и наклонный ПЭП",
-        "src": "images/articles/uzk/pep-overview.png",
+        "src": "images/articles/uzk/pep-overview.webp",
         "alt": "Прямой и наклонный пьезоэлектрические преобразователи",
         "caption": "Основные элементы конструкции, параметры и особенности применения."
       },
@@ -421,7 +421,7 @@
     {
       "type": "image",
       "title": "Схема ввода луча",
-      "src": "images/articles/uzk/beam-input.PNG",
+      "src": "images/articles/uzk/beam-input.webp",
       "alt": "Схема ввода ультразвукового луча",
       "caption": "Прямой и однократно отражённый луч при контроле кольцевого сварного соединения."
     },
@@ -433,7 +433,7 @@
     {
       "type": "image",
       "title": "Схема прозвучивания",
-      "src": "images/articles/uzk/beam-zones.PNG",
+      "src": "images/articles/uzk/beam-zones.webp",
       "alt": "Зоны прозвучивания",
       "caption": "Зоны контроля при использовании прямого и однократно отражённого лучей."
     },
@@ -445,7 +445,7 @@
     {
       "type": "image",
       "title": "Мёртвая зона",
-      "src": "images/articles/uzk/dead-zone.PNG",
+      "src": "images/articles/uzk/dead-zone.webp",
       "alt": "Мёртвая зона при ультразвуковом контроле",
       "caption": "Приповерхностная область, недоступная для обнаружения дефектов."
     },

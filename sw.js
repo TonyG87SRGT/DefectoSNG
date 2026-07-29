@@ -1,4 +1,4 @@
-const CACHE_NAME = 'defectosng-v0.9.0';
+const CACHE_NAME = 'defectosng-v0.9.1';
 
 const APP_FILES = [
   '/',
@@ -15,12 +15,12 @@ const APP_FILES = [
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/icons/apple-touch-icon.png',
-  '/images/articles/uzk/echo-pulse-principle.png',
-  '/images/articles/uzk/pep-overview.png',
-  '/images/articles/uzk/dac-vrc-comparison.png',
-  '/images/articles/uzk/beam-input.PNG',
-  '/images/articles/uzk/beam-zones.PNG',
-  '/images/articles/uzk/dead-zone.PNG',
+  '/images/articles/uzk/echo-pulse-principle.webp',
+  '/images/articles/uzk/pep-overview.webp',
+  '/images/articles/uzk/dac-vrc-comparison.webp',
+  '/images/articles/uzk/beam-input.webp',
+  '/images/articles/uzk/beam-zones.webp',
+  '/images/articles/uzk/dead-zone.webp',
   '/images/defects/undercut.jpg',
   '/images/defects/porosity.webp',
   '/images/defects/cracks.webp',

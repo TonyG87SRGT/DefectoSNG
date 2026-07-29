@@ -1,0 +1,7 @@
+После распаковки удалите с сервера старые файлы:
+images/articles/uzk/echo-pulse-principle.png
+images/articles/uzk/dac-vrc-comparison.png
+images/articles/uzk/pep-overview.png
+images/articles/uzk/beam-input.PNG
+images/articles/uzk/beam-zones.PNG
+images/articles/uzk/dead-zone.PNG
