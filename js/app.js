@@ -41,6 +41,99 @@ let currentView = {
 };
 
 
+function sortByOrder(items) {
+  return [...items].sort((a, b) => {
+    const orderA = Number.isFinite(Number(a.order)) ? Number(a.order) : 9999;
+    const orderB = Number.isFinite(Number(b.order)) ? Number(b.order) : 9999;
+    return orderA - orderB;
+  });
+}
+
+
+function getItem(methodKey, itemId) {
+  return database[methodKey]?.find(item => item.id === itemId) || null;
+}
+
+
+function getChildren(methodKey, parentId) {
+  return sortByOrder(
+    database[methodKey]?.filter(item => item.parentId === parentId) || []
+  );
+}
+
+
+function encodeRoutePart(value) {
+  return encodeURIComponent(String(value || ""));
+}
+
+
+function parseRoute() {
+  const hash = window.location.hash || "";
+
+  if (hash === "#atlas") return { view: "atlas" };
+  if (hash === "#vik") return { view: "method", method: "vik" };
+
+  const methodMatch = hash.match(/^#method=([^:]+)$/);
+  if (methodMatch) {
+    return { view: "method", method: decodeURIComponent(methodMatch[1]) };
+  }
+
+  const sectionMatch = hash.match(/^#section=([^:]+):(.+)$/);
+  if (sectionMatch) {
+    return {
+      view: "section",
+      method: decodeURIComponent(sectionMatch[1]),
+      itemId: decodeURIComponent(sectionMatch[2])
+    };
+  }
+
+  const articleMatch = hash.match(/^#article=([^:]+):(.+)$/);
+  if (articleMatch) {
+    return {
+      view: "article",
+      method: decodeURIComponent(articleMatch[1]),
+      itemId: decodeURIComponent(articleMatch[2])
+    };
+  }
+
+  // Совместимость со ссылками атласа v0.10.0–v0.10.1.
+  if (hash.startsWith("#article=")) {
+    return {
+      view: "article",
+      method: "vik",
+      itemId: decodeURIComponent(hash.slice("#article=".length))
+    };
+  }
+
+  return { view: "home" };
+}
+
+
+function applyRoute(route, options = {}) {
+  const skipHistory = options.skipHistory !== false;
+
+  if (route.view === "atlas") {
+    renderAtlas({ skipHistory });
+    return;
+  }
+
+  if (route.view === "method" && methods[route.method]) {
+    renderMethod(route.method, { skipHistory });
+    return;
+  }
+
+  if ((route.view === "section" || route.view === "article") && methods[route.method]) {
+    const item = getItem(route.method, route.itemId);
+    if (item) {
+      openArticle(route.method, item, { skipHistory });
+      return;
+    }
+  }
+
+  renderHome({ skipHistory });
+}
+
+
 const FAVORITES_KEY = "defectosng-favorites";
 
 const ATLAS_CATEGORIES = [
@@ -127,22 +220,17 @@ async function loadData() {
     database.vibration = vibration;
     
 
-    const route = window.location.hash;
-
-    if (route === "#atlas") {
-      renderAtlas({ skipHistory: true });
-    } else if (route.startsWith("#article=")) {
-      const articleId = decodeURIComponent(route.slice("#article=".length));
-      const article = database.vik.find(item => item.id === articleId);
-
-      if (article?.atlas?.enabled) {
-        renderArticle("vik", article, { returnTo: "atlas", skipHistory: true });
-      } else {
-        renderHome();
-      }
-    } else {
-      renderHome();
-    }
+    const initialRoute = parseRoute();
+    history.replaceState(
+      {
+        view: initialRoute.view,
+        method: initialRoute.method || null,
+        itemId: initialRoute.itemId || null
+      },
+      "",
+      window.location.href
+    );
+    applyRoute(initialRoute, { skipHistory: true });
 
     updateFavoriteBadge();
 
@@ -168,13 +256,17 @@ function setActiveNav(action) {
 }
 
 
-function renderHome() {
+function renderHome(options = {}) {
   currentView = {
     type: "home",
     method: null
   };
 
   setActiveNav("home");
+
+  if (!options.skipHistory && window.location.hash) {
+    history.pushState({ view: "home" }, "", window.location.pathname);
+  }
 
   content.innerHTML = `
     <p class="section-label">Методы контроля и диагностики</p>
@@ -294,14 +386,24 @@ function renderHome() {
 }
 
 
-function renderMethod(methodKey) {
+function renderMethod(methodKey, options = {}) {
   const method = methods[methodKey];
-  const articles = database[methodKey].filter(article => !article.parentId);
+  const articles = sortByOrder(
+    database[methodKey].filter(article => !article.parentId)
+  );
 
   currentView = {
     type: "method",
     method: methodKey
   };
+
+  if (!options.skipHistory) {
+    history.pushState(
+      { view: "method", method: methodKey },
+      "",
+      `#method=${encodeRoutePart(methodKey)}`
+    );
+  }
 
   content.innerHTML = `
     <div class="page-header">
@@ -341,23 +443,17 @@ function renderMethod(methodKey) {
 
   document
     .getElementById("back-button")
-    .addEventListener("click", renderHome);
-
+    .addEventListener("click", () => history.back());
 
   document
     .querySelectorAll("[data-article]")
     .forEach(button => {
-
       button.addEventListener("click", () => {
-
         const article = articles.find(
           item => item.id === button.dataset.article
         );
-
         openArticle(methodKey, article);
-
       });
-
     });
 }
 
@@ -366,25 +462,27 @@ function openArticle(methodKey, article, options = {}) {
   if (!article) return;
 
   if (methodKey === "vik" && article.id === "vik-defects") {
-    renderAtlas();
+    renderAtlas({ skipHistory: options.skipHistory });
     return;
   }
 
-  const childArticles = database[methodKey].filter(
-    item => item.parentId === article.id
-  );
+  const childArticles = getChildren(methodKey, article.id);
 
-  if (childArticles.length) {
-    renderArticleGroup(methodKey, article, childArticles);
+  if (article.type === "section" || childArticles.length) {
+    renderArticleGroup(methodKey, article, {
+      ...options,
+      childArticles
+    });
     return;
   }
 
-  renderArticle(methodKey, article);
+  renderArticle(methodKey, article, options);
 }
 
 
-function renderArticleGroup(methodKey, groupArticle, childArticles) {
+function renderArticleGroup(methodKey, groupArticle, options = {}) {
   const method = methods[methodKey];
+  const childArticles = options.childArticles || getChildren(methodKey, groupArticle.id);
 
   currentView = {
     type: "article-group",
@@ -392,55 +490,52 @@ function renderArticleGroup(methodKey, groupArticle, childArticles) {
     groupId: groupArticle.id
   };
 
+  if (!options.skipHistory) {
+    history.pushState(
+      { view: "section", method: methodKey, itemId: groupArticle.id },
+      "",
+      `#section=${encodeRoutePart(methodKey)}:${encodeRoutePart(groupArticle.id)}`
+    );
+  }
+
   content.innerHTML = `
     <div class="page-header">
-
-      <button class="back-button" id="back-button">
-        ‹
-      </button>
-
+      <button class="back-button" id="back-button" aria-label="Вернуться назад">‹</button>
       <div>
         <h2>${method.short}</h2>
         <p>${method.title}</p>
       </div>
-
     </div>
 
     <div class="article-group-header">
-      <span class="article-category">
-        ${groupArticle.category}
-      </span>
-
-      <h2>${groupArticle.title}</h2>
-
-      ${
-        groupArticle.text || groupArticle.summary
-          ? `<p>${groupArticle.summary || groupArticle.text}</p>`
-          : ""
-      }
+      <span class="article-category">${groupArticle.category}</span>
+      <h2>${groupArticle.sectionTitle || groupArticle.title}</h2>
+      ${groupArticle.description || groupArticle.summary || groupArticle.text
+        ? `<p>${groupArticle.description || groupArticle.summary || groupArticle.text}</p>`
+        : ""}
     </div>
 
-    <div class="article-list">
-      ${childArticles.map(article => `
-        <button
-          class="article-card"
-          data-group-article="${article.id}"
-        >
-          <span class="article-category">
-            ${article.category}
-          </span>
-
-          <h3>${article.title}</h3>
-
-          <p>${article.summary || article.text || "Открыть материал"}</p>
-        </button>
-      `).join("")}
-    </div>
+    ${childArticles.length ? `
+      <div class="article-list">
+        ${childArticles.map(article => `
+          <button class="article-card" data-group-article="${article.id}">
+            <span class="article-category">${article.category}</span>
+            <h3>${article.title}</h3>
+            <p>${article.summary || article.text || "Открыть материал"}</p>
+          </button>
+        `).join("")}
+      </div>
+    ` : `
+      <div class="empty-state">
+        Раздел находится в разработке.<br><br>
+        Материалы будут опубликованы в ближайшее время.
+      </div>
+    `}
   `;
 
   document
     .getElementById("back-button")
-    .addEventListener("click", () => renderMethod(methodKey));
+    .addEventListener("click", () => history.back());
 
   document
     .querySelectorAll("[data-group-article]")
@@ -449,10 +544,7 @@ function renderArticleGroup(methodKey, groupArticle, childArticles) {
         const article = childArticles.find(
           item => item.id === button.dataset.groupArticle
         );
-
-        if (article) {
-          renderArticle(methodKey, article);
-        }
+        openArticle(methodKey, article);
       });
     });
 }
@@ -726,11 +818,11 @@ function renderArticle(methodKey, article, options = {}) {
     returnTo: options.returnTo || null
   };
 
-  if (options.returnTo === "atlas" && !options.skipHistory) {
+  if (!options.skipHistory) {
     history.pushState(
-      { view: "article", method: methodKey, articleId: article.id, returnTo: "atlas" },
+      { view: "article", method: methodKey, itemId: article.id },
       "",
-      `#article=${encodeURIComponent(article.id)}`
+      `#article=${encodeRoutePart(methodKey)}:${encodeRoutePart(article.id)}`
     );
   }
 
@@ -785,25 +877,7 @@ function renderArticle(methodKey, article, options = {}) {
 
   document
     .getElementById("back-button")
-    .addEventListener("click", () => {
-      if (options.returnTo === "atlas") {
-        history.back();
-        return;
-      }
-
-      if (article.parentId) {
-        const parentArticle = database[methodKey].find(
-          item => item.id === article.parentId
-        );
-
-        if (parentArticle) {
-          openArticle(methodKey, parentArticle);
-          return;
-        }
-      }
-
-      renderMethod(methodKey);
-    });
+    .addEventListener("click", () => history.back());
 
   document
     .getElementById("favorite-button")
@@ -1074,6 +1148,8 @@ function getAllArticles() {
           article.category || "",
           article.text || "",
           article.summary || "",
+          article.description || "",
+          article.sectionTitle || "",
           ...(article.tags || []),
           article.atlas?.shortFeature || "",
           ...(article.atlas?.aliases || []),
@@ -1529,33 +1605,8 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-window.addEventListener("popstate", event => {
-  const state = event.state;
-
-  if (state?.view === "atlas" || window.location.hash === "#atlas") {
-    renderAtlas({ skipHistory: true });
-    return;
-  }
-
-  if (state?.view === "article" && state.articleId) {
-    const article = database[state.method || "vik"]
-      ?.find(item => item.id === state.articleId);
-
-    if (article) {
-      renderArticle(state.method || "vik", article, {
-        returnTo: state.returnTo || null,
-        skipHistory: true
-      });
-      return;
-    }
-  }
-
-  if (state?.view === "method" && state.method) {
-    renderMethod(state.method);
-    return;
-  }
-
-  renderHome();
+window.addEventListener("popstate", () => {
+  applyRoute(parseRoute(), { skipHistory: true });
 });
 
 // Полноэкранный просмотр изображений
