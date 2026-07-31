@@ -1,10 +1,11 @@
-const CACHE_NAME = 'defectosng-v0.10.6';
+const CACHE_NAME = 'defectosng-v0.10.5';
 
 const APP_FILES = [
   '/',
   '/index.html',
   '/css/style.css',
   '/js/app.js',
+  '/js/references.js',
   '/js/tools.js',
   '/js/ringWeld.js',
   '/manifest.json',
@@ -12,6 +13,7 @@ const APP_FILES = [
   '/data/uzk.json',
   '/data/pvk.json',
   '/data/vibration.json',
+  '/data/references.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/icons/apple-touch-icon.png',

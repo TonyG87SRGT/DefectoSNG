@@ -70,19 +70,17 @@ function encodeRoutePart(value) {
 function parseRoute() {
   const hash = window.location.hash || "";
 
-  if (hash === "#tools") {
-    return { view: "tools" };
-  }
+  if (hash === "#atlas") return { view: "atlas" };
+  if (hash === "#references") return { view: "references" };
 
-  const toolMatch = hash.match(/^#tool=(.+)$/);
-  if (toolMatch) {
+  const referenceMatch = hash.match(/^#reference=(.+)$/);
+  if (referenceMatch) {
     return {
-      view: "tool",
-      toolId: decodeURIComponent(toolMatch[1])
+      view: "reference",
+      referenceId: decodeURIComponent(referenceMatch[1])
     };
   }
 
-  if (hash === "#atlas") return { view: "atlas" };
   if (hash === "#vik") return { view: "method", method: "vik" };
 
   const methodMatch = hash.match(/^#method=([^:]+)$/);
@@ -124,18 +122,18 @@ function parseRoute() {
 function applyRoute(route, options = {}) {
   const skipHistory = options.skipHistory !== false;
 
-  if (route.view === "tools") {
-    renderTools({ skipHistory });
-    return;
-  }
-
-  if (route.view === "tool") {
-    openTool(route.toolId, { skipHistory });
-    return;
-  }
-
   if (route.view === "atlas") {
     renderAtlas({ skipHistory });
+    return;
+  }
+
+  if (route.view === "references" && typeof renderReferences === "function") {
+    renderReferences({ skipHistory });
+    return;
+  }
+
+  if (route.view === "reference" && typeof renderReference === "function") {
+    renderReference(route.referenceId, { skipHistory });
     return;
   }
 
@@ -366,9 +364,14 @@ function renderHome(options = {}) {
       </button>
 
       <button class="quick-card" data-quick="tools">
-    <span>🧰</span>
-    <small>Инструменты</small>
-</button>
+        <span>🧰</span>
+        <small>Инструменты</small>
+      </button>
+
+      <button class="quick-card" data-quick="references">
+        <span>📚</span>
+        <small>Справочные материалы</small>
+      </button>
 
       <button class="quick-card" data-quick="documents">
         <span>▤</span>
@@ -395,13 +398,13 @@ function renderHome(options = {}) {
 
     button.addEventListener("click", () => {
 
-      if (button.dataset.quick === "favorites") {
-        renderFavorites();
+      if (button.dataset.quick === "tools") {
+        renderTools();
         return;
       }
 
-      if (button.dataset.quick === "tools") {
-        renderTools();
+      if (button.dataset.quick === "references") {
+        renderReferences();
         return;
       }
 

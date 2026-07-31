@@ -1,0 +1,28 @@
+[
+  {
+    "id": "sound-velocity",
+    "title": "Скорость распространения ультразвука в материалах",
+    "description": "Справочные значения скорости продольных и поперечных волн.",
+    "notice": "Значения являются справочными и могут отличаться в зависимости от химического состава, структуры, температуры и состояния материала. Для точных измерений выполняйте калибровку на образце из контролируемого материала.",
+    "searchPlaceholder": "Поиск материала...",
+    "columns": [
+      { "key": "material", "label": "Материал" },
+      { "key": "longitudinal", "label": "Продольная волна, м/с" },
+      { "key": "transverse", "label": "Поперечная волна, м/с" }
+    ],
+    "rows": [
+      { "material": "Сталь углеродистая", "longitudinal": "5920", "transverse": "3230" },
+      { "material": "Сталь нержавеющая", "longitudinal": "5790", "transverse": "3100" },
+      { "material": "Чугун", "longitudinal": "4500–5600", "transverse": "2200–3000" },
+      { "material": "Алюминий", "longitudinal": "6320", "transverse": "3130" },
+      { "material": "Латунь", "longitudinal": "4430", "transverse": "2100" },
+      { "material": "Медь", "longitudinal": "4700", "transverse": "2260" },
+      { "material": "Титан", "longitudinal": "6070", "transverse": "3120" },
+      { "material": "Никель", "longitudinal": "5630", "transverse": "2960" },
+      { "material": "Магний", "longitudinal": "5770", "transverse": "3050" },
+      { "material": "Цинк", "longitudinal": "4210", "transverse": "2440" },
+      { "material": "Свинец", "longitudinal": "2160", "transverse": "700" },
+      { "material": "Плексиглас", "longitudinal": "2730", "transverse": "1340" }
+    ]
+  }
+]
