@@ -373,6 +373,11 @@ function renderHome(options = {}) {
 
     button.addEventListener("click", () => {
 
+      if (button.dataset.quick === "favorites") {
+        renderFavorites();
+        return;
+      }
+
       if (button.dataset.quick === "tools") {
         renderTools();
         return;
