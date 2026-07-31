@@ -1,4 +1,8 @@
 function renderRingWeld() {
+  currentView = {
+    type: "tool",
+    toolId: "ring-weld"
+  };
 
   content.innerHTML = `
 
@@ -96,7 +100,7 @@ function renderRingWeld() {
 
   document
     .getElementById("back-button")
-    .addEventListener("click", renderTools);
+    .addEventListener("click", () => history.back());
 
   const input =
     document.getElementById("ring-diameter");

@@ -6,11 +6,24 @@ const TOOLS = [
   }
 ];
 
-function renderTools() {
 
+function getTool(toolId) {
+  return TOOLS.find(tool => tool.id === toolId) || null;
+}
+
+
+function renderTools(options = {}) {
   currentView = {
     type: "tools"
   };
+
+  if (!options.skipHistory) {
+    history.pushState(
+      { view: "tools" },
+      "",
+      "#tools"
+    );
+  }
 
   content.innerHTML = `
     <div class="page-header">
@@ -29,9 +42,10 @@ function renderTools() {
     <div class="article-list">
 
       ${TOOLS.map(tool => `
-       <button
-    class="article-card"
-    data-tool="${tool.id}">
+        <button
+          class="article-card"
+          data-tool="${tool.id}"
+        >
 
           <span class="article-category">
             Инструмент
@@ -49,31 +63,47 @@ function renderTools() {
 
   document
     .getElementById("back-button")
-    .addEventListener("click", renderHome);
-    document
-  .querySelectorAll("[data-tool]")
-  .forEach(button => {
+    .addEventListener("click", () => history.back());
 
-    button.addEventListener("click", () => {
-      openTool(button.dataset.tool);
+  document
+    .querySelectorAll("[data-tool]")
+    .forEach(button => {
+      button.addEventListener("click", () => {
+        openTool(button.dataset.tool);
+      });
     });
-
-  });
-
 }
 
-  function openTool(id) {
 
-  switch (id) {
+function openTool(toolId, options = {}) {
+  const tool = getTool(toolId);
 
-    case "ring-weld":
-      renderRingWeld();
-      break;
-
-    default:
+  if (!tool) {
+    if (!options.skipHistory) {
       alert("Инструмент пока находится в разработке.");
+    }
 
+    renderTools({ skipHistory: true });
+    return;
   }
 
-}
+  if (!options.skipHistory) {
+    history.pushState(
+      {
+        view: "tool",
+        toolId
+      },
+      "",
+      `#tool=${encodeRoutePart(toolId)}`
+    );
+  }
 
+  switch (toolId) {
+    case "ring-weld":
+      renderRingWeld();
+      return;
+
+    default:
+      renderTools({ skipHistory: true });
+  }
+}

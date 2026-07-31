@@ -70,6 +70,18 @@ function encodeRoutePart(value) {
 function parseRoute() {
   const hash = window.location.hash || "";
 
+  if (hash === "#tools") {
+    return { view: "tools" };
+  }
+
+  const toolMatch = hash.match(/^#tool=(.+)$/);
+  if (toolMatch) {
+    return {
+      view: "tool",
+      toolId: decodeURIComponent(toolMatch[1])
+    };
+  }
+
   if (hash === "#atlas") return { view: "atlas" };
   if (hash === "#vik") return { view: "method", method: "vik" };
 
@@ -111,6 +123,16 @@ function parseRoute() {
 
 function applyRoute(route, options = {}) {
   const skipHistory = options.skipHistory !== false;
+
+  if (route.view === "tools") {
+    renderTools({ skipHistory });
+    return;
+  }
+
+  if (route.view === "tool") {
+    openTool(route.toolId, { skipHistory });
+    return;
+  }
 
   if (route.view === "atlas") {
     renderAtlas({ skipHistory });
