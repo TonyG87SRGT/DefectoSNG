@@ -951,7 +951,7 @@ function renderArticle(methodKey, article, options = {}) {
           .find(item => item.id === relatedId);
 
         if (relatedArticle) {
-          renderArticle(methodKey, relatedArticle, options);
+          openArticle(methodKey, relatedArticle, options);
         }
       });
     });
