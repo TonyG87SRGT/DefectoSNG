@@ -543,6 +543,7 @@ function renderArticleGroup(methodKey, groupArticle, options = {}) {
       ${groupArticle.description || groupArticle.summary || groupArticle.text
         ? `<p>${groupArticle.description || groupArticle.summary || groupArticle.text}</p>`
         : ""}
+      ${groupArticle.additionalText ? `<p>${groupArticle.additionalText}</p>` : ""}
     </div>
 
     ${childArticles.length ? `
@@ -557,15 +558,30 @@ function renderArticleGroup(methodKey, groupArticle, options = {}) {
       </div>
     ` : `
       <div class="empty-state">
-        Раздел находится в разработке.<br><br>
-        Материалы будут опубликованы в ближайшее время.
+        ${groupArticle.developmentNotice
+          ? groupArticle.developmentNotice.replace(/\n/g, "<br>")
+          : "Раздел находится в разработке.<br><br>Материалы будут опубликованы в ближайшее время."}
       </div>
+      ${Array.isArray(groupArticle.plannedMaterials) && groupArticle.plannedMaterials.length ? `
+        <section class="article-section article-list-section">
+          <h3>${groupArticle.plannedTitle || "Планируемые материалы"}</h3>
+          <ul>
+            ${groupArticle.plannedMaterials.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+        </section>
+      ` : ""}
     `}
   `;
 
   document
     .getElementById("back-button")
-    .addEventListener("click", () => history.back());
+    .addEventListener("click", () => {
+      if (groupArticle.returnToMethod) {
+        renderMethod(methodKey);
+        return;
+      }
+      history.back();
+    });
 
   document
     .querySelectorAll("[data-group-article]")
@@ -629,8 +645,8 @@ function renderAtlas(initialState = {}) {
     <div class="page-header atlas-page-header">
       <button class="back-button" id="back-button" aria-label="Вернуться в раздел ВИК">‹</button>
       <div>
-        <h2>Атлас дефектов сварных соединений</h2>
-        <p>Сравните обнаруженный дефект с фотографиями и схемами. Используйте поиск или выберите подходящую группу.</p>
+        <h2>Дефекты сварных соединений</h2>
+        <p>Атлас дефектов сварных соединений. Сравните обнаруженный дефект с фотографиями и схемами, используйте поиск или выберите подходящую группу.</p>
       </div>
     </div>
 
