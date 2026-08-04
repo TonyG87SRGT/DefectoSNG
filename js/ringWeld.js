@@ -1,153 +1,88 @@
-function renderRingWeld() {
+import { content } from "./dom.js";
+import { goBack } from "./router.js";
 
+const DIAMETERS = [57, 76, 89, 108, 114, 159, 219, 273, 325, 377, 426, 530];
+
+export function calculateRingWeld(diameterValue) {
+  const diameter = Number.parseFloat(String(diameterValue).replace(",", "."));
+  if (!Number.isFinite(diameter) || diameter <= 0) return null;
+
+  const millimeters = Math.PI * diameter;
+  return {
+    millimeters,
+    meters: millimeters / 1000
+  };
+}
+
+export function renderRingWeld() {
   content.innerHTML = `
-
     <div class="page-header">
-
-      <button class="back-button" id="back-button">
-        ‹
-      </button>
-
+      <button class="back-button" id="back-button" aria-label="Вернуться к инструментам">‹</button>
       <div>
-        <h2>Длина кольцевого сварного шва</h2>
+        <h2 tabindex="-1">Длина кольцевого сварного шва</h2>
         <p>Расчёт длины окружности трубы</p>
       </div>
-
     </div>
 
     <div class="tool-card">
-
       <div class="tool-section">
-
-        <label class="tool-label">
-          Диаметр трубы (мм)
-        </label>
-
+        <label class="tool-label" for="ring-diameter">Диаметр трубы (мм)</label>
         <input
           id="ring-diameter"
           class="tool-input"
           type="number"
           inputmode="decimal"
-          placeholder="Например: 530">
-
+          min="0"
+          step="any"
+          placeholder="Например: 530"
+        >
       </div>
 
-      <div class="tool-section">
-
-        <label class="tool-label">
-          Быстрый выбор
-        </label>
-
+      <fieldset class="tool-section tool-fieldset">
+        <legend class="tool-label">Быстрый выбор диаметра</legend>
         <div class="tool-chip-grid">
-
-          <button class="tool-chip" data-diameter="57">57</button>
-          <button class="tool-chip" data-diameter="76">76</button>
-          <button class="tool-chip" data-diameter="89">89</button>
-          <button class="tool-chip" data-diameter="108">108</button>
-
-          <button class="tool-chip" data-diameter="114">114</button>
-          <button class="tool-chip" data-diameter="159">159</button>
-          <button class="tool-chip" data-diameter="219">219</button>
-          <button class="tool-chip" data-diameter="273">273</button>
-
-          <button class="tool-chip" data-diameter="325">325</button>
-          <button class="tool-chip" data-diameter="377">377</button>
-          <button class="tool-chip" data-diameter="426">426</button>
-          <button class="tool-chip" data-diameter="530">530</button>
-
+          ${DIAMETERS.map(diameter => `
+            <button class="tool-chip" type="button" data-diameter="${diameter}">${diameter}</button>
+          `).join("")}
         </div>
+      </fieldset>
 
+      <div class="tool-section" aria-live="polite">
+        <div class="tool-label" id="ring-result-label">Длина кольцевого шва</div>
+        <div class="tool-result" aria-labelledby="ring-result-label">
+          <div id="ring-result-mm" class="tool-result-value">—</div>
+          <div id="ring-result-m" class="tool-result-sub">Введите диаметр трубы</div>
+        </div>
+        <div class="tool-formula">Формула:<br><strong>L = π × D</strong></div>
       </div>
-
-      <div class="tool-section">
-
-        <label class="tool-label">
-          Длина кольцевого шва
-        </label>
-
-        <div class="tool-result">
-
-          <div
-            id="ring-result-mm"
-            class="tool-result-value">
-            —
-          </div>
-
-          <div
-            id="ring-result-m"
-            class="tool-result-sub">
-            —
-          </div>
-
-        </div>
-
-        <div class="tool-formula">
-
-          Формула:<br>
-          <strong>L = π × D</strong>
-
-        </div>
-
-      </div>
-
     </div>
-
   `;
 
-  document
-    .getElementById("back-button")
-    .addEventListener("click", renderTools);
+  content.querySelector("#back-button")
+    .addEventListener("click", () => goBack({ view: "tools" }));
 
-  const input =
-    document.getElementById("ring-diameter");
+  const input = content.querySelector("#ring-diameter");
+  const resultMM = content.querySelector("#ring-result-mm");
+  const resultM = content.querySelector("#ring-result-m");
 
-  const resultMM =
-    document.getElementById("ring-result-mm");
-
-  const resultM =
-    document.getElementById("ring-result-m");
-    
-      function calculate() {
-
-    const diameter =
-      parseFloat(input.value.replace(",", "."));
-
-    if (!diameter || diameter <= 0) {
-
+  const calculate = () => {
+    const result = calculateRingWeld(input.value);
+    if (!result) {
       resultMM.textContent = "—";
       resultM.textContent = "Введите диаметр трубы";
-
       return;
-
     }
 
-    const length = Math.PI * diameter;
-
-    resultMM.textContent =
-      `${Math.round(length)} мм`;
-
-    resultM.textContent =
-      `${(length / 1000).toFixed(3)} м`;
-
-  }
+    resultMM.textContent = `${Math.round(result.millimeters)} мм`;
+    resultM.textContent = `${result.meters.toFixed(3)} м`;
+  };
 
   input.addEventListener("input", calculate);
-
-  document
-    .querySelectorAll("[data-diameter]")
-    .forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        input.value =
-          button.dataset.diameter;
-
-        calculate();
-
-      });
-
+  content.querySelectorAll("[data-diameter]").forEach(button => {
+    button.addEventListener("click", () => {
+      input.value = button.dataset.diameter;
+      calculate();
+      input.focus();
     });
-
-  calculate();
-
+  });
 }

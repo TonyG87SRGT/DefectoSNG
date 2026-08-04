@@ -1,0 +1,12 @@
+{
+  "name": "defectosng",
+  "version": "0.13.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "syntax": "node scripts/check-syntax.mjs",
+    "validate": "node scripts/validate-project.mjs",
+    "test": "node --test",
+    "check": "node scripts/check-syntax.mjs && node scripts/validate-project.mjs && node --test"
+  }
+}

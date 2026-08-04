@@ -1,117 +1,135 @@
-const CACHE_NAME = 'defectosng-v0.10.4';
+import {
+  APP_PATHS,
+  APP_VERSION,
+  ESSENTIAL_APP_PATHS,
+  OPTIONAL_APP_PATHS
+} from "./js/pwaConfig.js";
+import { selectCacheStrategy } from "./js/pwaPolicy.js";
 
-const APP_FILES = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/app.js',
-  '/js/tools.js',
-  '/js/ringWeld.js',
-  '/manifest.json',
-  '/data/vik.json',
-  '/data/uzk.json',
-  '/data/pvk.json',
-  '/data/vibration.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
-  '/icons/apple-touch-icon.png',
-  '/images/articles/uzk/echo-pulse-principle.webp',
-  '/images/articles/uzk/pep-overview.webp',
-  '/images/articles/uzk/dac-vrc-comparison.webp',
-  '/images/articles/uzk/beam-input.webp',
-  '/images/articles/uzk/beam-zones.webp',
-  '/images/articles/uzk/dead-zone.webp',
-  '/images/defects/undercut.jpg',
-  '/images/defects/porosity.webp',
-  '/images/defects/cracks.webp',
-  '/images/defects/lack-of-fusion.webp',
-  '/images/defects/slag-inclusions.webp',
-  '/images/defects/unfilled-crater.webp',
-  '/images/defects/burn-through.webp',
-  '/images/defects/overlap.webp',
-  '/images/defects/edge-misalignment.webp',
-  '/images/defects/uneven-reinforcement.webp',
-  '/images/defects/interpass-depression.webp',
-  '/images/defects/metal-spatter.webp',
-  '/images/defects/fistula.webp',
-  '/images/atlas/cracks-photo.webp',
-  '/images/atlas/cracks-scheme.webp',
-  '/images/atlas/edge-misalignment-photo.webp',
-  '/images/atlas/edge-misalignment-scheme.webp',
-  '/images/atlas/fistula-photo.webp',
-  '/images/atlas/fistula-scheme.webp',
-  '/images/atlas/interpass-depression-photo.webp',
-  '/images/atlas/interpass-depression-scheme.webp',
-  '/images/atlas/lack-of-fusion-photo.webp',
-  '/images/atlas/lack-of-fusion-scheme.webp',
-  '/images/atlas/metal-spatter-photo.webp',
-  '/images/atlas/metal-spatter-scheme.webp',
-  '/images/atlas/porosity-photo.webp',
-  '/images/atlas/porosity-scheme.webp',
-  '/images/atlas/slag-inclusions-photo.webp',
-  '/images/atlas/slag-inclusions-scheme.webp',
-  '/images/atlas/uneven-reinforcement-photo.webp',
-  '/images/atlas/uneven-reinforcement-scheme.webp',
-  '/images/atlas/unfilled-crater-photo.webp',
-  '/images/atlas/unfilled-crater-scheme.webp'
-];
+const CACHE_PREFIX = "defectosng-";
+const PRECACHE_NAME = `${CACHE_PREFIX}precache-v${APP_VERSION}`;
+const RUNTIME_CACHE_NAME = `${CACHE_PREFIX}runtime-v${APP_VERSION}`;
+const MAX_RUNTIME_ENTRIES = 80;
+const APP_BASE_URL = new URL("./", self.location.href);
+const INDEX_URL = new URL("index.html", APP_BASE_URL).href;
+const PRECACHE_URLS = new Set(
+  APP_PATHS.map(path => new URL(path, APP_BASE_URL).href)
+);
 
-// Новая версия устанавливается в фоне, но ждёт подтверждения пользователя.
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(APP_FILES))
+async function cachePaths(cache, paths) {
+  return Promise.allSettled(paths.map(async path => {
+    const url = new URL(path, APP_BASE_URL).href;
+    const response = await fetch(url, { cache: "reload" });
+    if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
+    await cache.put(url, response);
+  }));
+}
+
+function getFailedPaths(paths, results) {
+  return results.flatMap((result, index) =>
+    result.status === "rejected"
+      ? [{ path: paths[index], reason: result.reason }]
+      : []
   );
+}
+
+async function precacheApp() {
+  const cache = await caches.open(PRECACHE_NAME);
+  const essentialResults = await cachePaths(cache, ESSENTIAL_APP_PATHS);
+  const optionalResults = await cachePaths(cache, OPTIONAL_APP_PATHS);
+  const essentialFailures = getFailedPaths(ESSENTIAL_APP_PATHS, essentialResults);
+  const optionalFailures = getFailedPaths(OPTIONAL_APP_PATHS, optionalResults);
+
+  if (optionalFailures.length) {
+    console.warn("Optional DefectoSNG resources were not precached:", optionalFailures);
+  }
+  if (essentialFailures.length) {
+    throw new AggregateError(
+      essentialFailures.map(item => item.reason),
+      `Essential DefectoSNG resources failed: ${essentialFailures.map(item => item.path).join(", ")}`
+    );
+  }
+}
+
+async function trimRuntimeCache(cache) {
+  const requests = await cache.keys();
+  const excess = requests.length - MAX_RUNTIME_ENTRIES;
+  if (excess <= 0) return;
+  await Promise.all(requests.slice(0, excess).map(request => cache.delete(request)));
+}
+
+async function putInRuntimeCache(request, response) {
+  const cache = await caches.open(RUNTIME_CACHE_NAME);
+  await cache.put(request, response);
+  await trimRuntimeCache(cache);
+}
+
+async function cacheFirst(request) {
+  const cached = await caches.match(request);
+  if (cached) return cached;
+  return networkFirst(request);
+}
+
+async function networkFirst(request) {
+  try {
+    const response = await fetch(request);
+    const requestUrl = new URL(request.url);
+
+    if (
+      requestUrl.href.startsWith(APP_BASE_URL.href) &&
+      response.ok &&
+      !PRECACHE_URLS.has(requestUrl.href)
+    ) {
+      try {
+        await putInRuntimeCache(request, response.clone());
+      } catch (error) {
+        console.warn("DefectoSNG runtime cache write failed:", error);
+      }
+    }
+
+    return response;
+  } catch {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+
+    if (request.mode === "navigate") {
+      const index = await caches.match(INDEX_URL);
+      if (index) return index;
+    }
+
+    return Response.error();
+  }
+}
+
+self.addEventListener("install", event => {
+  event.waitUntil(precacheApp());
 });
 
-// После активации удаляем только старые кэши DefectoSNG.
-self.addEventListener('activate', event => {
+self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys()
       .then(keys => Promise.all(
         keys
-          .filter(key => key.startsWith('defectosng-') && key !== CACHE_NAME)
+          .filter(key => key.startsWith(CACHE_PREFIX) &&
+            key !== PRECACHE_NAME &&
+            key !== RUNTIME_CACHE_NAME)
           .map(key => caches.delete(key))
       ))
       .then(() => self.clients.claim())
   );
 });
 
-// Переходим на ожидающую версию только после нажатия кнопки «Обновить».
-self.addEventListener('message', event => {
-  if (event.data?.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+self.addEventListener("message", event => {
+  if (event.data?.type === "SKIP_WAITING") self.skipWaiting();
 });
 
-// При наличии интернета берём свежую версию, без интернета — кэш.
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-
-  const requestUrl = new URL(event.request.url);
-  const isSameOrigin = requestUrl.origin === self.location.origin;
-
-  event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        if (isSameOrigin && response && response.status === 200) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => cache.put(event.request, copy));
-        }
-
-        return response;
-      })
-      .catch(async () => {
-        const cached = await caches.match(event.request);
-
-        if (cached) return cached;
-
-        if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
-        }
-
-        return Response.error();
-      })
+self.addEventListener("fetch", event => {
+  const strategy = selectCacheStrategy(
+    event.request,
+    APP_BASE_URL.href,
+    PRECACHE_URLS
   );
+
+  if (strategy === "network-first") event.respondWith(networkFirst(event.request));
+  if (strategy === "cache-first") event.respondWith(cacheFirst(event.request));
 });

@@ -1,0 +1,150 @@
+/* Изображения и схемы внутри статей */
+
+.article-image {
+  margin: 22px 0;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.article-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.article-image figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 4px 2px;
+  line-height: 1.4;
+}
+
+.article-image figcaption strong {
+  font-size: 15px;
+}
+
+.article-image figcaption span {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* Полноэкранный просмотр технических схем */
+
+.zoomable-image {
+  cursor: zoom-in;
+}
+
+.zoomable-image:focus-visible,
+.image-viewer-close:focus-visible {
+  outline: 3px solid #8fbcff;
+  outline-offset: 3px;
+}
+
+body.image-viewer-open {
+  overflow: hidden;
+}
+
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 16px 30px;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.image-viewer img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.image-viewer-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 38px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.article-render-error {
+  margin-top: 22px;
+  padding: 16px;
+  border: 2px solid #ef4444;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, .12);
+  color: #fecaca;
+}
+
+.article-render-error h3 {
+  margin: 0 0 7px;
+  color: #fff;
+}
+
+.article-render-error p {
+  margin: 0;
+}
+
+/* Таблицы внутри статей */
+
+.article-table-section {
+  overflow: hidden;
+}
+
+.article-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.article-table th,
+.article-table td {
+  padding: 11px 12px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.article-table th {
+  font-weight: 700;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.article-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.article-table-note {
+  margin: 10px 2px 0;
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0.7;
+}
