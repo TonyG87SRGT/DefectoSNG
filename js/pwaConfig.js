@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.13.0";
+export const APP_VERSION = "0.13.1";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -13,6 +13,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "css/pwa.css",
   "css/atlas.css",
   "css/sections.css",
+  "css/references.css",
   "js/app.js",
   "js/atlas.js",
   "js/config.js",
@@ -23,6 +24,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "js/pwa.js",
   "js/pwaConfig.js",
   "js/pwaPolicy.js",
+  "js/references.js",
   "js/renderers.js",
   "js/ringWeld.js",
   "js/router.js",
@@ -36,7 +38,8 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "data/vik.json",
   "data/uzk.json",
   "data/pvk.json",
-  "data/vibration.json"
+  "data/vibration.json",
+  "data/references.json"
 ]);
 
 export const OPTIONAL_APP_PATHS = Object.freeze([

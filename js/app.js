@@ -4,6 +4,7 @@ import { content, navButtons, searchInput, setActiveNav } from "./dom.js";
 import { renderFavorites, updateFavoriteBadge } from "./favorites.js";
 import { setupImageViewer } from "./imageViewer.js";
 import { registerPwa } from "./pwa.js";
+import { renderReference, renderReferences } from "./references.js";
 import { renderRingWeld } from "./ringWeld.js";
 import { navigate, replaceRoute, startRouter } from "./router.js";
 import { buildSearchIndex, renderSearch } from "./search.js";
@@ -50,12 +51,18 @@ function renderRoute(route) {
 
   const staticRenderers = {
     home: renderHome,
+    references: renderReferences,
     tools: renderTools,
     documents: () => renderComingSoon("documents"),
     atlas: () => renderAtlas(route)
   };
   if (staticRenderers[route.view]) {
     staticRenderers[route.view]();
+    return true;
+  }
+
+  if (route.view === "reference") {
+    renderReference(route.referenceId);
     return true;
   }
 
