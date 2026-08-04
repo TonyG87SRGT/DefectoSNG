@@ -1,2 +1,3 @@
 backup-v0.1/
 data/*-backup.json
+node_modules/

@@ -1,0 +1,35 @@
+/* Универсальные вложенные подразделы */
+.article-group-header {
+  margin: 0 0 18px;
+}
+
+.article-group-header h2 {
+  margin: 0 0 8px;
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.article-group-header p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+@media (min-width: 768px) {
+  .article-group-header {
+    margin-bottom: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

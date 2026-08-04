@@ -258,6 +258,7 @@
   },
   {
     "id": "vik-defects",
+    "type": "section",
     "title": "Типовые дефекты",
     "category": "Дефекты",
     "text": "Атлас типовых дефектов сварных соединений, выявляемых при визуальном и измерительном контроле.",
@@ -276,6 +277,7 @@
       {
         "type": "image",
         "src": "images/defects/undercut.jpg",
+        "alt": "Подрез вдоль границы стыкового сварного шва",
         "caption": "Подрез вдоль верхней границы стыкового сварного шва. Характерная канавка расположена непосредственно у линии сплавления."
       },
       {
@@ -430,34 +432,42 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-interpass-depression",
             "title": "Западание между валиками"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-slag-inclusions",
             "title": "Шлаковые включения"
           },
           {
+            "method": "vik",
             "id": "vik-unfilled-crater",
             "title": "Незаваренный кратер"
           },
           {
+            "method": "vik",
             "id": "vik-burn-through",
             "title": "Прожог"
           },
           {
+            "method": "vik",
             "id": "vik-overlap",
             "title": "Наплыв"
           },
           {
+            "method": "vik",
             "id": "vik-uneven-reinforcement",
             "title": "Неравномерность усиления сварного шва"
           },
           {
+            "method": "vik",
             "id": "vik-metal-spatter",
             "title": "Брызги металла"
           }
@@ -681,18 +691,22 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-slag-inclusions",
             "title": "Шлаковые включения"
           },
           {
+            "method": "vik",
             "id": "vik-fistula",
             "title": "Свищ"
           }
@@ -921,34 +935,42 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-porosity",
             "title": "Поры"
           },
           {
+            "method": "vik",
             "id": "vik-slag-inclusions",
             "title": "Шлаковые включения"
           },
           {
+            "method": "vik",
             "id": "vik-unfilled-crater",
             "title": "Незаваренный кратер"
           },
           {
+            "method": "vik",
             "id": "vik-burn-through",
             "title": "Прожог"
           },
           {
+            "method": "vik",
             "id": "vik-overlap",
             "title": "Наплыв"
           },
           {
+            "method": "vik",
             "id": "vik-fistula",
             "title": "Свищ"
           }
@@ -1175,42 +1197,52 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-porosity",
             "title": "Поры"
           },
           {
+            "method": "vik",
             "id": "vik-cracks",
             "title": "Трещины"
           },
           {
+            "method": "vik",
             "id": "vik-slag-inclusions",
             "title": "Шлаковые включения"
           },
           {
+            "method": "vik",
             "id": "vik-unfilled-crater",
             "title": "Незаваренный кратер"
           },
           {
+            "method": "vik",
             "id": "vik-burn-through",
             "title": "Прожог"
           },
           {
+            "method": "vik",
             "id": "vik-overlap",
             "title": "Наплыв"
           },
           {
+            "method": "vik",
             "id": "vik-edge-misalignment",
             "title": "Смещение кромок"
           },
           {
+            "method": "vik",
             "id": "vik-fistula",
             "title": "Свищ"
           }
@@ -1447,30 +1479,37 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-lack-of-fusion",
             "title": "Непровар"
           },
           {
+            "method": "vik",
             "id": "vik-porosity",
             "title": "Поры"
           },
           {
+            "method": "vik",
             "id": "vik-cracks",
             "title": "Трещины"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-unfilled-crater",
             "title": "Незаваренный кратер"
           },
           {
+            "method": "vik",
             "id": "vik-burn-through",
             "title": "Прожог"
           }
@@ -1715,30 +1754,37 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-cracks",
             "title": "Трещины"
           },
           {
+            "method": "vik",
             "id": "vik-lack-of-fusion",
             "title": "Непровар"
           },
           {
+            "method": "vik",
             "id": "vik-slag-inclusions",
             "title": "Шлаковые включения"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-burn-through",
             "title": "Прожог"
           },
           {
+            "method": "vik",
             "id": "vik-fistula",
             "title": "Свищ"
           }
@@ -1984,30 +2030,37 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-unfilled-crater",
             "title": "Незаваренный кратер"
           },
           {
+            "method": "vik",
             "id": "vik-lack-of-fusion",
             "title": "Непровар"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-slag-inclusions",
             "title": "Шлаковые включения"
           },
           {
+            "method": "vik",
             "id": "vik-cracks",
             "title": "Трещины"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-overlap",
             "title": "Наплыв"
           }
@@ -2253,38 +2306,47 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-interpass-depression",
             "title": "Западание между валиками"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-lack-of-fusion",
             "title": "Непровар"
           },
           {
+            "method": "vik",
             "id": "vik-burn-through",
             "title": "Прожог"
           },
           {
+            "method": "vik",
             "id": "vik-cracks",
             "title": "Трещины"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-edge-misalignment",
             "title": "Смещение кромок"
           },
           {
+            "method": "vik",
             "id": "vik-uneven-reinforcement",
             "title": "Неравномерность усиления сварного шва"
           },
           {
+            "method": "vik",
             "id": "vik-metal-spatter",
             "title": "Брызги металла"
           }
@@ -2510,26 +2572,32 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-interpass-depression",
             "title": "Западание между валиками"
           },
           {
+            "method": "vik",
             "id": "vik-lack-of-fusion",
             "title": "Непровар"
           },
           {
+            "method": "vik",
             "id": "vik-overlap",
             "title": "Наплыв"
           },
           {
+            "method": "vik",
             "id": "vik-tools",
             "title": "Измерительный инструмент"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-uneven-reinforcement",
             "title": "Неравномерность усиления сварного шва"
           }
@@ -2753,30 +2821,37 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-interpass-depression",
             "title": "Западание между валиками"
           },
           {
+            "method": "vik",
             "id": "vik-edge-misalignment",
             "title": "Смещение кромок"
           },
           {
+            "method": "vik",
             "id": "vik-overlap",
             "title": "Наплыв"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-tools",
             "title": "Измерительный инструмент"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           },
           {
+            "method": "vik",
             "id": "vik-metal-spatter",
             "title": "Брызги металла"
           }
@@ -2997,26 +3072,32 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-uneven-reinforcement",
             "title": "Неравномерность усиления сварного шва"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-overlap",
             "title": "Наплыв"
           },
           {
+            "method": "vik",
             "id": "vik-edge-misalignment",
             "title": "Смещение кромок"
           },
           {
+            "method": "vik",
             "id": "vik-tools",
             "title": "Измерительный инструмент"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           }
@@ -3235,22 +3316,27 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-overlap",
             "title": "Наплыв"
           },
           {
+            "method": "vik",
             "id": "vik-undercut",
             "title": "Подрез"
           },
           {
+            "method": "vik",
             "id": "vik-uneven-reinforcement",
             "title": "Неравномерность усиления сварного шва"
           },
           {
+            "method": "vik",
             "id": "vik-tools",
             "title": "Измерительный инструмент"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           }
@@ -3485,26 +3571,32 @@
         "title": "Связанные статьи",
         "items": [
           {
+            "method": "vik",
             "id": "vik-porosity",
             "title": "Поры"
           },
           {
+            "method": "vik",
             "id": "vik-unfilled-crater",
             "title": "Незаваренный кратер"
           },
           {
+            "method": "vik",
             "id": "vik-lack-of-fusion",
             "title": "Непровар"
           },
           {
+            "method": "vik",
             "id": "vik-cracks",
             "title": "Трещины"
           },
           {
+            "method": "pvk",
             "id": "pvk-1",
-            "title": "Подготовка поверхности к ПВК"
+              "title": "Подготовка поверхности"
           },
           {
+            "method": "vik",
             "id": "vik-defects",
             "title": "Типовые дефекты"
           }
