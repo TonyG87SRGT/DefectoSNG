@@ -7,6 +7,8 @@ const routes = [
   { view: "atlas" },
   { view: "atlas", category: "shape", query: "смещение кромок" },
   { view: "favorites" },
+  { view: "references" },
+  { view: "reference", referenceId: "sound-velocity" },
   { view: "tools" },
   { view: "documents" },
   { view: "search", query: "сварной шов" },

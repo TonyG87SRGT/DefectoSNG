@@ -4,7 +4,8 @@ import { fileURLToPath } from "node:url";
 import {
   ATLAS_CATEGORY_IDS,
   DATA_FILES,
-  METHODS
+  METHODS,
+  REFERENCE_DATA_FILE
 } from "../js/config.js";
 import {
   APP_PATHS,
@@ -27,6 +28,7 @@ const referencedAssets = new Set();
 let articleCount = 0;
 let sectionCount = 0;
 let relatedLinkCount = 0;
+let referenceCount = 0;
 
 function addError(location, message) {
   errors.push(`${location}: ${message}`);
@@ -34,6 +36,10 @@ function addError(location, message) {
 
 function addWarning(location, message) {
   warnings.push(`${location}: ${message}`);
+}
+
+function isNonEmptyString(value) {
+  return typeof value === "string" && Boolean(value.trim());
 }
 
 function readJson(relativePath) {
@@ -216,6 +222,65 @@ for (const [method, articles] of articlesByMethod.entries()) {
   }
 }
 
+const references = readJson(REFERENCE_DATA_FILE);
+if (!Array.isArray(references)) {
+  addError(REFERENCE_DATA_FILE, "корневое значение должно быть массивом");
+} else {
+  const referenceIds = new Set();
+
+  references.forEach((reference, referenceIndex) => {
+    const location = `${REFERENCE_DATA_FILE}[${referenceIndex}]`;
+    referenceCount += 1;
+
+    if (!reference || typeof reference !== "object" || Array.isArray(reference)) {
+      addError(location, "справочный материал должен быть объектом");
+      return;
+    }
+    if (!isNonEmptyString(reference.id)) {
+      addError(location, "требуется непустой строковый id");
+    } else if (referenceIds.has(reference.id)) {
+      addError(location, `повторяющийся id: ${reference.id}`);
+    } else {
+      referenceIds.add(reference.id);
+    }
+    if (!isNonEmptyString(reference.title)) {
+      addError(location, "требуется непустой строковый title");
+    }
+    if (!Array.isArray(reference.columns) || !reference.columns.length) {
+      addError(location, "требуется непустой массив columns");
+      return;
+    }
+
+    const columnKeys = new Set();
+    reference.columns.forEach((column, columnIndex) => {
+      if (!column || !isNonEmptyString(column.key) || !isNonEmptyString(column.label)) {
+        addError(`${location}.columns[${columnIndex}]`, "требуются строковые key и label");
+        return;
+      }
+      if (columnKeys.has(column.key)) {
+        addError(`${location}.columns[${columnIndex}]`, `повторяющийся key: ${column.key}`);
+      }
+      columnKeys.add(column.key);
+    });
+
+    if (!Array.isArray(reference.rows) || !reference.rows.length) {
+      addError(location, "требуется непустой массив rows");
+      return;
+    }
+    reference.rows.forEach((row, rowIndex) => {
+      if (!row || typeof row !== "object" || Array.isArray(row)) {
+        addError(`${location}.rows[${rowIndex}]`, "строка таблицы должна быть объектом");
+        return;
+      }
+      for (const key of columnKeys) {
+        if (row[key] == null || String(row[key]).trim() === "") {
+          addError(`${location}.rows[${rowIndex}]`, `отсутствует значение ${key}`);
+        }
+      }
+    });
+  });
+}
+
 const manifest = readJson("manifest.json");
 if (!manifest || !Array.isArray(manifest.icons) || !manifest.icons.length) {
   addError("manifest.json", "требуется непустой массив icons");
@@ -264,6 +329,7 @@ const requiredCachedPaths = new Set([
     .map(entry => `js/${entry.name}`),
   "manifest.json",
   ...Object.values(DATA_FILES),
+  REFERENCE_DATA_FILE,
   ...referencedAssets
 ]);
 
@@ -298,5 +364,6 @@ if (errors.length) {
   console.log(`Материалы: ${articleCount}`);
   console.log(`Секции: ${sectionCount}`);
   console.log(`Связанные ссылки: ${relatedLinkCount}`);
+  console.log(`Справочные материалы: ${referenceCount}`);
   console.log(`Ресурсы офлайн-кэша: ${cachedPaths.size + 1}`);
 }

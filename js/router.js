@@ -7,6 +7,7 @@ const STATIC_ROUTES = Object.freeze({
   "": { view: "home" },
   "#atlas": { view: "atlas" },
   "#favorites": { view: "favorites" },
+  "#references": { view: "references" },
   "#tools": { view: "tools" },
   "#documents": { view: "documents" },
   "#search": { view: "search", query: "" }
@@ -29,6 +30,12 @@ export function decodeRoutePart(value) {
 }
 
 const DYNAMIC_ROUTES = Object.freeze([
+  {
+    view: "reference",
+    pattern: /^#reference=(.+)$/,
+    parse: match => ({ view: "reference", referenceId: decodeRoutePart(match[1]) }),
+    format: route => `#reference=${encodeRoutePart(route.referenceId)}`
+  },
   {
     view: "search",
     pattern: /^#search=(.*)$/,

@@ -54,6 +54,9 @@ export function renderHome() {
       <a class="quick-card" href="#tools" data-quick="tools">
         <span aria-hidden="true">🧰</span><small>Инструменты</small>
       </a>
+      <a class="quick-card" href="#references" data-quick="references">
+        <span aria-hidden="true">📚</span><small>Справочные материалы</small>
+      </a>
       <a class="quick-card" href="#documents" data-quick="documents">
         <span aria-hidden="true">▤</span><small>Документы</small>
       </a>
@@ -68,6 +71,7 @@ export function renderHome() {
 
   const quickRoutes = {
     favorites: { view: "favorites" },
+    references: { view: "references" },
     tools: { view: "tools" },
     documents: { view: "documents" }
   };
@@ -139,6 +143,7 @@ export function renderArticleGroup(methodKey, groupArticle) {
       ${groupArticle.description || groupArticle.summary || groupArticle.text
         ? `<p>${safeText(groupArticle.description || groupArticle.summary || groupArticle.text)}</p>`
         : ""}
+      ${groupArticle.additionalText ? `<p>${safeText(groupArticle.additionalText)}</p>` : ""}
     </div>
 
     ${childArticles.length ? `
@@ -155,7 +160,19 @@ export function renderArticleGroup(methodKey, groupArticle) {
           `;
         }).join("")}
       </div>
-    ` : `<div class="empty-state">Раздел находится в разработке.</div>`}
+    ` : `
+      <div class="empty-state">
+        ${safeText(groupArticle.developmentNotice, "Раздел находится в разработке.")}
+      </div>
+      ${Array.isArray(groupArticle.plannedMaterials) && groupArticle.plannedMaterials.length ? `
+        <section class="article-section article-list-section">
+          <h3>${safeText(groupArticle.plannedTitle, "Планируемые материалы")}</h3>
+          <ul>
+            ${groupArticle.plannedMaterials.map(item => `<li>${safeText(item)}</li>`).join("")}
+          </ul>
+        </section>
+      ` : ""}
+    `}
   `;
 
   content.querySelector("#back-button").addEventListener("click", () => {

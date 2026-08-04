@@ -196,6 +196,24 @@ export function validateArticleShape(article) {
   if (article.text != null && typeof article.text !== "string") {
     errors.push("text должен быть строкой");
   }
+  for (const field of [
+    "summary",
+    "description",
+    "sectionTitle",
+    "additionalText",
+    "developmentNotice",
+    "plannedTitle"
+  ]) {
+    if (article[field] != null && typeof article[field] !== "string") {
+      errors.push(`${field} должен быть строкой`);
+    }
+  }
+  if (article.plannedMaterials != null && !isStringArray(article.plannedMaterials)) {
+    errors.push("plannedMaterials должен быть массивом строк");
+  }
+  if (article.returnToMethod != null && typeof article.returnToMethod !== "boolean") {
+    errors.push("returnToMethod должен быть логическим значением");
+  }
 
   if (type === "article" &&
     !isNonEmptyString(article.text) &&

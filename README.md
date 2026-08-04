@@ -30,6 +30,7 @@ npm run check
 - `js/config.js`, `js/schema.js` — общая конфигурация и проверяемая схема данных.
 - `js/renderers.js` — таблица рендереров секций статьи.
 - `js/search.js`, `js/searchCore.js`, `js/favorites.js`, `js/atlas.js` — поиск, избранное и атлас.
+- `js/references.js`, `data/references.json` — справочные таблицы с локальным поиском.
 - `js/tools.js`, `js/ringWeld.js` — список инструментов и калькулятор.
 - `js/pwa.js`, `js/pwaConfig.js`, `js/pwaPolicy.js`, `sw.js` — регистрация, версия и политика офлайн-режима.
 - `data/*.json` — материалы по методам контроля.

@@ -28,6 +28,8 @@ export const DATA_FILES = Object.freeze({
   vibration: "data/vibration.json"
 });
 
+export const REFERENCE_DATA_FILE = "data/references.json";
+
 export const ATLAS_CATEGORIES = Object.freeze([
   Object.freeze({ id: "all", label: "Все" }),
   Object.freeze({ id: "cracks-holes", label: "Трещины и отверстия" }),
