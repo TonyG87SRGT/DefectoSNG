@@ -266,6 +266,15 @@ export function validateArticleShape(article) {
   if (article.plannedMaterials != null && !isStringArray(article.plannedMaterials)) {
     errors.push("plannedMaterials должен быть массивом строк");
   }
+  if (article.futureBlocks != null && !isStringArray(article.futureBlocks)) {
+    errors.push("futureBlocks должен быть массивом строк");
+  }
+  if (article.futureImageLabel != null && !isNonEmptyString(article.futureImageLabel)) {
+    errors.push("futureImageLabel должен быть непустой строкой");
+  }
+  if (article.groupKind != null && !["group", "catalog", "tools"].includes(article.groupKind)) {
+    errors.push(`неподдерживаемый groupKind: ${String(article.groupKind)}`);
+  }
   if (article.returnToMethod != null && typeof article.returnToMethod !== "boolean") {
     errors.push("returnToMethod должен быть логическим значением");
   }

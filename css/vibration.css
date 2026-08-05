@@ -1,0 +1,51 @@
+/* Обзор и каталоги раздела ВД */
+.vibration-overview-intro { margin-bottom: 26px; }
+.vibration-overview-intro h2 { margin: 8px 0 9px; font-size: 24px; line-height: 1.25; }
+.vibration-overview-intro p,
+.vibration-overview-heading p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.vibration-overview-section { margin-top: 30px; }
+.vibration-overview-heading { margin-bottom: 14px; }
+.vibration-overview-heading h2 { margin: 7px 0 6px; font-size: 20px; line-height: 1.3; }
+.vibration-basics-list,
+.vibration-group-list { gap: 12px; }
+.vibration-article-card,
+.vibration-group-card { position: relative; min-width: 0; }
+.vibration-group-card { padding-bottom: 44px; }
+.vibration-group-meta {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+.article-future-image {
+  margin-top: 22px;
+  padding: 26px 18px;
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+}
+.article-future-outline { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border); }
+.article-future-outline h3 { margin: 0 0 12px; font-size: 17px; }
+.article-future-outline ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.article-future-outline li {
+  padding: 10px 12px;
+  border-left: 3px solid rgba(59, 130, 246, .55);
+  border-radius: 0 9px 9px 0;
+  background: rgba(59, 130, 246, .06);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+@media (min-width: 680px) {
+  .vibration-basics-list,
+  .vibration-group-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vibration-article-card,
+  .vibration-group-card { transition: none; }
+}
