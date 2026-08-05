@@ -10,6 +10,7 @@ const routes = [
   { view: "pipeline", category: "butt", query: "С17", special: "two-bevel", jointType: "", elements: "", preparation: "", weld: "", backing: "", method: "", thickness: "" },
   { view: "pipelineJoint", itemId: "pipeline-joint-c17" },
   { view: "pipelineReference", itemId: "pipeline-reference-designations" },
+  { view: "vibrationKnowledge", equipment: "Насосы", fault: "", sign: "Кавитация", parameter: "" },
   { view: "favorites" },
   { view: "references" },
   { view: "reference", referenceId: "sound-velocity" },

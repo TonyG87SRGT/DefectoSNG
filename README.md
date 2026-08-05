@@ -32,6 +32,7 @@ npm run check
 - `js/search.js`, `js/searchCore.js`, `js/favorites.js`, `js/atlas.js` — поиск, избранное и атлас.
 - `js/pipelineJoints.js`, `data/pipeline-welded-joints.json`, `css/pipeline-joints.css` — атлас сварных соединений трубопроводов по ГОСТ 16037-80.
 - `js/vibration.js`, `data/vibration.json`, `css/vibration.css` — обзор, группы и каталоги раздела вибродиагностики.
+- `js/vibrationKnowledge.js`, `js/vibrationTaxonomy.js`, `js/vibrationRelations.js` — фасетная навигация, единый словарь тегов и автоматическая перелинковка базы знаний ВД. Будущие инструменты используют экспортируемый `vibrationKnowledgeApi`, не загружая данные повторно.
 - `js/references.js`, `data/references.json` — справочные таблицы с локальным поиском.
 - `js/tools.js`, `js/ringWeld.js` — список инструментов и калькулятор.
 - `js/pwa.js`, `js/pwaConfig.js`, `js/pwaPolicy.js`, `sw.js` — регистрация, версия и политика офлайн-режима.

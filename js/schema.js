@@ -33,7 +33,12 @@ function validateVibrationMetadata(metadata) {
   for (const field of ["section", "group", "materialType", "status"]) {
     if (!isNonEmptyString(metadata[field])) errors.push(`metadata.${field} должен быть непустой строкой`);
   }
-  for (const field of ["equipment", "faults", "diagnosticSigns", "keywords", "relatedArticles"]) {
+    for (const field of [
+      "equipment", "faults", "diagnosticSigns", "keywords", "relatedArticles",
+      "tags", "aliases", "measuredParameters", "relatedFaults", "relatedSpectra",
+      "relatedScenarios", "relatedReferences", "normativeDocuments", "relatedMeasurements",
+      "relatedParameters", "probableFaults", "similarSpectra", "additionalChecks"
+    ]) {
     if (!isStringArray(metadata[field])) errors.push(`metadata.${field} должен быть массивом строк`);
   }
   if (metadata.materialType && !VIBRATION_TEMPLATE_IDS.has(metadata.materialType)) {

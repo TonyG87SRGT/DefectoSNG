@@ -1,7 +1,15 @@
 import { content } from "./dom.js";
 import { escapeAttribute, safeText } from "./html.js";
 import { getRouteHash, goBack, navigate } from "./router.js";
-import { getChildren, getItem, getItemRoute, sortByOrder } from "./store.js";
+import { getArticles, getChildren, getItem, getItemRoute, sortByOrder } from "./store.js";
+import {
+  VIBRATION_FACETS,
+  createVibrationKnowledgeApi,
+  filterVibrationKnowledge,
+  getVibrationFacetOptions
+} from "./vibrationKnowledge.js";
+
+export const vibrationKnowledgeApi = createVibrationKnowledgeApi(() => getArticles("vibration"));
 
 const OVERVIEW_GROUPS = Object.freeze([
   Object.freeze({
@@ -69,6 +77,7 @@ export function renderVibrationOverview() {
       <span class="article-category">Обзор раздела</span>
       <h2 id="vibration-overview-title">Вибродиагностика машин и оборудования</h2>
       <p>Основы измерений, анализ сигналов, алгоритм диагностирования, атласы признаков и практические ситуации.</p>
+      <a class="vibration-knowledge-entry" href="#vibration-knowledge" data-vibration-knowledge>Открыть навигатор базы знаний</a>
     </section>
 
     <section class="vibration-overview-section" aria-labelledby="vibration-basics-title">
@@ -99,6 +108,9 @@ export function renderVibrationOverview() {
   `;
 
   content.querySelector("#back-button").addEventListener("click", () => goBack({ view: "home" }));
+  content.querySelector("[data-vibration-knowledge]").addEventListener("click", event => {
+    handleRouteLink(event, { view: "vibrationKnowledge" });
+  });
   content.querySelectorAll("[data-vibration-item]").forEach(link => {
     link.addEventListener("click", event => {
       const item = getItem("vibration", link.dataset.vibrationItem);
@@ -107,3 +119,62 @@ export function renderVibrationOverview() {
   });
 }
 
+export function renderVibrationKnowledge(route = {}) {
+  const allItems = getArticles("vibration");
+  const filters = Object.fromEntries(Object.keys(VIBRATION_FACETS).map(key => [key, route[key] || ""]));
+  const results = sortByOrder(filterVibrationKnowledge(allItems, filters));
+
+  content.innerHTML = `
+    <div class="page-header">
+      <button class="back-button" id="back-button" aria-label="Вернуться в раздел ВД">‹</button>
+      <div><h2 tabindex="-1">База знаний ВД</h2><p>Навигация по оборудованию и диагностическим признакам</p></div>
+    </div>
+
+    <section class="vibration-knowledge-filter" aria-labelledby="vibration-knowledge-title">
+      <span class="article-category">Интеллектуальная навигация</span>
+      <h2 id="vibration-knowledge-title">Подбор материалов</h2>
+      <p>Фильтры применяются совместно. Пустое поле не ограничивает результаты.</p>
+      <div class="vibration-facet-grid">
+        ${Object.entries(VIBRATION_FACETS).map(([facetId, facet]) => `
+          <label for="vibration-facet-${escapeAttribute(facetId)}">
+            <span>${safeText(facet.label)}</span>
+            <select id="vibration-facet-${escapeAttribute(facetId)}" data-vibration-filter="${escapeAttribute(facetId)}">
+              <option value="">Все</option>
+              ${getVibrationFacetOptions(allItems, facetId).map(value => `
+                <option value="${escapeAttribute(value)}" ${filters[facetId] === value ? "selected" : ""}>${safeText(value)}</option>
+              `).join("")}
+            </select>
+          </label>
+        `).join("")}
+      </div>
+      <div class="vibration-filter-summary" role="status">Найдено материалов: ${results.length}</div>
+      <button class="vibration-filter-reset" type="button" data-vibration-filter-reset>Сбросить фильтры</button>
+    </section>
+
+    ${results.length ? `
+      <div class="article-list vibration-knowledge-results">
+        ${results.map(renderArticleCard).join("")}
+      </div>
+    ` : `<div class="empty-state">Для выбранного сочетания материалы пока не найдены.</div>`}
+  `;
+
+  content.querySelector("#back-button").addEventListener("click", () => goBack({ view: "method", method: "vibration" }));
+  content.querySelectorAll("[data-vibration-filter]").forEach(select => {
+    select.addEventListener("change", () => {
+      const next = { view: "vibrationKnowledge" };
+      content.querySelectorAll("[data-vibration-filter]").forEach(input => {
+        if (input.value) next[input.dataset.vibrationFilter] = input.value;
+      });
+      navigate(next, { replace: true });
+    });
+  });
+  content.querySelector("[data-vibration-filter-reset]").addEventListener("click", () => {
+    navigate({ view: "vibrationKnowledge" }, { replace: true });
+  });
+  content.querySelectorAll("[data-vibration-item]").forEach(link => {
+    link.addEventListener("click", event => {
+      const item = getItem("vibration", link.dataset.vibrationItem);
+      if (item) handleRouteLink(event, getItemRoute("vibration", item));
+    });
+  });
+}

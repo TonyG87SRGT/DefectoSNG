@@ -57,7 +57,13 @@ export function buildSearchIndex() {
         article.title || "",
         article.category || "",
         article.summary || "",
-        ...(article.tags || [])
+        ...(article.tags || []),
+        ...(article.metadata?.aliases || []),
+        ...(article.metadata?.tags || []),
+        ...(article.metadata?.equipment || []),
+        ...(article.metadata?.faults || []),
+        ...(article.metadata?.diagnosticSigns || []),
+        ...(article.metadata?.measuredParameters || [])
       ].join(" "))
     };
   });

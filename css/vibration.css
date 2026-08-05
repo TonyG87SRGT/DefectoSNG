@@ -49,3 +49,54 @@
   .vibration-article-card,
   .vibration-group-card { transition: none; }
 }
+.vibration-knowledge-entry {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.vibration-knowledge-filter {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.vibration-facet-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.vibration-facet-grid label,
+.vibration-facet-grid label span {
+  display: block;
+}
+
+.vibration-facet-grid label span {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.vibration-facet-grid select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.vibration-filter-summary { margin-top: 16px; color: var(--muted); }
+.vibration-filter-reset { min-height: 44px; margin-top: 10px; }
+
+@media (min-width: 720px) {
+  .vibration-facet-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

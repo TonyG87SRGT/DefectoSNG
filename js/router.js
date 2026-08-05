@@ -119,6 +119,18 @@ function parsePipelineRoute(hash) {
   };
 }
 
+function parseVibrationKnowledgeRoute(hash) {
+  if (hash !== "#vibration-knowledge" && !hash.startsWith("#vibration-knowledge?")) return null;
+  const params = new URLSearchParams(hash.split("?", 2)[1] || "");
+  return {
+    view: "vibrationKnowledge",
+    equipment: params.get("equipment") || "",
+    fault: params.get("fault") || "",
+    sign: params.get("sign") || "",
+    parameter: params.get("parameter") || ""
+  };
+}
+
 export function parseRoute(hash = globalThis.window?.location?.hash || "") {
   if (hash === "#vik") return { view: "method", method: "vik" };
   if (STATIC_ROUTES[hash]) return { ...STATIC_ROUTES[hash] };
@@ -128,6 +140,9 @@ export function parseRoute(hash = globalThis.window?.location?.hash || "") {
 
   const pipelineRoute = parsePipelineRoute(hash);
   if (pipelineRoute) return pipelineRoute;
+
+  const vibrationKnowledgeRoute = parseVibrationKnowledgeRoute(hash);
+  if (vibrationKnowledgeRoute) return vibrationKnowledgeRoute;
 
   for (const routeDefinition of DYNAMIC_ROUTES) {
     const match = hash.match(routeDefinition.pattern);
@@ -147,6 +162,14 @@ export function parseRoute(hash = globalThis.window?.location?.hash || "") {
 }
 
 export function getRouteHash(route) {
+  if (route.view === "vibrationKnowledge") {
+    const params = new URLSearchParams();
+    for (const key of ["equipment", "fault", "sign", "parameter"]) {
+      if (route[key]) params.set(key, route[key]);
+    }
+    const suffix = params.toString();
+    return suffix ? `#vibration-knowledge?${suffix}` : "#vibration-knowledge";
+  }
   if (route.view === "pipeline") {
     const params = new URLSearchParams();
     const values = {
