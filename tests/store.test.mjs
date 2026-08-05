@@ -10,8 +10,9 @@ import {
 test("ошибка одного data-файла не блокирует остальные методы", async () => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async url => {
-    const method = String(url).match(/\/data\/(\w+)\.json$/)?.[1];
-    if (method === "pvk") throw new Error("network unavailable");
+    const file = String(url).split("/").at(-1).replace(".json", "");
+    if (file === "pvk") throw new Error("network unavailable");
+    const method = file === "pipeline-welded-joints" ? "pipeline" : file;
 
     return {
       ok: true,
@@ -23,7 +24,7 @@ test("ошибка одного data-файла не блокирует оста
   console.error = () => {};
   try {
     const result = await loadData("https://example.com/app/");
-    assert.deepEqual(result, { loaded: 3, failed: 1 });
+    assert.deepEqual(result, { loaded: 4, failed: 1 });
     assert.equal(getArticles("vik").length, 1);
     assert.equal(getItem("vik", "vik-test").title, "Тест");
     assert.match(getMethodLoadError("pvk").message, /network unavailable/);

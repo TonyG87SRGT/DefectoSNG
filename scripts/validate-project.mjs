@@ -169,6 +169,16 @@ for (const [method, relativePath] of Object.entries(DATA_FILES)) {
     }
 
     validateAtlas(article, location);
+    if (article.pipelineJoint?.images) {
+      for (const field of ["edgePreparation", "weldSection"]) {
+        if (article.pipelineJoint.images[field]) {
+          validateAsset(
+            article.pipelineJoint.images[field],
+            `${location}.pipelineJoint.images.${field}`
+          );
+        }
+      }
+    }
   }
 }
 

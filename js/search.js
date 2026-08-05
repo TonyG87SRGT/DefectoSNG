@@ -38,6 +38,7 @@ export function buildSearchIndex() {
       article.atlas?.shortFeature || "",
       ...(article.atlas?.aliases || []),
       ...(article.atlas?.tags || []),
+      getSearchValue(article.pipelineJoint),
       getSectionSearchText(article.sections),
       METHODS[article.methodKey]?.short || "",
       METHODS[article.methodKey]?.title || ""
@@ -120,7 +121,7 @@ export function renderSearch(query) {
               data-search-article="${escapeAttribute(article.id)}"
               data-search-method="${escapeAttribute(article.methodKey)}"
             >
-              <span class="article-category">${safeText(METHODS[article.methodKey].short)} · ${safeText(article.category)}</span>
+              <span class="article-category">${safeText(METHODS[article.methodKey]?.short, article.methodKey)} · ${safeText(article.category)}</span>
               ${article.status === "draft" ? `<span class="draft-badge">Черновик</span>` : ""}
               <h3>${safeText(article.title)}</h3>
               <p>${safeText(article.summary || article.text, "Открыть материал")}</p>

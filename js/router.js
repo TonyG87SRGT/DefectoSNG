@@ -7,6 +7,7 @@ const STATIC_ROUTES = Object.freeze({
   "": { view: "home" },
   "#atlas": { view: "atlas" },
   "#favorites": { view: "favorites" },
+  "#pipeline": { view: "pipeline" },
   "#references": { view: "references" },
   "#tools": { view: "tools" },
   "#documents": { view: "documents" },
@@ -30,6 +31,18 @@ export function decodeRoutePart(value) {
 }
 
 const DYNAMIC_ROUTES = Object.freeze([
+  {
+    view: "pipelineJoint",
+    pattern: /^#pipeline-joint=(.+)$/,
+    parse: match => ({ view: "pipelineJoint", itemId: decodeRoutePart(match[1]) }),
+    format: route => `#pipeline-joint=${encodeRoutePart(route.itemId)}`
+  },
+  {
+    view: "pipelineReference",
+    pattern: /^#pipeline-reference=(.+)$/,
+    parse: match => ({ view: "pipelineReference", itemId: decodeRoutePart(match[1]) }),
+    format: route => `#pipeline-reference=${encodeRoutePart(route.itemId)}`
+  },
   {
     view: "reference",
     pattern: /^#reference=(.+)$/,
@@ -87,12 +100,34 @@ function parseAtlasRoute(hash) {
   };
 }
 
+function parsePipelineRoute(hash) {
+  if (!hash.startsWith("#pipeline?")) return null;
+
+  const params = new URLSearchParams(hash.slice("#pipeline?".length));
+  return {
+    view: "pipeline",
+    category: params.get("category") || "all",
+    query: params.get("q") || "",
+    jointType: params.get("type") || "",
+    elements: params.get("elements") || "",
+    preparation: params.get("preparation") || "",
+    weld: params.get("weld") || "",
+    backing: params.get("backing") || "",
+    method: params.get("welding") || "",
+    thickness: params.get("thickness") || "",
+    special: params.get("special") || ""
+  };
+}
+
 export function parseRoute(hash = globalThis.window?.location?.hash || "") {
   if (hash === "#vik") return { view: "method", method: "vik" };
   if (STATIC_ROUTES[hash]) return { ...STATIC_ROUTES[hash] };
 
   const atlasRoute = parseAtlasRoute(hash);
   if (atlasRoute) return atlasRoute;
+
+  const pipelineRoute = parsePipelineRoute(hash);
+  if (pipelineRoute) return pipelineRoute;
 
   for (const routeDefinition of DYNAMIC_ROUTES) {
     const match = hash.match(routeDefinition.pattern);
@@ -112,6 +147,27 @@ export function parseRoute(hash = globalThis.window?.location?.hash || "") {
 }
 
 export function getRouteHash(route) {
+  if (route.view === "pipeline") {
+    const params = new URLSearchParams();
+    const values = {
+      category: route.category && route.category !== "all" ? route.category : "",
+      q: route.query,
+      type: route.jointType,
+      elements: route.elements,
+      preparation: route.preparation,
+      weld: route.weld,
+      backing: route.backing,
+      welding: route.method,
+      thickness: route.thickness,
+      special: route.special
+    };
+    Object.entries(values).forEach(([key, value]) => {
+      if (value) params.set(key, value);
+    });
+    const suffix = params.toString();
+    return suffix ? `#pipeline?${suffix}` : "#pipeline";
+  }
+
   if (route.view === "atlas") {
     const params = new URLSearchParams();
     if (route.category && route.category !== "all") params.set("category", route.category);

@@ -28,6 +28,13 @@ test("раздел и специальный атлас получают кан�
   assert.deepEqual(getItemRoute("vik", { id: "vik-defects", type: "section" }), {
     view: "atlas"
   });
+  assert.deepEqual(getItemRoute("pipeline", {
+    id: "pipeline-joint-c17",
+    pipelineJoint: { designation: "С17" }
+  }), {
+    view: "pipelineJoint",
+    itemId: "pipeline-joint-c17"
+  });
 });
 
 test("PWA выбирает стратегию по типу запроса", () => {

@@ -30,6 +30,7 @@ npm run check
 - `js/config.js`, `js/schema.js` — общая конфигурация и проверяемая схема данных.
 - `js/renderers.js` — таблица рендереров секций статьи.
 - `js/search.js`, `js/searchCore.js`, `js/favorites.js`, `js/atlas.js` — поиск, избранное и атлас.
+- `js/pipelineJoints.js`, `data/pipeline-welded-joints.json`, `css/pipeline-joints.css` — атлас сварных соединений трубопроводов по ГОСТ 16037-80.
 - `js/references.js`, `data/references.json` — справочные таблицы с локальным поиском.
 - `js/tools.js`, `js/ringWeld.js` — список инструментов и калькулятор.
 - `js/pwa.js`, `js/pwaConfig.js`, `js/pwaPolicy.js`, `sw.js` — регистрация, версия и политика офлайн-режима.
@@ -48,6 +49,16 @@ npm run check
 7. Добавьте новый локальный ресурс в `ESSENTIAL_APP_PATHS` или `OPTIONAL_APP_PATHS` файла `js/pwaConfig.js`, затем выполните `npm run check`.
 
 Неизвестный тип секции намеренно отображается в статье как ошибка. Валидатор также остановит выпуск до исправления данных.
+
+## Добавление карточки сварного соединения трубопроводов
+
+1. Откройте `data/pipeline-welded-joints.json` и добавьте объект `article` с уникальным ID вида `pipeline-joint-c17`.
+2. Укажите `parentId` категории: `pipeline-butt`, `pipeline-lap` или `pipeline-corner`.
+3. В `pipelineJoint` обязательно заполните `designation`, `category`, массивы `weldingMethods`, `specialFilters`, `parameters` и объект `images`.
+4. Неизвестные характеристики оставляйте `null`, а неизвестные наборы — пустыми массивами. Не добавляйте приблизительные размеры.
+5. Для поиска латинского варианта добавьте обозначение вроде `C17` в `tags`.
+6. Если появилась проверенная схема, укажите относительный путь в `images.edgePreparation` или `images.weldSection`; изображение должно быть оптимизировано и загружаться лениво.
+7. Повышайте версию приложения и выполняйте `npm run check` перед публикацией.
 
 ## Публикация
 
