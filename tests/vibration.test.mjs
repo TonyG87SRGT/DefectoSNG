@@ -47,6 +47,32 @@ test("две исходные статьи сохранены по прежни�
   assert.ok(parameters.sections.length > 1);
 });
 
+test("все восемь основ опубликованы и связаны с нормативной основой", () => {
+  const basics = data.filter(item => item.parentId === "vibration-basics");
+
+  assert.equal(basics.length, 8);
+  basics.forEach(article => {
+    assert.notEqual(article.status, "draft", article.id);
+    assert.equal(article.futureBlocks, undefined, article.id);
+    assert.equal(article.futureImageLabel, undefined, article.id);
+    assert.ok(article.sections.length >= 7, article.id);
+    assert.ok(article.sections.some(section => section.type === "documents"), article.id);
+    assert.ok(article.sections.some(section => section.type === "related"), article.id);
+  });
+});
+
+test("перелинковка основ ведёт на существующие материалы", () => {
+  const basics = data.filter(item => item.parentId === "vibration-basics");
+  const relatedIds = basics.flatMap(article => article.sections)
+    .filter(section => section.type === "related")
+    .flatMap(section => section.items.map(item => item.id));
+
+  assert.ok(relatedIds.includes("vibration-parameters"));
+  assert.ok(relatedIds.includes("vibration-displacement"));
+  assert.ok(relatedIds.includes("vibration-fault-unbalance"));
+  relatedIds.forEach(id => assert.ok(byId.has(id), id));
+});
+
 test("новые статьи имеют нейтральные заготовки и будущую структуру", () => {
   const fault = byId.get("vibration-fault-unbalance");
   const spectrum = byId.get("vibration-spectrum-1x");
@@ -74,4 +100,19 @@ test("общий поиск находит существующие и новы�
   assert.equal(existing.length, 1);
   assert.ok(fault.some(item => item.id === "vibration-fault-unbalance"));
   assert.ok(fft.some(item => item.id === "vibration-fft"));
+});
+
+test("поиск находит каждую статью основ и сокращение ВД", () => {
+  const documents = data.map(item => ({
+    ...item,
+    methodKey: "vibration",
+    searchText: JSON.stringify(item)
+  }));
+  const basics = data.filter(item => item.parentId === "vibration-basics");
+
+  basics.forEach(article => {
+    const matches = searchArticles(article.title, documents).filter(item => item.id === article.id);
+    assert.equal(matches.length, 1, article.id);
+  });
+  assert.ok(searchArticles("ВД", documents).some(item => item.id === "vibration-introduction"));
 });
