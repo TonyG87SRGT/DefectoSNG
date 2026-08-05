@@ -137,6 +137,17 @@ for (const [method, relativePath] of Object.entries(DATA_FILES)) {
     if (!article || typeof article !== "object" || Array.isArray(article)) continue;
     if (typeof article.id !== "string" || !article.id.trim()) continue;
 
+    if (method === "vibration" && article.type !== "section") {
+      if (!article.template) addError(location, "для материала ВД требуется template");
+      if (!article.metadata) addError(location, "для материала ВД требуется metadata");
+      if (article.status === "draft" && (!Array.isArray(article.mediaSlots) || !article.mediaSlots.length)) {
+        addError(location, "для заготовки ВД требуется непустой mediaSlots");
+      }
+      if (article.parentId === "vibration-tools" && !article.toolConfig) {
+        addError(location, "для инструмента ВД требуется toolConfig");
+      }
+    }
+
     if (methodIndex.has(article.id)) {
       addError(location, `повторяющийся id внутри метода: ${article.id}`);
     } else {
@@ -179,6 +190,7 @@ for (const [method, relativePath] of Object.entries(DATA_FILES)) {
         }
       }
     }
+
   }
 }
 
@@ -226,6 +238,14 @@ for (const [method, articles] of articlesByMethod.entries()) {
             linkLocation,
             `title не совпадает с целевой статьёй: «${item.title}» / «${target.title}»`
           );
+        }
+      });
+    }
+
+    if (method === "vibration" && Array.isArray(article.metadata?.relatedArticles)) {
+      article.metadata.relatedArticles.forEach((id, index) => {
+        if (!articles.has(id)) {
+          addError(`${location}.metadata.relatedArticles[${index}]`, `материал не найден: vibration/${id}`);
         }
       });
     }
@@ -298,6 +318,9 @@ if (!manifest || !Array.isArray(manifest.icons) || !manifest.icons.length) {
   manifest.icons.forEach((icon, index) => {
     validateAsset(icon.src, `manifest.json.icons[${index}].src`);
   });
+}
+if (manifest?.version !== APP_VERSION) {
+  addError("manifest.json", `version ${String(manifest?.version)} не совпадает с APP_VERSION ${APP_VERSION}`);
 }
 validateAsset("icons/apple-touch-icon.png", "index.html apple-touch-icon");
 

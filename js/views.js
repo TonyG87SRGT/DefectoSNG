@@ -2,6 +2,7 @@ import { content } from "./dom.js";
 import { isFavorite, toggleFavorite } from "./favorites.js";
 import { escapeAttribute, safeText } from "./html.js";
 import { renderStructuredArticle } from "./renderers.js";
+import { withAutomaticVibrationRelated } from "./vibrationRelations.js";
 import { getRouteHash, goBack, navigate } from "./router.js";
 import {
   METHODS,
@@ -201,8 +202,11 @@ export function renderArticleGroup(methodKey, groupArticle) {
 export function renderArticle(methodKey, article) {
   const method = METHODS[methodKey];
   const favorite = isFavorite(methodKey, article.id);
-  const articleBody = article.sections
-    ? renderStructuredArticle(article, {
+  const displayedArticle = methodKey === "vibration"
+    ? withAutomaticVibrationRelated(article, getArticles("vibration"))
+    : article;
+  const articleBody = displayedArticle.sections
+    ? renderStructuredArticle(displayedArticle, {
         resolveRelated: getItem,
         getRelatedHref: (relatedMethod, relatedId) => {
           const relatedArticle = getItem(relatedMethod, relatedId);
@@ -212,7 +216,9 @@ export function renderArticle(methodKey, article) {
         }
       })
     : `<p>${safeText(article.text)}</p>`;
-  const futureImageLabels = Array.isArray(article.futureImageLabels)
+  const futureImageLabels = Array.isArray(article.mediaSlots) && article.mediaSlots.length
+    ? []
+    : Array.isArray(article.futureImageLabels)
     ? article.futureImageLabels
     : article.futureImageLabel
       ? [article.futureImageLabel]
@@ -220,6 +226,13 @@ export function renderArticle(methodKey, article) {
   const futureImage = futureImageLabels
     .map(label => `<div class="article-future-image" role="img" aria-label="${escapeAttribute(label)}">${safeText(label)}</div>`)
     .join("");
+  const mediaSlots = Array.isArray(article.mediaSlots)
+    ? article.mediaSlots.map(slot => `
+        <div class="article-media-slot article-media-slot-${escapeAttribute(slot.type)}" role="img" aria-label="${escapeAttribute(slot.label)}">
+          <span>${safeText(slot.label)}</span>
+        </div>
+      `).join("")
+    : "";
   const futureOutline = Array.isArray(article.futureBlocks) && article.futureBlocks.length
     ? `
       <section class="article-future-outline">
@@ -249,6 +262,7 @@ export function renderArticle(methodKey, article) {
       </div>
       ${article.summary ? `<p class="article-summary">${safeText(article.summary)}</p>` : ""}
       ${futureImage}
+      ${mediaSlots ? `<section class="article-media-slots" aria-label="Места для будущих материалов">${mediaSlots}</section>` : ""}
       ${articleBody}
       ${futureOutline}
     </article>
