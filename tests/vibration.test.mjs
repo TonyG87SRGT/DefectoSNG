@@ -116,3 +116,60 @@ test("поиск находит каждую статью основ и сокр
   });
   assert.ok(searchArticles("ВД", documents).some(item => item.id === "vibration-introduction"));
 });
+
+test("все десять статей об измерительном оборудовании опубликованы и имеют единый практический шаблон", () => {
+  const equipment = data.filter(item => item.parentId === "vibration-equipment");
+  const requiredTitles = ["Назначение", "Принцип работы", "Когда использовать", "Преимущества", "Ограничения"];
+
+  assert.equal(equipment.length, 10);
+  equipment.forEach(article => {
+    assert.notEqual(article.status, "draft", article.id);
+    assert.equal(article.futureBlocks, undefined, article.id);
+    assert.ok(article.futureImageLabels.length >= 2, article.id);
+    assert.ok(article.sections.some(section => section.type === "warning" && /ошиб/i.test(section.title)), article.id);
+    assert.ok(article.sections.some(section => section.type === "practice"), article.id);
+    assert.ok(article.sections.some(section => section.type === "related"), article.id);
+    assert.ok(article.sections.some(section => section.type === "documents"), article.id);
+    requiredTitles.forEach(title => {
+      assert.ok(article.sections.some(section => section.title === title), `${article.id}: ${title}`);
+    });
+  });
+});
+
+test("ключевые статьи содержат требуемые сравнения и чек-лист", () => {
+  const meterTable = byId.get("vibration-meters").sections.find(section => section.type === "table");
+  const mountingTable = byId.get("vibration-sensor-mounting").sections.find(section => section.type === "table");
+  const chainChecklist = byId.get("vibration-measurement-chain-check").sections.find(section => section.type === "steps");
+  const errors = byId.get("vibration-sensor-installation-errors").sections.filter(section => section.type === "comparison");
+
+  assert.deepEqual(meterTable.headers, ["Возможность", "Виброметр"]);
+  assert.equal(meterTable.rows.length, 4);
+  assert.equal(mountingTable.rows.length, 5);
+  assert.equal(chainChecklist.items.length, 8);
+  assert.equal(errors.flatMap(section => section.items).length, 10);
+});
+
+test("перелинковка оборудования ведёт на существующие статьи", () => {
+  const equipment = data.filter(item => item.parentId === "vibration-equipment");
+  const relatedIds = equipment.flatMap(article => article.sections)
+    .filter(section => section.type === "related")
+    .flatMap(section => section.items.map(item => item.id));
+
+  assert.ok(relatedIds.includes("vibration-parameters"));
+  assert.ok(relatedIds.includes("vibration-sensor-mounting"));
+  assert.ok(relatedIds.includes("vibration-measurement-chain-check"));
+  relatedIds.forEach(id => assert.ok(byId.has(id), id));
+});
+
+test("поиск находит каждую статью оборудования и практические ключевые слова", () => {
+  const documents = data.map(item => ({ ...item, methodKey: "vibration", searchText: JSON.stringify(item) }));
+  const equipment = data.filter(item => item.parentId === "vibration-equipment");
+
+  equipment.forEach(article => {
+    const matches = searchArticles(article.title, documents).filter(item => item.id === article.id);
+    assert.equal(matches.length, 1, article.id);
+  });
+  assert.ok(searchArticles("вихретоковый датчик", documents).some(item => item.id === "vibration-proximity-probes"));
+  assert.ok(searchArticles("слабый магнит", documents).some(item => item.id === "vibration-sensor-installation-errors"));
+  assert.ok(searchArticles("калибратор", documents).some(item => item.id === "vibration-measurement-chain-check"));
+});

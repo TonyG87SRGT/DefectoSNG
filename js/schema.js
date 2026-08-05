@@ -272,6 +272,9 @@ export function validateArticleShape(article) {
   if (article.futureImageLabel != null && !isNonEmptyString(article.futureImageLabel)) {
     errors.push("futureImageLabel должен быть непустой строкой");
   }
+  if (article.futureImageLabels != null && !isStringArray(article.futureImageLabels)) {
+    errors.push("futureImageLabels должен быть массивом строк");
+  }
   if (article.groupKind != null && !["group", "catalog", "tools"].includes(article.groupKind)) {
     errors.push(`неподдерживаемый groupKind: ${String(article.groupKind)}`);
   }
