@@ -15,7 +15,7 @@ import {
 
 function renderDraftBadge(article) {
   return article.status === "draft"
-    ? `<span class="draft-badge">Черновик</span>`
+    ? `<span class="draft-badge">${article.parentId === "vibration-tools" ? "В разработке" : "Черновик"}</span>`
     : "";
 }
 
@@ -212,6 +212,17 @@ export function renderArticle(methodKey, article) {
         }
       })
     : `<p>${safeText(article.text)}</p>`;
+  const futureImage = article.futureImageLabel
+    ? `<div class="article-future-image" role="img" aria-label="${escapeAttribute(article.futureImageLabel)}">${safeText(article.futureImageLabel)}</div>`
+    : "";
+  const futureOutline = Array.isArray(article.futureBlocks) && article.futureBlocks.length
+    ? `
+      <section class="article-future-outline">
+        <h3>Структура будущего материала</h3>
+        <ul>${article.futureBlocks.map(item => `<li>${safeText(item)}</li>`).join("")}</ul>
+      </section>
+    `
+    : "";
 
   content.innerHTML = `
     <div class="page-header">
@@ -232,7 +243,9 @@ export function renderArticle(methodKey, article) {
         >${favorite ? "★" : "☆"}</button>
       </div>
       ${article.summary ? `<p class="article-summary">${safeText(article.summary)}</p>` : ""}
+      ${futureImage}
       ${articleBody}
+      ${futureOutline}
     </article>
   `;
 

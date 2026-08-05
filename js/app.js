@@ -15,6 +15,7 @@ import { navigate, replaceRoute, startRouter } from "./router.js";
 import { buildSearchIndex, renderSearch } from "./search.js";
 import { METHODS, getItem, getItemRoute, loadData } from "./store.js";
 import { renderTools } from "./tools.js";
+import { renderVibrationOverview } from "./vibration.js";
 import {
   renderArticle,
   renderArticleGroup,
@@ -90,9 +91,13 @@ function renderRoute(route) {
   }
 
   if (route.view === "method") {
-    METHODS[route.method]
-      ? renderMethod(route.method)
-      : renderNotFound("Метод контроля не найден");
+    if (!METHODS[route.method]) {
+      renderNotFound("Метод контроля не найден");
+    } else if (route.method === "vibration") {
+      renderVibrationOverview();
+    } else {
+      renderMethod(route.method);
+    }
     return true;
   }
 

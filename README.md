@@ -31,6 +31,7 @@ npm run check
 - `js/renderers.js` — таблица рендереров секций статьи.
 - `js/search.js`, `js/searchCore.js`, `js/favorites.js`, `js/atlas.js` — поиск, избранное и атлас.
 - `js/pipelineJoints.js`, `data/pipeline-welded-joints.json`, `css/pipeline-joints.css` — атлас сварных соединений трубопроводов по ГОСТ 16037-80.
+- `js/vibration.js`, `data/vibration.json`, `css/vibration.css` — обзор, группы и каталоги раздела вибродиагностики.
 - `js/references.js`, `data/references.json` — справочные таблицы с локальным поиском.
 - `js/tools.js`, `js/ringWeld.js` — список инструментов и калькулятор.
 - `js/pwa.js`, `js/pwaConfig.js`, `js/pwaPolicy.js`, `sw.js` — регистрация, версия и политика офлайн-режима.
@@ -49,6 +50,10 @@ npm run check
 7. Добавьте новый локальный ресурс в `ESSENTIAL_APP_PATHS` или `OPTIONAL_APP_PATHS` файла `js/pwaConfig.js`, затем выполните `npm run check`.
 
 Неизвестный тип секции намеренно отображается в статье как ошибка. Валидатор также остановит выпуск до исправления данных.
+
+### Структура раздела ВД
+
+В `data/vibration.json` верхний уровень образуют объекты `type: "section"`. Статьи связываются с группой через `parentId`; их URL и формат избранного при переносе между группами не меняются. Для заготовки используйте `status: "draft"`, стандартный блок состояния, `futureImageLabel` и массив `futureBlocks`. Обзор ВД выводит материалы группы основ непосредственно, а остальные группы открывает отдельными каталогами.
 
 ## Добавление карточки сварного соединения трубопроводов
 

@@ -35,6 +35,7 @@ export function buildSearchIndex() {
       article.description || "",
       article.sectionTitle || "",
       ...(article.tags || []),
+      ...(article.futureBlocks || []),
       article.atlas?.shortFeature || "",
       ...(article.atlas?.aliases || []),
       ...(article.atlas?.tags || []),
@@ -122,7 +123,7 @@ export function renderSearch(query) {
               data-search-method="${escapeAttribute(article.methodKey)}"
             >
               <span class="article-category">${safeText(METHODS[article.methodKey]?.short, article.methodKey)} · ${safeText(article.category)}</span>
-              ${article.status === "draft" ? `<span class="draft-badge">Черновик</span>` : ""}
+              ${article.status === "draft" ? `<span class="draft-badge">${article.parentId === "vibration-tools" ? "В разработке" : "Черновик"}</span>` : ""}
               <h3>${safeText(article.title)}</h3>
               <p>${safeText(article.summary || article.text, "Открыть материал")}</p>
             </a>
