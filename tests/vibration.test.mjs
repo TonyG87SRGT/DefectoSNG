@@ -3,6 +3,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { searchArticles } from "../js/search.js";
+import { getAutomaticVibrationRelated, withAutomaticVibrationRelated } from "../js/vibrationRelations.js";
+import { VIBRATION_TEMPLATE_DEFINITIONS } from "../js/vibrationTemplates.js";
 
 const data = JSON.parse(fs.readFileSync(new URL("../data/vibration.json", import.meta.url), "utf8"));
 const byId = new Map(data.map(item => [item.id, item]));
@@ -12,19 +14,19 @@ const expectedGroupSizes = Object.freeze({
   "vibration-preparation": 7,
   "vibration-equipment": 10,
   "vibration-measurements": 12,
-  "vibration-parameters-group": 10,
-  "vibration-signal-analysis": 12,
+  "vibration-parameters-group": 11,
+  "vibration-signal-analysis": 13,
   "vibration-diagnostic-algorithm": 10,
   "vibration-fault-atlas": 29,
   "vibration-spectrum-atlas": 20,
-  "vibration-equipment-diagnostics": 10,
+  "vibration-equipment-diagnostics": 11,
   "vibration-practical-situations": 14,
-  "vibration-reference": 12,
+  "vibration-reference": 14,
   "vibration-tools": 8
 });
 
 test("раздел ВД содержит все группы без повторяющихся ID", () => {
-  assert.equal(data.length, 175);
+  assert.equal(data.length, 180);
   assert.equal(byId.size, data.length);
 
   for (const [groupId, expectedSize] of Object.entries(expectedGroupSizes)) {
@@ -79,8 +81,8 @@ test("новые статьи имеют нейтральные заготовк
   const tool = byId.get("vibration-tool-harmonics");
 
   assert.equal(fault.status, "draft");
-  assert.equal(fault.futureBlocks.length, 14);
-  assert.equal(spectrum.futureBlocks.length, 8);
+  assert.equal(fault.futureBlocks.length, 9);
+  assert.equal(spectrum.futureBlocks.length, 5);
   assert.match(spectrum.futureImageLabel, /спектр/i);
   assert.match(tool.sections[0].content, /разработке/i);
 });
@@ -172,4 +174,72 @@ test("поиск находит каждую статью оборудовани
   assert.ok(searchArticles("вихретоковый датчик", documents).some(item => item.id === "vibration-proximity-probes"));
   assert.ok(searchArticles("слабый магнит", documents).some(item => item.id === "vibration-sensor-installation-errors"));
   assert.ok(searchArticles("калибратор", documents).some(item => item.id === "vibration-measurement-chain-check"));
+});
+
+test("окончательная структура содержит все дополнительно разделённые страницы", () => {
+  for (const id of [
+    "vibration-subharmonics",
+    "vibration-coastdown-analysis",
+    "vibration-diagnostics-smoke-exhausters",
+    "vibration-reference-units",
+    "vibration-reference-abbreviations"
+  ]) assert.ok(byId.has(id), id);
+
+  assert.equal(byId.get("vibration-harmonics-subharmonics").title, "Гармоники");
+  assert.equal(byId.get("vibration-runup-coastdown").title, "Анализ разгона");
+  assert.equal(byId.get("vibration-diagnostics-fans").title, "Вентиляторы");
+});
+
+test("каждый материал ВД имеет валидные метаданные и шаблон", () => {
+  data.filter(item => item.type !== "section").forEach(article => {
+    assert.ok(VIBRATION_TEMPLATE_DEFINITIONS[article.template], article.id);
+    assert.equal(article.metadata.section, "vibration", article.id);
+    assert.equal(article.metadata.group, article.parentId, article.id);
+    assert.equal(article.metadata.materialType, article.template, article.id);
+    assert.ok(Array.isArray(article.metadata.equipment), article.id);
+    assert.ok(Array.isArray(article.metadata.faults), article.id);
+    assert.ok(Array.isArray(article.metadata.diagnosticSigns), article.id);
+    assert.ok(Array.isArray(article.metadata.keywords), article.id);
+    assert.ok(Array.isArray(article.metadata.relatedArticles), article.id);
+    assert.equal(article.metadata.status, article.status || "published", article.id);
+    if (article.status === "draft") {
+      assert.deepEqual(article.futureBlocks, [...VIBRATION_TEMPLATE_DEFINITIONS[article.template].sections], article.id);
+      assert.ok(article.mediaSlots.length > 0, article.id);
+    }
+  });
+});
+
+test("атласы, сценарии и инструменты используют специализированные шаблоны", () => {
+  assert.equal(byId.get("vibration-fault-unbalance").template, "fault");
+  assert.equal(byId.get("vibration-spectrum-1x").template, "spectrum");
+  assert.equal(byId.get("vibration-case-high-overall").template, "scenario");
+  assert.equal(byId.get("vibration-reference-symbols").template, "reference");
+  assert.equal(byId.get("vibration-tool-harmonics").template, "tool");
+  assert.deepEqual(byId.get("vibration-tool-diagnostic-tree").toolConfig.nodes, []);
+  assert.deepEqual(byId.get("vibration-tool-diagnostic-tree").toolConfig.edges, []);
+});
+
+test("автоматическая перелинковка связывает тему подшипников с разными видами материалов", () => {
+  const source = byId.get("vibration-bearing-supports");
+  const automatic = getAutomaticVibrationRelated(source, data, { limit: 8 });
+  const types = new Set(automatic.map(item => item.metadata.materialType));
+
+  assert.ok(types.has("fault"));
+  assert.ok(types.has("spectrum"));
+  assert.ok(types.has("scenario"));
+  const enriched = withAutomaticVibrationRelated(source, data, 8);
+  const related = enriched.sections.find(section => section.type === "related");
+  assert.ok(related.items.length > 0);
+  assert.equal(new Set(related.items.map(item => item.id)).size, related.items.length);
+});
+
+test("поиск учитывает оборудование, неисправности и диагностические признаки из metadata", () => {
+  const documents = data.map(item => ({
+    ...item,
+    methodKey: "vibration",
+    searchText: JSON.stringify([item, item.metadata])
+  }));
+  assert.ok(searchArticles("дымососы", documents).some(item => item.id === "vibration-diagnostics-smoke-exhausters"));
+  assert.ok(searchArticles("механические ослабления", documents).some(item => item.id === "vibration-fault-mechanical-looseness"));
+  assert.ok(searchArticles("широкополосный шум", documents).some(item => item.id === "vibration-spectrum-broadband-noise"));
 });

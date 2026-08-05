@@ -91,3 +91,29 @@
   line-height: 1.5;
 }
 
+.article-media-slots {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 4px;
+}
+
+.article-media-slot {
+  display: grid;
+  min-height: 92px;
+  place-items: center;
+  padding: 16px;
+  border: 1px dashed rgba(125, 177, 255, .35);
+  border-radius: 14px;
+  background: rgba(59, 130, 246, .05);
+  color: #98a8ba;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.article-media-slot-spectrum { min-height: 150px; }
+.article-media-slot-gallery { min-height: 112px; }
+
+@media (min-width: 720px) {
+  .article-media-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

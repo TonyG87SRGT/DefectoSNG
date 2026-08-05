@@ -24,6 +24,26 @@ const isNonEmptyString = value => typeof value === "string" && Boolean(value.tri
 const isStringArray = value => Array.isArray(value) &&
   value.every(item => typeof item === "string");
 const PIPELINE_CATEGORY_IDS = new Set(["butt", "lap", "corner"]);
+const VIBRATION_TEMPLATE_IDS = new Set(["article", "fault", "spectrum", "scenario", "reference", "tool"]);
+const MEDIA_SLOT_TYPES = new Set(["photo", "diagram", "spectrum", "table", "gallery"]);
+
+function validateVibrationMetadata(metadata) {
+  const errors = [];
+  if (!isObject(metadata)) return ["metadata должен быть объектом"];
+  for (const field of ["section", "group", "materialType", "status"]) {
+    if (!isNonEmptyString(metadata[field])) errors.push(`metadata.${field} должен быть непустой строкой`);
+  }
+  for (const field of ["equipment", "faults", "diagnosticSigns", "keywords", "relatedArticles"]) {
+    if (!isStringArray(metadata[field])) errors.push(`metadata.${field} должен быть массивом строк`);
+  }
+  if (metadata.materialType && !VIBRATION_TEMPLATE_IDS.has(metadata.materialType)) {
+    errors.push(`metadata.materialType не поддерживается: ${String(metadata.materialType)}`);
+  }
+  if (metadata.status && !ARTICLE_STATUSES.includes(metadata.status)) {
+    errors.push(`metadata.status не поддерживается: ${String(metadata.status)}`);
+  }
+  return errors;
+}
 
 export function validatePipelineJointShape(joint) {
   const errors = [];
@@ -274,6 +294,24 @@ export function validateArticleShape(article) {
   }
   if (article.futureImageLabels != null && !isStringArray(article.futureImageLabels)) {
     errors.push("futureImageLabels должен быть массивом строк");
+  }
+  if (article.template != null && !VIBRATION_TEMPLATE_IDS.has(article.template)) {
+    errors.push(`неподдерживаемый template: ${String(article.template)}`);
+  }
+  if (article.metadata != null) errors.push(...validateVibrationMetadata(article.metadata));
+  if (article.mediaSlots != null) {
+    if (!Array.isArray(article.mediaSlots)) {
+      errors.push("mediaSlots должен быть массивом");
+    } else {
+      article.mediaSlots.forEach((slot, index) => {
+        if (!isObject(slot) || !MEDIA_SLOT_TYPES.has(slot.type) || !isNonEmptyString(slot.label)) {
+          errors.push(`mediaSlots[${index}] должен содержать допустимые type и label`);
+        }
+      });
+    }
+  }
+  if (article.toolConfig != null && !isObject(article.toolConfig)) {
+    errors.push("toolConfig должен быть объектом");
   }
   if (article.groupKind != null && !["group", "catalog", "tools"].includes(article.groupKind)) {
     errors.push(`неподдерживаемый groupKind: ${String(article.groupKind)}`);
