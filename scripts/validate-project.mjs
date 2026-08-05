@@ -242,12 +242,17 @@ for (const [method, articles] of articlesByMethod.entries()) {
       });
     }
 
-    if (method === "vibration" && Array.isArray(article.metadata?.relatedArticles)) {
-      article.metadata.relatedArticles.forEach((id, index) => {
-        if (!articles.has(id)) {
-          addError(`${location}.metadata.relatedArticles[${index}]`, `материал не найден: vibration/${id}`);
-        }
-      });
+    if (method === "vibration") {
+      for (const field of [
+        "relatedArticles", "relatedFaults", "relatedSpectra", "relatedScenarios",
+        "relatedReferences", "relatedMeasurements", "relatedParameters", "similarSpectra"
+      ]) {
+        (article.metadata?.[field] || []).forEach((id, index) => {
+          if (!articles.has(id)) {
+            addError(`${location}.metadata.${field}[${index}]`, `материал не найден: vibration/${id}`);
+          }
+        });
+      }
     }
   }
 }

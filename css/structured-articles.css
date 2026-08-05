@@ -117,3 +117,20 @@
 @media (min-width: 720px) {
   .article-media-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+.vibration-knowledge-blocks {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.vibration-knowledge-block {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.vibration-knowledge-block h3 { margin: 0 0 10px; }
+.vibration-knowledge-block ul { margin: 0; padding-left: 20px; }
+.vibration-knowledge-block li + li { margin-top: 8px; }
+.vibration-knowledge-block a { color: var(--blue); }

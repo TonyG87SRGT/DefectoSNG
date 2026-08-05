@@ -2,7 +2,7 @@ import { content } from "./dom.js";
 import { isFavorite, toggleFavorite } from "./favorites.js";
 import { escapeAttribute, safeText } from "./html.js";
 import { renderStructuredArticle } from "./renderers.js";
-import { withAutomaticVibrationRelated } from "./vibrationRelations.js";
+import { getVibrationKnowledgeBlocks } from "./vibrationKnowledge.js";
 import { getRouteHash, goBack, navigate } from "./router.js";
 import {
   METHODS,
@@ -203,7 +203,7 @@ export function renderArticle(methodKey, article) {
   const method = METHODS[methodKey];
   const favorite = isFavorite(methodKey, article.id);
   const displayedArticle = methodKey === "vibration"
-    ? withAutomaticVibrationRelated(article, getArticles("vibration"))
+    ? { ...article, sections: (article.sections || []).filter(section => section.type !== "related") }
     : article;
   const articleBody = displayedArticle.sections
     ? renderStructuredArticle(displayedArticle, {
@@ -233,6 +233,27 @@ export function renderArticle(methodKey, article) {
         </div>
       `).join("")
     : "";
+  const knowledgeBlocks = methodKey === "vibration"
+    ? getVibrationKnowledgeBlocks(article, getArticles("vibration"))
+    : [];
+  const knowledgeHtml = knowledgeBlocks.length ? `
+    <section class="vibration-knowledge-blocks" aria-label="Навигация по базе знаний">
+      ${knowledgeBlocks.map(block => `
+        <section class="vibration-knowledge-block vibration-knowledge-${escapeAttribute(block.id)}">
+          <h3>${safeText(block.title)}</h3>
+          <div class="vibration-knowledge-links">
+            ${block.facet
+              ? block.items.map(value => `
+                  <a href="${getRouteHash({ view: "vibrationKnowledge", [block.facet]: value })}" data-vibration-facet="${escapeAttribute(block.facet)}" data-vibration-facet-value="${escapeAttribute(value)}">${safeText(value)}</a>
+                `).join("")
+              : block.items.map(item => `
+                  <a href="${getRouteHash(getItemRoute("vibration", item))}" data-related-article="${escapeAttribute(item.id)}" data-related-method="vibration">${safeText(item.title)}</a>
+                `).join("")}
+          </div>
+        </section>
+      `).join("")}
+    </section>
+  ` : "";
   const futureOutline = Array.isArray(article.futureBlocks) && article.futureBlocks.length
     ? `
       <section class="article-future-outline">
@@ -265,6 +286,7 @@ export function renderArticle(methodKey, article) {
       ${mediaSlots ? `<section class="article-media-slots" aria-label="Места для будущих материалов">${mediaSlots}</section>` : ""}
       ${articleBody}
       ${futureOutline}
+      ${knowledgeHtml}
     </article>
   `;
 
@@ -294,6 +316,16 @@ export function renderArticle(methodKey, article) {
         event.preventDefault();
         navigate(getItemRoute(relatedMethod, relatedArticle));
       }
+    });
+  });
+  content.querySelectorAll("[data-vibration-facet]").forEach(link => {
+    link.addEventListener("click", event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      navigate({
+        view: "vibrationKnowledge",
+        [link.dataset.vibrationFacet]: link.dataset.vibrationFacetValue
+      });
     });
   });
 }

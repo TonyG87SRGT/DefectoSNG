@@ -15,7 +15,7 @@ import { navigate, replaceRoute, startRouter } from "./router.js";
 import { buildSearchIndex, renderSearch } from "./search.js";
 import { METHODS, getItem, getItemRoute, loadData } from "./store.js";
 import { renderTools } from "./tools.js";
-import { renderVibrationOverview } from "./vibration.js";
+import { renderVibrationKnowledge, renderVibrationOverview } from "./vibration.js";
 import {
   renderArticle,
   renderArticleGroup,
@@ -80,6 +80,11 @@ function renderRoute(route) {
 
   if (route.view === "pipelineReference") {
     renderPipelineReference(route.itemId);
+    return true;
+  }
+
+  if (route.view === "vibrationKnowledge") {
+    renderVibrationKnowledge(route);
     return true;
   }
 

@@ -19,7 +19,12 @@ function metadataSets(article) {
     equipment: normalizedValues(metadata.equipment),
     faults: normalizedValues(metadata.faults),
     signs: normalizedValues(metadata.diagnosticSigns),
-    keywords: new Set([...normalizedValues(metadata.keywords)].filter(value => !GENERIC_KEYWORDS.has(value)))
+    parameters: normalizedValues(metadata.measuredParameters),
+    keywords: new Set([
+      ...normalizedValues(metadata.keywords),
+      ...normalizedValues(metadata.tags),
+      ...normalizedValues(metadata.aliases)
+    ].filter(value => !GENERIC_KEYWORDS.has(value)))
   };
 }
 
@@ -30,6 +35,7 @@ export function scoreVibrationRelation(source, candidate) {
   return intersectionSize(left.equipment, right.equipment) * 12
     + intersectionSize(left.faults, right.faults) * 14
     + intersectionSize(left.signs, right.signs) * 10
+    + intersectionSize(left.parameters, right.parameters) * 10
     + intersectionSize(left.keywords, right.keywords) * 2;
 }
 
