@@ -31,7 +31,7 @@ export function renderHome() {
   content.innerHTML = `
     <p class="section-label">Методы контроля и диагностики</p>
     <div class="method-grid">
-      ${Object.entries(METHODS).map(([methodKey, method]) => {
+      ${Object.entries(METHODS).filter(([, method]) => !method.hiddenFromMethodGrid).map(([methodKey, method]) => {
         const route = { view: "method", method: methodKey };
         return `
           <a class="method-card ${escapeAttribute(methodKey)}" href="${getRouteHash(route)}" data-method="${escapeAttribute(methodKey)}">
@@ -45,6 +45,14 @@ export function renderHome() {
         `;
       }).join("")}
     </div>
+
+    <p class="section-label quick-title">Атласы и справочники</p>
+    <a class="article-card home-feature-card" href="#pipeline" data-home-pipeline>
+      <span class="article-category">ГОСТ 16037-80</span>
+      <h2>Сварные соединения трубопроводов</h2>
+      <p>Типы соединений, подготовка кромок и контролируемые размеры</p>
+      <span class="home-feature-arrow" aria-hidden="true">›</span>
+    </a>
 
     <p class="section-label quick-title">Быстрый доступ</p>
     <div class="quick-grid">
@@ -67,6 +75,10 @@ export function renderHome() {
     link.addEventListener("click", event => {
       handleRouteLink(event, { view: "method", method: link.dataset.method });
     });
+  });
+
+  content.querySelector("[data-home-pipeline]").addEventListener("click", event => {
+    handleRouteLink(event, { view: "pipeline" });
   });
 
   const quickRoutes = {

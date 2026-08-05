@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   SECTION_TYPES,
   validateArticleShape,
+  validatePipelineJointShape,
   validateSectionShape
 } from "../js/schema.js";
 
@@ -45,5 +46,23 @@ test("опубликованная статья требует содержим�
     title: "Тест",
     category: "Тест"
   });
-  assert.ok(errors.some(error => error.includes("text или")));
+  assert.ok(errors.some(error => error.includes("статья должна содержать")));
+});
+
+test("карточка трубопровода допускает неизвестные значения как null", () => {
+  assert.deepEqual(validatePipelineJointShape({
+    designation: "С17",
+    category: "butt",
+    connectedElements: null,
+    edgePreparation: null,
+    weldCharacter: null,
+    backing: null,
+    weldingMethods: [],
+    thicknessRange: null,
+    minimumDiameter: null,
+    standardTable: null,
+    specialFilters: [],
+    parameters: [],
+    images: { edgePreparation: null, weldSection: null }
+  }), []);
 });

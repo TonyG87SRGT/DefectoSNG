@@ -68,6 +68,20 @@ export function getMethodLoadError(methodKey) {
 }
 
 export function getItemRoute(methodKey, article) {
+  if (methodKey === "pipeline") {
+    if (article.id === "pipeline-welded-joints") return { view: "pipeline" };
+    if (article.pipelineCategory) {
+      return { view: "pipeline", category: article.pipelineCategory };
+    }
+    if (article.pipelineJoint) {
+      return { view: "pipelineJoint", itemId: article.id };
+    }
+    if (article.parentId === "pipeline-reference-materials") {
+      return { view: "pipelineReference", itemId: article.id };
+    }
+    if (article.id === "pipeline-reference-materials") return { view: "pipeline" };
+  }
+
   if (methodKey === "vik" && article.id === "vik-defects") {
     return { view: "atlas" };
   }

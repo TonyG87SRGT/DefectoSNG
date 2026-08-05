@@ -18,6 +18,12 @@ export const METHODS = Object.freeze({
     short: "ВД",
     title: "Вибродиагностика",
     icon: "📈"
+  }),
+  pipeline: Object.freeze({
+    short: "Сварные соединения трубопроводов",
+    title: "Атлас по ГОСТ 16037-80",
+    icon: "⌁",
+    hiddenFromMethodGrid: true
   })
 });
 
@@ -25,7 +31,8 @@ export const DATA_FILES = Object.freeze({
   vik: "data/vik.json",
   uzk: "data/uzk.json",
   pvk: "data/pvk.json",
-  vibration: "data/vibration.json"
+  vibration: "data/vibration.json",
+  pipeline: "data/pipeline-welded-joints.json"
 });
 
 export const REFERENCE_DATA_FILE = "data/references.json";
