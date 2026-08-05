@@ -212,9 +212,14 @@ export function renderArticle(methodKey, article) {
         }
       })
     : `<p>${safeText(article.text)}</p>`;
-  const futureImage = article.futureImageLabel
-    ? `<div class="article-future-image" role="img" aria-label="${escapeAttribute(article.futureImageLabel)}">${safeText(article.futureImageLabel)}</div>`
-    : "";
+  const futureImageLabels = Array.isArray(article.futureImageLabels)
+    ? article.futureImageLabels
+    : article.futureImageLabel
+      ? [article.futureImageLabel]
+      : [];
+  const futureImage = futureImageLabels
+    .map(label => `<div class="article-future-image" role="img" aria-label="${escapeAttribute(label)}">${safeText(label)}</div>`)
+    .join("");
   const futureOutline = Array.isArray(article.futureBlocks) && article.futureBlocks.length
     ? `
       <section class="article-future-outline">

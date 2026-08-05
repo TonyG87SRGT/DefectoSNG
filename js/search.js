@@ -36,6 +36,7 @@ export function buildSearchIndex() {
       article.sectionTitle || "",
       ...(article.tags || []),
       ...(article.futureBlocks || []),
+      ...(article.futureImageLabels || []),
       article.atlas?.shortFeature || "",
       ...(article.atlas?.aliases || []),
       ...(article.atlas?.tags || []),
