@@ -78,4 +78,21 @@ for (const item of items.filter(item => item.type !== "section")) {
   }
 }
 
+const diagnosticAssistant = byId.get("vibration-tool-fault-search");
+if (diagnosticAssistant) {
+  diagnosticAssistant.title = "Помощник по поиску вероятной неисправности";
+  diagnosticAssistant.summary = "Пошаговая проверка исходных данных, достоверности измерений и диагностических признаков.";
+  diagnosticAssistant.status = "published";
+  diagnosticAssistant.metadata.status = "published";
+  diagnosticAssistant.toolConfig = {
+    ...diagnosticAssistant.toolConfig,
+    status: "available",
+    kind: "interactive-diagnostics",
+    knowledgeApi: "vibration",
+    engine: "vibrationDiagnosticEngine"
+  };
+  delete diagnosticAssistant.futureBlocks;
+  delete diagnosticAssistant.futureImageLabel;
+}
+
 await writeFile(path, `${JSON.stringify(items, null, 2)}\n`, "utf8");

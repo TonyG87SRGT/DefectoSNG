@@ -16,6 +16,7 @@ import { buildSearchIndex, renderSearch } from "./search.js";
 import { METHODS, getItem, getItemRoute, loadData } from "./store.js";
 import { renderTools } from "./tools.js";
 import { renderVibrationKnowledge, renderVibrationOverview } from "./vibration.js";
+import { renderVibrationDiagnosticAssistant, VIBRATION_DIAGNOSTIC_TOOL_ID } from "./vibrationDiagnosticAssistant.js";
 import {
   renderArticle,
   renderArticleGroup,
@@ -119,6 +120,11 @@ function renderRoute(route) {
       canonicalRoute.itemId !== route.itemId) {
       replaceRoute(canonicalRoute);
       return false;
+    }
+
+    if (route.view === "article" && route.method === "vibration" && article.id === VIBRATION_DIAGNOSTIC_TOOL_ID) {
+      renderVibrationDiagnosticAssistant();
+      return true;
     }
 
     route.view === "section"
