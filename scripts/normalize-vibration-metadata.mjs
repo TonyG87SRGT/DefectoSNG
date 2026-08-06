@@ -95,4 +95,26 @@ if (diagnosticAssistant) {
   delete diagnosticAssistant.futureImageLabel;
 }
 
+const calculatorDefinitions = {
+  "vibration-tool-rotation-frequency": ["Калькулятор оборотной частоты", "Пересчёт оборотов, герц, периода и угловой скорости.", ["обороты", "герцы", "угловая скорость", "1×"]],
+  "vibration-tool-harmonics": ["Калькулятор гармоник и субгармоник", "Расчёт гармоник, субгармоник и пользовательских порядков относительно частоты вращения.", ["гармоники", "субгармоники", "порядок", "1×"]],
+  "vibration-tool-bearing-frequencies": ["Калькулятор частот подшипника качения", "Теоретические частоты FTF, BPFO, BPFI и BSF по ручному вводу геометрии.", ["BPFO", "BPFI", "BSF", "FTF", "подшипник", "наружная обойма", "внутренняя обойма"]],
+  "vibration-tool-unit-conversion": ["Перевод единиц вибрации", "Частота вращения, перемещение, скорость, ускорение и гармонический пересчёт.", ["единицы", "RMS", "Peak", "Peak-to-Peak", "g", "мм/с"]],
+  "vibration-tool-parameter-selection": ["Помощник по выбору измеряемого параметра", "Практическая рекомендация по параметру и датчику без постановки диагноза.", ["выбор параметра", "датчик", "виброскорость", "виброускорение", "виброперемещение"]]
+};
+
+for (const [id, [title, summary, aliases]] of Object.entries(calculatorDefinitions)) {
+  const item = byId.get(id);
+  if (!item) continue;
+  item.title = title;
+  item.summary = summary;
+  item.status = "published";
+  item.metadata.status = "published";
+  item.metadata.aliases = unique([...item.metadata.aliases, ...aliases]);
+  item.metadata.keywords = unique([...(item.metadata.keywords || []), ...aliases, "вибродиагностика", "калькулятор"]);
+  item.toolConfig = { ...item.toolConfig, status: "available", kind: "calculator", engine: "vibrationCalculations", history: "local-opt-in" };
+  delete item.futureBlocks;
+  delete item.futureImageLabel;
+}
+
 await writeFile(path, `${JSON.stringify(items, null, 2)}\n`, "utf8");
