@@ -9,7 +9,7 @@ import {
   clearDiagnosticDraft, clearDiagnosticHistory, deleteDiagnosticSession, loadDiagnosticDraft,
   loadDiagnosticHistory, saveDiagnosticDraft, saveDiagnosticSession
 } from "./vibrationDiagnosticStorage.js";
-import { consumeToolTransfer } from "./vibrationCalculatorStorage.js";
+import { consumeToolTransfer, saveToolTransfer } from "./vibrationCalculatorStorage.js";
 
 const TOOL_ID = "vibration-tool-fault-search";
 let answers = {};
@@ -159,6 +159,15 @@ function renderResult() {
     ${renderHistory()}
   </section>`;
   bindBack();
+  const rotationButton = document.createElement("button");
+  rotationButton.type = "button";
+  rotationButton.className = "secondary-button";
+  rotationButton.textContent = "Открыть калькулятор оборотов";
+  rotationButton.addEventListener("click", () => {
+    saveToolTransfer({ target: "vibration-tool-rotation-frequency", rpm: answers.rpm || "" });
+    navigate({ view: "article", method: "vibration", itemId: "vibration-tool-rotation-frequency" });
+  });
+  content.querySelector(".diagnostic-actions")?.append(rotationButton);
   content.querySelectorAll("[data-related-id]").forEach(link => link.addEventListener("click", event => { event.preventDefault(); const item = getItem("vibration", link.dataset.relatedId); if (item) navigate(getItemRoute("vibration", item)); }));
   content.querySelector("[data-copy]").addEventListener("click", async () => { try { await navigator.clipboard.writeText(report); content.querySelector(".diagnostic-copy-status").textContent = "Результат скопирован."; } catch { const area = content.querySelector(".diagnostic-report-text"); area.select(); document.execCommand("copy"); content.querySelector(".diagnostic-copy-status").textContent = "Результат скопирован."; } });
   content.querySelector("[data-save]").addEventListener("click", () => { saveDiagnosticSession({ equipment: answers.equipment, signs: answers.signs, causes: result.causes.map(item => item.label), quality: result.quality.level, report }); renderResult(); });

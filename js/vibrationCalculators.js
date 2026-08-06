@@ -58,9 +58,21 @@ function renderHistory() {
   const host = content.querySelector("[data-history]");
   if (!host) return;
   const entries = loadCalculatorHistory().filter(item => item.toolId === activeArticle()?.id);
-  host.innerHTML = entries.length ? entries.map(entry => `<div class="calculator-history-item"><div><strong>${safeText(entry.summary)}</strong><small>${new Date(entry.date).toLocaleString("ru-RU")}</small></div><div><button type="button" data-history-copy="${entry.id}">Копировать</button><button type="button" class="text-button" data-history-delete="${entry.id}">Удалить</button></div></div>`).join("") : `<p class="calculator-muted">Сохранённых расчётов пока нет.</p>`;
+  host.innerHTML = entries.length ? entries.map(entry => `<div class="calculator-history-item"><div><strong>${safeText(entry.summary)}</strong><small>${new Date(entry.date).toLocaleString("ru-RU")}</small></div><div><button type="button" data-history-open="${entry.id}">Повторить</button><button type="button" data-history-copy="${entry.id}">Копировать</button><button type="button" class="text-button" data-history-delete="${entry.id}">Удалить</button></div></div>`).join("") : `<p class="calculator-muted">Сохранённых расчётов пока нет.</p>`;
+  host.querySelectorAll("[data-history-open]").forEach(button => button.addEventListener("click", () => { const item = entries.find(entry => entry.id === button.dataset.historyOpen); if (item) restoreInputs(item.inputs || {}); }));
   host.querySelectorAll("[data-history-copy]").forEach(button => button.addEventListener("click", () => { const item = entries.find(entry => entry.id === button.dataset.historyCopy); if (item) copyText(item.report, content); }));
   host.querySelectorAll("[data-history-delete]").forEach(button => button.addEventListener("click", () => { deleteCalculatorResult(button.dataset.historyDelete); renderHistory(); }));
+}
+
+function restoreInputs(inputs) {
+  const form = content.querySelector("[data-calculator-form]");
+  if (form.elements["conversion-mode"] && inputs["conversion-mode"]) {
+    form.elements["conversion-mode"].value = inputs["conversion-mode"];
+    form.elements["conversion-mode"].dispatchEvent(new Event("change"));
+  }
+  Object.entries(inputs).forEach(([name, value]) => { if (form.elements[name]) form.elements[name].value = value; });
+  form.requestSubmit();
+  form.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function rotationView() {
