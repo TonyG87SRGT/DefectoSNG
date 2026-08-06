@@ -15443,7 +15443,8 @@
         "1×"
       ],
       "measuredParameters": [
-        "Гармоники"
+        "Гармоники",
+        "Субгармоники"
       ],
       "relatedFaults": [],
       "relatedSpectra": [],
@@ -15521,7 +15522,11 @@
       "relatedArticles": [],
       "status": "published",
       "tags": [
-        "bearings"
+        "bearings",
+        "bpfo",
+        "bpfi",
+        "bsf",
+        "ftf"
       ],
       "aliases": [
         "Подшипники",
@@ -15531,7 +15536,13 @@
         "BPFO",
         "BPFI",
         "BSF",
-        "FTF"
+        "FTF",
+        "БПФО",
+        "наружное кольцо",
+        "БПФИ",
+        "внутреннее кольцо",
+        "частота тел качения",
+        "частота сепаратора"
       ],
       "measuredParameters": [],
       "relatedFaults": [],
@@ -15606,16 +15617,24 @@
       ],
       "relatedArticles": [],
       "status": "published",
-      "tags": [],
+      "tags": [
+        "rms"
+      ],
       "aliases": [
         "единицы",
         "RMS",
         "Peak",
         "Peak-to-Peak",
         "g",
-        "мм/с"
+        "мм/с",
+        "СКЗ",
+        "среднеквадратичное значение"
       ],
-      "measuredParameters": [],
+      "measuredParameters": [
+        "RMS",
+        "Peak-to-Peak",
+        "Peak"
+      ],
       "relatedFaults": [],
       "relatedSpectra": [],
       "relatedScenarios": [],
@@ -15687,15 +15706,23 @@
       ],
       "relatedArticles": [],
       "status": "published",
-      "tags": [],
+      "tags": [
+        "velocity"
+      ],
       "aliases": [
         "выбор параметра",
         "датчик",
         "виброскорость",
         "виброускорение",
-        "виброперемещение"
+        "виброперемещение",
+        "Виброскорость",
+        "скорость вибрации"
       ],
-      "measuredParameters": [],
+      "measuredParameters": [
+        "Виброперемещение",
+        "Виброскорость",
+        "Виброускорение"
+      ],
       "relatedFaults": [],
       "relatedSpectra": [],
       "relatedScenarios": [],
@@ -15872,23 +15899,15 @@
     "id": "vibration-tool-trend-log",
     "parentId": "vibration-tools",
     "category": "Инструменты",
-    "title": "Журнал трендов",
-    "summary": "Инструмент находится в разработке.",
-    "status": "draft",
+    "title": "Журнал виброизмерений",
+    "summary": "Локальное ведение оборудования, измерительных точек, маршрутов, событий и трендов.",
+    "status": "published",
     "order": 8,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
       "Журнал трендов"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Входные данные",
-      "Результат",
-      "Ограничения",
-      "Связанные материалы"
     ],
     "sections": [
       {
@@ -15909,16 +15928,27 @@
         "вибрация",
         "вибродиагностика",
         "техническая диагностика",
-        "Журнал трендов"
+        "Журнал трендов",
+        "IndexedDB",
+        "тренд",
+        "измерительная точка",
+        "событие",
+        "ремонт",
+        "экспорт CSV",
+        "резервная копия"
       ],
       "relatedArticles": [],
-      "status": "draft",
+      "status": "published",
       "tags": [
         "trend"
       ],
       "aliases": [
         "Тренд",
-        "трендовый анализ"
+        "трендовый анализ",
+        "журнал трендов",
+        "журнал измерений",
+        "анализ тренда",
+        "маршрутный обход"
       ],
       "measuredParameters": [],
       "relatedFaults": [],
@@ -15939,11 +15969,14 @@
       }
     ],
     "toolConfig": {
-      "status": "planned",
-      "kind": "calculator",
+      "status": "available",
+      "kind": "measurement-journal",
       "inputs": [],
       "outputs": [],
-      "knowledgeApi": "vibration"
+      "knowledgeApi": "vibration",
+      "database": "DefectoSNGVibrationJournal",
+      "databaseVersion": 1,
+      "offline": true
     }
   },
   {

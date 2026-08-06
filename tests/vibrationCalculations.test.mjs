@@ -52,7 +52,7 @@ test("все пять прежних ID активированы без смен
     assert.equal(byId.get(id)?.toolConfig?.kind, "calculator");
   });
 });
-test("PWA 0.19.1 кэширует расчётные модули", () => {
-  assert.equal(APP_VERSION, "0.19.1");
+test("текущая PWA кэширует расчётные модули", () => {
+  assert.equal(APP_VERSION, "0.20.0");
   ["css/vibration-calculators.css", "js/vibrationCalculations.js", "js/vibrationCalculatorData.js", "js/vibrationCalculatorStorage.js", "js/vibrationCalculators.js"].forEach(path => assert.ok(ESSENTIAL_APP_PATHS.includes(path), path));
 });

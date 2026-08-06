@@ -131,6 +131,8 @@ function bindCalculator(article) {
   form.addEventListener("submit", event => { event.preventDefault(); clearErrors(form); try { calculate(article.id, form); } catch (error) { showError(form, error); } });
   const transfer = consumeToolTransfer(article.id);
   if (transfer?.rpm && form.elements.rotation) { form.elements.rotation.value = transfer.rpm; form.elements["rotation-unit"].value = "rpm"; form.requestSubmit(); }
+  if (transfer?.rpm && form.elements["inner-rotation"]) { form.elements["inner-rotation"].value = transfer.rpm; form.elements["rotation-unit"].value = "rpm"; }
+  if (transfer?.value && form.elements.value) { form.elements.value.value = transfer.value; }
   renderHistory();
 }
 

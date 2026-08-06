@@ -117,4 +117,17 @@ for (const [id, [title, summary, aliases]] of Object.entries(calculatorDefinitio
   delete item.futureImageLabel;
 }
 
+const measurementJournal = byId.get("vibration-tool-trend-log");
+if (measurementJournal) {
+  measurementJournal.title = "Журнал виброизмерений";
+  measurementJournal.summary = "Локальное ведение оборудования, измерительных точек, маршрутов, событий и трендов.";
+  measurementJournal.status = "published";
+  measurementJournal.metadata.status = "published";
+  measurementJournal.metadata.aliases = unique([...measurementJournal.metadata.aliases, "журнал трендов", "журнал измерений", "анализ тренда", "маршрутный обход"]);
+  measurementJournal.metadata.keywords = unique([...(measurementJournal.metadata.keywords || []), "IndexedDB", "тренд", "измерительная точка", "событие", "ремонт", "экспорт CSV", "резервная копия"]);
+  measurementJournal.toolConfig = { ...measurementJournal.toolConfig, status: "available", kind: "measurement-journal", database: "DefectoSNGVibrationJournal", databaseVersion: 1, offline: true };
+  delete measurementJournal.futureBlocks;
+  delete measurementJournal.futureImageLabel;
+}
+
 await writeFile(path, `${JSON.stringify(items, null, 2)}\n`, "utf8");

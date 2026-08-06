@@ -194,6 +194,9 @@ export function renderVibrationDiagnosticAssistant() {
     answers.construction = ["speed-known"];
     pendingDraft = null;
   }
+  if (transfer?.equipment) answers.equipment = String(transfer.equipment);
+  if (transfer?.load) answers.load = String(transfer.load);
+  if (transfer?.temperature) answers.bearingTemperature = String(transfer.temperature);
   pendingDraft?.answers && Object.keys(pendingDraft.answers).length ? renderResume() : renderStep();
 }
 
