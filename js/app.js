@@ -18,6 +18,7 @@ import { renderTools } from "./tools.js";
 import { renderVibrationKnowledge, renderVibrationOverview } from "./vibration.js";
 import { renderVibrationDiagnosticAssistant, VIBRATION_DIAGNOSTIC_TOOL_ID } from "./vibrationDiagnosticAssistant.js";
 import { isVibrationCalculator, renderVibrationCalculator } from "./vibrationCalculators.js";
+import { renderVibrationJournal, VIBRATION_JOURNAL_TOOL_ID } from "./vibrationJournal.js";
 import {
   renderArticle,
   renderArticleGroup,
@@ -130,6 +131,11 @@ function renderRoute(route) {
 
       if (route.view === "article" && route.method === "vibration" && isVibrationCalculator(article.id)) {
         renderVibrationCalculator(article);
+        return true;
+      }
+
+      if (route.view === "article" && route.method === "vibration" && article.id === VIBRATION_JOURNAL_TOOL_ID) {
+        renderVibrationJournal(article);
         return true;
       }
 
