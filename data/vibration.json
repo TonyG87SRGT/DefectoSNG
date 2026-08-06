@@ -15315,23 +15315,15 @@
     "id": "vibration-tool-rotation-frequency",
     "parentId": "vibration-tools",
     "category": "Инструменты",
-    "title": "Калькулятор оборотов",
-    "summary": "Инструмент находится в разработке.",
-    "status": "draft",
+    "title": "Калькулятор оборотной частоты",
+    "summary": "Пересчёт оборотов, герц, периода и угловой скорости.",
+    "status": "published",
     "order": 1,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
       "Калькулятор оборотной частоты"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Входные данные",
-      "Результат",
-      "Ограничения",
-      "Связанные материалы"
     ],
     "sections": [
       {
@@ -15355,12 +15347,22 @@
         "вибродиагностика",
         "техническая диагностика",
         "Калькулятор оборотной частоты",
-        "Калькулятор оборотов"
+        "Калькулятор оборотов",
+        "обороты",
+        "герцы",
+        "угловая скорость",
+        "1×",
+        "калькулятор"
       ],
       "relatedArticles": [],
-      "status": "draft",
+      "status": "published",
       "tags": [],
-      "aliases": [],
+      "aliases": [
+        "обороты",
+        "герцы",
+        "угловая скорость",
+        "1×"
+      ],
       "measuredParameters": [],
       "relatedFaults": [],
       "relatedSpectra": [],
@@ -15380,34 +15382,28 @@
       }
     ],
     "toolConfig": {
-      "status": "planned",
+      "status": "available",
       "kind": "calculator",
       "inputs": [],
       "outputs": [],
-      "knowledgeApi": "vibration"
+      "knowledgeApi": "vibration",
+      "engine": "vibrationCalculations",
+      "history": "local-opt-in"
     }
   },
   {
     "id": "vibration-tool-harmonics",
     "parentId": "vibration-tools",
     "category": "Инструменты",
-    "title": "Калькулятор гармоник",
-    "summary": "Инструмент находится в разработке.",
-    "status": "draft",
+    "title": "Калькулятор гармоник и субгармоник",
+    "summary": "Расчёт гармоник, субгармоник и пользовательских порядков относительно частоты вращения.",
+    "status": "published",
     "order": 2,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
       "Калькулятор гармоник"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Входные данные",
-      "Результат",
-      "Ограничения",
-      "Связанные материалы"
     ],
     "sections": [
       {
@@ -15430,12 +15426,22 @@
         "вибрация",
         "вибродиагностика",
         "техническая диагностика",
-        "Калькулятор гармоник"
+        "Калькулятор гармоник",
+        "гармоники",
+        "субгармоники",
+        "порядок",
+        "1×",
+        "калькулятор"
       ],
       "relatedArticles": [],
-      "status": "draft",
+      "status": "published",
       "tags": [],
-      "aliases": [],
+      "aliases": [
+        "гармоники",
+        "субгармоники",
+        "порядок",
+        "1×"
+      ],
       "measuredParameters": [
         "Гармоники"
       ],
@@ -15457,34 +15463,28 @@
       }
     ],
     "toolConfig": {
-      "status": "planned",
+      "status": "available",
       "kind": "calculator",
       "inputs": [],
       "outputs": [],
-      "knowledgeApi": "vibration"
+      "knowledgeApi": "vibration",
+      "engine": "vibrationCalculations",
+      "history": "local-opt-in"
     }
   },
   {
     "id": "vibration-tool-bearing-frequencies",
     "parentId": "vibration-tools",
     "category": "Инструменты",
-    "title": "Калькулятор частот подшипников",
-    "summary": "Инструмент находится в разработке.",
-    "status": "draft",
+    "title": "Калькулятор частот подшипника качения",
+    "summary": "Теоретические частоты FTF, BPFO, BPFI и BSF по ручному вводу геометрии.",
+    "status": "published",
     "order": 3,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
       "Калькулятор частот подшипника"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Входные данные",
-      "Результат",
-      "Ограничения",
-      "Связанные материалы"
     ],
     "sections": [
       {
@@ -15508,10 +15508,18 @@
         "вибродиагностика",
         "техническая диагностика",
         "Калькулятор частот подшипника",
-        "Калькулятор частот подшипников"
+        "Калькулятор частот подшипников",
+        "BPFO",
+        "BPFI",
+        "BSF",
+        "FTF",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма",
+        "калькулятор"
       ],
       "relatedArticles": [],
-      "status": "draft",
+      "status": "published",
       "tags": [
         "bearings"
       ],
@@ -15519,7 +15527,11 @@
         "Подшипники",
         "подшипник",
         "наружная обойма",
-        "внутренняя обойма"
+        "внутренняя обойма",
+        "BPFO",
+        "BPFI",
+        "BSF",
+        "FTF"
       ],
       "measuredParameters": [],
       "relatedFaults": [],
@@ -15540,34 +15552,28 @@
       }
     ],
     "toolConfig": {
-      "status": "planned",
+      "status": "available",
       "kind": "calculator",
       "inputs": [],
       "outputs": [],
-      "knowledgeApi": "vibration"
+      "knowledgeApi": "vibration",
+      "engine": "vibrationCalculations",
+      "history": "local-opt-in"
     }
   },
   {
     "id": "vibration-tool-unit-conversion",
     "parentId": "vibration-tools",
     "category": "Инструменты",
-    "title": "Перевод единиц",
-    "summary": "Инструмент находится в разработке.",
-    "status": "draft",
+    "title": "Перевод единиц вибрации",
+    "summary": "Частота вращения, перемещение, скорость, ускорение и гармонический пересчёт.",
+    "status": "published",
     "order": 4,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
       "Перевод единиц вибрации"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Входные данные",
-      "Результат",
-      "Ограничения",
-      "Связанные материалы"
     ],
     "sections": [
       {
@@ -15589,12 +15595,26 @@
         "вибродиагностика",
         "техническая диагностика",
         "Перевод единиц вибрации",
-        "Перевод единиц"
+        "Перевод единиц",
+        "единицы",
+        "RMS",
+        "Peak",
+        "Peak-to-Peak",
+        "g",
+        "мм/с",
+        "калькулятор"
       ],
       "relatedArticles": [],
-      "status": "draft",
+      "status": "published",
       "tags": [],
-      "aliases": [],
+      "aliases": [
+        "единицы",
+        "RMS",
+        "Peak",
+        "Peak-to-Peak",
+        "g",
+        "мм/с"
+      ],
       "measuredParameters": [],
       "relatedFaults": [],
       "relatedSpectra": [],
@@ -15614,34 +15634,28 @@
       }
     ],
     "toolConfig": {
-      "status": "planned",
+      "status": "available",
       "kind": "calculator",
       "inputs": [],
       "outputs": [],
-      "knowledgeApi": "vibration"
+      "knowledgeApi": "vibration",
+      "engine": "vibrationCalculations",
+      "history": "local-opt-in"
     }
   },
   {
     "id": "vibration-tool-parameter-selection",
     "parentId": "vibration-tools",
     "category": "Инструменты",
-    "title": "Подбор измеряемого параметра",
-    "summary": "Инструмент находится в разработке.",
-    "status": "draft",
+    "title": "Помощник по выбору измеряемого параметра",
+    "summary": "Практическая рекомендация по параметру и датчику без постановки диагноза.",
+    "status": "published",
     "order": 5,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
       "Помощник по выбору измеряемого параметра"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Входные данные",
-      "Результат",
-      "Ограничения",
-      "Связанные материалы"
     ],
     "sections": [
       {
@@ -15663,12 +15677,24 @@
         "вибродиагностика",
         "техническая диагностика",
         "Помощник по выбору измеряемого параметра",
-        "Подбор измеряемого параметра"
+        "Подбор измеряемого параметра",
+        "выбор параметра",
+        "датчик",
+        "виброскорость",
+        "виброускорение",
+        "виброперемещение",
+        "калькулятор"
       ],
       "relatedArticles": [],
-      "status": "draft",
+      "status": "published",
       "tags": [],
-      "aliases": [],
+      "aliases": [
+        "выбор параметра",
+        "датчик",
+        "виброскорость",
+        "виброускорение",
+        "виброперемещение"
+      ],
       "measuredParameters": [],
       "relatedFaults": [],
       "relatedSpectra": [],
@@ -15688,11 +15714,13 @@
       }
     ],
     "toolConfig": {
-      "status": "planned",
+      "status": "available",
       "kind": "calculator",
       "inputs": [],
       "outputs": [],
-      "knowledgeApi": "vibration"
+      "knowledgeApi": "vibration",
+      "engine": "vibrationCalculations",
+      "history": "local-opt-in"
     }
   },
   {

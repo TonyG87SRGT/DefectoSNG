@@ -9,6 +9,7 @@ import {
   clearDiagnosticDraft, clearDiagnosticHistory, deleteDiagnosticSession, loadDiagnosticDraft,
   loadDiagnosticHistory, saveDiagnosticDraft, saveDiagnosticSession
 } from "./vibrationDiagnosticStorage.js";
+import { consumeToolTransfer } from "./vibrationCalculatorStorage.js";
 
 const TOOL_ID = "vibration-tool-fault-search";
 let answers = {};
@@ -178,6 +179,12 @@ function renderResume() {
 export function renderVibrationDiagnosticAssistant() {
   pendingDraft = loadDiagnosticDraft();
   answers = {}; stepIndex = 0; result = null;
+  const transfer = consumeToolTransfer(TOOL_ID);
+  if (transfer?.rpm) {
+    answers.rpm = String(transfer.rpm);
+    answers.construction = ["speed-known"];
+    pendingDraft = null;
+  }
   pendingDraft?.answers && Object.keys(pendingDraft.answers).length ? renderResume() : renderStep();
 }
 

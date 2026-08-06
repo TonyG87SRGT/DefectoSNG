@@ -17,6 +17,7 @@ import { METHODS, getItem, getItemRoute, loadData } from "./store.js";
 import { renderTools } from "./tools.js";
 import { renderVibrationKnowledge, renderVibrationOverview } from "./vibration.js";
 import { renderVibrationDiagnosticAssistant, VIBRATION_DIAGNOSTIC_TOOL_ID } from "./vibrationDiagnosticAssistant.js";
+import { isVibrationCalculator, renderVibrationCalculator } from "./vibrationCalculators.js";
 import {
   renderArticle,
   renderArticleGroup,
@@ -122,10 +123,15 @@ function renderRoute(route) {
       return false;
     }
 
-    if (route.view === "article" && route.method === "vibration" && article.id === VIBRATION_DIAGNOSTIC_TOOL_ID) {
-      renderVibrationDiagnosticAssistant();
-      return true;
-    }
+      if (route.view === "article" && route.method === "vibration" && article.id === VIBRATION_DIAGNOSTIC_TOOL_ID) {
+        renderVibrationDiagnosticAssistant();
+        return true;
+      }
+
+      if (route.view === "article" && route.method === "vibration" && isVibrationCalculator(article.id)) {
+        renderVibrationCalculator(article);
+        return true;
+      }
 
     route.view === "section"
       ? renderArticleGroup(route.method, article)
