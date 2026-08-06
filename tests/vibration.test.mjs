@@ -219,6 +219,14 @@ test("атласы, сценарии и инструменты использу�
   assert.deepEqual(byId.get("vibration-tool-diagnostic-tree").toolConfig.edges, []);
 });
 
+test("помощник по неисправности активирован без изменения ID и маршрута", () => {
+  const tool = byId.get("vibration-tool-fault-search");
+  assert.equal(tool.status, "published");
+  assert.equal(tool.toolConfig.status, "available");
+  assert.equal(tool.toolConfig.engine, "vibrationDiagnosticEngine");
+  assert.equal(tool.id, "vibration-tool-fault-search");
+});
+
 test("автоматическая перелинковка связывает тему подшипников с разными видами материалов", () => {
   const source = byId.get("vibration-bearing-supports");
   const automatic = getAutomaticVibrationRelated(source, data, { limit: 8 });

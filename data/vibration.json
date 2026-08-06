@@ -15699,23 +15699,15 @@
     "id": "vibration-tool-fault-search",
     "parentId": "vibration-tools",
     "category": "Инструменты",
-    "title": "Поиск вероятной неисправности",
-    "summary": "Инструмент находится в разработке.",
-    "status": "draft",
+    "title": "Помощник по поиску вероятной неисправности",
+    "summary": "Пошаговая проверка исходных данных, достоверности измерений и диагностических признаков.",
+    "status": "published",
     "order": 6,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
       "Помощник по поиску неисправности"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Входные данные",
-      "Результат",
-      "Ограничения",
-      "Связанные материалы"
     ],
     "sections": [
       {
@@ -15740,7 +15732,7 @@
         "Поиск вероятной неисправности"
       ],
       "relatedArticles": [],
-      "status": "draft",
+      "status": "published",
       "tags": [],
       "aliases": [],
       "measuredParameters": [],
@@ -15762,13 +15754,14 @@
       }
     ],
     "toolConfig": {
-      "status": "planned",
+      "status": "available",
       "kind": "interactive-diagnostics",
       "inputs": [],
       "outputs": [],
       "nodes": [],
       "edges": [],
-      "knowledgeApi": "vibration"
+      "knowledgeApi": "vibration",
+      "engine": "vibrationDiagnosticEngine"
     }
   },
   {
