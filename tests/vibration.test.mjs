@@ -22,11 +22,11 @@ const expectedGroupSizes = Object.freeze({
   "vibration-equipment-diagnostics": 11,
   "vibration-practical-situations": 14,
   "vibration-reference": 14,
-  "vibration-tools": 8
+  "vibration-tools": 9
 });
 
 test("раздел ВД содержит все группы без повторяющихся ID", () => {
-  assert.equal(data.length, 180);
+  assert.equal(data.length, 181);
   assert.equal(byId.size, data.length);
 
   for (const [groupId, expectedSize] of Object.entries(expectedGroupSizes)) {

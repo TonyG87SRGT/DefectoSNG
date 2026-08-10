@@ -3,6 +3,16 @@ import { VIBRATION_TAGS } from "../js/vibrationTaxonomy.js";
 
 const path = new URL("../data/vibration.json", import.meta.url);
 const items = JSON.parse(await readFile(path, "utf8"));
+if (!items.some(item => item.id === "vibration-tool-data-analysis")) {
+  items.push({
+    id: "vibration-tool-data-analysis", parentId: "vibration-tools", category: "Инструменты",
+    title: "Анализ вибрационных данных", summary: "Импорт CSV и TXT, интерактивный просмотр, поиск пиков, FFT и разметка расчётных частот.",
+    status: "published", order: 9, tags: ["вибрация", "спектр", "FFT", "CSV", "анализ данных"], sections: [{ type: "note", title: "Назначение", content: "Локальный импорт и предварительный анализ вибрационных данных без постановки окончательного диагноза." }], template: "tool",
+    metadata: { section: "vibration", group: "vibration-tools", materialType: "tool", equipment: [], faults: [], diagnosticSigns: ["гармоники", "субгармоники", "пики"], keywords: ["анализ спектра", "временной сигнал", "CSV", "TXT", "FFT", "поиск пиков", "BPFO", "BPFI", "гармоники"], relatedArticles: ["vibration-spectrum-analysis", "vibration-fft", "vibration-harmonics-subharmonics", "vibration-subharmonics", "vibration-reference-bearing-frequencies"], status: "published", tags: ["spectrum", "fft"], aliases: ["анализатор спектра", "импорт спектра", "просмотр спектра", "анализ вибрации"], measuredParameters: [], relatedFaults: [], relatedSpectra: ["vibration-spectrum-atlas"], relatedScenarios: [], relatedReferences: [], normativeDocuments: ["ГОСТ Р ИСО 13373-3-2016"], relatedMeasurements: [], relatedParameters: [], probableFaults: [], similarSpectra: [], additionalChecks: [] },
+    mediaSlots: [{ type: "spectrum", label: "Интерактивный график" }],
+    toolConfig: { status: "available", kind: "vibration-data-analysis", inputs: ["CSV", "TXT"], outputs: ["маркеры", "признаки", "FFT"], knowledgeApi: "vibration", database: "DefectoSNGVibrationJournal", databaseVersion: 2, offline: true }
+  });
+}
 const byId = new Map(items.map(item => [item.id, item]));
 const relationFields = Object.freeze({
   fault: "relatedFaults",
@@ -125,9 +135,16 @@ if (measurementJournal) {
   measurementJournal.metadata.status = "published";
   measurementJournal.metadata.aliases = unique([...measurementJournal.metadata.aliases, "журнал трендов", "журнал измерений", "анализ тренда", "маршрутный обход"]);
   measurementJournal.metadata.keywords = unique([...(measurementJournal.metadata.keywords || []), "IndexedDB", "тренд", "измерительная точка", "событие", "ремонт", "экспорт CSV", "резервная копия"]);
-  measurementJournal.toolConfig = { ...measurementJournal.toolConfig, status: "available", kind: "measurement-journal", database: "DefectoSNGVibrationJournal", databaseVersion: 1, offline: true };
+  measurementJournal.toolConfig = { ...measurementJournal.toolConfig, status: "available", kind: "measurement-journal", database: "DefectoSNGVibrationJournal", databaseVersion: 2, offline: true };
   delete measurementJournal.futureBlocks;
   delete measurementJournal.futureImageLabel;
+}
+
+const dataAnalysis = byId.get("vibration-tool-data-analysis");
+if (dataAnalysis) {
+  dataAnalysis.sections = [{ type: "note", title: "Назначение", content: "Локальный импорт и предварительный анализ вибрационных данных без постановки окончательного диагноза." }];
+  dataAnalysis.metadata.relatedArticles = ["vibration-spectrum-analysis", "vibration-fft", "vibration-harmonics-subharmonics", "vibration-subharmonics", "vibration-reference-bearing-frequencies"];
+  dataAnalysis.toolConfig = { ...dataAnalysis.toolConfig, status: "available", kind: "vibration-data-analysis", database: "DefectoSNGVibrationJournal", databaseVersion: 2, offline: true };
 }
 
 await writeFile(path, `${JSON.stringify(items, null, 2)}\n`, "utf8");

@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.20.0";
+export const APP_VERSION = "0.21.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -19,6 +19,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "css/vibration-diagnostic.css",
   "css/vibration-calculators.css",
   "css/vibration-journal.css",
+  "css/vibration-data-analysis.css",
   "js/app.js",
   "js/atlas.js",
   "js/config.js",
@@ -53,6 +54,9 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "js/vibrationJournalDb.js",
   "js/vibrationJournalChart.js",
   "js/vibrationJournal.js",
+  "js/vibrationDataCore.js",
+  "js/vibrationDataChart.js",
+  "js/vibrationDataAnalysis.js",
   "js/vibrationKnowledge.js",
   "js/vibrationRelations.js",
   "js/vibrationTaxonomy.js",
