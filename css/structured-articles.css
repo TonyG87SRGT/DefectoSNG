@@ -114,6 +114,32 @@
 .article-media-slot-spectrum { min-height: 150px; }
 .article-media-slot-gallery { min-height: 112px; }
 
+.article-media-slot-loaded {
+  display: block;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-style: solid;
+  background: #fff;
+  color: #334155;
+  grid-column: 1 / -1;
+}
+
+.article-media-slot-loaded img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article-media-slot-loaded figcaption {
+  padding: 10px 14px 12px;
+  border-top: 1px solid rgba(125, 177, 255, .22);
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: left;
+}
+
 @media (min-width: 720px) {
   .article-media-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

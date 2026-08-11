@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.21.6";
+export const APP_VERSION = "0.21.7";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -72,6 +72,9 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
 ]);
 
 export const OPTIONAL_APP_PATHS = Object.freeze([
+  "images/articles/vibration/source-data/typical-pump-unit.jpg",
+  "images/articles/vibration/source-data/source-data-diagram.jpg",
+  "images/articles/vibration/source-data/source-data-reference-table.jpg",
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/apple-touch-icon.png",

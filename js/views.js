@@ -227,7 +227,12 @@ export function renderArticle(methodKey, article) {
     .map(label => `<div class="article-future-image" role="img" aria-label="${escapeAttribute(label)}">${safeText(label)}</div>`)
     .join("");
   const mediaSlots = Array.isArray(article.mediaSlots)
-    ? article.mediaSlots.map(slot => `
+    ? article.mediaSlots.map(slot => slot.src ? `
+        <figure class="article-media-slot article-media-slot-${escapeAttribute(slot.type)} article-media-slot-loaded">
+          <img src="${escapeAttribute(slot.src)}" alt="${escapeAttribute(slot.alt || slot.label)}" loading="lazy" decoding="async">
+          ${slot.caption ? `<figcaption>${safeText(slot.caption)}</figcaption>` : ""}
+        </figure>
+      ` : `
         <div class="article-media-slot article-media-slot-${escapeAttribute(slot.type)}" role="img" aria-label="${escapeAttribute(slot.label)}">
           <span>${safeText(slot.label)}</span>
         </div>

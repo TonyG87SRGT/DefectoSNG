@@ -312,6 +312,15 @@ export function validateArticleShape(article) {
         if (!isObject(slot) || !MEDIA_SLOT_TYPES.has(slot.type) || !isNonEmptyString(slot.label)) {
           errors.push(`mediaSlots[${index}] должен содержать допустимые type и label`);
         }
+        if (slot?.src != null && !isNonEmptyString(slot.src)) {
+          errors.push(`mediaSlots[${index}].src должен быть непустой строкой`);
+        }
+        if (slot?.alt != null && !isNonEmptyString(slot.alt)) {
+          errors.push(`mediaSlots[${index}].alt должен быть непустой строкой`);
+        }
+        if (slot?.caption != null && !isNonEmptyString(slot.caption)) {
+          errors.push(`mediaSlots[${index}].caption должен быть непустой строкой`);
+        }
       });
     }
   }
