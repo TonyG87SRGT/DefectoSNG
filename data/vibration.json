@@ -16441,7 +16441,9 @@
         "vibration-spectrum-atlas"
       ],
       "relatedScenarios": [],
-      "relatedReferences": [],
+      "relatedReferences": [
+        "vibration-reference-bearing-frequencies"
+      ],
       "normativeDocuments": [
         "ГОСТ Р ИСО 13373-3-2016"
       ],
