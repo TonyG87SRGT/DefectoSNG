@@ -73,7 +73,7 @@ test("20 000 измерений группируются и анализирую
 });
 
 test("PWA 0.20.0 кэширует журнал и не кэширует пользовательские записи", () => {
-  assert.equal(APP_VERSION, "0.21.5");
+  assert.equal(APP_VERSION, "0.21.6");
   ["css/vibration-journal.css", "js/vibrationJournalCore.js", "js/vibrationJournalDb.js", "js/vibrationJournalChart.js", "js/vibrationJournal.js"].forEach(path => assert.ok(ESSENTIAL_APP_PATHS.includes(path), path));
   assert.ok(!ESSENTIAL_APP_PATHS.some(path => path.includes("DefectoSNGVibrationJournal")));
 });
