@@ -53,6 +53,6 @@ test("все пять прежних ID активированы без смен
   });
 });
 test("текущая PWA кэширует расчётные модули", () => {
-  assert.equal(APP_VERSION, "0.21.7");
+  assert.equal(APP_VERSION, "0.22.0");
   ["css/vibration-calculators.css", "js/vibrationCalculations.js", "js/vibrationCalculatorData.js", "js/vibrationCalculatorStorage.js", "js/vibrationCalculators.js"].forEach(path => assert.ok(ESSENTIAL_APP_PATHS.includes(path), path));
 });
