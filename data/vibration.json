@@ -26432,30 +26432,274 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Насосы",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Насосы».",
+    "status": "published",
     "order": 1,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Насосные агрегаты"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Насосные агрегаты",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Центробежный насос рассматривают как систему двигатель → муфта → насос, иногда с редуктором. На вибрацию одновременно влияют роторная механика, подшипники, поток, трубопроводы и режим. Поршневые и объёмные насосы требуют учёта собственных циклических процессов."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "тип насоса и рабочего колеса",
+          "DE/NDE двигателя и насосные опоры",
+          "муфта, редуктор и отдельные валы",
+          "число лопаток",
+          "подшипники",
+          "всасывающий и нагнетательный трубопроводы"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "фактические RPM",
+          "расход",
+          "давление на всасывании и нагнетании",
+          "положение арматуры",
+          "температура среды",
+          "ток или нагрузка двигателя"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "двигатель DE: H / V / A",
+          "двигатель NDE: H / V",
+          "насос у муфты: H / V / A",
+          "наружная насосная опора: H / V",
+          "при необходимости: патрубки, трубопровод и рама"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Осевое направление особенно полезно около муфты; радиальные H/V сравнивают на всех опорах. На вертикальном насосе применяют постоянные X/Y и ось вала."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и оборотные гармоники всех валов",
+          "vane pass = число лопаток × RPM",
+          "частоты подшипников",
+          "GMF при наличии редуктора",
+          "частоты пульсаций потока и возможные собственные частоты"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "зафиксировать RPM, расход и давления"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "сравнить двигатель DE/NDE и насосные опоры"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "определить 1× и гармоники"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "найти vane pass и подшипниковые частоты"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "оценить осевую вибрацию около муфты"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить широкополосную и высокочастотную активность"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "сопоставить признаки с режимом"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "при необходимости измерить фазу и трубопровод"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "широкополосный фон не обязательно означает кавитацию",
+          "высокий 1× не доказывает дисбаланс рабочего колеса",
+          "движение корпуса может возбуждаться трубопроводом",
+          "рост vane pass может отражать режим, а не повреждение лопатки"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "фаза по обе стороны муфты",
+          "waveform и огибающая",
+          "давление и расход",
+          "измерения трубопроводов",
+          "ODS при структурном движении",
+          "осмотр рабочего колеса и всасывающей линии"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Сравнивать при близких RPM, расходе, давлении и положении арматуры; отдельно вести 1×, vane pass, подшипниковые показатели и температуру."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Кавитационную гипотезу проверяйте гидравлическими параметрами. Механическую и процессную причины следует различать до ремонта ротора."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-pump-measurements",
+            "title": "Измерения насосов"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-cavitation",
+            "title": "Спектр кавитации"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-angular-misalignment",
+            "title": "Угловая несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-cavitation",
+            "title": "Кавитация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-pipe-strain",
+            "title": "Напряжение от присоединённого трубопровода"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-pump-measurements",
+            "title": "Измерения насосов"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -26464,38 +26708,122 @@
       "group": "vibration-equipment-diagnostics",
       "materialType": "article",
       "equipment": [
-        "насосы"
+        "насосы",
+        "насосные агрегаты"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Насосные агрегаты",
-        "Насосы"
+      "diagnosticSigns": [
+        "1× и оборотные гармоники всех валов",
+        "vane pass = число лопаток × RPM",
+        "частоты подшипников",
+        "GMF при наличии редуктора",
+        "частоты пульсаций потока и возможные собственные частоты",
+        "широкополосный фон не обязательно означает кавитацию",
+        "высокий 1× не доказывает дисбаланс рабочего колеса",
+        "движение корпуса может возбуждаться трубопроводом",
+        "рост vane pass может отражать режим, а не повреждение лопатки"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "keywords": [
+        "насос вибрация",
+        "вибродиагностика насоса",
+        "pump vibration",
+        "pump diagnostics"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-pump-measurements",
+        "vibration-operating-mode-relation",
+        "vibration-phase-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "pumps"
+        "pumps",
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "bearings",
+        "gearboxes",
+        "unbalance"
       ],
       "aliases": [
+        "вибродиагностика насоса",
+        "pump vibration",
+        "pump diagnostics",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма",
         "Насосы",
         "насос",
-        "насосный агрегат"
+        "насосный агрегат",
+        "Редукторы",
+        "редуктор",
+        "зубчатая передача",
+        "Дисбаланс",
+        "неуравновешенность"
       ],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "measuredParameters": [
+        "фактические RPM",
+        "расход",
+        "давление на всасывании и нагнетании",
+        "положение арматуры",
+        "температура среды",
+        "ток или нагрузка двигателя",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-cavitation",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-pipe-strain",
+        "vibration-fault-resonance",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-cavitation"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-pump-measurements"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-cavitation",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-pipe-strain",
+        "vibration-fault-resonance",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-cavitation"
+      ],
+      "additionalChecks": [
+        "фаза по обе стороны муфты",
+        "waveform и огибающая",
+        "давление и расход",
+        "измерения трубопроводов",
+        "ODS при структурном движении",
+        "осмотр рабочего колеса и всасывающей линии"
+      ]
     },
     "mediaSlots": [
       {
@@ -26521,30 +26849,284 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Электродвигатели",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Электродвигатели».",
+    "status": "published",
     "order": 2,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Электродвигатели"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Электродвигатели",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Электродвигатель сочетает механическую роторную систему и источник электромагнитных сил. Диагностика должна совместно учитывать DE/NDE, подшипники, ротор, статор, вентилятор, муфту, питание и VFD."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "тип двигателя, мощность и число полюсов",
+          "подшипники DE/NDE",
+          "ротор и статор",
+          "вентилятор охлаждения",
+          "муфта или ременная передача",
+          "тип питания и преобразователь частоты"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM",
+          "ток и нагрузка",
+          "частота сети",
+          "выходная частота VFD",
+          "температура подшипников и корпуса",
+          "рабочий режим"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "DE: H / V / A",
+          "NDE: H / V",
+          "при доступе NDE: A",
+          "рама и лапы при подозрении на soft foot",
+          "связанный агрегат по обе стороны муфты"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Радиальные H/V показывают распределение роторных и структурных сил, осевое направление около муфты помогает проверять несоосность. Ориентацию сохраняют между маршрутами."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и гармоники",
+          "частоты подшипников",
+          "частота сети и связанные электромагнитные компоненты",
+          "pole-pass и slip-related компоненты",
+          "частоты клетки ротора",
+          "частота вентилятора и ремня при наличии"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "зафиксировать RPM, ток, нагрузку и частоту питания/VFD"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "сравнить DE и NDE"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "сравнить H/V/A"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "определить 1× и гармоники"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "проверить подшипниковую активность"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "рассчитать электрические частоты со slip"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "сопоставить вибрацию и ток"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "проверить фазу и опоры"
+          },
+          {
+            "method": "9. Шаг",
+            "description": "сравнить с базой"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "100 Гц или другая электрическая линия не доказывает электрический дефект",
+          "высокий 1× может быть резонансом или деформацией",
+          "VFD меняет частоты и шумовой фон",
+          "подшипниковый пик нельзя назначать без геометрии и RPM"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "токовый анализ",
+          "фаза",
+          "waveform и огибающая",
+          "проверка soft foot и центровки",
+          "выбег, если метод безопасен и применим",
+          "тепловой контроль"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Сохранять RPM, ток, нагрузку, частоту VFD, температуры, 1×, подшипниковые и электрические компоненты."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Электрические гипотезы подтверждайте электрическими измерениями; виброспектр корпуса сам по себе недостаточен."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-motor-measurements",
+            "title": "Измерения на электродвигателях"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-2x",
+            "title": "Повышенная вторая гармоника 2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-sidebands",
+            "title": "Боковые полосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-modulated",
+            "title": "Модулированный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-angular-misalignment",
+            "title": "Угловая несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-soft-foot",
+            "title": "Мягкая опора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-motor-electrical",
+            "title": "Электрические неисправности двигателя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rotor-cage",
+            "title": "Повреждение клетки ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-motor-measurements",
+            "title": "Измерения на электродвигателях"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -26556,34 +27138,114 @@
         "электродвигатели"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Электродвигатели"
+      "diagnosticSigns": [
+        "1× и гармоники",
+        "частоты подшипников",
+        "частота сети и связанные электромагнитные компоненты",
+        "pole-pass и slip-related компоненты",
+        "частоты клетки ротора",
+        "частота вентилятора и ремня при наличии",
+        "100 Гц или другая электрическая линия не доказывает электрический дефект",
+        "высокий 1× может быть резонансом или деформацией",
+        "VFD меняет частоты и шумовой фон",
+        "подшипниковый пик нельзя назначать без геометрии и RPM"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "keywords": [
+        "вибрация двигателя",
+        "электродвигатель вибрация",
+        "motor vibration",
+        "motor diagnostics"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-motor-measurements",
+        "vibration-order-analysis",
+        "vibration-phase-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "motors"
+        "motors",
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "bearings"
       ],
       "aliases": [
+        "электродвигатель вибрация",
+        "motor vibration",
+        "motor diagnostics",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма",
         "Электродвигатели",
         "электродвигатель",
         "двигатель"
       ],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "measuredParameters": [
+        "RPM",
+        "ток и нагрузка",
+        "частота сети",
+        "выходная частота VFD",
+        "температура подшипников и корпуса",
+        "рабочий режим",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-soft-foot",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-rotor-cage",
+        "vibration-fault-resonance",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-2x",
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-modulated"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-motor-measurements"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-soft-foot",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-rotor-cage",
+        "vibration-fault-resonance",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-2x",
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-modulated"
+      ],
+      "additionalChecks": [
+        "токовый анализ",
+        "фаза",
+        "waveform и огибающая",
+        "проверка soft foot и центровки",
+        "выбег, если метод безопасен и применим",
+        "тепловой контроль"
+      ]
     },
     "mediaSlots": [
       {
@@ -26609,30 +27271,258 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Вентиляторы",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Вентиляторы».",
+    "status": "published",
     "order": 3,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Вентиляторы и дымососы"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Вентиляторы и дымососы",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Вентилятор включает двигатель, муфту или ремни, вал, подшипники, рабочее колесо, корпус, воздуховоды, заслонки и основание. Роторные и аэродинамические силы часто действуют одновременно."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "тип колеса и число лопаток",
+          "прямой, муфтовый или ременной привод",
+          "положение подшипников",
+          "воздуховоды и заслонки",
+          "рама и гибкие соединения",
+          "условия загрязнения колеса"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM",
+          "положение заслонки/направляющего аппарата",
+          "расход",
+          "давление или разрежение",
+          "нагрузка двигателя",
+          "температура и состояние среды"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "двигатель DE/NDE: H / V, у муфты также A",
+          "подшипники вентилятора: H / V / A по задаче",
+          "корпус и рама",
+          "воздуховод и его опоры при выраженном движении"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Радиальные направления сравнивают на валу и корпусе; осевое полезно у муфты. Для гибкого корпуса фиксируют постоянную координатную систему."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и гармоники",
+          "blade pass и гармоники",
+          "подшипниковые частоты",
+          "ременная частота и RPM шкивов",
+          "аэродинамические и структурные частоты"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "зафиксировать RPM и положение регулирования"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "сравнить двигатель, вал и подшипники"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "оценить 1× и фазу"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "рассчитать blade pass"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "проверить ременную передачу при наличии"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "оценить аэродинамический фон и режим"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "осмотреть загрязнение и лопатки"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "проверить раму и воздуховоды"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "высокий 1× не обязательно вызван загрязнением колеса",
+          "blade pass может быть нормальной рабочей линией",
+          "гибкий кожух может усиливать локальную вибрацию",
+          "изменение заслонки способно менять спектр без развития дефекта"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "фаза",
+          "осмотр и очисточная история",
+          "waveform",
+          "order analysis",
+          "ODS рамы и воздуховода",
+          "проверка ремней и центровки"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Сравнивать при одинаковых RPM, положении заслонки и расходе; отслеживать 1×, blade pass, подшипники и нагрузку."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Налипание может расти постепенно или отпадать скачком; подтверждайте его осмотром и историей, а не только 1×."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-fan-measurements",
+            "title": "Измерения на вентиляторах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-surge",
+            "title": "Помпаж"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fan-measurements",
+            "title": "Измерения на вентиляторах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-ods",
+            "title": "ODS-анализ"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -26641,33 +27531,104 @@
       "group": "vibration-equipment-diagnostics",
       "materialType": "article",
       "equipment": [
-        "вентиляторы",
-        "дымососы"
+        "вентиляторы"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Вентиляторы и дымососы",
-        "Вентиляторы"
+      "diagnosticSigns": [
+        "1× и гармоники",
+        "blade pass и гармоники",
+        "подшипниковые частоты",
+        "ременная частота и RPM шкивов",
+        "аэродинамические и структурные частоты",
+        "высокий 1× не обязательно вызван загрязнением колеса",
+        "blade pass может быть нормальной рабочей линией",
+        "гибкий кожух может усиливать локальную вибрацию",
+        "изменение заслонки способно менять спектр без развития дефекта"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "keywords": [
+        "fan vibration",
+        "вибрация вентилятора",
+        "fan diagnostics",
+        "балансировка вентилятора"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-fan-measurements",
+        "vibration-phase-analysis",
+        "vibration-ods"
+      ],
+      "status": "published",
+      "tags": [
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "bearings"
+      ],
+      "aliases": [
+        "вибрация вентилятора",
+        "fan diagnostics",
+        "балансировка вентилятора",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма"
+      ],
+      "measuredParameters": [
+        "RPM",
+        "положение заслонки/направляющего аппарата",
+        "расход",
+        "давление или разрежение",
+        "нагрузка двигателя",
+        "температура и состояние среды",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-surge"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-broadband-noise"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-fan-measurements"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-surge"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-broadband-noise"
+      ],
+      "additionalChecks": [
+        "фаза",
+        "осмотр и очисточная история",
+        "waveform",
+        "order analysis",
+        "ODS рамы и воздуховода",
+        "проверка ремней и центровки"
+      ]
     },
     "mediaSlots": [
       {
@@ -26693,30 +27654,266 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Компрессоры",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Компрессоры».",
+    "status": "published",
     "order": 4,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Компрессоры"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Компрессоры",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Первый шаг — определить тип компрессора. Центробежный, винтовой и поршневой компрессоры имеют разные кинематику, источники сил и ожидаемые частоты; одинаковая трактовка их спектров недопустима."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "тип: центробежный, винтовой или поршневой",
+          "ступени, валы, редуктор и муфта",
+          "тип подшипников",
+          "число лопаток, роторов или цилиндров",
+          "клапаны и газовый тракт",
+          "система смазки и фундамент"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM всех доступных валов",
+          "давление и расход",
+          "нагрузка",
+          "температура газа и подшипников",
+          "положение регулирования",
+          "давление и температура масла"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "привод DE/NDE: H / V / A у муфты",
+          "каждая подшипниковая опора компрессора",
+          "редукторные опоры",
+          "корпус ступеней",
+          "газопроводы и фундамент при пульсациях"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Для центробежных машин важны радиальные, осевые и при probes X/Y; для поршневых — направления действия инерционных сил и фундамент; для винтовых — опоры обоих роторов."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "RPM всех валов и гармоники",
+          "лопастные частоты центробежных ступеней",
+          "частоты винтовых роторов и зацепления",
+          "циклические и клапанные частоты поршневых машин",
+          "GMF редуктора",
+          "подшипниковые и субсинхронные компоненты"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "определить тип и кинематику"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "зафиксировать RPM, давление, расход и нагрузку"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "построить карту валов и характерных частот"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "сравнить все опоры и направления"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "отделить механические линии от процессных пульсаций"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить подшипники и редуктор"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "анализировать waveform при нестационарности"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "выбрать специальные методы по типу машины"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "низкочастотная пульсация не всегда является помпажом",
+          "GMF относится только к имеющейся ступени редуктора",
+          "корпусный спектр недостаточен для ротора на гидродинамических подшипниках",
+          "клапанные события поршневого компрессора не следует трактовать как роторные гармоники"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "синхронные давление и вибрация",
+          "waveform",
+          "order analysis",
+          "разгон/выбег",
+          "орбита для journal bearings",
+          "анализ масла",
+          "фаза и ODS трубопроводов"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Раздельно вести параметры по типу компрессора и сравнивать при сопоставимом давлении, расходе, нагрузке и регулировании."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Без классификации компрессора диагностическая гипотеза ненадёжна: сначала кинематика и процесс, затем спектр."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-gear-mesh",
+            "title": "Зубцовая частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-modulated",
+            "title": "Модулированный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-surge",
+            "title": "Помпаж"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-shaft-orbit",
+            "title": "Орбита ротора"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -26728,28 +27925,111 @@
         "компрессоры"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Компрессоры"
+      "diagnosticSigns": [
+        "RPM всех валов и гармоники",
+        "лопастные частоты центробежных ступеней",
+        "частоты винтовых роторов и зацепления",
+        "циклические и клапанные частоты поршневых машин",
+        "GMF редуктора",
+        "подшипниковые и субсинхронные компоненты",
+        "низкочастотная пульсация не всегда является помпажом",
+        "GMF относится только к имеющейся ступени редуктора",
+        "корпусный спектр недостаточен для ротора на гидродинамических подшипниках",
+        "клапанные события поршневого компрессора не следует трактовать как роторные гармоники"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "keywords": [
+        "compressor vibration",
+        "вибрация компрессора",
+        "центробежный компрессор",
+        "винтовой компрессор",
+        "поршневой компрессор"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-order-analysis",
+        "vibration-time-waveform",
+        "vibration-shaft-orbit"
+      ],
+      "status": "published",
+      "tags": [
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "bearings",
+        "gearboxes"
+      ],
+      "aliases": [
+        "вибрация компрессора",
+        "центробежный компрессор",
+        "винтовой компрессор",
+        "поршневой компрессор",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма",
+        "Редукторы",
+        "редуктор",
+        "зубчатая передача"
+      ],
+      "measuredParameters": [
+        "RPM всех доступных валов",
+        "давление и расход",
+        "нагрузка",
+        "температура газа и подшипников",
+        "положение регулирования",
+        "давление и температура масла",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-surge",
+        "vibration-fault-gears",
+        "vibration-fault-resonance",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rub",
+        "vibration-fault-mechanical-looseness"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-modulated"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-surge",
+        "vibration-fault-gears",
+        "vibration-fault-resonance",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rub",
+        "vibration-fault-mechanical-looseness"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-modulated"
+      ],
+      "additionalChecks": [
+        "синхронные давление и вибрация",
+        "waveform",
+        "order analysis",
+        "разгон/выбег",
+        "орбита для journal bearings",
+        "анализ масла",
+        "фаза и ODS трубопроводов"
+      ]
     },
     "mediaSlots": [
       {
@@ -26775,30 +28055,260 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Редукторы",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Редукторы».",
+    "status": "published",
     "order": 5,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Редукторы"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Редукторы",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Редуктор диагностируют через его кинематику: входной, промежуточные и выходной валы, зубчатые ступени, подшипники, корпус и смазочную систему. Обороты двигателя нельзя применять ко всем валам."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "RPM каждого вала",
+          "число зубьев каждой пары",
+          "передаточные отношения",
+          "расположение зацеплений и подшипников",
+          "тип зубьев и корпуса",
+          "смазочная система"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM доступных валов",
+          "нагрузка и передаваемая мощность",
+          "температура корпуса, масла и подшипников",
+          "уровень, давление и состояние масла",
+          "направление вращения"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "входной вал: H / V / A",
+          "каждая промежуточная опора: H / V",
+          "выходной вал: H / V / A",
+          "корпус возле каждой ступени",
+          "привод и ведомая машина у муфт"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Измерять на жёстких участках около подшипников; осевое направление особенно важно для косозубых передач и муфт."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "RPM каждого вала",
+          "GMF каждой ступени = зубья × RPM",
+          "гармоники GMF",
+          "боковые полосы с шагом валов",
+          "подшипниковые частоты",
+          "частоты муфт и вспомогательных приводов"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "построить кинематическую схему"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "рассчитать RPM валов и GMF ступеней"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "зафиксировать нагрузку и масло"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "сравнить опоры и направления"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "оценить GMF, гармоники и боковые полосы"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить waveform на локальные удары"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "отделить подшипниковые компоненты"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "сравнить тренд и масло"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "наличие GMF нормально для работающего зацепления",
+          "высокий GMF не доказывает повреждение зуба",
+          "боковые полосы требуют определения несущей и шага",
+          "изменение нагрузки может менять амплитуду без нового дефекта"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "waveform",
+          "огибающая",
+          "order analysis",
+          "анализ масла",
+          "температура",
+          "осмотр зубьев и пятна контакта",
+          "фаза у муфт"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Отслеживать GMF и боковые полосы каждой ступени, оборотные компоненты валов, подшипники, нагрузку, масло и температуру."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Изменение боковых полос и ударности при сопоставимой нагрузке обычно информативнее абсолютной высоты GMF."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-gearbox-measurements",
+            "title": "Измерения на редукторах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-gear-mesh",
+            "title": "Зубцовая частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-sidebands",
+            "title": "Боковые полосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-angular-misalignment",
+            "title": "Угловая несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-lubrication",
+            "title": "Проблемы смазки"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-gearbox-measurements",
+            "title": "Измерения на редукторах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -26807,37 +28317,109 @@
       "group": "vibration-equipment-diagnostics",
       "materialType": "article",
       "equipment": [
-        "редукторы"
+        "редукторы",
+        "зубчатые передачи"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Редукторы"
+      "diagnosticSigns": [
+        "RPM каждого вала",
+        "GMF каждой ступени = зубья × RPM",
+        "гармоники GMF",
+        "боковые полосы с шагом валов",
+        "подшипниковые частоты",
+        "частоты муфт и вспомогательных приводов",
+        "наличие GMF нормально для работающего зацепления",
+        "высокий GMF не доказывает повреждение зуба",
+        "боковые полосы требуют определения несущей и шага",
+        "изменение нагрузки может менять амплитуду без нового дефекта"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "keywords": [
+        "gearbox vibration",
+        "вибрация редуктора",
+        "зубчатая передача",
+        "gear diagnostics"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-gearbox-measurements",
+        "vibration-order-analysis",
+        "vibration-envelope-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "gearboxes"
+        "gearboxes",
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "bearings"
       ],
       "aliases": [
+        "вибрация редуктора",
+        "зубчатая передача",
+        "gear diagnostics",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма",
         "Редукторы",
-        "редуктор",
-        "зубчатая передача"
+        "редуктор"
       ],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "measuredParameters": [
+        "RPM доступных валов",
+        "нагрузка и передаваемая мощность",
+        "температура корпуса, масла и подшипников",
+        "уровень, давление и состояние масла",
+        "направление вращения",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-gears",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-lubrication",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-impulse"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-gearbox-measurements"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-gears",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-lubrication",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-impulse"
+      ],
+      "additionalChecks": [
+        "waveform",
+        "огибающая",
+        "order analysis",
+        "анализ масла",
+        "температура",
+        "осмотр зубьев и пятна контакта",
+        "фаза у муфт"
+      ]
     },
     "mediaSlots": [
       {
@@ -26863,30 +28445,276 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Турбины",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Турбины».",
+    "status": "published",
     "order": 6,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Турбины"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Турбины",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Турбины часто являются высокоскоростными многопролётными роторами на гидродинамических подшипниках. Корпусная и относительная вибрация вала дополняют друг друга и оцениваются вместе с тепловым и переходным режимом."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "валопровод, диски и ступени",
+          "гидродинамические подшипники и зазоры",
+          "X/Y proximity probes и keyphasor",
+          "муфты и связанный генератор/компрессор",
+          "корпус, фундамент и трубопроводы",
+          "маслосистема"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM",
+          "нагрузка",
+          "температуры металла и масла",
+          "давление и расход масла",
+          "вакуум/давление и параметры процесса",
+          "положение вала и тепловой переход"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "каждая опора корпуса: H / V / A по системе",
+          "каждый journal bearing: X / Y относительного движения",
+          "осевая позиция и keyphasor",
+          "корпус и фундамент в контрольных точках",
+          "все пролёты общей валопроводной системы"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "X/Y probes анализируют как пару с известной ориентацией; корпусные направления сохраняют по схеме машины. Фаза и положение вала обязательны для ротординамического контекста."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и гармоники",
+          "субсинхронные компоненты",
+          "лопастные/сопловые частоты",
+          "критические скорости",
+          "электрические компоненты связанного генератора",
+          "структурные собственные частоты"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "сверить состояние системы мониторинга"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "зафиксировать RPM, нагрузку, температуры и масло"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "сравнить абсолютную и относительную вибрацию"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "проанализировать X/Y, орбиты и centerline"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "оценить 1×, фазу и субсинхронные компоненты"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "сравнить пролёты валопровода"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "проанализировать разгон/выбег"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "учесть тепловую историю"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "субсинхронный пик не автоматически oil whirl",
+          "корпусная вибрация не заменяет относительное движение вала",
+          "1× может усиливаться на критической скорости",
+          "критерии одной турбины нельзя переносить на другую"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "орбита и centerline",
+          "разгон/выбег",
+          "фаза",
+          "анализ масла",
+          "тепловая модель",
+          "ODS корпуса",
+          "проверка runout"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Вести амплитуду и фазу 1×, субсинхронные компоненты, положение вала, температуры, масло, нагрузку и переходные траектории."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Используйте критерии изготовителя и конкретной системы мониторинга; универсальные пределы для всех турбин недопустимы."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-relative-shaft-motion",
+            "title": "Измерения относительного движения вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-half",
+            "title": "Субгармоника 1/2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-oil-whirl",
+            "title": "Составляющие 0,4–0,47×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bent-shaft",
+            "title": "Изгиб вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-babbitt",
+            "title": "Разрушение баббитового слоя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-journal-bearing-misalignment",
+            "title": "Перекос гидродинамического подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-shaft-orbit",
+            "title": "Орбита ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-runup-coastdown",
+            "title": "Анализ разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-coastdown-analysis",
+            "title": "Анализ выбега"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-relative-shaft-motion",
+            "title": "Измерения относительного движения вала"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -26895,31 +28723,107 @@
       "group": "vibration-equipment-diagnostics",
       "materialType": "article",
       "equipment": [
-        "турбины"
+        "турбины",
+        "турбомашины"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Турбины"
+      "diagnosticSigns": [
+        "1× и гармоники",
+        "субсинхронные компоненты",
+        "лопастные/сопловые частоты",
+        "критические скорости",
+        "электрические компоненты связанного генератора",
+        "структурные собственные частоты",
+        "субсинхронный пик не автоматически oil whirl",
+        "корпусная вибрация не заменяет относительное движение вала",
+        "1× может усиливаться на критической скорости",
+        "критерии одной турбины нельзя переносить на другую"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "keywords": [
+        "turbine vibration",
+        "вибрация турбины",
+        "ротор турбины",
+        "turbomachinery diagnostics"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-shaft-orbit",
+        "vibration-runup-coastdown",
+        "vibration-coastdown-analysis",
+        "vibration-relative-shaft-motion"
+      ],
+      "status": "published",
+      "tags": [
+        "equipment-diagnostics",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "вибрация турбины",
+        "ротор турбины",
+        "turbomachinery diagnostics"
+      ],
+      "measuredParameters": [
+        "RPM",
+        "нагрузка",
+        "температуры металла и масла",
+        "давление и расход масла",
+        "вакуум/давление и параметры процесса",
+        "положение вала и тепловой переход",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-rub",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-resonance",
+        "vibration-fault-babbitt",
+        "vibration-fault-journal-bearing-misalignment"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl",
+        "vibration-spectrum-resonance"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-relative-shaft-motion"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-rub",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-resonance",
+        "vibration-fault-babbitt",
+        "vibration-fault-journal-bearing-misalignment"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl",
+        "vibration-spectrum-resonance"
+      ],
+      "additionalChecks": [
+        "орбита и centerline",
+        "разгон/выбег",
+        "фаза",
+        "анализ масла",
+        "тепловая модель",
+        "ODS корпуса",
+        "проверка runout"
+      ]
     },
     "mediaSlots": [
       {
@@ -26945,30 +28849,260 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Генераторы",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Генераторы».",
+    "status": "published",
     "order": 7,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Генераторы"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Генераторы",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Генератор сочетает механическую роторную систему, подшипники и электромагнитную машину. В турбоагрегате его нельзя отделять от общего валопровода и взаимной фазы пролётов."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "ротор, статор и число полюсов",
+          "подшипники и муфты",
+          "воздушный зазор",
+          "система охлаждения",
+          "возбудитель",
+          "связанный привод и общий валопровод"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM",
+          "активная и реактивная нагрузка",
+          "ток и электрические параметры",
+          "температуры",
+          "режим возбуждения",
+          "параметры охлаждения"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "DE/NDE или все опоры: H / V / A",
+          "X/Y probes при journal bearings",
+          "осевые измерения около муфт",
+          "статор и корпус",
+          "соседние пролёты турбоагрегата"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Направления увязывают с общей координатой валопровода; при probes сохраняют ориентацию X/Y и keyphasor."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и гармоники",
+          "электромагнитные частоты сети и полюсов",
+          "slip-related компоненты для соответствующих машин",
+          "подшипниковые или субсинхронные частоты",
+          "частоты охлаждающих вентиляторов",
+          "критические скорости валопровода"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "зафиксировать RPM, электрическую нагрузку и температуры"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "сравнить опоры и пролёты"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "проанализировать 1× и фазу"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "сопоставить электрические частоты"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "проверить подшипники и воздушный зазор"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "сравнить изменения при нагрузке"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "учесть общую динамику валопровода"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "подтвердить электрические гипотезы электрическими измерениями"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "электрическая линия не автоматически означает дефект генератора",
+          "механический 1× может зависеть от резонанса",
+          "локальный вывод нельзя делать без соседних пролётов",
+          "нагрузка меняет электромагнитные силы"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "фаза",
+          "токовый и электрический анализ",
+          "орбита при probes",
+          "разгон/выбег",
+          "контроль воздушного зазора",
+          "тепловой контроль"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Сопоставлять вибрацию с активной/реактивной нагрузкой, током, температурой, 1×, фазой и общей валопроводной картиной."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "В турбоагрегате вывод формируют по системе валопровода, а не по генератору как изолированному корпусу."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-2x",
+            "title": "Повышенная вторая гармоника 2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-sidebands",
+            "title": "Боковые полосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bent-shaft",
+            "title": "Изгиб вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-motor-electrical",
+            "title": "Электрические неисправности двигателя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-shaft-orbit",
+            "title": "Орбита ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -26980,28 +29114,102 @@
         "генераторы"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Генераторы"
+      "diagnosticSigns": [
+        "1× и гармоники",
+        "электромагнитные частоты сети и полюсов",
+        "slip-related компоненты для соответствующих машин",
+        "подшипниковые или субсинхронные частоты",
+        "частоты охлаждающих вентиляторов",
+        "критические скорости валопровода",
+        "электрическая линия не автоматически означает дефект генератора",
+        "механический 1× может зависеть от резонанса",
+        "локальный вывод нельзя делать без соседних пролётов",
+        "нагрузка меняет электромагнитные силы"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "keywords": [
+        "generator vibration",
+        "вибрация генератора",
+        "генератор диагностика",
+        "турбогенератор"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-phase-analysis",
+        "vibration-shaft-orbit",
+        "vibration-operating-mode-relation"
+      ],
+      "status": "published",
+      "tags": [
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "bearings"
+      ],
+      "aliases": [
+        "вибрация генератора",
+        "генератор диагностика",
+        "турбогенератор",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма"
+      ],
+      "measuredParameters": [
+        "RPM",
+        "активная и реактивная нагрузка",
+        "ток и электрические параметры",
+        "температуры",
+        "режим возбуждения",
+        "параметры охлаждения",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-resonance",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rub"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-2x",
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-resonance"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-resonance",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rub"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-2x",
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-resonance"
+      ],
+      "additionalChecks": [
+        "фаза",
+        "токовый и электрический анализ",
+        "орбита при probes",
+        "разгон/выбег",
+        "контроль воздушного зазора",
+        "тепловой контроль"
+      ]
     },
     "mediaSlots": [
       {
@@ -27027,30 +29235,254 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Вертикальные машины",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Вертикальные машины».",
+    "status": "published",
     "order": 8,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Вертикальные машины"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Вертикальные машины",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Вертикальная машина — конструктивное исполнение, а не один тип оборудования: это может быть насос, двигатель или турбина. Диагностика учитывает вертикальную ось, гибкость верхней части и несколько уровней опор."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "тип машины и число валов",
+          "уровни опор и направляющих подшипников",
+          "жёсткость колонны и верхней части",
+          "фундамент",
+          "трубопроводы",
+          "муфты и осевая опора"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM",
+          "нагрузка",
+          "расход и давление для насоса",
+          "положение регулирования",
+          "температуры опор",
+          "уровень/режим среды"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "каждый уровень опоры: X / Y",
+          "осевое направление вдоль вала",
+          "верх двигателя или головная часть: X / Y",
+          "рама и фундамент",
+          "патрубки и колонна при необходимости"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Не использовать неоднозначное «горизонталь/вертикаль». Радиальные направления фиксируют как X/Y и привязывают к трубопроводу, конструкции, географической оси или другой постоянной координате."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и гармоники",
+          "лопастные частоты для насосов/турбин",
+          "подшипниковые частоты",
+          "электрические частоты двигателя",
+          "структурные собственные частоты колонны и рамы"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "задать постоянные X/Y"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "зафиксировать режим"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "измерить все уровни опор"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "сравнить амплитуды и фазу по высоте"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "определить 1× и специфические частоты машины"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить фундамент и трубопроводы"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "оценить структурную форму"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "сопоставить с базой"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "рост наверху может быть формой конструкции, а не локальным дефектом",
+          "несогласованные H/V обозначения делают тренд непригодным",
+          "корпусная линия может быть резонансом колонны",
+          "типовая карта не заменяет схему конкретной машины"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "фаза между уровнями",
+          "ODS",
+          "модальный анализ",
+          "измерения фундамента",
+          "разгон/выбег",
+          "контроль трубопроводов"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Хранить координаты X/Y и уровень каждой точки; сравнивать форму распределения, фазу, RPM и рабочие параметры."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Пространственное распределение по высоте часто важнее максимума в одной точке."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-vertical-machines-measurements",
+            "title": "Измерения вертикальных машин"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-soft-foot",
+            "title": "Мягкая опора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-casing-deformation",
+            "title": "Деформация корпуса"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-vertical-machines-measurements",
+            "title": "Измерения вертикальных машин"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-ods",
+            "title": "ODS-анализ"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -27059,31 +29491,115 @@
       "group": "vibration-equipment-diagnostics",
       "materialType": "article",
       "equipment": [
-        "вертикальные машины"
+        "вертикальные машины",
+        "вертикальные насосы",
+        "вертикальные двигатели"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Вертикальные машины"
+      "diagnosticSigns": [
+        "1× и гармоники",
+        "лопастные частоты для насосов/турбин",
+        "подшипниковые частоты",
+        "электрические частоты двигателя",
+        "структурные собственные частоты колонны и рамы",
+        "рост наверху может быть формой конструкции, а не локальным дефектом",
+        "несогласованные H/V обозначения делают тренд непригодным",
+        "корпусная линия может быть резонансом колонны",
+        "типовая карта не заменяет схему конкретной машины"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "keywords": [
+        "vertical machine vibration",
+        "вертикальная машина",
+        "вертикальный насос вибрация",
+        "вертикальный двигатель"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-vertical-machines-measurements",
+        "vibration-phase-analysis",
+        "vibration-ods"
+      ],
+      "status": "published",
+      "tags": [
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "bearings",
+        "pumps",
+        "motors",
+        "trend"
+      ],
+      "aliases": [
+        "вертикальная машина",
+        "вертикальный насос вибрация",
+        "вертикальный двигатель",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма",
+        "Насосы",
+        "насос",
+        "насосный агрегат",
+        "Электродвигатели",
+        "электродвигатель",
+        "двигатель",
+        "Тренд",
+        "трендовый анализ"
+      ],
+      "measuredParameters": [
+        "RPM",
+        "нагрузка",
+        "расход и давление для насоса",
+        "положение регулирования",
+        "температуры опор",
+        "уровень/режим среды",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-soft-foot",
+        "vibration-fault-casing-deformation"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-resonance",
+        "vibration-spectrum-blade-pass"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-vertical-machines-measurements"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-soft-foot",
+        "vibration-fault-casing-deformation"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-resonance",
+        "vibration-spectrum-blade-pass"
+      ],
+      "additionalChecks": [
+        "фаза между уровнями",
+        "ODS",
+        "модальный анализ",
+        "измерения фундамента",
+        "разгон/выбег",
+        "контроль трубопроводов"
+      ]
     },
     "mediaSlots": [
       {
@@ -27109,30 +29625,276 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Машины с подшипниками качения",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Машины с подшипниками качения».",
+    "status": "published",
     "order": 9,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Машины с подшипниками качения"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Машины с подшипниками качения",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Это диагностическая категория машин, где подшипники качения являются значимым источником состояния. Анализ не ограничивается совпадением BPFO/BPFI и объединяет обычную вибрацию, импульсность, огибающую, тренд, температуру и смазку."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "обозначение и геометрия подшипника",
+          "нагруженная зона",
+          "посадки колец",
+          "тип и количество смазки",
+          "путь передачи к корпусу",
+          "скорость каждого кольца"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM",
+          "нагрузка",
+          "температура",
+          "тип и дата смазки",
+          "режим машины",
+          "история монтажа и замены"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "каждая подшипниковая опора: H / V / A по конструкции",
+          "жёсткая точка максимально близко к корпусу подшипника",
+          "соседняя опора для сравнения",
+          "дополнительная высокочастотная запись",
+          "температурная точка"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Измерять по пути передачи нагрузки и сохранять ориентацию. Слабая крышка или кожух не заменяют жёсткую точку корпуса."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и общая роторная картина",
+          "BPFO",
+          "BPFI",
+          "BSF",
+          "FTF",
+          "гармоники и боковые полосы",
+          "резонансная полоса для огибающей"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "проверить RPM, тип подшипника и нагрузку"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "сравнить общий уровень и acceleration"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "осмотреть waveform, Peak и crest factor"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "выбрать полосу огибающей"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "рассчитать BPFO/BPFI/BSF/FTF"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить гармоники и боковые полосы"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "сравнить опоры, температуру и смазку"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "оценить тренд и альтернативы"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "совпадение одного пика с расчётной частотой недостаточно",
+          "высокочастотный фон может быть смазкой, зубьями или помехой",
+          "пик-фактор не растёт монотонно с тяжестью",
+          "ранняя активность может не менять общий RMS"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "огибающая",
+          "длительный waveform",
+          "температура",
+          "анализ смазки",
+          "ультразвуковой/акустический контроль",
+          "осмотр посадок при ремонте"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Вести обычный уровень, acceleration, огибающую, расчётные линии, Peak/crest factor, температуру и события смазки при сопоставимой нагрузке."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "На раннем этапе изменения могут лучше проявляться высокочастотно, на развитом — в общем уровне; универсальную фиксированную стадийность применять нельзя."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-bearing-supports",
+            "title": "Измерения на подшипниковых узлах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfo",
+            "title": "Частота дефекта наружного кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfi",
+            "title": "Частота дефекта внутреннего кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bsf",
+            "title": "Частота вращения тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-ftf",
+            "title": "Частота сепаратора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-rolling-elements",
+            "title": "Дефект тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-cage",
+            "title": "Дефект сепаратора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-lubrication",
+            "title": "Проблемы смазки"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-loose-bearing-housing",
+            "title": "Ослабление подшипника в корпусе"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-clearance",
+            "title": "Увеличенный зазор в подшипнике"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-acceleration",
+            "title": "Виброускорение"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-bearing-supports",
+            "title": "Измерения на подшипниковых узлах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-reference-bearing-frequencies",
+            "title": "Частоты подшипников"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -27141,38 +29903,134 @@
       "group": "vibration-equipment-diagnostics",
       "materialType": "article",
       "equipment": [
-        "подшипники"
+        "машины с подшипниками качения",
+        "подшипники качения"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Машины с подшипниками качения"
+      "diagnosticSigns": [
+        "1× и общая роторная картина",
+        "BPFO",
+        "BPFI",
+        "BSF",
+        "FTF",
+        "гармоники и боковые полосы",
+        "резонансная полоса для огибающей",
+        "совпадение одного пика с расчётной частотой недостаточно",
+        "высокочастотный фон может быть смазкой, зубьями или помехой",
+        "пик-фактор не растёт монотонно с тяжестью",
+        "ранняя активность может не менять общий RMS"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "keywords": [
+        "rolling bearing diagnostics",
+        "подшипник качения диагностика",
+        "BPFO BPFI",
+        "bearing vibration"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-envelope-analysis",
+        "vibration-acceleration",
+        "vibration-bearing-supports",
+        "vibration-reference-bearing-frequencies"
+      ],
+      "status": "published",
       "tags": [
-        "bearings"
+        "bearings",
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "rms",
+        "bpfo",
+        "bpfi",
+        "bsf",
+        "ftf"
       ],
       "aliases": [
+        "подшипник качения диагностика",
+        "BPFO BPFI",
+        "bearing vibration",
         "Подшипники",
         "подшипник",
         "наружная обойма",
-        "внутренняя обойма"
+        "внутренняя обойма",
+        "RMS",
+        "СКЗ",
+        "среднеквадратичное значение",
+        "BPFO",
+        "БПФО",
+        "наружное кольцо",
+        "BPFI",
+        "БПФИ",
+        "внутреннее кольцо",
+        "BSF",
+        "частота тел качения",
+        "FTF",
+        "частота сепаратора"
       ],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "measuredParameters": [
+        "RPM",
+        "нагрузка",
+        "температура",
+        "тип и дата смазки",
+        "режим машины",
+        "история монтажа и замены",
+        "RMS",
+        "Crest Factor",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-bearing-cage",
+        "vibration-fault-lubrication",
+        "vibration-fault-loose-bearing-housing",
+        "vibration-fault-bearing-clearance"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bpfi",
+        "vibration-spectrum-bsf",
+        "vibration-spectrum-ftf",
+        "vibration-spectrum-broadband-noise"
+      ],
       "relatedScenarios": [],
-      "relatedReferences": [],
+      "relatedReferences": [
+        "vibration-reference-bearing-frequencies"
+      ],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-bearing-supports"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-bearing-cage",
+        "vibration-fault-lubrication",
+        "vibration-fault-loose-bearing-housing",
+        "vibration-fault-bearing-clearance"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bpfi",
+        "vibration-spectrum-bsf",
+        "vibration-spectrum-ftf",
+        "vibration-spectrum-broadband-noise"
+      ],
+      "additionalChecks": [
+        "огибающая",
+        "длительный waveform",
+        "температура",
+        "анализ смазки",
+        "ультразвуковой/акустический контроль",
+        "осмотр посадок при ремонте"
+      ]
     },
     "mediaSlots": [
       {
@@ -27198,30 +30056,275 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Машины с гидродинамическими подшипниками",
-    "summary": "Заготовка материала раздела «Диагностика оборудования».",
-    "status": "draft",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Машины с гидродинамическими подшипниками».",
+    "status": "published",
     "order": 10,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Машины с гидродинамическими подшипниками"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
+      "Машины с гидродинамическими подшипниками",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Это категория машин с гидродинамической опорой ротора. Основные данные — относительное движение вала X/Y, орбита, centerline, зазор, фаза, масло и переходные режимы; корпусный спектр является только частью картины."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "тип и геометрия вкладыша",
+          "номинальный и фактический зазор",
+          "ориентация X/Y probes",
+          "keyphasor",
+          "маслосистема",
+          "валопровод и критические скорости"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM",
+          "нагрузка",
+          "температура и давление масла",
+          "температура вкладышей",
+          "положение вала",
+          "режим разгона/выбега"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "каждый подшипник: X / Y относительного движения",
+          "keyphasor",
+          "корпус опоры: H / V",
+          "осевая позиция при наличии",
+          "масляные и температурные каналы"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "X/Y рассматривают как согласованную пару с известной геометрией и полярностью. Орбита без корректной ориентации и runout может вводить в заблуждение."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и гармоники",
+          "субсинхронные компоненты",
+          "критические скорости",
+          "частоты прецессии",
+          "фиксированные структурные частоты",
+          "частоты технологического возбуждения"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "проверить probes, runout и keyphasor"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "зафиксировать RPM, нагрузку и масло"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "оценить X/Y спектры и centerline"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "построить орбиту"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "проанализировать 1×, фазу и субсинхронные компоненты"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "сравнить все подшипники валопровода"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "изучить разгон/выбег"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "проверить зазор, температуру и масло"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "0,42× не автоматически oil whirl",
+          "сложная орбита не является готовым диагнозом",
+          "электрическое и механическое биение искажают probes",
+          "корпусная вибрация не описывает полностью движение вала"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "орбита и centerline",
+          "разгон/выбег",
+          "анализ масла",
+          "фаза",
+          "slow-roll/runout проверка",
+          "ротординамический анализ"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Сохранять direct, 1× amplitude/phase, субсинхронные компоненты, centerline, орбиту, температуры, давление масла и нагрузку."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Диагноз формируют по согласованию движения вала, опор, масла и режима, а не по одной корпусной линии."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-relative-shaft-motion",
+            "title": "Измерения относительного движения вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-half",
+            "title": "Субгармоника 1/2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-oil-whirl",
+            "title": "Составляющие 0,4–0,47×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rotor-precession",
+            "title": "Прецессия ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-babbitt",
+            "title": "Разрушение баббитового слоя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-coking",
+            "title": "Коксование масла"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-journal-bearing-misalignment",
+            "title": "Перекос гидродинамического подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-shaft-orbit",
+            "title": "Орбита ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-relative-shaft-motion",
+            "title": "Измерения относительного движения вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-runup-coastdown",
+            "title": "Анализ разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-coastdown-analysis",
+            "title": "Анализ выбега"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -27230,38 +30333,116 @@
       "group": "vibration-equipment-diagnostics",
       "materialType": "article",
       "equipment": [
-        "подшипники"
+        "гидродинамические подшипники",
+        "подшипники скольжения",
+        "турбомашины"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Машины с гидродинамическими подшипниками"
+      "diagnosticSigns": [
+        "1× и гармоники",
+        "субсинхронные компоненты",
+        "критические скорости",
+        "частоты прецессии",
+        "фиксированные структурные частоты",
+        "частоты технологического возбуждения",
+        "0,42× не автоматически oil whirl",
+        "сложная орбита не является готовым диагнозом",
+        "электрическое и механическое биение искажают probes",
+        "корпусная вибрация не описывает полностью движение вала"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "keywords": [
+        "journal bearing",
+        "sleeve bearing",
+        "подшипник скольжения",
+        "гидродинамический подшипник"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-shaft-orbit",
+        "vibration-relative-shaft-motion",
+        "vibration-runup-coastdown",
+        "vibration-coastdown-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "bearings"
+        "bearings",
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "orbit"
       ],
       "aliases": [
+        "sleeve bearing",
+        "подшипник скольжения",
+        "гидродинамический подшипник",
         "Подшипники",
         "подшипник",
         "наружная обойма",
-        "внутренняя обойма"
+        "внутренняя обойма",
+        "Орбита",
+        "орбита ротора",
+        "орбита вала"
       ],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "measuredParameters": [
+        "RPM",
+        "нагрузка",
+        "температура и давление масла",
+        "температура вкладышей",
+        "положение вала",
+        "режим разгона/выбега",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rotor-precession",
+        "vibration-fault-rub",
+        "vibration-fault-babbitt",
+        "vibration-fault-oil-coking",
+        "vibration-fault-journal-bearing-misalignment",
+        "vibration-fault-unbalance",
+        "vibration-fault-resonance"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl",
+        "vibration-spectrum-resonance"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-relative-shaft-motion"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rotor-precession",
+        "vibration-fault-rub",
+        "vibration-fault-babbitt",
+        "vibration-fault-oil-coking",
+        "vibration-fault-journal-bearing-misalignment",
+        "vibration-fault-unbalance",
+        "vibration-fault-resonance"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl",
+        "vibration-spectrum-resonance"
+      ],
+      "additionalChecks": [
+        "орбита и centerline",
+        "разгон/выбег",
+        "анализ масла",
+        "фаза",
+        "slow-roll/runout проверка",
+        "ротординамический анализ"
+      ]
     },
     "mediaSlots": [
       {
@@ -30237,19 +33418,264 @@
     "parentId": "vibration-equipment-diagnostics",
     "category": "Диагностика оборудования",
     "title": "Дымососы",
-    "summary": "Шаблон диагностики дымососов с учётом аэродинамических и механических источников.",
+    "summary": "Практический маршрут вибродиагностики: конструкция, режим, точки, характерные частоты и подтверждающие проверки для категории «Дымососы».",
     "order": 11,
-    "status": "draft",
+    "status": "published",
     "tags": [
       "ВД",
-      "Дымососы"
+      "Дымососы",
+      "equipment-diagnostics",
+      "diagnostic-route"
     ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Материал находится в подготовке. Структура страницы и место для будущего содержания уже готовы."
+        "type": "text",
+        "title": "Назначение",
+        "content": "Дымосос рассматривают как систему двигатель → передача или муфта → ротор → подшипники → корпус → газоход. Механические причины сочетаются с налипанием, эрозией, аэродинамическими пульсациями и движением газоходов."
+      },
+      {
+        "type": "list",
+        "title": "Что необходимо знать о конструкции",
+        "items": [
+          "тип привода",
+          "ротор и число лопаток",
+          "подшипники и вал",
+          "корпус и улитка",
+          "заслонки/направляющий аппарат",
+          "газоходы, компенсаторы и фундамент"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что обязательно записать",
+        "items": [
+          "RPM",
+          "нагрузка двигателя",
+          "положение заслонок или направляющего аппарата",
+          "расход и разрежение",
+          "температура газа",
+          "технологический режим и загрязнённость"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Типовая карта измерений",
+        "items": [
+          "двигатель DE/NDE: H / V / A у муфты",
+          "подшипники ротора: H / V / A по задаче",
+          "корпус и рама",
+          "газоход и его опоры",
+          "заслонки и вспомогательные конструкции при выраженном движении"
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Карта не является нормативом",
+        "content": "Фактический набор точек и направлений определяется конструкцией машины, доступом, задачей контроля и документацией объекта."
+      },
+      {
+        "type": "text",
+        "title": "Особенности направлений",
+        "content": "Сравнивать радиальные направления опор, осевое у муфты и постоянные координаты корпуса/газохода. Не измерять на тонком кожухе как на основной точке."
+      },
+      {
+        "type": "list",
+        "title": "Характерные частоты",
+        "items": [
+          "1× и гармоники",
+          "blade pass",
+          "подшипниковые частоты",
+          "ременные/редукторные частоты при наличии",
+          "аэродинамические пульсации",
+          "структурные частоты корпуса и газохода"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "С чего начать диагностику",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "зафиксировать RPM, нагрузку, заслонки и температуру газа"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "сравнить двигатель и роторные опоры"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "определить 1× и blade pass"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "проверить тренд резких и постепенных изменений"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "оценить аэродинамический фон"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить подшипники"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "осмотреть налипание и эрозию по доступным данным"
+          },
+          {
+            "method": "8. Шаг",
+            "description": "измерить корпус, раму и газоход"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что может ввести в заблуждение",
+        "items": [
+          "высокий 1× не автоматически налипание",
+          "быстрое изменение может быть отпадением отложений или режимом",
+          "вибрация корпуса может возбуждаться газоходом",
+          "blade pass не обязательно означает повреждение лопатки"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Когда нужны дополнительные методы",
+        "items": [
+          "фаза",
+          "waveform",
+          "ODS корпуса и газохода",
+          "осмотр ротора",
+          "анализ загрязнений и эрозии",
+          "order analysis",
+          "контроль заслонок"
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Что сравнивать в тренде",
+        "content": "Сопоставлять 1×, blade pass, подшипниковые показатели с нагрузкой, заслонками, температурой газа, очистками и ремонтами."
+      },
+      {
+        "type": "text",
+        "title": "Практический совет",
+        "content": "Налипание и эрозия изменяют распределение массы по-разному, а аэродинамика может усиливать тот же 1×; подтверждайте причину осмотром и режимом."
+      },
+      {
+        "type": "warning",
+        "title": "Без автоматического диагноза",
+        "content": "Частый для данного оборудования признак не становится автоматической причиной. Вывод требует проверки качества данных, режима и альтернативных гипотез; допустимость оценивается по документации конкретной машины."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-fan-measurements",
+            "title": "Измерения на вентиляторах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-surge",
+            "title": "Помпаж"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fan-measurements",
+            "title": "Измерения на вентиляторах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-ods",
+            "title": "ODS-анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          }
+        ]
       }
     ],
     "template": "article",
@@ -30261,36 +33687,110 @@
         "дымососы"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "ВД",
-        "Дымососы"
+      "diagnosticSigns": [
+        "1× и гармоники",
+        "blade pass",
+        "подшипниковые частоты",
+        "ременные/редукторные частоты при наличии",
+        "аэродинамические пульсации",
+        "структурные частоты корпуса и газохода",
+        "высокий 1× не автоматически налипание",
+        "быстрое изменение может быть отпадением отложений или режимом",
+        "вибрация корпуса может возбуждаться газоходом",
+        "blade pass не обязательно означает повреждение лопатки"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "keywords": [
+        "дымосос вибрация",
+        "smoke exhauster vibration",
+        "ID fan diagnostics",
+        "вибродиагностика дымососа"
+      ],
+      "relatedArticles": [
+        "vibration-diagnostic-sequence",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-data-record",
+        "vibration-fan-measurements",
+        "vibration-ods",
+        "vibration-operating-mode-relation"
+      ],
+      "status": "published",
+      "tags": [
+        "equipment-diagnostics",
+        "diagnostic-route",
+        "bearings",
+        "gearboxes"
+      ],
+      "aliases": [
+        "smoke exhauster vibration",
+        "ID fan diagnostics",
+        "вибродиагностика дымососа",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма",
+        "Редукторы",
+        "редуктор",
+        "зубчатая передача"
+      ],
+      "measuredParameters": [
+        "RPM",
+        "нагрузка двигателя",
+        "положение заслонок или направляющего аппарата",
+        "расход и разрежение",
+        "температура газа",
+        "технологический режим и загрязнённость",
+        "Гармоники"
+      ],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-surge",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-resonance"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
-      "relatedMeasurements": [],
+      "relatedMeasurements": [
+        "vibration-fan-measurements"
+      ],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-surge",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-resonance"
+      ],
+      "additionalChecks": [
+        "фаза",
+        "waveform",
+        "ODS корпуса и газохода",
+        "осмотр ротора",
+        "анализ загрязнений и эрозии",
+        "order analysis",
+        "контроль заслонок"
+      ]
     },
-    "futureBlocks": [
-      "Назначение",
-      "Основной принцип",
-      "На практике",
-      "Важно",
-      "Типичная ошибка",
-      "Практический совет",
-      "Связанные материалы"
-    ],
     "mediaSlots": [
       {
         "type": "photo",
