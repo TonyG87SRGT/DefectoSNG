@@ -1,7 +1,7 @@
 import { JOURNAL_STORES, createId, validateBackup } from "./vibrationJournalCore.js";
 
 export const JOURNAL_DB_NAME = "DefectoSNGVibrationJournal";
-export const JOURNAL_DB_VERSION = 1;
+export const JOURNAL_DB_VERSION = 2;
 export const JOURNAL_SCHEMA = Object.freeze({
   objects: [["status", "status"]],
   units: [["objectId", "objectId"], ["equipmentType", "equipmentType"], ["status", "status"]],
@@ -10,7 +10,9 @@ export const JOURNAL_SCHEMA = Object.freeze({
   measurements: [["pointId", "pointId"], ["measuredAt", "measuredAt"], ["pointDate", ["pointId", "measuredAt"]], ["parameter", "parameter"], ["eventId", "eventId"]],
   spectralComponents: [["measurementId", "measurementId"], ["designation", "designation"]],
   events: [["unitId", "unitId"], ["occurredAt", "occurredAt"], ["eventType", "eventType"]],
-  limits: [["pointId", "pointId"]], routes: [["objectId", "objectId"], ["status", "status"]], settings: []
+  limits: [["pointId", "pointId"]], routes: [["objectId", "objectId"], ["status", "status"]], settings: [],
+  vibrationDatasets: [["analysisId", "analysisId"], ["mode", "mode"], ["createdAt", "createdAt"]],
+  vibrationAnalyses: [["measurementId", "measurementId"], ["mode", "mode"], ["analyzedAt", "analyzedAt"]]
 });
 
 let databasePromise;
@@ -100,7 +102,7 @@ export async function importJournalData(backup, mode = "merge") {
   validateBackup(backup);
   const stores = [...JOURNAL_STORES]; const copyPrefix = `copy-${Date.now()}-`;
   const idMap = new Map(stores.flatMap(name => backup.data[name].map(record => [record.id, `${copyPrefix}${record.id}`])));
-  const foreignKeys = { units: ["objectId"], nodes: ["unitId"], points: ["nodeId"], measurements: ["pointId", "eventId"], spectralComponents: ["measurementId"], events: ["unitId"], limits: ["pointId"], routes: ["objectId"] };
+  const foreignKeys = { units: ["objectId"], nodes: ["unitId"], points: ["nodeId"], measurements: ["pointId", "eventId"], spectralComponents: ["measurementId"], events: ["unitId"], limits: ["pointId"], routes: ["objectId"], vibrationDatasets: ["analysisId"], vibrationAnalyses: ["measurementId", "datasetId"] };
   await transaction(stores, "readwrite", tx => {
     if (mode === "replace") stores.forEach(name => tx.objectStore(name).clear());
     stores.forEach(name => backup.data[name].forEach(record => {

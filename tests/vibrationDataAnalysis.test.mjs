@@ -1,0 +1,17 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import vibrationItems from "../data/vibration.json" with { type: "json" };
+import { APP_VERSION, ESSENTIAL_APP_PATHS } from "../js/pwaConfig.js";
+import { analyzeResolution, bladeOrGearFrequency, buildSeries, decimateMinMax, detectTableFormat, fftSpectrum, findPeaks, parseTable, timeStatistics } from "../js/vibrationDataCore.js";
+import { JOURNAL_DB_VERSION, JOURNAL_SCHEMA } from "../js/vibrationJournalDb.js";
+const near=(actual,expected,tolerance=1e-6)=>assert.ok(Math.abs(actual-expected)<=tolerance,`${actual} ≈ ${expected}`);
+test("инструмент анализа зарегистрирован в общей базе знаний",()=>{const item=vibrationItems.find(value=>value.id==="vibration-tool-data-analysis");assert.equal(item?.status,"published");assert.equal(item?.toolConfig?.kind,"vibration-data-analysis");});
+test("CSV с десятичной запятой определяется и импортируется",()=>{const text="Частота;Амплитуда\n12,5;4,2\n25,0;8,1";const format=detectTableFormat(text);assert.equal(format.separator,";");assert.equal(format.decimal,",");const result=buildSeries(parseTable(text,format),{x:0,y:1},{mode:"spectrum"});near(result.points[0].x,12.5);near(result.points[0].y,4.2);});
+test("несортированные частоты сортируются без изменения исходного порядка",()=>{const table=parseTable("f,a\n30,3\n10,1\n20,2",{separator:",",decimal:".",header:true});const result=buildSeries(table,{x:0,y:1},{mode:"spectrum"});assert.equal(result.issues.unsorted,true);assert.deepEqual(result.points.map(p=>p.x),[10,20,30]);assert.deepEqual(result.original.map(p=>p.x),[30,10,20]);});
+test("поиск пиков находит 1× и 2× и не ставит диагноз",()=>{const points=Array.from({length:101},(_,x)=>({x,y:x===25?10:x===50?7:0}));const peaks=findPeaks(points,{prominence:1,minDistance:5,limit:10});assert.deepEqual(peaks.map(p=>p.x),[25,50]);assert.ok(peaks.every(peak=>!("fault" in peak)));});
+test("FFT синусоиды 50 Гц возвращает пик 50 Гц",()=>{const fs=1024;const points=Array.from({length:1024},(_,index)=>({x:index/fs,y:Math.sin(2*Math.PI*50*index/fs)}));const result=fftSpectrum(points,{window:"hann",size:1024});const peak=result.points.slice(1).reduce((a,b)=>b.y>a.y?b:a);near(result.sampleRate,fs);near(result.frequencyResolution,1);near(peak.x,50);near(peak.y,1,0.002);const stats=timeStatistics(points);near(stats.rms,Math.SQRT1_2,0.001);near(stats.peakToPeak,2,0.001);});
+test("неравномерная дискретизация блокирует FFT",()=>{assert.equal(analyzeResolution([{x:0,y:0},{x:1,y:1},{x:2.1,y:0}]).uniform,false);assert.throws(()=>fftSpectrum([{x:0,y:0},{x:1,y:1},{x:2.1,y:0},{x:3.1,y:1},{x:4.1,y:0},{x:5.1,y:1},{x:6.1,y:0},{x:7.1,y:1}]),/равномерной/);});
+test("лопастная и зубцовая частоты рассчитываются общей функцией",()=>assert.deepEqual(bladeOrGearFrequency(25,6,3).map(item=>item.hz),[150,300,450]));
+test("прореживание сохраняет экстремумы 100 000 точек",()=>{const points=Array.from({length:100000},(_,x)=>({x,y:x===54321?999:Math.sin(x/50)}));const reduced=decimateMinMax(points,2000);assert.ok(reduced.length<=2100);assert.ok(reduced.some(point=>point.y===999));});
+test("IndexedDB v2 хранит наборы и анализы",()=>{assert.equal(JOURNAL_DB_VERSION,2);assert.ok("vibrationDatasets" in JOURNAL_SCHEMA);assert.ok("vibrationAnalyses" in JOURNAL_SCHEMA);});
+test("PWA 0.27.0 кэширует модули анализа",()=>{assert.equal(APP_VERSION,"0.27.0");["css/vibration-data-analysis.css","js/vibrationDataCore.js","js/vibrationDataChart.js","js/vibrationDataAnalysis.js"].forEach(path=>assert.ok(ESSENTIAL_APP_PATHS.includes(path),path));});

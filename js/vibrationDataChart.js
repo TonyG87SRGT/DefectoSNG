@@ -1,0 +1,15 @@
+import { decimateMinMax } from "./vibrationDataCore.js";
+import { formatCalculation } from "./vibrationCalculations.js";
+import { safeText } from "./html.js";
+
+export function renderVibrationDataChart(points, markers = [], options = {}) {
+  if (points.length < 2) return `<div class="analysis-empty">Недостаточно данных для графика.</div>`;
+  const visible = decimateMinMax(points, 2400); const width = 900; const height = 360; const pad = { l: 64, r: 20, t: 26, b: 50 };
+  const xmin = Number.isFinite(options.from) ? options.from : visible[0].x; const xmax = Number.isFinite(options.to) ? options.to : visible.at(-1).x;
+  const ranged = visible.filter(point => point.x >= xmin && point.x <= xmax); const source = ranged.length > 1 ? ranged : visible;
+  const ymin = Math.min(...source.map(p => p.y)); const ymax = Math.max(...source.map(p => p.y)); const yspan = ymax - ymin || 1; const xspan = xmax - xmin || 1;
+  const x = value => pad.l + (value - xmin) / xspan * (width - pad.l - pad.r); const y = value => height - pad.b - (value - ymin) / yspan * (height - pad.t - pad.b);
+  const path = source.map((point, index) => `${index ? "L" : "M"}${x(point.x).toFixed(2)},${y(point.y).toFixed(2)}`).join(" ");
+  const confirmed = markers.filter(marker => marker.confirmed); const peak = source.reduce((a, b) => b.y > a.y ? b : a);
+  return `<div class="analysis-chart-scroll" tabindex="0"><svg class="analysis-chart" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="analysis-chart-title analysis-chart-desc"><title id="analysis-chart-title">${safeText(options.title || "Вибрационные данные")}</title><desc id="analysis-chart-desc">В диапазоне от ${formatCalculation(xmin)} до ${formatCalculation(xmax)} обнаружено ${confirmed.length} подтверждённых пиков. Наибольшая амплитуда наблюдается на частоте ${formatCalculation(peak.x)}.</desc><line class="analysis-axis" x1="${pad.l}" y1="${height-pad.b}" x2="${width-pad.r}" y2="${height-pad.b}"/><line class="analysis-axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${height-pad.b}"/><path class="analysis-line" d="${path}"/>${markers.filter(m=>m.x>=xmin&&m.x<=xmax).map((marker,index)=>`<g class="analysis-marker ${marker.confirmed ? "confirmed" : ""}"><line x1="${x(marker.x)}" y1="${pad.t}" x2="${x(marker.x)}" y2="${height-pad.b}"/><text x="${x(marker.x)+4}" y="${pad.t+14+(index%3)*15}">${safeText(marker.label || marker.type || "Маркер")}: ${formatCalculation(marker.x)}</text></g>`).join("")}<text class="analysis-label" x="8" y="${pad.t+8}">${formatCalculation(ymax)}</text><text class="analysis-label" x="8" y="${height-pad.b}">${formatCalculation(ymin)}</text><text class="analysis-label" x="${width/2}" y="${height-12}">${safeText(options.xUnit || "Гц")}</text></svg></div><p class="analysis-chart-description">В диапазоне от ${formatCalculation(xmin)} до ${formatCalculation(xmax)} ${safeText(options.xUnit || "Гц")} отмечено ${confirmed.length} подтверждённых маркеров. Максимум: ${formatCalculation(peak.y)} на ${formatCalculation(peak.x)} ${safeText(options.xUnit || "Гц")}.</p>`;
+}

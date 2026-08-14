@@ -197,6 +197,24 @@ export function renderVibrationDiagnosticAssistant() {
   if (transfer?.equipment) answers.equipment = String(transfer.equipment);
   if (transfer?.load) answers.load = String(transfer.load);
   if (transfer?.temperature) answers.bearingTemperature = String(transfer.temperature);
+  if (Array.isArray(transfer?.frequencyComponents)) {
+    const types = transfer.frequencyComponents.map(item => item.type);
+    const signs = [];
+    if (types.some(type => type === "harmonic")) signs.push("higher-harmonics");
+    if (types.some(type => type === "subharmonic")) signs.push("subharmonics");
+    if (types.some(type => ["unknown-peak", "user"].includes(type))) signs.push("unknown-frequency");
+    const frequencies = [];
+    if (transfer.frequencyComponents.some(item => Math.abs(item.order - 1) < 0.08)) frequencies.push("dominant-1x");
+    if (transfer.frequencyComponents.some(item => Math.abs(item.order - 2) < 0.08)) frequencies.push("dominant-2x");
+    if (transfer.frequencyComponents.some(item => Math.abs(item.order - 0.5) < 0.05)) frequencies.push("half-x");
+    if (types.some(type => ["BPFO", "BPFI", "BSF", "FTF"].includes(type))) frequencies.push("bearing-frequencies");
+    if (types.includes("blade")) frequencies.push("blade-pass");
+    if (types.includes("gear")) frequencies.push("gear-mesh");
+    if (types.includes("sideband")) frequencies.push("sidebands");
+    answers.signs = [...new Set(signs.length ? signs : ["unknown-frequency"])];
+    answers.frequencies = [...new Set(frequencies)];
+    pendingDraft = null;
+  }
   pendingDraft?.answers && Object.keys(pendingDraft.answers).length ? renderResume() : renderStep();
 }
 

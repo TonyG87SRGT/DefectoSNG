@@ -22,11 +22,11 @@ const expectedGroupSizes = Object.freeze({
   "vibration-equipment-diagnostics": 11,
   "vibration-practical-situations": 14,
   "vibration-reference": 14,
-  "vibration-tools": 8
+  "vibration-tools": 9
 });
 
 test("раздел ВД содержит все группы без повторяющихся ID", () => {
-  assert.equal(data.length, 180);
+  assert.equal(data.length, 181);
   assert.equal(byId.size, data.length);
 
   for (const [groupId, expectedSize] of Object.entries(expectedGroupSizes)) {
@@ -80,10 +80,13 @@ test("новые статьи имеют нейтральные заготовк
   const spectrum = byId.get("vibration-spectrum-1x");
   const tool = byId.get("vibration-tool-harmonics");
 
-  assert.equal(fault.status, "draft");
-  assert.equal(fault.futureBlocks.length, 9);
-  assert.equal(spectrum.futureBlocks.length, 5);
-  assert.match(spectrum.futureImageLabel, /спектр/i);
+  assert.equal(fault.status, "published");
+  assert.equal(fault.metadata.status, "published");
+  assert.ok(fault.sections.some(section => section.type === "warning"));
+  assert.ok(fault.sections.some(section => section.type === "related"));
+  assert.equal(spectrum.status, "published");
+  assert.equal(spectrum.metadata.status, "published");
+  assert.ok(spectrum.sections.some(section => section.type === "warning"));
   assert.match(tool.sections[0].content, /разработке/i);
 });
 

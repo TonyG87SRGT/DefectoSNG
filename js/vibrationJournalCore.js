@@ -1,7 +1,7 @@
 import { convertAcceleration, convertDisplacement, convertVelocity, parseDecimal } from "./vibrationCalculations.js";
 
 export const JOURNAL_FORMAT_VERSION = 1;
-export const JOURNAL_STORES = Object.freeze(["objects", "units", "nodes", "points", "measurements", "spectralComponents", "events", "limits", "routes", "settings"]);
+export const JOURNAL_STORES = Object.freeze(["objects", "units", "nodes", "points", "measurements", "spectralComponents", "events", "limits", "routes", "settings", "vibrationDatasets", "vibrationAnalyses"]);
 
 export function createId(prefix = "journal") {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
