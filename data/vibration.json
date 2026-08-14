@@ -30478,28 +30478,252 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Повышенная вибрация",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Повышенная вибрация»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 1,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Обнаружена повышенная общая вибрация"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Обнаружена повышенная общая вибрация",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Общий уровень стал выше базового или применяемого контрольного значения, но источник изменения ещё не установлен."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "повторить измерение в той же точке и направлении",
+          "сверить единицы, RMS/Peak/P-P и диапазон",
+          "проверить RPM и нагрузку",
+          "исключить перегрузку и плохое крепление",
+          "сравнить с базой и соседними точками"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "общий уровень и спектр до/после",
+          "waveform",
+          "RPM, нагрузка и температура",
+          "точка, направление и способ крепления",
+          "дата и история событий"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "измерительные: новая настройка, диапазон, монтаж датчика",
+          "механические: дисбаланс, несоосность, ослабление, резонанс",
+          "подшипниковые: широкополосная или импульсная активность",
+          "технологические: нагрузка, поток, давление",
+          "структурные: рама, фундамент, трубопровод"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "рост отдельных линий указывает, где искать периодический источник",
+          "рост фона требует проверки импульсов, потока и качества записи",
+          "одинаковый рост всех точек может быть режимом или общим возбуждением",
+          "локальный рост требует проверки конкретной точки и опоры"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "изменение исчезает при корректном повторе",
+          "условия и настройки несопоставимы",
+          "соседние точки и другие параметры не подтверждают изменение"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "расширенный спектр",
+          "waveform",
+          "фаза",
+          "огибающая",
+          "рабочие параметры",
+          "тренд"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "делать диагноз по одному интегральному числу",
+          "сравнивать разные диапазоны",
+          "игнорировать режим",
+          "считать отсутствие нового пика отсутствием изменения"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "подтвердить факт роста"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "разложить уровень по частотам и полосам"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "локализовать по точкам"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "связать с режимом"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "сформировать несколько гипотез"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "выбрать различающие измерения"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Диагноз сужают после воспроизводимого изменения конкретных компонентов, локализации и согласования с режимом или независимым методом."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Другой RPM, нагрузка или диапазон способен закономерно изменить общий уровень без нового повреждения."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "резкий скачок тренда; одновременный рост температуры; сильные удары; быстрое прогрессирование. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-1x-growth",
+            "title": "Рост первой гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-load-dependent",
+            "title": "Рост вибрации при нагрузке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-one-point",
+            "title": "Аномалия обнаружена только в одной точке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-baseline-comparison",
+            "title": "Сравнение с базовым состоянием"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -30509,29 +30733,86 @@
       "materialType": "scenario",
       "equipment": [],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Обнаружена повышенная общая вибрация",
-        "Повышенная вибрация"
+      "diagnosticSigns": [
+        "Повышенная вибрация",
+        "резкий скачок тренда",
+        "одновременный рост температуры",
+        "сильные удары",
+        "быстрое прогрессирование"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "keywords": [
+        "повышенная вибрация",
+        "вырос общий уровень",
+        "high overall vibration",
+        "рост RMS"
+      ],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-baseline-comparison",
+        "vibration-spectrum-analysis",
+        "vibration-trend-analysis"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "вырос общий уровень",
+        "high overall vibration",
+        "рост RMS"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-bearing-outer-race"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-impulse"
+      ],
+      "relatedScenarios": [
+        "vibration-case-1x-growth",
+        "vibration-case-load-dependent",
+        "vibration-case-one-point"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-bearing-outer-race"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-impulse"
+      ],
+      "additionalChecks": [
+        "повторить измерение в той же точке и направлении",
+        "сверить единицы, RMS/Peak/P-P и диапазон",
+        "проверить RPM и нагрузку",
+        "исключить перегрузку и плохое крепление",
+        "сравнить с базой и соседними точками",
+        "расширенный спектр",
+        "waveform",
+        "фаза",
+        "огибающая",
+        "рабочие параметры",
+        "тренд"
+      ]
     },
     "mediaSlots": [
       {
@@ -30553,28 +30834,255 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Рост первой гармоники",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Рост первой гармоники»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 2,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Резко выросла первая гармоника"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Резко выросла первая гармоника",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Амплитуда первой оборотной гармоники выросла относительно базы или предыдущего измерения."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "точно измерить RPM",
+          "повторить запись",
+          "сравнить направления",
+          "сравнить соседние опоры",
+          "проверить фазу и историю ремонта"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "амплитуда и фаза 1×",
+          "радиальные и осевые направления",
+          "RPM и нагрузка",
+          "спектры всех опор",
+          "ремонтные и режимные события"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "дисбаланс",
+          "несоосность",
+          "резонанс",
+          "изгиб вала",
+          "эксцентриситет",
+          "трубопроводная деформация",
+          "структурная податливость",
+          "технологическое возбуждение"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "дисбаланс: устойчивый радиальный 1× и согласованная фаза",
+          "несоосность: осевая составляющая и картина у муфты",
+          "резонанс: узкий диапазон RPM и изменение фазы",
+          "деформация: связь с температурой, опорами или трубопроводом"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "1× не совпадает с фактическими RPM",
+          "пик фиксирован при изменении RPM",
+          "изменение локально только на слабой крышке",
+          "фаза и направления противоречат выбранной гипотезе"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "фаза",
+          "разгон/выбег",
+          "order analysis",
+          "проверка центровки и опор",
+          "ODS"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "писать «1× = дисбаланс»",
+          "использовать паспортные RPM",
+          "игнорировать осевое направление",
+          "сразу назначать балансировку"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "подтвердить 1×"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "локализовать рост"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "оценить фазу"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "проверить зависимость от RPM и нагрузки"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "исключить резонанс и деформацию"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "сопоставить историю"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Гипотезу сужают после фазового и пространственного подтверждения и исключения резонанса."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "1× может изменяться при другой скорости или технологическом режиме без нового дефекта."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "быстрый рост 1×; резкое изменение фазы; рост после ремонта; контакт или сильный нагрев. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-after-repair",
+            "title": "Вибрация после ремонта"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-load-dependent",
+            "title": "Рост вибрации при нагрузке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-one-point",
+            "title": "Аномалия обнаружена только в одной точке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-specific-speed",
+            "title": "Рост вибрации на определённых оборотах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bent-shaft",
+            "title": "Изгиб вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-pipe-strain",
+            "title": "Напряжение от присоединённого трубопровода"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-runup-coastdown",
+            "title": "Анализ разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-rotation-frequency",
+            "title": "Частота вращения"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -30585,33 +31093,83 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "1×",
-        "гармоники"
+        "Рост первой гармоники",
+        "быстрый рост 1×",
+        "резкое изменение фазы",
+        "рост после ремонта",
+        "контакт или сильный нагрев"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Резко выросла первая гармоника",
-        "Рост первой гармоники"
+        "вырос 1x",
+        "высокий 1x",
+        "растёт оборотная частота",
+        "рост первой гармоники"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [
-        "Гармоники"
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-phase-analysis",
+        "vibration-runup-coastdown",
+        "vibration-rotation-frequency"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "высокий 1x",
+        "растёт оборотная частота",
+        "рост первой гармоники"
+      ],
+      "measuredParameters": [],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-resonance",
+        "vibration-fault-pipe-strain"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-resonance"
+      ],
+      "relatedScenarios": [
+        "vibration-case-after-repair",
+        "vibration-case-load-dependent",
+        "vibration-case-one-point",
+        "vibration-case-specific-speed"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-resonance",
+        "vibration-fault-pipe-strain"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-resonance"
+      ],
+      "additionalChecks": [
+        "точно измерить RPM",
+        "повторить запись",
+        "сравнить направления",
+        "сравнить соседние опоры",
+        "проверить фазу и историю ремонта",
+        "фаза",
+        "разгон/выбег",
+        "order analysis",
+        "проверка центровки и опор",
+        "ODS"
+      ]
     },
     "mediaSlots": [
       {
@@ -30633,28 +31191,247 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Рост второй гармоники",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Рост второй гармоники»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 3,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Повысилась вторая гармоника"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Повысилась вторая гармоника",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Вторая оборотная гармоника 2× стала выше относительно базы либо появилась в новых точках."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "подтвердить фактическую 1× и 2×",
+          "сравнить осевое направление",
+          "измерить обе стороны муфты",
+          "проверить фазу",
+          "сверить нагрузку и прогрев"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "1×, 2× и высшие гармоники",
+          "H/V/A по обе стороны муфты",
+          "фаза",
+          "RPM и нагрузка",
+          "данные центровки"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "параллельная или угловая несоосность",
+          "механическая нелинейность",
+          "изгиб вала",
+          "ослабление",
+          "деформация опор",
+          "электрический процесс для соответствующей машины"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "несоосность: согласованная картина у муфты и проверка центровки",
+          "нелинейность: гармоники и искажённый waveform",
+          "изгиб: фазовая картина и биение",
+          "электрическая причина: согласование с током и частотой питания"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "частота не следует за RPM",
+          "2× видна только на одной податливой детали",
+          "центровка и фазовые данные не подтверждают муфтовую причину"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "фаза 1×/2×",
+          "waveform",
+          "проверка центровки",
+          "токовый анализ",
+          "осмотр опор"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "писать «2× = несоосность»",
+          "не измерять осевое направление",
+          "игнорировать электрический контекст",
+          "сравнивать разные режимы"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "проверить порядок"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "сравнить 1×/2×"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "локализовать около муфты"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "измерить фазу"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "проверить геометрию"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "исключить нелинейность и электрические причины"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Причину сужают по фазе, направлениям, обеим сторонам муфты и независимой геометрической проверке."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Два события за оборот могут быть конструктивной особенностью; важны изменение от базы и контекст."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "рост вместе с температурой муфты; резкий скачок после центровки; быстро растущие гармоники. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-after-repair",
+            "title": "Вибрация после ремонта"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-load-dependent",
+            "title": "Рост вибрации при нагрузке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-1x-growth",
+            "title": "Рост первой гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-2x",
+            "title": "Повышенная вторая гармоника 2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x-2x",
+            "title": "Первая и вторая гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-harmonic-series",
+            "title": "Гармонический ряд"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-angular-misalignment",
+            "title": "Угловая несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bent-shaft",
+            "title": "Изгиб вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-motor-electrical",
+            "title": "Электрические неисправности двигателя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-directions",
+            "title": "Направления измерения"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -30665,33 +31442,82 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "2×",
-        "гармоники"
+        "Рост второй гармоники",
+        "рост вместе с температурой муфты",
+        "резкий скачок после центровки",
+        "быстро растущие гармоники"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Повысилась вторая гармоника",
-        "Рост второй гармоники"
+        "вырос 2x",
+        "высокий 2x",
+        "вторая гармоника выросла",
+        "рост 2×"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [
-        "Гармоники"
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-phase-analysis",
+        "vibration-measurement-directions"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "высокий 2x",
+        "вторая гармоника выросла",
+        "рост 2×"
+      ],
+      "measuredParameters": [],
+      "relatedFaults": [
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-motor-electrical"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-2x",
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-harmonic-series"
+      ],
+      "relatedScenarios": [
+        "vibration-case-after-repair",
+        "vibration-case-load-dependent",
+        "vibration-case-1x-growth"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-motor-electrical"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-2x",
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-harmonic-series"
+      ],
+      "additionalChecks": [
+        "подтвердить фактическую 1× и 2×",
+        "сравнить осевое направление",
+        "измерить обе стороны муфты",
+        "проверить фазу",
+        "сверить нагрузку и прогрев",
+        "фаза 1×/2×",
+        "waveform",
+        "проверка центровки",
+        "токовый анализ",
+        "осмотр опор"
+      ]
     },
     "mediaSlots": [
       {
@@ -30713,28 +31539,257 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Рост вибрации при нагрузке",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Рост вибрации при нагрузке»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 4,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Вибрация растёт при увеличении нагрузки"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Вибрация растёт при увеличении нагрузки",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Вибрация изменяется вместе с нагрузкой, производительностью или технологическим параметром."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "синхронно записать нагрузку и RPM",
+          "проверить, какие частоты растут",
+          "сравнить все точки",
+          "учесть температуру, ток, расход и давление",
+          "повторить при сопоставимом режиме"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "вибрация по компонентам",
+          "RPM",
+          "процент нагрузки/мощность/ток",
+          "расход и давление",
+          "температура",
+          "фаза при ключевых режимах"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "несоосность или деформация под нагрузкой",
+          "зубчатые силы",
+          "электромагнитное возбуждение",
+          "подшипниковая нагрузка",
+          "трубопроводные силы",
+          "процессное возбуждение",
+          "режимный резонанс"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "механическая причина: пространственная и фазовая зависимость",
+          "зубья: GMF и боковые полосы",
+          "электрическая: согласование с током",
+          "процессная: связь с расходом/давлением",
+          "резонанс: узкая область режима"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "RPM одновременно изменились и объясняют сдвиг",
+          "изменение не воспроизводится",
+          "датчик или диапазон менялись",
+          "зависимость исчезает при сопоставимых условиях"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "синхронный тренд рабочих параметров",
+          "фаза",
+          "order analysis",
+          "ток",
+          "давление/расход",
+          "ODS"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "считать любой рост при нагрузке дефектом",
+          "не отделять RPM от нагрузки",
+          "сравнивать несинхронные данные"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "построить зависимость по режиму"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "выделить растущие частоты"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "локализовать точки"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "сформировать механические и процессные гипотезы"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "выбрать независимую проверку"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Диагноз сужают по воспроизводимой зависимости конкретной составляющей и независимому параметру процесса."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Часть вибрации закономерно зависит от нагрузки; диагностически важна новая или изменившаяся зависимость."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "нелинейный скачок; рост температуры; появление ударов; неустойчивый технологический режим. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-high-overall",
+            "title": "Повышенная вибрация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-1x-growth",
+            "title": "Рост первой гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-temperature-dependent",
+            "title": "Вибрация зависит от температуры"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-specific-speed",
+            "title": "Рост вибрации на определённых оборотах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-sidebands",
+            "title": "Боковые полосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-gear-mesh",
+            "title": "Зубцовая частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-modulated",
+            "title": "Модулированный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-motor-electrical",
+            "title": "Электрические неисправности двигателя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-pipe-strain",
+            "title": "Напряжение от присоединённого трубопровода"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-data-record",
+            "title": "Фиксация рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -30744,29 +31799,85 @@
       "materialType": "scenario",
       "equipment": [],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Вибрация растёт при увеличении нагрузки",
-        "Рост вибрации при нагрузке"
+      "diagnosticSigns": [
+        "Рост вибрации при нагрузке",
+        "нелинейный скачок",
+        "рост температуры",
+        "появление ударов",
+        "неустойчивый технологический режим"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "keywords": [
+        "вибрация растёт под нагрузкой",
+        "зависимость вибрации от нагрузки",
+        "load dependent vibration"
+      ],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-operating-mode-relation",
+        "vibration-operating-data-record",
+        "vibration-order-analysis"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "зависимость вибрации от нагрузки",
+        "load dependent vibration"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-gears",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-pipe-strain",
+        "vibration-fault-resonance"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-modulated"
+      ],
+      "relatedScenarios": [
+        "vibration-case-high-overall",
+        "vibration-case-1x-growth",
+        "vibration-case-temperature-dependent",
+        "vibration-case-specific-speed"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-gears",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-pipe-strain",
+        "vibration-fault-resonance"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-modulated"
+      ],
+      "additionalChecks": [
+        "синхронно записать нагрузку и RPM",
+        "проверить, какие частоты растут",
+        "сравнить все точки",
+        "учесть температуру, ток, расход и давление",
+        "повторить при сопоставимом режиме",
+        "синхронный тренд рабочих параметров",
+        "фаза",
+        "order analysis",
+        "ток",
+        "давление/расход",
+        "ODS"
+      ]
     },
     "mediaSlots": [
       {
@@ -30788,28 +31899,260 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Вибрация зависит от температуры",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Вибрация зависит от температуры»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 5,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Вибрация зависит от температуры"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Вибрация зависит от температуры",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Вибрация изменяется по мере прогрева машины или при изменении температуры среды, масла или подшипников."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "синхронно записать температуру и вибрацию",
+          "проверить RPM и нагрузку",
+          "сравнить холодные и горячие точки",
+          "проверить центровку и зазоры",
+          "исключить изменение процесса"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "тренд температуры и времени",
+          "амплитуда и фаза 1×",
+          "осевая вибрация",
+          "параметры масла",
+          "нагрузка и режим",
+          "тепловая история"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "тепловой изгиб",
+          "изменение центровки",
+          "тепловая деформация корпуса/трубопровода",
+          "изменение подшипникового зазора",
+          "изменение вязкости масла",
+          "рост технологической нагрузки"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "изгиб: воспроизводимый рост 1× и фазы при прогреве",
+          "центровка: осевая картина у муфты",
+          "масло/зазор: орбита, температура и давление",
+          "трубопровод: движение и усилия с температурой"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "температура не коррелирует по времени",
+          "RPM или нагрузка объясняют изменение",
+          "эффект не повторяется",
+          "датчики имеют температурный дрейф"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "тепловой тренд",
+          "фаза",
+          "орбита/centerline",
+          "проверка горячей центровки",
+          "температура и масло",
+          "измерения трубопровода"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "сравнивать сразу после запуска с прогретой базой",
+          "считать корреляцию доказательством причины",
+          "игнорировать температурный предел датчика"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "построить синхронный тренд"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "выделить момент изменения"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "определить компоненты и точки"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "проверить тепловые гипотезы"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "сравнить повторный цикл нагрева"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Причину сужают после повторяемого теплового цикла и согласования фазы, геометрии или маслосистемы."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Прогрев закономерно меняет зазоры и вязкость; важны величина, повторяемость и отклонение от собственной базы."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "быстрый рост температуры и вибрации; изменение положения вала; признаки контакта; ускоряющийся тренд. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-bearing-temperature",
+            "title": "Рост температуры подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-load-dependent",
+            "title": "Рост вибрации при нагрузке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-after-repair",
+            "title": "Вибрация после ремонта"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-half",
+            "title": "Субгармоника 1/2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-oil-whirl",
+            "title": "Составляющие 0,4–0,47×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bent-shaft",
+            "title": "Изгиб вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-casing-deformation",
+            "title": "Деформация корпуса"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-pipe-strain",
+            "title": "Напряжение от присоединённого трубопровода"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-shaft-orbit",
+            "title": "Орбита ротора"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -30820,29 +32163,88 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "рост температуры"
+        "Вибрация зависит от температуры",
+        "быстрый рост температуры и вибрации",
+        "изменение положения вала",
+        "признаки контакта",
+        "ускоряющийся тренд"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Вибрация зависит от температуры"
+        "вибрация после прогрева",
+        "температурная вибрация",
+        "thermal bow",
+        "вибрация зависит от температуры"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-trend-analysis",
+        "vibration-operating-mode-relation",
+        "vibration-phase-analysis",
+        "vibration-shaft-orbit"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "температурная вибрация",
+        "thermal bow",
+        "вибрация зависит от температуры"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-bent-shaft",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-casing-deformation",
+        "vibration-fault-pipe-strain",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rub"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl"
+      ],
+      "relatedScenarios": [
+        "vibration-case-bearing-temperature",
+        "vibration-case-load-dependent",
+        "vibration-case-after-repair"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bent-shaft",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-casing-deformation",
+        "vibration-fault-pipe-strain",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rub"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl"
+      ],
+      "additionalChecks": [
+        "синхронно записать температуру и вибрацию",
+        "проверить RPM и нагрузку",
+        "сравнить холодные и горячие точки",
+        "проверить центровку и зазоры",
+        "исключить изменение процесса",
+        "тепловой тренд",
+        "фаза",
+        "орбита/centerline",
+        "проверка горячей центровки",
+        "температура и масло",
+        "измерения трубопровода"
+      ]
     },
     "mediaSlots": [
       {
@@ -30864,28 +32266,283 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Вибрация после ремонта",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Вибрация после ремонта»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 6,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Вибрация появилась после ремонта"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Вибрация появилась после ремонта",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "После ремонта, сборки, замены узла, центровки или балансировки вибрация стала выше или изменила структуру."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "получить точный перечень работ",
+          "сравнить RPM и режим до/после",
+          "повторить те же точки",
+          "определить выросшие частоты",
+          "проверить крепления и муфту",
+          "сопоставить новые детали"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "дата и содержание ремонта",
+          "заменённые подшипники и муфта",
+          "снятие ротора и опор",
+          "данные центровки/балансировки",
+          "изменения трубопровода и фундамента",
+          "доремонтные спектры"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "остаточная несоосность",
+          "дисбаланс после сборки",
+          "ошибка установки подшипника",
+          "soft foot",
+          "ослабление или неправильная затяжка",
+          "трубопроводная деформация",
+          "изменение жёсткости",
+          "другой режим или измерительная ошибка"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "изменение связано с физически затронутым узлом",
+          "новые частоты соответствуют новой детали/геометрии",
+          "фаза и пространственная картина подтверждают монтажную гипотезу",
+          "повторная механическая проверка выявляет отклонение"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "условия до/после несопоставимы",
+          "изменение исчезает при повторе",
+          "затронутый узел не связан пространственно",
+          "режим полностью объясняет разницу"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "фаза",
+          "центровка",
+          "soft foot",
+          "огибающая",
+          "проверка креплений",
+          "биение",
+          "анализ выполненных работ"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "считать выполненную балансировку доказательством исправности",
+          "игнорировать новые RPM",
+          "ремонтировать другой узел по знакомому пику",
+          "не сохранять доремонтную базу"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "сопоставить условия"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "проверить те же точки"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "выделить новые компоненты"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "связать их с работами"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "проверить фазу и монтаж"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "оценить подшипники"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "подтвердить корректирующим измерением"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Любое изменение после ремонта сначала рассматривают через то, что физически снимали, перемещали, затягивали или заменяли."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Новая деталь или режим может изменить нормальный фон; это требует документирования, а не автоматического признания дефектом."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "резкий скачок сразу после запуска; рост температуры нового подшипника; сильные удары; быстрый рост тренда. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-1x-growth",
+            "title": "Рост первой гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-2x-growth",
+            "title": "Рост второй гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-bearing-temperature",
+            "title": "Рост температуры подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-one-point",
+            "title": "Аномалия обнаружена только в одной точке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x-2x",
+            "title": "Первая и вторая гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-harmonic-series",
+            "title": "Гармонический ряд"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-angular-misalignment",
+            "title": "Угловая несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-soft-foot",
+            "title": "Мягкая опора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-loose-bearing-housing",
+            "title": "Ослабление подшипника в корпусе"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-pipe-strain",
+            "title": "Напряжение от присоединённого трубопровода"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-source-data",
+            "title": "Сбор исходных данных"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-baseline-comparison",
+            "title": "Сравнение с базовым состоянием"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -30895,29 +32552,95 @@
       "materialType": "scenario",
       "equipment": [],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Вибрация появилась после ремонта",
-        "Вибрация после ремонта"
+      "diagnosticSigns": [
+        "Вибрация после ремонта",
+        "резкий скачок сразу после запуска",
+        "рост температуры нового подшипника",
+        "сильные удары",
+        "быстрый рост тренда"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "keywords": [
+        "вибрация после ремонта",
+        "после замены подшипника вибрация",
+        "вибрация после центровки",
+        "после ремонта стало хуже"
+      ],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-source-data",
+        "vibration-baseline-comparison",
+        "vibration-phase-analysis"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "после замены подшипника вибрация",
+        "вибрация после центровки",
+        "после ремонта стало хуже"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-soft-foot",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-loose-bearing-housing",
+        "vibration-fault-pipe-strain"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-harmonic-series",
+        "vibration-spectrum-impulse"
+      ],
+      "relatedScenarios": [
+        "vibration-case-1x-growth",
+        "vibration-case-2x-growth",
+        "vibration-case-bearing-temperature",
+        "vibration-case-one-point"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-soft-foot",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-loose-bearing-housing",
+        "vibration-fault-pipe-strain"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-harmonic-series",
+        "vibration-spectrum-impulse"
+      ],
+      "additionalChecks": [
+        "получить точный перечень работ",
+        "сравнить RPM и режим до/после",
+        "повторить те же точки",
+        "определить выросшие частоты",
+        "проверить крепления и муфту",
+        "сопоставить новые детали",
+        "фаза",
+        "центровка",
+        "soft foot",
+        "огибающая",
+        "проверка креплений",
+        "биение",
+        "анализ выполненных работ"
+      ]
     },
     "mediaSlots": [
       {
@@ -30939,28 +32662,249 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Аномалия обнаружена только в одной точке",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Аномалия обнаружена только в одной точке»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 7,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Аномалия обнаружена только в одной точке"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Аномалия обнаружена только в одной точке",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Аномалия наблюдается только в одной измерительной точке, тогда как соседние точки изменились мало."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "повторить точку",
+          "проверить поверхность и крепление",
+          "измерить рядом на жёстком корпусе",
+          "сравнить направления",
+          "проверить локальный узел"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "координаты и поверхность",
+          "амплитуда/спектр/waveform",
+          "соседние точки вокруг опоры",
+          "направления",
+          "температура и состояние узла"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "локальный подшипник или контакт",
+          "слабое крепление",
+          "тонкая крышка",
+          "локальный резонанс",
+          "повреждение основания",
+          "близость к источнику",
+          "неправильная точка"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "локальный дефект подтверждается соседними жёсткими точками и температурой",
+          "резонанс — фазой и локальной формой",
+          "ошибка точки — исчезновением после переноса",
+          "ослабление — осмотром и ударным waveform"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "результат не повторяется",
+          "реагирует на кабель",
+          "исчезает на жёсткой поверхности",
+          "не согласуется ни с одним соседним каналом"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "плотная сетка соседних точек",
+          "waveform",
+          "фаза",
+          "ODS",
+          "температура",
+          "осмотр корпуса и крепления"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "сразу назначать локальный дефект",
+          "измерять на крышке как на корпусе",
+          "игнорировать резонанс детали"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "подтвердить точку"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "проверить монтаж"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "окружить аномалию соседними измерениями"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "сравнить направления"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "проверить локальные механизмы"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "оценить пространственное затухание"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Диагноз сужают после подтверждения, что аномалия принадлежит узлу, а не измерительной поверхности."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Точка ближе к источнику или податливее соседних и может закономерно иметь больший уровень."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "локальные сильные удары; одновременный нагрев; трещины или движение крепления. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-one-sensor",
+            "title": "Аномалия обнаружена только одним датчиком"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-high-overall",
+            "title": "Повышенная вибрация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-bearing-temperature",
+            "title": "Рост температуры подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-loose-bearing-housing",
+            "title": "Ослабление подшипника в корпусе"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-casing-deformation",
+            "title": "Деформация корпуса"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-points",
+            "title": "Выбор точки измерения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-ods",
+            "title": "ODS-анализ"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -30970,28 +32914,84 @@
       "materialType": "scenario",
       "equipment": [],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Аномалия обнаружена только в одной точке"
+      "diagnosticSigns": [
+        "Аномалия обнаружена только в одной точке",
+        "локальные сильные удары",
+        "одновременный нагрев",
+        "трещины или движение крепления"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "keywords": [
+        "вибрация одной опоры",
+        "аномалия в одной точке",
+        "one point vibration",
+        "одна опора вибрирует"
+      ],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-measurement-points",
+        "vibration-ods"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "аномалия в одной точке",
+        "one point vibration",
+        "одна опора вибрирует"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-loose-bearing-housing",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-casing-deformation"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-resonance",
+        "vibration-spectrum-broadband-noise"
+      ],
+      "relatedScenarios": [
+        "vibration-case-one-sensor",
+        "vibration-case-high-overall",
+        "vibration-case-bearing-temperature"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-loose-bearing-housing",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-resonance",
+        "vibration-fault-casing-deformation"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-resonance",
+        "vibration-spectrum-broadband-noise"
+      ],
+      "additionalChecks": [
+        "повторить точку",
+        "проверить поверхность и крепление",
+        "измерить рядом на жёстком корпусе",
+        "сравнить направления",
+        "проверить локальный узел",
+        "плотная сетка соседних точек",
+        "waveform",
+        "фаза",
+        "ODS",
+        "температура",
+        "осмотр корпуса и крепления"
+      ]
     },
     "mediaSlots": [
       {
@@ -31013,28 +33013,218 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Аномалия обнаружена только одним датчиком",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Аномалия обнаружена только одним датчиком»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 8,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Аномалия обнаружена только одним датчиком"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Аномалия обнаружена только одним датчиком",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Аномалию показывает только один датчик или канал, тогда как параллельные измерения не подтверждают её."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "поменять датчики или каналы местами",
+          "проверить кабель и разъём",
+          "сверить чувствительность и профиль",
+          "повторить монтаж",
+          "проверить питание и перегрузку"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "идентификатор датчика и канала",
+          "чувствительность и единицы",
+          "способ крепления",
+          "raw waveform",
+          "сообщения канала",
+          "результат перестановки"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "неисправность датчика",
+          "кабельный шум",
+          "ошибка профиля или чувствительности",
+          "плохой контакт",
+          "локальная физическая разница точки",
+          "перегрузка канала",
+          "электромагнитная помеха"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "ошибка следует за датчиком или кабелем",
+          "исчезает после корректного монтажа",
+          "канал показывает clipping или обрыв",
+          "физическая причина остаётся в точке после смены датчика"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "аномалия не следует за датчиком",
+          "другой исправный канал подтверждает точку",
+          "пространственная картина согласована с конструкцией"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "контрольный датчик",
+          "перестановка каналов",
+          "калибратор по процедуре",
+          "проверка waveform",
+          "проверка измерительной цепи"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "диагностировать машину до проверки канала",
+          "менять сразу несколько элементов",
+          "не фиксировать перестановки"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "повторить"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "проверить настройки"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "переставить датчик"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "переставить канал/кабель"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "сравнить raw signal"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "локализовать источник ошибки"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Только после разделения «следует за датчиком» и «остаётся в точке» можно переходить к машине."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Разные типы датчиков и направления не обязаны показывать одинаковую амплитуду."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "clipping; обрыв/короткое замыкание; сигнал реагирует на кабель; опасное повреждение изоляции. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-one-point",
+            "title": "Аномалия обнаружена только в одной точке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-high-frequency-impulses",
+            "title": "Появились высокочастотные импульсы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-clipping",
+            "title": "Клиппирование временного сигнала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-chain-check",
+            "title": "Проверка измерительной цепи"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-sensor-installation-errors",
+            "title": "Типичные ошибки установки датчиков"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -31044,28 +33234,70 @@
       "materialType": "scenario",
       "equipment": [],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Аномалия обнаружена только одним датчиком"
+      "diagnosticSigns": [
+        "Аномалия обнаружена только одним датчиком",
+        "clipping",
+        "обрыв/короткое замыкание",
+        "сигнал реагирует на кабель",
+        "опасное повреждение изоляции"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "keywords": [
+        "один датчик показывает вибрацию",
+        "ошибка акселерометра",
+        "sensor mismatch",
+        "плохой датчик"
+      ],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-measurement-chain-check",
+        "vibration-sensor-installation-errors",
+        "vibration-time-waveform"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "ошибка акселерометра",
+        "sensor mismatch",
+        "плохой датчик"
+      ],
       "measuredParameters": [],
       "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedSpectra": [
+        "vibration-spectrum-clipping",
+        "vibration-spectrum-broadband-noise"
+      ],
+      "relatedScenarios": [
+        "vibration-case-one-point",
+        "vibration-case-high-frequency-impulses"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
       "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "similarSpectra": [
+        "vibration-spectrum-clipping",
+        "vibration-spectrum-broadband-noise"
+      ],
+      "additionalChecks": [
+        "поменять датчики или каналы местами",
+        "проверить кабель и разъём",
+        "сверить чувствительность и профиль",
+        "повторить монтаж",
+        "проверить питание и перегрузку",
+        "контрольный датчик",
+        "перестановка каналов",
+        "калибратор по процедуре",
+        "проверка waveform",
+        "проверка измерительной цепи"
+      ]
     },
     "mediaSlots": [
       {
@@ -31087,28 +33319,256 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Появился нехарактерный шум",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Появился нехарактерный шум»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 9,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Появился нехарактерный шум"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Появился нехарактерный шум",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Появился новый гул, рокот, свист, дребезг, удары или скрежет, но его источник ещё не локализован."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "безопасно локализовать зону",
+          "проверить общий уровень и высокочастотный диапазон",
+          "записать waveform",
+          "зафиксировать режим",
+          "осмотреть кожухи, трубки и утечки"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "характер и периодичность шума",
+          "место максимума",
+          "RPM и нагрузка",
+          "спектр и waveform",
+          "температура",
+          "изменения режима"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "подшипниковая или смазочная активность",
+          "кавитация/поток",
+          "задевание",
+          "ослабленный кожух",
+          "зубчатый или ременной процесс",
+          "электрический шум",
+          "технологический источник"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "удары видны во waveform",
+          "кавитация связана с расходом/давлением",
+          "задевание сопровождается нагревом и следами",
+          "дребезг локализуется на вспомогательной детали",
+          "подшипниковый процесс подтверждается огибающей"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "звук не повторяется",
+          "вибрация и температура не локализуются",
+          "источник находится вне машины",
+          "изменение относится к штатному новому режиму"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "waveform",
+          "огибающая",
+          "акустический/ультразвуковой контроль",
+          "температура",
+          "визуальный осмотр",
+          "рабочие параметры"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "ставить диагноз по слову «гул»",
+          "считать тихую машину исправной",
+          "приближаться к опасной зоне ради прослушивания"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "зафиксировать наблюдение"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "локализовать безопасно"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "сопоставить с вибрацией"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "проверить режим"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "разделить механические и процессные источники"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "выбрать профильный метод"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Причину сужают по локализации, периодичности, waveform, температуре и зависимости от режима."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Новый технологический режим может изменить звук без повреждения, но это должно подтверждаться рабочими параметрами."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "металлический контакт; сильные удары; запах перегрева; опасная утечка; быстрое ухудшение. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-pump-rumble",
+            "title": "Насос работает с рокочущим шумом"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-high-frequency-impulses",
+            "title": "Появились высокочастотные импульсы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-bearing-temperature",
+            "title": "Рост температуры подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-cavitation",
+            "title": "Спектр кавитации"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-lubrication",
+            "title": "Проблемы смазки"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-cavitation",
+            "title": "Кавитация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-visual-inspection",
+            "title": "Визуальный осмотр оборудования"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -31118,28 +33578,89 @@
       "materialType": "scenario",
       "equipment": [],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Появился нехарактерный шум"
+      "diagnosticSigns": [
+        "Появился нехарактерный шум",
+        "металлический контакт",
+        "сильные удары",
+        "запах перегрева",
+        "опасная утечка",
+        "быстрое ухудшение"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "keywords": [
+        "нехарактерный шум",
+        "машина гудит",
+        "рокот",
+        "скрежет",
+        "unusual machine noise"
+      ],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-time-waveform",
+        "vibration-visual-inspection",
+        "vibration-envelope-analysis"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "машина гудит",
+        "рокот",
+        "скрежет",
+        "unusual machine noise"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-rub",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-lubrication",
+        "vibration-fault-cavitation",
+        "vibration-fault-gears"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-cavitation"
+      ],
+      "relatedScenarios": [
+        "vibration-case-pump-rumble",
+        "vibration-case-high-frequency-impulses",
+        "vibration-case-bearing-temperature"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-rub",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-lubrication",
+        "vibration-fault-cavitation",
+        "vibration-fault-gears"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-cavitation"
+      ],
+      "additionalChecks": [
+        "безопасно локализовать зону",
+        "проверить общий уровень и высокочастотный диапазон",
+        "записать waveform",
+        "зафиксировать режим",
+        "осмотреть кожухи, трубки и утечки",
+        "waveform",
+        "огибающая",
+        "акустический/ультразвуковой контроль",
+        "температура",
+        "визуальный осмотр",
+        "рабочие параметры"
+      ]
     },
     "mediaSlots": [
       {
@@ -31161,28 +33682,254 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Вибрация растёт во время разгона",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Вибрация растёт во время разгона»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 10,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Вибрация растёт во время разгона"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Вибрация растёт во время разгона",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Во время увеличения RPM амплитуда растёт, меняется частота пика или появляется отдельная область повышенной вибрации."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "проверить синхронную запись RPM",
+          "определить траекторию пика",
+          "проверить амплитуду и фазу",
+          "сравнить точки",
+          "зафиксировать технологические изменения"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "RPM-время",
+          "waterfall/order map",
+          "амплитуда и фаза",
+          "нагрузка и управление",
+          "критические события",
+          "сравнимый выбег"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "прохождение резонанса/критической скорости",
+          "рост вращательного возбуждения",
+          "изменение аэродинамического режима",
+          "динамическая неустойчивость",
+          "задевание при тепловом/центробежном изменении",
+          "управляющий переход"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "резонанс: локальный максимум и изменение фазы",
+          "order-related: частота следует RPM",
+          "фиксированная частота: собственный или внешний источник",
+          "неустойчивость: субсинхронная траектория и орбита"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "RPM канал ошибочен",
+          "режим изменился несинхронно",
+          "пик является aliasing",
+          "эффект не повторяется на выбеге"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "order tracking",
+          "фаза",
+          "выбег",
+          "орбита",
+          "waterfall",
+          "ODS/модальный анализ"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "смотреть только один стационарный спектр",
+          "не записывать RPM",
+          "считать любой максимум резонансом"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "проверить тахометр"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "построить амплитуда–RPM"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "определить порядки"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "проанализировать фазу"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "сравнить разгон и выбег"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "локализовать форму"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Резонанс подтверждают собственной частотой и фазой; вращательный источник — сохранением порядка."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Амплитуда вращательной силы может закономерно расти со скоростью; важны локальные пики и отклонение от базы."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "резкий проход критической области; контакт; неустойчивая субсинхронная вибрация; превышение критериев изготовителя. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-specific-speed",
+            "title": "Рост вибрации на определённых оборотах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-1x-growth",
+            "title": "Рост первой гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-temperature-dependent",
+            "title": "Вибрация зависит от температуры"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-oil-whirl",
+            "title": "Составляющие 0,4–0,47×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-runup-coastdown",
+            "title": "Анализ разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-coastdown-analysis",
+            "title": "Анализ выбега"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -31192,28 +33939,85 @@
       "materialType": "scenario",
       "equipment": [],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Вибрация растёт во время разгона"
+      "diagnosticSigns": [
+        "Вибрация растёт во время разгона",
+        "резкий проход критической области",
+        "контакт",
+        "неустойчивая субсинхронная вибрация",
+        "превышение критериев изготовителя"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "keywords": [
+        "вибрация при разгоне",
+        "runup vibration",
+        "рост на разгоне",
+        "критическая скорость"
+      ],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-runup-coastdown",
+        "vibration-coastdown-analysis",
+        "vibration-order-analysis",
+        "vibration-phase-analysis"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "runup vibration",
+        "рост на разгоне",
+        "критическая скорость"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-resonance",
+        "vibration-fault-unbalance",
+        "vibration-fault-rub",
+        "vibration-fault-oil-whirl"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-resonance",
+        "vibration-spectrum-1x",
+        "vibration-spectrum-oil-whirl"
+      ],
+      "relatedScenarios": [
+        "vibration-case-specific-speed",
+        "vibration-case-1x-growth",
+        "vibration-case-temperature-dependent"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-resonance",
+        "vibration-fault-unbalance",
+        "vibration-fault-rub",
+        "vibration-fault-oil-whirl"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-resonance",
+        "vibration-spectrum-1x",
+        "vibration-spectrum-oil-whirl"
+      ],
+      "additionalChecks": [
+        "проверить синхронную запись RPM",
+        "определить траекторию пика",
+        "проверить амплитуду и фазу",
+        "сравнить точки",
+        "зафиксировать технологические изменения",
+        "order tracking",
+        "фаза",
+        "выбег",
+        "орбита",
+        "waterfall",
+        "ODS/модальный анализ"
+      ]
     },
     "mediaSlots": [
       {
@@ -31235,28 +34039,259 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Рост вибрации на определённых оборотах",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Рост вибрации на определённых оборотах»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 11,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Высокая вибрация только на определённых оборотах"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Высокая вибрация только на определённых оборотах",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Повышенная вибрация возникает только в ограниченном диапазоне оборотов и уменьшается вне него."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "точно измерить RPM",
+          "повторить прохождение только по разрешённой процедуре",
+          "проверить фазу",
+          "определить порядок или фиксированную частоту",
+          "сравнить разгон и выбег"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "амплитуда–RPM",
+          "фаза–RPM",
+          "waterfall",
+          "точки и направления",
+          "рабочие параметры",
+          "собственные частоты"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "структурный или роторный резонанс",
+          "критическая скорость",
+          "order-related excitation",
+          "аэродинамический/гидродинамический режим",
+          "система управления",
+          "динамическая неустойчивость"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "резонанс: максимум и фазовый переход",
+          "вращательный порядок: частота движется с RPM",
+          "процесс: связь с расходом/давлением",
+          "фиксированная частота: внешнее возбуждение или собственная мода"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "изменение RPM слишком мало для вывода",
+          "эффект связан с нагрузкой, а не скоростью",
+          "тахометр нестабилен",
+          "пик остаётся в другой области"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "run-up/coast-down",
+          "order analysis",
+          "фаза",
+          "ODS",
+          "impact/bump test",
+          "рабочие параметры"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "называть резонансом без фазы",
+          "самовольно менять RPM",
+          "игнорировать процессный режим"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "картировать диапазон"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "определить движущийся/фиксированный пик"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "проверить фазу"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "локализовать точки"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "сравнить переходы"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "подтвердить собственную частоту"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Причину сужают по характеру траектории частоты, фазе и связи с технологическим режимом."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Некоторые рабочие силы меняются с RPM; сам факт скоростной зависимости не является дефектом."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "резкий амплитудный максимум; нестабильность; контакт; быстрое изменение фазы и положения вала. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-runup-growth",
+            "title": "Вибрация растёт во время разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-load-dependent",
+            "title": "Рост вибрации при нагрузке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-1x-growth",
+            "title": "Рост первой гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-oil-whirl",
+            "title": "Составляющие 0,4–0,47×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-surge",
+            "title": "Помпаж"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-runup-coastdown",
+            "title": "Анализ разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-coastdown-analysis",
+            "title": "Анализ выбега"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-resonance-analysis",
+            "title": "Анализ резонанса"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -31267,30 +34302,86 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "оборотная частота"
+        "Рост вибрации на определённых оборотах",
+        "резкий амплитудный максимум",
+        "нестабильность",
+        "контакт",
+        "быстрое изменение фазы и положения вала"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Высокая вибрация только на определённых оборотах",
-        "Рост вибрации на определённых оборотах"
+        "вибрация на определённых оборотах",
+        "specific speed vibration",
+        "резонансные обороты",
+        "критическая скорость"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-runup-coastdown",
+        "vibration-coastdown-analysis",
+        "vibration-order-analysis",
+        "vibration-resonance-analysis"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "specific speed vibration",
+        "резонансные обороты",
+        "критическая скорость"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-resonance",
+        "vibration-fault-unbalance",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rub",
+        "vibration-fault-surge"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-resonance",
+        "vibration-spectrum-1x",
+        "vibration-spectrum-oil-whirl"
+      ],
+      "relatedScenarios": [
+        "vibration-case-runup-growth",
+        "vibration-case-load-dependent",
+        "vibration-case-1x-growth"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-resonance",
+        "vibration-fault-unbalance",
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rub",
+        "vibration-fault-surge"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-resonance",
+        "vibration-spectrum-1x",
+        "vibration-spectrum-oil-whirl"
+      ],
+      "additionalChecks": [
+        "точно измерить RPM",
+        "повторить прохождение только по разрешённой процедуре",
+        "проверить фазу",
+        "определить порядок или фиксированную частоту",
+        "сравнить разгон и выбег",
+        "run-up/coast-down",
+        "order analysis",
+        "фаза",
+        "ODS",
+        "impact/bump test",
+        "рабочие параметры"
+      ]
     },
     "mediaSlots": [
       {
@@ -31312,28 +34403,260 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Рост температуры подшипника",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Рост температуры подшипника»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 12,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Повысилась температура подшипника"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Повысилась температура подшипника",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Температура подшипника выросла, с вибрационным изменением или без него."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "проверить достоверность температуры",
+          "зафиксировать нагрузку и RPM",
+          "сравнить соседний подшипник",
+          "проверить смазку",
+          "оценить vibration waveform и envelope"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "температурный тренд",
+          "общая и высокочастотная вибрация",
+          "нагрузка",
+          "смазочные события",
+          "тип/посадка подшипника",
+          "охлаждение"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "недостаток, избыток или неподходящая смазка",
+          "дефект подшипника",
+          "неправильный зазор/преднатяг",
+          "несоосность",
+          "перегрузка",
+          "недостаточное охлаждение",
+          "ошибка датчика температуры"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "смазка: связь с операцией и температурой после стабилизации",
+          "дефект: огибающая, импульсы и тренд",
+          "несоосность: осевая вибрация и фаза",
+          "перегрузка: связь с режимом"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "вибрация и соседние параметры стабильны",
+          "датчик температуры ошибочен",
+          "температура объясняется средой",
+          "нет повторяемости"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "огибающая",
+          "waveform",
+          "анализ масла/смазки",
+          "термография",
+          "проверка центровки",
+          "контроль охлаждения"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "добавлять смазку без процедуры",
+          "считать нагрев доказательством дефекта дорожки",
+          "сравнивать разные нагрузки"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "подтвердить температуру"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "синхронизировать с режимом"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "проверить смазку"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "оценить высокочастотные признаки"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "сравнить опоры"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить монтаж и нагрузку"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Причину сужают по совместному тренду температуры, вибрации, нагрузки и смазочных параметров."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Температура меняется с нагрузкой и средой; оценивать нужно относительно сопоставимой базы и документации."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "быстрый рост температуры; одновременные удары; запах/утечка; резкое изменение после замены. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-temperature-dependent",
+            "title": "Вибрация зависит от температуры"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-high-frequency-impulses",
+            "title": "Появились высокочастотные импульсы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-after-repair",
+            "title": "Вибрация после ремонта"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfo",
+            "title": "Частота дефекта наружного кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfi",
+            "title": "Частота дефекта внутреннего кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-lubrication",
+            "title": "Проблемы смазки"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-clearance",
+            "title": "Увеличенный зазор в подшипнике"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostics-rolling-bearings",
+            "title": "Машины с подшипниками качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -31346,37 +34669,88 @@
       ],
       "faults": [],
       "diagnosticSigns": [
-        "рост температуры"
+        "Рост температуры подшипника",
+        "быстрый рост температуры",
+        "одновременные удары",
+        "запах/утечка",
+        "резкое изменение после замены"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Повысилась температура подшипника",
-        "Рост температуры подшипника"
+        "температура подшипника выросла",
+        "bearing temperature high",
+        "греется подшипник",
+        "нагрев подшипника"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-envelope-analysis",
+        "vibration-diagnostics-rolling-bearings",
+        "vibration-operating-mode-relation"
+      ],
+      "status": "published",
       "tags": [
-        "bearings"
+        "bearings",
+        "practical-situation",
+        "diagnostic-route"
       ],
       "aliases": [
-        "Подшипники",
-        "подшипник",
-        "наружная обойма",
-        "внутренняя обойма"
+        "bearing temperature high",
+        "греется подшипник",
+        "нагрев подшипника"
       ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-lubrication",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-clearance",
+        "vibration-fault-parallel-misalignment"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bpfi"
+      ],
+      "relatedScenarios": [
+        "vibration-case-temperature-dependent",
+        "vibration-case-high-frequency-impulses",
+        "vibration-case-after-repair"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-lubrication",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-clearance",
+        "vibration-fault-parallel-misalignment"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bpfi"
+      ],
+      "additionalChecks": [
+        "проверить достоверность температуры",
+        "зафиксировать нагрузку и RPM",
+        "сравнить соседний подшипник",
+        "проверить смазку",
+        "оценить vibration waveform и envelope",
+        "огибающая",
+        "waveform",
+        "анализ масла/смазки",
+        "термография",
+        "проверка центровки",
+        "контроль охлаждения"
+      ]
     },
     "mediaSlots": [
       {
@@ -31398,28 +34772,264 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Насос работает с рокочущим шумом",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Насос работает с рокочущим шумом»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 13,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Насос работает с рокочущим шумом"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Насос работает с рокочущим шумом",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Насос работает с новым рокочущим или гравийным шумом; характер может меняться с расходом и давлением."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "зафиксировать расход и давления",
+          "проверить всасывающую линию и арматуру",
+          "записать waveform и широкий спектр",
+          "сравнить насосные опоры",
+          "проверить подшипники и RPM"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "давление всасывания/нагнетания",
+          "расход и положение арматуры",
+          "уровень жидкости",
+          "температура среды",
+          "спектр и waveform",
+          "подшипниковые температуры"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "кавитация",
+          "турбулентность или рециркуляция",
+          "помпаж/неустойчивость",
+          "подшипниковый процесс",
+          "задевание",
+          "ослабление",
+          "трубопроводные пульсации"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "кавитация: широкополосный фон и зависимость от гидравлического режима",
+          "подшипник: локальная огибающая и температура",
+          "задевание: контактные импульсы и нагрев",
+          "трубопровод: согласованная пульсация давления"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "шум не зависит от насоса",
+          "изменение исчезает после исправления крепления датчика",
+          "гидравлические параметры не подтверждают кавитацию",
+          "источник локализован на кожухе"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "давление/расход",
+          "waveform",
+          "огибающая",
+          "акустика",
+          "измерения трубопровода",
+          "осмотр рабочего колеса"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "называть любой рокот кавитацией",
+          "менять арматуру без разрешения",
+          "игнорировать подшипники"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "проверить безопасность"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "записать режим"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "локализовать шум"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "сравнить механику и гидравлику"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "проверить широкополосный фон"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить подшипники"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "подтвердить режимную зависимость"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Кавитацию подтверждают гидравлические данные и режимная зависимость; механические причины — локализацией и профильным анализом."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Рабочий шум может измениться при другом расходе, но новая неустойчивая картина требует документирования."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "опасная утечка; резкий нагрев; сильные удары; быстрое ухудшение давления/вибрации. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-unusual-noise",
+            "title": "Появился нехарактерный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-load-dependent",
+            "title": "Рост вибрации при нагрузке"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-high-frequency-impulses",
+            "title": "Появились высокочастотные импульсы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-cavitation",
+            "title": "Спектр кавитации"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-cavitation",
+            "title": "Кавитация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-surge",
+            "title": "Помпаж"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-pipe-strain",
+            "title": "Напряжение от присоединённого трубопровода"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostics-pumps",
+            "title": "Насосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-pump-measurements",
+            "title": "Измерения насосов"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -31431,34 +35041,89 @@
         "насосы"
       ],
       "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Насос работает с рокочущим шумом"
+      "diagnosticSigns": [
+        "Насос работает с рокочущим шумом",
+        "опасная утечка",
+        "резкий нагрев",
+        "сильные удары",
+        "быстрое ухудшение давления/вибрации"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "keywords": [
+        "насос рокочет",
+        "рокот насоса",
+        "pump rumble",
+        "кавитационный шум"
+      ],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-diagnostics-pumps",
+        "vibration-pump-measurements",
+        "vibration-operating-mode-relation"
+      ],
+      "status": "published",
       "tags": [
-        "pumps"
+        "pumps",
+        "practical-situation",
+        "diagnostic-route"
       ],
       "aliases": [
-        "Насосы",
-        "насос",
-        "насосный агрегат"
+        "рокот насоса",
+        "pump rumble",
+        "кавитационный шум"
       ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-cavitation",
+        "vibration-fault-surge",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-rub",
+        "vibration-fault-pipe-strain"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-cavitation",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-impulse"
+      ],
+      "relatedScenarios": [
+        "vibration-case-unusual-noise",
+        "vibration-case-load-dependent",
+        "vibration-case-high-frequency-impulses"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-cavitation",
+        "vibration-fault-surge",
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-rub",
+        "vibration-fault-pipe-strain"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-cavitation",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-impulse"
+      ],
+      "additionalChecks": [
+        "зафиксировать расход и давления",
+        "проверить всасывающую линию и арматуру",
+        "записать waveform и широкий спектр",
+        "сравнить насосные опоры",
+        "проверить подшипники и RPM",
+        "давление/расход",
+        "waveform",
+        "огибающая",
+        "акустика",
+        "измерения трубопровода",
+        "осмотр рабочего колеса"
+      ]
     },
     "mediaSlots": [
       {
@@ -31480,28 +35145,298 @@
     "parentId": "vibration-practical-situations",
     "category": "Практические ситуации",
     "title": "Появились высокочастотные импульсы",
-    "summary": "Заготовка материала раздела «Практические ситуации».",
-    "status": "draft",
+    "summary": "Практический маршрут для ситуации «Появились высокочастотные импульсы»: проверка измерения, альтернативные причины и подтверждающие действия.",
+    "status": "published",
     "order": 14,
     "tags": [
       "вибрация",
       "вибродиагностика",
       "техническая диагностика",
-      "Появились высокочастотные импульсы"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Исходная ситуация",
-      "Возможные причины",
-      "Последовательность проверки",
-      "Дополнительные измерения",
-      "Рекомендации"
+      "Появились высокочастотные импульсы",
+      "practical-situation",
+      "diagnostic-route"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Ситуация",
+        "content": "Во временном сигнале или высокочастотном диапазоне появились короткие импульсы и выросло ускорение."
+      },
+      {
+        "type": "warning",
+        "title": "Сначала подтвердите изменение",
+        "content": "Проверьте ту же точку и направление, датчик и крепление, диапазон и единицы, RMS/Peak/P-P, фактические RPM, рабочий режим, отсутствие клиппирования и ошибок прибора."
+      },
+      {
+        "type": "list",
+        "title": "Что проверить первым",
+        "items": [
+          "проверить крепление датчика и кабель",
+          "исключить clipping",
+          "повторить waveform",
+          "локализовать по опорам",
+          "проверить температуру и смазку",
+          "применить огибающую"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Какие данные собрать",
+        "items": [
+          "raw waveform",
+          "acceleration и спектр огибающей",
+          "Peak и crest factor",
+          "RPM",
+          "температура",
+          "смазочные события",
+          "соседние точки"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Возможные причины",
+        "items": [
+          "дефект подшипника",
+          "смазочная проблема",
+          "повреждение зуба",
+          "сухое трение",
+          "кавитация/поток",
+          "механическое ослабление",
+          "плохой монтаж датчика",
+          "электрический шум"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что подтверждает гипотезы",
+        "items": [
+          "подшипник: расчётные частоты, гармоники, огибающая и тренд",
+          "зубья: период по валу/GMF",
+          "трение: нагрев и контакт",
+          "кавитация: режимная гидравлическая зависимость",
+          "артефакт: следует за датчиком/кабелем"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ставит гипотезы под сомнение",
+        "items": [
+          "импульсы исчезают после переустановки",
+          "они единичны и не повторяются",
+          "частота не согласуется с конструкцией",
+          "канал перегружен"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Дополнительные измерения",
+        "items": [
+          "длительный waveform",
+          "огибающая",
+          "анализ масла/смазки",
+          "ультразвук",
+          "gear analysis",
+          "рабочие параметры"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ошибки, которые легко допустить",
+        "items": [
+          "писать «высокая частота = подшипник»",
+          "считать crest factor мерой тяжести",
+          "игнорировать датчик и clipping"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Практический порядок действий",
+        "items": [
+          {
+            "method": "1. Шаг",
+            "description": "проверить качество записи"
+          },
+          {
+            "method": "2. Шаг",
+            "description": "подтвердить повторяемость"
+          },
+          {
+            "method": "3. Шаг",
+            "description": "измерить период импульсов"
+          },
+          {
+            "method": "4. Шаг",
+            "description": "сопоставить расчётные частоты"
+          },
+          {
+            "method": "5. Шаг",
+            "description": "локализовать"
+          },
+          {
+            "method": "6. Шаг",
+            "description": "проверить температуру и режим"
+          },
+          {
+            "method": "7. Шаг",
+            "description": "сформировать альтернативы"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Когда можно сузить диагноз",
+        "content": "Причину сужают по частоте повторения, локализации, огибающей, температуре и реакции на режим."
+      },
+      {
+        "type": "text",
+        "title": "Что может быть нормальным",
+        "content": "Отдельный случайный импульс может быть внешним событием; важны повторяемость и тренд."
+      },
+      {
+        "type": "warning",
+        "title": "Красные флаги",
+        "content": "быстро учащающиеся удары; рост температуры; сильный Peak; контакт или металлический шум. Эти признаки требуют оперативной оценки в соответствии с документацией и процедурами эксплуатации, но не являются универсальной автоматической командой остановки."
+      },
+      {
+        "type": "warning",
+        "title": "Ситуация не является диагнозом",
+        "content": "Формулируйте несколько причин, ищите данные за и против каждой и передавайте в вывод только подтверждённые наблюдения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-case-bearing-temperature",
+            "title": "Рост температуры подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-unusual-noise",
+            "title": "Появился нехарактерный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-one-sensor",
+            "title": "Аномалия обнаружена только одним датчиком"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-case-pump-rumble",
+            "title": "Насос работает с рокочущим шумом"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfo",
+            "title": "Частота дефекта наружного кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfi",
+            "title": "Частота дефекта внутреннего кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-gear-mesh",
+            "title": "Зубцовая частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-clipping",
+            "title": "Клиппирование временного сигнала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-rolling-elements",
+            "title": "Дефект тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-lubrication",
+            "title": "Проблемы смазки"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-cavitation",
+            "title": "Кавитация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-repeatability",
+            "title": "Повторяемость измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostic-sequence",
+            "title": "Последовательность диагностики"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confidence",
+            "title": "Оценка достоверности диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-acceleration",
+            "title": "Виброускорение"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-crest-factor",
+            "title": "Пик-фактор"
+          }
+        ]
       }
     ],
     "template": "scenario",
@@ -31512,29 +35447,98 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "импульсы"
+        "Появились высокочастотные импульсы",
+        "быстро учащающиеся удары",
+        "рост температуры",
+        "сильный Peak",
+        "контакт или металлический шум"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Появились высокочастотные импульсы"
+        "выросло ускорение",
+        "высокочастотная вибрация",
+        "high frequency impulses",
+        "удары в подшипнике"
       ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
+      "relatedArticles": [
+        "vibration-measurement-validation",
+        "vibration-repeatability",
+        "vibration-diagnostic-sequence",
+        "vibration-diagnosis-confirmation",
+        "vibration-diagnosis-confidence",
+        "vibration-time-waveform",
+        "vibration-envelope-analysis",
+        "vibration-acceleration",
+        "vibration-crest-factor"
+      ],
+      "status": "published",
+      "tags": [
+        "practical-situation",
+        "diagnostic-route"
+      ],
+      "aliases": [
+        "высокочастотная вибрация",
+        "high frequency impulses",
+        "удары в подшипнике"
+      ],
       "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
+      "relatedFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-lubrication",
+        "vibration-fault-gears",
+        "vibration-fault-rub",
+        "vibration-fault-cavitation"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bpfi",
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-clipping"
+      ],
+      "relatedScenarios": [
+        "vibration-case-bearing-temperature",
+        "vibration-case-unusual-noise",
+        "vibration-case-one-sensor",
+        "vibration-case-pump-rumble"
+      ],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-lubrication",
+        "vibration-fault-gears",
+        "vibration-fault-rub",
+        "vibration-fault-cavitation"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bpfi",
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-clipping"
+      ],
+      "additionalChecks": [
+        "проверить крепление датчика и кабель",
+        "исключить clipping",
+        "повторить waveform",
+        "локализовать по опорам",
+        "проверить температуру и смазку",
+        "применить огибающую",
+        "длительный waveform",
+        "огибающая",
+        "анализ масла/смазки",
+        "ультразвук",
+        "gear analysis",
+        "рабочие параметры"
+      ]
     },
     "mediaSlots": [
       {
