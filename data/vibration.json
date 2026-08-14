@@ -20750,8 +20750,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Доминирующая первая гармоника 1×",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Доминирующая первая гармоника 1×», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 1,
     "tags": [
       "вибрация",
@@ -20761,21 +20761,178 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Один из наиболее выраженных пиков расположен на фактической оборотной частоте ротора 1×; остальные составляющие заметно ниже либо имеют второстепенное значение."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Измерить RPM одновременно с вибрацией и перевести n/60 в герцы. Пик около паспортной скорости нельзя считать 1× без фактических оборотов."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "дисбаланс",
+          "эксцентриситет",
+          "несоосность",
+          "изгиб вала",
+          "резонанс на частоте 1×",
+          "деформация корпуса или трубопроводная нагрузка",
+          "технологическое возбуждение"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "1× вместе с 2×",
+          "узкий резонансный пик",
+          "фиксированная внешняя частота рядом с 1×"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "подтвердить RPM и повторяемость"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "сравнить радиальные и осевые направления"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "сравнить связанные опоры"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "измерить фазу 1×"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проследить изменение при RPM"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "изучить историю ремонта и режим"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Дисбаланс, изгиб, несоосность и резонанс различают по фазе, пространственному распределению, направлениям и зависимости от RPM; высота 1× сама этого не показывает."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Особенно полезно сравнение после очистки, ремонта, балансировки или при прохождении диапазона RPM."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Утечка спектра, изменение RPM и недостаточное разрешение могут смещать максимум. Линейный и логарифмический масштабы нельзя сравнивать визуально без чисел. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-rotation-frequency",
+            "title": "Частота вращения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-runup-coastdown",
+            "title": "Анализ разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-angular-misalignment",
+            "title": "Угловая несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bent-shaft",
+            "title": "Изгиб вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-pipe-strain",
+            "title": "Напряжение от присоединённого трубопровода"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x-2x",
+            "title": "Первая и вторая гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-resonance",
+            "title": "Резонансная составляющая"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -20786,45 +20943,88 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
+        "Доминирующая первая гармоника 1×",
+        "1x",
         "1×",
-        "гармоники",
-        "субгармоники",
-        "Доминирующая первая гармоника 1×"
+        "оборотная частота"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Доминирующая первая гармоника 1×",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "1x",
+        "1×",
+        "оборотная частота",
+        "peak at rpm",
+        "высокий 1x"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-rotation-frequency",
+        "vibration-phase-analysis",
+        "vibration-runup-coastdown"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "1×",
+        "оборотная частота",
+        "peak at rpm",
+        "высокий 1x",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
+        "Peak",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-resonance",
+        "vibration-fault-pipe-strain"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-resonance"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-unbalance",
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-resonance",
+        "vibration-fault-pipe-strain"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-resonance"
+      ],
+      "additionalChecks": [
+        "подтвердить RPM и повторяемость",
+        "сравнить радиальные и осевые направления",
+        "сравнить связанные опоры",
+        "измерить фазу 1×",
+        "проследить изменение при RPM",
+        "изучить историю ремонта и режим"
+      ]
     },
     "mediaSlots": [
       {
@@ -20842,8 +21042,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Повышенная вторая гармоника 2×",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Повышенная вторая гармоника 2×», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 2,
     "tags": [
       "вибрация",
@@ -20853,21 +21053,172 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Выраженная линия находится около удвоенной оборотной частоты 2×. Она может преобладать либо сопровождать 1× и другие гармоники."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Сначала определить фактическую 1×, затем проверить, попадает ли линия в область 2× с учётом разрешения и изменения RPM."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "параллельная или угловая несоосность",
+          "изгиб вала",
+          "механическая нелинейность",
+          "деформация опор",
+          "некоторые электромагнитные процессы",
+          "конструктивная периодичность два события за оборот"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "электрическая линия рядом с 2×",
+          "1×+2× при деформации",
+          "гармонический ряд из-за ослабления"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "сравнить осевое и радиальные направления"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "измерить обе стороны муфты"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "проверить фазу 1× и 2×"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "оценить наличие 1× и высших гармоник"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "сверить нагрузку и прогрев"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "проверить фактическую центровку"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Несоосность подтверждают геометрией, фазой и распределением около муфты; один пик 2× неспецифичен."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Информативность возрастает при согласованных измерениях по обе стороны муфты и известном рабочем режиме."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Если RPM неточны, близкая электрическая или структурная частота может ошибочно считаться 2×. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-rotation-frequency",
+            "title": "Частота вращения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-directions",
+            "title": "Направления измерения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-angular-misalignment",
+            "title": "Угловая несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bent-shaft",
+            "title": "Изгиб вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-soft-foot",
+            "title": "Мягкая опора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-motor-electrical",
+            "title": "Электрические неисправности двигателя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x-2x",
+            "title": "Первая и вторая гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-harmonic-series",
+            "title": "Гармонический ряд"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -20878,45 +21229,83 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
+        "Повышенная вторая гармоника 2×",
+        "2x",
         "2×",
-        "гармоники",
-        "субгармоники",
-        "Повышенная вторая гармоника 2×"
+        "вторая гармоника"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Повышенная вторая гармоника 2×",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "2x",
+        "2×",
+        "вторая гармоника",
+        "second harmonic"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-rotation-frequency",
+        "vibration-phase-analysis",
+        "vibration-measurement-directions"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "2×",
+        "вторая гармоника",
+        "second harmonic",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-soft-foot",
+        "vibration-fault-motor-electrical"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-harmonic-series"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-bent-shaft",
+        "vibration-fault-soft-foot",
+        "vibration-fault-motor-electrical"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-harmonic-series"
+      ],
+      "additionalChecks": [
+        "сравнить осевое и радиальные направления",
+        "измерить обе стороны муфты",
+        "проверить фазу 1× и 2×",
+        "оценить наличие 1× и высших гармоник",
+        "сверить нагрузку и прогрев",
+        "проверить фактическую центровку"
+      ]
     },
     "mediaSlots": [
       {
@@ -20934,8 +21323,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Первая и вторая гармоники",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Первая и вторая гармоники», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 3,
     "tags": [
       "вибрация",
@@ -20945,21 +21334,182 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "В спектре одновременно выделяются оборотная составляющая 1× и её вторая гармоника 2×; их относительные амплитуды могут различаться по точкам и направлениям."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Проверить фактические RPM, затем измерить численные амплитуды 1× и 2× в одинаковых единицах, диапазоне и способе представления."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "несоосность",
+          "мягкая или разновысокая опора",
+          "деформация корпуса",
+          "изгиб вала",
+          "комбинация дисбаланса с другой нелинейностью",
+          "особенность возбуждения конкретной машины"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "доминирующий 1× с малой 2×",
+          "гармонический ряд",
+          "электрическая составляющая около 2×"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "сравнить стороны муфты"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "проверить осевое направление"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "измерить фазу"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "проверить опоры и soft foot"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "учесть прогрев и нагрузку"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "сопоставить с базовым спектром"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Оценивать нужно не только отношение пиков, но и пространственную картину, фазу, геометрию и изменение при режиме."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Картина полезна около муфтовых агрегатов после монтажа или ремонта, если имеется сопоставимая база."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Автоматическое преобразование RMS и Peak либо сравнение разных шкал может исказить отношение 1×/2×. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-baseline-comparison",
+            "title": "Сравнение с базовым состоянием"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-directions",
+            "title": "Направления измерения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-angular-misalignment",
+            "title": "Угловая несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-soft-foot",
+            "title": "Мягкая опора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-uneven-supports",
+            "title": "Разновысокие опоры"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-casing-deformation",
+            "title": "Деформация корпуса"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bent-shaft",
+            "title": "Изгиб вала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-2x",
+            "title": "Повышенная вторая гармоника 2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-harmonic-series",
+            "title": "Гармонический ряд"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -20970,44 +21520,87 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Первая и вторая гармоники"
+        "Первая и вторая гармоники",
+        "1x 2x",
+        "1× 2×",
+        "первая и вторая гармоники"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Первая и вторая гармоники",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "1x 2x",
+        "1× 2×",
+        "первая и вторая гармоники",
+        "first second harmonic"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-phase-analysis",
+        "vibration-baseline-comparison",
+        "vibration-measurement-directions"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "1× 2×",
+        "первая и вторая гармоники",
+        "first second harmonic",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-soft-foot",
+        "vibration-fault-uneven-supports",
+        "vibration-fault-casing-deformation",
+        "vibration-fault-bent-shaft"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-2x",
+        "vibration-spectrum-harmonic-series"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-parallel-misalignment",
+        "vibration-fault-angular-misalignment",
+        "vibration-fault-soft-foot",
+        "vibration-fault-uneven-supports",
+        "vibration-fault-casing-deformation",
+        "vibration-fault-bent-shaft"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-2x",
+        "vibration-spectrum-harmonic-series"
+      ],
+      "additionalChecks": [
+        "сравнить стороны муфты",
+        "проверить осевое направление",
+        "измерить фазу",
+        "проверить опоры и soft foot",
+        "учесть прогрев и нагрузку",
+        "сопоставить с базовым спектром"
+      ]
     },
     "mediaSlots": [
       {
@@ -21025,8 +21618,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Гармонический ряд",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Гармонический ряд», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 4,
     "tags": [
       "вибрация",
@@ -21036,21 +21629,178 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Наблюдается ряд линий на целых кратных основной частоты: 1×, 2×, 3× и далее. Количество и спад гармоник различаются по точкам."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Установить фундаментальную частоту ряда и доказать её связь с RPM или другим периодическим процессом; визуальная кратность без расчёта недостаточна."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "механическое ослабление",
+          "люфт",
+          "периодический контакт или трение",
+          "несоосность",
+          "деформация и ограничение движения",
+          "несинусоидальная нормальная рабочая сила",
+          "клиппирование канала"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "ложные гармоники от перегрузки входа",
+          "зубцовые гармоники",
+          "модулированный спектр"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "посмотреть waveform"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "проверить субгармоники"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "осмотреть крепления и опоры"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сравнить направления и соседние точки"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проверить зависимость от нагрузки"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "исключить клиппирование"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Ряд указывает на несинусоидальность или нелинейность, но физическую причину определяют по waveform, фазе, локализации и осмотру."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Особенно полезен совместно с временным сигналом и при сравнении до/после изменения крепления или нагрузки."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Количество видимых линий зависит от масштаба, шумового пола, диапазона и окна; больше гармоник не означает автоматически более тяжёлую неисправность. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-harmonics-subharmonics",
+            "title": "Гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-loose-bearing-housing",
+            "title": "Ослабление подшипника в корпусе"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-clearance",
+            "title": "Увеличенный зазор в подшипнике"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-parallel-misalignment",
+            "title": "Параллельная несоосность"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x-2x",
+            "title": "Первая и вторая гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-half",
+            "title": "Субгармоника 1/2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-clipping",
+            "title": "Клиппирование временного сигнала"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21061,44 +21811,85 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Гармонический ряд"
+        "Гармонический ряд",
+        "гармонический ряд",
+        "harmonic series",
+        "1x 2x 3x"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Гармонический ряд",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "гармонический ряд",
+        "harmonic series",
+        "1x 2x 3x",
+        "много гармоник"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-time-waveform",
+        "vibration-harmonics-subharmonics",
+        "vibration-phase-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "harmonic series",
+        "1x 2x 3x",
+        "много гармоник",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-loose-bearing-housing",
+        "vibration-fault-bearing-clearance",
+        "vibration-fault-rub",
+        "vibration-fault-parallel-misalignment"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-half",
+        "vibration-spectrum-clipping"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-loose-bearing-housing",
+        "vibration-fault-bearing-clearance",
+        "vibration-fault-rub",
+        "vibration-fault-parallel-misalignment"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x-2x",
+        "vibration-spectrum-half",
+        "vibration-spectrum-clipping"
+      ],
+      "additionalChecks": [
+        "посмотреть waveform",
+        "проверить субгармоники",
+        "осмотреть крепления и опоры",
+        "сравнить направления и соседние точки",
+        "проверить зависимость от нагрузки",
+        "исключить клиппирование"
+      ]
     },
     "mediaSlots": [
       {
@@ -21116,8 +21907,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Субгармоника 1/2×",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Субгармоника 1/2×», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 5,
     "tags": [
       "вибрация",
@@ -21127,21 +21918,181 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Устойчивая составляющая расположена около половины оборотной частоты — 0,5× или 1/2×. Она может сопровождаться 1×, гармониками и другими дробными порядками."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Необходимо стабильное и измеренное RPM. Проверить порядок во времени или order tracking, чтобы отличить 0,5× от случайного низкочастотного пика."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "механическая нелинейность и ослабление",
+          "периодическое задевание",
+          "динамическая неустойчивость",
+          "процессы в гидродинамических подшипниках",
+          "субгармонический резонанс"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "пульсация внешнего процесса",
+          "1/3× и другие дробные порядки",
+          "частота соседней медленной машины"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "повторить запись при стабильных RPM"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "проанализировать waveform"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "проверить орбиту вала"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "выполнить order analysis"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "сравнить разгон и выбег"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "проверить крепления и зазоры"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Oil whirl, rubbing и ослабление различают по орбите, зависимости порядка от RPM, waveform и параметрам масла."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Стабильное проявление в нескольких записях и согласование с орбитой информативнее одиночной линии."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "0,5× не является автоматическим признаком трения или масляной неустойчивости. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-subharmonics",
+            "title": "Субгармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-shaft-orbit",
+            "title": "Орбита ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-clearance",
+            "title": "Увеличенный зазор в подшипнике"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rotor-precession",
+            "title": "Прецессия ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-third",
+            "title": "Субгармоника 1/3×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-oil-whirl",
+            "title": "Составляющие 0,4–0,47×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-harmonic-series",
+            "title": "Гармонический ряд"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21152,45 +22103,88 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "2×",
-        "гармоники",
-        "субгармоники",
-        "Субгармоника 1/2×"
+        "Субгармоника 1/2×",
+        "0.5x",
+        "0,5×",
+        "1/2x"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Субгармоника 1/2×",
-        "спектр",
-        "FFT",
-        "гармоника",
+        "0.5x",
+        "0,5×",
+        "1/2x",
+        "половинная частота",
         "субгармоника"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-subharmonics",
+        "vibration-time-waveform",
+        "vibration-shaft-orbit",
+        "vibration-order-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "0,5×",
+        "1/2x",
+        "половинная частота",
+        "субгармоника",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-rub",
+        "vibration-fault-bearing-clearance",
+        "vibration-fault-rotor-precession",
+        "vibration-fault-oil-whirl"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-third",
+        "vibration-spectrum-oil-whirl",
+        "vibration-spectrum-harmonic-series"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-rub",
+        "vibration-fault-bearing-clearance",
+        "vibration-fault-rotor-precession",
+        "vibration-fault-oil-whirl"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-third",
+        "vibration-spectrum-oil-whirl",
+        "vibration-spectrum-harmonic-series"
+      ],
+      "additionalChecks": [
+        "повторить запись при стабильных RPM",
+        "проанализировать waveform",
+        "проверить орбиту вала",
+        "выполнить order analysis",
+        "сравнить разгон и выбег",
+        "проверить крепления и зазоры"
+      ]
     },
     "mediaSlots": [
       {
@@ -21208,8 +22202,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Субгармоника 1/3×",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Субгармоника 1/3×», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 6,
     "tags": [
       "вибрация",
@@ -21219,21 +22213,162 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "В спектре присутствует составляющая около одной трети оборотной частоты 1/3×; иногда видны и другие дробные порядки."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Проверить фактическую скорость и устойчивость отношения f/1× на последовательных записях или в порядковом представлении."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "нелинейный контакт",
+          "периодические события раз в несколько оборотов",
+          "роторная или структурная неустойчивость",
+          "технологическая пульсация",
+          "внешний низкочастотный источник"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "0,5×",
+          "низкочастотная технологическая линия",
+          "алиасинговый артефакт"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "анализировать длительный waveform"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "применить order tracking"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "проверить орбиту"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сравнить разгон/выбег"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проверить режим и соседнее оборудование"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Если линия сохраняет дробный порядок при изменении RPM, связь с вращением вероятнее; фиксированная частота требует поиска внешнего или собственного процесса."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Полезна устойчивость порядка и повторяемая временная последовательность событий."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Одиночный низкий пик при малом разрешении не доказывает субгармонику. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-subharmonics",
+            "title": "Субгармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-shaft-orbit",
+            "title": "Орбита ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rotor-precession",
+            "title": "Прецессия ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-half",
+            "title": "Субгармоника 1/2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-oil-whirl",
+            "title": "Составляющие 0,4–0,47×"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21244,44 +22379,79 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Субгармоника 1/3×"
+        "Субгармоника 1/3×",
+        "1/3x",
+        "0.33x",
+        "субгармоника одна треть"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Субгармоника 1/3×",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "1/3x",
+        "0.33x",
+        "субгармоника одна треть",
+        "дробный порядок"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-subharmonics",
+        "vibration-time-waveform",
+        "vibration-order-analysis",
+        "vibration-shaft-orbit"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "0.33x",
+        "субгармоника одна треть",
+        "дробный порядок",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-rub",
+        "vibration-fault-rotor-precession"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-rub",
+        "vibration-fault-rotor-precession"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl"
+      ],
+      "additionalChecks": [
+        "анализировать длительный waveform",
+        "применить order tracking",
+        "проверить орбиту",
+        "сравнить разгон/выбег",
+        "проверить режим и соседнее оборудование"
+      ]
     },
     "mediaSlots": [
       {
@@ -21299,8 +22469,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Составляющие 0,4–0,47×",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Составляющие 0,4–0,47×», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 7,
     "tags": [
       "вибрация",
@@ -21310,21 +22480,162 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "В относительном движении вала или корпусной вибрации наблюдается субсинхронная составляющая примерно в области 0,4–0,47×."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Рассчитать порядок по фактическим RPM и проследить его при изменении скорости. Значение диапазона ориентировочно и зависит от конструкции."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "гидродинамическая неустойчивость масляного клина",
+          "другая субсинхронная прецессия",
+          "задевание",
+          "ослабление",
+          "технологические пульсации"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "0,5× при ослаблении или rubbing",
+          "фиксированная собственная частота",
+          "субсинхронный внешний источник"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "построить орбиту X/Y"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "проверить положение вала"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "проследить порядок при разгоне/выбеге"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сверить температуру, давление и свойства масла"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "учесть зазор и нагрузку подшипника"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Oil whirl подтверждают ротординамической картиной, орбитой и параметрами масла; один пик около 0,42× недостаточен."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Наиболее информативен на машинах с proximity probes при синхронной записи RPM и маслосистемы."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Нельзя распространять диапазон 0,4–0,47× на все подшипники и режимы или автоматически называть его oil whirl. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-shaft-orbit",
+            "title": "Орбита ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-runup-coastdown",
+            "title": "Анализ разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-coastdown-analysis",
+            "title": "Анализ выбега"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-oil-whirl",
+            "title": "Вибрация масляного клина"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rotor-precession",
+            "title": "Прецессия ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-half",
+            "title": "Субгармоника 1/2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-third",
+            "title": "Субгармоника 1/3×"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21332,47 +22643,92 @@
       "section": "vibration",
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
-      "equipment": [],
+      "equipment": [
+        "гидродинамические подшипники",
+        "турбомашины"
+      ],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Составляющие 0,4–0,47×"
+        "Составляющие 0,4–0,47×",
+        "0.4x",
+        "0,42x",
+        "0.47x"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Составляющие 0,4–0,47×",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "0.4x",
+        "0,42x",
+        "0.47x",
+        "oil whirl spectrum",
+        "масляный вихрь"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-shaft-orbit",
+        "vibration-order-analysis",
+        "vibration-runup-coastdown",
+        "vibration-coastdown-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis",
+        "bearings"
       ],
       "aliases": [
+        "0,42x",
+        "0.47x",
+        "oil whirl spectrum",
+        "масляный вихрь",
+        "Подшипники",
+        "подшипник",
+        "наружная обойма",
+        "внутренняя обойма",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rotor-precession",
+        "vibration-fault-rub"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-half",
+        "vibration-spectrum-third"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-oil-whirl",
+        "vibration-fault-rotor-precession",
+        "vibration-fault-rub"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-half",
+        "vibration-spectrum-third"
+      ],
+      "additionalChecks": [
+        "построить орбиту X/Y",
+        "проверить положение вала",
+        "проследить порядок при разгоне/выбеге",
+        "сверить температуру, давление и свойства масла",
+        "учесть зазор и нагрузку подшипника"
+      ]
     },
     "mediaSlots": [
       {
@@ -21390,8 +22746,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Высокочастотный широкополосный шум",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Высокочастотный широкополосный шум», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 8,
     "tags": [
       "вибрация",
@@ -21401,21 +22757,173 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Шумовой фон повышен в широкой полосе частот без одной доминирующей дискретной линии; на нём могут находиться отдельные пики."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Сравнить одинаковые физические величины, единицы, диапазон, масштаб и базовый спектр. Уточнить, где начинается и заканчивается рост энергии."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "кавитация или турбулентность",
+          "трение и случайные удары",
+          "ранние подшипниковые процессы",
+          "зубчатые контакты",
+          "плохое крепление датчика",
+          "кабельный, электрический или измерительный шум"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "кавиционный спектр",
+          "импульсный процесс",
+          "клиппирование",
+          "высокий логарифмический шумовой пол"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "повторить измерение и проверить крепление"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "осмотреть waveform"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "сравнить соседние точки"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "проверить огибающую"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "сопоставить режим, давление и нагрузку"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "проверить датчик, кабель и диапазон"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Реальный процесс локализуется и меняется с режимом; измерительный шум часто реагирует на кабель, монтаж или канал."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Рост относительно устойчивой базы в той же полосе важнее абсолютного вида одного графика."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Высокий уровень acceleration не означает автоматически плохой подшипник, а широкий фон — кавитацию. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-acceleration",
+            "title": "Виброускорение"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-cavitation",
+            "title": "Кавитация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-lubrication",
+            "title": "Проблемы смазки"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-babbitt",
+            "title": "Разрушение баббитового слоя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-cavitation",
+            "title": "Спектр кавитации"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-clipping",
+            "title": "Клиппирование временного сигнала"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21426,45 +22934,83 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
+        "Высокочастотный широкополосный шум",
         "широкополосный шум",
-        "Высокочастотный широкополосный шум"
+        "broadband noise",
+        "высокочастотный фон"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Высокочастотный широкополосный шум",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "широкополосный шум",
+        "broadband noise",
+        "высокочастотный фон",
+        "broadband acceleration"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-time-waveform",
+        "vibration-envelope-analysis",
+        "vibration-acceleration"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "broadband noise",
+        "высокочастотный фон",
+        "broadband acceleration",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-cavitation",
+        "vibration-fault-lubrication",
+        "vibration-fault-babbitt",
+        "vibration-fault-rub"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-cavitation",
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-clipping"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-cavitation",
+        "vibration-fault-lubrication",
+        "vibration-fault-babbitt",
+        "vibration-fault-rub"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-cavitation",
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-clipping"
+      ],
+      "additionalChecks": [
+        "повторить измерение и проверить крепление",
+        "осмотреть waveform",
+        "сравнить соседние точки",
+        "проверить огибающую",
+        "сопоставить режим, давление и нагрузку",
+        "проверить датчик, кабель и диапазон"
+      ]
     },
     "mediaSlots": [
       {
@@ -21482,8 +23028,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Лопастная частота",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Лопастная частота», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 9,
     "tags": [
       "вибрация",
@@ -21493,21 +23039,169 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Выраженная линия находится на лопастной частоте и может сопровождаться гармониками, боковыми полосами и широкополосным фоном."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Лопастная частота равна числу лопаток, умноженному на фактическую частоту вращения соответствующего колеса."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "нормальное периодическое взаимодействие лопаток с потоком",
+          "неравномерный входной поток",
+          "изменение зазора",
+          "загрязнение или повреждение лопатки",
+          "кавитация",
+          "гидро- или аэродинамическая нестабильность",
+          "резонанс на лопастной частоте"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "зубцовая частота",
+          "гармоника другого вала",
+          "структурный резонанс",
+          "пульсация давления"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "уточнить число лопаток и RPM"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "сравнить с базой"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "оценить гармоники и боковые полосы"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сопоставить расход и давление"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проверить широкополосный фон"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "осмотреть проточную часть при ремонте"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Нормальную рабочую линию отличают от патологического роста по тренду, режиму, боковым полосам и состоянию проточной части."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Особенно полезно сравнение при одинаковом расходе, положении регулирования и RPM."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Высокая лопастная составляющая сама по себе не доказывает повреждение лопатки. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-pump-measurements",
+            "title": "Измерения насосов"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fan-measurements",
+            "title": "Измерения на вентиляторах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-harmonics-subharmonics",
+            "title": "Гармоники"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-cavitation",
+            "title": "Кавитация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-surge",
+            "title": "Помпаж"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-gear-mesh",
+            "title": "Зубцовая частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-sidebands",
+            "title": "Боковые полосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-cavitation",
+            "title": "Спектр кавитации"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21515,47 +23209,93 @@
       "section": "vibration",
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
-      "equipment": [],
+      "equipment": [
+        "насосы",
+        "вентиляторы",
+        "компрессоры"
+      ],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Лопастная частота"
+        "Лопастная частота",
+        "blade pass frequency",
+        "vane pass frequency",
+        "лопастная частота"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Лопастная частота",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "blade pass frequency",
+        "vane pass frequency",
+        "лопастная частота",
+        "BPF",
+        "VPF"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-operating-mode-relation",
+        "vibration-pump-measurements",
+        "vibration-fan-measurements",
+        "vibration-harmonics-subharmonics"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis",
+        "pumps"
       ],
       "aliases": [
+        "vane pass frequency",
+        "лопастная частота",
+        "BPF",
+        "VPF",
+        "Насосы",
+        "насос",
+        "насосный агрегат",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-cavitation",
+        "vibration-fault-surge"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-cavitation"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-cavitation",
+        "vibration-fault-surge"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-cavitation"
+      ],
+      "additionalChecks": [
+        "уточнить число лопаток и RPM",
+        "сравнить с базой",
+        "оценить гармоники и боковые полосы",
+        "сопоставить расход и давление",
+        "проверить широкополосный фон",
+        "осмотреть проточную часть при ремонте"
+      ]
     },
     "mediaSlots": [
       {
@@ -21573,8 +23313,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Зубцовая частота",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Зубцовая частота», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 10,
     "tags": [
       "вибрация",
@@ -21584,21 +23324,159 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "В спектре присутствует зубцовая частота GMF, её гармоники и, возможно, боковые полосы."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "GMF равна числу зубьев колеса, умноженному на частоту его вращения. Для многоступенчатого редуктора рассчитывают каждую ступень и скорости всех валов."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "нормальное зубцовое возбуждение",
+          "износ или повреждение зубьев",
+          "неправильное зацепление",
+          "эксцентриситет колеса",
+          "люфт",
+          "несоосность валов",
+          "резонанс корпуса"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "лопастная частота",
+          "электромагнитная высокочастотная линия",
+          "подшипниковая гармоника",
+          "структурный резонанс"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "уточнить числа зубьев и RPM"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "определить гармоники GMF"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "измерить шаг боковых полос"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сравнить нагрузку и тренд"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "посмотреть waveform"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "проверить масло и зубья при ремонте"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Несущая GMF указывает на зацепление, а боковой шаг — на возможную модуляцию валом; это не автоматически означает повреждённый зуб."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Изменение боковых полос и waveform при сопоставимой нагрузке часто информативнее абсолютной GMF."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Амплитуда GMF сильно зависит от нагрузки, корпуса, точки и резонанса и не является прямой мерой тяжести дефекта. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-gearbox-measurements",
+            "title": "Измерения на редукторах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-sidebands",
+            "title": "Боковые полосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21607,48 +23485,88 @@
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
       "equipment": [
+        "редукторы",
         "зубчатые передачи"
       ],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Зубцовая частота"
+        "Зубцовая частота",
+        "gmf",
+        "gear mesh",
+        "gear mesh frequency"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Зубцовая частота",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "gmf",
+        "gear mesh",
+        "gear mesh frequency",
+        "зубцовая частота",
+        "частота зацепления"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-gearbox-measurements",
+        "vibration-order-analysis",
+        "vibration-time-waveform"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis",
+        "gearboxes"
       ],
       "aliases": [
+        "gear mesh",
+        "gear mesh frequency",
+        "зубцовая частота",
+        "частота зацепления",
+        "Редукторы",
+        "редуктор",
+        "зубчатая передача",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-gears"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-impulse"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-gears"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-impulse"
+      ],
+      "additionalChecks": [
+        "уточнить числа зубьев и RPM",
+        "определить гармоники GMF",
+        "измерить шаг боковых полос",
+        "сравнить нагрузку и тренд",
+        "посмотреть waveform",
+        "проверить масло и зубья при ремонте"
+      ]
     },
     "mediaSlots": [
       {
@@ -21666,8 +23584,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Боковые полосы",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Боковые полосы», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 11,
     "tags": [
       "вибрация",
@@ -21677,21 +23595,177 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Вокруг центральной несущей частоты расположены симметричные или частично симметричные линии с примерно одинаковым интервалом."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Сначала определить физический источник несущей, затем измерить шаг между боковыми полосами и сопоставить его с 1×, slip, FTF или другой модулирующей частотой."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "амплитудная или частотная модуляция зубцового процесса",
+          "подшипниковая модуляция",
+          "электромагнитная модуляция",
+          "периодическая нагрузка",
+          "эксцентриситет или локальный дефект"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "несколько независимых близких пиков",
+          "утечка спектра",
+          "частотное размытие при нестабильных RPM",
+          "гармонический ряд"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "точно измерить несущую и шаг"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "проверить RPM и скорости валов"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "посмотреть waveform на биения"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сравнить нагрузку"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "применить огибающую или токовый анализ по контексту"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "проверить тренд боковых полос"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Несущая обычно указывает на возбуждаемый процесс, шаг — на модулятор. Только совместная физическая привязка позволяет сформировать гипотезу."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Особенно полезны устойчивые боковые полосы с шагом известной оборотной или подшипниковой частоты."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Недостаточное разрешение FFT способно слить боковые линии или создать ложное впечатление симметрии. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fft",
+            "title": "FFT"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-motor-electrical",
+            "title": "Электрические неисправности двигателя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rotor-cage",
+            "title": "Повреждение клетки ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-gear-mesh",
+            "title": "Зубцовая частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-modulated",
+            "title": "Модулированный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfi",
+            "title": "Частота дефекта внутреннего кольца"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21702,45 +23776,86 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
+        "Боковые полосы",
         "боковые полосы",
-        "Боковые полосы"
+        "sidebands",
+        "side bands"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Боковые полосы",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "боковые полосы",
+        "sidebands",
+        "side bands",
+        "модуляция",
+        "carrier frequency"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-time-waveform",
+        "vibration-fft",
+        "vibration-order-analysis",
+        "vibration-envelope-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "sidebands",
+        "side bands",
+        "модуляция",
+        "carrier frequency",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-gears",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-rotor-cage"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-modulated",
+        "vibration-spectrum-bpfi"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-gears",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-rotor-cage"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-modulated",
+        "vibration-spectrum-bpfi"
+      ],
+      "additionalChecks": [
+        "точно измерить несущую и шаг",
+        "проверить RPM и скорости валов",
+        "посмотреть waveform на биения",
+        "сравнить нагрузку",
+        "применить огибающую или токовый анализ по контексту",
+        "проверить тренд боковых полос"
+      ]
     },
     "mediaSlots": [
       {
@@ -21758,8 +23873,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Частота дефекта наружного кольца",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Частота дефекта наружного кольца», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 12,
     "tags": [
       "вибрация",
@@ -21769,21 +23884,166 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "В обычном или, чаще, в спектре огибающей видны линия около расчётной BPFO и возможные гармоники."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Рассчитать BPFO по геометрии подшипника и фактическим RPM. Сопоставлять в пределах разрешения с учётом скольжения и допусков."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "локальный дефект наружного кольца",
+          "удары от ослабленной посадки",
+          "другой периодический импульс рядом по частоте",
+          "зубчатый или технологический процесс"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "BPFI",
+          "BSF",
+          "зубцовые импульсы",
+          "механическое ослабление"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "проверить гармоники BPFO"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "сравнить спектр огибающей"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "локализовать на ближайшей опоре"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "посмотреть waveform"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проверить нагрузку и тренд"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "исключить ослабление корпуса"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Для наружного кольца важны локализация, гармоники, импульсность и рост тренда; один пик около BPFO не подтверждает дефект."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Наиболее информативна огибающая в подходящей полосе и повторяемый рост на конкретной опоре."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Ошибка геометрии, RPM и разрешения исключает формулировку «точное совпадение». Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-reference-bearing-frequencies",
+            "title": "Частоты подшипников"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-acceleration",
+            "title": "Виброускорение"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-bearing-supports",
+            "title": "Измерения на подшипниковых узлах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-loose-bearing-housing",
+            "title": "Ослабление подшипника в корпусе"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfi",
+            "title": "Частота дефекта внутреннего кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bsf",
+            "title": "Частота вращения тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21792,57 +24052,95 @@
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
       "equipment": [
-        "подшипники"
+        "подшипники качения"
       ],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Частота дефекта наружного кольца"
+        "Частота дефекта наружного кольца",
+        "bpfo",
+        "outer race",
+        "наружное кольцо"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Частота дефекта наружного кольца",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "bpfo",
+        "outer race",
+        "наружное кольцо",
+        "наружная обойма",
+        "спектр BPFO"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-envelope-analysis",
+        "vibration-reference-bearing-frequencies",
+        "vibration-acceleration",
+        "vibration-bearing-supports"
+      ],
+      "status": "published",
       "tags": [
         "bearings",
         "fft",
-        "bpfo"
+        "bpfo",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "outer race",
+        "наружное кольцо",
+        "наружная обойма",
+        "спектр BPFO",
         "Подшипники",
         "подшипник",
-        "наружная обойма",
         "внутренняя обойма",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье",
         "BPFO",
-        "БПФО",
-        "наружное кольцо"
+        "БПФО"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-loose-bearing-housing"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-bpfi",
+        "vibration-spectrum-bsf",
+        "vibration-spectrum-impulse"
+      ],
       "relatedScenarios": [],
-      "relatedReferences": [],
+      "relatedReferences": [
+        "vibration-reference-bearing-frequencies"
+      ],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-loose-bearing-housing"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-bpfi",
+        "vibration-spectrum-bsf",
+        "vibration-spectrum-impulse"
+      ],
+      "additionalChecks": [
+        "проверить гармоники BPFO",
+        "сравнить спектр огибающей",
+        "локализовать на ближайшей опоре",
+        "посмотреть waveform",
+        "проверить нагрузку и тренд",
+        "исключить ослабление корпуса"
+      ]
     },
     "mediaSlots": [
       {
@@ -21860,8 +24158,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Частота дефекта внутреннего кольца",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Частота дефекта внутреннего кольца», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 13,
     "tags": [
       "вибрация",
@@ -21871,21 +24169,161 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "В спектре огибающей или ускорения присутствуют линия около BPFI, гармоники и иногда боковые полосы с шагом 1×."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Рассчитать BPFI по геометрии и фактическим RPM; проверить частоту и боковой шаг с учётом разрешения."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "локальный дефект внутреннего кольца",
+          "модулированные удары другого происхождения",
+          "зубчатый процесс",
+          "электрическая модуляция"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "BPFO",
+          "BSF",
+          "GMF с боковыми полосами",
+          "электромагнитная модуляция"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "проверить гармоники BPFI"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "измерить шаг боковых полос"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "сравнить огибающую нескольких опор"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "посмотреть waveform"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проверить нагрузку и тренд"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "уточнить путь передачи"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Боковые полосы 1× могут отражать прохождение дефекта через зону нагрузки, но не являются обязательным универсальным признаком."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Согласование BPFI, гармоник, модуляции и тренда повышает уверенность."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Одиночная линия вблизи BPFI недостаточна для вывода о внутреннем кольце. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-reference-bearing-frequencies",
+            "title": "Частоты подшипников"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-acceleration",
+            "title": "Виброускорение"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-bearing-supports",
+            "title": "Измерения на подшипниковых узлах"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfo",
+            "title": "Частота дефекта наружного кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bsf",
+            "title": "Частота вращения тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-sidebands",
+            "title": "Боковые полосы"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21894,57 +24332,93 @@
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
       "equipment": [
-        "подшипники"
+        "подшипники качения"
       ],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Частота дефекта внутреннего кольца"
+        "Частота дефекта внутреннего кольца",
+        "bpfi",
+        "inner race",
+        "внутреннее кольцо"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Частота дефекта внутреннего кольца",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "bpfi",
+        "inner race",
+        "внутреннее кольцо",
+        "внутренняя обойма",
+        "спектр BPFI"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-envelope-analysis",
+        "vibration-reference-bearing-frequencies",
+        "vibration-acceleration",
+        "vibration-bearing-supports"
+      ],
+      "status": "published",
       "tags": [
         "bearings",
         "fft",
-        "bpfi"
+        "bpfi",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "inner race",
+        "внутреннее кольцо",
+        "внутренняя обойма",
+        "спектр BPFI",
         "Подшипники",
         "подшипник",
         "наружная обойма",
-        "внутренняя обойма",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье",
         "BPFI",
-        "БПФИ",
-        "внутреннее кольцо"
+        "БПФИ"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-bearing-inner-race"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bsf",
+        "vibration-spectrum-sidebands"
+      ],
       "relatedScenarios": [],
-      "relatedReferences": [],
+      "relatedReferences": [
+        "vibration-reference-bearing-frequencies"
+      ],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bearing-inner-race"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bsf",
+        "vibration-spectrum-sidebands"
+      ],
+      "additionalChecks": [
+        "проверить гармоники BPFI",
+        "измерить шаг боковых полос",
+        "сравнить огибающую нескольких опор",
+        "посмотреть waveform",
+        "проверить нагрузку и тренд",
+        "уточнить путь передачи"
+      ]
     },
     "mediaSlots": [
       {
@@ -21962,8 +24436,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Частота вращения тел качения",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Частота вращения тел качения», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 14,
     "tags": [
       "вибрация",
@@ -21973,21 +24447,162 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Наблюдаются линия около BSF, её гармоники и возможная модуляция частотой сепаратора или вращения."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Рассчитать BSF и FTF по геометрии подшипника и RPM; учитывать скольжение тел качения и нестабильность ориентации дефекта."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "дефект шарика или ролика",
+          "загрязнение и контактные удары",
+          "дефекты дорожек",
+          "другой импульсный процесс"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "BPFO",
+          "BPFI",
+          "зубчатые удары",
+          "случайная импульсность"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "проверить гармоники BSF"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "искать модуляцию FTF"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "анализировать длительный waveform"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сравнить огибающую и тренд"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проверить смазку и соседние опоры"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Непостоянство амплитуды возможно из-за вращения тела качения; нужны повторные записи и согласование с FTF."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Устойчивые гармоники и повторяемая модуляция в огибающей важнее одного максимума."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Скольжение может заметно смещать BSF относительно расчёта. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-reference-bearing-frequencies",
+            "title": "Частоты подшипников"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-rolling-elements",
+            "title": "Дефект тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-lubrication",
+            "title": "Проблемы смазки"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfo",
+            "title": "Частота дефекта наружного кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfi",
+            "title": "Частота дефекта внутреннего кольца"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-ftf",
+            "title": "Частота сепаратора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -21996,32 +24611,45 @@
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
       "equipment": [
-        "подшипники"
+        "подшипники качения"
       ],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Частота вращения тел качения"
+        "Частота вращения тел качения",
+        "bsf",
+        "rolling element",
+        "тело качения"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Частота вращения тел качения",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "bsf",
+        "rolling element",
+        "тело качения",
+        "частота шарика",
+        "частота ролика"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-envelope-analysis",
+        "vibration-reference-bearing-frequencies",
+        "vibration-time-waveform"
+      ],
+      "status": "published",
       "tags": [
         "bearings",
         "fft",
-        "bsf"
+        "bsf",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "rolling element",
+        "тело качения",
+        "частота шарика",
+        "частота ролика",
         "Подшипники",
         "подшипник",
         "наружная обойма",
@@ -22033,19 +24661,46 @@
         "частота тел качения"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-lubrication"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bpfi",
+        "vibration-spectrum-ftf",
+        "vibration-spectrum-impulse"
+      ],
       "relatedScenarios": [],
-      "relatedReferences": [],
+      "relatedReferences": [
+        "vibration-reference-bearing-frequencies"
+      ],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-lubrication"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-bpfo",
+        "vibration-spectrum-bpfi",
+        "vibration-spectrum-ftf",
+        "vibration-spectrum-impulse"
+      ],
+      "additionalChecks": [
+        "проверить гармоники BSF",
+        "искать модуляцию FTF",
+        "анализировать длительный waveform",
+        "сравнить огибающую и тренд",
+        "проверить смазку и соседние опоры"
+      ]
     },
     "mediaSlots": [
       {
@@ -22063,8 +24718,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Частота сепаратора",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Частота сепаратора», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 15,
     "tags": [
       "вибрация",
@@ -22074,21 +24729,162 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Низкочастотная линия расположена около расчётной FTF; она может модулировать другие подшипниковые компоненты."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Рассчитать FTF по геометрии и RPM и проверить устойчивость отношения к оборотам."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "повреждение или нестабильное движение сепаратора",
+          "модуляция нагрузки",
+          "механическое ослабление",
+          "субсинхронный роторный процесс",
+          "технологическая пульсация"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "0,5×",
+          "oil whirl",
+          "технологическая низкая частота",
+          "частота соседней машины"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "проверить гармоники и модуляцию"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "анализировать waveform"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "сравнить огибающую"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "проверить RPM и нагрузку"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "исключить низкочастотные внешние источники"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "проверить смазку"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "FTF связывают с сепаратором только при согласовании расчёта, модуляции и других подшипниковых признаков."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Повторяемая модуляция подшипниковых линий частотой FTF повышает информативность."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Низкая частота чувствительна к разрешению, длительности записи и изменению RPM. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-reference-bearing-frequencies",
+            "title": "Частоты подшипников"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-cage",
+            "title": "Дефект сепаратора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-rolling-elements",
+            "title": "Дефект тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bsf",
+            "title": "Частота вращения тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-half",
+            "title": "Субгармоника 1/2×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-oil-whirl",
+            "title": "Составляющие 0,4–0,47×"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -22097,32 +24893,43 @@
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
       "equipment": [
-        "подшипники"
+        "подшипники качения"
       ],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Частота сепаратора"
+        "Частота сепаратора",
+        "ftf",
+        "cage frequency",
+        "сепаратор"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Частота сепаратора",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "ftf",
+        "cage frequency",
+        "сепаратор",
+        "частота сепаратора"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-envelope-analysis",
+        "vibration-reference-bearing-frequencies",
+        "vibration-time-waveform"
+      ],
+      "status": "published",
       "tags": [
         "bearings",
         "fft",
-        "ftf"
+        "ftf",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "cage frequency",
+        "сепаратор",
+        "частота сепаратора",
         "Подшипники",
         "подшипник",
         "наружная обойма",
@@ -22130,23 +24937,48 @@
         "FFT",
         "БПФ",
         "быстрое преобразование фурье",
-        "FTF",
-        "частота сепаратора"
+        "FTF"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-bearing-cage",
+        "vibration-fault-bearing-rolling-elements"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-bsf",
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl"
+      ],
       "relatedScenarios": [],
-      "relatedReferences": [],
+      "relatedReferences": [
+        "vibration-reference-bearing-frequencies"
+      ],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bearing-cage",
+        "vibration-fault-bearing-rolling-elements"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-bsf",
+        "vibration-spectrum-half",
+        "vibration-spectrum-oil-whirl"
+      ],
+      "additionalChecks": [
+        "проверить гармоники и модуляцию",
+        "анализировать waveform",
+        "сравнить огибающую",
+        "проверить RPM и нагрузку",
+        "исключить низкочастотные внешние источники",
+        "проверить смазку"
+      ]
     },
     "mediaSlots": [
       {
@@ -22164,8 +24996,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Резонансная составляющая",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Резонансная составляющая», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 16,
     "tags": [
       "вибрация",
@@ -22175,21 +25007,171 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Один узкий пик значительно превышает соседний фон; при изменении RPM его амплитуда может резко возрастать в ограниченной области."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Определить, следует ли частота за RPM или остаётся фиксированной, и сопоставить её с возможной собственной частотой и возбуждающей силой."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "совпадение 1× с собственной частотой",
+          "лопастное или зубцовое возбуждение около резонанса",
+          "структурный резонанс",
+          "роторная критическая скорость",
+          "внешняя фиксированная сила"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "доминирующий 1× от дисбаланса",
+          "постоянная внешняя частота",
+          "узкий электрический пик"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "измерить амплитуду и фазу при RPM"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "записать разгон и выбег"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "выполнить bump/impact test по процедуре"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "применить ODS"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проверить соседние точки"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "найти источник силы"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Резонанс подтверждают амплитудно-фазовой зависимостью и собственной частотой, а не одной высокой линией."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Наиболее информативно прохождение диапазона скорости и сравнение разгона с выбегом."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Стационарный спектр не всегда позволяет отделить сильное возбуждение от резонансного усиления. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-resonance-analysis",
+            "title": "Анализ резонанса"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-runup-coastdown",
+            "title": "Анализ разгона"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-coastdown-analysis",
+            "title": "Анализ выбега"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-phase-analysis",
+            "title": "Фазовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-ods",
+            "title": "ODS-анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-resonance",
+            "title": "Резонанс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-unbalance",
+            "title": "Дисбаланс"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-1x",
+            "title": "Доминирующая первая гармоника 1×"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-gear-mesh",
+            "title": "Зубцовая частота"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -22202,44 +25184,81 @@
         "резонанс"
       ],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Резонансная составляющая"
+        "Резонансная составляющая",
+        "resonance spectrum",
+        "резонансный пик",
+        "собственная частота"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Резонансная составляющая",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "resonance spectrum",
+        "резонансный пик",
+        "собственная частота",
+        "критическая скорость"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-resonance-analysis",
+        "vibration-runup-coastdown",
+        "vibration-coastdown-analysis",
+        "vibration-phase-analysis",
+        "vibration-ods"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "резонансный пик",
+        "собственная частота",
+        "критическая скорость",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-resonance",
+        "vibration-fault-unbalance"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-gear-mesh"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-resonance",
+        "vibration-fault-unbalance"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-1x",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-gear-mesh"
+      ],
+      "additionalChecks": [
+        "измерить амплитуду и фазу при RPM",
+        "записать разгон и выбег",
+        "выполнить bump/impact test по процедуре",
+        "применить ODS",
+        "проверить соседние точки",
+        "найти источник силы"
+      ]
     },
     "mediaSlots": [
       {
@@ -22257,8 +25276,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Клиппирование временного сигнала",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Клиппирование временного сигнала», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 17,
     "tags": [
       "вибрация",
@@ -22268,21 +25287,146 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Во временном сигнале вершины обрезаны по постоянному уровню; спектр содержит искусственный ряд гармоник и повышенный широкополосный фон."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Проверить waveform, сообщения overload и пределы входного диапазона. Спектр без временной формы может маскировать перегрузку."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "перегрузка входа анализатора",
+          "неподходящий диапазон",
+          "насыщение датчика или электроники",
+          "реже — цифровое ограничение при экспорте"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "реальный гармонический ряд",
+          "ударный процесс",
+          "ограничение движения механизма"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "повторить запись с корректным диапазоном"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "проверить канал и чувствительность"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "осмотреть waveform"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сравнить амплитуды до и после настройки"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "исключить повреждение кабеля и питания"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Плоские одинаковые вершины и исчезновение гармоник после корректировки диапазона указывают на измерительный артефакт."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Картина важна как контроль качества данных, а не как спектр неисправности машины."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Диагностировать механизм по клиппированному сигналу нельзя; запись необходимо повторить. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fft",
+            "title": "FFT"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-chain-check",
+            "title": "Проверка измерительной цепи"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-harmonic-series",
+            "title": "Гармонический ряд"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -22290,47 +25434,79 @@
       "section": "vibration",
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
-      "equipment": [],
+      "equipment": [
+        "измерительная цепь"
+      ],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Клиппирование временного сигнала"
+        "Клиппирование временного сигнала",
+        "clipping",
+        "клиппирование",
+        "overload"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Клиппирование временного сигнала",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "clipping",
+        "клиппирование",
+        "overload",
+        "обрезанный сигнал",
+        "перегрузка канала"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-time-waveform",
+        "vibration-fft",
+        "vibration-measurement-chain-check"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "клиппирование",
+        "overload",
+        "обрезанный сигнал",
+        "перегрузка канала",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
       "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedSpectra": [
+        "vibration-spectrum-harmonic-series",
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-broadband-noise"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
       "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "similarSpectra": [
+        "vibration-spectrum-harmonic-series",
+        "vibration-spectrum-impulse",
+        "vibration-spectrum-broadband-noise"
+      ],
+      "additionalChecks": [
+        "повторить запись с корректным диапазоном",
+        "проверить канал и чувствительность",
+        "осмотреть waveform",
+        "сравнить амплитуды до и после настройки",
+        "исключить повреждение кабеля и питания"
+      ]
     },
     "mediaSlots": [
       {
@@ -22348,8 +25524,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Импульсный сигнал",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Импульсный сигнал», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 18,
     "tags": [
       "вибрация",
@@ -22359,21 +25535,188 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Во временном сигнале присутствуют отдельные или периодические короткие импульсы; в спектре они создают широкополосную энергию и возможный ряд линий по частоте повторения."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Измерить интервалы между импульсами и сопоставить частоту повторения с RPM, подшипниковыми, зубцовыми или технологическими частотами."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "локальный дефект подшипника",
+          "повреждение зуба",
+          "механическое ослабление",
+          "задевание",
+          "технологический удар",
+          "случайная помеха или плохой контакт датчика"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "клиппирование",
+          "широкополосный шум",
+          "единичный случайный выброс",
+          "модулированный сигнал"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "анализировать длительный waveform"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "проверить повторяемость"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "локализовать по точкам"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "применить огибающую"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "сопоставить расчётные частоты"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "проверить датчик и кабель"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Реальный механический импульс повторяется или локализуется; артефакт часто исчезает после переустановки или реагирует на кабель."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Интервал и форма событий во времени часто полезнее общей высоты спектрального фона."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Один выброс не является доказательством дефекта; Peak зависит от длины записи и шума. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-peak",
+            "title": "Пиковое значение Peak"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-crest-factor",
+            "title": "Пик-фактор"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-outer-race",
+            "title": "Дефект наружного кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-rolling-elements",
+            "title": "Дефект тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-mechanical-looseness",
+            "title": "Механические ослабления"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rub",
+            "title": "Задевание вращающихся частей"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-clipping",
+            "title": "Клиппирование временного сигнала"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-modulated",
+            "title": "Модулированный сигнал"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -22384,45 +25727,88 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "импульсы",
-        "Импульсный сигнал"
+        "Импульсный сигнал",
+        "impulse spectrum",
+        "импульсный сигнал",
+        "удары"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Импульсный сигнал",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "impulse spectrum",
+        "импульсный сигнал",
+        "удары",
+        "периодические импульсы"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-time-waveform",
+        "vibration-envelope-analysis",
+        "vibration-peak",
+        "vibration-crest-factor"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "импульсный сигнал",
+        "удары",
+        "периодические импульсы",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-gears",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-rub"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-clipping",
+        "vibration-spectrum-modulated"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-bearing-outer-race",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-gears",
+        "vibration-fault-mechanical-looseness",
+        "vibration-fault-rub"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-clipping",
+        "vibration-spectrum-modulated"
+      ],
+      "additionalChecks": [
+        "анализировать длительный waveform",
+        "проверить повторяемость",
+        "локализовать по точкам",
+        "применить огибающую",
+        "сопоставить расчётные частоты",
+        "проверить датчик и кабель"
+      ]
     },
     "mediaSlots": [
       {
@@ -22440,8 +25826,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Модулированный сигнал",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Модулированный сигнал», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 19,
     "tags": [
       "вибрация",
@@ -22451,21 +25837,188 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Амплитуда или частота несущего колебания периодически меняется; во времени видна огибающая, а в спектре — боковые полосы."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Определить несущую частоту и частоту модуляции по шагу боковых полос или периоду огибающей waveform."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "зубцовое возбуждение, модулированное вращением",
+          "подшипниковый импульсный процесс",
+          "электромагнитная модуляция",
+          "периодическая нагрузка",
+          "биения близких частот",
+          "пульсации потока"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "несколько независимых линий",
+          "частотное размытие",
+          "гармонический ряд",
+          "помпаж"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "измерить центральную частоту и боковой шаг"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "посмотреть waveform"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "проверить RPM и slip"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сопоставить нагрузку"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "применить огибающую"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "сравнить токовый спектр при электрическом контексте"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Физический смысл задаёт пара «несущая + модулятор»; одинаковый вид боковых полос может иметь механическую, электрическую или технологическую причину."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Устойчивый шаг, совпадающий с известной частотой процесса, существенно усиливает гипотезу."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Без достаточного FFT-разрешения боковые полосы могут сливаться, а нестабильные RPM — расширять линии. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-envelope-analysis",
+            "title": "Огибающая"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-order-analysis",
+            "title": "Порядковый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-gears",
+            "title": "Дефекты зубчатых передач"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-inner-race",
+            "title": "Дефект внутреннего кольца подшипника"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-rolling-elements",
+            "title": "Дефект тел качения"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-bearing-cage",
+            "title": "Дефект сепаратора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-motor-electrical",
+            "title": "Электрические неисправности двигателя"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-rotor-cage",
+            "title": "Повреждение клетки ротора"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-surge",
+            "title": "Помпаж"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-sidebands",
+            "title": "Боковые полосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-gear-mesh",
+            "title": "Зубцовая частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-bpfi",
+            "title": "Частота дефекта внутреннего кольца"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -22476,44 +26029,91 @@
       "equipment": [],
       "faults": [],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Модулированный сигнал"
+        "Модулированный сигнал",
+        "modulated signal",
+        "модулированный сигнал",
+        "амплитудная модуляция"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Модулированный сигнал",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "modulated signal",
+        "модулированный сигнал",
+        "амплитудная модуляция",
+        "частотная модуляция",
+        "sidebands"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-time-waveform",
+        "vibration-envelope-analysis",
+        "vibration-order-analysis"
+      ],
+      "status": "published",
       "tags": [
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis"
       ],
       "aliases": [
+        "модулированный сигнал",
+        "амплитудная модуляция",
+        "частотная модуляция",
+        "sidebands",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-gears",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-bearing-cage",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-rotor-cage",
+        "vibration-fault-surge"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-bpfi"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-gears",
+        "vibration-fault-bearing-inner-race",
+        "vibration-fault-bearing-rolling-elements",
+        "vibration-fault-bearing-cage",
+        "vibration-fault-motor-electrical",
+        "vibration-fault-rotor-cage",
+        "vibration-fault-surge"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-sidebands",
+        "vibration-spectrum-gear-mesh",
+        "vibration-spectrum-bpfi"
+      ],
+      "additionalChecks": [
+        "измерить центральную частоту и боковой шаг",
+        "посмотреть waveform",
+        "проверить RPM и slip",
+        "сопоставить нагрузку",
+        "применить огибающую",
+        "сравнить токовый спектр при электрическом контексте"
+      ]
     },
     "mediaSlots": [
       {
@@ -22531,8 +26131,8 @@
     "parentId": "vibration-spectrum-atlas",
     "category": "Атлас спектров вибрации",
     "title": "Спектр кавитации",
-    "summary": "Заготовка материала раздела «Атлас спектров вибрации».",
-    "status": "draft",
+    "summary": "Как интерпретировать спектральную картину «Спектр кавитации», какие причины рассмотреть и какими измерениями различить варианты.",
+    "status": "published",
     "order": 20,
     "tags": [
       "вибрация",
@@ -22542,21 +26142,173 @@
       "спектр",
       "FFT",
       "гармоника",
-      "субгармоника"
-    ],
-    "futureImageLabel": "Нейтральная схема спектра будет добавлена при подготовке материала.",
-    "futureBlocks": [
-      "Изображение",
-      "Диагностический признак",
-      "Возможные причины",
-      "Что проверить",
-      "Похожие спектры"
+      "субгармоника",
+      "spectrum-atlas",
+      "differential-diagnosis"
     ],
     "sections": [
       {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
+        "type": "text",
+        "title": "Что видно в спектре",
+        "content": "Повышен широкополосный высокочастотный фон; могут изменяться лопастная частота, её гармоники и случайная импульсность."
+      },
+      {
+        "type": "text",
+        "title": "Как определить частоту",
+        "content": "Спектр связывают не с одной расчётной линией, а с полосой энергии и её зависимостью от расхода, давления и положения рабочей точки."
+      },
+      {
+        "type": "list",
+        "title": "Возможные физические причины",
+        "items": [
+          "кавитация",
+          "турбулентность",
+          "неравномерный поток",
+          "подшипниковые удары",
+          "трение",
+          "измерительный шум"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что ещё может дать такую картину",
+        "items": [
+          "общий широкополосный шум",
+          "ранний подшипниковый процесс",
+          "помпаж",
+          "зубчатые или контактные удары"
+        ]
+      },
+      {
+        "type": "methods",
+        "title": "Как проверить и различить причины",
+        "items": [
+          {
+            "method": "1. Проверка",
+            "description": "измерить давление на всасывании и расход"
+          },
+          {
+            "method": "2. Проверка",
+            "description": "проверить уровень и всасывающую линию"
+          },
+          {
+            "method": "3. Проверка",
+            "description": "сопоставить положение арматуры"
+          },
+          {
+            "method": "4. Проверка",
+            "description": "сравнить шум и waveform"
+          },
+          {
+            "method": "5. Проверка",
+            "description": "проверить лопастную частоту"
+          },
+          {
+            "method": "6. Проверка",
+            "description": "исключить подшипниковые и измерительные источники"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "title": "Как различить",
+        "content": "Кавитационная гипотеза подтверждается зависимостью от гидравлического режима и состоянием проточной части, а не только видом спектра."
+      },
+      {
+        "type": "text",
+        "title": "Когда признак особенно информативен",
+        "content": "Особенно информативно воспроизводимое изменение при разрешённом переходе между рабочими режимами и сопоставимый тренд."
+      },
+      {
+        "type": "warning",
+        "title": "Ограничения интерпретации",
+        "content": "Широкополосный фон не является автоматическим диагнозом кавитации; сначала проверяют качество измерения. Всегда учитывайте частотное разрешение, изменение RPM, единицы, RMS/Peak, окно, масштаб, точку, направление, рабочий режим и базовое состояние."
+      },
+      {
+        "type": "warning",
+        "title": "Спектр не является диагнозом",
+        "content": "Наблюдаемая линия или форма — диагностический признак. Окончательный вывод требует независимых подтверждений и проверки альтернативных причин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-analysis",
+            "title": "Спектральный анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-measurement-validation",
+            "title": "Проверка достоверности измерений"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-characteristic-frequency",
+            "title": "Определение характерной частоты"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnosis-confirmation",
+            "title": "Подтверждение диагноза"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-trend-analysis",
+            "title": "Трендовый анализ"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-pump-measurements",
+            "title": "Измерения насосов"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-operating-mode-relation",
+            "title": "Анализ рабочих параметров"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-time-waveform",
+            "title": "Временной сигнал"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-diagnostics-pumps",
+            "title": "Насосы"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-cavitation",
+            "title": "Кавитация"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-surge",
+            "title": "Помпаж"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-fault-lubrication",
+            "title": "Проблемы смазки"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-broadband-noise",
+            "title": "Высокочастотный широкополосный шум"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-blade-pass",
+            "title": "Лопастная частота"
+          },
+          {
+            "method": "vibration",
+            "id": "vibration-spectrum-impulse",
+            "title": "Импульсный сигнал"
+          }
+        ]
       }
     ],
     "template": "spectrum",
@@ -22564,52 +26316,95 @@
       "section": "vibration",
       "group": "vibration-spectrum-atlas",
       "materialType": "spectrum",
-      "equipment": [],
+      "equipment": [
+        "насосы"
+      ],
       "faults": [
         "кавитация"
       ],
       "diagnosticSigns": [
-        "гармоники",
-        "субгармоники",
-        "Спектр кавитации"
+        "Спектр кавитации",
+        "cavitation spectrum",
+        "спектр кавитации",
+        "кавитационный шум"
       ],
       "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Спектр кавитации",
-        "спектр",
-        "FFT",
-        "гармоника",
-        "субгармоника"
+        "cavitation spectrum",
+        "спектр кавитации",
+        "кавитационный шум",
+        "широкополосный шум насоса"
       ],
-      "relatedArticles": [],
-      "status": "draft",
+      "relatedArticles": [
+        "vibration-spectrum-analysis",
+        "vibration-measurement-validation",
+        "vibration-characteristic-frequency",
+        "vibration-diagnosis-confirmation",
+        "vibration-trend-analysis",
+        "vibration-pump-measurements",
+        "vibration-operating-mode-relation",
+        "vibration-time-waveform",
+        "vibration-diagnostics-pumps"
+      ],
+      "status": "published",
       "tags": [
         "cavitation",
-        "fft"
+        "fft",
+        "spectrum-atlas",
+        "differential-diagnosis",
+        "pumps"
       ],
       "aliases": [
-        "Кавитация",
+        "спектр кавитации",
         "кавитационный шум",
+        "широкополосный шум насоса",
+        "Насосы",
+        "насос",
+        "насосный агрегат",
+        "Кавитация",
         "FFT",
         "БПФ",
         "быстрое преобразование фурье"
       ],
       "measuredParameters": [
+        "частота",
+        "амплитуда",
+        "RPM",
         "Гармоники",
         "Субгармоники"
       ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
+      "relatedFaults": [
+        "vibration-fault-cavitation",
+        "vibration-fault-surge",
+        "vibration-fault-lubrication"
+      ],
+      "relatedSpectra": [
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-impulse"
+      ],
       "relatedScenarios": [],
       "relatedReferences": [],
       "normativeDocuments": [],
       "relatedMeasurements": [],
       "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
+      "probableFaults": [
+        "vibration-fault-cavitation",
+        "vibration-fault-surge",
+        "vibration-fault-lubrication"
+      ],
+      "similarSpectra": [
+        "vibration-spectrum-broadband-noise",
+        "vibration-spectrum-blade-pass",
+        "vibration-spectrum-impulse"
+      ],
+      "additionalChecks": [
+        "измерить давление на всасывании и расход",
+        "проверить уровень и всасывающую линию",
+        "сопоставить положение арматуры",
+        "сравнить шум и waveform",
+        "проверить лопастную частоту",
+        "исключить подшипниковые и измерительные источники"
+      ]
     },
     "mediaSlots": [
       {

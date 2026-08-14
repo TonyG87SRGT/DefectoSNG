@@ -84,8 +84,9 @@ test("новые статьи имеют нейтральные заготовк
   assert.equal(fault.metadata.status, "published");
   assert.ok(fault.sections.some(section => section.type === "warning"));
   assert.ok(fault.sections.some(section => section.type === "related"));
-  assert.equal(spectrum.futureBlocks.length, 5);
-  assert.match(spectrum.futureImageLabel, /спектр/i);
+  assert.equal(spectrum.status, "published");
+  assert.equal(spectrum.metadata.status, "published");
+  assert.ok(spectrum.sections.some(section => section.type === "warning"));
   assert.match(tool.sections[0].content, /разработке/i);
 });
 
