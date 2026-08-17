@@ -1,5 +1,49 @@
 [
   {
+    "id": "vibration-measurement-workflow",
+    "type": "section",
+    "category": "Раздел ВД",
+    "title": "Подготовка и измерения",
+    "sectionTitle": "Подготовка и измерения",
+    "description": "Подготовка обследования, измерительная цепь и получение воспроизводимых данных.",
+    "order": 20,
+    "status": "published",
+    "groupKind": "umbrella"
+  },
+  {
+    "id": "vibration-parameters-analysis",
+    "type": "section",
+    "category": "Раздел ВД",
+    "title": "Параметры и анализ",
+    "sectionTitle": "Параметры и анализ",
+    "description": "Физические величины, формы амплитуды и методы исследования вибрационного сигнала.",
+    "order": 30,
+    "status": "published",
+    "groupKind": "umbrella"
+  },
+  {
+    "id": "vibration-diagnostics-workflow",
+    "type": "section",
+    "category": "Раздел ВД",
+    "title": "Диагностирование",
+    "sectionTitle": "Диагностирование",
+    "description": "Проверка гипотез и переход от наблюдаемого признака к неисправности.",
+    "order": 40,
+    "status": "published",
+    "groupKind": "umbrella"
+  },
+  {
+    "id": "vibration-practical-diagnostics",
+    "type": "section",
+    "category": "Раздел ВД",
+    "title": "Практическая диагностика",
+    "sectionTitle": "Практическая диагностика",
+    "description": "Маршруты обследования конкретных машин и разбор наблюдаемых ситуаций.",
+    "order": 50,
+    "status": "published",
+    "groupKind": "umbrella"
+  },
+  {
     "id": "vibration-basics",
     "type": "section",
     "category": "Раздел ВД",
@@ -1927,6 +1971,7 @@
   {
     "id": "vibration-preparation",
     "type": "section",
+    "parentId": "vibration-measurement-workflow",
     "category": "Раздел ВД",
     "title": "Подготовка к контролю",
     "sectionTitle": "Подготовка к контролю",
@@ -5287,6 +5332,7 @@
   {
     "id": "vibration-equipment",
     "type": "section",
+    "parentId": "vibration-measurement-workflow",
     "category": "Раздел ВД",
     "title": "Измерительное оборудование",
     "sectionTitle": "Измерительное оборудование",
@@ -7141,6 +7187,7 @@
   {
     "id": "vibration-measurements",
     "type": "section",
+    "parentId": "vibration-measurement-workflow",
     "category": "Раздел ВД",
     "title": "Проведение измерений",
     "sectionTitle": "Проведение измерений",
@@ -9084,6 +9131,7 @@
   {
     "id": "vibration-parameters-group",
     "type": "section",
+    "parentId": "vibration-parameters-analysis",
     "category": "Раздел ВД",
     "title": "Измеряемые параметры",
     "sectionTitle": "Измеряемые параметры",
@@ -10617,6 +10665,7 @@
   {
     "id": "vibration-signal-analysis",
     "type": "section",
+    "parentId": "vibration-parameters-analysis",
     "category": "Раздел ВД",
     "title": "Анализ сигналов",
     "sectionTitle": "Анализ сигналов",
@@ -12296,6 +12345,7 @@
   {
     "id": "vibration-diagnostic-algorithm",
     "type": "section",
+    "parentId": "vibration-diagnostics-workflow",
     "category": "Раздел ВД",
     "title": "Алгоритм диагностирования",
     "sectionTitle": "Алгоритм диагностирования",
@@ -13700,6 +13750,7 @@
   {
     "id": "vibration-fault-atlas",
     "type": "section",
+    "parentId": "vibration-diagnostics-workflow",
     "category": "Каталог",
     "title": "Атлас неисправностей вибродиагностики",
     "sectionTitle": "Атлас неисправностей вибродиагностики",
@@ -20738,6 +20789,7 @@
   {
     "id": "vibration-spectrum-atlas",
     "type": "section",
+    "parentId": "vibration-diagnostics-workflow",
     "category": "Каталог",
     "title": "Атлас спектров вибрации",
     "sectionTitle": "Атлас спектров вибрации",
@@ -26420,6 +26472,7 @@
   {
     "id": "vibration-equipment-diagnostics",
     "type": "section",
+    "parentId": "vibration-practical-diagnostics",
     "category": "Каталог",
     "title": "Диагностика оборудования",
     "sectionTitle": "Диагностика оборудования",
@@ -30466,6 +30519,7 @@
   {
     "id": "vibration-practical-situations",
     "type": "section",
+    "parentId": "vibration-practical-diagnostics",
     "category": "Каталог",
     "title": "Практические ситуации",
     "sectionTitle": "Практические ситуации",
@@ -35562,7 +35616,7 @@
     "title": "Справочные материалы",
     "sectionTitle": "Справочные материалы",
     "description": "Обозначения, характерные частоты, диагностические признаки и нормативные документы.",
-    "order": 120,
+    "order": 60,
     "groupKind": "group"
   },
   {
@@ -36521,7 +36575,7 @@
     "title": "Инструменты",
     "sectionTitle": "Инструменты",
     "description": "Будущие расчётные и диагностические помощники раздела ВД.",
-    "order": 130,
+    "order": 70,
     "groupKind": "tools"
   },
   {

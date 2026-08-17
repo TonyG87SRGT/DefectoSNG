@@ -7,6 +7,28 @@ import { getAutomaticVibrationRelated, withAutomaticVibrationRelated } from "../
 import { VIBRATION_TEMPLATE_DEFINITIONS } from "../js/vibrationTemplates.js";
 
 const data = JSON.parse(fs.readFileSync(new URL("../data/vibration.json", import.meta.url), "utf8"));
+
+test("верхний уровень ВД сгруппирован в семь понятных маршрутов", () => {
+  const roots = data.filter(item => !item.parentId).sort((a, b) => a.order - b.order);
+  assert.deepEqual(roots.map(item => item.id), [
+    "vibration-basics",
+    "vibration-measurement-workflow",
+    "vibration-parameters-analysis",
+    "vibration-diagnostics-workflow",
+    "vibration-practical-diagnostics",
+    "vibration-reference",
+    "vibration-tools"
+  ]);
+  const expected = {
+    "vibration-measurement-workflow": ["vibration-preparation", "vibration-equipment", "vibration-measurements"],
+    "vibration-parameters-analysis": ["vibration-parameters-group", "vibration-signal-analysis"],
+    "vibration-diagnostics-workflow": ["vibration-diagnostic-algorithm", "vibration-fault-atlas", "vibration-spectrum-atlas"],
+    "vibration-practical-diagnostics": ["vibration-equipment-diagnostics", "vibration-practical-situations"]
+  };
+  for (const [parentId, ids] of Object.entries(expected)) {
+    assert.deepEqual(data.filter(item => item.parentId === parentId).sort((a, b) => a.order - b.order).map(item => item.id), ids);
+  }
+});
 const byId = new Map(data.map(item => [item.id, item]));
 
 const expectedGroupSizes = Object.freeze({

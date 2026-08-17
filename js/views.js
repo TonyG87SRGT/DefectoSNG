@@ -189,7 +189,9 @@ export function renderArticleGroup(methodKey, groupArticle) {
   `;
 
   content.querySelector("#back-button").addEventListener("click", () => {
-    goBack({ view: "method", method: methodKey });
+    goBack(groupArticle.parentId
+      ? { view: "section", method: methodKey, itemId: groupArticle.parentId }
+      : { view: "method", method: methodKey });
   });
   content.querySelectorAll("[data-group-article]").forEach(link => {
     link.addEventListener("click", event => {

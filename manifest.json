@@ -1,7 +1,7 @@
 {
   "name": "DefectoSNG",
   "short_name": "DefectoSNG",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "id": "./",
   "description": "Карманный справочник по неразрушающему контролю и вибродиагностике",
   "lang": "ru",
