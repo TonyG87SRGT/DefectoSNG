@@ -19,6 +19,19 @@ const requiredArrays = [
   "relatedParameters", "probableFaults", "similarSpectra", "additionalChecks"
 ];
 
+test("нормативный справочник вибродиагностики опубликован и актуализирован", () => {
+  const article = byId.get("vibration-reference-standards");
+  assert.equal(article?.status, "published");
+  assert.equal(article?.metadata?.status, "published");
+  assert.equal(article?.parentId, "vibration-reference");
+  const text = JSON.stringify(article);
+  for (const term of ["ГОСТ Р ИСО 13373-3-2016", "ГОСТ Р ИСО 20816-3-2023", "17 августа 2026 года", "protect.gost.ru"]) {
+    assert.ok(text.includes(term), term);
+  }
+  assert.equal(article.futureBlocks, undefined);
+  assert.equal(article.mediaSlots, undefined);
+});
+
 test("каждый материал имеет единую схему базы знаний", () => {
   articles.forEach(article => requiredArrays.forEach(field => {
     assert.ok(Array.isArray(article.metadata[field]), `${article.id}: ${field}`);
