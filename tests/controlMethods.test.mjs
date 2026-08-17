@@ -6,9 +6,10 @@ const read = name => JSON.parse(fs.readFileSync(new URL(`../data/${name}.json`, 
 const vik = read("vik");
 const uzk = read("uzk");
 const pvk = read("pvk");
+const rk = read("rk");
 const vibration = read("vibration");
 const pipeline = read("pipeline-welded-joints");
-const datasets = { vik, uzk, pvk, vibration, pipeline };
+const datasets = { vik, uzk, pvk, rk, vibration, pipeline };
 
 test("ВИК сохраняет прежние ID и получает полный практический маршрут", () => {
   const ids = new Set(vik.map(item => item.id));
@@ -60,8 +61,18 @@ test("ПВК покрывает полный технологический ци
   for (const term of ["выдержк", "удал", "суш", "проявител", "очистк"]) assert.match(text.toLowerCase(), new RegExp(term));
 });
 
+test("РК покрывает безопасный маршрут от подготовки до заключения", () => {
+  assert.deepEqual(
+    rk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id),
+    ["rk-basics-section", "rk-equipment-section", "rk-preparation-section", "rk-control-section", "rk-analysis-section", "rk-evaluation-section"]
+  );
+  assert.ok(rk.every(item => item.status === "published"));
+  const text = JSON.stringify(rk).toLowerCase();
+  for (const term of ["радиационная безопасность", "индикатор качества", "схема просвечивания", "артефакт", "протокол"]) assert.match(text, new RegExp(term));
+});
+
 test("опубликованные материалы контроля не содержат служебных заглушек", () => {
-  for (const [method, items] of Object.entries({ vik, uzk, pvk })) {
+  for (const [method, items] of Object.entries({ vik, uzk, pvk, rk })) {
     for (const item of items.filter(candidate => candidate.status === "published")) {
       const text = JSON.stringify(item).toLowerCase();
       assert.doesNotMatch(text, /здесь будет|раздел находится в разработке/, `${method}/${item.id}`);
@@ -72,7 +83,7 @@ test("опубликованные материалы контроля не со
 
 test("все связи и parentId методов контроля существуют", () => {
   const indexes = Object.fromEntries(Object.entries(datasets).map(([method, items]) => [method, new Set(items.map(item => item.id))]));
-  for (const [method, items] of Object.entries({ vik, uzk, pvk })) {
+  for (const [method, items] of Object.entries({ vik, uzk, pvk, rk })) {
     for (const item of items) {
       if (item.parentId) assert.ok(indexes[method].has(item.parentId), `${method}/${item.id} parent ${item.parentId}`);
       for (const section of item.sections || []) {

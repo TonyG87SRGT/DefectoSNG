@@ -210,6 +210,11 @@ button {
   color: #ffab59;
 }
 
+.method-card.rk .method-icon {
+  background: rgba(180,83,9,.16);
+  color: #f5b84b;
+}
+
 .method-info {
   flex: 1;
 }
@@ -486,4 +491,3 @@ h2[tabindex="-1"]:focus {
     display: none;
   }
 }
-

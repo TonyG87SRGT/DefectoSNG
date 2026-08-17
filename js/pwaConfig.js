@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.32.0";
+export const APP_VERSION = "0.33.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -66,6 +66,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "data/vik.json",
   "data/uzk.json",
   "data/pvk.json",
+  "data/rk.json",
   "data/vibration.json",
   "data/references.json",
   "data/pipeline-welded-joints.json"

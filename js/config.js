@@ -14,6 +14,7 @@ export const METHODS = Object.freeze({
     title: "Капиллярный контроль",
     icon: "◌"
   }),
+  rk: Object.freeze({ short: "РК", title: "Радиографический контроль", icon: "◈" }),
   vibration: Object.freeze({
     short: "ВД",
     title: "Вибродиагностика",
@@ -31,6 +32,7 @@ export const DATA_FILES = Object.freeze({
   vik: "data/vik.json",
   uzk: "data/uzk.json",
   pvk: "data/pvk.json",
+  rk: "data/rk.json",
   vibration: "data/vibration.json",
   pipeline: "data/pipeline-welded-joints.json"
 });
