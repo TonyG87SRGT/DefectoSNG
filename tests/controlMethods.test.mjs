@@ -32,9 +32,21 @@ test("УЗК организован по этапам от основ до оф�
     "uzk-control-section", "uzk-indications-section", "uzk-evaluation-section"
   ];
   assert.deepEqual(uzk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id), expected);
-  assert.equal(uzk.length, 24);
+  assert.equal(uzk.length, 25);
   assert.ok(uzk.every(item => item.status === "published"));
   for (const id of ["uzk-1", "uzk-2", "uzk-3", "uzk-4", "uzk-5", "uzk-6"]) assert.ok(uzk.some(item => item.id === id), id);
+});
+
+test("нормативные статьи методов опубликованы и указывают дату проверки", () => {
+  for (const [method, items] of Object.entries({ vik, uzk, pvk })) {
+    const article = items.find(item => item.id === `${method}-normative-documents`);
+    assert.equal(article?.status, "published", method);
+    assert.equal(article?.parentId, `${method}-basics-section`, method);
+    const text = JSON.stringify(article);
+    assert.match(text, /17 августа 2026 года/, method);
+    assert.match(text, /protect\.gost\.ru/, method);
+    assert.match(text, /область|применим/i, method);
+  }
 });
 
 test("ПВК покрывает полный технологический цикл", () => {

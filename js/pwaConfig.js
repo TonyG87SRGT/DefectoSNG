@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.30.0";
+export const APP_VERSION = "0.32.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
