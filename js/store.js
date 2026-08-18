@@ -23,6 +23,10 @@ export function sortByOrder(items) {
   });
 }
 
+export function isPublicItem(item) {
+  return item?.hidden !== true;
+}
+
 function rebuildIndexes(methodKey, articles) {
   const itemIndex = new Map();
   const childrenIndex = new Map();
@@ -46,7 +50,7 @@ function rebuildIndexes(methodKey, articles) {
 }
 
 export function getArticles(methodKey) {
-  return articlesByMethod[methodKey] || [];
+  return (articlesByMethod[methodKey] || []).filter(isPublicItem);
 }
 
 export function getItem(methodKey, itemId) {
@@ -54,12 +58,12 @@ export function getItem(methodKey, itemId) {
 }
 
 export function getChildren(methodKey, parentId) {
-  return childrenIndexes.get(methodKey)?.get(parentId) || [];
+  return (childrenIndexes.get(methodKey)?.get(parentId) || []).filter(isPublicItem);
 }
 
 export function getAllItems() {
   return Object.entries(articlesByMethod).flatMap(([methodKey, articles]) =>
-    articles.map(article => ({ ...article, methodKey }))
+    articles.filter(isPublicItem).map(article => ({ ...article, methodKey }))
   );
 }
 
