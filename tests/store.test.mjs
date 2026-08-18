@@ -6,6 +6,7 @@ import {
   getMethodLoadError,
   loadData
 } from "../js/store.js";
+import { DATA_FILES } from "../js/config.js";
 
 test("ошибка одного data-файла не блокирует остальные методы", async () => {
   const originalFetch = globalThis.fetch;
@@ -24,7 +25,7 @@ test("ошибка одного data-файла не блокирует оста
   console.error = () => {};
   try {
     const result = await loadData("https://example.com/app/");
-    assert.deepEqual(result, { loaded: 4, failed: 1 });
+    assert.deepEqual(result, { loaded: Object.keys(DATA_FILES).length - 1, failed: 1 });
     assert.equal(getArticles("vik").length, 1);
     assert.equal(getItem("vik", "vik-test").title, "Тест");
     assert.match(getMethodLoadError("pvk").message, /network unavailable/);

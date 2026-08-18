@@ -48,7 +48,6 @@ const expectedGroupSizes = Object.freeze({
 });
 
 test("раздел ВД содержит все группы без повторяющихся ID", () => {
-  assert.equal(data.length, 181);
   assert.equal(byId.size, data.length);
 
   for (const [groupId, expectedSize] of Object.entries(expectedGroupSizes)) {

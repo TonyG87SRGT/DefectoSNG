@@ -254,9 +254,10 @@ export function validateArticleShape(article) {
   const type = article.type || "article";
   if (!ARTICLE_TYPES.includes(type)) errors.push(`неподдерживаемый type: ${String(type)}`);
 
-  const status = article.status || "published";
-  if (!ARTICLE_STATUSES.includes(status)) {
-    errors.push(`неподдерживаемый status: ${String(status)}`);
+  if (!isNonEmptyString(article.status)) {
+    errors.push("требуется явный строковый status");
+  } else if (!ARTICLE_STATUSES.includes(article.status)) {
+    errors.push(`неподдерживаемый status: ${String(article.status)}`);
   }
 
   if (article.parentId != null && !isNonEmptyString(article.parentId)) {
@@ -327,7 +328,7 @@ export function validateArticleShape(article) {
   if (article.toolConfig != null && !isObject(article.toolConfig)) {
     errors.push("toolConfig должен быть объектом");
   }
-  if (article.groupKind != null && !["group", "catalog", "tools"].includes(article.groupKind)) {
+  if (article.groupKind != null && !["umbrella", "group", "catalog", "tools"].includes(article.groupKind)) {
     errors.push(`неподдерживаемый groupKind: ${String(article.groupKind)}`);
   }
   if (article.returnToMethod != null && typeof article.returnToMethod !== "boolean") {

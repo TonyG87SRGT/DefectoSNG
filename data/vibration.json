@@ -45,6 +45,7 @@
   },
   {
     "id": "vibration-basics",
+    "status": "published",
     "type": "section",
     "category": "Раздел ВД",
     "title": "Основы вибродиагностики",
@@ -55,6 +56,7 @@
   },
   {
     "id": "vibration-introduction",
+    "status": "published",
     "category": "Основы",
     "title": "Что такое вибродиагностика",
     "summary": "Практическое введение в вибрационный контроль и диагностику машин.",
@@ -255,6 +257,7 @@
   },
   {
     "id": "vibration-parameters",
+    "status": "published",
     "category": "Основы",
     "title": "Что измеряет вибродиагностика",
     "summary": "Что фактически измеряет прибор и почему результат оценивают вместе с режимом машины.",
@@ -503,6 +506,7 @@
   },
   {
     "id": "vibration-scope",
+    "status": "published",
     "parentId": "vibration-basics",
     "category": "Основы вибродиагностики",
     "title": "Область применения вибродиагностики",
@@ -732,6 +736,7 @@
   },
   {
     "id": "vibration-detectable-faults",
+    "status": "published",
     "parentId": "vibration-basics",
     "category": "Основы вибродиагностики",
     "title": "Какие неисправности можно обнаружить",
@@ -999,6 +1004,7 @@
   },
   {
     "id": "vibration-capabilities-limitations",
+    "status": "published",
     "parentId": "vibration-basics",
     "category": "Основы вибродиагностики",
     "title": "Возможности и ограничения метода",
@@ -1178,6 +1184,7 @@
   },
   {
     "id": "vibration-basic-terms",
+    "status": "published",
     "parentId": "vibration-basics",
     "category": "Основы вибродиагностики",
     "title": "Основные термины вибродиагностики",
@@ -1482,6 +1489,7 @@
   },
   {
     "id": "vibration-types",
+    "status": "published",
     "parentId": "vibration-basics",
     "category": "Основы вибродиагностики",
     "title": "Виды вибрации",
@@ -1705,6 +1713,7 @@
   },
   {
     "id": "vibration-units",
+    "status": "published",
     "parentId": "vibration-basics",
     "category": "Основы вибродиагностики",
     "title": "Единицы измерения вибрации",
@@ -1970,6 +1979,7 @@
   },
   {
     "id": "vibration-preparation",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-measurement-workflow",
     "category": "Раздел ВД",
@@ -5331,6 +5341,7 @@
   },
   {
     "id": "vibration-equipment",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-measurement-workflow",
     "category": "Раздел ВД",
@@ -5342,6 +5353,7 @@
   },
   {
     "id": "vibration-meters",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Виброметры",
@@ -5543,6 +5555,7 @@
   },
   {
     "id": "vibration-analyzers",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Анализаторы вибрации",
@@ -5713,6 +5726,7 @@
   },
   {
     "id": "vibration-accelerometers",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Акселерометры",
@@ -5881,6 +5895,7 @@
   },
   {
     "id": "vibration-velocity-sensors",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Датчики виброскорости",
@@ -6043,6 +6058,7 @@
   },
   {
     "id": "vibration-displacement-sensors",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Датчики виброперемещения",
@@ -6210,6 +6226,7 @@
   },
   {
     "id": "vibration-proximity-probes",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Бесконтактные датчики положения вала",
@@ -6380,6 +6397,7 @@
   },
   {
     "id": "vibration-tachometers-phase",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Тахометры и датчики фазы",
@@ -6545,6 +6563,7 @@
   },
   {
     "id": "vibration-sensor-mounting",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Способы крепления датчиков",
@@ -6768,6 +6787,7 @@
   },
   {
     "id": "vibration-measurement-chain-check",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Проверка измерительной цепи",
@@ -6966,6 +6986,7 @@
   },
   {
     "id": "vibration-sensor-installation-errors",
+    "status": "published",
     "parentId": "vibration-equipment",
     "category": "Измерительное оборудование",
     "title": "Типичные ошибки установки датчиков",
@@ -7186,6 +7207,7 @@
   },
   {
     "id": "vibration-measurements",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-measurement-workflow",
     "category": "Раздел ВД",
@@ -9130,6 +9152,7 @@
   },
   {
     "id": "vibration-parameters-group",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-parameters-analysis",
     "category": "Раздел ВД",
@@ -10664,6 +10687,7 @@
   },
   {
     "id": "vibration-signal-analysis",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-parameters-analysis",
     "category": "Раздел ВД",
@@ -12344,6 +12368,7 @@
   },
   {
     "id": "vibration-diagnostic-algorithm",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-diagnostics-workflow",
     "category": "Раздел ВД",
@@ -13749,6 +13774,7 @@
   },
   {
     "id": "vibration-fault-atlas",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-diagnostics-workflow",
     "category": "Каталог",
@@ -20788,6 +20814,7 @@
   },
   {
     "id": "vibration-spectrum-atlas",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-diagnostics-workflow",
     "category": "Каталог",
@@ -26471,6 +26498,7 @@
   },
   {
     "id": "vibration-equipment-diagnostics",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-practical-diagnostics",
     "category": "Каталог",
@@ -30518,6 +30546,7 @@
   },
   {
     "id": "vibration-practical-situations",
+    "status": "published",
     "type": "section",
     "parentId": "vibration-practical-diagnostics",
     "category": "Каталог",
@@ -35611,6 +35640,7 @@
   },
   {
     "id": "vibration-reference",
+    "status": "published",
     "type": "section",
     "category": "Раздел ВД",
     "title": "Справочные материалы",
@@ -36570,6 +36600,7 @@
   },
   {
     "id": "vibration-tools",
+    "status": "published",
     "type": "section",
     "category": "Инструменты",
     "title": "Инструменты",

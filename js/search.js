@@ -10,6 +10,10 @@ import { METHODS, getAllItems, getItem, getItemRoute } from "./store.js";
 
 let cachedDocuments = null;
 
+export function isSearchableArticle(article) {
+  return article?.status === "published";
+}
+
 export function getSearchValue(value) {
   if (Array.isArray(value)) return value.map(getSearchValue).join(" ");
   if (value && typeof value === "object") {
@@ -26,7 +30,7 @@ export function getSectionSearchText(sections = []) {
 }
 
 export function buildSearchIndex() {
-  cachedDocuments = getAllItems().map(article => {
+  cachedDocuments = getAllItems().filter(isSearchableArticle).map(article => {
     const searchText = [
       article.title || "",
       article.category || "",
@@ -83,7 +87,7 @@ export function searchArticles(query, documents = getSearchDocuments()) {
   const queryTokens = tokenizeSearch(query);
   if (!queryTokens.length) return [];
 
-  return documents.filter(article => {
+  return documents.filter(isSearchableArticle).filter(article => {
     const tokens = article.searchTokens || tokenizeSearch([
       article.searchText || "",
       METHODS[article.methodKey]?.short || "",

@@ -7210,7 +7210,7 @@
         "title": "Связанные материалы",
         "items": [
           { "method": "vik", "id": "vik-documents-safety", "title": "Документы и безопасность при ВИК" },
-          { "method": "vik", "id": "vik-control-sequence", "title": "Последовательность выполнения визуального контроля" },
+          { "method": "vik", "id": "vik-control-sequence", "title": "Последовательность выполнения визуального и измерительного контроля" },
           { "method": "vik", "id": "vik-evaluation-ntd", "title": "Оценка результатов ВИК по применимой НТД" },
           { "method": "vik", "id": "vik-results-documentation", "title": "Фиксация и оформление результатов ВИК" }
         ]

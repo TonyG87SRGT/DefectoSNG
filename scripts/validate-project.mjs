@@ -146,6 +146,12 @@ for (const [method, relativePath] of Object.entries(DATA_FILES)) {
       if (article.parentId === "vibration-tools" && !article.toolConfig) {
         addError(location, "для инструмента ВД требуется toolConfig");
       }
+      if (article.metadata?.status !== article.status) {
+        addError(
+          location,
+          `metadata.status ${String(article.metadata?.status)} не совпадает со status ${String(article.status)}`
+        );
+      }
     }
 
     if (methodIndex.has(article.id)) {
@@ -245,7 +251,8 @@ for (const [method, articles] of articlesByMethod.entries()) {
     if (method === "vibration") {
       for (const field of [
         "relatedArticles", "relatedFaults", "relatedSpectra", "relatedScenarios",
-        "relatedReferences", "relatedMeasurements", "relatedParameters", "similarSpectra"
+        "relatedReferences", "relatedMeasurements", "relatedParameters",
+        "probableFaults", "similarSpectra"
       ]) {
         (article.metadata?.[field] || []).forEach((id, index) => {
           if (!articles.has(id)) {
