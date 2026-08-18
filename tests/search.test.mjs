@@ -75,5 +75,6 @@ test("глобальный поиск не индексирует чернови
   assert.deepEqual(results, []);
   assert.equal(isSearchableArticle({ status: "published" }), true);
   assert.equal(isSearchableArticle({ status: "draft" }), false);
+  assert.equal(isSearchableArticle({ status: "published", hidden: true }), false);
   assert.equal(isSearchableArticle({}), false);
 });

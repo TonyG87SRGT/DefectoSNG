@@ -334,6 +334,9 @@ export function validateArticleShape(article) {
   if (article.returnToMethod != null && typeof article.returnToMethod !== "boolean") {
     errors.push("returnToMethod должен быть логическим значением");
   }
+  if (article.hidden != null && typeof article.hidden !== "boolean") {
+    errors.push("hidden должен быть логическим значением");
+  }
   if (article.pipelineCategory != null && !PIPELINE_CATEGORY_IDS.has(article.pipelineCategory)) {
     errors.push(`неподдерживаемый pipelineCategory: ${String(article.pipelineCategory)}`);
   }

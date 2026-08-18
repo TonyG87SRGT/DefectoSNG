@@ -11,7 +11,7 @@ import { METHODS, getAllItems, getItem, getItemRoute } from "./store.js";
 let cachedDocuments = null;
 
 export function isSearchableArticle(article) {
-  return article?.status === "published";
+  return article?.status === "published" && article?.hidden !== true;
 }
 
 export function getSearchValue(value) {

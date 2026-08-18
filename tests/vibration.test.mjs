@@ -241,6 +241,20 @@ test("атласы, сценарии и инструменты использу�
   assert.equal(byId.get("vibration-tool-harmonics").template, "tool");
   assert.deepEqual(byId.get("vibration-tool-diagnostic-tree").toolConfig.nodes, []);
   assert.deepEqual(byId.get("vibration-tool-diagnostic-tree").toolConfig.edges, []);
+  assert.equal(byId.get("vibration-tool-diagnostic-tree").hidden, true);
+});
+
+test("справочник ВД собран в четыре публичные карточки без удаления прежних ID", () => {
+  const references = data.filter(item => item.parentId === "vibration-reference");
+  const visible = references.filter(item => item.hidden !== true);
+  assert.deepEqual(visible.map(item => item.id), [
+    "vibration-reference-symbols",
+    "vibration-reference-unit-conversion",
+    "vibration-reference-rotation-harmonics",
+    "vibration-reference-standards"
+  ]);
+  visible.forEach(item => assert.equal(item.status, "published", item.id));
+  assert.equal(references.length, 14);
 });
 
 test("помощник по неисправности активирован без изменения ID и маршрута", () => {
