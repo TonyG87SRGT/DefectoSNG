@@ -72,8 +72,8 @@ test("20 000 измерений группируются и анализирую
   assert.equal(groups.length, 500); assert.ok(Date.now() - started < 2500);
 });
 
-test("PWA 0.20.0 кэширует журнал и не кэширует пользовательские записи", () => {
-  assert.equal(APP_VERSION, "0.30.0");
+test("текущая PWA кэширует журнал и не кэширует пользовательские записи", () => {
+  assert.match(APP_VERSION, /^\d+\.\d+\.\d+$/);
   ["css/vibration-journal.css", "js/vibrationJournalCore.js", "js/vibrationJournalDb.js", "js/vibrationJournalChart.js", "js/vibrationJournal.js"].forEach(path => assert.ok(ESSENTIAL_APP_PATHS.includes(path), path));
   assert.ok(!ESSENTIAL_APP_PATHS.some(path => path.includes("DefectoSNGVibrationJournal")));
 });

@@ -44,9 +44,21 @@ test("опубликованная статья требует содержим�
   const errors = validateArticleShape({
     id: "test-1",
     title: "Тест",
-    category: "Тест"
+    category: "Тест",
+    status: "published"
   });
   assert.ok(errors.some(error => error.includes("статья должна содержать")));
+});
+
+test("каждый объект требует явный статус", () => {
+  const errors = validateArticleShape({
+    id: "test-status",
+    title: "Тест",
+    category: "Тест",
+    text: "Содержимое"
+  });
+
+  assert.ok(errors.some(error => error.includes("явный строковый status")));
 });
 
 test("карточка трубопровода допускает неизвестные значения как null", () => {
