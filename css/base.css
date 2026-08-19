@@ -329,6 +329,16 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
+
+.article-card-cover {
+  display: block;
+  width: calc(100% + 34px);
+  max-height: 230px;
+  margin: -17px -17px 15px;
+  border-radius: 14px 14px 0 0;
+  object-fit: cover;
+  aspect-ratio: 3 / 2;
+}
 .draft-badge {
   display: inline-flex;
   align-items: center;

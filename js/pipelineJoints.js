@@ -262,7 +262,7 @@ export function renderPipelineAtlas(initialState = {}) {
           const route = getItemRoute("pipeline", article);
           return `
             <a class="article-card" href="${getRouteHash(route)}" data-pipeline-reference="${escapeAttribute(article.id)}">
-              <span class="article-category">Материал в подготовке</span>
+              <span class="article-category">${article.status === "published" ? "Справочный материал" : "Материал в подготовке"}</span>
               <h3>${safeText(article.title)}</h3>
               <p>${safeText(article.summary)}</p>
             </a>

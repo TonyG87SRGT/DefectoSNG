@@ -53,12 +53,28 @@ test("нормативные статьи методов опубликован�
 test("ПВК покрывает полный технологический цикл", () => {
   assert.deepEqual(
     pvk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id),
-    ["pvk-basics-section", "pvk-materials-section", "pvk-control-section", "pvk-evaluation-section"]
+    ["pvk-basics-section", "pvk-materials-section", "pvk-control-section", "pvk-evaluation-section", "pvk-indications-atlas"]
   );
   assert.ok(pvk.every(item => item.status === "published"));
   const sequence = pvk.find(item => item.id === "pvk-2");
   const text = JSON.stringify(sequence.sections);
   for (const term of ["выдержк", "удал", "суш", "проявител", "очистк"]) assert.match(text.toLowerCase(), new RegExp(term));
+});
+
+test("атлас ПВК разделяет наблюдение, происхождение и ошибку процесса", () => {
+  const root = pvk.find(item => item.id === "pvk-indications-atlas");
+  assert.equal(root?.status, "published");
+  const groups = pvk.filter(item => item.parentId === root.id).sort((a, b) => a.order - b.order);
+  assert.deepEqual(groups.map(item => item.id), ["pvk-atlas-relevant", "pvk-atlas-nonrelevant", "pvk-atlas-process"]);
+  assert.ok(groups.every(item => item.coverImage && item.additionalText.includes("синтетической")));
+  const cards = pvk.filter(item => groups.some(group => group.id === item.parentId));
+  assert.equal(cards.length, 31);
+  assert.ok(cards.every(item => item.status === "published" && item.sections.length === 8));
+  assert.ok(cards.every(item => item.mediaSlots.length === 3));
+  const corpus = JSON.stringify(cards).toLowerCase();
+  for (const term of ["разветвлённая", "несплав", "царапина", "окалина", "толстый слой проявителя", "несовместимых материалов", "недостаточное освещение"]) {
+    assert.match(corpus, new RegExp(term));
+  }
 });
 
 test("РК покрывает безопасный маршрут от подготовки до заключения", () => {
@@ -67,8 +83,47 @@ test("РК покрывает безопасный маршрут от подг�
     ["rk-basics-section", "rk-equipment-section", "rk-preparation-section", "rk-control-section", "rk-analysis-section", "rk-evaluation-section"]
   );
   assert.ok(rk.every(item => item.status === "published"));
+  assert.equal(rk.filter(item => item.type === "article").length, 15);
+  for (const id of [
+    "rk-regulatory-documents", "rk-radiation-sources", "rk-detector-systems",
+    "rk-image-quality-indicators", "rk-exposure-geometry", "rk-marking-iqi-placement",
+    "rk-film-processing", "rk-digital-image-acquisition", "rk-indications-sizing"
+  ]) assert.ok(rk.some(item => item.id === id), id);
   const text = JSON.stringify(rk).toLowerCase();
-  for (const term of ["радиационная безопасность", "индикатор качества", "схема просвечивания", "артефакт", "протокол"]) assert.match(text, new RegExp(term));
+  for (const term of [
+    "радиационная безопасность", "индикатор качества", "схема просвечивания",
+    "геометрическая нерезкость", "оптической плотности", "цифрового изображения",
+    "координату", "артефакт", "протокол", "санпин 2.6.4115-25"
+  ]) assert.match(text, new RegExp(term));
+  const regulatory = rk.find(item => item.id === "rk-regulatory-documents");
+  assert.match(JSON.stringify(regulatory), /19 августа 2026 года/);
+  assert.match(JSON.stringify(regulatory), /protect\.gost\.ru/);
+});
+
+test("семь справочных карточек сварных соединений опубликованы и наполнены", () => {
+  const expected = [
+    "pipeline-reference-designations", "pipeline-reference-dimensions",
+    "pipeline-reference-different-thickness", "pipeline-reference-backings",
+    "pipeline-reference-fillet-welds", "pipeline-reference-vik",
+    "pipeline-reference-scope"
+  ];
+  const references = pipeline
+    .filter(item => item.parentId === "pipeline-reference-materials")
+    .sort((a, b) => a.order - b.order);
+  assert.deepEqual(references.map(item => item.id), expected);
+  assert.ok(references.every(item => item.status === "published"));
+  assert.ok(references.every(item => item.sections?.length >= 7));
+  assert.ok(references.every(item => !item.text));
+
+  const corpus = JSON.stringify(references).toLowerCase();
+  for (const term of [
+    "зп", "s₁", "подкладного кольца", "расплавляемая вставка",
+    "катет", "после сборки и прихватки", "нормы допустимости дефектов"
+  ]) assert.match(corpus, new RegExp(term));
+
+  const scope = pipeline.find(item => item.id === "pipeline-reference-scope");
+  assert.match(JSON.stringify(scope), /19 августа 2026 года/);
+  assert.match(JSON.stringify(scope), /листового или полосового материала/);
 });
 
 test("опубликованные материалы контроля не содержат служебных заглушек", () => {
@@ -94,9 +149,10 @@ test("все связи и parentId методов контроля сущест
   }
 });
 
-test("поисковые данные покрывают практические запросы ВИК, УЗК и ПВК", () => {
+test("поисковые данные покрывают практические запросы методов контроля", () => {
   const corpus = items => JSON.stringify(items).toLowerCase();
   for (const term of ["ушс-3", "акт вик", "коррозионные повреждения"]) assert.match(corpus(vik), new RegExp(term));
   for (const term of ["геометрический отражатель", "tcg", "акустический контакт"]) assert.match(corpus(uzk), new RegExp(term));
   for (const term of ["проявитель", "линейная индикация", "переочистка"]) assert.match(corpus(pvk), new RegExp(term));
+  for (const term of ["компьютерная радиография", "размещение ики", "геометрическая нерезкость", "координаты индикации"]) assert.match(corpus(rk), new RegExp(term));
 });

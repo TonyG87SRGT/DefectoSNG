@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.36.0";
+export const APP_VERSION = "0.39.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -73,6 +73,9 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
 ]);
 
 export const OPTIONAL_APP_PATHS = Object.freeze([
+  "images/pvk-atlas/true-indications-cover.jpg",
+  "images/pvk-atlas/nonrelevant-indications-cover.jpg",
+  "images/pvk-atlas/process-errors-cover.jpg",
   "images/articles/vibration/source-data/typical-pump-unit.jpg",
   "images/articles/vibration/source-data/source-data-diagram.jpg",
   "images/articles/vibration/source-data/source-data-reference-table.jpg",
