@@ -71,6 +71,11 @@ test("атлас ПВК разделяет наблюдение, происхо�
   assert.equal(cards.length, 31);
   assert.ok(cards.every(item => item.status === "published" && item.sections.length === 8));
   assert.ok(cards.every(item => item.mediaSlots.length === 3));
+  const mediaSlots = cards.flatMap(item => item.mediaSlots);
+  assert.equal(mediaSlots.length, 93);
+  assert.ok(mediaSlots.every(slot => slot.src && slot.alt && slot.caption));
+  assert.ok(mediaSlots.every(slot => slot.caption.includes("Учебн")));
+  assert.ok(mediaSlots.every(slot => fs.existsSync(new URL(`../${slot.src}`, import.meta.url))));
   const corpus = JSON.stringify(cards).toLowerCase();
   for (const term of ["разветвлённая", "несплав", "царапина", "окалина", "толстый слой проявителя", "несовместимых материалов", "недостаточное освещение"]) {
     assert.match(corpus, new RegExp(term));

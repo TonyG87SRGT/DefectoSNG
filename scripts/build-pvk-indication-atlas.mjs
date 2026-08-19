@@ -77,9 +77,30 @@ function makeArticle(d) {
     summary: d.appearance,
     tags: ["ПВК", "индикация ПВК", d.title.toLowerCase(), ...d.similar],
     mediaSlots: [
-      { type: "photo", label: "Вид при белом свете", status: "planned" },
-      { type: "photo", label: "Вид при УФ-освещении, если применимо", status: "planned" },
-      { type: "diagram", label: "Схема источника индикации", status: "planned" }
+      {
+        type: "photo",
+        orientation: "portrait",
+        label: "Вид при белом свете",
+        src: `images/pvk-atlas/indications/${d.slug}-white.jpg`,
+        alt: `${d.title}: учебный вид цветной индикации при белом свете`,
+        caption: "Учебная синтетическая иллюстрация цветного пенетранта при белом свете; не является фотографией реального контроля."
+      },
+      {
+        type: "photo",
+        orientation: "portrait",
+        label: "Вид при УФ-А освещении",
+        src: `images/pvk-atlas/indications/${d.slug}-uv.jpg`,
+        alt: `${d.title}: учебный вид флуоресцентной индикации при УФ-А освещении`,
+        caption: "Учебная синтетическая иллюстрация флуоресцентного пенетранта при УФ-А освещении; применимость определяется выбранной системой материалов."
+      },
+      {
+        type: "diagram",
+        orientation: "portrait",
+        label: "Схема источника индикации",
+        src: `images/pvk-atlas/indications/${d.slug}-diagram.jpg`,
+        alt: `${d.title}: учебная схема возможного источника индикации`,
+        caption: "Учебная схема возможного механизма образования следа; не является масштабным сечением и готовым диагнозом."
+      }
     ],
     sections: [
       { type: "text", title: "Как выглядит", content: d.appearance },

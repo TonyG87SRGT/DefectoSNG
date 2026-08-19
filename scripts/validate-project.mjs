@@ -154,6 +154,14 @@ for (const [method, relativePath] of Object.entries(DATA_FILES)) {
       }
     }
 
+    if (Array.isArray(article.mediaSlots)) {
+      article.mediaSlots.forEach((slot, slotIndex) => {
+        if (slot?.src) {
+          validateAsset(slot.src, `${location}.mediaSlots[${slotIndex}].src`);
+        }
+      });
+    }
+
     if (methodIndex.has(article.id)) {
       addError(location, `повторяющийся id внутри метода: ${article.id}`);
     } else {
