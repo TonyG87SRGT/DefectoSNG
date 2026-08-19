@@ -36280,7 +36280,8 @@
     "sectionTitle": "Справочные материалы",
     "description": "Обозначения, характерные частоты, диагностические признаки и нормативные документы.",
     "order": 60,
-    "groupKind": "group"
+    "groupKind": "group",
+    "summary": "Четыре взаимодополняющих материала: термины и сокращения, единицы, характерные частоты и нормативные документы — без повторения профильных статей."
   },
   {
     "id": "vibration-reference-symbols",
@@ -36830,535 +36831,6 @@
     }
   },
   {
-    "id": "vibration-reference-bearing-frequencies",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Частоты подшипников",
-    "summary": "Заготовка материала раздела «Справочные материалы».",
-    "status": "draft",
-    "order": 4,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Частоты подшипников качения"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [
-        "подшипники"
-      ],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Частоты подшипников качения",
-        "Частоты подшипников"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [
-        "bearings"
-      ],
-      "aliases": [
-        "Подшипники",
-        "подшипник",
-        "наружная обойма",
-        "внутренняя обойма"
-      ],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
-    "id": "vibration-reference-pump-frequencies",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Частоты насосов",
-    "summary": "Заготовка материала раздела «Справочные материалы».",
-    "status": "draft",
-    "order": 5,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Характерные частоты насосов"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [
-        "насосы"
-      ],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Характерные частоты насосов",
-        "Частоты насосов"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [
-        "pumps"
-      ],
-      "aliases": [
-        "Насосы",
-        "насос",
-        "насосный агрегат"
-      ],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
-    "id": "vibration-reference-fan-frequencies",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Частоты вентиляторов",
-    "summary": "Заготовка материала раздела «Справочные материалы».",
-    "status": "draft",
-    "order": 6,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Характерные частоты вентиляторов"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [
-        "вентиляторы"
-      ],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Характерные частоты вентиляторов",
-        "Частоты вентиляторов"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
-    "id": "vibration-reference-gearbox-frequencies",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Частоты зубчатых передач",
-    "summary": "Заготовка материала раздела «Справочные материалы».",
-    "status": "draft",
-    "order": 7,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Характерные частоты редукторов"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [
-        "редукторы",
-        "зубчатые передачи"
-      ],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Характерные частоты редукторов",
-        "Частоты зубчатых передач"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [
-        "gearboxes"
-      ],
-      "aliases": [
-        "Редукторы",
-        "редуктор",
-        "зубчатая передача"
-      ],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
-    "id": "vibration-reference-directions",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Типовые направления измерения",
-    "summary": "Заготовка материала раздела «Справочные материалы».",
-    "status": "draft",
-    "order": 8,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Типовые направления измерения"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Типовые направления измерения"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
-    "id": "vibration-reference-diagnostic-signs",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Основные диагностические признаки",
-    "summary": "Заготовка материала раздела «Справочные материалы».",
-    "status": "draft",
-    "order": 9,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Основные диагностические признаки"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Основные диагностические признаки"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
-    "id": "vibration-reference-fault-sign-check",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Таблица «неисправность — признак — проверка»",
-    "summary": "Заготовка материала раздела «Справочные материалы».",
-    "status": "draft",
-    "order": 10,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Таблица «неисправность — признак — проверка»"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Таблица «неисправность — признак — проверка»"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
     "id": "vibration-reference-standards",
     "parentId": "vibration-reference",
     "category": "Справочные материалы",
@@ -37574,78 +37046,6 @@
     }
   },
   {
-    "id": "vibration-reference-terms",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Термины",
-    "summary": "Заготовка материала раздела «Справочные материалы».",
-    "status": "draft",
-    "order": 12,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Термины и сокращения"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Статья находится в подготовке. Здесь будет размещено практическое руководство, диагностические признаки, примеры измерений и рекомендации по подтверждению неисправности."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Термины и сокращения",
-        "Термины"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
     "id": "vibration-tools",
     "status": "published",
     "type": "section",
@@ -37733,7 +37133,8 @@
       "outputs": [],
       "knowledgeApi": "vibration",
       "engine": "vibrationCalculations",
-      "history": "local-opt-in"
+      "history": "local-opt-in",
+      "scope": "method"
     }
   },
   {
@@ -37815,7 +37216,8 @@
       "outputs": [],
       "knowledgeApi": "vibration",
       "engine": "vibrationCalculations",
-      "history": "local-opt-in"
+      "history": "local-opt-in",
+      "scope": "method"
     }
   },
   {
@@ -37914,7 +37316,8 @@
       "outputs": [],
       "knowledgeApi": "vibration",
       "engine": "vibrationCalculations",
-      "history": "local-opt-in"
+      "history": "local-opt-in",
+      "scope": "method"
     }
   },
   {
@@ -38004,7 +37407,8 @@
       "outputs": [],
       "knowledgeApi": "vibration",
       "engine": "vibrationCalculations",
-      "history": "local-opt-in"
+      "history": "local-opt-in",
+      "scope": "method"
     }
   },
   {
@@ -38092,7 +37496,8 @@
       "outputs": [],
       "knowledgeApi": "vibration",
       "engine": "vibrationCalculations",
-      "history": "local-opt-in"
+      "history": "local-opt-in",
+      "scope": "method"
     }
   },
   {
@@ -38161,85 +37566,9 @@
       "nodes": [],
       "edges": [],
       "knowledgeApi": "vibration",
-      "engine": "vibrationDiagnosticEngine"
+      "engine": "vibrationDiagnosticEngine",
+      "scope": "method"
     }
-  },
-  {
-    "id": "vibration-tool-diagnostic-tree",
-    "parentId": "vibration-tools",
-    "category": "Инструменты",
-    "title": "Дерево диагностики",
-    "summary": "Инструмент находится в разработке.",
-    "status": "draft",
-    "order": 7,
-    "tags": [
-      "вибрация",
-      "вибродиагностика",
-      "техническая диагностика",
-      "Интерактивное дерево диагностирования"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "futureBlocks": [
-      "Назначение",
-      "Входные данные",
-      "Результат",
-      "Ограничения",
-      "Связанные материалы"
-    ],
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние инструмента",
-        "content": "В разработке"
-      }
-    ],
-    "template": "tool",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-tools",
-      "materialType": "tool",
-      "equipment": [],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "вибрация",
-        "вибродиагностика",
-        "техническая диагностика",
-        "Интерактивное дерево диагностирования",
-        "Дерево диагностики"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "mediaSlots": [
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "toolConfig": {
-      "status": "planned",
-      "kind": "interactive-diagnostics",
-      "inputs": [],
-      "outputs": [],
-      "nodes": [],
-      "edges": [],
-      "knowledgeApi": "vibration"
-    },
-    "hidden": true
   },
   {
     "id": "vibration-tool-trend-log",
@@ -38322,7 +37651,8 @@
       "knowledgeApi": "vibration",
       "database": "DefectoSNGVibrationJournal",
       "databaseVersion": 2,
-      "offline": true
+      "offline": true,
+      "scope": "method"
     }
   },
   {
@@ -39013,147 +38343,6 @@
     ]
   },
   {
-    "id": "vibration-reference-units",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Единицы измерения",
-    "summary": "Единицы виброперемещения, виброскорости, виброускорения, частоты и фазы.",
-    "order": 13,
-    "status": "draft",
-    "tags": [
-      "ВД",
-      "Единицы измерения"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Материал находится в подготовке. Структура страницы и место для будущего содержания уже готовы."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [],
-      "faults": [],
-      "diagnosticSigns": [
-        "фаза"
-      ],
-      "keywords": [
-        "ВД",
-        "Единицы измерения"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [
-        "Виброперемещение",
-        "Виброскорость",
-        "Виброускорение",
-        "Фаза вибрации"
-      ],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
-    "id": "vibration-reference-abbreviations",
-    "parentId": "vibration-reference",
-    "category": "Справочные материалы",
-    "title": "Сокращения",
-    "summary": "Принятые сокращения измеряемых величин, методов анализа и оборудования.",
-    "order": 14,
-    "status": "draft",
-    "tags": [
-      "ВД",
-      "Сокращения"
-    ],
-    "futureImageLabel": "Иллюстрации и схемы будут добавлены при подготовке статьи.",
-    "sections": [
-      {
-        "type": "note",
-        "title": "Состояние материала",
-        "content": "Материал находится в подготовке. Структура страницы и место для будущего содержания уже готовы."
-      }
-    ],
-    "template": "reference",
-    "metadata": {
-      "section": "vibration",
-      "group": "vibration-reference",
-      "materialType": "reference",
-      "equipment": [],
-      "faults": [],
-      "diagnosticSigns": [],
-      "keywords": [
-        "ВД",
-        "Сокращения"
-      ],
-      "relatedArticles": [],
-      "status": "draft",
-      "tags": [],
-      "aliases": [],
-      "measuredParameters": [],
-      "relatedFaults": [],
-      "relatedSpectra": [],
-      "relatedScenarios": [],
-      "relatedReferences": [],
-      "normativeDocuments": [],
-      "relatedMeasurements": [],
-      "relatedParameters": [],
-      "probableFaults": [],
-      "similarSpectra": [],
-      "additionalChecks": []
-    },
-    "futureBlocks": [
-      "Назначение",
-      "Справочная таблица",
-      "Пример",
-      "Важно",
-      "Связанные материалы"
-    ],
-    "mediaSlots": [
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      }
-    ],
-    "hidden": true
-  },
-  {
     "id": "vibration-tool-data-analysis",
     "parentId": "vibration-tools",
     "category": "Инструменты",
@@ -39272,7 +38461,8 @@
       "knowledgeApi": "vibration",
       "database": "DefectoSNGVibrationJournal",
       "databaseVersion": 2,
-      "offline": true
+      "offline": true,
+      "scope": "method"
     }
   }
 ]

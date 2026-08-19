@@ -6,6 +6,74 @@
   font-size: 16px;
   line-height: 1.6;
 }
+.article-section-anchor {
+  min-width: 0;
+  scroll-margin-top: 170px;
+}
+
+.article-section-anchor:focus {
+  outline: none;
+}
+
+.article-toc {
+  margin: 18px 0 22px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+
+.article-toc summary {
+  min-height: 48px;
+  padding: 14px 16px;
+  cursor: pointer;
+  color: #dfe8f3;
+  font-weight: 700;
+}
+
+.article-toc nav {
+  max-height: min(46vh, 360px);
+  overflow-y: auto;
+  padding: 0 14px 14px;
+}
+
+.article-toc ol {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.article-toc button {
+  width: 100%;
+  min-height: 40px;
+  padding: 7px 5px;
+  border: 0;
+  background: transparent;
+  color: #9fc5ff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.article-backlinks {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.article-backlinks h3 { margin: 0 0 12px; }
+.article-backlinks > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.article-backlinks a {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: #9fc5ff;
+  text-decoration: none;
+}
+.article-backlinks a span { color: var(--muted); font-size: 12px; font-weight: 700; }
 .article-section {
   margin-top: 22px;
   padding-top: 20px;

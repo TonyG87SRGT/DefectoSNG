@@ -44,12 +44,30 @@ test("ВИК сохраняет прежние ID и получает полны
 test("УЗК организован по этапам от основ до оформления", () => {
   const expected = [
     "uzk-basics-section", "uzk-equipment-section", "uzk-setup-section",
-    "uzk-control-section", "uzk-indications-section", "uzk-evaluation-section"
+    "uzk-control-section", "uzk-indications-section", "uzk-echo-atlas", "uzk-evaluation-section"
   ];
   assert.deepEqual(uzk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id), expected);
-  assert.equal(uzk.length, 25);
+  assert.equal(uzk.length, 41);
   assert.ok(uzk.every(item => item.status === "published"));
   for (const id of ["uzk-1", "uzk-2", "uzk-3", "uzk-4", "uzk-5", "uzk-6"]) assert.ok(uzk.some(item => item.id === id), id);
+});
+
+test("атлас УЗК разделяет эхо-сигнал, физический источник и диагноз", () => {
+  const groups = uzk.filter(item => item.parentId === "uzk-echo-atlas").sort((a, b) => a.order - b.order);
+  assert.deepEqual(groups.map(item => item.id), [
+    "uzk-echo-atlas-reference", "uzk-echo-atlas-relevant", "uzk-echo-atlas-technical"
+  ]);
+  const cards = uzk.filter(item => groups.some(group => group.id === item.parentId));
+  assert.equal(cards.length, 12);
+  assert.ok(cards.every(item => item.sections?.length === 9 && item.status === "published"));
+  const images = cards.flatMap(item => item.sections.filter(section => section.type === "image"));
+  assert.equal(images.length, 24);
+  assert.ok(images.every(item => fs.existsSync(new URL(`../${item.src}`, import.meta.url))));
+  const corpus = JSON.stringify(cards).toLowerCase();
+  for (const term of ["донный эхо", "мёртвая зона", "геометрический отражатель", "плоскостного отражателя", "нестабильный акустический контакт", "электрические помехи"]) {
+    assert.match(corpus, new RegExp(term));
+  }
+  assert.match(corpus, /наблюдени|не доказывает|не является/);
 });
 
 test("нормативные статьи методов опубликованы и указывают дату проверки", () => {

@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import {
   SECTION_RENDERERS,
   SUPPORTED_SECTION_TYPES,
-  renderSection
+  renderSection,
+  renderStructuredArticle
 } from "../js/renderers.js";
 import { SECTION_TYPES } from "../js/schema.js";
 
@@ -13,6 +14,16 @@ test("таблица и список рендереров не расходят�
   assert.ok(SUPPORTED_SECTION_TYPES.includes("note"));
   assert.ok(SUPPORTED_SECTION_TYPES.includes("comparison"));
   assert.ok(SUPPORTED_SECTION_TYPES.includes("methods"));
+});
+
+test("структурированная статья получает стабильные якоря секций", () => {
+  const html = renderStructuredArticle({ sections: [
+    { type: "text", title: "Первый блок", content: "Текст" },
+    { type: "list", title: "Второй блок", items: ["Пункт"] }
+  ] });
+  assert.match(html, /id="article-section-1"/);
+  assert.match(html, /id="article-section-2"/);
+  assert.match(html, /tabindex="-1"/);
 });
 
 test("связанная статья получает актуальное название из хранилища", () => {

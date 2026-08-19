@@ -1,5 +1,17 @@
 /* ===== Tools ===== */
 
+.tool-model-note {
+  margin-bottom: 18px;
+  padding: 16px;
+  border: 1px solid rgba(59, 130, 246, .32);
+  border-radius: 15px;
+  background: rgba(59, 130, 246, .07);
+}
+
+.tool-model-note h3 { margin: 0 0 8px; font-size: 16px; }
+.tool-model-note p { margin: 0 0 12px; color: #c8d1dc; line-height: 1.55; }
+.tool-model-note a { color: #9fc5ff; }
+
 .tool-card {
   padding: 20px;
   border: 1px solid var(--border);
@@ -88,4 +100,3 @@
   color: var(--muted);
   font-size: 14px;
 }
-

@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.42.0";
+export const APP_VERSION = "0.43.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -21,12 +21,14 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "css/vibration-journal.css",
   "css/vibration-data-analysis.css",
   "js/app.js",
+  "js/articleNavigation.js",
   "js/atlas.js",
   "js/config.js",
   "js/dom.js",
   "js/favorites.js",
   "js/html.js",
   "js/imageViewer.js",
+  "js/knowledgeGraph.js",
   "js/pwa.js",
   "js/pwaConfig.js",
   "js/pwaPolicy.js",
@@ -138,6 +140,11 @@ const RK_ATLAS_IMAGE_SLUGS = Object.freeze([
   "incompletely-filled-groove", "image-artifacts"
 ]);
 
+const UZK_ECHO_ATLAS_IMAGE_SLUGS = Object.freeze([
+  "backwall", "entry-dead-zone", "geometric", "multiple", "isolated", "planar",
+  "volumetric", "cluster", "backwall-loss", "poor-contact", "mode-conversion", "electrical-noise"
+]);
+
 export const OPTIONAL_APP_PATHS = Object.freeze([
   "images/pvk-atlas/true-indications-cover.jpg",
   "images/pvk-atlas/nonrelevant-indications-cover.jpg",
@@ -175,6 +182,13 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
   ...RK_ATLAS_IMAGE_SLUGS.flatMap(slug => [
     `images/rk-atlas/${slug}-radiograph.svg`,
     `images/rk-atlas/${slug}-section.svg`
+  ]),
+  "images/uzk-echo-atlas/cover-reference.svg",
+  "images/uzk-echo-atlas/cover-relevant.svg",
+  "images/uzk-echo-atlas/cover-technical.svg",
+  ...UZK_ECHO_ATLAS_IMAGE_SLUGS.flatMap(slug => [
+    `images/uzk-echo-atlas/${slug}-ascan.svg`,
+    `images/uzk-echo-atlas/${slug}-scheme.svg`
   ]),
   "images/articles/vibration/source-data/typical-pump-unit.jpg",
   "images/articles/vibration/source-data/source-data-diagram.jpg",

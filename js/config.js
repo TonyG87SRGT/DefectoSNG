@@ -58,9 +58,22 @@ export const TOOL_DEFINITIONS = Object.freeze([
   Object.freeze({
     id: "ring-weld",
     title: "Длина кольцевого сварного шва",
-    description: "Расчёт длины окружности по диаметру трубы."
+    description: "Расчёт длины окружности по диаметру трубы.",
+    scope: "global",
+    kind: "calculator"
   })
 ]);
+
+export const TOOL_MODEL = Object.freeze({
+  global: Object.freeze({
+    title: "Интерактивные инструменты приложения",
+    description: "Общие калькуляторы и помощники, которые выполняют действие с введёнными данными."
+  }),
+  method: Object.freeze({
+    title: "Оборудование и инструменты методов",
+    description: "Приборы, ПЭП, шаблоны и расходные материалы находятся внутри соответствующего метода контроля. Профильные интерактивные инструменты также открываются из своего метода."
+  })
+});
 
 export const ARTICLE_STATUSES = Object.freeze(["published", "draft"]);
 export const ARTICLE_TYPES = Object.freeze(["article", "section"]);

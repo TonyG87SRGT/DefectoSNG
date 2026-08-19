@@ -1,4 +1,4 @@
-import { JOURNAL_STORES, createId, validateBackup } from "./vibrationJournalCore.js";
+import { JOURNAL_STORES, createId, normalizeBackup } from "./vibrationJournalCore.js";
 
 export const JOURNAL_DB_NAME = "DefectoSNGVibrationJournal";
 export const JOURNAL_DB_VERSION = 2;
@@ -99,13 +99,13 @@ export async function exportJournalData() {
 }
 
 export async function importJournalData(backup, mode = "merge") {
-  validateBackup(backup);
+  const normalizedBackup = normalizeBackup(backup);
   const stores = [...JOURNAL_STORES]; const copyPrefix = `copy-${Date.now()}-`;
-  const idMap = new Map(stores.flatMap(name => backup.data[name].map(record => [record.id, `${copyPrefix}${record.id}`])));
+  const idMap = new Map(stores.flatMap(name => normalizedBackup.data[name].map(record => [record.id, `${copyPrefix}${record.id}`])));
   const foreignKeys = { units: ["objectId"], nodes: ["unitId"], points: ["nodeId"], measurements: ["pointId", "eventId"], spectralComponents: ["measurementId"], events: ["unitId"], limits: ["pointId"], routes: ["objectId"], vibrationDatasets: ["analysisId"], vibrationAnalyses: ["measurementId", "datasetId"] };
   await transaction(stores, "readwrite", tx => {
     if (mode === "replace") stores.forEach(name => tx.objectStore(name).clear());
-    stores.forEach(name => backup.data[name].forEach(record => {
+    stores.forEach(name => normalizedBackup.data[name].forEach(record => {
       const value = mode === "copy" ? { ...record, id: idMap.get(record.id) } : record;
       if (mode === "copy") {
         (foreignKeys[name] || []).forEach(field => { if (value[field] && idMap.has(value[field])) value[field] = idMap.get(value[field]); });

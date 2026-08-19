@@ -17,6 +17,8 @@ const scripts = [
   ...collectScripts(path.join(rootDir, "js")),
   ...collectScripts(path.join(rootDir, "scripts")),
   ...collectScripts(path.join(rootDir, "tests")),
+  ...collectScripts(path.join(rootDir, "e2e")),
+  path.join(rootDir, "playwright.config.mjs"),
   path.join(rootDir, "sw.js")
 ];
 

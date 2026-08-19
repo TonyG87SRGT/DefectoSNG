@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import vibrationItems from "../data/vibration.json" with { type: "json" };
 import { APP_VERSION, ESSENTIAL_APP_PATHS } from "../js/pwaConfig.js";
 import { JOURNAL_DB_NAME, JOURNAL_DB_VERSION, JOURNAL_SCHEMA } from "../js/vibrationJournalDb.js";
-import { compareMeasurements, createBackup, describeTrend, groupComparableMeasurements, measurementsToCsv, normalizeMeasurement, parseMeasurementsCsv, routeProgress, trendStatistics, validateBackup } from "../js/vibrationJournalCore.js";
+import { JOURNAL_FORMAT_VERSION, compareMeasurements, createBackup, describeTrend, groupComparableMeasurements, measurementsToCsv, normalizeBackup, normalizeMeasurement, parseMeasurementsCsv, routeProgress, trendStatistics, validateBackup } from "../js/vibrationJournalCore.js";
 
 const series = Array.from({ length: 5 }, (_, index) => normalizeMeasurement({ id: `m${index}`, pointId: "p1", measuredAt: `2026-0${index + 1}-01T00:00:00.000Z`, parameter: "Виброскорость", value: String(index + 1), unit: index === 0 ? "m/s" : "mm/s", amplitudeType: "RMS", frequencyRange: "10–1000 Гц" }));
 
@@ -51,9 +51,28 @@ test("маршрут 7 из 10 восстанавливает прогресс",
 
 test("JSON резервная копия проверяется и отклоняет неизвестную версию", () => {
   const empty = Object.fromEntries(Object.keys(JOURNAL_SCHEMA).map(name => [name, []])); const backup = createBackup(empty, "0.20.0");
+  assert.equal(backup.formatVersion, JOURNAL_FORMAT_VERSION);
   assert.equal(validateBackup(backup).measurements, 0);
   assert.throws(() => validateBackup({ ...backup, formatVersion: 99 }), /не поддерживается/);
   assert.throws(() => validateBackup({ damaged: true }), /не является/);
+});
+
+test("резервная копия v1 мигрирует без потери пользовательских записей", () => {
+  const legacyStores = Object.keys(JOURNAL_SCHEMA).filter(name => !["vibrationDatasets", "vibrationAnalyses"].includes(name));
+  const legacy = {
+    format: "DefectoSNG vibration journal",
+    formatVersion: 1,
+    appVersion: "0.21.0",
+    exportedAt: "2026-01-01T00:00:00.000Z",
+    data: Object.fromEntries(legacyStores.map(name => [name, name === "measurements" ? [{ id: "m-1", value: 4.2 }] : []]))
+  };
+  const migrated = normalizeBackup(legacy);
+  assert.equal(migrated.formatVersion, JOURNAL_FORMAT_VERSION);
+  assert.equal(migrated.migratedFrom, 1);
+  assert.equal(migrated.data.measurements[0].id, "m-1");
+  assert.deepEqual(migrated.data.vibrationDatasets, []);
+  assert.deepEqual(migrated.data.vibrationAnalyses, []);
+  assert.equal(validateBackup(legacy).measurements, 1);
 });
 
 test("CSV корректно экранирует кавычки, разделители и переносы", () => {

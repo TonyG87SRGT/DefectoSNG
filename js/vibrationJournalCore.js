@@ -1,6 +1,6 @@
 import { convertAcceleration, convertDisplacement, convertVelocity, parseDecimal } from "./vibrationCalculations.js";
 
-export const JOURNAL_FORMAT_VERSION = 1;
+export const JOURNAL_FORMAT_VERSION = 2;
 export const JOURNAL_STORES = Object.freeze(["objects", "units", "nodes", "points", "measurements", "spectralComponents", "events", "limits", "routes", "settings", "vibrationDatasets", "vibrationAnalyses"]);
 
 export function createId(prefix = "journal") {
@@ -124,11 +124,32 @@ export function createBackup(data, appVersion) {
   return { format: "DefectoSNG vibration journal", formatVersion: JOURNAL_FORMAT_VERSION, appVersion, exportedAt: new Date().toISOString(), data: Object.fromEntries(JOURNAL_STORES.map(store => [store, Array.isArray(data[store]) ? data[store] : []])) };
 }
 
-export function validateBackup(value) {
+export function normalizeBackup(value) {
   if (!value || value.format !== "DefectoSNG vibration journal") throw new Error("Файл не является резервной копией журнала DefectoSNG.");
-  if (value.formatVersion !== JOURNAL_FORMAT_VERSION) throw new Error(`Версия формата ${value.formatVersion} не поддерживается.`);
-  if (!value.data || !JOURNAL_STORES.every(store => Array.isArray(value.data[store]))) throw new Error("Структура резервной копии повреждена.");
-  return { objects: value.data.objects.length, units: value.data.units.length, points: value.data.points.length, measurements: value.data.measurements.length, events: value.data.events.length };
+  if (![1, JOURNAL_FORMAT_VERSION].includes(value.formatVersion)) throw new Error(`Версия формата ${value.formatVersion} не поддерживается.`);
+  if (!value.data || typeof value.data !== "object") throw new Error("Структура резервной копии повреждена.");
+  const legacyRequired = JOURNAL_STORES.filter(store => !["vibrationDatasets", "vibrationAnalyses"].includes(store));
+  if (!legacyRequired.every(store => Array.isArray(value.data[store]))) throw new Error("Структура резервной копии повреждена.");
+  const data = Object.fromEntries(JOURNAL_STORES.map(store => [store, Array.isArray(value.data[store]) ? value.data[store] : []]));
+  return {
+    ...value,
+    formatVersion: JOURNAL_FORMAT_VERSION,
+    migratedFrom: value.formatVersion === JOURNAL_FORMAT_VERSION ? null : value.formatVersion,
+    data
+  };
+}
+
+export function validateBackup(value) {
+  const normalized = normalizeBackup(value);
+  return {
+    formatVersion: normalized.formatVersion,
+    migratedFrom: normalized.migratedFrom,
+    objects: normalized.data.objects.length,
+    units: normalized.data.units.length,
+    points: normalized.data.points.length,
+    measurements: normalized.data.measurements.length,
+    events: normalized.data.events.length
+  };
 }
 
 export function routeProgress(route) {
