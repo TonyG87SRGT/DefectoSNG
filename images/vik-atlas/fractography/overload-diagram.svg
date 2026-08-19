@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title">
+  <title id="title">Разрушение от перегрузки: схема механизма</title>
+  <defs>
+    <linearGradient id="film" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111827"/><stop offset="0.5" stop-color="#334155"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dbe4ee"/><stop offset="1" stop-color="#8796a8"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="17" result="n"/><feBlend in="SourceGraphic" in2="n" mode="soft-light"/></filter>
+  </defs>
+  <rect width="960" height="640" rx="30" fill="#0b1220"/><rect x="130" y="115" width="700" height="410" rx="30" fill="url(#metal)" stroke="#52657a" stroke-width="8"/><path d="M130 320h265q55-30 85 0t85 0h265" fill="none" stroke="#0b1220" stroke-width="22"/><path d="M400 250l80 70-80 70M560 250l-80 70 80 70" fill="none" stroke="#f59e0b" stroke-width="10"/><path d="M130 320H40M830 320h90" stroke="#60a5fa" stroke-width="12"/><path d="M70 292l-30 28 30 28M890 292l30 28-30 28" fill="none" stroke="#60a5fa" stroke-width="12"/>
+</svg>
