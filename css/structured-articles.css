@@ -221,6 +221,10 @@
 @media (min-width: 720px) {
   .article-media-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
+  .article-media-slots-waveform-gallery .article-media-slot-loaded {
+    grid-column: auto;
+  }
+
   .article-media-slots-atlas-fault .article-media-slot-portrait {
     grid-column: auto;
   }

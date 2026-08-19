@@ -41,6 +41,7 @@ npm run test:e2e
 - `data/uzk.json`, `images/uzk-echo-atlas/` — рабочий маршрут УЗК и атлас из 12 типовых картин A‑скана.
 - `data/pvk.json`, `images/pvk-atlas/` — методика ПВК и атлас из 31 карточки истинных, нерелевантных и технологических индикаций; групповые обложки являются учебными иллюстрациями.
 - `js/vibration.js`, `data/vibration.json`, `css/vibration.css` — обзор, группы и каталоги раздела вибродиагностики.
+- `images/vibration-atlas/`, `images/vibration-diagnostics/` — учебные схемы механизмов, спектры, временные формы и карты ожидаемых составляющих оборудования; изображения являются качественными моделями, а не автоматическим диагнозом.
 - `js/vibrationKnowledge.js`, `js/vibrationTaxonomy.js`, `js/vibrationRelations.js` — фасетная навигация, единый словарь тегов и автоматическая перелинковка базы знаний ВД. Будущие инструменты используют экспортируемый `vibrationKnowledgeApi`, не загружая данные повторно.
 - `js/vibrationDiagnosticAssistant.js`, `js/vibrationDiagnosticQuestions.js`, `js/vibrationDiagnosticRules.js`, `js/vibrationDiagnosticEngine.js`, `js/vibrationDiagnosticStorage.js` — пошаговый офлайн-помощник по поиску вероятной неисправности, его вопросы, правила, расчёт и локальная история.
 - `js/references.js`, `data/references.json` — общие справочные таблицы с локальным и глобальным поиском.

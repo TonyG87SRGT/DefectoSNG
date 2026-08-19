@@ -10850,7 +10850,74 @@
         "проверить клиппирование",
         "проверить частоту дискретизации"
       ]
-    }
+    },
+    "mediaLayout": "waveform-gallery",
+    "mediaSlots": [
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Гармонический сигнал",
+        "src": "images/vibration-diagnostics/waveforms/harmonic.svg",
+        "alt": "Гармонический сигнал: качественный учебный временной сигнал",
+        "caption": "Учебный пример: Почти периодическая форма с устойчивым повторением. Форма не является самостоятельным диагнозом."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Повторяющиеся удары",
+        "src": "images/vibration-diagnostics/waveforms/impact.svg",
+        "alt": "Повторяющиеся удары: качественный учебный временной сигнал",
+        "caption": "Учебный пример: Короткие импульсы, разделённые интервалом повторения. Форма не является самостоятельным диагнозом."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Амплитудная модуляция",
+        "src": "images/vibration-diagnostics/waveforms/modulation.svg",
+        "alt": "Амплитудная модуляция: качественный учебный временной сигнал",
+        "caption": "Учебный пример: Высокочастотное колебание с медленно меняющейся огибающей. Форма не является самостоятельным диагнозом."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Биения",
+        "src": "images/vibration-diagnostics/waveforms/beats.svg",
+        "alt": "Биения: качественный учебный временной сигнал",
+        "caption": "Учебный пример: Рост и спад амплитуды при близких частотах двух источников. Форма не является самостоятельным диагнозом."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Широкополосный сигнал",
+        "src": "images/vibration-diagnostics/waveforms/broadband.svg",
+        "alt": "Широкополосный сигнал: качественный учебный временной сигнал",
+        "caption": "Учебный пример: Неповторяющаяся форма с распределённой частотной энергией. Форма не является самостоятельным диагнозом."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Субсинхронное движение",
+        "src": "images/vibration-diagnostics/waveforms/subsync.svg",
+        "alt": "Субсинхронное движение: качественный учебный временной сигнал",
+        "caption": "Учебный пример: Повторяемость ниже выбранной оборотной частоты. Форма не является самостоятельным диагнозом."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Клиппирование",
+        "src": "images/vibration-diagnostics/waveforms/clipping.svg",
+        "alt": "Клиппирование: качественный учебный временной сигнал",
+        "caption": "Учебный пример: Срезанные вершины указывают на ограничение измерительного тракта. Форма не является самостоятельным диагнозом."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Нелинейная форма",
+        "src": "images/vibration-diagnostics/waveforms/nonlinear.svg",
+        "alt": "Нелинейная форма: качественный учебный временной сигнал",
+        "caption": "Учебный пример: Несинусоидальная форма, способная формировать ряд гармоник. Форма не является самостоятельным диагнозом."
+      }
+    ]
   },
   {
     "id": "vibration-spectrum-analysis",
@@ -14058,6 +14125,14 @@
         "src": "images/vibration-atlas/faults/unbalance-evidence.svg",
         "alt": "Дисбаланс: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/unbalance-waveform.svg",
+        "alt": "Дисбаланс: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -14322,6 +14397,14 @@
         "src": "images/vibration-atlas/faults/parallel-misalignment-evidence.svg",
         "alt": "Параллельная несоосность: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/parallel-misalignment-waveform.svg",
+        "alt": "Параллельная несоосность: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -14586,6 +14669,14 @@
         "src": "images/vibration-atlas/faults/angular-misalignment-evidence.svg",
         "alt": "Угловая несоосность: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/angular-misalignment-waveform.svg",
+        "alt": "Угловая несоосность: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -14834,6 +14925,14 @@
         "src": "images/vibration-atlas/faults/bent-shaft-evidence.svg",
         "alt": "Изгиб вала: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/bent-shaft-waveform.svg",
+        "alt": "Изгиб вала: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -15101,6 +15200,14 @@
         "src": "images/vibration-atlas/faults/mechanical-looseness-evidence.svg",
         "alt": "Механические ослабления: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/mechanical-looseness-waveform.svg",
+        "alt": "Механические ослабления: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -15349,6 +15456,14 @@
         "src": "images/vibration-atlas/faults/loose-bearing-housing-evidence.svg",
         "alt": "Ослабление подшипника в корпусе: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/loose-bearing-housing-waveform.svg",
+        "alt": "Ослабление подшипника в корпусе: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -15606,6 +15721,14 @@
         "src": "images/vibration-atlas/faults/bearing-clearance-evidence.svg",
         "alt": "Увеличенный зазор в подшипнике: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/bearing-clearance-waveform.svg",
+        "alt": "Увеличенный зазор в подшипнике: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -17114,6 +17237,14 @@
         "src": "images/vibration-atlas/faults/rub-evidence.svg",
         "alt": "Задевание вращающихся частей: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/rub-waveform.svg",
+        "alt": "Задевание вращающихся частей: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -17657,6 +17788,14 @@
         "src": "images/vibration-atlas/faults/cavitation-evidence.svg",
         "alt": "Кавитация: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/cavitation-waveform.svg",
+        "alt": "Кавитация: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -18184,6 +18323,14 @@
         "src": "images/vibration-atlas/faults/gears-evidence.svg",
         "alt": "Дефекты зубчатых передач: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/gears-waveform.svg",
+        "alt": "Дефекты зубчатых передач: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -18688,6 +18835,14 @@
         "src": "images/vibration-atlas/faults/rotor-cage-evidence.svg",
         "alt": "Повреждение клетки ротора: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/rotor-cage-waveform.svg",
+        "alt": "Повреждение клетки ротора: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -18943,6 +19098,14 @@
         "src": "images/vibration-atlas/faults/lubrication-evidence.svg",
         "alt": "Проблемы смазки: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/lubrication-waveform.svg",
+        "alt": "Проблемы смазки: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -19211,6 +19374,14 @@
         "src": "images/vibration-atlas/faults/bearing-outer-race-evidence.svg",
         "alt": "Дефект наружного кольца подшипника: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/bearing-outer-race-waveform.svg",
+        "alt": "Дефект наружного кольца подшипника: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -19487,6 +19658,14 @@
         "src": "images/vibration-atlas/faults/bearing-inner-race-evidence.svg",
         "alt": "Дефект внутреннего кольца подшипника: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/bearing-inner-race-waveform.svg",
+        "alt": "Дефект внутреннего кольца подшипника: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -19757,6 +19936,14 @@
         "src": "images/vibration-atlas/faults/bearing-rolling-elements-evidence.svg",
         "alt": "Дефект тел качения: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/bearing-rolling-elements-waveform.svg",
+        "alt": "Дефект тел качения: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -20015,6 +20202,14 @@
         "src": "images/vibration-atlas/faults/bearing-cage-evidence.svg",
         "alt": "Дефект сепаратора: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/bearing-cage-waveform.svg",
+        "alt": "Дефект сепаратора: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -20543,6 +20738,14 @@
         "src": "images/vibration-atlas/faults/oil-whirl-evidence.svg",
         "alt": "Вибрация масляного клина: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/oil-whirl-waveform.svg",
+        "alt": "Вибрация масляного клина: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -21301,6 +21504,14 @@
         "src": "images/vibration-atlas/faults/journal-bearing-misalignment-evidence.svg",
         "alt": "Перекос гидродинамического подшипника: дополнительное диагностическое представление",
         "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
+      },
+      {
+        "type": "diagram",
+        "orientation": "landscape",
+        "label": "Возможная временная форма",
+        "src": "images/vibration-atlas/faults/journal-bearing-misalignment-waveform.svg",
+        "alt": "Перекос гидродинамического подшипника: качественный учебный временной сигнал",
+        "caption": "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
       }
     ],
     "mediaLayout": "atlas-fault"
@@ -27576,22 +27787,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/pumps.svg",
+        "alt": "Насосы: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-motors",
@@ -27993,22 +28197,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/motors.svg",
+        "alt": "Электродвигатели: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-fans",
@@ -28371,22 +28568,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/fans.svg",
+        "alt": "Вентиляторы: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-compressors",
@@ -28772,22 +28962,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/compressors.svg",
+        "alt": "Компрессоры: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-gearboxes",
@@ -29157,22 +29340,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/gearboxes.svg",
+        "alt": "Редукторы: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-turbines",
@@ -29556,22 +29732,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/turbines.svg",
+        "alt": "Турбины: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-generators",
@@ -29942,22 +30111,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/generators.svg",
+        "alt": "Генераторы: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-vertical-machines",
@@ -30327,22 +30489,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/vertical-machines.svg",
+        "alt": "Вертикальные машины: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-rolling-bearings",
@@ -30753,22 +30908,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/rolling-bearings.svg",
+        "alt": "Машины с подшипниками качения: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-diagnostics-journal-bearings",
@@ -31160,22 +31308,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/journal-bearings.svg",
+        "alt": "Машины с гидродинамическими подшипниками: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-practical-situations",
@@ -38325,22 +38466,15 @@
     },
     "mediaSlots": [
       {
-        "type": "photo",
-        "label": "Место для будущей фотографии"
-      },
-      {
-        "type": "diagram",
-        "label": "Место для будущей схемы"
-      },
-      {
-        "type": "table",
-        "label": "Место для будущей справочной таблицы"
-      },
-      {
-        "type": "gallery",
-        "label": "Место для будущей галереи"
+        "type": "spectrum",
+        "orientation": "landscape",
+        "label": "Карта ожидаемых составляющих",
+        "src": "images/vibration-diagnostics/equipment/smoke-exhausters.svg",
+        "alt": "Дымососы: учебная карта характерных частот и обязательного контекста",
+        "caption": "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
       }
-    ]
+    ],
+    "mediaLayout": "equipment-diagnostic"
   },
   {
     "id": "vibration-tool-data-analysis",

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Вертикальные машины: точки и направления</title>
+  <desc id="desc">Обозначения X/Y/A привязывают к конструкции и сохраняют во всех повторных измерениях</desc>
+  <rect width="960" height="540" rx="24" fill="#0b1220"/>
+  <rect x="24" y="24" width="912" height="492" rx="18" fill="#111c2d" stroke="#2b4667"/>
+  <text x="52" y="64" fill="#f1f5f9" font-family="Arial,sans-serif" font-size="25" font-weight="700">Вертикальные машины: точки и направления</text>
+  
+      <rect x="430" y="116" width="100" height="238" rx="24" fill="#1d3550" stroke="#60a5fa" stroke-width="4"/>
+      <rect x="340" y="354" width="280" height="48" rx="10" fill="#263b55" stroke="#7f94ac" stroke-width="3"/>
+      <line x1="480" y1="116" x2="480" y2="74" stroke="#f59e0b" stroke-width="7"/>
+      <path d="M466 91L480 70L494 91" fill="none" stroke="#f59e0b" stroke-width="7"/>
+      <line x1="430" y1="178" x2="300" y2="178" stroke="#38bdf8" stroke-width="7"/>
+      <path d="M322 164L300 178L322 192" fill="none" stroke="#38bdf8" stroke-width="7"/>
+      <line x1="530" y1="270" x2="680" y2="270" stroke="#a78bfa" stroke-width="7"/>
+      <path d="M658 256L680 270L658 284" fill="none" stroke="#a78bfa" stroke-width="7"/>
+      <text x="480" y="96" text-anchor="middle" fill="#f8fafc" font-family="Arial,sans-serif" font-size="18" font-weight="700">A — ось</text>
+      <text x="285" y="184" text-anchor="end" fill="#f8fafc" font-family="Arial,sans-serif" font-size="18" font-weight="700">X</text>
+      <text x="696" y="276" fill="#f8fafc" font-family="Arial,sans-serif" font-size="18" font-weight="700">Y</text>
+      <text x="480" y="438" text-anchor="middle" fill="#cbd5e1" font-family="Arial,sans-serif" font-size="17">Сравнивать уровни по высоте и сохранять постоянную систему координат</text>
+  <text x="52" y="498" fill="#91a4bb" font-family="Arial,sans-serif" font-size="16">Обозначения X/Y/A привязывают к конструкции и сохраняют во всех повторных измерениях</text>
+</svg>

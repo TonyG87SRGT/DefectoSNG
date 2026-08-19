@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.43.0";
+export const APP_VERSION = "0.44.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -124,6 +124,23 @@ const VIBRATION_SPECTRUM_IMAGE_SLUGS = Object.freeze([
   "bsf", "ftf", "resonance", "clipping", "impulse", "modulated", "cavitation"
 ]);
 
+const VIBRATION_FAULT_WAVEFORM_SLUGS = Object.freeze([
+  "unbalance", "parallel-misalignment", "angular-misalignment", "bent-shaft",
+  "mechanical-looseness", "loose-bearing-housing", "bearing-clearance", "rub",
+  "cavitation", "gears", "rotor-cage", "lubrication", "bearing-outer-race",
+  "bearing-inner-race", "bearing-rolling-elements", "bearing-cage", "oil-whirl",
+  "journal-bearing-misalignment"
+]);
+
+const VIBRATION_WAVEFORM_EXAMPLE_SLUGS = Object.freeze([
+  "harmonic", "impact", "modulation", "beats", "broadband", "subsync", "clipping", "nonlinear"
+]);
+
+const VIBRATION_EQUIPMENT_GUIDE_SLUGS = Object.freeze([
+  "pumps", "motors", "fans", "compressors", "gearboxes", "turbines", "generators",
+  "vertical-machines", "rolling-bearings", "journal-bearings", "smoke-exhausters"
+]);
+
 const VIK_BASE_METAL_IMAGE_SLUGS = Object.freeze([
   "corrosion", "service-cracks", "lamination"
 ]);
@@ -164,6 +181,15 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
     `images/vibration-atlas/spectra/${slug}-spectrum.svg`,
     `images/vibration-atlas/spectra/${slug}-diagram.svg`
   ]),
+  ...VIBRATION_FAULT_WAVEFORM_SLUGS.map(slug =>
+    `images/vibration-atlas/faults/${slug}-waveform.svg`
+  ),
+  ...VIBRATION_WAVEFORM_EXAMPLE_SLUGS.map(slug =>
+    `images/vibration-diagnostics/waveforms/${slug}.svg`
+  ),
+  ...VIBRATION_EQUIPMENT_GUIDE_SLUGS.map(slug =>
+    `images/vibration-diagnostics/equipment/${slug}.svg`
+  ),
   ...VIK_BASE_METAL_IMAGE_SLUGS.flatMap(slug => [
     `images/vik-atlas/base-metal/${slug}-overview.jpg`,
     `images/vik-atlas/base-metal/${slug}-detail.jpg`,
