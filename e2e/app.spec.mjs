@@ -22,11 +22,21 @@ test.afterEach(async ({ page }) => {
 });
 
 async function expectNoHorizontalOverflow(page) {
-  const dimensions = await page.evaluate(() => ({
-    viewport: document.documentElement.clientWidth,
-    page: document.documentElement.scrollWidth,
-    body: document.body.scrollWidth
-  }));
+  let dimensions;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      dimensions = await page.evaluate(() => ({
+        viewport: document.documentElement.clientWidth,
+        page: document.documentElement.scrollWidth,
+        body: document.body.scrollWidth
+      }));
+      break;
+    } catch (error) {
+      if (!/Execution context was destroyed/.test(error.message) || attempt === 2) throw error;
+      await page.waitForLoadState("domcontentloaded");
+      await page.locator("#app-content").waitFor();
+    }
+  }
   expect(dimensions.page, JSON.stringify(dimensions)).toBeLessThanOrEqual(dimensions.viewport + 1);
   expect(dimensions.body, JSON.stringify(dimensions)).toBeLessThanOrEqual(dimensions.viewport + 1);
 }
@@ -68,6 +78,21 @@ test("вложенная навигация ВД и якорное содерж�
   await expect(page.locator(".article-section-anchor:focus")).toHaveCount(1);
 });
 
+test("новые иллюстрации ВД загружаются в анализе, атласе и оборудовании", async ({ page }) => {
+  await page.goto("/#article=vibration:vibration-time-waveform");
+  await expect(page.getByRole("heading", { name: "Временной сигнал", exact: true })).toBeVisible();
+  await expect(page.locator(".article-media-slots-waveform-gallery img")).toHaveCount(8);
+  await expect(page.locator("img[src$='waveforms/beats.svg']")).toHaveCount(1);
+
+  await page.goto("/#article=vibration:vibration-fault-gears");
+  await expect(page.getByRole("heading", { name: "Дефекты зубчатых передач", exact: true })).toBeVisible();
+  await expect(page.locator("img[src$='gears-waveform.svg']")).toHaveCount(1);
+
+  await page.goto("/#article=vibration:vibration-diagnostics-gearboxes");
+  await expect(page.getByRole("heading", { name: "Редукторы", exact: true })).toBeVisible();
+  await expect(page.locator("img[src$='equipment/gearboxes.svg']")).toHaveCount(1);
+});
+
 test("мобильные ширины не создают горизонтальную прокрутку", async ({ page }) => {
   const routes = [
     "/#method=vik",
@@ -76,7 +101,10 @@ test("мобильные ширины не создают горизонталь
     "/#article=uzk:uzk-echo-planar",
     "/#references",
     "/#tools",
-    "/#section=vibration:vibration-reference"
+    "/#section=vibration:vibration-reference",
+    "/#article=vibration:vibration-time-waveform",
+    "/#article=vibration:vibration-fault-gears",
+    "/#article=vibration:vibration-diagnostics-gearboxes"
   ];
   for (const width of [320, 375, 390, 430]) {
     await page.setViewportSize({ width, height: 844 });

@@ -1,6 +1,6 @@
 {
   "name": "defectosng",
-  "version": "0.43.0",
+  "version": "0.44.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,8 @@
     "test": "node --test",
     "check": "node scripts/check-syntax.mjs && node scripts/validate-project.mjs && node --test",
     "serve": "node scripts/serve-static.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:vibration-visuals": "node scripts/smoke-vibration-visuals.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.62.0"

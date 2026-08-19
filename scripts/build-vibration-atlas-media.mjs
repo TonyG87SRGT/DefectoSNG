@@ -7,8 +7,12 @@ const dataPath = path.join(root, "data", "vibration.json");
 const items = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 const faultDir = path.join(root, "images", "vibration-atlas", "faults");
 const spectrumDir = path.join(root, "images", "vibration-atlas", "spectra");
+const waveformDir = path.join(root, "images", "vibration-diagnostics", "waveforms");
+const equipmentDir = path.join(root, "images", "vibration-diagnostics", "equipment");
 fs.mkdirSync(faultDir, { recursive: true });
 fs.mkdirSync(spectrumDir, { recursive: true });
+fs.mkdirSync(waveformDir, { recursive: true });
+fs.mkdirSync(equipmentDir, { recursive: true });
 
 const profiles = {
   "1x": { maxX: 6, peaks: [[1, 1, "1×"], [2, .18, "2×"], [3, .08, "3×"]] },
@@ -89,6 +93,74 @@ const faultMedia = {
   "vibration-fault-journal-bearing-misalignment": ["1x", "orbit"]
 };
 
+const faultWaveformIds = new Set([
+  "vibration-fault-unbalance",
+  "vibration-fault-parallel-misalignment",
+  "vibration-fault-angular-misalignment",
+  "vibration-fault-bent-shaft",
+  "vibration-fault-mechanical-looseness",
+  "vibration-fault-loose-bearing-housing",
+  "vibration-fault-bearing-clearance",
+  "vibration-fault-rub",
+  "vibration-fault-cavitation",
+  "vibration-fault-gears",
+  "vibration-fault-rotor-cage",
+  "vibration-fault-lubrication",
+  "vibration-fault-bearing-outer-race",
+  "vibration-fault-bearing-inner-race",
+  "vibration-fault-bearing-rolling-elements",
+  "vibration-fault-bearing-cage",
+  "vibration-fault-oil-whirl",
+  "vibration-fault-journal-bearing-misalignment"
+]);
+
+const waveformExamples = [
+  ["harmonic", "Гармонический сигнал", "1x", "Почти периодическая форма с устойчивым повторением."],
+  ["impact", "Повторяющиеся удары", "impulse", "Короткие импульсы, разделённые интервалом повторения."],
+  ["modulation", "Амплитудная модуляция", "modulated", "Высокочастотное колебание с медленно меняющейся огибающей."],
+  ["beats", "Биения", "beat", "Рост и спад амплитуды при близких частотах двух источников."],
+  ["broadband", "Широкополосный сигнал", "broadband-noise", "Неповторяющаяся форма с распределённой частотной энергией."],
+  ["subsync", "Субсинхронное движение", "half", "Повторяемость ниже выбранной оборотной частоты."],
+  ["clipping", "Клиппирование", "clipping", "Срезанные вершины указывают на ограничение измерительного тракта."],
+  ["nonlinear", "Нелинейная форма", "harmonic-series", "Несинусоидальная форма, способная формировать ряд гармоник."]
+];
+
+const equipmentGuides = {
+  "vibration-diagnostics-pumps": {
+    slug: "pumps", context: "RPM + расход + давления", peaks: [[1, .65, "1×"], [6, 1, "VPF"], [12, .42, "2 VPF"]]
+  },
+  "vibration-diagnostics-motors": {
+    slug: "motors", context: "RPM + ток + нагрузка + питание", peaks: [[1, .62, "1×"], [5, 1, "2 fс"], [4.4, .35, "± slip"], [5.6, .35, "± slip"]]
+  },
+  "vibration-diagnostics-fans": {
+    slug: "fans", context: "RPM + заслонка + расход", peaks: [[1, .76, "1×"], [7, 1, "BPF"], [14, .38, "2 BPF"]]
+  },
+  "vibration-diagnostics-compressors": {
+    slug: "compressors", context: "Тип компрессора определяют до анализа", peaks: [[1, .52, "1×"], [4, .74, "процесс"], [8, 1, "лопасти/зацепление"]]
+  },
+  "vibration-diagnostics-gearboxes": {
+    slug: "gearboxes", context: "RPM каждого вала + нагрузка", peaks: [[1, .28, "1× вх"], [3, .2, "1× вых"], [9, 1, "GMF"], [8, .42, "−1×"], [10, .42, "+1×"]]
+  },
+  "vibration-diagnostics-turbines": {
+    slug: "turbines", context: "Корпус + X/Y вала + фаза", peaks: [[.43, .48, "sub×"], [1, 1, "1×"], [2, .24, "2×"]]
+  },
+  "vibration-diagnostics-generators": {
+    slug: "generators", context: "Валопровод + нагрузка + электрические данные", peaks: [[1, .74, "1×"], [5, 1, "2 fс"], [4.5, .32, "боковая"], [5.5, .32, "боковая"]]
+  },
+  "vibration-diagnostics-vertical-machines": {
+    slug: "vertical-machines", mode: "directions", context: "Уровень опоры + X/Y + ось", peaks: []
+  },
+  "vibration-diagnostics-rolling-bearings": {
+    slug: "rolling-bearings", context: "Ускорение + огибающая + температура", peaks: [[3.6, 1, "BPFO"], [4.9, .82, "BPFI"], [7.2, .48, "2 BPFO"], [9.8, .38, "2 BPFI"]]
+  },
+  "vibration-diagnostics-journal-bearings": {
+    slug: "journal-bearings", context: "X/Y + орбита + centerline + масло", peaks: [[.43, .78, "sub×"], [1, 1, "1×"], [2, .3, "2×"]]
+  },
+  "vibration-diagnostics-smoke-exhausters": {
+    slug: "smoke-exhausters", context: "RPM + нагрузка + заслонки + газоход", peaks: [[1, .82, "1×"], [8, 1, "BPF"], [16, .35, "2 BPF"]]
+  }
+};
+
 const esc = value => String(value)
   .replaceAll("&", "&amp;")
   .replaceAll("<", "&lt;")
@@ -163,6 +235,7 @@ function waveformValues(profileName, count = 220) {
     const t = i / (count - 1);
     let value = 0;
     if (profileName === "clipping") value = Math.max(-.52, Math.min(.52, 1.3 * Math.sin(2 * Math.PI * 4 * t)));
+    else if (profileName === "beat") value = Math.sin(2 * Math.PI * 16 * t) + .92 * Math.sin(2 * Math.PI * 17.4 * t);
     else if (profileName === "impulse") value = Array.from({ length: 7 }, (_, k) => Math.exp(-Math.pow((t - (.08 + k * .145)) / .012, 2))).reduce((a, b) => a + b, 0) * 1.2 - .15;
     else if (profileName === "modulated") value = (.35 + .6 * (1 + Math.sin(2 * Math.PI * 2 * t)) / 2) * Math.sin(2 * Math.PI * 17 * t);
     else if (["broadband-noise", "cavitation"].includes(profileName)) value = .2 * Math.sin(2 * Math.PI * 5 * t) + (seeded(i, 4.7) - .5) * 1.15;
@@ -245,6 +318,42 @@ function renderEvidence(title, kind, profileName) {
   return frame(title, inner, "Учебное фазовое сравнение — угол относится к выбранной частоте");
 }
 
+function renderEquipmentGuide(title, guide) {
+  if (guide.mode === "directions") {
+    const inner = `
+      <rect x="430" y="116" width="100" height="238" rx="24" fill="#1d3550" stroke="#60a5fa" stroke-width="4"/>
+      <rect x="340" y="354" width="280" height="48" rx="10" fill="#263b55" stroke="#7f94ac" stroke-width="3"/>
+      <line x1="480" y1="116" x2="480" y2="74" stroke="#f59e0b" stroke-width="7"/>
+      <path d="M466 91L480 70L494 91" fill="none" stroke="#f59e0b" stroke-width="7"/>
+      <line x1="430" y1="178" x2="300" y2="178" stroke="#38bdf8" stroke-width="7"/>
+      <path d="M322 164L300 178L322 192" fill="none" stroke="#38bdf8" stroke-width="7"/>
+      <line x1="530" y1="270" x2="680" y2="270" stroke="#a78bfa" stroke-width="7"/>
+      <path d="M658 256L680 270L658 284" fill="none" stroke="#a78bfa" stroke-width="7"/>
+      <text x="480" y="96" text-anchor="middle" fill="#f8fafc" font-family="Arial,sans-serif" font-size="18" font-weight="700">A — ось</text>
+      <text x="285" y="184" text-anchor="end" fill="#f8fafc" font-family="Arial,sans-serif" font-size="18" font-weight="700">X</text>
+      <text x="696" y="276" fill="#f8fafc" font-family="Arial,sans-serif" font-size="18" font-weight="700">Y</text>
+      <text x="480" y="438" text-anchor="middle" fill="#cbd5e1" font-family="Arial,sans-serif" font-size="17">Сравнивать уровни по высоте и сохранять постоянную систему координат</text>`;
+    return frame(`${title}: точки и направления`, inner, "Обозначения X/Y/A привязывают к конструкции и сохраняют во всех повторных измерениях");
+  }
+  const left = 68, right = 912, top = 112, bottom = 396;
+  const maxX = Math.max(...guide.peaks.map(([frequency]) => frequency), 8) * 1.08;
+  const x = value => left + value / maxX * (right - left);
+  const y = value => bottom - value * (bottom - top) * .82;
+  let inner = `<path d="M${left} ${top}V${bottom}H${right}" fill="none" stroke="#7f94ac" stroke-width="2"/>`;
+  for (let i = 1; i <= 4; i++) {
+    const gy = bottom - i * (bottom - top) / 5;
+    inner += `<line x1="${left}" y1="${gy}" x2="${right}" y2="${gy}" stroke="#24364d"/>`;
+  }
+  for (const [frequency, amplitude, label] of guide.peaks) {
+    inner += `<line x1="${x(frequency)}" y1="${bottom}" x2="${x(frequency)}" y2="${y(amplitude)}" stroke="#60a5fa" stroke-width="7"/>`;
+    inner += `<circle cx="${x(frequency)}" cy="${y(amplitude)}" r="6" fill="#f59e0b"/>`;
+    inner += `<text x="${x(frequency)}" y="${Math.max(top + 18, y(amplitude) - 14)}" text-anchor="middle" fill="#f8fafc" font-family="Arial,sans-serif" font-size="16" font-weight="700">${esc(label)}</text>`;
+  }
+  inner += `<rect x="68" y="420" width="844" height="45" rx="12" fill="#18283d" stroke="#2b4667"/>`;
+  inner += `<text x="490" y="449" text-anchor="middle" fill="#cbd5e1" font-family="Arial,sans-serif" font-size="17">Контекст: ${esc(guide.context)}</text>`;
+  return frame(`${title}: карта ожидаемых составляющих`, inner, "Частоты рассчитывают по фактической конструкции и режиму; высота линий условна");
+}
+
 const faultCards = items.filter(item => item.parentId === "vibration-fault-atlas");
 const spectrumCards = items.filter(item => item.parentId === "vibration-spectrum-atlas");
 if (faultCards.length !== 29 || spectrumCards.length !== 20) {
@@ -285,6 +394,16 @@ for (const card of faultCards) {
       caption: "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
     }
   ];
+  if (faultWaveformIds.has(card.id)) {
+    const waveformPath = path.join(faultDir, `${slug}-waveform.svg`);
+    fs.writeFileSync(waveformPath, renderWaveform(`${card.title}: возможная временная форма`, profileName), "utf8");
+    card.mediaSlots.push({
+      type: "diagram", orientation: "landscape", label: "Возможная временная форма",
+      src: `images/vibration-atlas/faults/${slug}-waveform.svg`,
+      alt: `${card.title}: качественный учебный временной сигнал`,
+      caption: "Качественная учебная временная форма. Её рассматривают вместе со спектром, режимом и независимыми проверками."
+    });
+  }
 }
 
 for (const card of spectrumCards) {
@@ -309,5 +428,33 @@ for (const card of spectrumCards) {
   ];
 }
 
+const waveformArticle = items.find(item => item.id === "vibration-time-waveform");
+if (!waveformArticle) throw new Error("Missing vibration-time-waveform");
+waveformArticle.mediaLayout = "waveform-gallery";
+waveformArticle.mediaSlots = waveformExamples.map(([slug, label, profileName, description]) => {
+  fs.writeFileSync(path.join(waveformDir, `${slug}.svg`), renderWaveform(label, profileName), "utf8");
+  return {
+    type: "diagram", orientation: "landscape", label,
+    src: `images/vibration-diagnostics/waveforms/${slug}.svg`,
+    alt: `${label}: качественный учебный временной сигнал`,
+    caption: `Учебный пример: ${description} Форма не является самостоятельным диагнозом.`
+  };
+});
+
+const equipmentCards = items.filter(item => item.parentId === "vibration-equipment-diagnostics");
+if (equipmentCards.length !== 11) throw new Error(`Unexpected equipment composition: ${equipmentCards.length}`);
+for (const card of equipmentCards) {
+  const guide = equipmentGuides[card.id];
+  if (!guide) throw new Error(`Missing equipment guide: ${card.id}`);
+  fs.writeFileSync(path.join(equipmentDir, `${guide.slug}.svg`), renderEquipmentGuide(card.title, guide), "utf8");
+  card.mediaLayout = "equipment-diagnostic";
+  card.mediaSlots = [{
+    type: "spectrum", orientation: "landscape", label: "Карта ожидаемых составляющих",
+    src: `images/vibration-diagnostics/equipment/${guide.slug}.svg`,
+    alt: `${card.title}: учебная карта характерных частот и обязательного контекста`,
+    caption: "Учебная карта выбора частот. Положение и высота линий условны; значения рассчитывают для конкретной машины и режима."
+  }];
+}
+
 fs.writeFileSync(dataPath, `${JSON.stringify(items, null, 2)}\n`, "utf8");
-console.log(`Vibration atlas media: ${faultCards.length * 4 + spectrumCards.length * 2} slots, 98 SVG files.`);
+console.log(`Vibration visuals: faults=${faultCards.length}, extra waveforms=${faultWaveformIds.size}, spectrum cards=${spectrumCards.length}, waveform examples=${waveformExamples.length}, equipment guides=${equipmentCards.length}.`);
