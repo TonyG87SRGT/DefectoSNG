@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.39.0";
+export const APP_VERSION = "0.40.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -72,10 +72,49 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "data/pipeline-welded-joints.json"
 ]);
 
+const PVK_INDICATION_IMAGE_SLUGS = Object.freeze([
+  "linear-crack",
+  "branched-crack",
+  "microcrack-cluster",
+  "fatigue-concentrator",
+  "grinding-thermal-crack",
+  "surface-incomplete-penetration",
+  "surface-lack-of-fusion",
+  "open-pore",
+  "pore-cluster",
+  "pinhole",
+  "overlay-boundary",
+  "scratch",
+  "roughness",
+  "geometric-edge",
+  "thread-groove-hole",
+  "loose-joint",
+  "scale",
+  "contamination",
+  "coating-residue",
+  "porous-surface",
+  "weld-spatter",
+  "insufficient-cleaning",
+  "excess-penetrant",
+  "overcleaning",
+  "thick-developer",
+  "uneven-developer",
+  "short-dwell",
+  "overdrying",
+  "lint",
+  "incompatible-materials",
+  "insufficient-lighting"
+]);
+
 export const OPTIONAL_APP_PATHS = Object.freeze([
   "images/pvk-atlas/true-indications-cover.jpg",
   "images/pvk-atlas/nonrelevant-indications-cover.jpg",
   "images/pvk-atlas/process-errors-cover.jpg",
+  ...PVK_INDICATION_IMAGE_SLUGS.flatMap(slug => [
+    `images/pvk-atlas/indications/${slug}-white.jpg`,
+    `images/pvk-atlas/indications/${slug}-uv.jpg`,
+    `images/pvk-atlas/indications/${slug}-diagram.jpg`
+  ]),
   "images/articles/vibration/source-data/typical-pump-unit.jpg",
   "images/articles/vibration/source-data/source-data-diagram.jpg",
   "images/articles/vibration/source-data/source-data-reference-table.jpg",

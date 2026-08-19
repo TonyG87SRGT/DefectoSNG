@@ -231,7 +231,7 @@ export function renderArticle(methodKey, article) {
     .join("");
   const mediaSlots = Array.isArray(article.mediaSlots)
     ? article.mediaSlots.map(slot => slot.src ? `
-        <figure class="article-media-slot article-media-slot-${escapeAttribute(slot.type)} article-media-slot-loaded">
+        <figure class="article-media-slot article-media-slot-${escapeAttribute(slot.type)} article-media-slot-${escapeAttribute(slot.orientation || "default")} article-media-slot-loaded">
           <img src="${escapeAttribute(slot.src)}" alt="${escapeAttribute(slot.alt || slot.label)}" loading="lazy" decoding="async">
           ${slot.caption ? `<figcaption>${safeText(slot.caption)}</figcaption>` : ""}
         </figure>
@@ -291,7 +291,7 @@ export function renderArticle(methodKey, article) {
       </div>
       ${article.summary ? `<p class="article-summary">${safeText(article.summary)}</p>` : ""}
       ${futureImage}
-      ${mediaSlots ? `<section class="article-media-slots" aria-label="Места для будущих материалов">${mediaSlots}</section>` : ""}
+      ${mediaSlots ? `<section class="article-media-slots" aria-label="Иллюстрации материала">${mediaSlots}</section>` : ""}
       ${articleBody}
       ${futureOutline}
       ${knowledgeHtml}
