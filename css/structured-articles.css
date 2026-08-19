@@ -152,6 +152,10 @@
 
 @media (min-width: 720px) {
   .article-media-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .article-media-slots-atlas-fault .article-media-slot-portrait {
+    grid-column: auto;
+  }
 }
 
 @media (min-width: 960px) {
@@ -161,6 +165,10 @@
 
   .article-media-slot-portrait {
     grid-column: auto;
+  }
+
+  .article-media-slots-atlas-fault {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 .vibration-knowledge-blocks {
