@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title">
+  <title id="title">Межкристаллитное разрушение: схема механизма</title>
+  <defs>
+    <linearGradient id="film" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111827"/><stop offset="0.5" stop-color="#334155"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dbe4ee"/><stop offset="1" stop-color="#8796a8"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="17" result="n"/><feBlend in="SourceGraphic" in2="n" mode="soft-light"/></filter>
+  </defs>
+  <rect width="960" height="640" rx="30" fill="#0b1220"/><rect x="130" y="115" width="700" height="410" rx="30" fill="url(#metal)" stroke="#52657a" stroke-width="8"/><g fill="none" stroke="#0f172a" stroke-width="8"><path d="M190 160l80 80-55 85 75 85-55 70M270 240l95-45 80 65 95-80 85 65 115-40M290 410l100-90 95 95 85-80 120 90M445 260l40-105M485 415l-15 110M540 180l40 155M390 320l-100-10M570 335l120 15"/></g><path d="M190 160l80 80-55 85 75 85-55 70" fill="none" stroke="#f59e0b" stroke-width="15"/>
+</svg>

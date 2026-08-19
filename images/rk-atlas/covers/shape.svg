@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title">
+  <title id="title">Нарушения формы шва: обложка</title>
+  <defs>
+    <linearGradient id="film" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111827"/><stop offset="0.5" stop-color="#334155"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dbe4ee"/><stop offset="1" stop-color="#8796a8"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="17" result="n"/><feBlend in="SourceGraphic" in2="n" mode="soft-light"/></filter>
+  </defs>
+  <rect width="960" height="640" rx="30" fill="#0b1220"/><rect x="100" y="105" width="760" height="430" rx="38" fill="url(#film)" stroke="#496079" stroke-width="8"/><path d="M190 420h190l100-190 100 190h190" fill="none" stroke="#dbeafe" stroke-width="30"/><path d="M385 420q95-75 190 0" fill="none" stroke="#f59e0b" stroke-width="18"/>
+</svg>

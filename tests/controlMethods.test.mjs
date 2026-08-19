@@ -24,7 +24,21 @@ test("ВИК сохраняет прежние ID и получает полны
     assert.equal(section.status, "published", id);
     assert.ok(vik.some(item => item.parentId === id), `${id} должен иметь материалы`);
   }
-  assert.equal(vik.find(item => item.id === "vik-fractography").status, "draft");
+  const baseMetal = vik.filter(item => item.parentId === "vik-base-metal-defects");
+  assert.equal(baseMetal.length, 3);
+  assert.ok(baseMetal.every(item => item.mediaSlots?.length === 3));
+  assert.ok(baseMetal.flatMap(item => item.mediaSlots).every(slot => fs.existsSync(new URL(`../${slot.src}`, import.meta.url))));
+
+  const fractography = vik.find(item => item.id === "vik-fractography");
+  assert.equal(fractography.status, "published");
+  const fractureCards = vik.filter(item => item.parentId === fractography.id).sort((a, b) => a.order - b.order);
+  assert.deepEqual(fractureCards.map(item => item.id), [
+    "vik-fractography-ductile", "vik-fractography-brittle", "vik-fractography-fatigue",
+    "vik-fractography-intergranular", "vik-fractography-stress-corrosion", "vik-fractography-overload"
+  ]);
+  assert.ok(fractureCards.every(item => item.status === "published" && item.sections.length === 9));
+  assert.ok(fractureCards.every(item => item.mediaSlots?.length === 3));
+  assert.ok(fractureCards.flatMap(item => item.mediaSlots).every(slot => fs.existsSync(new URL(`../${slot.src}`, import.meta.url))));
 });
 
 test("УЗК организован по этапам от основ до оформления", () => {
@@ -85,10 +99,10 @@ test("атлас ПВК разделяет наблюдение, происхо�
 test("РК покрывает безопасный маршрут от подготовки до заключения", () => {
   assert.deepEqual(
     rk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id),
-    ["rk-basics-section", "rk-equipment-section", "rk-preparation-section", "rk-control-section", "rk-analysis-section", "rk-evaluation-section"]
+    ["rk-basics-section", "rk-equipment-section", "rk-preparation-section", "rk-control-section", "rk-analysis-section", "rk-radiographic-atlas", "rk-evaluation-section"]
   );
   assert.ok(rk.every(item => item.status === "published"));
-  assert.equal(rk.filter(item => item.type === "article").length, 15);
+  assert.equal(rk.filter(item => item.type === "article").length, 33);
   for (const id of [
     "rk-regulatory-documents", "rk-radiation-sources", "rk-detector-systems",
     "rk-image-quality-indicators", "rk-exposure-geometry", "rk-marking-iqi-placement",
@@ -103,6 +117,22 @@ test("РК покрывает безопасный маршрут от подг�
   const regulatory = rk.find(item => item.id === "rk-regulatory-documents");
   assert.match(JSON.stringify(regulatory), /19 августа 2026 года/);
   assert.match(JSON.stringify(regulatory), /protect\.gost\.ru/);
+
+  const atlasRoot = rk.find(item => item.id === "rk-radiographic-atlas");
+  const atlasGroups = rk.filter(item => item.parentId === atlasRoot.id).sort((a, b) => a.order - b.order);
+  assert.deepEqual(atlasGroups.map(item => item.id), [
+    "rk-atlas-volumetric", "rk-atlas-planar", "rk-atlas-shape", "rk-atlas-artifacts"
+  ]);
+  const atlasCards = rk.filter(item => atlasGroups.some(group => group.id === item.parentId));
+  assert.equal(atlasCards.length, 18);
+  assert.ok(atlasCards.every(item => item.mediaSlots?.length === 2 && item.sections?.length === 9));
+  assert.ok(atlasCards.flatMap(item => item.mediaSlots).every(slot => fs.existsSync(new URL(`../${slot.src}`, import.meta.url))));
+  const atlasCorpus = JSON.stringify(atlasCards).toLowerCase();
+  for (const term of [
+    "равномерно распределённая пористость", "скопление пор", "цепочка пор", "канальная пора", "шлаковое включение",
+    "непровар корня", "несплавление", "трещина", "прожог", "вогнутость корня",
+    "подрез", "смещение кромок", "артефакты изображения"
+  ]) assert.match(atlasCorpus, new RegExp(term));
 });
 
 test("семь справочных карточек сварных соединений опубликованы и наполнены", () => {
@@ -156,8 +186,11 @@ test("все связи и parentId методов контроля сущест
 
 test("поисковые данные покрывают практические запросы методов контроля", () => {
   const corpus = items => JSON.stringify(items).toLowerCase();
-  for (const term of ["ушс-3", "акт вик", "коррозионные повреждения"]) assert.match(corpus(vik), new RegExp(term));
+  for (const term of ["ушс-3", "акт вик", "коррозионные повреждения", "усталостный излом", "stress-corrosion"]) assert.match(corpus(vik), new RegExp(term));
   for (const term of ["геометрический отражатель", "tcg", "акустический контакт"]) assert.match(corpus(uzk), new RegExp(term));
   for (const term of ["проявитель", "линейная индикация", "переочистка"]) assert.match(corpus(pvk), new RegExp(term));
-  for (const term of ["компьютерная радиография", "размещение ики", "геометрическая нерезкость", "координаты индикации"]) assert.match(corpus(rk), new RegExp(term));
+  for (const term of [
+    "компьютерная радиография", "размещение ики", "геометрическая нерезкость", "координаты индикации",
+    "цепочка пор", "lack of fusion", "root concavity", "артефакт радиограммы"
+  ]) assert.match(corpus(rk), new RegExp(term));
 });

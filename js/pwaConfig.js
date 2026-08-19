@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.41.0";
+export const APP_VERSION = "0.42.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -122,6 +122,22 @@ const VIBRATION_SPECTRUM_IMAGE_SLUGS = Object.freeze([
   "bsf", "ftf", "resonance", "clipping", "impulse", "modulated", "cavitation"
 ]);
 
+const VIK_BASE_METAL_IMAGE_SLUGS = Object.freeze([
+  "corrosion", "service-cracks", "lamination"
+]);
+
+const VIK_FRACTOGRAPHY_IMAGE_SLUGS = Object.freeze([
+  "ductile", "brittle", "fatigue", "intergranular", "stress-corrosion", "overload"
+]);
+
+const RK_ATLAS_IMAGE_SLUGS = Object.freeze([
+  "single-pore", "uniform-porosity", "cluster-porosity", "linear-porosity", "elongated-cavity",
+  "shrinkage-cavity", "slag-inclusion", "metallic-inclusion",
+  "incomplete-penetration", "lack-of-fusion", "crack", "burn-through",
+  "excess-penetration", "root-concavity", "undercut", "misalignment",
+  "incompletely-filled-groove", "image-artifacts"
+]);
+
 export const OPTIONAL_APP_PATHS = Object.freeze([
   "images/pvk-atlas/true-indications-cover.jpg",
   "images/pvk-atlas/nonrelevant-indications-cover.jpg",
@@ -140,6 +156,25 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
   ...VIBRATION_SPECTRUM_IMAGE_SLUGS.flatMap(slug => [
     `images/vibration-atlas/spectra/${slug}-spectrum.svg`,
     `images/vibration-atlas/spectra/${slug}-diagram.svg`
+  ]),
+  ...VIK_BASE_METAL_IMAGE_SLUGS.flatMap(slug => [
+    `images/vik-atlas/base-metal/${slug}-overview.jpg`,
+    `images/vik-atlas/base-metal/${slug}-detail.jpg`,
+    `images/vik-atlas/base-metal/${slug}-diagram.svg`
+  ]),
+  ...VIK_FRACTOGRAPHY_IMAGE_SLUGS.flatMap(slug => [
+    `images/vik-atlas/fractography/${slug}-overview.jpg`,
+    `images/vik-atlas/fractography/${slug}-detail.jpg`,
+    `images/vik-atlas/fractography/${slug}-diagram.svg`
+  ]),
+  "images/rk-atlas/covers/atlas.svg",
+  "images/rk-atlas/covers/volumetric.svg",
+  "images/rk-atlas/covers/planar.svg",
+  "images/rk-atlas/covers/shape.svg",
+  "images/rk-atlas/covers/artifacts.svg",
+  ...RK_ATLAS_IMAGE_SLUGS.flatMap(slug => [
+    `images/rk-atlas/${slug}-radiograph.svg`,
+    `images/rk-atlas/${slug}-section.svg`
   ]),
   "images/articles/vibration/source-data/typical-pump-unit.jpg",
   "images/articles/vibration/source-data/source-data-diagram.jpg",
