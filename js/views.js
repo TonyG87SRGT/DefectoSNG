@@ -291,7 +291,7 @@ export function renderArticle(methodKey, article) {
       </div>
       ${article.summary ? `<p class="article-summary">${safeText(article.summary)}</p>` : ""}
       ${futureImage}
-      ${mediaSlots ? `<section class="article-media-slots" aria-label="Иллюстрации материала">${mediaSlots}</section>` : ""}
+      ${mediaSlots ? `<section class="article-media-slots${article.mediaLayout ? ` article-media-slots-${escapeAttribute(article.mediaLayout)}` : ""}" aria-label="Иллюстрации материала">${mediaSlots}</section>` : ""}
       ${articleBody}
       ${futureOutline}
       ${knowledgeHtml}

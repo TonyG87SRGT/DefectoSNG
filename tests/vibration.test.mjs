@@ -244,6 +244,20 @@ test("атласы, сценарии и инструменты использу�
   assert.equal(byId.get("vibration-tool-diagnostic-tree").hidden, true);
 });
 
+test("оба атласа ВД полностью заполнены учебными изображениями", () => {
+  const faults = data.filter(item => item.parentId === "vibration-fault-atlas");
+  const spectra = data.filter(item => item.parentId === "vibration-spectrum-atlas");
+  assert.equal(faults.length, 29);
+  assert.equal(spectra.length, 20);
+  assert.ok(faults.every(item => item.mediaLayout === "atlas-fault" && item.mediaSlots?.length === 4));
+  assert.ok(spectra.every(item => item.mediaLayout === "atlas-spectrum" && item.mediaSlots?.length === 2));
+  const slots = [...faults, ...spectra].flatMap(item => item.mediaSlots);
+  assert.equal(slots.length, 156);
+  assert.ok(slots.every(slot => slot.src && slot.alt && slot.caption));
+  assert.ok(slots.every(slot => fs.existsSync(new URL(`../${slot.src}`, import.meta.url))), "каждый ресурс существует");
+  assert.ok(slots.every(slot => /учебн|пример/i.test(slot.caption)), "каждая подпись объясняет учебный характер");
+});
+
 test("справочник ВД собран в четыре публичные карточки без удаления прежних ID", () => {
   const references = data.filter(item => item.parentId === "vibration-reference");
   const visible = references.filter(item => item.hidden !== true);

@@ -14029,21 +14029,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/unbalance-photo.jpg",
+        "alt": "Дисбаланс: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/unbalance-mechanism.jpg",
+        "alt": "Дисбаланс: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/unbalance-spectrum.svg",
+        "alt": "Дисбаланс: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/unbalance-evidence.svg",
+        "alt": "Дисбаланс: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-parallel-misalignment",
@@ -14276,21 +14293,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/parallel-misalignment-photo.jpg",
+        "alt": "Параллельная несоосность: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/parallel-misalignment-mechanism.jpg",
+        "alt": "Параллельная несоосность: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/parallel-misalignment-spectrum.svg",
+        "alt": "Параллельная несоосность: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/parallel-misalignment-evidence.svg",
+        "alt": "Параллельная несоосность: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-angular-misalignment",
@@ -14523,21 +14557,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/angular-misalignment-photo.jpg",
+        "alt": "Угловая несоосность: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/angular-misalignment-mechanism.jpg",
+        "alt": "Угловая несоосность: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/angular-misalignment-spectrum.svg",
+        "alt": "Угловая несоосность: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/angular-misalignment-evidence.svg",
+        "alt": "Угловая несоосность: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-bent-shaft",
@@ -14754,21 +14805,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/bent-shaft-photo.jpg",
+        "alt": "Изгиб вала: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/bent-shaft-mechanism.jpg",
+        "alt": "Изгиб вала: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/bent-shaft-spectrum.svg",
+        "alt": "Изгиб вала: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/bent-shaft-evidence.svg",
+        "alt": "Изгиб вала: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-mechanical-looseness",
@@ -15004,21 +15072,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/mechanical-looseness-photo.jpg",
+        "alt": "Механические ослабления: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/mechanical-looseness-mechanism.jpg",
+        "alt": "Механические ослабления: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/mechanical-looseness-spectrum.svg",
+        "alt": "Механические ослабления: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/mechanical-looseness-evidence.svg",
+        "alt": "Механические ослабления: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-loose-bearing-housing",
@@ -15235,21 +15320,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/loose-bearing-housing-photo.jpg",
+        "alt": "Ослабление подшипника в корпусе: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/loose-bearing-housing-mechanism.jpg",
+        "alt": "Ослабление подшипника в корпусе: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/loose-bearing-housing-spectrum.svg",
+        "alt": "Ослабление подшипника в корпусе: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/loose-bearing-housing-evidence.svg",
+        "alt": "Ослабление подшипника в корпусе: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-bearing-clearance",
@@ -15475,21 +15577,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/bearing-clearance-photo.jpg",
+        "alt": "Увеличенный зазор в подшипнике: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/bearing-clearance-mechanism.jpg",
+        "alt": "Увеличенный зазор в подшипнике: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/bearing-clearance-spectrum.svg",
+        "alt": "Увеличенный зазор в подшипнике: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/bearing-clearance-evidence.svg",
+        "alt": "Увеличенный зазор в подшипнике: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-soft-foot",
@@ -15714,21 +15833,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/soft-foot-photo.jpg",
+        "alt": "Мягкая опора: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/soft-foot-mechanism.jpg",
+        "alt": "Мягкая опора: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/soft-foot-spectrum.svg",
+        "alt": "Мягкая опора: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/soft-foot-evidence.svg",
+        "alt": "Мягкая опора: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-uneven-supports",
@@ -15945,21 +16081,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/uneven-supports-photo.jpg",
+        "alt": "Разновысокие опоры: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/uneven-supports-mechanism.jpg",
+        "alt": "Разновысокие опоры: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/uneven-supports-spectrum.svg",
+        "alt": "Разновысокие опоры: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/uneven-supports-evidence.svg",
+        "alt": "Разновысокие опоры: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-inclined-foundation",
@@ -16165,21 +16318,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/inclined-foundation-photo.jpg",
+        "alt": "Наклонный фундамент: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/inclined-foundation-mechanism.jpg",
+        "alt": "Наклонный фундамент: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/inclined-foundation-spectrum.svg",
+        "alt": "Наклонный фундамент: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/inclined-foundation-evidence.svg",
+        "alt": "Наклонный фундамент: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-casing-deformation",
@@ -16405,21 +16575,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/casing-deformation-photo.jpg",
+        "alt": "Деформация корпуса: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/casing-deformation-mechanism.jpg",
+        "alt": "Деформация корпуса: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/casing-deformation-spectrum.svg",
+        "alt": "Деформация корпуса: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/casing-deformation-evidence.svg",
+        "alt": "Деформация корпуса: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-pipe-strain",
@@ -16628,21 +16815,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/pipe-strain-photo.jpg",
+        "alt": "Напряжение от присоединённого трубопровода: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/pipe-strain-mechanism.jpg",
+        "alt": "Напряжение от присоединённого трубопровода: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/pipe-strain-spectrum.svg",
+        "alt": "Напряжение от присоединённого трубопровода: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/pipe-strain-evidence.svg",
+        "alt": "Напряжение от присоединённого трубопровода: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-rub",
@@ -16881,21 +17085,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/rub-photo.jpg",
+        "alt": "Задевание вращающихся частей: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/rub-mechanism.jpg",
+        "alt": "Задевание вращающихся частей: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/rub-spectrum.svg",
+        "alt": "Задевание вращающихся частей: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/rub-evidence.svg",
+        "alt": "Задевание вращающихся частей: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-resonance",
@@ -17133,21 +17354,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/resonance-photo.jpg",
+        "alt": "Резонанс: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/resonance-mechanism.jpg",
+        "alt": "Резонанс: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/resonance-spectrum.svg",
+        "alt": "Резонанс: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/resonance-evidence.svg",
+        "alt": "Резонанс: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-cavitation",
@@ -17390,21 +17628,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/cavitation-photo.jpg",
+        "alt": "Кавитация: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/cavitation-mechanism.jpg",
+        "alt": "Кавитация: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/cavitation-spectrum.svg",
+        "alt": "Кавитация: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/cavitation-evidence.svg",
+        "alt": "Кавитация: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-surge",
@@ -17624,21 +17879,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/surge-photo.jpg",
+        "alt": "Помпаж: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/surge-mechanism.jpg",
+        "alt": "Помпаж: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/surge-spectrum.svg",
+        "alt": "Помпаж: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/surge-evidence.svg",
+        "alt": "Помпаж: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-gears",
@@ -17883,21 +18155,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/gears-photo.jpg",
+        "alt": "Дефекты зубчатых передач: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/gears-mechanism.jpg",
+        "alt": "Дефекты зубчатых передач: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/gears-spectrum.svg",
+        "alt": "Дефекты зубчатых передач: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/gears-evidence.svg",
+        "alt": "Дефекты зубчатых передач: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-motor-electrical",
@@ -18123,21 +18412,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/motor-electrical-photo.jpg",
+        "alt": "Электрические неисправности двигателя: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/motor-electrical-mechanism.jpg",
+        "alt": "Электрические неисправности двигателя: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/motor-electrical-spectrum.svg",
+        "alt": "Электрические неисправности двигателя: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/motor-electrical-evidence.svg",
+        "alt": "Электрические неисправности двигателя: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-rotor-cage",
@@ -18353,21 +18659,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/rotor-cage-photo.jpg",
+        "alt": "Повреждение клетки ротора: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/rotor-cage-mechanism.jpg",
+        "alt": "Повреждение клетки ротора: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/rotor-cage-spectrum.svg",
+        "alt": "Повреждение клетки ротора: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/rotor-cage-evidence.svg",
+        "alt": "Повреждение клетки ротора: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-lubrication",
@@ -18591,21 +18914,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/lubrication-photo.jpg",
+        "alt": "Проблемы смазки: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/lubrication-mechanism.jpg",
+        "alt": "Проблемы смазки: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/lubrication-spectrum.svg",
+        "alt": "Проблемы смазки: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/lubrication-evidence.svg",
+        "alt": "Проблемы смазки: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-bearing-outer-race",
@@ -18842,21 +19182,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/bearing-outer-race-photo.jpg",
+        "alt": "Дефект наружного кольца подшипника: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/bearing-outer-race-mechanism.jpg",
+        "alt": "Дефект наружного кольца подшипника: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/bearing-outer-race-spectrum.svg",
+        "alt": "Дефект наружного кольца подшипника: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/bearing-outer-race-evidence.svg",
+        "alt": "Дефект наружного кольца подшипника: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-bearing-inner-race",
@@ -19101,21 +19458,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/bearing-inner-race-photo.jpg",
+        "alt": "Дефект внутреннего кольца подшипника: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/bearing-inner-race-mechanism.jpg",
+        "alt": "Дефект внутреннего кольца подшипника: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/bearing-inner-race-spectrum.svg",
+        "alt": "Дефект внутреннего кольца подшипника: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/bearing-inner-race-evidence.svg",
+        "alt": "Дефект внутреннего кольца подшипника: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-bearing-rolling-elements",
@@ -19354,21 +19728,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/bearing-rolling-elements-photo.jpg",
+        "alt": "Дефект тел качения: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/bearing-rolling-elements-mechanism.jpg",
+        "alt": "Дефект тел качения: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/bearing-rolling-elements-spectrum.svg",
+        "alt": "Дефект тел качения: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/bearing-rolling-elements-evidence.svg",
+        "alt": "Дефект тел качения: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-bearing-cage",
@@ -19595,21 +19986,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/bearing-cage-photo.jpg",
+        "alt": "Дефект сепаратора: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/bearing-cage-mechanism.jpg",
+        "alt": "Дефект сепаратора: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/bearing-cage-spectrum.svg",
+        "alt": "Дефект сепаратора: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/bearing-cage-evidence.svg",
+        "alt": "Дефект сепаратора: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-rotor-precession",
@@ -19838,21 +20246,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/rotor-precession-photo.jpg",
+        "alt": "Прецессия ротора: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/rotor-precession-mechanism.jpg",
+        "alt": "Прецессия ротора: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/rotor-precession-spectrum.svg",
+        "alt": "Прецессия ротора: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/rotor-precession-evidence.svg",
+        "alt": "Прецессия ротора: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-oil-whirl",
@@ -20089,21 +20514,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/oil-whirl-photo.jpg",
+        "alt": "Вибрация масляного клина: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/oil-whirl-mechanism.jpg",
+        "alt": "Вибрация масляного клина: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/oil-whirl-spectrum.svg",
+        "alt": "Вибрация масляного клина: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/oil-whirl-evidence.svg",
+        "alt": "Вибрация масляного клина: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-babbitt",
@@ -20329,21 +20771,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/babbitt-photo.jpg",
+        "alt": "Разрушение баббитового слоя: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/babbitt-mechanism.jpg",
+        "alt": "Разрушение баббитового слоя: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/babbitt-spectrum.svg",
+        "alt": "Разрушение баббитового слоя: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/babbitt-evidence.svg",
+        "alt": "Разрушение баббитового слоя: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-oil-coking",
@@ -20554,21 +21013,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/oil-coking-photo.jpg",
+        "alt": "Коксование масла: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/oil-coking-mechanism.jpg",
+        "alt": "Коксование масла: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/oil-coking-spectrum.svg",
+        "alt": "Коксование масла: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/oil-coking-evidence.svg",
+        "alt": "Коксование масла: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-fault-journal-bearing-misalignment",
@@ -20796,21 +21272,38 @@
     "mediaSlots": [
       {
         "type": "photo",
-        "label": "Место для будущей фотографии"
+        "orientation": "portrait",
+        "label": "Учебный вид узла",
+        "src": "images/vibration-atlas/faults/journal-bearing-misalignment-photo.jpg",
+        "alt": "Перекос гидродинамического подшипника: учебная визуализация узла",
+        "caption": "Учебная синтетическая иллюстрация внешнего вида узла; не является фотографией обследованной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "portrait",
+        "label": "Схема механизма",
+        "src": "images/vibration-atlas/faults/journal-bearing-misalignment-mechanism.jpg",
+        "alt": "Перекос гидродинамического подшипника: учебная схема физического механизма",
+        "caption": "Учебная синтетическая схема возможного механизма; конструкция конкретной машины может отличаться."
       },
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Возможная спектральная картина",
+        "src": "images/vibration-atlas/faults/journal-bearing-misalignment-spectrum.svg",
+        "alt": "Перекос гидродинамического подшипника: качественный учебный спектр",
+        "caption": "Качественный учебный пример: показанные линии являются возможными признаками, а не достаточным диагнозом."
       },
       {
         "type": "gallery",
-        "label": "Место для будущей галереи"
+        "orientation": "landscape",
+        "label": "Подтверждающее представление",
+        "src": "images/vibration-atlas/faults/journal-bearing-misalignment-evidence.svg",
+        "alt": "Перекос гидродинамического подшипника: дополнительное диагностическое представление",
+        "caption": "Пример дополнительной проверки. Реальный вывод требует сопоставимых измерений, режима и альтернативных гипотез."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-fault"
   },
   {
     "id": "vibration-spectrum-atlas",
@@ -21108,13 +21601,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/1x-spectrum.svg",
+        "alt": "Доминирующая первая гармоника 1×: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/1x-diagram.svg",
+        "alt": "Доминирующая первая гармоника 1×: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-2x",
@@ -21389,13 +21891,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/2x-spectrum.svg",
+        "alt": "Повышенная вторая гармоника 2×: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/2x-diagram.svg",
+        "alt": "Повышенная вторая гармоника 2×: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-1x-2x",
@@ -21684,13 +22195,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/1x-2x-spectrum.svg",
+        "alt": "Первая и вторая гармоники: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/1x-2x-diagram.svg",
+        "alt": "Первая и вторая гармоники: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-harmonic-series",
@@ -21973,13 +22493,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/harmonic-series-spectrum.svg",
+        "alt": "Гармонический ряд: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/harmonic-series-diagram.svg",
+        "alt": "Гармонический ряд: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-half",
@@ -22268,13 +22797,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/half-spectrum.svg",
+        "alt": "Субгармоника 1/2×: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/half-diagram.svg",
+        "alt": "Субгармоника 1/2×: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-third",
@@ -22535,13 +23073,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/third-spectrum.svg",
+        "alt": "Субгармоника 1/3×: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/third-diagram.svg",
+        "alt": "Субгармоника 1/3×: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-oil-whirl",
@@ -22812,13 +23359,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/oil-whirl-spectrum.svg",
+        "alt": "Составляющие 0,4–0,47×: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/oil-whirl-diagram.svg",
+        "alt": "Составляющие 0,4–0,47×: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-broadband-noise",
@@ -23094,13 +23650,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/broadband-noise-spectrum.svg",
+        "alt": "Высокочастотный широкополосный шум: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/broadband-noise-diagram.svg",
+        "alt": "Высокочастотный широкополосный шум: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-blade-pass",
@@ -23379,13 +23944,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/blade-pass-spectrum.svg",
+        "alt": "Лопастная частота: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/blade-pass-diagram.svg",
+        "alt": "Лопастная частота: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-gear-mesh",
@@ -23650,13 +24224,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/gear-mesh-spectrum.svg",
+        "alt": "Зубцовая частота: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/gear-mesh-diagram.svg",
+        "alt": "Зубцовая частота: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-sidebands",
@@ -23939,13 +24522,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/sidebands-spectrum.svg",
+        "alt": "Боковые полосы: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/sidebands-diagram.svg",
+        "alt": "Боковые полосы: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-bpfo",
@@ -24224,13 +24816,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/bpfo-spectrum.svg",
+        "alt": "Частота дефекта наружного кольца: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/bpfo-diagram.svg",
+        "alt": "Частота дефекта наружного кольца: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-bpfi",
@@ -24502,13 +25103,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/bpfi-spectrum.svg",
+        "alt": "Частота дефекта внутреннего кольца: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/bpfi-diagram.svg",
+        "alt": "Частота дефекта внутреннего кольца: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-bsf",
@@ -24784,13 +25394,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/bsf-spectrum.svg",
+        "alt": "Частота вращения тел качения: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/bsf-diagram.svg",
+        "alt": "Частота вращения тел качения: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-ftf",
@@ -25062,13 +25681,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/ftf-spectrum.svg",
+        "alt": "Частота сепаратора: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/ftf-diagram.svg",
+        "alt": "Частота сепаратора: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-resonance",
@@ -25342,13 +25970,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/resonance-spectrum.svg",
+        "alt": "Резонансная составляющая: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/resonance-diagram.svg",
+        "alt": "Резонансная составляющая: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-clipping",
@@ -25590,13 +26227,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/clipping-spectrum.svg",
+        "alt": "Клиппирование временного сигнала: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/clipping-diagram.svg",
+        "alt": "Клиппирование временного сигнала: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-impulse",
@@ -25892,13 +26538,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/impulse-spectrum.svg",
+        "alt": "Импульсный сигнал: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/impulse-diagram.svg",
+        "alt": "Импульсный сигнал: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-modulated",
@@ -26197,13 +26852,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/modulated-spectrum.svg",
+        "alt": "Модулированный сигнал: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/modulated-diagram.svg",
+        "alt": "Модулированный сигнал: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-spectrum-cavitation",
@@ -26488,13 +27152,22 @@
     "mediaSlots": [
       {
         "type": "spectrum",
-        "label": "Место для будущего спектра"
+        "orientation": "landscape",
+        "label": "Учебный спектр",
+        "src": "images/vibration-atlas/spectra/cavitation-spectrum.svg",
+        "alt": "Спектр кавитации: качественный учебный спектр",
+        "caption": "Учебная качественная модель спектра. Частоты и амплитуды необходимо рассчитывать и измерять для конкретной машины."
       },
       {
         "type": "diagram",
-        "label": "Место для будущей схемы"
+        "orientation": "landscape",
+        "label": "Связь с временным сигналом",
+        "src": "images/vibration-atlas/spectra/cavitation-diagram.svg",
+        "alt": "Спектр кавитации: учебная временная форма",
+        "caption": "Учебное пояснение связи спектральной картины с временным сигналом; не является записью реального прибора."
       }
-    ]
+    ],
+    "mediaLayout": "atlas-spectrum"
   },
   {
     "id": "vibration-equipment-diagnostics",

@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.40.0";
+export const APP_VERSION = "0.41.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -106,6 +106,22 @@ const PVK_INDICATION_IMAGE_SLUGS = Object.freeze([
   "insufficient-lighting"
 ]);
 
+const VIBRATION_FAULT_IMAGE_SLUGS = Object.freeze([
+  "unbalance", "parallel-misalignment", "angular-misalignment", "bent-shaft",
+  "mechanical-looseness", "loose-bearing-housing", "bearing-clearance", "soft-foot",
+  "uneven-supports", "inclined-foundation", "casing-deformation", "pipe-strain",
+  "rub", "resonance", "cavitation", "surge", "gears", "motor-electrical",
+  "rotor-cage", "lubrication", "bearing-outer-race", "bearing-inner-race",
+  "bearing-rolling-elements", "bearing-cage", "rotor-precession", "oil-whirl",
+  "babbitt", "oil-coking", "journal-bearing-misalignment"
+]);
+
+const VIBRATION_SPECTRUM_IMAGE_SLUGS = Object.freeze([
+  "1x", "2x", "1x-2x", "harmonic-series", "half", "third", "oil-whirl",
+  "broadband-noise", "blade-pass", "gear-mesh", "sidebands", "bpfo", "bpfi",
+  "bsf", "ftf", "resonance", "clipping", "impulse", "modulated", "cavitation"
+]);
+
 export const OPTIONAL_APP_PATHS = Object.freeze([
   "images/pvk-atlas/true-indications-cover.jpg",
   "images/pvk-atlas/nonrelevant-indications-cover.jpg",
@@ -114,6 +130,16 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
     `images/pvk-atlas/indications/${slug}-white.jpg`,
     `images/pvk-atlas/indications/${slug}-uv.jpg`,
     `images/pvk-atlas/indications/${slug}-diagram.jpg`
+  ]),
+  ...VIBRATION_FAULT_IMAGE_SLUGS.flatMap(slug => [
+    `images/vibration-atlas/faults/${slug}-photo.jpg`,
+    `images/vibration-atlas/faults/${slug}-mechanism.jpg`,
+    `images/vibration-atlas/faults/${slug}-spectrum.svg`,
+    `images/vibration-atlas/faults/${slug}-evidence.svg`
+  ]),
+  ...VIBRATION_SPECTRUM_IMAGE_SLUGS.flatMap(slug => [
+    `images/vibration-atlas/spectra/${slug}-spectrum.svg`,
+    `images/vibration-atlas/spectra/${slug}-diagram.svg`
   ]),
   "images/articles/vibration/source-data/typical-pump-unit.jpg",
   "images/articles/vibration/source-data/source-data-diagram.jpg",
