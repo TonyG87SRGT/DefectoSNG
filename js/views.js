@@ -1,12 +1,15 @@
 import { content } from "./dom.js";
+import { getArticleTocEntries } from "./articleNavigation.js";
 import { isFavorite, toggleFavorite } from "./favorites.js";
 import { escapeAttribute, safeText } from "./html.js";
+import { buildKnowledgeGraph, getKnowledgeBacklinks } from "./knowledgeGraph.js";
 import { renderStructuredArticle } from "./renderers.js";
 import { getVibrationKnowledgeBlocks } from "./vibrationKnowledge.js";
 import { getRouteHash, goBack, navigate } from "./router.js";
 import {
   METHODS,
   getArticles,
+  getAllItems,
   getChildren,
   getItem,
   getItemRoute,
@@ -219,6 +222,17 @@ export function renderArticle(methodKey, article) {
         }
       })
     : `<p>${safeText(article.text)}</p>`;
+  const tocEntries = getArticleTocEntries(methodKey, displayedArticle);
+  const tocHtml = tocEntries.length ? `
+    <details class="article-toc">
+      <summary>Содержание статьи · ${tocEntries.length}</summary>
+      <nav aria-label="Содержание статьи">
+        <ol>${tocEntries.map(entry => `
+          <li><button type="button" data-article-anchor="${escapeAttribute(entry.id)}">${safeText(entry.title)}</button></li>
+        `).join("")}</ol>
+      </nav>
+    </details>
+  ` : "";
   const futureImageLabels = Array.isArray(article.mediaSlots) && article.mediaSlots.length
     ? []
     : Array.isArray(article.futureImageLabels)
@@ -262,6 +276,18 @@ export function renderArticle(methodKey, article) {
       `).join("")}
     </section>
   ` : "";
+  const graph = buildKnowledgeGraph(getAllItems());
+  const backlinks = getKnowledgeBacklinks(graph, methodKey, article.id);
+  const backlinksHtml = backlinks.length ? `
+    <section class="article-backlinks" aria-labelledby="article-backlinks-title">
+      <h3 id="article-backlinks-title">На этот материал ссылаются</h3>
+      <div>${backlinks.map(item => `
+        <a href="${getRouteHash(getItemRoute(item.methodKey, item))}" data-related-article="${escapeAttribute(item.id)}" data-related-method="${escapeAttribute(item.methodKey)}">
+          <span>${safeText(METHODS[item.methodKey]?.short, item.methodKey)}</span>${safeText(item.title)}
+        </a>
+      `).join("")}</div>
+    </section>
+  ` : "";
   const futureOutline = Array.isArray(article.futureBlocks) && article.futureBlocks.length
     ? `
       <section class="article-future-outline">
@@ -290,11 +316,13 @@ export function renderArticle(methodKey, article) {
         >${favorite ? "★" : "☆"}</button>
       </div>
       ${article.summary ? `<p class="article-summary">${safeText(article.summary)}</p>` : ""}
+      ${tocHtml}
       ${futureImage}
       ${mediaSlots ? `<section class="article-media-slots${article.mediaLayout ? ` article-media-slots-${escapeAttribute(article.mediaLayout)}` : ""}" aria-label="Иллюстрации материала">${mediaSlots}</section>` : ""}
       ${articleBody}
       ${futureOutline}
       ${knowledgeHtml}
+      ${backlinksHtml}
     </article>
   `;
 
@@ -313,6 +341,14 @@ export function renderArticle(methodKey, article) {
       "aria-label",
       nowFavorite ? "Удалить статью из избранного" : "Добавить статью в избранное"
     );
+  });
+
+  content.querySelectorAll("[data-article-anchor]").forEach(button => {
+    button.addEventListener("click", () => {
+      const target = content.querySelector(`#${CSS.escape(button.dataset.articleAnchor)}`);
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      target?.focus({ preventScroll: true });
+    });
   });
 
   content.querySelectorAll("[data-related-article]").forEach(link => {

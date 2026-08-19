@@ -43,8 +43,8 @@ const expectedGroupSizes = Object.freeze({
   "vibration-spectrum-atlas": 20,
   "vibration-equipment-diagnostics": 11,
   "vibration-practical-situations": 14,
-  "vibration-reference": 14,
-  "vibration-tools": 9
+  "vibration-reference": 4,
+  "vibration-tools": 8
 });
 
 test("раздел ВД содержит все группы без повторяющихся ID", () => {
@@ -204,9 +204,7 @@ test("окончательная структура содержит все до
   for (const id of [
     "vibration-subharmonics",
     "vibration-coastdown-analysis",
-    "vibration-diagnostics-smoke-exhausters",
-    "vibration-reference-units",
-    "vibration-reference-abbreviations"
+    "vibration-diagnostics-smoke-exhausters"
   ]) assert.ok(byId.has(id), id);
 
   assert.equal(byId.get("vibration-harmonics-subharmonics").title, "Гармоники");
@@ -239,9 +237,10 @@ test("атласы, сценарии и инструменты использу�
   assert.equal(byId.get("vibration-case-high-overall").template, "scenario");
   assert.equal(byId.get("vibration-reference-symbols").template, "reference");
   assert.equal(byId.get("vibration-tool-harmonics").template, "tool");
-  assert.deepEqual(byId.get("vibration-tool-diagnostic-tree").toolConfig.nodes, []);
-  assert.deepEqual(byId.get("vibration-tool-diagnostic-tree").toolConfig.edges, []);
-  assert.equal(byId.get("vibration-tool-diagnostic-tree").hidden, true);
+  assert.equal(byId.has("vibration-tool-diagnostic-tree"), false);
+  data.filter(item => item.parentId === "vibration-tools").forEach(item => {
+    assert.equal(item.toolConfig.scope, "method", item.id);
+  });
 });
 
 test("оба атласа ВД полностью заполнены учебными изображениями", () => {
@@ -258,17 +257,16 @@ test("оба атласа ВД полностью заполнены учебн�
   assert.ok(slots.every(slot => /учебн|пример/i.test(slot.caption)), "каждая подпись объясняет учебный характер");
 });
 
-test("справочник ВД собран в четыре публичные карточки без удаления прежних ID", () => {
+test("справочник ВД собран в четыре карточки без скрытых дублей", () => {
   const references = data.filter(item => item.parentId === "vibration-reference");
-  const visible = references.filter(item => item.hidden !== true);
-  assert.deepEqual(visible.map(item => item.id), [
+  assert.deepEqual(references.map(item => item.id), [
     "vibration-reference-symbols",
     "vibration-reference-unit-conversion",
     "vibration-reference-rotation-harmonics",
     "vibration-reference-standards"
   ]);
-  visible.forEach(item => assert.equal(item.status, "published", item.id));
-  assert.equal(references.length, 14);
+  references.forEach(item => assert.equal(item.status, "published", item.id));
+  assert.equal(references.length, 4);
 });
 
 test("помощник по неисправности активирован без изменения ID и маршрута", () => {

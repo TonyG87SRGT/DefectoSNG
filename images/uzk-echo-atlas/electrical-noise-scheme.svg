@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img" aria-labelledby="title desc">
+  <title id="title">Схема происхождения: Электрические помехи и аппаратурный шум</title><desc id="desc">Учебная схема акустического пути и возможного источника сигнала.</desc>
+  <rect width="800" height="420" rx="28" fill="#0b1119"/><text x="42" y="46" fill="#e8edf4" font-family="Arial,sans-serif" font-size="22" font-weight="700">Электрические помехи и аппаратурный шум</text>
+  <rect x="95" y="92" width="140" height="72" rx="14" fill="#223044" stroke="#60a5fa" stroke-width="3"/><text x="132" y="136" fill="#e8edf4" font-family="Arial,sans-serif" font-size="23">ПЭП</text>
+  <rect x="78" y="165" width="650" height="175" rx="12" fill="#172231" stroke="#7b8ca2" stroke-width="3"/><path d="M165 165L430 315L665 165" fill="none" stroke="#60a5fa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M185 70C260 25 320 115 390 65S530 110 620 52" fill="none" stroke="#f59e0b" stroke-width="6" stroke-dasharray="8 8"/>
+  <text x="92" y="380" fill="#9fb0c4" font-family="Arial,sans-serif" font-size="18">Путь и форма сигнала проверяются расчётом, сканированием и сравнением.</text>
+  </svg>

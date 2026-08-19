@@ -18,6 +18,14 @@ test("старый массив ID мигрирует в ссылки method/id"
   ]);
 });
 
+test("миграция удаляет ссылку на убранное диагностическое дерево", () => {
+  const articles = [{ id: "vibration-tool-fault-search", methodKey: "vibration" }];
+  assert.deepEqual(normalizeFavorites([
+    "vibration-tool-diagnostic-tree",
+    "vibration-tool-fault-search"
+  ], articles), [{ method: "vibration", id: "vibration-tool-fault-search" }]);
+});
+
 test("повреждённое хранилище не ломает избранное", () => {
   const originalWarn = console.warn;
   console.warn = () => {};

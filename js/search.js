@@ -29,8 +29,8 @@ export function getSectionSearchText(sections = []) {
   }).join(" ");
 }
 
-export function buildSearchIndex() {
-  cachedDocuments = getAllItems().filter(isSearchableArticle).map(article => {
+export function buildSearchIndex(references = []) {
+  const articleDocuments = getAllItems().filter(isSearchableArticle).map(article => {
     const searchText = [
       article.title || "",
       article.category || "",
@@ -71,6 +71,27 @@ export function buildSearchIndex() {
       ].join(" "))
     };
   });
+  const referenceDocuments = references.map(reference => {
+    const searchText = getSearchValue(reference);
+    return {
+      ...reference,
+      status: "published",
+      isReference: true,
+      methodKey: "references",
+      category: reference.category || "Справочник",
+      summary: reference.description,
+      searchText,
+      searchTokens: tokenizeSearch(searchText),
+      titleTokens: tokenizeSearch(reference.title),
+      primaryTokens: tokenizeSearch([
+        reference.title || "",
+        reference.description || "",
+        reference.category || "",
+        ...(reference.keywords || [])
+      ].join(" "))
+    };
+  });
+  cachedDocuments = [...articleDocuments, ...referenceDocuments];
 
   return cachedDocuments;
 }
@@ -127,15 +148,18 @@ export function renderSearch(query) {
     ${results.length ? `
       <div class="article-list">
         ${results.map(article => {
-          const route = getItemRoute(article.methodKey, article);
+          const route = article.isReference
+            ? { view: "reference", referenceId: article.id }
+            : getItemRoute(article.methodKey, article);
           return `
             <a
               class="article-card"
               href="${getRouteHash(route)}"
               data-search-article="${escapeAttribute(article.id)}"
               data-search-method="${escapeAttribute(article.methodKey)}"
+              data-search-reference="${article.isReference ? "true" : "false"}"
             >
-              <span class="article-category">${safeText(METHODS[article.methodKey]?.short, article.methodKey)} · ${safeText(article.category)}</span>
+              <span class="article-category">${article.isReference ? "СПРАВОЧНИК" : `${safeText(METHODS[article.methodKey]?.short, article.methodKey)} · ${safeText(article.category)}`}</span>
               ${article.status === "draft" ? `<span class="draft-badge">${article.parentId === "vibration-tools" ? "В разработке" : "Черновик"}</span>` : ""}
               <h3>${safeText(article.title)}</h3>
               <p>${safeText(article.summary || article.text, "Открыть материал")}</p>
@@ -149,6 +173,11 @@ export function renderSearch(query) {
   content.querySelectorAll("[data-search-article]").forEach(link => {
     link.addEventListener("click", event => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (link.dataset.searchReference === "true") {
+        event.preventDefault();
+        navigate({ view: "reference", referenceId: link.dataset.searchArticle });
+        return;
+      }
       const method = link.dataset.searchMethod;
       const article = getItem(method, link.dataset.searchArticle);
       if (article) {

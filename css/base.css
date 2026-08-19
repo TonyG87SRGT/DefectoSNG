@@ -5,7 +5,7 @@
   --border: #26303d;
 
   --text: #f4f7fa;
-  --muted: #8f9baa;
+  --muted: #a6b1bf;
 
   --blue: #3b82f6;
   --green: #22a06b;
@@ -42,6 +42,11 @@ input {
 
 button {
   -webkit-tap-highlight-color: transparent;
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid #8fbcff;
+  outline-offset: 3px;
 }
 
 .app {
@@ -132,7 +137,7 @@ button {
 }
 
 .search-box input::placeholder {
-  color: #697687;
+  color: #8996a6;
 }
 
 #app-content {

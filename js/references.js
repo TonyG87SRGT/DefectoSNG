@@ -70,7 +70,7 @@ export async function renderReferences() {
               href="${getRouteHash(route)}"
               data-reference="${escapeAttribute(reference.id)}"
             >
-              <span class="article-category">Справочник</span>
+              <span class="article-category">${safeText(reference.category, "Справочник")}</span>
               <h3>${safeText(reference.title)}</h3>
               <p>${safeText(reference.description, "Открыть справочный материал")}</p>
             </a>

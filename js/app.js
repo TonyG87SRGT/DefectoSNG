@@ -9,7 +9,7 @@ import {
   renderPipelineJoint,
   renderPipelineReference
 } from "./pipelineJoints.js";
-import { renderReference, renderReferences } from "./references.js";
+import { loadReferences, renderReference, renderReferences } from "./references.js";
 import { renderRingWeld } from "./ringWeld.js";
 import { navigate, replaceRoute, startRouter } from "./router.js";
 import { buildSearchIndex, renderSearch } from "./search.js";
@@ -184,7 +184,11 @@ async function bootstrap() {
 
   try {
     await loadData();
-    buildSearchIndex();
+    const references = await loadReferences().catch(error => {
+      console.warn("Справочные таблицы не добавлены в общий поиск:", error);
+      return [];
+    });
+    buildSearchIndex(references);
     updateFavoriteBadge();
     startRouter(applyRoute);
   } catch (error) {

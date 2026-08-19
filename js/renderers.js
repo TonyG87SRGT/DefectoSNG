@@ -196,6 +196,10 @@ export function renderSection(section, index = 0, context = {}) {
 
 export function renderStructuredArticle(article, context = {}) {
   return (article.sections || [])
-    .map((section, index) => renderSection(section, index, context))
+    .map((section, index) => `
+      <div class="article-section-anchor" id="article-section-${index + 1}" tabindex="-1">
+        ${renderSection(section, index, context)}
+      </div>
+    `)
     .join("");
 }

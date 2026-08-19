@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" role="img" aria-labelledby="title desc">
+  <title id="title">Учебный A-скан: Одиночный внутренний отражатель</title><desc id="desc">Схематическое представление характерной картины эхо-сигналов.</desc>
+  <rect width="800" height="300" rx="28" fill="#0b1119"/><path d="M42 48V220H758" fill="none" stroke="#64748b" stroke-width="2"/>
+  <g stroke="#1f2b3a" stroke-width="1"><path d="M42 105H758M42 162H758M220 48V220M400 48V220M580 48V220"/></g>
+  <path d="M 42 190 L 80 190 L 90 138 L 100 190 L 385 190 L 395 82 L 405 190 L 655 190 L 665 102 L 675 190 L 758 190" fill="none" stroke="#60a5fa" stroke-width="5" stroke-linejoin="round"/>
+  <text x="42" y="258" fill="#9fb0c4" font-family="Arial,sans-serif" font-size="19">Время / акустический путь →</text>
+  <text x="42" y="30" fill="#e8edf4" font-family="Arial,sans-serif" font-size="20" font-weight="700">Одиночный внутренний отражатель</text>
+  <text x="742" y="210" fill="#9fb0c4" font-family="Arial,sans-serif" font-size="16">t</text>
+  </svg>
