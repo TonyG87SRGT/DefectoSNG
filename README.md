@@ -30,7 +30,9 @@ npm run check
 - `js/config.js`, `js/schema.js` — общая конфигурация и проверяемая схема данных.
 - `js/renderers.js` — таблица рендереров секций статьи.
 - `js/search.js`, `js/searchCore.js`, `js/favorites.js`, `js/atlas.js` — поиск, избранное и атлас.
-- `js/pipelineJoints.js`, `data/pipeline-welded-joints.json`, `css/pipeline-joints.css` — атлас сварных соединений трубопроводов по ГОСТ 16037-80.
+- `js/pipelineJoints.js`, `data/pipeline-welded-joints.json`, `css/pipeline-joints.css` — атлас сварных соединений трубопроводов по ГОСТ 16037-80 и семь опубликованных справочных карточек по чтению конструкций, размерам и ВИК.
+- `data/rk.json` — 15 статей РК по маршруту от НТД, источника и системы регистрации до качества изображения, измерения индикаций и заключения.
+- `data/pvk.json`, `images/pvk-atlas/` — методика ПВК и атлас из 31 карточки истинных, нерелевантных и технологических индикаций; групповые обложки являются учебными иллюстрациями.
 - `js/vibration.js`, `data/vibration.json`, `css/vibration.css` — обзор, группы и каталоги раздела вибродиагностики.
 - `js/vibrationKnowledge.js`, `js/vibrationTaxonomy.js`, `js/vibrationRelations.js` — фасетная навигация, единый словарь тегов и автоматическая перелинковка базы знаний ВД. Будущие инструменты используют экспортируемый `vibrationKnowledgeApi`, не загружая данные повторно.
 - `js/vibrationDiagnosticAssistant.js`, `js/vibrationDiagnosticQuestions.js`, `js/vibrationDiagnosticRules.js`, `js/vibrationDiagnosticEngine.js`, `js/vibrationDiagnosticStorage.js` — пошаговый офлайн-помощник по поиску вероятной неисправности, его вопросы, правила, расчёт и локальная история.

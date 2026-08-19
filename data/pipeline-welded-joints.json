@@ -31,8 +31,33 @@
     "title": "Стыковые соединения",
     "summary": "Соединения труб с трубами, арматурой, фланцами и секторами отводов.",
     "pipelineCategory": "butt",
-    "designations": ["С2", "С4", "С5", "С8", "С10", "С17", "С18", "С19", "С46", "С47", "С48", "С49", "С50", "С51", "С52", "С53", "С54", "С55", "С56"],
-    "tags": ["стыковые соединения", "стык труб", "фланец с трубой", "секторы отводов"]
+    "designations": [
+      "С2",
+      "С4",
+      "С5",
+      "С8",
+      "С10",
+      "С17",
+      "С18",
+      "С19",
+      "С46",
+      "С47",
+      "С48",
+      "С49",
+      "С50",
+      "С51",
+      "С52",
+      "С53",
+      "С54",
+      "С55",
+      "С56"
+    ],
+    "tags": [
+      "стыковые соединения",
+      "стык труб",
+      "фланец с трубой",
+      "секторы отводов"
+    ]
   },
   {
     "id": "pipeline-lap",
@@ -44,8 +69,18 @@
     "title": "Нахлесточные и муфтовые соединения",
     "summary": "Соединения штуцеров, ниппелей, труб с раздачей концов и труб с муфтами.",
     "pipelineCategory": "lap",
-    "designations": ["Н1", "Н3", "Н4"],
-    "tags": ["нахлесточное соединение", "муфтовое соединение", "штуцер с трубой", "ниппель", "раздача концов"]
+    "designations": [
+      "Н1",
+      "Н3",
+      "Н4"
+    ],
+    "tags": [
+      "нахлесточное соединение",
+      "муфтовое соединение",
+      "штуцер с трубой",
+      "ниппель",
+      "раздача концов"
+    ]
   },
   {
     "id": "pipeline-corner",
@@ -57,8 +92,26 @@
     "title": "Угловые соединения",
     "summary": "Соединения фланцев, колец, отростков, штуцеров и приварышей с трубами.",
     "pipelineCategory": "corner",
-    "designations": ["У5", "У7", "У8", "У15", "У16", "У17", "У18", "У19", "У20", "У21"],
-    "tags": ["угловое соединение", "фланец с трубой", "штуцер с трубой", "приварыш", "кольцо", "отросток"]
+    "designations": [
+      "У5",
+      "У7",
+      "У8",
+      "У15",
+      "У16",
+      "У17",
+      "У18",
+      "У19",
+      "У20",
+      "У21"
+    ],
+    "tags": [
+      "угловое соединение",
+      "фланец с трубой",
+      "штуцер с трубой",
+      "приварыш",
+      "кольцо",
+      "отросток"
+    ]
   },
   {
     "id": "pipeline-reference-materials",
@@ -69,7 +122,10 @@
     "category": "СПРАВОЧНЫЕ МАТЕРИАЛЫ",
     "title": "Справочные материалы",
     "summary": "Пояснения к обозначениям, размерам, конструктивным элементам и применению ГОСТ 16037-80.",
-    "tags": ["справочные материалы", "ГОСТ 16037-80"]
+    "tags": [
+      "справочные материалы",
+      "ГОСТ 16037-80"
+    ]
   },
   {
     "id": "pipeline-joint-c2",
@@ -80,13 +136,29 @@
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С2 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения С2. Конструктивные размеры будут перенесены из ГОСТ позднее.",
-    "tags": ["С2", "C2", "стыковое", "трубопровод"],
+    "tags": [
+      "С2",
+      "C2",
+      "стыковое",
+      "трубопровод"
+    ],
     "pipelineJoint": {
-      "designation": "С2", "category": "butt", "connectedElements": null,
-      "edgePreparation": null, "weldCharacter": null, "backing": null,
-      "weldingMethods": [], "thicknessRange": null, "minimumDiameter": null,
-      "standardTable": null, "specialFilters": [], "parameters": [],
-      "images": {"edgePreparation": null, "weldSection": null}
+      "designation": "С2",
+      "category": "butt",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
     }
   },
   {
@@ -98,21 +170,43 @@
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С17 — стыковое соединение со скосом кромок",
     "summary": "Стыковое одностороннее соединение труб со скосом кромок без подкладки.",
-    "tags": ["С17", "C17", "стыковое", "стык труб", "V-образная разделка", "одностороннее", "без подкладки", "со скосом кромок"],
+    "tags": [
+      "С17",
+      "C17",
+      "стыковое",
+      "стык труб",
+      "V-образная разделка",
+      "одностороннее",
+      "без подкладки",
+      "со скосом кромок"
+    ],
     "pipelineJoint": {
       "designation": "С17",
       "category": "butt",
-      "connectedElements": ["труба", "труба или арматура"],
+      "connectedElements": [
+        "труба",
+        "труба или арматура"
+      ],
       "edgePreparation": "со скосом кромок",
       "weldCharacter": "односторонний",
       "backing": "без подкладки",
-      "weldingMethods": ["ЗП", "ЗН", "Р", "Г"],
+      "weldingMethods": [
+        "ЗП",
+        "ЗН",
+        "Р",
+        "Г"
+      ],
       "thicknessRange": "3–20 мм",
       "minimumDiameter": null,
       "standardTable": 7,
-      "specialFilters": ["two-bevel"],
+      "specialFilters": [
+        "two-bevel"
+      ],
       "parameters": [],
-      "images": {"edgePreparation": null, "weldSection": null}
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
     }
   },
   {
@@ -124,8 +218,30 @@
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С18 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения С18. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["С18", "C18", "стыковое", "трубопровод"],
-    "pipelineJoint": {"designation":"С18","category":"butt","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "С18",
+      "C18",
+      "стыковое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "С18",
+      "category": "butt",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-c19",
@@ -136,8 +252,30 @@
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С19 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения С19. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["С19", "C19", "стыковое", "трубопровод"],
-    "pipelineJoint": {"designation":"С19","category":"butt","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "С19",
+      "C19",
+      "стыковое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "С19",
+      "category": "butt",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-c46",
@@ -148,8 +286,30 @@
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С46 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения С46. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["С46", "C46", "стыковое", "трубопровод"],
-    "pipelineJoint": {"designation":"С46","category":"butt","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "С46",
+      "C46",
+      "стыковое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "С46",
+      "category": "butt",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-c54",
@@ -160,8 +320,30 @@
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С54 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения С54. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["С54", "C54", "стыковое", "трубопровод"],
-    "pipelineJoint": {"designation":"С54","category":"butt","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "С54",
+      "C54",
+      "стыковое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "С54",
+      "category": "butt",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-c56",
@@ -172,8 +354,30 @@
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С56 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения С56. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["С56", "C56", "стыковое", "трубопровод"],
-    "pipelineJoint": {"designation":"С56","category":"butt","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "С56",
+      "C56",
+      "стыковое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "С56",
+      "category": "butt",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-n4",
@@ -184,8 +388,31 @@
     "category": "НАХЛЕСТОЧНОЕ ИЛИ МУФТОВОЕ СОЕДИНЕНИЕ",
     "title": "Н4 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения Н4. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["Н4", "H4", "нахлесточное", "муфтовое соединение", "трубопровод"],
-    "pipelineJoint": {"designation":"Н4","category":"lap","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "Н4",
+      "H4",
+      "нахлесточное",
+      "муфтовое соединение",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "Н4",
+      "category": "lap",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-u17",
@@ -196,8 +423,30 @@
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У17 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения У17. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["У17", "U17", "угловое", "трубопровод"],
-    "pipelineJoint": {"designation":"У17","category":"corner","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "У17",
+      "U17",
+      "угловое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "У17",
+      "category": "corner",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-u18",
@@ -208,8 +457,30 @@
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У18 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения У18. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["У18", "U18", "угловое", "трубопровод"],
-    "pipelineJoint": {"designation":"У18","category":"corner","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "У18",
+      "U18",
+      "угловое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "У18",
+      "category": "corner",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-u19",
@@ -220,8 +491,30 @@
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У19 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения У19. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["У19", "U19", "угловое", "трубопровод"],
-    "pipelineJoint": {"designation":"У19","category":"corner","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "У19",
+      "U19",
+      "угловое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "У19",
+      "category": "corner",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-u20",
@@ -232,8 +525,30 @@
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У20 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения У20. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["У20", "U20", "угловое", "трубопровод"],
-    "pipelineJoint": {"designation":"У20","category":"corner","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "У20",
+      "U20",
+      "угловое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "У20",
+      "category": "corner",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-joint-u21",
@@ -244,91 +559,827 @@
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У21 — сварное соединение трубопроводов",
     "summary": "Тестовая карточка соединения У21. Точные характеристики будут добавлены после переноса из ГОСТ.",
-    "tags": ["У21", "U21", "угловое", "трубопровод"],
-    "pipelineJoint": {"designation":"У21","category":"corner","connectedElements":null,"edgePreparation":null,"weldCharacter":null,"backing":null,"weldingMethods":[],"thicknessRange":null,"minimumDiameter":null,"standardTable":null,"specialFilters":[],"parameters":[],"images":{"edgePreparation":null,"weldSection":null}}
+    "tags": [
+      "У21",
+      "U21",
+      "угловое",
+      "трубопровод"
+    ],
+    "pipelineJoint": {
+      "designation": "У21",
+      "category": "corner",
+      "connectedElements": null,
+      "edgePreparation": null,
+      "weldCharacter": null,
+      "backing": null,
+      "weldingMethods": [],
+      "thicknessRange": null,
+      "minimumDiameter": null,
+      "standardTable": null,
+      "specialFilters": [],
+      "parameters": [],
+      "images": {
+        "edgePreparation": null,
+        "weldSection": null
+      }
+    }
   },
   {
     "id": "pipeline-reference-designations",
     "type": "article",
     "parentId": "pipeline-reference-materials",
     "order": 1,
-    "status": "draft",
+    "status": "published",
     "category": "СПРАВОЧНЫЙ МАТЕРИАЛ",
     "title": "Как читать обозначения соединений",
     "summary": "Пояснение буквенных и цифровых обозначений типов соединений.",
-    "text": "Материал находится в подготовке.",
-    "tags": ["обозначения соединений", "ГОСТ 16037-80"]
+    "tags": [
+      "обозначения соединений",
+      "ГОСТ 16037-80",
+      "С17",
+      "C17",
+      "стыковое соединение",
+      "нахлесточное соединение",
+      "угловое соединение",
+      "ЗП",
+      "ЗН",
+      "Р",
+      "Ф",
+      "Г"
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Как устроено обозначение",
+        "content": "Условное обозначение связывает букву типа соединения и номер конкретного конструктивного исполнения в таблицах ГОСТ 16037-80. Оно помогает найти схему и размеры, но само по себе не описывает все параметры шва."
+      },
+      {
+        "type": "table",
+        "title": "Буквенная часть",
+        "headers": [
+          "Обозначение",
+          "Группа"
+        ],
+        "rows": [
+          [
+            "С",
+            "стыковое соединение"
+          ],
+          [
+            "Н",
+            "нахлёсточное или муфтовое соединение"
+          ],
+          [
+            "У",
+            "угловое соединение"
+          ]
+        ],
+        "note": "В поиске допустимы латинские C, H и U, но в документации следует воспроизводить обозначение стандарта без замены алфавита."
+      },
+      {
+        "type": "text",
+        "title": "Что означает номер",
+        "content": "Число после буквы — идентификатор исполнения в стандарте, а не размер, угол или класс качества. Например, С17 следует искать как отдельную строку с собственной формой кромок, характером шва, способом сварки и диапазоном толщин."
+      },
+      {
+        "type": "table",
+        "title": "Сокращения способов сварки",
+        "headers": [
+          "Код",
+          "Способ"
+        ],
+        "rows": [
+          [
+            "ЗП",
+            "дуговая сварка в защитном газе плавящимся электродом"
+          ],
+          [
+            "ЗН",
+            "дуговая сварка в защитном газе неплавящимся электродом"
+          ],
+          [
+            "Р",
+            "ручная дуговая сварка"
+          ],
+          [
+            "Ф",
+            "дуговая сварка под флюсом"
+          ],
+          [
+            "Г",
+            "газовая сварка"
+          ]
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Как читать карточку",
+        "items": [
+          "Определить соединяемые элементы и тип соединения.",
+          "Сопоставить подготовку кромок и характер выполненного шва со схемой.",
+          "Проверить наличие подкладки или расплавляемой вставки.",
+          "Проверить разрешённый способ сварки и диапазон толщин.",
+          "Перейти к таблице размеров именно этого исполнения.",
+          "Сверить выбор с чертежом, технологией сварки и документацией на объект."
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Обозначение не назначает конструкцию",
+        "content": "Наличие типа в ГОСТ 16037-80 не разрешает автоматически применять его на конкретном трубопроводе. Исполнение задают проектная и технологическая документация."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-dimensions",
+            "title": "Условные обозначения размеров"
+          },
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-scope",
+            "title": "Область применения ГОСТ 16037-80"
+          },
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-vik",
+            "title": "Что проверять при ВИК"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pipeline-reference-dimensions",
     "type": "article",
     "parentId": "pipeline-reference-materials",
     "order": 2,
-    "status": "draft",
+    "status": "published",
     "category": "СПРАВОЧНЫЙ МАТЕРИАЛ",
     "title": "Условные обозначения размеров",
     "summary": "Параметры s, b, c, e, g, K, Dн и другие обозначения размеров.",
-    "text": "Материал находится в подготовке.",
-    "tags": ["условные обозначения", "размеры", "s", "b", "c", "e", "g", "K", "Dн"]
+    "tags": [
+      "условные обозначения",
+      "размеры сварного шва",
+      "s",
+      "s1",
+      "b",
+      "c",
+      "e",
+      "g",
+      "δ",
+      "a",
+      "B",
+      "l",
+      "K",
+      "K1",
+      "Dн",
+      "f"
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Зачем нужны буквенные размеры",
+        "content": "Буквы связывают размерные линии на схеме с графами таблицы. Значение следует читать вместе с номиналом, предельным отклонением, диапазоном толщин и примечаниями конкретной таблицы."
+      },
+      {
+        "type": "table",
+        "title": "Подготовка и сборка",
+        "headers": [
+          "Символ",
+          "Значение"
+        ],
+        "rows": [
+          [
+            "s, s₁",
+            "толщины стенок свариваемых деталей"
+          ],
+          [
+            "b",
+            "зазор между кромками после прихватки"
+          ],
+          [
+            "c",
+            "притупление кромки"
+          ],
+          [
+            "B",
+            "ширина нахлёстки"
+          ],
+          [
+            "l",
+            "длина муфты"
+          ],
+          [
+            "Dн",
+            "наружный диаметр трубы"
+          ],
+          [
+            "f",
+            "фаска фланца"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Шов и вспомогательные элементы",
+        "headers": [
+          "Символ",
+          "Значение"
+        ],
+        "rows": [
+          [
+            "e",
+            "ширина сварного шва"
+          ],
+          [
+            "g",
+            "выпуклость сварного шва"
+          ],
+          [
+            "δ",
+            "толщина подкладного кольца"
+          ],
+          [
+            "a",
+            "толщина шва"
+          ],
+          [
+            "K",
+            "катет углового шва"
+          ],
+          [
+            "K₁",
+            "катет углового шва со стороны разъёма фланца"
+          ]
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Как определить допустимое значение",
+        "items": [
+          "Найти обозначение соединения.",
+          "Открыть соответствующую ему таблицу.",
+          "Выбрать строку по толщине, диаметру и способу сварки.",
+          "Разделить номинальное значение и предельное отклонение.",
+          "Проверить сноски и примечания.",
+          "Сопоставить с более строгими требованиями проектной или технологической документации."
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Одинаковая буква — не универсальный размер",
+        "content": "Значение b, e, g или K может различаться для разных соединений, толщин и способов сварки. Нельзя переносить число из соседней карточки только потому, что символ совпадает."
+      },
+      {
+        "type": "tip",
+        "title": "Запись результата ВИК",
+        "content": "В протоколе полезно указывать не только измеренное число, но и место измерения, обозначение соединения, требование документа и применённый инструмент."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-fillet-welds",
+            "title": "Угловые швы и катеты"
+          },
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-different-thickness",
+            "title": "Сварка деталей разной толщины"
+          },
+          {
+            "method": "vik",
+            "id": "vik-control-measurements",
+            "title": "Что необходимо измерять"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pipeline-reference-different-thickness",
     "type": "article",
     "parentId": "pipeline-reference-materials",
     "order": 3,
-    "status": "draft",
+    "status": "published",
     "category": "СПРАВОЧНЫЙ МАТЕРИАЛ",
     "title": "Сварка деталей разной толщины",
     "summary": "Конструктивные решения для соединения деталей с различной толщиной стенки.",
-    "text": "Материал находится в подготовке.",
-    "tags": ["разная толщина", "толщина стенки", "сварка труб"]
+    "tags": [
+      "разная толщина",
+      "s1",
+      "s2",
+      "толщина стенки",
+      "плавный переход",
+      "смещение кромок",
+      "утонение",
+      "проточка"
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "В чём задача",
+        "content": "При соединении стенок разной толщины необходимо обеспечить предусмотренную конструкцию разделки и плавный переход, не создавая резкой геометрической концентрации напряжений. Решение выбирают по карточке соединения и проекту."
+      },
+      {
+        "type": "list",
+        "title": "Что может задавать технология",
+        "items": [
+          "скос или проточку более толстой детали;",
+          "наклонное расположение поверхности шва;",
+          "переход по наружной, внутренней либо обеим поверхностям;",
+          "допустимое смещение внутренних кромок;",
+          "минимальную толщину после обработки;",
+          "длину и форму переходного участка."
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Проверка до сварки",
+        "items": [
+          "Подтвердить фактические s₁ и s₂.",
+          "Проверить соответствие соединения чертежу и технологической карте.",
+          "Измерить подготовленный переход и притупление.",
+          "Проверить зазор и смещение кромок после прихватки.",
+          "Убедиться, что обработка не уменьшила стенку ниже установленной."
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Проверка после сварки",
+        "items": [
+          "Проследить плавность наружного перехода.",
+          "Измерить доступные размеры шва и смещение.",
+          "Проверить отсутствие подрезов, неплавного сопряжения и других поверхностных несплошностей.",
+          "Зафиксировать место и протяжённость отклонения относительно оси стыка."
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Нет универсального уклона",
+        "content": "Допустимая разность толщин, форма перехода и его длина зависят от конструкции и документации на трубопровод. Их нельзя назначать по общему правилу без проверки применимой таблицы и проекта."
+      },
+      {
+        "type": "tip",
+        "title": "Что сравнивать",
+        "content": "Сравнивайте фактическую геометрию не с соседним стыком, а с назначенным исполнением и размерной строкой для данного диапазона толщин."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-dimensions",
+            "title": "Условные обозначения размеров"
+          },
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-vik",
+            "title": "Что проверять при ВИК"
+          },
+          {
+            "method": "vik",
+            "id": "vik-control-measurements",
+            "title": "Что необходимо измерять"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pipeline-reference-backings",
     "type": "article",
     "parentId": "pipeline-reference-materials",
     "order": 4,
-    "status": "draft",
+    "status": "published",
     "category": "СПРАВОЧНЫЙ МАТЕРИАЛ",
     "title": "Подкладные кольца и расплавляемые вставки",
     "summary": "Назначение съёмных и остающихся подкладок и расплавляемых вставок.",
-    "text": "Материал находится в подготовке.",
-    "tags": ["подкладное кольцо", "съёмная подкладка", "остающаяся подкладка", "расплавляемая вставка"]
+    "tags": [
+      "подкладное кольцо",
+      "подкладка",
+      "съёмная подкладка",
+      "остающаяся подкладка",
+      "расплавляемая вставка",
+      "корень шва",
+      "смещение кольца"
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Назначение",
+        "content": "Подкладка поддерживает сварочную ванну и помогает сформировать корень одностороннего шва. Расплавляемая вставка участвует в формировании корня, но не является просто другим названием подкладного кольца."
+      },
+      {
+        "type": "table",
+        "title": "Основные варианты",
+        "headers": [
+          "Элемент",
+          "Особенность контроля"
+        ],
+        "rows": [
+          [
+            "Съёмная подкладка",
+            "после сварки должна быть удалена, если это предусмотрено технологией; контролируют поверхность корня после удаления"
+          ],
+          [
+            "Остающееся подкладное кольцо",
+            "становится частью соединения; важны посадка, положение, зазор и качество приварки"
+          ],
+          [
+            "Расплавляемая вставка",
+            "форма, материал и положение должны соответствовать технологии; оценивают сформированный корень"
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "title": "До сварки проверить",
+        "items": [
+          "тип, материал и размеры элемента;",
+          "чистоту поверхностей;",
+          "прилегание и фиксацию;",
+          "положение относительно стыка;",
+          "зазор и смещение кромок;",
+          "отсутствие повреждений и загрязнений."
+        ]
+      },
+      {
+        "type": "list",
+        "title": "После сварки проверить",
+        "items": [
+          "полноту удаления съёмной подкладки;",
+          "доступную поверхность корня;",
+          "смещение или выступание остающегося кольца;",
+          "следы прожога, непровара, несплавления и включений;",
+          "соответствие результата назначенной конструкции."
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Варианты не взаимозаменяемы",
+        "content": "Заменять съёмную подкладку остающимся кольцом или расплавляемой вставкой без изменения утверждённой технологии нельзя: меняются формирование корня, контроль и эксплуатационные свойства соединения."
+      },
+      {
+        "type": "tip",
+        "title": "Доступность контроля",
+        "content": "Если корень после сварки недоступен, качество сборки подкладного элемента особенно важно фиксировать до закрытия стыка."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-designations",
+            "title": "Как читать обозначения соединений"
+          },
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-vik",
+            "title": "Что проверять при ВИК"
+          },
+          {
+            "method": "vik",
+            "id": "vik-control-object-preparation",
+            "title": "Подготовка объекта контроля"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pipeline-reference-fillet-welds",
     "type": "article",
     "parentId": "pipeline-reference-materials",
     "order": 5,
-    "status": "draft",
+    "status": "published",
     "category": "СПРАВОЧНЫЙ МАТЕРИАЛ",
     "title": "Угловые швы и катеты",
     "summary": "Основные обозначения и контролируемые параметры угловых швов.",
-    "text": "Материал находится в подготовке.",
-    "tags": ["угловой шов", "катет", "K", "K1"]
+    "tags": [
+      "угловой шов",
+      "катет",
+      "K",
+      "K1",
+      "a",
+      "толщина шва",
+      "вогнутость",
+      "выпуклость",
+      "штуцер",
+      "фланец"
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Что характеризует угловой шов",
+        "content": "Угловой шов соединяет поверхности, расположенные под углом или в нахлёстку. Его работоспособность нельзя оценивать только по видимой ширине: важны назначенный катет, фактическая форма профиля, длина и качество переходов к основному металлу."
+      },
+      {
+        "type": "facts",
+        "title": "Основные обозначения",
+        "items": [
+          {
+            "label": "K",
+            "value": "катет углового шва"
+          },
+          {
+            "label": "K₁",
+            "value": "катет со стороны разъёма фланца для соответствующих конструкций"
+          },
+          {
+            "label": "a",
+            "value": "толщина шва, если этот параметр задан схемой"
+          },
+          {
+            "label": "Dн",
+            "value": "наружный диаметр трубы, используемый при выборе строки"
+          }
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Как измерять",
+        "items": [
+          "Очистить границы шва и определить его стороны.",
+          "Установить шаблон в устойчивое положение без перекоса.",
+          "Измерить оба катета там, где конструкция позволяет.",
+          "Проверить профиль, переходы и локальные отклонения.",
+          "Повторить измерения по длине и отметить координаты минимального или максимального значения."
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что оценивать кроме катета",
+        "items": [
+          "непрерывность и протяжённость шва;",
+          "равномерность профиля;",
+          "вогнутость или избыточную выпуклость;",
+          "подрезы, наплывы, кратеры, поры и трещиноподобные признаки;",
+          "доступные участки корня и сопряжение с деталями."
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Катет не равен толщине шва",
+        "content": "K и a описывают разные геометрические характеристики. Нельзя подменять требование к расчётной толщине одним измерением видимого катета, если документация задаёт другой параметр."
+      },
+      {
+        "type": "tip",
+        "title": "Неодинаковые катеты",
+        "content": "Если схема предусматривает K и K₁, каждую сторону контролируют отдельно. Одно измерение не подтверждает геометрию всего сечения."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-dimensions",
+            "title": "Условные обозначения размеров"
+          },
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-vik",
+            "title": "Что проверять при ВИК"
+          },
+          {
+            "method": "vik",
+            "id": "vik-control-measurements",
+            "title": "Что необходимо измерять"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pipeline-reference-vik",
     "type": "article",
     "parentId": "pipeline-reference-materials",
     "order": 6,
-    "status": "draft",
+    "status": "published",
     "category": "СПРАВОЧНЫЙ МАТЕРИАЛ",
     "title": "Что проверять при ВИК",
     "summary": "Подготовка, сборка и внешний вид сварного соединения при визуальном и измерительном контроле.",
-    "text": "Материал находится в подготовке.",
-    "tags": ["ВИК", "визуальный контроль", "измерительный контроль"]
+    "tags": [
+      "ВИК",
+      "визуальный контроль",
+      "измерительный контроль",
+      "контроль сборки",
+      "контроль сварного шва",
+      "смещение кромок",
+      "зазор",
+      "катет",
+      "протокол ВИК"
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Назначение ВИК",
+        "content": "ВИК подтверждает состояние поверхности, правильность подготовки и сборки, а после сварки — доступную геометрию и поверхностные признаки. Он не заменяет методы контроля внутренних несплошностей, если они назначены документацией."
+      },
+      {
+        "type": "steps",
+        "title": "До сборки",
+        "items": [
+          "Идентифицировать детали и назначенное соединение.",
+          "Проверить доступность и состояние поверхности.",
+          "Осмотреть форму и качество подготовки кромок.",
+          "Измерить толщины, притупление и другие заданные размеры.",
+          "Проверить подкладки или вставки до их закрытия."
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "После сборки и прихватки",
+        "items": [
+          "Проверить зазор, смещение и взаимное положение деталей.",
+          "Оценить качество, расположение и зачистку прихваток.",
+          "Проверить фиксацию подкладного элемента.",
+          "Подтвердить отсутствие загрязнений в разделке.",
+          "Зафиксировать отклонения до начала сварки."
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "После сварки",
+        "items": [
+          "Очистить шов и прилегающую зону в объёме, установленном процедурой.",
+          "Осмотреть всю доступную поверхность при требуемом освещении.",
+          "Проверить форму, ширину, выпуклость, катеты и плавность переходов.",
+          "Найти поверхностные несплошности и следы ремонта.",
+          "Измерить признаки, определить их координаты и протяжённость."
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Что фиксировать",
+        "headers": [
+          "Группа",
+          "Примеры"
+        ],
+        "rows": [
+          [
+            "Идентификация",
+            "стык, линия, узел, обозначение соединения"
+          ],
+          [
+            "Условия",
+            "дата, доступ, освещение, состояние поверхности"
+          ],
+          [
+            "Инструмент",
+            "тип, идентификатор, пригодность"
+          ],
+          [
+            "Результаты",
+            "параметр, значение, координата, протяжённость"
+          ],
+          [
+            "Основание оценки",
+            "документ, пункт или критерий"
+          ]
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Признак не равен браку",
+        "content": "Обнаруженное отклонение сначала описывают и измеряют. Решение о допустимости принимают только по документации, применимой к конкретному объекту."
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "vik",
+            "id": "vik-control-sequence",
+            "title": "Последовательность выполнения визуального и измерительного контроля"
+          },
+          {
+            "method": "vik",
+            "id": "vik-control-measurements",
+            "title": "Что необходимо измерять"
+          },
+          {
+            "method": "vik",
+            "id": "vik-evaluation-ntd",
+            "title": "Оценка результатов ВИК по применимой НТД"
+          },
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-dimensions",
+            "title": "Условные обозначения размеров"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pipeline-reference-scope",
     "type": "article",
     "parentId": "pipeline-reference-materials",
     "order": 7,
-    "status": "draft",
+    "status": "published",
     "category": "СПРАВОЧНЫЙ МАТЕРИАЛ",
     "title": "Область применения ГОСТ 16037-80",
     "summary": "Назначение стандарта и границы использования приведённых конструкций.",
-    "text": "Материал находится в подготовке.",
-    "tags": ["ГОСТ 16037-80", "область применения", "нормы допустимости"]
+    "tags": [
+      "ГОСТ 16037-80",
+      "область применения",
+      "стальные трубопроводы",
+      "трубы и арматура",
+      "конструктивные элементы",
+      "размеры",
+      "нормы допустимости"
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Что устанавливает стандарт",
+        "content": "ГОСТ 16037-80 распространяется на сварные соединения трубопроводов из сталей и устанавливает основные типы, конструктивные элементы и размеры соединений труб с трубами и арматурой."
+      },
+      {
+        "type": "facts",
+        "title": "Статус документа",
+        "items": [
+          {
+            "label": "Статус",
+            "value": "действует по данным Федерального информационного фонда стандартов"
+          },
+          {
+            "label": "Дата проверки",
+            "value": "19 августа 2026 года"
+          },
+          {
+            "label": "Дата введения",
+            "value": "1 июля 1981 года"
+          },
+          {
+            "label": "Изменение",
+            "value": "Изменение № 1 введено 1 июля 1991 года"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Что можно получить из ГОСТ",
+        "items": [
+          "условное обозначение соединения;",
+          "форму подготовленных кромок;",
+          "характер выполненного шва;",
+          "предусмотренные способы сварки;",
+          "конструктивные размеры и предельные отклонения;",
+          "примечания и ограничения конкретного исполнения."
+        ]
+      },
+      {
+        "type": "warning",
+        "title": "Что не входит в область",
+        "content": "Стандарт не распространяется на сварные соединения, применяемые при изготовлении самих труб из листового или полосового материала."
+      },
+      {
+        "type": "warning",
+        "title": "Это не нормы допустимости дефектов",
+        "content": "ГОСТ 16037-80 описывает конструкцию соединений. Он не задаёт универсальный объём контроля, категории трубопроводов, квалификацию технологии или критерии приемки всех возможных несплошностей."
+      },
+      {
+        "type": "steps",
+        "title": "Перед применением",
+        "items": [
+          "Подтвердить, что объект — стальной трубопровод и соединение входит в область стандарта.",
+          "Найти ссылку на ГОСТ в проектной или технологической документации.",
+          "Проверить актуальный статус и учесть Изменение № 1.",
+          "Выбрать точное исполнение по элементам, толщине и способу сварки.",
+          "Отдельно определить требования к контролю и приемке по документации на объект."
+        ]
+      },
+      {
+        "type": "related",
+        "title": "Связанные материалы",
+        "items": [
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-designations",
+            "title": "Как читать обозначения соединений"
+          },
+          {
+            "method": "pipeline",
+            "id": "pipeline-reference-vik",
+            "title": "Что проверять при ВИК"
+          },
+          {
+            "method": "vik",
+            "id": "vik-normative-documents",
+            "title": "Нормативные документы по ВИК в России"
+          }
+        ]
+      }
+    ]
   }
 ]

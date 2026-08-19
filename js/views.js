@@ -165,6 +165,7 @@ export function renderArticleGroup(methodKey, groupArticle) {
           const route = getItemRoute(methodKey, article);
           return `
             <a class="article-card" href="${getRouteHash(route)}" data-group-article="${escapeAttribute(article.id)}">
+              ${article.coverImage ? `<img class="article-card-cover" src="${escapeAttribute(article.coverImage)}" alt="${escapeAttribute(article.coverAlt || article.title)}" loading="lazy" decoding="async">` : ""}
               <span class="article-category">${safeText(article.category)}</span>
               ${renderDraftBadge(article)}
               <h3>${safeText(article.title)}</h3>
