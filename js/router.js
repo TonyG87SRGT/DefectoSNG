@@ -5,6 +5,9 @@ let routerStarted = false;
 
 const STATIC_ROUTES = Object.freeze({
   "": { view: "home" },
+  "#work": { view: "home" },
+  "#atlases": { view: "atlases" },
+  "#learning": { view: "learning" },
   "#atlas": { view: "atlas" },
   "#favorites": { view: "favorites" },
   "#pipeline": { view: "pipeline" },
@@ -31,6 +34,18 @@ export function decodeRoutePart(value) {
 }
 
 const DYNAMIC_ROUTES = Object.freeze([
+  {
+    view: "modeMethod",
+    pattern: /^#mode=(work|learning):([^:]+)$/,
+    parse: match => ({ view: "modeMethod", mode: match[1], method: decodeRoutePart(match[2]) }),
+    format: route => `#mode=${route.mode === "learning" ? "learning" : "work"}:${encodeRoutePart(route.method)}`
+  },
+  {
+    view: "task",
+    pattern: /^#task=([^:]+)$/,
+    parse: match => ({ view: "task", task: decodeRoutePart(match[1]) }),
+    format: route => `#task=${encodeRoutePart(route.task)}`
+  },
   {
     view: "pipelineJoint",
     pattern: /^#pipeline-joint=(.+)$/,

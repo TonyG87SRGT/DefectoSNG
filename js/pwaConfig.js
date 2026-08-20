@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.44.0";
+export const APP_VERSION = "0.45.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -13,6 +13,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "css/pwa.css",
   "css/atlas.css",
   "css/sections.css",
+  "css/modes.css",
   "css/references.css",
   "css/pipeline-joints.css",
   "css/vibration.css",
@@ -29,11 +30,13 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "js/html.js",
   "js/imageViewer.js",
   "js/knowledgeGraph.js",
+  "js/navigationModel.js",
   "js/pwa.js",
   "js/pwaConfig.js",
   "js/pwaPolicy.js",
   "js/pipelineJoints.js",
   "js/references.js",
+  "js/recent.js",
   "js/renderers.js",
   "js/ringWeld.js",
   "js/router.js",

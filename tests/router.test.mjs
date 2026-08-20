@@ -4,6 +4,11 @@ import { getRouteHash, parseRoute } from "../js/router.js";
 
 const routes = [
   { view: "home" },
+  { view: "atlases" },
+  { view: "learning" },
+  { view: "modeMethod", mode: "work", method: "uzk" },
+  { view: "modeMethod", mode: "learning", method: "rk" },
+  { view: "task", task: "criteria" },
   { view: "atlas" },
   { view: "atlas", category: "shape", query: "смещение кромок" },
   { view: "pipeline" },

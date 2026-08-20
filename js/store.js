@@ -24,7 +24,17 @@ export function sortByOrder(items) {
 }
 
 export function isPublicItem(item) {
-  return item?.hidden !== true;
+  if (item?.hidden === true || item?.status === "draft") return false;
+  if (item?.pipelineJoint) {
+    const images = item.pipelineJoint.images || {};
+    return Boolean(
+      images.edgePreparation &&
+      images.weldSection &&
+      Array.isArray(item.pipelineJoint.parameters) &&
+      item.pipelineJoint.parameters.length
+    );
+  }
+  return true;
 }
 
 function rebuildIndexes(methodKey, articles) {

@@ -23,10 +23,14 @@ import { renderVibrationDataAnalysis, VIBRATION_DATA_TOOL_ID } from "./vibration
 import {
   renderArticle,
   renderArticleGroup,
+  renderAtlasesHome,
   renderComingSoon,
   renderHome,
+  renderLearningHome,
   renderMethod,
-  renderNotFound
+  renderModeMethod,
+  renderNotFound,
+  renderTaskHub
 } from "./views.js";
 
 const TOOL_RENDERERS = Object.freeze({
@@ -61,6 +65,8 @@ function renderRoute(route) {
 
   const staticRenderers = {
     home: renderHome,
+    atlases: renderAtlasesHome,
+    learning: renderLearningHome,
     references: renderReferences,
     tools: renderTools,
     documents: () => renderComingSoon("documents"),
@@ -69,6 +75,16 @@ function renderRoute(route) {
   };
   if (staticRenderers[route.view]) {
     staticRenderers[route.view]();
+    return true;
+  }
+
+  if (route.view === "modeMethod") {
+    renderModeMethod(route.method, route.mode);
+    return true;
+  }
+
+  if (route.view === "task") {
+    renderTaskHub(route.task);
     return true;
   }
 

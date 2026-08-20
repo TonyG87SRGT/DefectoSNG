@@ -1,0 +1,154 @@
+.mode-switcher {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin: 0 0 24px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(17, 24, 34, .72);
+}
+
+.mode-switcher a {
+  min-width: 0;
+  padding: 11px 5px;
+  border-radius: 11px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.mode-switcher a.active {
+  color: #fff;
+  background: var(--blue);
+}
+
+.mode-intro {
+  margin: -8px 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.work-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.work-action {
+  min-height: 104px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  color: var(--text);
+  background: var(--card);
+  text-decoration: none;
+}
+
+.work-action span {
+  color: var(--blue);
+  font-size: 24px;
+}
+
+.work-action strong {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.recent-list,
+.mode-card-list {
+  display: grid;
+  gap: 10px;
+}
+
+.recent-card,
+.mode-entry-card {
+  display: block;
+  padding: 15px 17px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--text);
+  background: var(--card);
+  text-decoration: none;
+}
+
+.recent-card small,
+.mode-entry-card small {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .45px;
+  text-transform: uppercase;
+}
+
+.recent-card strong,
+.mode-entry-card strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.mode-entry-card p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.mode-method-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.mode-method-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 82px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  color: var(--text);
+  background: var(--card);
+  text-decoration: none;
+}
+
+.mode-method-card .method-icon {
+  flex: 0 0 auto;
+}
+
+.mode-method-card strong,
+.mode-method-card small {
+  display: block;
+}
+
+.mode-method-card small {
+  margin-top: 4px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.mode-method-header {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 680px) {
+  .work-actions {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .mode-method-grid,
+  .mode-card-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
