@@ -65,6 +65,7 @@ export const TASK_HUBS = Object.freeze({
     title: "Настройка приборов",
     description: "Практические настройки, уже доступные в справочнике.",
     entries: Object.freeze([
+      Object.freeze({ method: "uzk", itemId: "uzk-equipment-skaruch" }),
       Object.freeze({ method: "uzk", itemId: "uzk-setup-section" })
     ])
   }),

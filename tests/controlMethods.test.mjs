@@ -47,9 +47,13 @@ test("УЗК организован по этапам от основ до оф�
     "uzk-control-section", "uzk-indications-section", "uzk-echo-atlas", "uzk-evaluation-section"
   ];
   assert.deepEqual(uzk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id), expected);
-  assert.equal(uzk.length, 41);
+  assert.equal(uzk.length, 42);
   assert.ok(uzk.every(item => item.status === "published"));
   for (const id of ["uzk-1", "uzk-2", "uzk-3", "uzk-4", "uzk-5", "uzk-6"]) assert.ok(uzk.some(item => item.id === id), id);
+  const skaruch = uzk.find(item => item.id === "uzk-equipment-skaruch");
+  assert.equal(skaruch?.parentId, "uzk-equipment-section");
+  assert.equal(skaruch?.status, "published");
+  assert.match(JSON.stringify(skaruch), /СКАРУЧ|ВРЧ|Два строба|1000 эхограмм|5920/);
 });
 
 test("атлас УЗК разделяет эхо-сигнал, физический источник и диагноз", () => {

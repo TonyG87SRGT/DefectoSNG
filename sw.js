@@ -15,6 +15,9 @@ const INDEX_URL = new URL("index.html", APP_BASE_URL).href;
 const PRECACHE_URLS = new Set(
   APP_PATHS.map(path => new URL(path, APP_BASE_URL).href)
 );
+const ESSENTIAL_URLS = new Set(
+  ESSENTIAL_APP_PATHS.map(path => new URL(path, APP_BASE_URL).href)
+);
 
 async function cachePaths(cache, paths) {
   return Promise.allSettled(paths.map(async path => {
@@ -36,19 +39,16 @@ function getFailedPaths(paths, results) {
 async function precacheApp() {
   const cache = await caches.open(PRECACHE_NAME);
   const essentialResults = await cachePaths(cache, ESSENTIAL_APP_PATHS);
-  const optionalResults = await cachePaths(cache, OPTIONAL_APP_PATHS);
   const essentialFailures = getFailedPaths(ESSENTIAL_APP_PATHS, essentialResults);
-  const optionalFailures = getFailedPaths(OPTIONAL_APP_PATHS, optionalResults);
-
-  if (optionalFailures.length) {
-    console.warn("Optional DefectoSNG resources were not precached:", optionalFailures);
-  }
   if (essentialFailures.length) {
     throw new AggregateError(
       essentialFailures.map(item => item.reason),
       `Essential DefectoSNG resources failed: ${essentialFailures.map(item => item.path).join(", ")}`
     );
   }
+
+  // Иллюстрации и другие необязательные ресурсы кэшируются при первом открытии.
+  // Это не задерживает установку обновления сотнями параллельных запросов на мобильных устройствах.
 }
 
 async function trimRuntimeCache(cache) {
@@ -78,7 +78,7 @@ async function networkFirst(request) {
     if (
       requestUrl.href.startsWith(APP_BASE_URL.href) &&
       response.ok &&
-      !PRECACHE_URLS.has(requestUrl.href)
+      !ESSENTIAL_URLS.has(requestUrl.href)
     ) {
       try {
         await putInRuntimeCache(request, response.clone());
