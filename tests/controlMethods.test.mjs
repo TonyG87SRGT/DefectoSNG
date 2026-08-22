@@ -47,7 +47,7 @@ test("УЗК организован по этапам от основ до оф�
     "uzk-control-section", "uzk-indications-section", "uzk-echo-atlas", "uzk-evaluation-section"
   ];
   assert.deepEqual(uzk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id), expected);
-  assert.equal(uzk.length, 43);
+  assert.equal(uzk.length, 44);
   assert.ok(uzk.every(item => item.status === "published"));
   for (const id of ["uzk-1", "uzk-2", "uzk-3", "uzk-4", "uzk-5", "uzk-6"]) assert.ok(uzk.some(item => item.id === id), id);
   const skaruch = uzk.find(item => item.id === "uzk-equipment-skaruch");
@@ -90,6 +90,23 @@ test("нормативные статьи методов опубликован�
   }
 });
 
+test("ГОСТ 32569-2013 представлен по методам из единого нормативного источника", () => {
+  const projections = [
+    [vik, "vik-gost-32569-2013-vik", "vik-evaluation-section"],
+    [uzk, "uzk-gost-32569-2013-uzk", "uzk-evaluation-section"],
+    [rk, "rk-gost-32569-2013-ndt", "rk-evaluation-section"],
+    [pvk, "pvk-gost-32569-2013-pvk-mk", "pvk-evaluation-section"]
+  ];
+  for (const [items, id, parentId] of projections) {
+    const article = items.find(item => item.id === id);
+    assert.equal(article?.status, "published", id);
+    assert.equal(article?.parentId, parentId, id);
+    assert.equal(article?.normativeView?.referenceId, "gost-32569-2013-ndt", id);
+    assert.ok(article?.normativeView?.sectionIds.length >= 6, id);
+    assert.equal(article.sections.length, 1, `${id}: числовые нормы не должны дублироваться`);
+  }
+});
+
 test("ПВК покрывает полный технологический цикл", () => {
   assert.deepEqual(
     pvk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id),
@@ -128,9 +145,9 @@ test("РК покрывает безопасный маршрут от подг�
     ["rk-basics-section", "rk-equipment-section", "rk-preparation-section", "rk-control-section", "rk-analysis-section", "rk-radiographic-atlas", "rk-evaluation-section"]
   );
   assert.ok(rk.every(item => item.status === "published"));
-  assert.equal(rk.filter(item => item.type === "article").length, 33);
+  assert.equal(rk.filter(item => item.type === "article").length, 34);
   for (const id of [
-    "rk-regulatory-documents", "rk-radiation-sources", "rk-detector-systems",
+    "rk-regulatory-documents", "rk-gost-32569-2013-ndt", "rk-radiation-sources", "rk-detector-systems",
     "rk-image-quality-indicators", "rk-exposure-geometry", "rk-marking-iqi-placement",
     "rk-film-processing", "rk-digital-image-acquisition", "rk-indications-sizing"
   ]) assert.ok(rk.some(item => item.id === id), id);
@@ -192,7 +209,10 @@ test("опубликованные материалы контроля не со
     for (const item of items.filter(candidate => candidate.status === "published")) {
       const text = JSON.stringify(item).toLowerCase();
       assert.doesNotMatch(text, /здесь будет|раздел находится в разработке/, `${method}/${item.id}`);
-      if (item.type !== "section") assert.ok((item.sections || []).length >= 7, `${method}/${item.id}`);
+      if (item.type !== "section") {
+        const hasCompleteProjection = item.normativeView?.sectionIds?.length >= 6;
+        assert.ok((item.sections || []).length >= 7 || hasCompleteProjection, `${method}/${item.id}`);
+      }
     }
   }
 });

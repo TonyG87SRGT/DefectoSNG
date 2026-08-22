@@ -30,7 +30,15 @@ export function getSectionSearchText(sections = []) {
 }
 
 export function buildSearchIndex(references = []) {
+  const referencesById = new Map(references.map(reference => [reference.id, reference]));
   const articleDocuments = getAllItems().filter(isSearchableArticle).map(article => {
+    const normativeReference = article.normativeView
+      ? referencesById.get(article.normativeView.referenceId)
+      : null;
+    const normativeSectionIds = new Set(article.normativeView?.sectionIds || []);
+    const normativeSections = normativeReference
+      ? (normativeReference.sections || []).filter(section => normativeSectionIds.has(section.id))
+      : [];
     const searchText = [
       article.title || "",
       article.category || "",
@@ -48,6 +56,7 @@ export function buildSearchIndex(references = []) {
       ...(article.atlas?.tags || []),
       getSearchValue(article.pipelineJoint),
       getSectionSearchText(article.sections),
+      getSectionSearchText(normativeSections),
       METHODS[article.methodKey]?.short || "",
       METHODS[article.methodKey]?.title || ""
     ].join(" ");

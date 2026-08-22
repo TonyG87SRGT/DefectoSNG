@@ -3,6 +3,7 @@ import { getArticleTocEntries } from "./articleNavigation.js";
 import { isFavorite, toggleFavorite } from "./favorites.js";
 import { escapeAttribute, safeText } from "./html.js";
 import { buildKnowledgeGraph, getKnowledgeBacklinks } from "./knowledgeGraph.js";
+import { getReference } from "./references.js";
 import { renderStructuredArticle } from "./renderers.js";
 import { getVibrationKnowledgeBlocks } from "./vibrationKnowledge.js";
 import {
@@ -391,9 +392,19 @@ export function renderArticle(methodKey, article) {
     title: article.title,
     subtitle: method.short
   });
-  const displayedArticle = methodKey === "vibration"
-    ? { ...article, sections: (article.sections || []).filter(section => section.type !== "related") }
+  const normativeReference = article.normativeView
+    ? getReference(article.normativeView.referenceId)
+    : null;
+  const normativeSectionIds = new Set(article.normativeView?.sectionIds || []);
+  const projectedSections = normativeReference
+    ? (normativeReference.sections || []).filter(section => normativeSectionIds.has(section.id))
+    : [];
+  const articleWithProjection = projectedSections.length
+    ? { ...article, sections: [...(article.sections || []), ...projectedSections] }
     : article;
+  const displayedArticle = methodKey === "vibration"
+    ? { ...articleWithProjection, sections: (articleWithProjection.sections || []).filter(section => section.type !== "related") }
+    : articleWithProjection;
   const articleBody = displayedArticle.sections
     ? renderStructuredArticle(displayedArticle, {
         resolveRelated: getItem,
@@ -415,6 +426,16 @@ export function renderArticle(methodKey, article) {
         `).join("")}</ol>
       </nav>
     </details>
+  ` : "";
+  const normativeSourceHtml = normativeReference ? `
+    <section class="article-related article-normative-source">
+      <h3>▤ Единый нормативный источник</h3>
+      <div class="article-related-list">
+        <a class="article-related-link" href="${getRouteHash({ view: "reference", referenceId: normativeReference.id })}">
+          ${safeText(normativeReference.title)}
+        </a>
+      </div>
+    </section>
   ` : "";
   const futureImageLabels = Array.isArray(article.mediaSlots) && article.mediaSlots.length
     ? []
@@ -503,6 +524,7 @@ export function renderArticle(methodKey, article) {
       </div>
       ${article.summary ? `<p class="article-summary">${safeText(article.summary)}</p>` : ""}
       ${tocHtml}
+      ${normativeSourceHtml}
       ${futureImage}
       ${mediaSlots ? `<section class="article-media-slots${article.mediaLayout ? ` article-media-slots-${escapeAttribute(article.mediaLayout)}` : ""}" aria-label="Иллюстрации материала">${mediaSlots}</section>` : ""}
       ${articleBody}

@@ -1,8 +1,10 @@
 import { REFERENCE_DATA_FILE } from "./config.js";
 import { content } from "./dom.js";
 import { escapeAttribute, safeText } from "./html.js";
+import { renderStructuredArticle } from "./renderers.js";
 import { getRouteHash, goBack, navigate } from "./router.js";
 import { normalizeSearchText } from "./searchCore.js";
+import { getItem, getItemRoute } from "./store.js";
 
 let referencesCache = null;
 
@@ -27,14 +29,19 @@ export async function loadReferences(
 
 export function filterReferenceRows(reference, query) {
   const normalizedQuery = normalizeSearchText(query);
-  if (!normalizedQuery) return reference.rows;
+  const rows = Array.isArray(reference.rows) ? reference.rows : [];
+  if (!normalizedQuery) return rows;
 
-  return reference.rows.filter(row => {
+  return rows.filter(row => {
     const searchable = reference.columns
       .map(column => row[column.key] ?? "")
       .join(" ");
     return normalizeSearchText(searchable).includes(normalizedQuery);
   });
+}
+
+export function getReference(referenceId) {
+  return referencesCache?.find(item => item.id === referenceId) || null;
 }
 
 function renderReferencesHeader(description = "Таблицы и инженерные данные для практической работы") {
@@ -121,6 +128,38 @@ export async function renderReference(referenceId) {
           <div><h2 tabindex="-1">Материал не найден</h2><p>Справочные материалы</p></div>
         </div>
         <div class="empty-state" role="alert">Запрошенный справочный материал отсутствует.</div>
+      `;
+      content.querySelector("#back-button")
+        .addEventListener("click", () => goBack({ view: "references" }));
+      return;
+    }
+
+    if (Array.isArray(reference.sections)) {
+      content.innerHTML = `
+        <div class="page-header reference-page-header">
+          <button class="back-button" id="back-button" aria-label="Вернуться к справочным материалам">‹</button>
+          <div>
+            <h2 tabindex="-1">${safeText(reference.title)}</h2>
+            <p>${safeText(reference.description, "Нормативный документ")}</p>
+          </div>
+        </div>
+
+        ${reference.notice ? `
+          <section class="reference-notice">
+            <strong>Важно</strong>
+            <p>${safeText(reference.notice)}</p>
+          </section>
+        ` : ""}
+
+        <article class="article-content reference-article">
+          ${renderStructuredArticle(reference, {
+            resolveRelated: getItem,
+            getRelatedHref: (method, id) => {
+              const article = getItem(method, id);
+              return article ? getRouteHash(getItemRoute(method, article)) : "#";
+            }
+          })}
+        </article>
       `;
       content.querySelector("#back-button")
         .addEventListener("click", () => goBack({ view: "references" }));

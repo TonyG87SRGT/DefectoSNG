@@ -626,6 +626,11 @@
         "items": [
           {
             "method": "pvk",
+            "id": "pvk-gost-32569-2013-pvk-mk",
+            "title": "ГОСТ 32569-2013: ПВК и МК"
+          },
+          {
+            "method": "pvk",
             "id": "pvk-purpose-scope",
             "title": "Назначение, принцип и ограничения ПВК"
           },
@@ -967,7 +972,7 @@
     "id": "pvk-results-documentation",
     "type": "article",
     "parentId": "pvk-evaluation-section",
-    "order": 3,
+    "order": 4,
     "status": "published",
     "category": "РЕЗУЛЬТАТЫ ПВК",
     "title": "Фиксация и оформление результатов ПВК",
@@ -5131,6 +5136,45 @@
           }
         ]
       }
+    ]
+  },
+  {
+    "id": "pvk-gost-32569-2013-pvk-mk",
+    "parentId": "pvk-evaluation-section",
+    "order": 3,
+    "type": "article",
+    "status": "published",
+    "title": "ГОСТ 32569-2013: ПВК и МК",
+    "category": "ОЦЕНКА ИНДИКАЦИЙ",
+    "summary": "Когда ГОСТ требует капиллярный или магнитопорошковый контроль и как они входят в последовательность НК.",
+    "sections": [
+      {
+        "type": "practice",
+        "title": "Как пользоваться карточкой",
+        "content": "Здесь показаны только относящиеся к методу требования ГОСТ 32569-2013. Нормативные блоки подставляются из общей карточки документа, поэтому таблицы и числовые критерии имеют единый источник."
+      }
+    ],
+    "normativeView": {
+      "referenceId": "gost-32569-2013-ndt",
+      "sectionIds": [
+        "scope-check",
+        "control-sequence",
+        "pvk-mt",
+        "defect-actions",
+        "identification",
+        "official-text-warning"
+      ]
+    },
+    "tags": [
+      "ГОСТ 32569-2013",
+      "НТД",
+      "технологические трубопроводы",
+      "PVK"
+    ],
+    "aliases": [
+      "ГОСТ 32569 ПВК",
+      "ГОСТ 32569 МК",
+      "капиллярный контроль трубопроводов"
     ]
   }
 ]

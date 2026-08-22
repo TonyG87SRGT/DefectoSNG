@@ -63,6 +63,30 @@ test("прямые маршруты, назад, поиск и избранно�
   await expect(page.getByRole("heading", { name: "Атлас эхо‑сигналов УЗК", exact: true })).toBeVisible();
 });
 
+test("нормативная карточка ГОСТ 32569-2013 доступна и находится поиском", async ({ page }) => {
+  await page.goto("/#reference=gost-32569-2013-ndt");
+  await expect(page.getByRole("heading", { name: "ГОСТ 32569-2013: НК технологических трубопроводов", exact: true })).toBeVisible();
+  await expect(page.getByText("Минимальный объём УЗК или РК — таблица 12.3", { exact: true })).toBeVisible();
+  await expect(page.locator(".article-table-scroll")).not.toHaveCount(0);
+
+  for (const route of [
+    ["/#article=vik:vik-gost-32569-2013-vik", "ГОСТ 32569-2013: критерии ВИК"],
+    ["/#article=uzk:uzk-gost-32569-2013-uzk", "ГОСТ 32569-2013: критерии УЗК"],
+    ["/#article=rk:rk-gost-32569-2013-ndt", "ГОСТ 32569-2013: критерии РК"],
+    ["/#article=pvk:pvk-gost-32569-2013-pvk-mk", "ГОСТ 32569-2013: ПВК и МК"]
+  ]) {
+    await page.goto(route[0]);
+    await expect(page.getByRole("heading", { name: route[1], exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Как пользоваться карточкой/ })).toBeVisible();
+    await expect(page.getByRole("link", { name: "ГОСТ 32569-2013: НК технологических трубопроводов", exact: true })).toBeVisible();
+  }
+
+  await page.getByRole("button", { name: /Поиск/ }).click();
+  const search = page.getByRole("searchbox", { name: "Поиск по справочнику" });
+  await search.fill("ГОСТ 32569 критерии УЗК");
+  await expect(page.getByText("ГОСТ 32569-2013: НК технологических трубопроводов", { exact: true })).toBeVisible();
+});
+
 test("вложенная навигация ВД и якорное содержание ВИК доступны", async ({ page }) => {
   await page.goto("/#section=vibration:vibration-reference");
   await expect(page.getByRole("heading", { name: "Справочные материалы", exact: true })).toBeVisible();
@@ -99,6 +123,8 @@ test("мобильные ширины не создают горизонталь
     "/#article=vik:vik-control-common-mistakes",
     "/#section=uzk:uzk-echo-atlas",
     "/#article=uzk:uzk-echo-planar",
+    "/#reference=gost-32569-2013-ndt",
+    "/#article=uzk:uzk-gost-32569-2013-uzk",
     "/#references",
     "/#tools",
     "/#section=vibration:vibration-reference",

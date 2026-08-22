@@ -6123,6 +6123,11 @@
         "items": [
           {
             "method": "vik",
+            "id": "vik-gost-32569-2013-vik",
+            "title": "ГОСТ 32569-2013: критерии ВИК"
+          },
+          {
+            "method": "vik",
             "id": "vik-documents-safety",
             "title": "Документы и безопасность при ВИК"
           },
@@ -6366,7 +6371,7 @@
     "id": "vik-results-documentation",
     "type": "article",
     "parentId": "vik-evaluation-section",
-    "order": 2,
+    "order": 3,
     "status": "published",
     "category": "РЕЗУЛЬТАТЫ ВИК",
     "title": "Фиксация и оформление результатов ВИК",
@@ -8093,6 +8098,46 @@
           }
         ]
       }
+    ]
+  },
+  {
+    "id": "vik-gost-32569-2013-vik",
+    "parentId": "vik-evaluation-section",
+    "order": 2,
+    "type": "article",
+    "status": "published",
+    "title": "ГОСТ 32569-2013: критерии ВИК",
+    "category": "ОЦЕНКА РЕЗУЛЬТАТОВ ВИК",
+    "summary": "Наружные дефекты, подрезы, последовательность контроля и действия при браке технологических трубопроводов.",
+    "sections": [
+      {
+        "type": "practice",
+        "title": "Как пользоваться карточкой",
+        "content": "Здесь показаны только относящиеся к методу требования ГОСТ 32569-2013. Нормативные блоки подставляются из общей карточки документа, поэтому таблицы и числовые критерии имеют единый источник."
+      }
+    ],
+    "normativeView": {
+      "referenceId": "gost-32569-2013-ndt",
+      "sectionIds": [
+        "scope-check",
+        "status-scope",
+        "control-sequence",
+        "vik-criteria",
+        "defect-actions",
+        "identification",
+        "official-text-warning"
+      ]
+    },
+    "tags": [
+      "ГОСТ 32569-2013",
+      "НТД",
+      "технологические трубопроводы",
+      "VIK"
+    ],
+    "aliases": [
+      "ГОСТ 32569 ВИК",
+      "подрезы 32569",
+      "браковка ВИК трубопроводов"
     ]
   }
 ]

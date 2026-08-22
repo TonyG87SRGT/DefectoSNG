@@ -224,6 +224,11 @@
         "items": [
           {
             "method": "rk",
+            "id": "rk-gost-32569-2013-ndt",
+            "title": "ГОСТ 32569-2013: критерии РК"
+          },
+          {
+            "method": "rk",
             "id": "rk-purpose-safety",
             "title": "Назначение, ограничения и безопасность РК"
           },
@@ -239,6 +244,53 @@
           }
         ]
       }
+    ]
+  },
+  {
+    "id": "rk-gost-32569-2013-ndt",
+    "parentId": "rk-evaluation-section",
+    "order": 2,
+    "type": "article",
+    "status": "published",
+    "title": "ГОСТ 32569-2013: критерии РК",
+    "category": "ОЦЕНКА РЕЗУЛЬТАТОВ РК",
+    "summary": "Объёмы радиографического контроля, чувствительность снимка и критерии оценки сварных соединений технологических трубопроводов.",
+    "sections": [
+      {
+        "type": "practice",
+        "title": "Как пользоваться карточкой",
+        "content": "Здесь показаны только относящиеся к методу требования ГОСТ 32569-2013. Нормативные блоки подставляются из общей карточки документа, поэтому таблицы и числовые критерии имеют единый источник."
+      }
+    ],
+    "normativeView": {
+      "referenceId": "gost-32569-2013-ndt",
+      "sectionIds": [
+        "scope-check",
+        "control-sequence",
+        "volume-table-12-3",
+        "volume-special",
+        "rk-table-12-2-a",
+        "rk-table-12-2-b",
+        "rk-table-12-2-c",
+        "rk-pores-inclusions",
+        "rk-table-12-4",
+        "rk-sensitivity",
+        "defect-actions",
+        "repair-table-12-7",
+        "identification",
+        "official-text-warning"
+      ]
+    },
+    "tags": [
+      "ГОСТ 32569-2013",
+      "НТД",
+      "технологические трубопроводы",
+      "РК"
+    ],
+    "aliases": [
+      "ГОСТ 32569 РК",
+      "критерии радиографии трубопроводов",
+      "браковка радиограмм"
     ]
   },
   {

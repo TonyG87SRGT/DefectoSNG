@@ -297,8 +297,29 @@ if (!Array.isArray(references)) {
     if (!isNonEmptyString(reference.title)) {
       addError(location, "требуется непустой строковый title");
     }
+    if (Array.isArray(reference.sections)) {
+      if (!reference.sections.length) {
+        addError(location, "требуется непустой массив sections");
+      }
+      const sectionIds = new Set();
+      reference.sections.forEach((section, sectionIndex) => {
+        sectionCount += 1;
+        for (const message of validateSectionShape(section)) {
+          addError(`${location}.sections[${sectionIndex}]`, message);
+        }
+        if (!isNonEmptyString(section.id)) {
+          addError(`${location}.sections[${sectionIndex}]`, "требуется непустой строковый id");
+        } else if (sectionIds.has(section.id)) {
+          addError(`${location}.sections[${sectionIndex}]`, `повторяющийся id: ${section.id}`);
+        } else {
+          sectionIds.add(section.id);
+        }
+      });
+      return;
+    }
+
     if (!Array.isArray(reference.columns) || !reference.columns.length) {
-      addError(location, "требуется непустой массив columns");
+      addError(location, "требуется непустой массив columns или sections");
       return;
     }
 
@@ -330,6 +351,33 @@ if (!Array.isArray(references)) {
       }
     });
   });
+}
+
+const referencesById = new Map(
+  Array.isArray(references)
+    ? references.filter(reference => isNonEmptyString(reference?.id)).map(reference => [reference.id, reference])
+    : []
+);
+for (const [method, articles] of articlesByMethod.entries()) {
+  for (const article of articles.values()) {
+    if (!article.normativeView) continue;
+    const location = `${DATA_FILES[method]}:${article.id}.normativeView`;
+    const reference = referencesById.get(article.normativeView.referenceId);
+    if (!reference) {
+      addError(location, `нормативный источник не найден: ${String(article.normativeView.referenceId)}`);
+      continue;
+    }
+    const availableSections = new Set((reference.sections || []).map(section => section.id));
+    if (!Array.isArray(article.normativeView.sectionIds) || !article.normativeView.sectionIds.length) {
+      addError(location, "требуется непустой массив sectionIds");
+      continue;
+    }
+    article.normativeView.sectionIds.forEach((sectionId, index) => {
+      if (!availableSections.has(sectionId)) {
+        addError(`${location}.sectionIds[${index}]`, `секция источника не найдена: ${String(sectionId)}`);
+      }
+    });
+  }
 }
 
 const manifest = readJson("manifest.json");
