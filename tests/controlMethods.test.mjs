@@ -67,6 +67,8 @@ test("УЗК организован по этапам от основ до оф�
   const a1550Images = a1550.sections.filter(section => section.type === "image");
   assert.equal(a1550Images.length, 3);
   assert.ok(a1550Images.every(section => fs.existsSync(new URL(`../${section.src}`, import.meta.url))));
+  const navigationModel = fs.readFileSync(new URL("../js/navigationModel.js", import.meta.url), "utf8");
+  assert.match(navigationModel, /uzk-equipment-a1550-introvisor/);
 });
 
 test("атлас УЗК разделяет эхо-сигнал, физический источник и диагноз", () => {
