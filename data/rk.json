@@ -4175,5 +4175,49 @@
         ]
       }
     ]
+  },
+  {
+    "id": "rk-rd-03-421-01-vessels",
+    "parentId": "rk-evaluation-section",
+    "order": 3,
+    "type": "article",
+    "status": "published",
+    "title": "Сосуды: радиографический контроль по РД 03-421-01",
+    "category": "СПРАВОЧНАЯ НТД · УТРАТИЛА СИЛУ",
+    "summary": "Место РК в диагностировании сварных соединений сосудов и его связь с УЗК.",
+    "sections": [
+      {
+        "type": "practice",
+        "title": "Как пользоваться карточкой",
+        "content": "Здесь показаны только относящиеся к методу исторические положения РД 03-421-01. Документ утратил силу; фактические требования выбирают по действующей документации объекта."
+      }
+    ],
+    "normativeView": {
+      "referenceId": "rd-03-421-01-vessels-ndt",
+      "sectionIds": [
+        "document-status",
+        "scope",
+        "workflow",
+        "two-method-principle",
+        "radiography",
+        "special-zones",
+        "control-expansion",
+        "assessment",
+        "repair-control",
+        "documentation",
+        "limitations"
+      ]
+    },
+    "tags": [
+      "РД 03-421-01",
+      "сосуды и аппараты",
+      "недействующая НТД",
+      "справочно"
+    ],
+    "aliases": [
+      "РК сосудов",
+      "радиография сосуда",
+      "РД 03-421-01 РК"
+    ]
   }
 ]

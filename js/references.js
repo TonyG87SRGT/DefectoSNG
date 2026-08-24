@@ -8,6 +8,19 @@ import { getItem, getItemRoute } from "./store.js";
 
 let referencesCache = null;
 
+const OBSOLETE_NOTICE = "Документ утратил силу. Материал сохранён в DefectoSNG в справочных целях. Перед применением требований необходимо проверить действующую нормативную, проектную и эксплуатационную документацию для конкретного объекта контроля.";
+
+function renderDocumentStatus(reference, compact = false) {
+  if (reference?.documentStatus !== "obsolete") return "";
+  if (compact) return `<span class="reference-status-badge reference-status-obsolete">Утратил силу · справочно</span>`;
+  return `
+    <section class="reference-status-warning" role="alert">
+      <strong>⚠ РД 03-421-01 утратил силу</strong>
+      <p>${safeText(reference.statusNotice || OBSOLETE_NOTICE)}</p>
+    </section>
+  `;
+}
+
 export async function loadReferences(
   baseUrl = globalThis.document?.baseURI || import.meta.url
 ) {
@@ -78,6 +91,7 @@ export async function renderReferences() {
               data-reference="${escapeAttribute(reference.id)}"
             >
               <span class="article-category">${safeText(reference.category, "Справочник")}</span>
+              ${renderDocumentStatus(reference, true)}
               <h3>${safeText(reference.title)}</h3>
               <p>${safeText(reference.description, "Открыть справочный материал")}</p>
             </a>
@@ -151,6 +165,8 @@ export async function renderReference(referenceId) {
           </section>
         ` : ""}
 
+        ${renderDocumentStatus(reference)}
+
         <article class="article-content reference-article">
           ${renderStructuredArticle(reference, {
             resolveRelated: getItem,
@@ -181,6 +197,8 @@ export async function renderReference(referenceId) {
           <p>${safeText(reference.notice)}</p>
         </section>
       ` : ""}
+
+      ${renderDocumentStatus(reference)}
 
       <label class="reference-search" for="reference-search">
         <span aria-hidden="true">⌕</span>

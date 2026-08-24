@@ -144,6 +144,7 @@ test("мобильные ширины не создают горизонталь
 
 test("клавиатура, ARIA, контраст и таблицы проходят базовый аудит", async ({ page }) => {
   await page.goto("/#references");
+  await page.locator("#app-content").waitFor();
   await page.keyboard.press("Tab");
   const focus = await page.evaluate(() => {
     const element = document.activeElement;
