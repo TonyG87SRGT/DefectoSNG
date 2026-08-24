@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">Положение наклонной антенной решётки у сварного шва</title>
+  <desc id="desc">Схема показывает решётку сбоку от усиления шва, оси X и Z и растровое перемещение вдоль и поперёк соединения.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#60a5fa"/></marker>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#38bdf8" stop-opacity=".5"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="960" height="560" rx="28" fill="#0b1118"/>
+  <rect x="75" y="260" width="810" height="210" rx="8" fill="#17212c" stroke="#536273" stroke-width="3"/>
+  <path d="M405 260l35-34h80l35 34" fill="#29394b" stroke="#94a3b8" stroke-width="3"/>
+  <path d="M440 260l25 34h30l25-34" fill="none" stroke="#f59e0b" stroke-width="4"/>
+  <rect x="205" y="185" width="150" height="72" rx="14" fill="#1d4ed8" stroke="#93c5fd" stroke-width="3"/>
+  <g stroke="#bfdbfe" stroke-width="3"> <path d="M225 210v27M245 210v27M265 210v27M285 210v27M305 210v27M325 210v27"/></g>
+  <text x="280" y="170" fill="#e5eef8" font-family="Arial" font-size="24" text-anchor="middle">Наклонная АР</text>
+  <path d="M280 257L490 425L615 260Z" fill="url(#beam)" stroke="#38bdf8" stroke-width="2" stroke-dasharray="9 8"/>
+  <ellipse cx="490" cy="410" rx="22" ry="10" fill="#ef4444"/>
+  <text x="520" y="420" fill="#fca5a5" font-family="Arial" font-size="22">образ отражателя</text>
+  <path d="M210 125h275" stroke="#60a5fa" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M480 125h-220" stroke="#60a5fa" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="350" y="92" fill="#93c5fd" font-family="Arial" font-size="22" text-anchor="middle">поперечное перемещение</text>
+  <path d="M720 205v-95" stroke="#60a5fa" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="745" y="142" fill="#93c5fd" font-family="Arial" font-size="22">Y — вдоль шва</text>
+  <path d="M75 500h230" stroke="#60a5fa" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="180" y="538" fill="#93c5fd" font-family="Arial" font-size="22">X — по поверхности</text>
+  <path d="M75 500v-150" stroke="#60a5fa" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="26" y="390" fill="#93c5fd" font-family="Arial" font-size="22" transform="rotate(-90 26 390)">Z — глубина</text>
+  <text x="480" y="48" fill="#f8fafc" font-family="Arial" font-size="28" font-weight="700" text-anchor="middle">Положение решётки задаёт координатную привязку томограммы</text>
+</svg>

@@ -21,7 +21,8 @@ const samples = {
   comparison: { type: "comparison", title: "Сравнение", items: [["A", "B"]] },
   methods: { type: "methods", title: "Методы", items: [{ method: "ВИК", description: "Описание" }] },
   related: { type: "related", title: "См. также", items: [{ method: "pvk", id: "pvk-1" }] },
-  documents: { type: "documents", title: "Документы", items: ["ГОСТ"] }
+  documents: { type: "documents", title: "Документы", items: ["ГОСТ"] },
+  links: { type: "links", title: "Ссылки", items: [{ label: "Документ", url: "https://example.com", note: "Источник" }] }
 };
 
 test("для каждого типа секции есть валидный пример", () => {

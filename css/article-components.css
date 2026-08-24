@@ -192,4 +192,27 @@
   }
 }
 
+.article-external-link-list {
+  display: grid;
+  gap: 10px;
+}
 
+.article-external-link {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--card) 92%, var(--accent) 8%);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.article-external-link:hover {
+  border-color: var(--accent);
+}
+
+.article-external-link span,
+.article-external-link small {
+  color: var(--muted);
+}

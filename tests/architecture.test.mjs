@@ -7,6 +7,7 @@ test("якорное содержание включается только дл
   const sections = Array.from({ length: 16 }, (_, index) => ({ type: "text", title: `Раздел ${index + 1}` }));
   assert.equal(getArticleTocEntries("vik", { sections }).length, 16);
   assert.equal(getArticleTocEntries("uzk", { sections }).length, 0);
+  assert.equal(getArticleTocEntries("uzk", { toc: true, sections }).length, 16);
   assert.equal(getArticleTocEntries("vik", { sections: sections.slice(0, 4) }).length, 0);
 });
 

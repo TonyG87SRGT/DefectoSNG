@@ -14,7 +14,8 @@ export const SECTION_TYPES = Object.freeze([
   "comparison",
   "methods",
   "related",
-  "documents"
+  "documents",
+  "links"
 ]);
 
 const isObject = value => Boolean(value) &&
@@ -136,6 +137,22 @@ export function validateSectionShape(section) {
 
   if (["steps", "list", "documents"].includes(section.type)) {
     requireStringItems(section, errors);
+  }
+
+  if (section.type === "links") {
+    requireTitle(section, errors);
+    if (!Array.isArray(section.items) || !section.items.length) {
+      errors.push("требуется непустой массив items");
+    } else {
+      section.items.forEach((item, index) => {
+        if (!isObject(item) || !isNonEmptyString(item.label) || !isNonEmptyString(item.url)) {
+          errors.push(`items[${index}] должен содержать строковые label и url`);
+        }
+        if (item?.note != null && typeof item.note !== "string") {
+          errors.push(`items[${index}].note должен быть строкой`);
+        }
+      });
+    }
   }
 
   if (section.type === "facts") {

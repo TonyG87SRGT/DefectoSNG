@@ -63,6 +63,21 @@ test("прямые маршруты, назад, поиск и избранно�
   await expect(page.getByRole("heading", { name: "Атлас эхо‑сигналов УЗК", exact: true })).toBeVisible();
 });
 
+test("карточка A1550 IntroVisor открывается, ищется и показывает практические блоки", async ({ page }) => {
+  await page.goto("/#article=uzk:uzk-equipment-a1550-introvisor");
+  await expect(page.getByRole("heading", { name: "A1550 IntroVisor", exact: true })).toBeVisible();
+  await expect(page.locator(".article-toc")).toHaveCount(1);
+  await expect(page.locator("img[src*='a1550-']")).toHaveCount(3);
+  await expect(page.locator(".article-external-link")).toHaveCount(4);
+  await expect(page.getByRole("heading", { name: "Рекомендательные варианты выбора АР по толщине", exact: true })).toBeVisible();
+  await expect(page.getByText(/318xxxx/).first()).toBeVisible();
+
+  await page.getByRole("button", { name: /Поиск/ }).click();
+  const search = page.getByRole("searchbox", { name: "Поиск по справочнику" });
+  await search.fill("M9170 настройка томографа");
+  await expect(page.getByText("A1550 IntroVisor", { exact: true })).toBeVisible();
+});
+
 test("нормативная карточка ГОСТ 32569-2013 доступна и находится поиском", async ({ page }) => {
   await page.goto("/#reference=gost-32569-2013-ndt");
   await expect(page.getByRole("heading", { name: "ГОСТ 32569-2013: НК технологических трубопроводов", exact: true })).toBeVisible();
@@ -123,6 +138,7 @@ test("мобильные ширины не создают горизонталь
     "/#article=vik:vik-control-common-mistakes",
     "/#section=uzk:uzk-echo-atlas",
     "/#article=uzk:uzk-echo-planar",
+    "/#article=uzk:uzk-equipment-a1550-introvisor",
     "/#reference=gost-32569-2013-ndt",
     "/#article=uzk:uzk-gost-32569-2013-uzk",
     "/#references",

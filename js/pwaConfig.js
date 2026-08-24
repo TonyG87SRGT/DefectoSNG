@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.50.0";
+export const APP_VERSION = "0.51.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -231,6 +231,9 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
   "images/articles/uzk/beam-input.webp",
   "images/articles/uzk/beam-zones.webp",
   "images/articles/uzk/dead-zone.webp",
+  "images/articles/uzk/a1550-array-weld-scan.svg",
+  "images/articles/uzk/a1550-tomogram-coordinates.svg",
+  "images/articles/uzk/a1550-two-side-control.svg",
   "images/defects/undercut.jpg",
   "images/defects/porosity.webp",
   "images/defects/cracks.webp",

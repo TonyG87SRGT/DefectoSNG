@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">Контроль сварного соединения с двух сторон</title>
+  <desc id="desc">Две позиции наклонной антенной решётки формируют взаимодополняющие зоны озвучивания сварного соединения.</desc>
+  <defs><linearGradient id="left" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#38bdf8" stop-opacity=".55"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></linearGradient><linearGradient id="right" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#a78bfa" stop-opacity=".55"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></linearGradient></defs>
+  <rect width="960" height="560" rx="28" fill="#0b1118"/>
+  <text x="480" y="48" fill="#f8fafc" font-family="Arial" font-size="28" font-weight="700" text-anchor="middle">Вторая сторона — независимая проверка геометрии и отражателя</text>
+  <rect x="70" y="250" width="820" height="220" rx="8" fill="#17212c" stroke="#536273" stroke-width="3"/>
+  <path d="M405 250l35-34h80l35 34M440 250l25 35h30l25-35" fill="#29394b" stroke="#f59e0b" stroke-width="3"/>
+  <rect x="145" y="176" width="145" height="70" rx="14" fill="#075985" stroke="#7dd3fc" stroke-width="3"/>
+  <rect x="670" y="176" width="145" height="70" rx="14" fill="#5b21b6" stroke="#c4b5fd" stroke-width="3"/>
+  <text x="217" y="160" fill="#7dd3fc" font-family="Arial" font-size="22" text-anchor="middle">Позиция 1</text>
+  <text x="742" y="160" fill="#c4b5fd" font-family="Arial" font-size="22" text-anchor="middle">Позиция 2</text>
+  <path d="M220 246L470 445L610 250Z" fill="url(#left)" stroke="#38bdf8" stroke-width="2" stroke-dasharray="9 7"/>
+  <path d="M740 246L500 445L350 250Z" fill="url(#right)" stroke="#a78bfa" stroke-width="2" stroke-dasharray="9 7"/>
+  <ellipse cx="512" cy="382" rx="24" ry="12" fill="#ef4444"/>
+  <text x="548" y="392" fill="#fca5a5" font-family="Arial" font-size="20">несплошность</text>
+  <text x="480" y="520" fill="#cbd5e1" font-family="Arial" font-size="21" text-anchor="middle">Необходимость сторон и проходов задаёт методика контроля; схема не является универсальным нормативом.</text>
+</svg>

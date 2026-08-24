@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">Координаты и зоны на томограмме A1550 IntroVisor</title>
+  <desc id="desc">Схема томограммы с поверхностью ввода, донной поверхностью, маской сварного шва, стробами и курсором отражателя.</desc>
+  <rect width="960" height="560" rx="28" fill="#0b1118"/>
+  <text x="480" y="48" fill="#f8fafc" font-family="Arial" font-size="28" font-weight="700" text-anchor="middle">Как читать томограмму</text>
+  <rect x="120" y="90" width="710" height="390" rx="12" fill="#101a25" stroke="#536273" stroke-width="3"/>
+  <g stroke="#243447" stroke-width="2"><path d="M220 90v390M320 90v390M420 90v390M520 90v390M620 90v390M720 90v390"/><path d="M120 170h710M120 250h710M120 330h710M120 410h710"/></g>
+  <path d="M120 90h710" stroke="#e2e8f0" stroke-width="5"/>
+  <path d="M120 480h710" stroke="#e2e8f0" stroke-width="5"/>
+  <text x="840" y="98" fill="#cbd5e1" font-family="Arial" font-size="19">поверхность ввода</text>
+  <text x="840" y="486" fill="#cbd5e1" font-family="Arial" font-size="19">донная поверхность</text>
+  <path d="M400 90l55 390M560 90l-55 390" fill="#f59e0b" fill-opacity=".08" stroke="#f59e0b" stroke-width="3" stroke-dasharray="10 7"/>
+  <text x="480" y="155" fill="#fbbf24" font-family="Arial" font-size="21" text-anchor="middle">маска шва</text>
+  <rect x="300" y="185" width="390" height="225" fill="none" stroke="#22c55e" stroke-width="4" stroke-dasharray="14 9"/>
+  <text x="305" y="176" fill="#86efac" font-family="Arial" font-size="20">первый строб — зона контроля</text>
+  <rect x="495" y="265" width="110" height="95" fill="none" stroke="#a78bfa" stroke-width="4" stroke-dasharray="9 6"/>
+  <text x="615" y="285" fill="#c4b5fd" font-family="Arial" font-size="19">второй строб</text>
+  <ellipse cx="548" cy="316" rx="31" ry="17" fill="#ef4444" fill-opacity=".75"/>
+  <path d="M548 292v48M524 316h48" stroke="#fff" stroke-width="3"/>
+  <text x="585" y="342" fill="#fca5a5" font-family="Arial" font-size="19">курсор: X, Z, A</text>
+  <path d="M120 510h180" stroke="#60a5fa" stroke-width="4"/>
+  <text x="305" y="517" fill="#93c5fd" font-family="Arial" font-size="20">X — по поверхности</text>
+  <path d="M85 90v160" stroke="#60a5fa" stroke-width="4"/>
+  <text x="50" y="250" fill="#93c5fd" font-family="Arial" font-size="20" transform="rotate(-90 50 250)">Z — в глубину</text>
+</svg>

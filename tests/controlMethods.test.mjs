@@ -47,7 +47,7 @@ test("УЗК организован по этапам от основ до оф�
     "uzk-control-section", "uzk-indications-section", "uzk-echo-atlas", "uzk-evaluation-section"
   ];
   assert.deepEqual(uzk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id), expected);
-  assert.equal(uzk.length, 46);
+  assert.equal(uzk.length, 47);
   assert.ok(uzk.every(item => item.status === "published"));
   for (const id of ["uzk-1", "uzk-2", "uzk-3", "uzk-4", "uzk-5", "uzk-6"]) assert.ok(uzk.some(item => item.id === id), id);
   const skaruch = uzk.find(item => item.id === "uzk-equipment-skaruch");
@@ -58,6 +58,15 @@ test("УЗК организован по этапам от основ до оф�
   assert.equal(usd50?.parentId, "uzk-equipment-section");
   assert.equal(usd50?.status, "published");
   assert.match(JSON.stringify(usd50), /УСД-50 IPS|ПРОТЕКТОР|ВРЧ|АРК|АРД|B-scan|TOFD/);
+  const a1550 = uzk.find(item => item.id === "uzk-equipment-a1550-introvisor");
+  assert.equal(a1550?.parentId, "uzk-equipment-section");
+  assert.equal(a1550?.status, "published");
+  assert.equal(a1550?.toc, true);
+  assert.ok(a1550?.sections.length >= 30);
+  assert.match(JSON.stringify(a1550), /A1550 IntroVisor|318xxxx|M9170|ПРЧ|ТОМОГРАФ|АРД|ВРЧ|СКАНЕР/);
+  const a1550Images = a1550.sections.filter(section => section.type === "image");
+  assert.equal(a1550Images.length, 3);
+  assert.ok(a1550Images.every(section => fs.existsSync(new URL(`../${section.src}`, import.meta.url))));
 });
 
 test("атлас УЗК разделяет эхо-сигнал, физический источник и диагноз", () => {

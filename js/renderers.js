@@ -161,6 +161,26 @@ const renderDocuments = section => `
   </section>
 `;
 
+const renderLinks = section => `
+  <section class="article-documents article-external-links">
+    <h3>↗ ${safeText(section.title)}</h3>
+    <div class="article-external-link-list">
+      ${(section.items || []).map(item => `
+        <a
+          class="article-external-link"
+          href="${escapeAttribute(item.url)}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>${safeText(item.label)}</strong>
+          ${item.note ? `<span>${safeText(item.note)}</span>` : ""}
+          <small>Внешняя ссылка</small>
+        </a>
+      `).join("")}
+    </div>
+  </section>
+`;
+
 export const SECTION_RENDERERS = Object.freeze({
   facts: renderFacts,
   text: renderText,
@@ -175,7 +195,8 @@ export const SECTION_RENDERERS = Object.freeze({
   comparison: renderComparison,
   methods: renderMethods,
   related: renderRelated,
-  documents: renderDocuments
+  documents: renderDocuments,
+  links: renderLinks
 });
 
 export const SUPPORTED_SECTION_TYPES = Object.freeze(Object.keys(SECTION_RENDERERS));
