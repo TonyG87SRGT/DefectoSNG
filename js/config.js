@@ -38,6 +38,7 @@ export const DATA_FILES = Object.freeze({
 });
 
 export const REFERENCE_DATA_FILE = "data/references.json";
+export const CRITERIA_DATA_FILE = "data/criteria.json";
 
 export const ATLAS_CATEGORIES = Object.freeze([
   Object.freeze({ id: "all", label: "Все" }),

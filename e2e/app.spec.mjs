@@ -63,6 +63,41 @@ test("прямые маршруты, назад, поиск и избранно�
   await expect(page.getByRole("heading", { name: "Атлас эхо‑сигналов УЗК", exact: true })).toBeVisible();
 });
 
+test("мастер начинается с НТД, изолирует документы и рассчитывает выбранный критерий", async ({ page }) => {
+  await page.goto("/#task=criteria");
+  await expect(page.getByRole("heading", { name: "Найти критерий", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "1. Нормативный документ", exact: true })).toBeVisible();
+  await expect(page.getByText(/Численные критерии приведены в приложении Д СП 86/)).toBeVisible();
+  await expect(page.getByRole("button", { name: /ГОСТ Р ИСО 17640/ })).toHaveCount(0);
+  await page.locator("#criteria-defect").selectOption("sp406-vik-undercut-gas");
+  await page.getByLabel(/Толщина стенки S₁/).fill("12");
+  await page.getByLabel(/Глубина дефекта/).fill("0.4");
+  await page.getByLabel(/Протяжённость одного дефекта/).fill("100");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: "ГОДЕН ПО ВЫБРАННОМУ КРИТЕРИЮ", exact: true })).toBeVisible();
+  await expect(page.getByText(/0,1 × S = 1,2 мм/)).toBeVisible();
+  await expect(page.getByText(/Критерий: СП 86\.13330\.2022, Д\.1/)).toBeVisible();
+
+  await page.getByRole("button", { name: /ГОСТ 32569 Технологические/ }).click();
+  await expect(page.getByText(/Применяйте только к технологическим/)).toBeVisible();
+  await expect(page.locator("#criteria-defect option")).toHaveCount(3);
+  await page.locator("#criteria-defect").selectOption("gost32569-vik-undercut");
+  await page.getByLabel("Условия трубопровода").selectOption("standard");
+  await page.getByLabel(/Толщина стенки S₁/).fill("10");
+  await page.getByLabel(/Длина оцениваемого шва/).fill("100");
+  await page.getByLabel(/Глубина дефекта/).fill("0.5");
+  await page.locator('input[name="totalLength"]').fill("30");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: "ГОДЕН ПО ВЫБРАННОМУ КРИТЕРИЮ", exact: true })).toBeVisible();
+  await expect(page.getByText(/Критерий: ГОСТ 32569-2013, п\. 12\.3\.4/)).toBeVisible();
+
+  await page.getByRole("button", { name: /ГОСТ ISO 11666/ }).click();
+  await expect(page.getByText(/Уровень качества D находится вне области/)).toBeVisible();
+  await expect(page.getByText("Как выполнить УЗК по ГОСТ Р ИСО 17640-2016", { exact: true })).toBeVisible();
+  await page.locator("#criteria-defect").selectOption("gost11666-quality-mapping");
+  await expect(page.getByLabel(/Уровень качества по ISO 5817/).locator("option")).toHaveCount(2);
+});
+
 test("карточка A1550 IntroVisor открывается, ищется и показывает практические блоки", async ({ page }) => {
   await page.goto("/#article=uzk:uzk-equipment-a1550-introvisor");
   await expect(page.getByRole("heading", { name: "A1550 IntroVisor", exact: true })).toBeVisible();
@@ -134,6 +169,7 @@ test("новые иллюстрации ВД загружаются в анал�
 
 test("мобильные ширины не создают горизонтальную прокрутку", async ({ page }) => {
   const routes = [
+    "/#task=criteria",
     "/#method=vik",
     "/#article=vik:vik-control-common-mistakes",
     "/#section=uzk:uzk-echo-atlas",

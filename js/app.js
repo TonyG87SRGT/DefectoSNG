@@ -11,6 +11,7 @@ import {
 } from "./pipelineJoints.js";
 import { loadReferences, renderReference, renderReferences } from "./references.js";
 import { renderRingWeld } from "./ringWeld.js";
+import { renderCriteriaFinder } from "./criteria.js";
 import { navigate, replaceRoute, startRouter } from "./router.js";
 import { buildSearchIndex, renderSearch } from "./search.js";
 import { METHODS, getItem, getItemRoute, loadData } from "./store.js";
@@ -84,7 +85,7 @@ function renderRoute(route) {
   }
 
   if (route.view === "task") {
-    renderTaskHub(route.task);
+    route.task === "criteria" ? renderCriteriaFinder() : renderTaskHub(route.task);
     return true;
   }
 

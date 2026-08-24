@@ -3,10 +3,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   ATLAS_CATEGORY_IDS,
+  CRITERIA_DATA_FILE,
   DATA_FILES,
   METHODS,
   REFERENCE_DATA_FILE
 } from "../js/config.js";
+import { validateCriteriaData } from "../js/criteriaEngine.js";
 import {
   APP_PATHS,
   APP_VERSION,
@@ -29,6 +31,11 @@ let articleCount = 0;
 let sectionCount = 0;
 let relatedLinkCount = 0;
 let referenceCount = 0;
+
+const criteriaData = readJson(CRITERIA_DATA_FILE);
+for (const message of validateCriteriaData(criteriaData)) {
+  addError(CRITERIA_DATA_FILE, message);
+}
 
 function addError(location, message) {
   errors.push(`${location}: ${message}`);
@@ -432,6 +439,7 @@ const requiredCachedPaths = new Set([
   "manifest.json",
   ...Object.values(DATA_FILES),
   REFERENCE_DATA_FILE,
+  CRITERIA_DATA_FILE,
   ...referencedAssets
 ]);
 

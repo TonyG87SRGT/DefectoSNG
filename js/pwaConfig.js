@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.51.1";
+export const APP_VERSION = "0.53.1";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -21,10 +21,13 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "css/vibration-calculators.css",
   "css/vibration-journal.css",
   "css/vibration-data-analysis.css",
+  "css/criteria.css",
   "js/app.js",
   "js/articleNavigation.js",
   "js/atlas.js",
   "js/config.js",
+  "js/criteria.js",
+  "js/criteriaEngine.js",
   "js/dom.js",
   "js/favorites.js",
   "js/html.js",
@@ -74,7 +77,8 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "data/rk.json",
   "data/vibration.json",
   "data/references.json",
-  "data/pipeline-welded-joints.json"
+  "data/pipeline-welded-joints.json",
+  "data/criteria.json"
 ]);
 
 const PVK_INDICATION_IMAGE_SLUGS = Object.freeze([

@@ -1,0 +1,653 @@
+{
+  "schemaVersion": 2,
+  "title": "Критерии НК сварных соединений трубопроводов",
+  "standards": [
+    {
+      "id": "sp406-sp86",
+      "title": "СП 86.13330.2022, приложение Д",
+      "shortTitle": "СП 86.13330.2022",
+      "description": "Рекомендуемые критерии для магистральных трубопроводов",
+      "basisDocuments": ["sp-406-2018"],
+      "dimensions": ["medium"],
+      "defaultMedium": "gas",
+      "warning": "Численные критерии приведены в приложении Д СП 86.13330.2022 и имеют рекомендуемый характер. СП 406 задаёт область применения, методы, порядок оценки и категории результата; проектная документация и требования заказчика могут уточнять критерии.",
+      "supportingDocuments": [
+        { "documentId": "sp-406-2018", "label": "Основание проведения контроля и классификации результата" }
+      ]
+    },
+    {
+      "id": "gost32569",
+      "title": "ГОСТ 32569-2013",
+      "shortTitle": "ГОСТ 32569",
+      "description": "Технологические стальные трубопроводы",
+      "basisDocuments": ["gost-32569-2013"],
+      "dimensions": [],
+      "warning": "Применяйте только к технологическим стальным трубопроводам в области ГОСТ 32569-2013. Категорию, группу среды, PN и температуру определяют по проекту до выбора нормы.",
+      "referenceId": "gost-32569-2013-ndt"
+    },
+    {
+      "id": "gost11666",
+      "title": "ГОСТ ISO 11666-2024",
+      "shortTitle": "ГОСТ ISO 11666",
+      "description": "Уровни приёмки при УЗК сварных соединений",
+      "basisDocuments": ["gost-iso-11666-2024"],
+      "dimensions": [],
+      "warning": "Стандарт устанавливает AL 2 и AL 3 для соединений с полным проплавлением из ферритных сталей, соответствующих уровням качества B и C. Уровень качества D находится вне области его применения.",
+      "supportingGuideIds": ["gost17640"]
+    }
+  ],
+  "guides": [
+    {
+      "id": "gost17640",
+      "documentId": "gost-r-iso-17640-2016",
+      "title": "Как выполнить УЗК по ГОСТ Р ИСО 17640-2016",
+      "description": "Связанная методика ручного УЗК: применимость, уровень контроля, частота, акустический контакт и отношение сигнал/шум.",
+      "warning": "Документ описывает технологию контроля и не заменяет выбранный критерий приёмки.",
+      "items": [
+        { "criterionId": "gost17640-applicability", "summary": "Общая область: толщина от 8 мм; температура объекта 0–60 °C; преимущественно соединения с полным проплавлением из ферритных сталей." },
+        { "criterionId": "gost17640-control-level", "summary": "Уровни A/B/C определяют полноту контроля; уровень D требует специальной письменной процедуры." },
+        { "criterionId": "gost17640-frequency", "summary": "Обычно применяют частоты 2–5 МГц; иной выбор должен быть обоснован процедурой контроля." },
+        { "criterionId": "gost17640-contact", "summary": "Потери контакта до 2 дБ не корректируют; более 2–12 дБ компенсируют; при превышении 12 дБ выясняют и устраняют причину." },
+        { "criterionId": "gost17640-noise", "summary": "Уровень шумов должен быть не менее чем на 12 дБ ниже оценочного уровня, если иное не установлено спецификацией." }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "id": "sp-406-2018",
+      "designation": "СП 406.1325800.2018",
+      "title": "Трубопроводы магистральные и промысловые стальные для нефти и газа. Монтажные работы. Сварка и контроль ее выполнения",
+      "status": "current",
+      "role": "Область применения, методы НК, порядок оценки и категории результата"
+    },
+    {
+      "id": "sp-86-2022",
+      "designation": "СП 86.13330.2022",
+      "title": "Магистральные трубопроводы",
+      "edition": "ред. от 06.06.2025, с изменением № 1",
+      "status": "current",
+      "role": "Рекомендуемые критерии отбраковки дефектов, приложение Д"
+    },
+    {
+      "id": "sp-86-2014",
+      "designation": "СП 86.13330.2014",
+      "title": "Магистральные трубопроводы",
+      "status": "replaced",
+      "replacedBy": "sp-86-2022",
+      "role": "Ссылочный документ исходной редакции СП 406; в расчётах не используется"
+    },
+    {
+      "id": "gost-32569-2013",
+      "designation": "ГОСТ 32569-2013",
+      "title": "Трубопроводы технологические стальные. Требования к устройству и эксплуатации на взрывопожароопасных и химически опасных производствах",
+      "status": "current",
+      "role": "Самостоятельные требования и критерии НК технологических трубопроводов"
+    },
+    {
+      "id": "gost-r-iso-17640-2016",
+      "designation": "ГОСТ Р ИСО 17640-2016",
+      "title": "Неразрушающий контроль сварных соединений. Ультразвуковой контроль. Технология, уровни контроля и оценки",
+      "status": "current",
+      "role": "Технология ручного УЗК; не подменяет документ с критериями приёмки"
+    },
+    {
+      "id": "gost-iso-11666-2024",
+      "designation": "ГОСТ ISO 11666-2024",
+      "title": "Неразрушающий контроль сварных соединений. Ультразвуковой контроль. Уровни приемки",
+      "status": "current",
+      "role": "Уровни приёмки AL 2 и AL 3 при подтверждённой применимости"
+    }
+  ],
+  "methods": [
+    { "id": "vik", "title": "ВИК", "description": "Геометрия и поверхностные дефекты", "basisClause": "9.5" },
+    { "id": "rk", "title": "РК", "description": "Внутренние дефекты по радиографическому изображению", "basisClause": "9.6" },
+    { "id": "uzk", "title": "УЗК", "description": "Амплитуда, эквивалентная площадь и протяжённость", "basisClause": "9.7" },
+    { "id": "pvk", "title": "ПВК", "description": "Поверхностные несплошности и уточнение ВИК", "basisClause": "9.8" },
+    { "id": "mk", "title": "МК", "description": "Поверхностные и подповерхностные несплошности", "basisClause": "9.9" }
+  ],
+  "inputs": {
+    "thickness1": { "label": "Толщина стенки S₁", "type": "number", "unit": "мм", "min": 0.01, "step": 0.01 },
+    "thickness2": { "label": "Толщина второго элемента S₂ (если разнотолщинный стык)", "type": "number", "unit": "мм", "min": 0.01, "step": 0.01, "optional": true },
+    "diameter": { "label": "Наружный диаметр трубы", "type": "number", "unit": "мм", "min": 0.01, "step": 0.1 },
+    "quality": { "label": "Уровень качества", "type": "select", "options": [{ "value": "A", "label": "A" }, { "value": "B", "label": "B" }, { "value": "C", "label": "C" }] },
+    "category": { "label": "Категория трубопровода", "type": "select", "options": [{ "value": "BI", "label": "B / I" }, { "value": "II-IV", "label": "II / III / IV" }] },
+    "depth": { "label": "Глубина дефекта h", "type": "number", "unit": "мм", "min": 0, "step": 0.01 },
+    "length": { "label": "Протяжённость одного дефекта l", "type": "number", "unit": "мм", "min": 0, "step": 0.1 },
+    "totalLength": { "label": "Суммарная протяжённость", "type": "number", "unit": "мм", "min": 0, "step": 0.1 },
+    "equivalentArea": { "label": "Эквивалентная площадь", "type": "number", "unit": "мм²", "min": 0, "step": 0.01 },
+    "amplitudeState": { "label": "Амплитуда относительно браковочного уровня", "type": "select", "options": [{ "value": "not-above", "label": "Не выше браковочного уровня" }, { "value": "above", "label": "Выше браковочного уровня" }] },
+    "width": { "label": "Ширина / диаметр дефекта", "type": "number", "unit": "мм", "min": 0, "step": 0.01 },
+    "clusterLength": { "label": "Размер скопления", "type": "number", "unit": "мм", "min": 0, "step": 0.01 },
+    "defectCount": { "label": "Количество дефектов на 100 мм", "type": "number", "unit": "шт.", "min": 0, "step": 1 },
+    "weldLength": { "label": "Длина оцениваемого шва", "type": "number", "unit": "мм", "min": 0.1, "step": 0.1 },
+    "conditionClass": { "label": "Условия трубопровода", "type": "select", "options": [{ "value": "special", "label": "PN > 10 МПа / I категория / А(а) / ниже −70 °C" }, { "value": "standard", "label": "PN ≤ 10 МПа, категории I–IV (таблица 12.5)" }] },
+    "rtNormGroup": { "label": "Группа нормы таблицы 12.2", "type": "select", "options": [{ "value": "A", "label": "I А/Б/В; II А/Б/В; III Б" }, { "value": "B", "label": "III В" }, { "value": "C", "label": "IV Б/В; V В" }] },
+    "temperature": { "label": "Температура объекта", "type": "number", "unit": "°C", "step": 0.1 },
+    "contactLoss": { "label": "Разница акустического контакта", "type": "number", "unit": "дБ", "min": 0, "step": 0.1 },
+    "noiseMargin": { "label": "Отстройка шума ниже оценочного уровня", "type": "number", "unit": "дБ", "min": 0, "step": 0.1 },
+    "controlLevel": { "label": "Уровень контроля", "type": "select", "options": [{ "value": "A", "label": "A" }, { "value": "B", "label": "B" }, { "value": "C", "label": "C" }, { "value": "D", "label": "D — специальная письменная процедура" }] },
+    "acceptanceLevel": { "label": "Уровень приёмки", "type": "select", "options": [{ "value": "AL2", "label": "AL 2" }, { "value": "AL3", "label": "AL 3" }] },
+    "referenceTechnique": { "label": "Способ настройки опорного уровня", "type": "select", "options": [{ "value": "1", "label": "1 — боковое цилиндрическое отверстие 3 мм" }, { "value": "2", "label": "2 — DGS/DSR, плоскодонный диск" }, { "value": "3", "label": "3 — прямоугольная зарубка 1×1 мм" }, { "value": "4", "label": "4 — тандем, плоскодонное отверстие 6 мм" }] },
+    "amplitudeDb": { "label": "Амплитуда относительно H₀", "type": "number", "unit": "дБ", "step": 0.1 },
+    "frequency": { "label": "Частота", "type": "number", "unit": "МГц", "min": 1.5, "max": 5, "step": 0.1 },
+    "waveType": { "label": "Волна / преобразователь", "type": "select", "options": [{ "value": "shear", "label": "Поперечная, наклонный ПЭП" }, { "value": "longitudinal", "label": "Продольная, прямой ПЭП" }] }
+    ,"halfReferenceState": { "label": "Сигнал относительно 0,5 амплитуды опорного отражателя", "type": "select", "options": [{ "value": "not-above", "label": "Не выше 0,5 опорной амплитуды" }, { "value": "above", "label": "Выше 0,5 опорной амплитуды" }] }
+    ,"rootNormGroup": { "label": "Группа соединения по таблице 12.4", "type": "select", "options": [{ "value": "A", "label": "I А/Б/В; II А/Б/В; III Б" }, { "value": "B", "label": "III В" }, { "value": "C", "label": "IV Б/В; V В" }] }
+    ,"length1": { "label": "Длина первой индикации l₁", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"length2": { "label": "Длина второй индикации l₂", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"dx": { "label": "Расстояние dx", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"dy": { "label": "Расстояние dy", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"dz": { "label": "Расстояние dz", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"weldQualityLevel": { "label": "Уровень качества по ISO 5817", "type": "select", "options": [{ "value": "B", "label": "B" }, { "value": "C", "label": "C" }] }
+  },
+  "criteria": [
+    {
+      "id": "sp406-vik-crack",
+      "method": "vik", "medium": ["gas", "oil"], "defect": "Трещина", "aliases": ["трещины", "трещиноподобный дефект"],
+      "inputs": [], "outcome": "prohibited",
+      "variants": [{ "when": {}, "outcome": "prohibited", "directCategory": "ВЫРЕЗАТЬ", "message": "Трещины не допускаются; СП 406, п. 9.10.7 относит соединение с трещиной к категории «Вырезать»." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10.7"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.1 / Д.2" }
+    },
+    {
+      "id": "sp406-vik-undercut-gas",
+      "method": "vik", "medium": ["gas"], "defect": "Подрез", "aliases": ["подрезы", "наружный подрез", "внутренний подрез"],
+      "inputs": ["thickness1", "depth", "length"],
+      "variants": [{ "when": {}, "limits": [
+        { "input": "depth", "label": "Глубина подреза", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 0.5, "unit": "мм" } },
+        { "input": "length", "label": "Протяжённость подреза", "unit": "мм", "max": { "type": "fixed", "value": 150, "unit": "мм" } }
+      ] }],
+      "notes": ["Подрез глубиной не более 0,1S, но не более 0,3 мм не квалифицируется как нормируемый дефект.", "При смещении кромок более 2 мм любые подрезы не допускаются."],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.1" }
+    },
+    {
+      "id": "sp406-vik-fistula-crater-gas",
+      "method": "vik", "medium": ["gas"], "defect": "Свищ или кратер", "aliases": ["свищ", "кратер", "незаваренный кратер"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Свищи и кратеры не допускаются." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.1" }
+    },
+    {
+      "id": "sp406-vik-surface-lack-fusion-gas",
+      "method": "vik", "medium": ["gas"], "defect": "Поверхностное несплавление", "aliases": ["несплавление", "поверхностный непровар"],
+      "inputs": ["thickness1", "quality", "depth", "length", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "outcome": "prohibited", "message": "Для уровня качества A поверхностные несплавления не допускаются." },
+        { "when": { "quality": ["B", "C"] }, "limits": [
+          { "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.05, "cap": 0.75, "unit": "мм" } },
+          { "input": "length", "label": "Протяжённость", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 1, "cap": 15, "unit": "мм" } },
+          { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 15, "unit": "мм" } }
+        ] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.1" }
+    },
+    {
+      "id": "sp406-vik-excess-penetration-gas",
+      "method": "vik", "medium": ["gas"], "defect": "Превышение проплава", "aliases": ["наплав", "провис", "превышение проплавления"],
+      "inputs": ["thickness1", "quality", "depth", "length", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "limits": [
+          { "input": "depth", "label": "Высота", "unit": "мм", "max": { "type": "fixed", "value": 3, "unit": "мм" } },
+          { "input": "length", "label": "Протяжённость", "unit": "мм", "max": { "type": "thickness-factor", "factor": 0.5, "unit": "мм" } },
+          { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 30, "unit": "мм" } }
+        ] },
+        { "when": { "quality": ["B", "C"] }, "limits": [
+          { "input": "depth", "label": "Высота", "unit": "мм", "max": { "type": "fixed", "value": 5, "unit": "мм" } },
+          { "input": "length", "label": "Протяжённость", "unit": "мм", "max": { "type": "thickness-factor", "factor": 1, "unit": "мм" } },
+          { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } }
+        ] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.1" }
+    },
+    {
+      "id": "sp406-vik-undercut-oil",
+      "method": "vik", "medium": ["oil"], "defect": "Подрез", "aliases": ["подрезы", "наружный подрез", "внутренний подрез"],
+      "inputs": ["thickness1", "category", "depth", "length", "totalLength"],
+      "variants": [
+        { "when": { "category": "BI" }, "limits": [
+          { "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.05, "cap": 0.5, "unit": "мм" } },
+          { "input": "length", "label": "Одиночная протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 100, "unit": "мм" } }
+        ] },
+        { "when": { "category": "II-IV" }, "limits": [
+          { "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 0.5, "unit": "мм" } },
+          { "input": "length", "label": "Одиночная протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 100, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 150, "unit": "мм" } }
+        ] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.2" }
+    },
+    {
+      "id": "sp406-vik-root-concavity-gas",
+      "method": "vik", "medium": ["gas"], "defect": "Вогнутость корня", "aliases": ["утяжина", "вогнутость корня шва"],
+      "inputs": ["thickness1", "quality", "depth", "length", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "limits": [
+          { "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 1, "unit": "мм" } },
+          { "input": "length", "label": "Одиночная протяжённость", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 1, "cap": 30, "unit": "мм" } },
+          { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } }
+        ] },
+        { "when": { "quality": ["B", "C"] }, "limits": [
+          { "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.2, "cap": 2, "unit": "мм" } },
+          { "input": "length", "label": "Одиночная протяжённость", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 2, "cap": 50, "unit": "мм" } },
+          { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 100, "unit": "мм" } }
+        ] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.1" }
+    },
+    {
+      "id": "sp406-vik-misalignment-oil",
+      "method": "vik", "medium": ["oil"], "defect": "Смещение кромок", "aliases": ["смещение", "несовпадение кромок"],
+      "inputs": ["thickness1", "depth"],
+      "variants": [
+        { "when": { "thicknessMaxExclusive": 10 }, "limits": [{ "input": "depth", "label": "Смещение кромок", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.25, "cap": 2, "unit": "мм" } }] },
+        { "when": { "thicknessMin": 10 }, "limits": [{ "input": "depth", "label": "Смещение кромок", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.2, "cap": 3, "unit": "мм" } }] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.2" }
+    },
+    {
+      "id": "sp406-vik-surface-defects-oil",
+      "method": "vik", "medium": ["oil"], "defect": "Пора, включение, свищ, кратер, прожог или наплыв", "aliases": ["пора", "поры", "включение", "свищ", "кратер", "прожог", "наплыв", "усадочная раковина", "прижог"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Выходящие на поверхность поры, включения, незаваренные кратеры, прожоги, наплывы, свищи, усадочные раковины и прижоги не допускаются." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.2" }
+    },
+    {
+      "id": "sp406-vik-lack-fusion-oil",
+      "method": "vik", "medium": ["oil"], "defect": "Поверхностное несплавление", "aliases": ["несплавление", "непровар"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Выходящие на поверхность несплавления не допускаются." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.5", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.2" }
+    },
+    {
+      "id": "sp406-rk-crack",
+      "method": "rk", "medium": ["gas", "oil"], "defect": "Трещина", "aliases": ["трещины"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "directCategory": "ВЫРЕЗАТЬ", "message": "Трещины любого направления не допускаются; категория по СП 406 — «Вырезать»." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.6", "9.10.7"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.3 / Д.4" }
+    },
+    {
+      "id": "sp406-rk-undercut-gas",
+      "method": "rk", "medium": ["gas"], "defect": "Подрез", "aliases": ["внутренний подрез"],
+      "inputs": ["thickness1", "depth", "length"],
+      "variants": [{ "when": {}, "limits": [
+        { "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 0.5, "unit": "мм" } },
+        { "input": "length", "label": "Протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 150, "unit": "мм" } }
+      ] }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.6", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.3" }
+    },
+    {
+      "id": "sp406-rk-single-pore-oil",
+      "method": "rk", "medium": ["oil"], "defect": "Одиночная пора или компактное включение", "aliases": ["пора", "поры", "канальная пора", "шлаковое включение"],
+      "inputs": ["thickness1", "category", "length", "depth", "totalLength"],
+      "variants": [
+        { "when": { "category": "BI" }, "limits": [
+          { "input": "length", "label": "Размер l", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.5, "cap": 5, "unit": "мм" } },
+          { "input": "depth", "label": "Размер t", "unit": "мм", "max": { "type": "fixed", "value": 3, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 30, "unit": "мм" } }
+        ] },
+        { "when": { "category": "II-IV" }, "limits": [
+          { "input": "length", "label": "Размер l", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.5, "cap": 7, "unit": "мм" } },
+          { "input": "depth", "label": "Размер t", "unit": "мм", "max": { "type": "fixed", "value": 3, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } }
+        ] }
+      ],
+      "notes": ["Автоматическая проверка относится к непротяжённому изображению (a/b ≤ 3)."],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.6", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.4" }
+    },
+    {
+      "id": "sp406-rk-root-concavity-oil",
+      "method": "rk", "medium": ["oil"], "defect": "Вогнутость корня", "aliases": ["утяжина"],
+      "inputs": ["thickness1", "depth", "length", "totalLength"],
+      "variants": [{ "when": {}, "limits": [
+        { "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.2, "cap": 1, "unit": "мм" } },
+        { "input": "length", "label": "Протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } },
+        { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } }
+      ] }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.6", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.4" }
+    },
+    {
+      "id": "sp406-rk-group-oil",
+      "method": "rk", "medium": ["oil"], "defect": "Группа или цепочка пор/шлаковых включений", "aliases": ["цепочка пор", "скопление пор", "группа дефектов", "шлаковые включения"],
+      "inputs": ["thickness1", "category", "length", "totalLength"],
+      "variants": [
+        { "when": { "category": "BI" }, "limits": [
+          { "input": "length", "label": "Протяжённость группы", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 2, "cap": 15, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 30, "unit": "мм" } }
+        ] },
+        { "when": { "category": "II-IV" }, "limits": [
+          { "input": "length", "label": "Протяжённость группы", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 2, "cap": 30, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 30, "unit": "мм" } }
+        ] }
+      ],
+      "notes": ["К группе относят три и более дефекта при расстояниях между ближайшими краями не более трёх максимальных размеров соседних дефектов. Дефекты менее 0,2 мм не учитывают при определении наличия группы; остальные ограничения площади группы проверяют по таблице Д.4."],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.6", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.4" }
+    },
+    {
+      "id": "sp406-uzk-equivalent-area-gas",
+      "method": "uzk", "medium": ["gas"], "defect": "Непротяжённый дефект — эквивалентная площадь", "aliases": ["эквивалентная площадь", "Sэкв", "площадь отражателя"],
+      "inputs": ["thickness1", "quality", "equivalentArea"], "continuousRanges": true,
+      "variants": [{ "when": {}, "rangeTable": {
+        "input": "equivalentArea", "label": "Эквивалентная площадь", "unit": "мм²",
+        "ranges": [
+          { "min": 4, "max": 6, "label": "4 ≤ S < 6 мм", "limits": { "A": 0.7, "B": 1, "C": 1 } },
+          { "min": 6, "max": 8, "label": "6 ≤ S < 8 мм", "limits": { "A": 0.85, "B": 1.2, "C": 1.2 } },
+          { "min": 8, "max": 12, "label": "8 ≤ S < 12 мм", "limits": { "A": 1.05, "B": 1.5, "C": 1.5 } },
+          { "min": 12, "max": 15, "label": "12 ≤ S < 15 мм", "limits": { "A": 1.4, "B": 2, "C": 2 } },
+          { "min": 15, "max": 20, "label": "15 ≤ S < 20 мм", "limits": { "A": 1.15, "B": 2.5, "C": 2.5 } },
+          { "min": 20, "max": 26, "label": "20 ≤ S < 26 мм", "limits": { "A": 2.5, "B": 3.5, "C": 3.5 } },
+          { "min": 26, "max": 40, "label": "26 ≤ S < 40 мм", "limits": { "A": 3.5, "B": 5, "C": 5 } }
+        ]
+      } }],
+      "notes": ["Минимальная регистрируемая эквивалентная площадь Sk = Sбраковочная / 2.", "Значение 1,15 мм² для уровня A при 15 ≤ S < 20 мм перенесено без исправления из таблицы Д.5; оно не интерполировано."],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.7", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.5" }
+    },
+    {
+      "id": "sp406-uzk-length-gas",
+      "method": "uzk", "medium": ["gas"], "defect": "Условная протяжённость дефекта", "aliases": ["протяженный дефект", "условная протяженность"],
+      "inputs": ["thickness1", "quality", "length"],
+      "variants": [
+        { "when": { "quality": "A" }, "limits": [{ "input": "length", "label": "Условная протяжённость", "unit": "мм", "max": { "type": "min", "values": [{ "type": "fixed", "value": 12.5, "unit": "мм" }, { "type": "thickness-factor", "factor": 1, "unit": "мм" }] } }] },
+        { "when": { "quality": ["B", "C"] }, "limits": [{ "input": "length", "label": "Условная протяжённость", "unit": "мм", "max": { "type": "min", "values": [{ "type": "fixed", "value": 15, "unit": "мм" }, { "type": "thickness-factor", "factor": 2, "unit": "мм" }] } }] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.7", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.6" }
+    },
+    {
+      "id": "sp406-uzk-total-gas",
+      "method": "uzk", "medium": ["gas"], "defect": "Суммарная протяжённость дефектов", "aliases": ["сумма дефектов", "суммарная длина"],
+      "inputs": ["quality", "diameter", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "limits": [{ "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "min", "values": [{ "type": "fixed", "value": 25, "unit": "мм" }, { "type": "circumference-fraction", "divisor": 6, "unit": "мм" }] } }] },
+        { "when": { "quality": "B" }, "limits": [{ "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "min", "values": [{ "type": "fixed", "value": 30, "unit": "мм" }, { "type": "circumference-fraction", "divisor": 6, "unit": "мм" }] } }] },
+        { "when": { "quality": "C" }, "limits": [{ "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "min", "values": [{ "type": "fixed", "value": 50, "unit": "мм" }, { "type": "circumference-fraction", "divisor": 6, "unit": "мм" }] } }] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.7", "9.10.2"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.6" }
+    },
+    {
+      "id": "sp406-uzk-amplitude-oil",
+      "method": "uzk", "medium": ["oil"], "defect": "Амплитуда эхо-сигнала", "aliases": ["браковочный уровень", "амплитуда", "эхо сигнал"],
+      "inputs": ["amplitudeState"],
+      "variants": [{ "when": {}, "amplitudeRule": "Эхо-сигнал с амплитудой выше браковочного уровня является недопустимым." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.7", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.7" }
+    },
+    {
+      "id": "sp406-uzk-nonextended-oil",
+      "method": "uzk", "medium": ["oil"], "defect": "Непротяжённый дефект ниже браковочного уровня", "aliases": ["SH", "непротяженный дефект"],
+      "inputs": ["category", "totalLength"],
+      "variants": [
+        { "when": { "category": "BI" }, "limits": [{ "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 30, "unit": "мм" } }] },
+        { "when": { "category": "II-IV" }, "limits": [{ "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } }] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.7", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.7" }
+    },
+    {
+      "id": "sp406-uzk-section-extended-oil",
+      "method": "uzk", "medium": ["oil"], "defect": "Протяжённый дефект в сечении шва LS", "aliases": ["LS", "протяженный дефект", "непровар", "несплавление"],
+      "inputs": ["thickness1", "category", "length", "totalLength"],
+      "variants": [
+        { "when": { "category": "BI" }, "limits": [
+          { "input": "length", "label": "Условная протяжённость", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 2, "cap": 25, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 25, "unit": "мм" } }
+        ] },
+        { "when": { "category": "II-IV" }, "limits": [
+          { "input": "length", "label": "Условная протяжённость", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 2, "cap": 50, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } }
+        ] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.7", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.7" }
+    },
+    {
+      "id": "sp406-uzk-root-extended-oil",
+      "method": "uzk", "medium": ["oil"], "defect": "Протяжённый дефект в корне шва LB", "aliases": ["LB", "корневой непровар", "несплавление в корне"],
+      "inputs": ["thickness1", "category", "length", "totalLength"],
+      "variants": [
+        { "when": { "category": "BI" }, "limits": [
+          { "input": "length", "label": "Условная протяжённость", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 1, "cap": 25, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 25, "unit": "мм" } }
+        ] },
+        { "when": { "category": "II-IV" }, "limits": [
+          { "input": "length", "label": "Условная протяжённость", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 2, "cap": 25, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } }
+        ] }
+      ],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.7", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.7" }
+    },
+    {
+      "id": "sp406-pvk-crack",
+      "method": "pvk", "medium": ["gas", "oil"], "defect": "Линейная индикация трещины", "aliases": ["трещина", "линейная индикация"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "directCategory": "ВЫРЕЗАТЬ", "message": "Индикация, идентифицированная как трещина, не допускается." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.8", "9.10.7"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.9 / Д.10" }
+    },
+    {
+      "id": "sp406-pvk-undercut-gas",
+      "method": "pvk", "medium": ["gas"], "defect": "Индикация подреза", "aliases": ["подрез"],
+      "inputs": ["thickness1", "depth", "length"],
+      "variants": [{ "when": {}, "limits": [
+        { "input": "depth", "label": "Глубина по результату ВИК", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 0.5, "unit": "мм" } },
+        { "input": "length", "label": "Протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 150, "unit": "мм" } }
+      ] }],
+      "notes": ["Глубину подреза определяют средствами ВИК; ПВК уточняет наличие поверхностной несплошности."],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.8", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.9" }
+    },
+    {
+      "id": "sp406-pvk-guidance",
+      "method": "pvk", "medium": ["gas", "oil"], "defect": "Подозрительная поверхностная индикация", "aliases": ["индикация", "уточнение ВИК"],
+      "inputs": [], "outcome": "detection-only", "guidance": "СП 406, п. 9.8 рассматривает ПВК как дополнительный метод для уточнения результатов ВИК. Тип и размеры выявленного дефекта оценивают по применимой таблице приложения Д; сама индикация ещё не является готовым браковочным диагнозом.",
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.8"], "criterionDocument": "sp-406-2018", "criterionTable": "п. 9.8" }
+    },
+    {
+      "id": "sp406-pvk-rounded-oil",
+      "method": "pvk", "medium": ["oil"], "defect": "Округлая индикация поверхностного дефекта", "aliases": ["округлая индикация", "пора", "включение", "кратер", "прожог", "свищ"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Округлые индикации, соответствующие выходящим на поверхность порам, включениям, незаваренным кратерам, прожогам, наплывам, свищам и усадочным раковинам, не допускаются." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.8", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.10" }
+    },
+    {
+      "id": "sp406-mk-crack",
+      "method": "mk", "medium": ["gas", "oil"], "defect": "Индикация трещины", "aliases": ["трещина", "магнитная индикация"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "directCategory": "ВЫРЕЗАТЬ", "message": "Индикация, идентифицированная как трещина, не допускается." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.9", "9.10.7"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.11 / Д.12" }
+    },
+    {
+      "id": "sp406-mk-undercut-oil",
+      "method": "mk", "medium": ["oil"], "defect": "Индикация подреза", "aliases": ["подрез"],
+      "inputs": ["category", "length", "totalLength"],
+      "variants": [
+        { "when": { "category": "BI" }, "limits": [
+          { "input": "length", "label": "Протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 50, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 100, "unit": "мм" } }
+        ] },
+        { "when": { "category": "II-IV" }, "limits": [
+          { "input": "length", "label": "Протяжённость", "unit": "мм", "max": { "type": "fixed", "value": 100, "unit": "мм" } },
+          { "input": "totalLength", "label": "Сумма на 300 мм", "unit": "мм", "max": { "type": "fixed", "value": 150, "unit": "мм" } }
+        ] }
+      ],
+      "notes": ["Глубина подреза оценивается ВИК."],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.9", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.12" }
+    },
+    {
+      "id": "sp406-mk-guidance",
+      "method": "mk", "medium": ["gas", "oil"], "defect": "Подозрительная магнитная индикация", "aliases": ["магнитопорошковый контроль", "МПК", "уточнение ВИК"],
+      "inputs": [], "outcome": "detection-only", "guidance": "СП 406, п. 9.9 предусматривает МК как дополнительный метод выявления поверхностных и подповерхностных нарушений сплошности и уточнения ВИК. Проведение — с учётом ГОСТ Р 56512; допустимость определяют по типу дефекта и применимой таблице приложения Д.",
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.9"], "criterionDocument": "sp-406-2018", "criterionTable": "п. 9.9" }
+    },
+    {
+      "id": "sp406-mk-rounded-oil",
+      "method": "mk", "medium": ["oil"], "defect": "Округлая магнитная индикация поверхностного дефекта", "aliases": ["округлая индикация", "пора", "включение", "кратер", "прожог"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Округлые индикации, соответствующие выходящим на поверхность порам, включениям, незаваренным кратерам и прожогам, не допускаются." }],
+      "source": { "basisDocument": "sp-406-2018", "basisClauses": ["9.9", "9.10"], "criterionDocument": "sp-86-2022", "criterionTable": "Д.12" }
+    },
+    {
+      "id": "gost32569-vik-crack", "method": "vik", "medium": ["all"], "defect": "Трещина или поверхностное несплавление", "aliases": ["трещина", "несплавление"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Трещины и несплавления не допускаются." }],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.4", "12.3.10"], "criterionDocument": "gost-32569-2013", "criterionTable": "таблица 12.4" }
+    },
+    {
+      "id": "gost32569-vik-undercut", "method": "vik", "medium": ["all"], "defect": "Подрез", "aliases": ["подрезы"], "inputs": ["conditionClass", "thickness1", "weldLength", "depth", "totalLength"],
+      "variants": [
+        { "when": { "conditionClass": "special" }, "outcome": "prohibited", "message": "Для PN > 10 МПа, сред групп А и Б I категории и температуры ниже −70 °C подрезы не допускаются." },
+        { "when": { "conditionClass": "standard" }, "limits": [
+          { "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 0.5, "unit": "мм" } },
+          { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "input-factor", "input": "weldLength", "inputLabel": "длина шва", "factor": 0.3, "unit": "мм" } }
+        ] }
+      ],
+      "notes": ["Предел суммарной протяжённости равен 30 % фактической длины шва."],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.4"], "criterionDocument": "gost-32569-2013", "criterionTable": "п. 12.3.4" }
+    },
+    {
+      "id": "gost32569-vik-surface-pores", "method": "vik", "medium": ["all"], "defect": "Отдельные поверхностные поры", "aliases": ["пора", "поры"], "inputs": ["rtNormGroup", "thickness1", "width", "defectCount"],
+      "variants": [
+        { "when": { "rtNormGroup": "A" }, "customRule": { "type": "gost32569Table122", "fields": [{ "input": "width", "key": "width", "label": "Размер поры" }], "fixedChecks": [{ "input": "defectCount", "label": "Количество на 100 мм", "limit": 3, "unit": "шт." }], "ranges": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3 мм", "width": 0.4 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5 мм", "width": 0.5 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8 мм", "width": 0.6 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11 мм", "width": 0.8 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14 мм", "width": 1 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20 мм", "width": 1.2 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26 мм", "width": 1.5 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34 мм", "width": 2 }, { "min": 34.000001, "label": "S > 34 мм", "width": 2.5 }
+        ] } },
+        { "when": { "rtNormGroup": "B" }, "customRule": { "type": "gost32569Table122", "fields": [{ "input": "width", "key": "width", "label": "Размер поры" }], "fixedChecks": [{ "input": "defectCount", "label": "Количество на 100 мм", "limit": 3, "unit": "шт." }], "ranges": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3 мм", "width": 0.5 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5 мм", "width": 0.6 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8 мм", "width": 0.8 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11 мм", "width": 1 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14 мм", "width": 1.2 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20 мм", "width": 1.5 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26 мм", "width": 2 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34 мм", "width": 2.5 }, { "min": 34.000001, "label": "S > 34 мм", "width": 3 }
+        ] } },
+        { "when": { "rtNormGroup": "C" }, "customRule": { "type": "gost32569Table122", "fields": [{ "input": "width", "key": "width", "label": "Размер поры" }], "fixedChecks": [{ "input": "defectCount", "label": "Количество на 100 мм", "limit": 3, "unit": "шт." }], "ranges": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3 мм", "width": 0.6 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5 мм", "width": 0.8 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8 мм", "width": 1 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11 мм", "width": 1.2 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14 мм", "width": 1.5 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20 мм", "width": 2 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26 мм", "width": 2.5 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34 мм", "width": 3 }, { "min": 34.000001, "label": "S > 34 мм", "width": 3.5 }
+        ] } }
+      ],
+      "notes": ["Одновременно проверяются размер отдельной поры по таблице 12.2 и не более трёх пор на 100 мм шва."],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.4"], "criterionDocument": "gost-32569-2013", "criterionTable": "таблица 12.2" }
+    },
+    {
+      "id": "gost32569-rk-crack-lack-fusion", "method": "rk", "medium": ["all"], "defect": "Трещина или несплавление", "aliases": ["трещина", "несплавление", "плоский дефект"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Трещины и несплавления по радиограмме не допускаются." }],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.10"], "criterionDocument": "gost-32569-2013", "criterionTable": "таблица 12.4" }
+    },
+    {
+      "id": "gost32569-rk-pore-inclusion", "method": "rk", "medium": ["all"], "defect": "Пора или включение", "aliases": ["пора", "поры", "шлаковое включение", "скопление"], "inputs": ["rtNormGroup", "thickness1", "width", "length", "clusterLength", "totalLength"],
+      "variants": [
+        { "when": { "rtNormGroup": "A" }, "customRule": { "type": "gost32569Table122", "fields": [{ "input": "width", "key": "width", "label": "Ширина / диаметр" }, { "input": "length", "key": "length", "label": "Длина" }, { "input": "clusterLength", "key": "cluster", "label": "Скопление" }, { "input": "totalLength", "key": "total", "label": "Сумма на 100 мм" }], "ranges": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3", "width": 0.5, "length": 1, "cluster": 2, "total": 3 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5", "width": 0.6, "length": 1.2, "cluster": 2.5, "total": 4 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8", "width": 0.8, "length": 1.5, "cluster": 3, "total": 5 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11", "width": 1, "length": 2, "cluster": 4, "total": 6 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14", "width": 1.2, "length": 2.5, "cluster": 5, "total": 8 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20", "width": 1.5, "length": 3, "cluster": 6, "total": 10 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26", "width": 2, "length": 4, "cluster": 8, "total": 12 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34", "width": 2.5, "length": 5, "cluster": 10, "total": 15 }, { "min": 34.000001, "max": null, "label": "S > 34", "width": 3, "length": 6, "cluster": 10, "total": 20 }
+        ] } },
+        { "when": { "rtNormGroup": "B" }, "customRule": { "type": "gost32569Table122", "fields": [{ "input": "width", "key": "width", "label": "Ширина / диаметр" }, { "input": "length", "key": "length", "label": "Длина" }, { "input": "clusterLength", "key": "cluster", "label": "Скопление" }, { "input": "totalLength", "key": "total", "label": "Сумма на 100 мм" }], "ranges": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3", "width": 0.6, "length": 2, "cluster": 3, "total": 6 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5", "width": 0.8, "length": 2.5, "cluster": 4, "total": 8 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8", "width": 1, "length": 3, "cluster": 5, "total": 10 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11", "width": 1.2, "length": 3.5, "cluster": 6, "total": 12 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14", "width": 1.5, "length": 5, "cluster": 8, "total": 15 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20", "width": 2, "length": 6, "cluster": 10, "total": 20 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26", "width": 2.5, "length": 8, "cluster": 12, "total": 25 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34", "width": 2.5, "length": 8, "cluster": 12, "total": 30 }, { "min": 34.000001, "max": 45.000001, "label": "34 < S ≤ 45", "width": 3, "length": 10, "cluster": 15, "total": 30 }, { "min": 45.000001, "max": null, "label": "S > 45", "width": 3.5, "length": 12, "cluster": 15, "total": 40 }
+        ] } },
+        { "when": { "rtNormGroup": "C" }, "customRule": { "type": "gost32569Table122", "fields": [{ "input": "width", "key": "width", "label": "Ширина / диаметр" }, { "input": "length", "key": "length", "label": "Длина" }, { "input": "clusterLength", "key": "cluster", "label": "Скопление" }, { "input": "totalLength", "key": "total", "label": "Сумма на 100 мм" }], "ranges": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3", "width": 0.8, "length": 3, "cluster": 5, "total": 8 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5", "width": 1, "length": 4, "cluster": 6, "total": 10 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8", "width": 1.2, "length": 5, "cluster": 7, "total": 12 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11", "width": 1.5, "length": 6, "cluster": 9, "total": 15 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14", "width": 2, "length": 8, "cluster": 12, "total": 20 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20", "width": 2.5, "length": 10, "cluster": 15, "total": 25 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26", "width": 3, "length": 12, "cluster": 20, "total": 30 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34", "width": 3.5, "length": 12, "cluster": 20, "total": 35 }, { "min": 34.000001, "max": 45.000001, "label": "34 < S ≤ 45", "width": 4, "length": 15, "cluster": 25, "total": 40 }, { "min": 45.000001, "max": null, "label": "S > 45", "width": 4.5, "length": 15, "cluster": 30, "total": 45 }
+        ] } }
+      ],
+      "notes": ["Дефекты длиной не более 0,2 мм не учитывают, кроме скоплений и сеток. Для шва короче 100 мм нормы суммы уменьшают пропорционально."],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.10"], "criterionDocument": "gost-32569-2013", "criterionTable": "таблица 12.2" }
+    },
+    {
+      "id": "gost32569-rk-root-incomplete", "method": "rk", "medium": ["all"], "defect": "Непровар по оси шва", "aliases": ["непровар", "непровар корня", "осевой непровар"], "inputs": ["rootNormGroup", "thickness1", "diameter", "depth", "totalLength"],
+      "variants": [
+        { "when": { "rootNormGroup": "A" }, "inputs": ["rootNormGroup"], "outcome": "prohibited", "message": "Для I А/Б/В, II А/Б/В и III Б непровар по оси не допускается." },
+        { "when": { "rootNormGroup": "B" }, "inputs": ["rootNormGroup", "thickness1", "diameter", "depth", "totalLength"], "customRule": { "type": "gost32569RootPenetration", "alternatives": { "B": [{ "factor": 0.1, "cap": 2, "perimeterFraction": 0.25, "label": "≤10 % S, но ≤2 мм; сумма ≤1/4 периметра" }, { "factor": 0.05, "cap": 1, "perimeterFraction": 0.5, "label": "≤5 % S, но ≤1 мм; сумма ≤1/2 периметра" }] } } },
+        { "when": { "rootNormGroup": "C" }, "inputs": ["rootNormGroup", "thickness1", "diameter", "depth", "totalLength"], "customRule": { "type": "gost32569RootPenetration", "alternatives": { "C": [{ "factor": 0.2, "cap": 3, "perimeterFraction": 0.25, "label": "≤20 % S, но ≤3 мм; сумма ≤1/4 периметра" }, { "factor": 0.1, "cap": 2, "perimeterFraction": 0.5, "label": "≤10 % S, но ≤2 мм; сумма ≤1/2 периметра" }, { "factor": 0.05, "cap": 1, "perimeterFraction": null, "label": "≤5 % S, но ≤1 мм; сумма не ограничивается" }] } } }
+      ],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.10"], "criterionDocument": "gost-32569-2013", "criterionTable": "таблица 12.4" }
+    },
+    {
+      "id": "gost32569-rk-root-concavity", "method": "rk", "medium": ["all"], "defect": "Вогнутость корня", "aliases": ["утяжина", "вогнутость корня шва"], "inputs": ["rootNormGroup", "thickness1", "diameter", "depth", "totalLength"],
+      "customRule": { "type": "gost32569RootGeometry", "label": "Глубина вогнутости", "cap": 1.5 },
+      "notes": ["Численный предел таблицы 12.4 показан для группы I А/Б/В; II А/Б/В; III Б. Для остальных выбранных групп таблица не задаёт универсальный численный предел этой геометрии."],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.10"], "criterionDocument": "gost-32569-2013", "criterionTable": "таблица 12.4" }
+    },
+    {
+      "id": "gost32569-rk-root-convexity", "method": "rk", "medium": ["all"], "defect": "Выпуклость корня", "aliases": ["избыточное проплавление", "выпуклость корня шва"], "inputs": ["rootNormGroup", "thickness1", "diameter", "depth", "totalLength"],
+      "customRule": { "type": "gost32569RootGeometry", "label": "Высота выпуклости", "cap": 3 },
+      "notes": ["Численный предел таблицы 12.4 показан для группы I А/Б/В; II А/Б/В; III Б. Для остальных выбранных групп таблица не задаёт универсальный численный предел этой геометрии."],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.10"], "criterionDocument": "gost-32569-2013", "criterionTable": "таблица 12.4" }
+    },
+    {
+      "id": "gost32569-uzk-area", "method": "uzk", "medium": ["all"], "defect": "Эквивалентная площадь точечного отражателя", "aliases": ["эквивалентная площадь", "точечный дефект"], "inputs": ["conditionClass", "thickness1", "equivalentArea", "defectCount"],
+      "variants": [
+        { "when": { "conditionClass": "special" }, "inputs": ["conditionClass", "thickness1", "equivalentArea", "defectCount"], "rangeTable": { "input": "equivalentArea", "label": "Эквивалентная площадь", "unit": "мм²", "ranges": [{ "min": 0, "max": 10.000001, "label": "S ≤ 10", "limit": 1.6 }, { "min": 10.000001, "max": 20.000001, "label": "10 < S ≤ 20", "limit": 2 }, { "min": 20.000001, "max": null, "label": "S > 20", "limit": 3 }] }, "limits": [{ "input": "defectCount", "label": "Количество на 100 мм", "unit": "шт.", "max": { "type": "fixed", "value": 2, "unit": "шт." } }] },
+        { "when": { "conditionClass": "standard" }, "inputs": ["conditionClass", "thickness1", "equivalentArea"], "rangeTable": { "input": "equivalentArea", "label": "Эквивалентная площадь", "unit": "мм²", "ranges": [{ "min": 8, "max": 10.000001, "label": "8–10", "limit": 1.6 }, { "min": 12, "max": 18.000001, "label": "12–18", "limit": 2 }, { "min": 20, "max": 24.000001, "label": "20–24", "limit": 3 }] }, "limits": [] }
+      ],
+      "notes": ["Для таблицы 12.5 не интерполируйте отсутствующие толщины. Уровень фиксации — на 6 дБ ниже сигнала от максимально допустимого искусственного отражателя."],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.11"], "criterionDocument": "gost-32569-2013", "criterionTable": "п. 12.3.11 / таблица 12.5" }
+    },
+    {
+      "id": "gost32569-uzk-extended", "method": "uzk", "medium": ["all"], "defect": "Протяжённый дефект", "aliases": ["протяженный дефект", "линейный дефект"], "inputs": ["conditionClass", "halfReferenceState"],
+      "variants": [{ "when": { "conditionClass": "special" }, "inputs": ["conditionClass"], "customRule": { "type": "gost32569Extended" } }, { "when": { "conditionClass": "standard" }, "inputs": ["conditionClass", "halfReferenceState"], "customRule": { "type": "gost32569Extended" } }],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.11"], "criterionDocument": "gost-32569-2013", "criterionTable": "п. 12.3.11 / таблица 12.5" }
+    },
+    {
+      "id": "gost32569-uzk-chain", "method": "uzk", "medium": ["all"], "defect": "Цепочка точечных дефектов", "aliases": ["цепочка", "суммарная протяженность"], "inputs": ["thickness1", "totalLength"],
+      "variants": [{ "when": {}, "limits": [{ "input": "totalLength", "label": "Цепочка на участке 10S", "unit": "мм", "max": { "type": "thickness-factor", "factor": 1.5, "unit": "мм" } }] }],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.11"], "criterionDocument": "gost-32569-2013", "criterionTable": "таблица 12.5" }
+    },
+    {
+      "id": "gost32569-pvk-linear", "method": "pvk", "medium": ["all"], "defect": "Линейная или групповая индикация", "aliases": ["линейная индикация", "трещина", "группа индикаций"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Для PN ≤ 10 МПа допускаются только одиночные округлые следы в пределах нормы; для особых условий индикаторные следы должны отсутствовать." }],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.12"], "criterionDocument": "gost-32569-2013", "criterionTable": "п. 12.3.12" }
+    },
+    {
+      "id": "gost32569-pvk-rounded", "method": "pvk", "medium": ["all"], "defect": "Одиночная округлая индикация при PN ≤ 10 МПа", "aliases": ["округлая индикация", "круглая индикация"], "inputs": ["thickness1", "width", "totalLength"],
+      "customRule": { "type": "gost32569Pvk", "ranges": [
+        { "min": 0, "max": 3.000001, "label": "S ≤ 3", "width": 0.6, "total": 6 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5", "width": 0.8, "total": 8 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8", "width": 1, "total": 10 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11", "width": 1.2, "total": 12 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14", "width": 1.5, "total": 15 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20", "width": 2, "total": 20 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26", "width": 2.5, "total": 25 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34", "width": 2.5, "total": 30 }, { "min": 34.000001, "max": 45.000001, "label": "34 < S ≤ 45", "width": 3, "total": 30 }, { "min": 45.000001, "max": null, "label": "S > 45", "width": 3.5, "total": 40 }
+      ] },
+      "notes": ["Округлые следы до 0,5 мм включительно не учитывают."],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.12"], "criterionDocument": "gost-32569-2013", "criterionTable": "п. 12.3.12 и таблица 12.2, III В" }
+    },
+    {
+      "id": "gost32569-mk-extended", "method": "mk", "medium": ["all"], "defect": "Протяжённая магнитная индикация", "aliases": ["магнитопорошковый контроль", "протяженная индикация", "МПК"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "При магнитопорошковом или магнитографическом контроле протяжённые дефекты не допускаются." }],
+      "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.13"], "criterionDocument": "gost-32569-2013", "criterionTable": "п. 12.3.13" }
+    },
+    {
+      "id": "gost17640-applicability", "method": "uzk", "medium": ["all"], "defect": "Область применения", "aliases": ["толщина 8 мм", "температура", "применимость"], "inputs": ["thickness1", "temperature"],
+      "customRule": { "type": "applicability17640" },
+      "notes": ["Общая область: ручной УЗК соединений сваркой плавлением, преимущественно с полным проплавлением из ферритных сталей и с низким затуханием."],
+      "source": { "basisDocument": "gost-r-iso-17640-2016", "basisClauses": ["раздел 1"], "criterionDocument": "gost-r-iso-17640-2016", "criterionTable": "область применения" }
+    },
+    {
+      "id": "gost17640-control-level", "method": "uzk", "medium": ["all"], "defect": "Уровень контроля A / B / C / D", "aliases": ["уровень контроля", "A B C D", "таблица 5"], "inputs": ["controlLevel"],
+      "customRule": { "type": "controlLevel17640" },
+      "notes": ["Конкретные схемы и число сканирований выбирают по типу соединения в приложении А. Реальная геометрия и доступность могут потребовать письменной процедуры."],
+      "source": { "basisDocument": "gost-r-iso-17640-2016", "basisClauses": ["раздел 11"], "criterionDocument": "gost-r-iso-17640-2016", "criterionTable": "таблица 5 и приложение А" }
+    },
+    {
+      "id": "gost17640-frequency", "method": "uzk", "medium": ["all"], "defect": "Рабочая частота", "aliases": ["частота", "мгц", "ПЭП"], "inputs": ["frequency"],
+      "customRule": { "type": "frequency17640" },
+      "source": { "basisDocument": "gost-r-iso-17640-2016", "basisClauses": ["6.3"], "criterionDocument": "gost-r-iso-17640-2016", "criterionTable": "п. 6.3" }
+    },
+    {
+      "id": "gost17640-contact", "method": "uzk", "medium": ["all"], "defect": "Поправка на акустический контакт", "aliases": ["акустический контакт", "передаточная поправка", "дб"], "inputs": ["contactLoss"],
+      "customRule": { "type": "contactCorrection17640" },
+      "source": { "basisDocument": "gost-r-iso-17640-2016", "basisClauses": ["10.4"], "criterionDocument": "gost-r-iso-17640-2016", "criterionTable": "п. 10.4" }
+    },
+    {
+      "id": "gost17640-noise", "method": "uzk", "medium": ["all"], "defect": "Отношение сигнал/шум", "aliases": ["шум", "сигнал шум", "12 дБ"], "inputs": ["noiseMargin"],
+      "customRule": { "type": "minimum", "input": "noiseMargin", "value": 12, "unit": "дБ", "label": "Шум ниже оценочного уровня", "calculation": "ГОСТ Р ИСО 17640-2016, п. 10.5", "success": "Уровень шумов находится не менее чем на 12 дБ ниже оценочного уровня.", "failure": "Требование 12 дБ не выполнено; ослабление допускается только спецификацией на продукцию." },
+      "source": { "basisDocument": "gost-r-iso-17640-2016", "basisClauses": ["10.5"], "criterionDocument": "gost-r-iso-17640-2016", "criterionTable": "п. 10.5" }
+    },
+    {
+      "id": "gost11666-planar", "method": "uzk", "medium": ["all"], "defect": "Плоскостная несплошность", "aliases": ["плоский дефект", "трещина", "несплавление"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Индикации, классифицированные как плоскостные по применимой методике характеризации, не допускаются." }],
+      "source": { "basisDocument": "gost-iso-11666-2024", "basisClauses": ["6.1"], "criterionDocument": "gost-iso-11666-2024", "criterionTable": "п. 6.1" }
+    },
+    {
+      "id": "gost11666-quality-mapping", "method": "uzk", "medium": ["all"], "defect": "Связь уровня качества, контроля и приёмки", "aliases": ["ISO 5817", "уровень качества", "AL2", "AL3"], "inputs": ["weldQualityLevel"],
+      "customRule": { "type": "iso11666Mapping" },
+      "source": { "basisDocument": "gost-iso-11666-2024", "basisClauses": ["раздел 5"], "criterionDocument": "gost-iso-11666-2024", "criterionTable": "таблица 1" }
+    },
+    {
+      "id": "gost11666-amplitude-length", "method": "uzk", "medium": ["all"], "defect": "Амплитуда и длина отдельной индикации", "aliases": ["AL2", "AL3", "амплитуда", "длина индикации", "таблица A.1"], "inputs": ["thickness1", "acceptanceLevel", "referenceTechnique", "length", "amplitudeDb"],
+      "customRule": { "type": "iso11666Amplitude", "thresholds": {
+        "1": { "AL2": { "8-15": { "short": -4, "long": -10 }, "15-100": { "short": 0, "medium": -6, "long": -10 } }, "AL3": { "8-15": { "short": 0, "long": -6 }, "15-100": { "short": 4, "medium": -2, "long": -6 } } },
+        "2": { "AL2": { "8-15": { "short": 2, "long": -4 }, "15-100": { "short": 6, "medium": 0, "long": -4 } }, "AL3": { "8-15": { "short": 6, "long": 0 }, "15-100": { "short": 10, "medium": 4, "long": 0 } } },
+        "3": { "AL2": { "8-15": { "short": -4, "long": -10 }, "15-100": {} }, "AL3": { "8-15": { "short": 0, "long": -6 }, "15-100": {} } },
+        "4": { "AL2": { "8-15": {}, "15-100": { "short": -8, "medium": -14, "long": -18 } }, "AL3": { "8-15": {}, "15-100": { "short": -4, "medium": -10, "long": -14 } } }
+      } },
+      "notes": ["Введите амплитуду как разность относительно H₀: например H₀−6 дБ = −6, H₀+4 дБ = +4. Уровень регистрации расположен на 4 дБ ниже соответствующего уровня приёмки."],
+      "source": { "basisDocument": "gost-iso-11666-2024", "basisClauses": ["6.2", "приложение А"], "criterionDocument": "gost-iso-11666-2024", "criterionTable": "таблица A.1" }
+    },
+    {
+      "id": "gost11666-total-length", "method": "uzk", "medium": ["all"], "defect": "Суммарная длина индикаций на участке 6t", "aliases": ["суммарная длина", "20 процентов", "30 процентов"], "inputs": ["thickness1", "acceptanceLevel", "totalLength"],
+      "customRule": { "type": "iso11666TotalLength" },
+      "source": { "basisDocument": "gost-iso-11666-2024", "basisClauses": ["6.4"], "criterionDocument": "gost-iso-11666-2024", "criterionTable": "п. 6.4" }
+    },
+    {
+      "id": "gost11666-grouping", "method": "uzk", "medium": ["all"], "defect": "Объединение двух индикаций", "aliases": ["группирование", "две индикации", "dx dy dz"], "inputs": ["thickness1", "length1", "length2", "dx", "dy", "dz"],
+      "customRule": { "type": "iso11666Grouping" },
+      "source": { "basisDocument": "gost-iso-11666-2024", "basisClauses": ["6.3"], "criterionDocument": "gost-iso-11666-2024", "criterionTable": "п. 6.3" }
+    },
+    {
+      "id": "gost11666-dsr", "method": "uzk", "medium": ["all"], "defect": "Диаметр DSR для способа 2", "aliases": ["DGS", "DSR", "плоскодонный диск", "таблица A.2", "таблица A.3"], "inputs": ["thickness1", "waveType", "frequency"],
+      "customRule": { "type": "iso11666Dsr", "values": {
+        "shear": { "1.5-2.5": { "15-40": 2.5, "40-100": 3 }, "3-5": { "8-15": 1.5, "15-40": 2, "40-100": 3 } },
+        "longitudinal": { "1.5-2.5": { "15-40": 2.5, "40-100": 3 }, "3-5": { "8-15": 2, "15-40": 2, "40-100": 3 } }
+      } },
+      "source": { "basisDocument": "gost-iso-11666-2024", "basisClauses": ["приложение А"], "criterionDocument": "gost-iso-11666-2024", "criterionTable": "таблицы A.2 и A.3" }
+    }
+  ]
+}

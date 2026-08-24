@@ -72,8 +72,8 @@ export const TASK_HUBS = Object.freeze({
     ])
   }),
   criteria: Object.freeze({
-    title: "Оценка и критерии",
-    description: "Переход к оценке результатов по выбранному методу и применимой НТД.",
+    title: "Найти критерий",
+    description: "Расчёт критерия для сварного соединения трубопровода по методу, среде и параметрам дефекта.",
     entries: Object.freeze([
       Object.freeze({ method: "vik", itemId: "vik-evaluation-section" }),
       Object.freeze({ method: "uzk", itemId: "uzk-evaluation-section" }),
