@@ -51,8 +51,12 @@ function watchInstallingWorker(registration) {
 
 export function registerPwa() {
   if (!("serviceWorker" in navigator)) return;
+  const hadController = Boolean(navigator.serviceWorker.controller);
 
   navigator.serviceWorker.addEventListener("controllerchange", () => {
+    // Первый Service Worker может начать управлять уже открытой страницей через
+    // clients.claim(). Перезагрузка нужна только при замене действующей версии.
+    if (!hadController) return;
     if (refreshing) return;
     refreshing = true;
     window.location.reload();

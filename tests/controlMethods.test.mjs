@@ -47,7 +47,7 @@ test("УЗК организован по этапам от основ до оф�
     "uzk-control-section", "uzk-indications-section", "uzk-echo-atlas", "uzk-evaluation-section"
   ];
   assert.deepEqual(uzk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id), expected);
-  assert.equal(uzk.length, 44);
+  assert.equal(uzk.length, 46);
   assert.ok(uzk.every(item => item.status === "published"));
   for (const id of ["uzk-1", "uzk-2", "uzk-3", "uzk-4", "uzk-5", "uzk-6"]) assert.ok(uzk.some(item => item.id === id), id);
   const skaruch = uzk.find(item => item.id === "uzk-equipment-skaruch");
@@ -107,6 +107,22 @@ test("ГОСТ 32569-2013 представлен по методам из еди
   }
 });
 
+test("РД 03-421-01 помечен как недействующий и проецируется в методы без копирования", () => {
+  const projections = [
+    [vik, "vik-rd-03-421-01-vessels"],
+    [uzk, "uzk-rd-03-421-01-vessels"],
+    [uzk, "uzk-rd-03-421-01-thickness"],
+    [pvk, "pvk-rd-03-421-01-vessels"],
+    [rk, "rk-rd-03-421-01-vessels"]
+  ];
+  for (const [items, id] of projections) {
+    const article = items.find(item => item.id === id);
+    assert.equal(article?.status, "published", id);
+    assert.equal(article?.normativeView?.referenceId, "rd-03-421-01-vessels-ndt", id);
+    assert.equal(article?.sections.length, 1, `${id}: источник не должен дублироваться`);
+  }
+});
+
 test("ПВК покрывает полный технологический цикл", () => {
   assert.deepEqual(
     pvk.filter(item => !item.parentId).sort((a, b) => a.order - b.order).map(item => item.id),
@@ -145,7 +161,7 @@ test("РК покрывает безопасный маршрут от подг�
     ["rk-basics-section", "rk-equipment-section", "rk-preparation-section", "rk-control-section", "rk-analysis-section", "rk-radiographic-atlas", "rk-evaluation-section"]
   );
   assert.ok(rk.every(item => item.status === "published"));
-  assert.equal(rk.filter(item => item.type === "article").length, 34);
+  assert.equal(rk.filter(item => item.type === "article").length, 35);
   for (const id of [
     "rk-regulatory-documents", "rk-gost-32569-2013-ndt", "rk-radiation-sources", "rk-detector-systems",
     "rk-image-quality-indicators", "rk-exposure-geometry", "rk-marking-iqi-placement",

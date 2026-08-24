@@ -24,12 +24,17 @@ test("общий справочник покрывает данные, терм�
   assert.deepEqual(references.map(item => item.id), [
     "sound-velocity", "ndt-terminology", "units-and-notation",
     "result-traceability", "control-method-selection", "application-tool-model",
-    "gost-32569-2013-ndt"
+    "gost-32569-2013-ndt", "rd-03-421-01-vessels-ndt"
   ]);
   assert.ok(references.filter(item => item.rows).every(item => item.rows.length >= 5));
   const gost = references.find(item => item.id === "gost-32569-2013-ndt");
   assert.equal(gost.sections.length, 24);
   assert.equal(new Set(gost.sections.map(section => section.id)).size, 24);
   assert.ok(gost.normativeData.rules.length >= 7);
+  const rd = references.find(item => item.id === "rd-03-421-01-vessels-ndt");
+  assert.equal(rd.documentStatus, "obsolete");
+  assert.match(rd.statusNotice, /утратил силу/i);
+  assert.ok(rd.sections.length >= 15);
+  assert.ok(rd.normativeData.rules.every(rule => rule.historical === true));
   assert.match(JSON.stringify(references).toLowerCase(), /индикация.*дефект|дефект.*индикация/);
 });

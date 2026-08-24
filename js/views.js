@@ -437,6 +437,12 @@ export function renderArticle(methodKey, article) {
       </div>
     </section>
   ` : "";
+  const obsoleteNormativeHtml = normativeReference?.documentStatus === "obsolete" ? `
+    <section class="reference-status-warning article-obsolete-warning" role="alert">
+      <strong>⚠ ${safeText(normativeReference.shortTitle || normativeReference.title)} утратил силу</strong>
+      <p>${safeText(normativeReference.statusNotice || "Материал приведён только в справочных целях. Решение о годности принимают по действующей документации для конкретного объекта.")}</p>
+    </section>
+  ` : "";
   const futureImageLabels = Array.isArray(article.mediaSlots) && article.mediaSlots.length
     ? []
     : Array.isArray(article.futureImageLabels)
@@ -524,6 +530,7 @@ export function renderArticle(methodKey, article) {
       </div>
       ${article.summary ? `<p class="article-summary">${safeText(article.summary)}</p>` : ""}
       ${tocHtml}
+      ${obsoleteNormativeHtml}
       ${normativeSourceHtml}
       ${futureImage}
       ${mediaSlots ? `<section class="article-media-slots${article.mediaLayout ? ` article-media-slots-${escapeAttribute(article.mediaLayout)}` : ""}" aria-label="Иллюстрации материала">${mediaSlots}</section>` : ""}

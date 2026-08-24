@@ -24,6 +24,47 @@
   line-height: 1.55;
 }
 
+.reference-status-badge {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 5px 9px;
+  border: 1px solid rgba(255, 101, 101, .42);
+  border-radius: 999px;
+  color: #ffaaaa;
+  background: rgba(177, 42, 42, .13);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.reference-status-warning {
+  margin: 0 0 18px;
+  padding: 16px;
+  border: 1px solid rgba(255, 101, 101, .42);
+  border-radius: var(--radius);
+  background: rgba(177, 42, 42, .12);
+}
+
+.reference-status-warning strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #ffaaaa;
+  font-size: 15px;
+}
+
+.reference-status-warning p {
+  margin: 0;
+  color: #e1c9c9;
+  font-size: 14px;
+  line-height: 1.58;
+}
+
+.article-obsolete-warning {
+  margin-top: 16px;
+}
+
 .reference-search {
   display: flex;
   align-items: center;
