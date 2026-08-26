@@ -11,7 +11,7 @@ test("модель нормативных критериев проходит о
 test("мастер предлагает все нормативные ветки до выбора метода", () => {
   assert.deepEqual(
     data.standards.map(item => item.id),
-    ["sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023"]
+    ["sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023", "fnp536"]
   );
   for (const standard of data.standards) {
     assert.ok(data.criteria.some(item => standard.basisDocuments.includes(item.source.basisDocument)), standard.id);
@@ -154,6 +154,69 @@ test("ПВК и МПК СТО Газпром используют порог п�
   assert.match(below.decision, /ПОРОГ/);
   assert.equal(above.allowed, null);
   assert.match(above.decision, /ПРИЗНАК/);
+});
+
+test("ФНП № 536 представлен пятью методами и действующим документом", () => {
+  const criteria = data.criteria.filter(item => item.source.basisDocument === "fnp-536-2020");
+  assert.deepEqual(new Set(criteria.map(item => item.method)), new Set(["vik", "rk", "uzk", "pvk", "mk"]));
+  assert.equal(data.documents.find(item => item.id === "fnp-536-2020").status, "current");
+  assert.match(data.standards.find(item => item.id === "fnp536").warning, /РП выбирают строго/);
+});
+
+test("ФНП № 536 рассчитывает западание по 0,12РП + 0,6 с пределом 2 мм", () => {
+  const criterion = byId.get("fnp536-vik-depression");
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 10, depth: 1.5 }).allowed, true);
+  const atLimit = evaluateCriterion(criterion, { dimensionalIndicator: 10, depth: 1.8 });
+  assert.equal(atLimit.allowed, true);
+  assert.ok(Math.abs(atLimit.checks[0].limit - 1.8) < 1e-9);
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 10, depth: 1.9 }).allowed, false);
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 20, depth: 2 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 20, depth: 2.01 }).allowed, false);
+});
+
+test("трещина по ФНП № 536 не допускается без размерных параметров", () => {
+  const result = evaluateCriterion(byId.get("fnp536-vik-prohibited"), {});
+  assert.equal(result.allowed, false);
+  assert.equal(result.decision, "НЕ ДОПУСКАЕТСЯ");
+});
+
+test("таблица 12.1 ФНП № 536 выбирает формулы количества одиночных включений по РП", () => {
+  const criterion = byId.get("fnp536-vik-single-inclusion");
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 10, maxDefectDimension: 1.4, defectCount: 5 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 10.01, maxDefectDimension: 1.402, defectCount: 6 }).allowed, false);
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 20, maxDefectDimension: 2.5, defectCount: 6 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 100, maxDefectDimension: 2.5, defectCount: 8 }).allowed, true);
+});
+
+test("ПВК ФНП № 536 не превращает допустимый округлый след в окончательную годность", () => {
+  const criterion = byId.get("fnp536-pvk-rounded");
+  const result = evaluateCriterion(criterion, { dimensionalIndicator: 10, indicationSize: 4.2, defectCount: 5 });
+  assert.equal(result.allowed, null);
+  assert.match(result.decision, /ФАКТИЧЕСКОГО ДЕФЕКТА/);
+  assert.equal(evaluateCriterion(criterion, { dimensionalIndicator: 10, indicationSize: 4.21, defectCount: 5 }).allowed, false);
+});
+
+test("таблица 12.2 ФНП № 536 проверяет границы РП и пропорционально уменьшает число для короткого шва", () => {
+  const single = byId.get("fnp536-rk-single-inclusion");
+  assert.equal(evaluateCriterion(single, { dimensionalIndicator: 15, maxDefectDimension: 2.75, defectCount: 15.75, weldLength: 100 }).allowed, null);
+  assert.equal(evaluateCriterion(single, { dimensionalIndicator: 15, maxDefectDimension: 2.751, defectCount: 15, weldLength: 100 }).allowed, false);
+  assert.equal(evaluateCriterion(single, { dimensionalIndicator: 40, maxDefectDimension: 4, defectCount: 22, weldLength: 100 }).allowed, null);
+  assert.equal(evaluateCriterion(single, { dimensionalIndicator: 80, maxDefectDimension: 5, defectCount: 16, weldLength: 50 }).allowed, null);
+  assert.equal(evaluateCriterion(single, { dimensionalIndicator: 80, maxDefectDimension: 5, defectCount: 17, weldLength: 50 }).allowed, false);
+
+  const extended = byId.get("fnp536-rk-extended-inclusion");
+  assert.equal(evaluateCriterion(extended, { dimensionalIndicator: 5, maxDefectDimension: 5.75, defectCount: 2, weldLength: 100 }).allowed, null);
+  assert.equal(evaluateCriterion(extended, { dimensionalIndicator: 5.01, maxDefectDimension: 5.7515, defectCount: 3, weldLength: 100 }).allowed, null);
+  assert.equal(evaluateCriterion(extended, { dimensionalIndicator: 50.01, maxDefectDimension: 12.5015, defectCount: 4, weldLength: 100 }).allowed, null);
+});
+
+test("УЗК ФНП № 536 не выдаёт выдуманную эквивалентную площадь", () => {
+  const criterion = byId.get("fnp536-uzk-conditions");
+  const needsNd = evaluateCriterion(criterion, { conditionalLength: 8, referenceConditionalLength: 8, neighborDistance: 10, largerConditionalLength: 10 });
+  assert.equal(needsNd.allowed, null);
+  assert.match(needsNd.decision, /ДОПОЛНИТЕЛЬНАЯ НД/);
+  assert.equal(needsNd.checks.some(check => /площад/i.test(check.label)), false);
+  assert.equal(evaluateCriterion(criterion, { conditionalLength: 8.1, referenceConditionalLength: 8, neighborDistance: 10, largerConditionalLength: 10 }).allowed, false);
 });
 
 test("граница подреза считается по 0,1S, но не более 0,5 мм", () => {

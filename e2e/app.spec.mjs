@@ -107,6 +107,26 @@ test("мастер начинается с НТД, изолирует докум
   await page.getByRole("button", { name: "Проверить критерий" }).click();
   await expect(page.getByRole("heading", { name: "ГОДЕН ПО ВЫБРАННОМУ КРИТЕРИЮ", exact: true })).toBeVisible();
   await expect(page.getByText(/Критерий: СТО Газпром 15-1\.3-004-2023, таблица 6\.4/)).toBeVisible();
+
+  await page.getByRole("button", { name: /ФНП № 536/ }).click();
+  await expect(page.getByText(/РП выбирают строго по п\. 2/)).toBeVisible();
+  await page.getByRole("button", { name: /^ВИК/ }).click();
+  await page.locator("#criteria-defect").selectOption("fnp536-vik-depression");
+  await page.getByLabel(/Размерный показатель РП/).fill("10");
+  await page.getByLabel(/Глубина дефекта/).fill("1.8");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: "ГОДЕН ПО ВЫБРАННОМУ КРИТЕРИЮ", exact: true })).toBeVisible();
+  await expect(page.getByText(/0,12 × РП \+ 0,6 = 1,8 мм/)).toBeVisible();
+  await expect(page.getByText(/Критерий: ФНП ОРПД — Приказ Ростехнадзора № 536, таблица 12\.1/)).toBeVisible();
+
+  await page.getByRole("button", { name: /^УЗК/ }).click();
+  await page.locator("#criteria-defect").selectOption("fnp536-uzk-conditions");
+  await page.getByLabel(/Условная протяжённость несплошности/).fill("8");
+  await page.getByLabel(/Условная протяжённость эталонного отражателя/).fill("8");
+  await page.getByLabel(/Расстояние между соседними несплошностями/).fill("10");
+  await page.getByLabel(/Большая условная протяжённость/).fill("10");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: "ТРЕБУЕТСЯ ДОПОЛНИТЕЛЬНАЯ НД", exact: true })).toBeVisible();
 });
 
 test("карточка A1550 IntroVisor открывается, ищется и показывает практические блоки", async ({ page }) => {

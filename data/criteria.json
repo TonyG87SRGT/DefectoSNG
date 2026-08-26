@@ -43,6 +43,15 @@
       "basisDocuments": ["sto-gazprom-15-1.3-004-2023"],
       "dimensions": [],
       "warning": "Стандарт применяют к объектам ПАО «Газпром» в установленной им области и при наличии ссылки на СТО в договорной/проектной документации. Для РНК и УЗК выберите назначенный уровень качества A, B или C; для продукта с H₂S/CO₂ действует специальное требование п. 6.1.13."
+    },
+    {
+      "id": "fnp536",
+      "title": "ФНП ОРПД — Приказ Ростехнадзора № 536",
+      "shortTitle": "ФНП № 536",
+      "description": "Сварные соединения оборудования, работающего под избыточным давлением",
+      "basisDocuments": ["fnp-536-2020"],
+      "dimensions": [],
+      "warning": "Приложение № 2 действует для сварных соединений оборудования под давлением в установленной ФНП области. РП выбирают строго по п. 2: это не всегда толщина стенки; для разнотолщинного стыка используют номинальную толщину более тонкой детали, для угловых/тавровых/нахлёсточных соединений — расчётную высоту шва, для отдельных типов соединений действуют специальные определения. Для УЗК численные нормы эквивалентной площади и количества задаёт дополнительная НД. Срок действия приказа ограничен 1 января 2027 года."
     }
   ],
   "guides": [
@@ -113,6 +122,14 @@
       "edition": "издание 2023 г., с изменением № 1",
       "status": "current",
       "role": "Самостоятельные нормы оценки ВИК, РНК, УЗК, ПВК и МПК для объектов ПАО «Газпром» в области стандарта"
+    },
+    {
+      "id": "fnp-536-2020",
+      "designation": "ФНП ОРПД — Приказ Ростехнадзора № 536",
+      "title": "Правила промышленной безопасности при использовании оборудования, работающего под избыточным давлением",
+      "edition": "Приказ от 15.12.2020 № 536; действует до 01.01.2027",
+      "status": "current",
+      "role": "Нормы оценки качества сварных соединений оборудования под давлением, приложение № 2"
     }
   ],
   "methods": [
@@ -160,6 +177,13 @@
     ,"maxDefectDimension": { "label": "Максимальный размер дефекта d / h / l / w", "type": "number", "unit": "мм", "min": 0, "step": 0.01 }
     ,"indicationSize": { "label": "Максимальный размер индикаторного рисунка", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
     ,"edgeOffset": { "label": "Смещение кромок Δ", "type": "number", "unit": "мм", "min": 0, "step": 0.01 }
+    ,"dimensionalIndicator": { "label": "Размерный показатель РП", "type": "number", "unit": "мм", "min": 2, "step": 0.01 }
+    ,"gapLocation": { "label": "Место измерения зазора под линейкой", "type": "select", "options": [{ "value": "near", "label": "На расстоянии 200 мм от сварного соединения" }, { "value": "joint", "label": "В сварном соединении" }] }
+    ,"gap": { "label": "Зазор под линейкой", "type": "number", "unit": "мм", "min": 0, "step": 0.01 }
+    ,"conditionalLength": { "label": "Условная протяжённость несплошности", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"referenceConditionalLength": { "label": "Условная протяжённость эталонного отражателя", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"neighborDistance": { "label": "Расстояние между соседними несплошностями", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"largerConditionalLength": { "label": "Большая условная протяжённость соседних несплошностей", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
   },
   "criteria": [
     {
@@ -835,6 +859,92 @@
       "id": "sto-gazprom-mk-prohibited", "method": "mk", "medium": ["all"], "defect": "Трещина, пора, включение, кратер или несплавление", "aliases": ["трещина", "пора", "включение", "кратер", "несплавление"], "inputs": [],
       "variants": [{ "when": {}, "outcome": "prohibited", "message": "После идентификации по МПК дефекты, перечисленные в таблице 6.2, не допускаются." }],
       "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.2.3–6.2.5"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.2" }
+    },
+    {
+      "id": "fnp536-vik-prohibited", "method": "vik", "medium": ["all"], "defect": "Безусловно недопустимые наружные дефекты", "aliases": ["трещина", "трещины", "непровар", "несплавление", "наплыв", "натек", "брызги", "кратер", "свищ", "прожог", "скопление"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Не допускаются трещины всех видов и направлений; непровары (несплавления) между основным металлом и швом и между валиками; наплывы и брызги металла; незаваренные кратеры; свищи; прожоги; скопления." }],
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.1"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.1" }
+    },
+    {
+      "id": "fnp536-vik-conditional", "method": "vik", "medium": ["all"], "defect": "Непровар в корне, подрез или отклонение формы", "aliases": ["непровар корня", "подрез", "форма шва", "размер шва", "смещение элементов"], "inputs": [],
+      "outcome": "reference-only", "guidance": "Непровар в корне и подрезы не допускаются, кроме случаев, прямо предусмотренных нормативной документацией. Отклонения формы, размеров соединения и взаимного расположения элементов оценивают по установленным для изделия нормам. Без такой НД положительное решение выдавать нельзя.",
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.1"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.1" }
+    },
+    {
+      "id": "fnp536-vik-external-convexity", "method": "vik", "medium": ["all"], "defect": "Выпуклость наружной стороны стыкового шва", "aliases": ["усиление шва", "наружная выпуклость", "высота усиления"], "inputs": [],
+      "outcome": "reference-only", "guidance": "Предельную выпуклость наружной стороны стыкового шва устанавливает нормативная или конструкторская документация в зависимости от вида сварки и типа соединения. Таблица 12.1 не задаёт универсального численного предела.",
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.1"], "criterionDocument": "fnp-536-2020", "criterionTable": "таблица 12.1" }
+    },
+    {
+      "id": "fnp536-vik-depression", "method": "vik", "medium": ["all"], "defect": "Западания между валиками и чешуйчатость", "aliases": ["западание", "западания", "межваликовая канавка", "чешуйчатость"], "inputs": ["dimensionalIndicator", "depth"],
+      "variants": [{ "when": {}, "limits": [{ "input": "depth", "label": "Максимальная глубина", "unit": "мм", "max": { "type": "input-linear-cap", "input": "dimensionalIndicator", "inputLabel": "РП", "factor": 0.12, "offset": 0.6, "cap": 2, "unit": "мм" } }] }],
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.1"], "criterionDocument": "fnp-536-2020", "criterionTable": "таблица 12.1" }
+    },
+    {
+      "id": "fnp536-vik-single-inclusion", "method": "vik", "medium": ["all"], "defect": "Одиночное включение", "aliases": ["включение", "одиночное включение", "поверхностное включение", "пора"], "inputs": ["dimensionalIndicator", "maxDefectDimension", "defectCount"],
+      "customRule": { "type": "fnp536VikInclusion" },
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.1"], "criterionDocument": "fnp-536-2020", "criterionTable": "таблица 12.1" }
+    },
+    {
+      "id": "fnp536-vik-root-convexity", "method": "vik", "medium": ["all"], "defect": "Выпуклость корня одностороннего шва труб без подкладки", "aliases": ["выпуклость корня", "превышение проплава", "провис корня"], "inputs": ["diameter", "depth"],
+      "customRule": { "type": "fnp536RootConvexity" },
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.1"], "criterionDocument": "fnp-536-2020", "criterionTable": "таблица 12.1" }
+    },
+    {
+      "id": "fnp536-vik-root-concavity", "method": "vik", "medium": ["all"], "defect": "Вогнутость корня одностороннего шва труб без подкладки", "aliases": ["вогнутость корня", "утяжина корня"], "inputs": ["dimensionalIndicator", "depth"],
+      "variants": [{ "when": {}, "limits": [{ "input": "depth", "label": "Максимальная глубина", "unit": "мм", "max": { "type": "input-linear-cap", "input": "dimensionalIndicator", "inputLabel": "РП", "factor": 0.12, "offset": 0.4, "cap": 1.5, "unit": "мм" } }] }],
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.1"], "criterionDocument": "fnp-536-2020", "criterionTable": "таблица 12.1" }
+    },
+    {
+      "id": "fnp536-vik-ruler-gap", "method": "vik", "medium": ["all"], "defect": "Зазор под линейкой у сварного соединения", "aliases": ["излом оси", "угловатость", "зазор под линейкой", "прямолинейность"], "inputs": ["gapLocation", "gap"],
+      "customRule": { "type": "fnp536Gap" },
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.1"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.1" }
+    },
+    {
+      "id": "fnp536-pvk-prohibited", "method": "pvk", "medium": ["all"], "defect": "Протяжённый или неединичный индикаторный след", "aliases": ["линейная индикация", "протяженная индикация", "неодиночная индикация", "цепочка индикаций"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Протяжённые и неединичные индикаторные следы при капиллярном контроле не допускаются." }],
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.2"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.2" }
+    },
+    {
+      "id": "fnp536-pvk-rounded", "method": "pvk", "medium": ["all"], "defect": "Одиночный округлый индикаторный след", "aliases": ["округлая индикация", "круглая индикация", "пора", "индикаторный рисунок"], "inputs": ["dimensionalIndicator", "indicationSize", "defectCount"],
+      "outcome": "detection-only", "customRule": { "type": "fnp536PvkRounded" },
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.2"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.2 / таблица 12.1" }
+    },
+    {
+      "id": "fnp536-mk-indication", "method": "mk", "medium": ["all"], "defect": "Индикация магнитопорошкового контроля", "aliases": ["магнитная индикация", "индикаторный рисунок", "магнитопорошковый контроль", "мпк"], "inputs": [],
+      "outcome": "reference-only", "guidance": "После удаления эмульсии или порошка определите фактические характеристики выявленной несплошности. Окончательную оценку выполните по п. 5, п. 12.1 и таблице 12.1 приложения № 2 — отдельной универсальной численной нормы индикаторного рисунка п. 12.3 не устанавливает.",
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.3"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.3 / таблица 12.1" }
+    },
+    {
+      "id": "fnp536-rk-prohibited", "method": "rk", "medium": ["all"], "defect": "Безусловно недопустимый внутренний дефект", "aliases": ["трещина", "трещины", "прожог", "свищ"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "При радиографическом контроле не допускаются трещины всех видов и направлений, прожоги и свищи." }],
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.4"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.4" }
+    },
+    {
+      "id": "fnp536-rk-conditional", "method": "rk", "medium": ["all"], "defect": "Непровар или геометрия корня на радиограмме", "aliases": ["непровар", "выпуклость корня", "вогнутость корня", "превышение проплава"], "inputs": [],
+      "outcome": "reference-only", "guidance": "Непровары не допускаются, кроме случаев, предусмотренных нормативной документацией. Выпуклость и вогнутость корня бракуют при превышении норм таблицы 12.1. Выберите соответствующий критерий ВИК или применимую НД изделия.",
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.4"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.4 / таблица 12.1" }
+    },
+    {
+      "id": "fnp536-rk-single-inclusion", "method": "rk", "medium": ["all"], "defect": "Одиночное включение", "aliases": ["пора", "одиночная пора", "включение", "шлаковое включение"], "inputs": ["dimensionalIndicator", "maxDefectDimension", "defectCount", "weldLength"],
+      "customRule": { "type": "fnp536RkInclusion", "kind": "single", "sizeLabel": "Размер одиночного включения", "countLabel": "Суммарное число одиночных включений и скоплений" },
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.4"], "criterionDocument": "fnp-536-2020", "criterionTable": "таблица 12.2" }
+    },
+    {
+      "id": "fnp536-rk-single-cluster", "method": "rk", "medium": ["all"], "defect": "Одиночное скопление", "aliases": ["скопление", "скопление пор", "группа пор", "группа включений"], "inputs": ["dimensionalIndicator", "maxDefectDimension", "defectCount", "weldLength"],
+      "customRule": { "type": "fnp536RkInclusion", "kind": "cluster", "sizeLabel": "Размер одиночного скопления", "countLabel": "Суммарное число одиночных включений и скоплений" },
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.4"], "criterionDocument": "fnp-536-2020", "criterionTable": "таблица 12.2" }
+    },
+    {
+      "id": "fnp536-rk-extended-inclusion", "method": "rk", "medium": ["all"], "defect": "Одиночное протяжённое включение", "aliases": ["протяженное включение", "удлиненная пора", "канальная пора", "цепочка"], "inputs": ["dimensionalIndicator", "maxDefectDimension", "defectCount", "weldLength"],
+      "customRule": { "type": "fnp536RkInclusion", "kind": "extended", "sizeLabel": "Размер одиночного протяжённого включения", "countLabel": "Количество протяжённых включений" },
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.4"], "criterionDocument": "fnp-536-2020", "criterionTable": "таблица 12.2" }
+    },
+    {
+      "id": "fnp536-uzk-conditions", "method": "uzk", "medium": ["all"], "defect": "Условия годности несплошностей по УЗК", "aliases": ["условная протяженность", "одиночная несплошность", "расстояние между дефектами", "эквивалентная площадь", "количество несплошностей"], "inputs": ["conditionalLength", "referenceConditionalLength", "neighborDistance", "largerConditionalLength"],
+      "customRule": { "type": "fnp536Uzk" },
+      "notes": ["Пункт 12.5 не задаёт универсальных численных значений допустимой эквивалентной площади и количества несплошностей."],
+      "source": { "basisDocument": "fnp-536-2020", "basisClauses": ["приложение № 2, п. 12.5"], "criterionDocument": "fnp-536-2020", "criterionTable": "п. 12.5" }
     },
     {
       "id": "gost17640-applicability", "method": "uzk", "medium": ["all"], "defect": "Область применения", "aliases": ["толщина 8 мм", "температура", "применимость"], "inputs": ["thickness1", "temperature"],

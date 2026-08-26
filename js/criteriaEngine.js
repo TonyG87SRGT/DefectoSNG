@@ -1,6 +1,15 @@
 const KNOWN_METHODS = new Set(["vik", "rk", "uzk", "pvk", "mk"]);
 const CURRENT_STATUSES = new Set(["current", "replaced", "cancelled"]);
-const KNOWN_CUSTOM_RULES = new Set(["minimum", "applicability17640", "contactCorrection17640", "controlLevel17640", "frequency17640", "gost32569Table122", "gost32569Pvk", "gost32569Extended", "gost32569RootPenetration", "gost32569RootGeometry", "iso11666Amplitude", "iso11666TotalLength", "iso11666Dsr", "iso11666Grouping", "iso11666Mapping", "stoGazpromIndication"]);
+const KNOWN_CUSTOM_RULES = new Set(["minimum", "applicability17640", "contactCorrection17640", "controlLevel17640", "frequency17640", "gost32569Table122", "gost32569Pvk", "gost32569Extended", "gost32569RootPenetration", "gost32569RootGeometry", "iso11666Amplitude", "iso11666TotalLength", "iso11666Dsr", "iso11666Grouping", "iso11666Mapping", "stoGazpromIndication", "fnp536VikInclusion", "fnp536RootConvexity", "fnp536Gap", "fnp536PvkRounded", "fnp536RkInclusion", "fnp536Uzk"]);
+const NUMERIC_EPSILON = 1e-9;
+
+function atMost(measured, limit) {
+  return Number(measured) <= Number(limit) + NUMERIC_EPSILON;
+}
+
+function atLeast(measured, limit) {
+  return Number(measured) + NUMERIC_EPSILON >= Number(limit);
+}
 
 export function effectiveThickness(values = {}) {
   const first = Number(values.thickness1);
@@ -80,6 +89,18 @@ export function evaluateExpression(expression, context) {
       if (!(source >= 0)) return null;
       const value = source * Number(expression.factor);
       return { value, text: `${formatNumber(expression.factor)} × ${expression.inputLabel || expression.input} = ${formatNumber(value)} ${expression.unit || "мм"}` };
+    }
+    case "input-linear-cap": {
+      const source = Number(context.values[expression.input]);
+      if (!(source >= 0)) return null;
+      const calculated = source * Number(expression.factor) + Number(expression.offset || 0);
+      const cap = Number(expression.cap);
+      const value = Number.isFinite(cap) ? Math.min(calculated, cap) : calculated;
+      const base = `${formatNumber(expression.factor)} × ${expression.inputLabel || expression.input} + ${formatNumber(expression.offset || 0)} = ${formatNumber(calculated)} ${expression.unit || "мм"}`;
+      return {
+        value,
+        text: Number.isFinite(cap) ? `${base}; ограничение — не более ${formatNumber(cap)} ${expression.unit || "мм"}` : base
+      };
     }
     case "sto-gazprom-total": {
       const weldLength = Number(context.values.weldLength);
@@ -175,6 +196,125 @@ function evaluateCustomRule(criterion, values, thickness) {
         passed: !isDefectSign,
         calculation: "Признак обнаружения дефекта: максимальный размер в любом направлении > 1,6 мм"
       }],
+      thickness,
+      values
+    });
+  }
+
+  if (rule.type === "fnp536VikInclusion") {
+    const rp = Number(values.dimensionalIndicator);
+    const size = Number(values.maxDefectDimension);
+    const count = Number(values.defectCount);
+    const sizeLimit = Math.min(0.12 * rp + 0.2, 2.5);
+    const countLimit = rp <= 10 ? 0.2 * rp + 3 : rp <= 20 ? 0.1 * rp + 4 : Math.min(0.05 * rp + 5, 8);
+    const checks = [
+      { input: "maxDefectDimension", label: "Максимальный размер включения", measured: size, limit: sizeLimit, unit: "мм", passed: atMost(size, sizeLimit), calculation: `min(0,12 × ${formatNumber(rp)} + 0,2; 2,5) = ${formatNumber(sizeLimit)} мм` },
+      { input: "defectCount", label: "Количество одиночных включений", measured: count, limit: countLimit, unit: "шт.", passed: atMost(count, countLimit), calculation: rp <= 10 ? `0,2 × РП + 3 = ${formatNumber(countLimit)}` : rp <= 20 ? `0,1 × РП + 4 = ${formatNumber(countLimit)}` : `min(0,05 × РП + 5; 8) = ${formatNumber(countLimit)}` }
+    ];
+    const allowed = checks.every(check => check.passed);
+    return evaluatedResult({ allowed, decision: allowed ? "ДОПУСКАЕТСЯ" : "НЕ ДОПУСКАЕТСЯ", message: allowed ? "Размер и количество одиночных включений соответствуют таблице 12.1." : "Превышен допустимый размер или количество одиночных включений.", checks, thickness, values });
+  }
+
+  if (rule.type === "fnp536RootConvexity") {
+    const diameter = Number(values.diameter);
+    const measured = Number(values.depth);
+    const limit = diameter <= 25 ? 1.5 : diameter <= 150 ? 2 : 2.5;
+    const passed = atMost(measured, limit);
+    return evaluatedResult({
+      allowed: passed,
+      decision: passed ? "ДОПУСКАЕТСЯ" : "НЕ ДОПУСКАЕТСЯ",
+      message: passed ? "Выпуклость корня не превышает предел таблицы 12.1." : "Выпуклость корня превышает предел таблицы 12.1.",
+      checks: [{ input: "depth", label: "Высота выпуклости корня", measured, limit, unit: "мм", passed, calculation: diameter <= 25 ? "D ≤ 25 мм" : diameter <= 150 ? "25 < D ≤ 150 мм" : "D > 150 мм" }],
+      thickness,
+      values
+    });
+  }
+
+  if (rule.type === "fnp536Gap") {
+    const measured = Number(values.gap);
+    const atJoint = values.gapLocation === "joint";
+    const limit = atJoint ? 3 : 1.5;
+    const passed = atMost(measured, limit);
+    return evaluatedResult({
+      allowed: passed,
+      decision: passed ? "ДОПУСКАЕТСЯ" : "НЕ ДОПУСКАЕТСЯ",
+      message: passed ? "Зазор под линейкой соответствует п. 12.1." : "Зазор под линейкой превышает предел п. 12.1.",
+      checks: [{ input: "gap", label: "Зазор между линейкой и поверхностью", measured, limit, unit: "мм", passed, calculation: atJoint ? "В сварном соединении: не более 3 мм" : "На расстоянии 200 мм от соединения: не более 1,5 мм" }],
+      thickness,
+      values
+    });
+  }
+
+  if (rule.type === "fnp536PvkRounded") {
+    const rp = Number(values.dimensionalIndicator);
+    const size = Number(values.indicationSize);
+    const count = Number(values.defectCount);
+    const vikSize = Math.min(0.12 * rp + 0.2, 2.5);
+    const sizeLimit = 3 * vikSize;
+    const countLimit = rp <= 10 ? 0.2 * rp + 3 : rp <= 20 ? 0.1 * rp + 4 : Math.min(0.05 * rp + 5, 8);
+    const checks = [
+      { input: "indicationSize", label: "Размер одиночного округлого следа", measured: size, limit: sizeLimit, unit: "мм", passed: atMost(size, sizeLimit), calculation: `3 × ${formatNumber(vikSize)} = ${formatNumber(sizeLimit)} мм` },
+      { input: "defectCount", label: "Количество одиночных округлых следов", measured: count, limit: countLimit, unit: "шт.", passed: atMost(count, countLimit), calculation: `Норма количества одиночных включений таблицы 12.1: ${formatNumber(countLimit)}` }
+    ];
+    const passed = checks.every(check => check.passed);
+    return evaluatedResult({
+      allowed: passed ? null : false,
+      decision: passed ? "ТРЕБУЕТСЯ ОЦЕНКА ФАКТИЧЕСКОГО ДЕФЕКТА" : "НЕ ДОПУСКАЕТСЯ",
+      message: passed ? "Индикаторные следы соответствуют предварительным нормам п. 12.2. Удалите реагент, определите фактические характеристики несплошности и выполните окончательную оценку по п. 12.1 и таблице 12.1." : "Превышена норма размера или количества индикаторных следов п. 12.2.",
+      checks,
+      thickness,
+      values
+    });
+  }
+
+  if (rule.type === "fnp536RkInclusion") {
+    const rp = Number(values.dimensionalIndicator);
+    const size = Number(values.maxDefectDimension);
+    const count = Number(values.defectCount);
+    const weldLength = Number(values.weldLength);
+    let sizeLimit;
+    let baseCount;
+    if (rule.kind === "single") {
+      sizeLimit = rp <= 15 ? 0.15 * rp + 0.5 : rp <= 40 ? 0.05 * rp + 2 : Math.min(0.025 * rp + 3, 5);
+      baseCount = 0.25 * rp + 12;
+    } else if (rule.kind === "cluster") {
+      sizeLimit = rp <= 15 ? 1.5 * (0.15 * rp + 0.5) : rp <= 40 ? 1.5 * (0.05 * rp + 2) : Math.min(1.5 * (0.025 * rp + 3), 8);
+      baseCount = rp <= 40 ? 0.25 * rp + 12 : Math.min(0.1 * rp + 18, 27);
+    } else {
+      sizeLimit = Math.min(0.15 * rp + 5, 14);
+      baseCount = rp <= 5 ? 2 : rp <= 50 ? 3 : 4;
+    }
+    const countLimit = weldLength < 100 ? Math.round(baseCount * weldLength / 100) : baseCount;
+    const checks = [
+      { input: "maxDefectDimension", label: rule.sizeLabel, measured: size, limit: sizeLimit, unit: "мм", passed: atMost(size, sizeLimit), calculation: rule.kind === "single" ? `Предельный размер одиночного включения: ${formatNumber(sizeLimit)} мм` : rule.kind === "cluster" ? `Предельный размер одиночного скопления: ${formatNumber(sizeLimit)} мм` : `min(0,15 × РП + 5; 14) = ${formatNumber(sizeLimit)} мм` },
+      { input: "defectCount", label: rule.countLabel, measured: count, limit: countLimit, unit: "шт.", passed: atMost(count, countLimit), calculation: weldLength < 100 ? `${formatNumber(baseCount)} × ${formatNumber(weldLength)} / 100 = ${formatNumber(baseCount * weldLength / 100)}; округлено до ${formatNumber(countLimit)}` : `На участке 100 мм: не более ${formatNumber(countLimit)}` }
+    ];
+    const passed = checks.every(check => check.passed);
+    return evaluatedResult({
+      allowed: passed ? null : false,
+      decision: passed ? "РАЗМЕР И КОЛИЧЕСТВО СООТВЕТСТВУЮТ; НУЖНА ДОПОЛНИТЕЛЬНАЯ НД" : "НЕ ДОПУСКАЕТСЯ",
+      message: passed ? "Таблица 12.2 выполнена по размеру и количеству. Дополнительно проверьте суммарную приведённую площадь и чувствительность контроля по НД на конкретное изделие." : "Превышен предельный размер или количество по таблице 12.2.",
+      checks,
+      thickness,
+      values
+    });
+  }
+
+  if (rule.type === "fnp536Uzk") {
+    const length = Number(values.conditionalLength);
+    const reference = Number(values.referenceConditionalLength);
+    const spacing = Number(values.neighborDistance);
+    const larger = Number(values.largerConditionalLength);
+    const checks = [
+      { input: "conditionalLength", label: "Условная протяжённость несплошности", measured: length, limit: reference, unit: "мм", passed: atMost(length, reference), calculation: "Не более условной протяжённости соответствующего эталонного отражателя" },
+      { input: "neighborDistance", label: "Расстояние между соседними несплошностями", measured: spacing, limit: larger, unit: "мм", passed: atLeast(spacing, larger), limitText: `не менее ${formatNumber(larger)} мм`, calculation: "Не менее большей условной протяжённости из двух соседних несплошностей" }
+    ];
+    const passed = checks.every(check => check.passed);
+    return evaluatedResult({
+      allowed: passed ? null : false,
+      decision: passed ? "ТРЕБУЕТСЯ ДОПОЛНИТЕЛЬНАЯ НД" : "НЕ ДОПУСКАЕТСЯ",
+      message: passed ? "Условия непротяжённости и одиночности выполнены. Численные нормы эквивалентной площади и количества несплошностей п. 12.5 не устанавливает — примените НД на конкретное сварное соединение." : "Не выполнено условие непротяжённости или одиночности п. 12.5.",
+      checks,
       thickness,
       values
     });
@@ -434,7 +574,7 @@ export function evaluateCriterion(criterion, values = {}) {
       measured,
       limit: evaluated.value,
       unit: limit.unit || limit.max.unit || "мм",
-      passed: measured <= evaluated.value,
+      passed: atMost(measured, evaluated.value),
       calculation: evaluated.text
     });
   }
