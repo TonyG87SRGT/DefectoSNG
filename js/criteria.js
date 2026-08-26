@@ -9,6 +9,7 @@ const state = {
   medium: "gas",
   method: "vik",
   criterionId: "",
+  standardQuery: "",
   defectQuery: "",
   values: {},
   result: null
@@ -60,6 +61,13 @@ function documentTitle(data, id) {
 function availableMethods(data) {
   const ids = new Set(criteriaForStandard(data).map(item => item.method));
   return data.methods.filter(method => ids.has(method.id));
+}
+
+function matchingStandards(data) {
+  const query = state.standardQuery.trim().toLocaleLowerCase("ru-RU");
+  if (!query) return data.standards;
+  return data.standards.filter(item => [item.title, item.shortTitle, item.description, ...(item.searchAliases || [])]
+    .filter(Boolean).join(" ").toLocaleLowerCase("ru-RU").includes(query));
 }
 
 function supportingHtml(data, standard) {
@@ -159,6 +167,7 @@ function renderLoaded(data) {
   const methods = availableMethods(data);
   const usesMedium = standard.dimensions.includes("medium");
   const matches = searchMatches(data);
+  const standards = matchingStandards(data);
   const activeVariant = criterion ? selectVariant(criterion, state.values) : null;
   const inputIds = criterion ? [...(activeVariant?.inputs || criterion.inputs)] : [];
   if (standard.id === "sp406-sp86" && inputIds.includes("thickness1") && !inputIds.includes("thickness2")) inputIds.splice(inputIds.indexOf("thickness1") + 1, 0, "thickness2");
@@ -178,9 +187,14 @@ function renderLoaded(data) {
 
     <section class="criteria-control-group" aria-labelledby="criteria-standard-title">
       <h3 id="criteria-standard-title">1. Нормативный документ</h3>
+      <label class="criteria-field criteria-search-field">
+        <span>Поиск НТД или объекта</span>
+        <input id="criteria-standard-search" type="search" value="${escapeAttribute(state.standardQuery)}" placeholder="Например: РВС, резервуар, ГОСТ 31385">
+      </label>
       <div class="criteria-standards">
-        ${data.standards.map(item => `<button type="button" data-standard="${escapeAttribute(item.id)}" class="${standard.id === item.id ? "active" : ""}"><b>${safeText(item.shortTitle || item.title)}</b><span>${safeText(item.description)}</span></button>`).join("")}
+        ${standards.map(item => `<button type="button" data-standard="${escapeAttribute(item.id)}" class="${standard.id === item.id ? "active" : ""}"><b>${safeText(item.shortTitle || item.title)}</b><span>${safeText(item.description)}</span></button>`).join("")}
       </div>
+      ${standards.length ? "" : `<div class="empty-state">НТД или объект по запросу не найден.</div>`}
     </section>
 
     ${usesMedium ? `<section class="criteria-control-group" aria-labelledby="criteria-medium-title">
@@ -226,8 +240,14 @@ function renderLoaded(data) {
 
   content.querySelector("#back-button").addEventListener("click", () => goBack({ view: "home" }));
   content.querySelectorAll("[data-standard]").forEach(button => button.addEventListener("click", () => {
-    state.standardId = button.dataset.standard; state.method = ""; state.criterionId = ""; state.defectQuery = ""; state.result = null; state.values = {}; renderLoaded(data);
+    state.standardId = button.dataset.standard; state.standardQuery = ""; state.method = ""; state.criterionId = ""; state.defectQuery = ""; state.result = null; state.values = {}; renderLoaded(data);
   }));
+  content.querySelector("#criteria-standard-search")?.addEventListener("input", event => {
+    state.standardQuery = event.target.value; renderLoaded(data);
+    requestAnimationFrame(() => {
+      const search = content.querySelector("#criteria-standard-search"); search?.focus(); search?.setSelectionRange(search.value.length, search.value.length);
+    });
+  });
   content.querySelectorAll("[data-medium]").forEach(button => button.addEventListener("click", () => {
     state.medium = button.dataset.medium; state.criterionId = ""; state.result = null; renderLoaded(data);
   }));

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "title": "Критерии НК сварных соединений трубопроводов",
+  "title": "Критерии НК сварных соединений",
   "standards": [
     {
       "id": "sp406-sp86",
@@ -52,6 +52,21 @@
       "basisDocuments": ["fnp-536-2020"],
       "dimensions": [],
       "warning": "Приложение № 2 действует для сварных соединений оборудования под давлением в установленной ФНП области. РП выбирают строго по п. 2: это не всегда толщина стенки; для разнотолщинного стыка используют номинальную толщину более тонкой детали, для угловых/тавровых/нахлёсточных соединений — расчётную высоту шва, для отдельных типов соединений действуют специальные определения. Для УЗК численные нормы эквивалентной площади и количества задаёт дополнительная НД. Срок действия приказа ограничен 1 января 2027 года."
+    },
+    {
+      "id": "rvs-gost31385-sp365",
+      "title": "РВС — ГОСТ 31385-2023 / СП 365.1325800.2017",
+      "shortTitle": "РВС — ГОСТ 31385 / СП 365",
+      "description": "Монтажные сварные соединения вертикальных стальных резервуаров",
+      "searchAliases": ["РВС", "резервуар", "вертикальный резервуар", "резервуар вертикальный стальной", "резервуар для нефти", "резервуар для нефтепродуктов", "ГОСТ 31385", "СП 365", "сварные соединения РВС"],
+      "basisDocuments": ["gost-31385-2023", "sp-365-2017"],
+      "dimensions": [],
+      "warning": "Применяйте нормы только к вертикальным цилиндрическим стальным резервуарам в области ГОСТ 31385-2023 и СП 365.1325800.2017. Класс ответственности резервуара, тип соединения и специальные условия работы определяют по проектной документации. Для РК используется нормативная цепочка с ГОСТ 23055-78, для УЗК — с действующей редакцией СП 70.13330.2012.",
+      "supportingDocuments": [
+        { "documentId": "sp-365-2017", "label": "Правила монтажа и выбор методов контроля" },
+        { "documentId": "sp-70-2012", "label": "Критерии оценки результатов УЗК, таблица 10.10" },
+        { "documentId": "gost-23055-78", "label": "Классы и размеры пор и включений при РК" }
+      ]
     }
   ],
   "guides": [
@@ -130,6 +145,38 @@
       "edition": "Приказ от 15.12.2020 № 536; действует до 01.01.2027",
       "status": "current",
       "role": "Нормы оценки качества сварных соединений оборудования под давлением, приложение № 2"
+    },
+    {
+      "id": "gost-31385-2023",
+      "designation": "ГОСТ 31385-2023",
+      "title": "Резервуары вертикальные цилиндрические стальные для нефти и нефтепродуктов. Общие технические условия",
+      "edition": "введён с 01.08.2023; взамен ГОСТ 31385-2016",
+      "status": "current",
+      "role": "Требования к качеству и контролю сварных соединений РВС"
+    },
+    {
+      "id": "sp-365-2017",
+      "designation": "СП 365.1325800.2017",
+      "title": "Резервуары вертикальные цилиндрические стальные для хранения нефтепродуктов. Правила производства и приемки работ при монтаже",
+      "edition": "введён с 14.06.2018",
+      "status": "current",
+      "role": "Монтаж РВС, последовательность и методы контроля сварных соединений"
+    },
+    {
+      "id": "sp-70-2012",
+      "designation": "СП 70.13330.2012",
+      "title": "Несущие и ограждающие конструкции",
+      "edition": "ред. от 06.02.2025, с изменением № 7",
+      "status": "current",
+      "role": "Критерии оценки результатов УЗК по таблице 10.10"
+    },
+    {
+      "id": "gost-23055-78",
+      "designation": "ГОСТ 23055-78",
+      "title": "Контроль неразрушающий. Сварка металлов плавлением. Классификация сварных соединений по результатам радиографического контроля",
+      "edition": "с изменениями № 1, 2",
+      "status": "current",
+      "role": "Размеры пор и включений для классов 4, 5 и 6 при РК сварных соединений РВС"
     }
   ],
   "methods": [
@@ -184,6 +231,14 @@
     ,"referenceConditionalLength": { "label": "Условная протяжённость эталонного отражателя", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
     ,"neighborDistance": { "label": "Расстояние между соседними несплошностями", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
     ,"largerConditionalLength": { "label": "Большая условная протяжённость соседних несплошностей", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"tankResponsibilityClass": { "label": "Класс ответственности резервуара", "type": "select", "options": [{ "value": "KS-2b", "label": "КС-2б" }, { "value": "KS-2a", "label": "КС-2а" }, { "value": "KS-3b", "label": "КС-3б" }, { "value": "KS-3a", "label": "КС-3а" }] }
+    ,"rvsJointType": { "label": "Сварное соединение РВС", "type": "select", "options": [{ "value": "vertical-bottom", "label": "Вертикальный поясной шов / стенка с днищем" }, { "value": "horizontal", "label": "Горизонтальное соединение стенки" }, { "value": "other", "label": "Прочее соединение" }] }
+    ,"rvsWeldOrientation": { "label": "Ориентация стыкового шва стенки", "type": "select", "options": [{ "value": "vertical", "label": "Вертикальный" }, { "value": "horizontal", "label": "Горизонтальный" }] }
+    ,"undercutLength": { "label": "Суммарная длина подреза в пределах листа", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"weldWithinPlateLength": { "label": "Длина шва в пределах листа", "type": "number", "unit": "мм", "min": 0.1, "step": 0.1 }
+    ,"rvsUtCondition": { "label": "Условия работы конструкции", "type": "select", "options": [{ "value": "standard", "label": "Обычные условия" }, { "value": "special", "label": "Расчётная температура от −40 до −65 °C или расчёт на выносливость" }] }
+    ,"filletLegSize": { "label": "Номинальный катет углового шва", "type": "number", "unit": "мм", "min": 0.1, "step": 0.1 }
+    ,"profileDeviation": { "label": "Выпуклость / вогнутость углового шва", "type": "number", "unit": "мм", "min": 0, "step": 0.01 }
   },
   "criteria": [
     {
@@ -1011,6 +1066,88 @@
         "longitudinal": { "1.5-2.5": { "15-40": 2.5, "40-100": 3 }, "3-5": { "8-15": 2, "15-40": 2, "40-100": 3 } }
       } },
       "source": { "basisDocument": "gost-iso-11666-2024", "basisClauses": ["приложение А"], "criterionDocument": "gost-iso-11666-2024", "criterionTable": "таблицы A.2 и A.3" }
+    },
+    {
+      "id": "rvs-vik-prohibited-surface", "method": "vik", "medium": ["all"], "defect": "Трещины, несплавления и другие недопустимые наружные дефекты", "aliases": ["трещина", "трещины", "несплавление", "грубая чешуйчатость", "наружная пора", "цепочка пор", "прожог", "свищ"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Не допускаются трещины любых видов и размеров, несплавления, грубая чешуйчатость, наружные поры и цепочки пор, прожоги и свищи." }],
+      "source": { "basisDocument": "gost-31385-2023", "basisClauses": ["9.3.5"], "criterionDocument": "gost-31385-2023", "criterionTable": "п. 9.3.5" }
+    },
+    {
+      "id": "rvs-vik-undercut", "method": "vik", "medium": ["all"], "defect": "Подрез основного металла", "aliases": ["подрез", "подрезы", "подрез стенки", "подрез шва РВС"], "inputs": ["tankResponsibilityClass", "rvsJointType", "thickness1", "depth", "undercutLength", "weldWithinPlateLength"],
+      "customRule": { "type": "rvsUndercut" },
+      "notes": ["Длина подреза должна быть не более 10% длины шва в пределах листа."],
+      "source": { "basisDocument": "gost-31385-2023", "basisClauses": ["9.3.6"], "criterionDocument": "gost-31385-2023", "criterionTable": "таблица 24" }
+    },
+    {
+      "id": "rvs-vik-butt-convexity", "method": "vik", "medium": ["all"], "defect": "Выпуклость стыкового шва стенки", "aliases": ["усиление шва", "высота усиления", "выпуклость вертикального шва", "выпуклость горизонтального шва"], "inputs": ["thickness1", "rvsWeldOrientation", "depth"],
+      "variants": [
+        { "when": { "rvsWeldOrientation": "vertical", "thicknessMaxExclusive": 12.000001 }, "limits": [{ "input": "depth", "label": "Выпуклость вертикального шва", "unit": "мм", "max": { "type": "fixed", "value": 1.5, "unit": "мм" } }] },
+        { "when": { "rvsWeldOrientation": "vertical", "thicknessMin": 12.000001 }, "limits": [{ "input": "depth", "label": "Выпуклость вертикального шва", "unit": "мм", "max": { "type": "fixed", "value": 2, "unit": "мм" } }] },
+        { "when": { "rvsWeldOrientation": "horizontal", "thicknessMaxExclusive": 12.000001 }, "limits": [{ "input": "depth", "label": "Выпуклость горизонтального шва", "unit": "мм", "max": { "type": "fixed", "value": 2, "unit": "мм" } }] },
+        { "when": { "rvsWeldOrientation": "horizontal", "thicknessMin": 12.000001 }, "limits": [{ "input": "depth", "label": "Выпуклость горизонтального шва", "unit": "мм", "max": { "type": "fixed", "value": 3, "unit": "мм" } }] }
+      ],
+      "source": { "basisDocument": "gost-31385-2023", "basisClauses": ["9.3.7"], "criterionDocument": "gost-31385-2023", "criterionTable": "таблица 25" }
+    },
+    {
+      "id": "rvs-vik-edge-offset", "method": "vik", "medium": ["all"], "defect": "Смещение кромок стыкового соединения", "aliases": ["депланация кромок", "смещение поверхностей", "ступенька", "разностенность"], "inputs": ["thickness1", "edgeOffset"],
+      "variants": [
+        { "when": { "thicknessMaxExclusive": 10.000001 }, "limits": [{ "input": "edgeOffset", "label": "Смещение кромок", "unit": "мм", "max": { "type": "fixed", "value": 1, "unit": "мм" } }] },
+        { "when": { "thicknessMin": 10.000001 }, "limits": [{ "input": "edgeOffset", "label": "Смещение кромок", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 3, "unit": "мм" } }] }
+      ],
+      "source": { "basisDocument": "gost-31385-2023", "basisClauses": ["9.3.8"], "criterionDocument": "gost-31385-2023", "criterionTable": "п. 9.3.8" }
+    },
+    {
+      "id": "rvs-vik-fillet-profile", "method": "vik", "medium": ["all"], "defect": "Выпуклость или вогнутость углового шва", "aliases": ["профиль углового шва", "выпуклость углового шва", "вогнутость углового шва"], "inputs": ["filletLegSize", "profileDeviation"],
+      "limits": [{ "input": "profileDeviation", "label": "Выпуклость / вогнутость", "unit": "мм", "max": { "type": "input-factor", "input": "filletLegSize", "inputLabel": "катет", "factor": 0.2, "unit": "мм" } }],
+      "source": { "basisDocument": "gost-31385-2023", "basisClauses": ["9.3.10"], "criterionDocument": "gost-31385-2023", "criterionTable": "п. 9.3.10" }
+    },
+    {
+      "id": "rvs-rk-incomplete-penetration", "method": "rk", "medium": ["all"], "defect": "Непровар или несплавление", "aliases": ["непровар", "несплавление", "непровар корня", "внутреннее несплавление"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Непровары и несплавления в сварных швах резервуаров не допускаются." }],
+      "source": { "basisDocument": "gost-31385-2023", "basisClauses": ["9.5.6"], "criterionDocument": "gost-31385-2023", "criterionTable": "п. 9.5.6" }
+    },
+    {
+      "id": "rvs-rk-pores-inclusions", "method": "rk", "medium": ["all"], "defect": "Поры, включения и их скопления", "aliases": ["пора", "поры", "шлаковое включение", "вольфрамовое включение", "окисное включение", "скопление пор", "цепочка пор"], "inputs": ["tankResponsibilityClass", "thickness1", "width", "length", "clusterLength", "totalLength"],
+      "customRule": { "type": "rvsRk23055", "tables": {
+        "4": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3", "width": 0.5, "length": 1.5, "total": 5 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5", "width": 0.6, "length": 2, "total": 6 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8", "width": 0.8, "length": 2.5, "total": 8 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11", "width": 1, "length": 3, "total": 10 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14", "width": 1.2, "length": 3.5, "total": 12 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20", "width": 1.5, "length": 5, "total": 15 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26", "width": 2, "length": 6, "total": 20 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34", "width": 2.5, "length": 8, "total": 25 }, { "min": 34.000001, "max": 45.000001, "label": "34 < S ≤ 45", "width": 3, "length": 9, "total": 30 }, { "min": 45.000001, "max": 67.000001, "label": "45 < S ≤ 67", "width": 4, "length": 12, "total": 40 }, { "min": 67.000001, "max": 90.000001, "label": "67 < S ≤ 90", "width": 5, "length": 12, "total": 50 }, { "min": 90.000001, "max": 120.000001, "label": "90 < S ≤ 120", "width": 5, "length": 12, "total": 60 }, { "min": 120.000001, "max": 200.000001, "label": "120 < S ≤ 200", "width": 5, "length": 12, "total": 70 }, { "min": 200.000001, "max": 400.000001, "label": "200 < S ≤ 400", "width": 5, "length": 12, "total": 80 }
+        ],
+        "5": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3", "width": 0.6, "length": 2, "total": 6 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5", "width": 0.8, "length": 2.5, "total": 8 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8", "width": 1, "length": 3, "total": 10 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11", "width": 1.2, "length": 3.5, "total": 12 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14", "width": 1.5, "length": 5, "total": 15 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20", "width": 2, "length": 6, "total": 20 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26", "width": 2.5, "length": 8, "total": 25 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34", "width": 3, "length": 10, "total": 30 }, { "min": 34.000001, "max": 45.000001, "label": "34 < S ≤ 45", "width": 4, "length": 12, "total": 40 }, { "min": 45.000001, "max": 67.000001, "label": "45 < S ≤ 67", "width": 5, "length": 15, "total": 50 }, { "min": 67.000001, "max": 90.000001, "label": "67 < S ≤ 90", "width": 5, "length": 15, "total": 60 }, { "min": 90.000001, "max": 120.000001, "label": "90 < S ≤ 120", "width": 5, "length": 15, "total": 70 }, { "min": 120.000001, "max": 200.000001, "label": "120 < S ≤ 200", "width": 5, "length": 15, "total": 80 }, { "min": 200.000001, "max": 400.000001, "label": "200 < S ≤ 400", "width": 5, "length": 15, "total": 90 }
+        ],
+        "6": [
+          { "min": 0, "max": 3.000001, "label": "S ≤ 3", "width": 0.8, "length": 3, "total": 8 }, { "min": 3.000001, "max": 5.000001, "label": "3 < S ≤ 5", "width": 1, "length": 4, "total": 10 }, { "min": 5.000001, "max": 8.000001, "label": "5 < S ≤ 8", "width": 1.2, "length": 5, "total": 12 }, { "min": 8.000001, "max": 11.000001, "label": "8 < S ≤ 11", "width": 1.5, "length": 6, "total": 15 }, { "min": 11.000001, "max": 14.000001, "label": "11 < S ≤ 14", "width": 2, "length": 8, "total": 20 }, { "min": 14.000001, "max": 20.000001, "label": "14 < S ≤ 20", "width": 2.5, "length": 10, "total": 25 }, { "min": 20.000001, "max": 26.000001, "label": "20 < S ≤ 26", "width": 3, "length": 12, "total": 30 }, { "min": 26.000001, "max": 34.000001, "label": "26 < S ≤ 34", "width": 4, "length": 15, "total": 40 }, { "min": 34.000001, "max": 45.000001, "label": "34 < S ≤ 45", "width": 5, "length": 20, "total": 50 }, { "min": 45.000001, "max": 67.000001, "label": "45 < S ≤ 67", "width": 5, "length": 20, "total": 60 }, { "min": 67.000001, "max": 90.000001, "label": "67 < S ≤ 90", "width": 5, "length": 20, "total": 70 }, { "min": 90.000001, "max": 120.000001, "label": "90 < S ≤ 120", "width": 5, "length": 20, "total": 80 }, { "min": 120.000001, "max": 200.000001, "label": "120 < S ≤ 200", "width": 5, "length": 20, "total": 90 }
+        ]
+      } },
+      "notes": ["СП 365.1325800.2017 и ГОСТ 31385-2023 назначают класс РК: КС-2б → класс 6, КС-2а → класс 5, КС-3а/КС-3б → класс 4.", "Длина скопления не должна превышать 1,5 максимально допустимой длины отдельной поры или включения. Суммарную длину оценивают на любом участке радиограммы длиной 100 мм.", "Если скопление отсутствует, в поле «Размер скопления» укажите 0."],
+      "source": { "basisDocument": "sp-365-2017", "basisClauses": ["9.4.2.2"], "criterionDocument": "gost-23055-78", "criterionTable": "таблицы 4–6" }
+    },
+    {
+      "id": "rvs-uzk-sp70", "method": "uzk", "medium": ["all"], "defect": "Одиночные внутренние несплошности", "aliases": ["эквивалентная площадь", "условная протяженность", "число дефектов", "таблица 10.10", "УЗК РВС"], "inputs": ["rvsUtCondition"],
+      "variants": [
+        { "when": { "rvsUtCondition": "standard" }, "inputs": ["rvsUtCondition", "thickness1", "equivalentArea", "length", "defectCount"] },
+        { "when": { "rvsUtCondition": "special" }, "inputs": ["rvsUtCondition", "thickness1", "equivalentArea", "length", "defectCount", "neighborDistance"] }
+      ],
+      "customRule": { "type": "rvsUzkSp70", "ranges": [
+        { "min": 6.000001, "max": 10.000001, "label": "6 < S ≤ 10", "assessmentLength": 20, "area": 4, "length": 10, "count": 1 },
+        { "min": 10.000001, "max": 20.000001, "label": "10 < S ≤ 20", "assessmentLength": 25, "area": 6, "length": 10, "count": 2 },
+        { "min": 20.000001, "max": 30.000001, "label": "20 < S ≤ 30", "assessmentLength": 30, "area": 7, "length": 20, "count": 3 },
+        { "min": 30.000001, "max": 60.000001, "label": "30 < S ≤ 60", "assessmentLength": 30, "area": 10, "length": 25, "count": 3 }
+      ] },
+      "notes": ["СП 365.1325800.2017, п. 9.4.3 направляет оценку результатов УЗК к СП 70.13330.", "Контрольный уровень чувствительности устанавливают на 6 дБ, поисковый — на 12 дБ выше браковочного.", "Таблица 10.10 не задаёт строк для толщины S ≤ 6 мм и S > 60 мм."],
+      "source": { "basisDocument": "sp-365-2017", "basisClauses": ["9.4.3"], "criterionDocument": "sp-70-2012", "criterionTable": "пп. 10.4.9–10.4.10, таблица 10.10" }
+    },
+    {
+      "id": "rvs-pvk-indication", "method": "pvk", "medium": ["all"], "defect": "Поверхностная индикация", "aliases": ["капиллярная индикация", "цветная дефектоскопия", "трещиноподобная индикация", "ПВК РВС"], "inputs": [], "outcome": "reference-only",
+      "guidance": "ГОСТ 31385-2023 назначает цветной капиллярный контроль после ВИК по IV классу чувствительности ГОСТ 18442. Сам стандарт не задаёт универсальный размер индикаторного следа для браковки: фактическую несплошность оценивают по требованиям проекта и применимым нормам качества; подтверждённая трещина или несплавление не допускается.",
+      "related": { "route": "section", "method": "vik", "itemId": "vik-defects", "label": "Открыть дефекты ВИК" },
+      "source": { "basisDocument": "gost-31385-2023", "basisClauses": ["9.4.4", "9.4.7"], "criterionDocument": "gost-31385-2023", "criterionTable": "пп. 9.4.4, 9.4.7" }
+    },
+    {
+      "id": "rvs-mk-indication", "method": "mk", "medium": ["all"], "defect": "Поверхностная или подповерхностная индикация", "aliases": ["магнитопорошковая индикация", "МПК РВС", "МК РВС", "трещиноподобная индикация"], "inputs": [], "outcome": "reference-only",
+      "guidance": "ГОСТ 31385-2023 предусматривает магнитопорошковый метод для выявления поверхностных дефектов с малым раскрытием. Универсальный численный размер индикации для браковки документ не задаёт: нормативы должны быть указаны в проектной документации, а подтверждённый дефект оценивают по применимому критерию качества.",
+      "related": { "route": "section", "method": "vik", "itemId": "vik-defects", "label": "Открыть дефекты ВИК" },
+      "source": { "basisDocument": "gost-31385-2023", "basisClauses": ["9.4.2", "9.4.4", "9.5.1"], "criterionDocument": "gost-31385-2023", "criterionTable": "пп. 9.4.2, 9.4.4, 9.5.1" }
     }
   ]
 }

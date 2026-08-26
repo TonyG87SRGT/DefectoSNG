@@ -11,7 +11,7 @@ test("модель нормативных критериев проходит о
 test("мастер предлагает все нормативные ветки до выбора метода", () => {
   assert.deepEqual(
     data.standards.map(item => item.id),
-    ["sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023", "fnp536"]
+    ["sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023", "fnp536", "rvs-gost31385-sp365"]
   );
   for (const standard of data.standards) {
     assert.ok(data.criteria.some(item => standard.basisDocuments.includes(item.source.basisDocument)), standard.id);
@@ -278,4 +278,40 @@ test("нечисловой критерий ПВК не превращает и�
   const result = evaluateCriterion(byId.get("sp406-pvk-guidance"), {});
   assert.equal(result.status, "guidance");
   assert.equal(result.decision, "ТРЕБУЕТ ОЦЕНКИ");
+});
+
+test("РВС: подрез проверяется по классу, типу шва и 10% длины", () => {
+  const criterion = byId.get("rvs-vik-undercut");
+  const values = { tankResponsibilityClass: "KS-2b", rvsJointType: "horizontal", thickness1: 10, depth: 0.5, undercutLength: 100, weldWithinPlateLength: 1000 };
+  assert.equal(evaluateCriterion(criterion, values).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...values, depth: 0.501 }).allowed, false);
+  assert.equal(evaluateCriterion(criterion, { ...values, undercutLength: 100.1 }).allowed, false);
+  assert.equal(evaluateCriterion(criterion, { ...values, tankResponsibilityClass: "KS-3a", depth: 0.5 }).allowed, true);
+});
+
+test("РВС: класс ответственности выбирает класс РК ГОСТ 23055", () => {
+  const criterion = byId.get("rvs-rk-pores-inclusions");
+  const base = { thickness1: 10, width: 1, length: 3, clusterLength: 4.5, totalLength: 10 };
+  assert.equal(evaluateCriterion(criterion, { ...base, tankResponsibilityClass: "KS-3a" }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...base, tankResponsibilityClass: "KS-3a", width: 1.01 }).allowed, false);
+  assert.equal(evaluateCriterion(criterion, { ...base, tankResponsibilityClass: "KS-2b", width: 1.5, length: 6, clusterLength: 9, totalLength: 15 }).allowed, true);
+});
+
+test("РВС: таблица 10.10 УЗК корректно обрабатывает границы толщины", () => {
+  const criterion = byId.get("rvs-uzk-sp70");
+  const base = { rvsUtCondition: "standard", equivalentArea: 4, length: 10, defectCount: 1 };
+  assert.equal(evaluateCriterion(criterion, { ...base, thickness1: 6 }).status, "outside");
+  assert.equal(evaluateCriterion(criterion, { ...base, thickness1: 6.01 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...base, thickness1: 10 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...base, thickness1: 10.01, equivalentArea: 6, defectCount: 2 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...base, thickness1: 60, equivalentArea: 10, length: 25, defectCount: 3 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...base, thickness1: 60.01 }).status, "outside");
+});
+
+test("РВС: специальные условия УЗК уменьшают площадь и требуют увеличенного расстояния", () => {
+  const criterion = byId.get("rvs-uzk-sp70");
+  const values = { rvsUtCondition: "special", thickness1: 10, equivalentArea: 2, length: 10, defectCount: 1, neighborDistance: 40 };
+  assert.equal(evaluateCriterion(criterion, values).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...values, equivalentArea: 2.01 }).allowed, false);
+  assert.equal(evaluateCriterion(criterion, { ...values, neighborDistance: 39.9 }).allowed, false);
 });

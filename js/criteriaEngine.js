@@ -1,6 +1,6 @@
 const KNOWN_METHODS = new Set(["vik", "rk", "uzk", "pvk", "mk"]);
 const CURRENT_STATUSES = new Set(["current", "replaced", "cancelled"]);
-const KNOWN_CUSTOM_RULES = new Set(["minimum", "applicability17640", "contactCorrection17640", "controlLevel17640", "frequency17640", "gost32569Table122", "gost32569Pvk", "gost32569Extended", "gost32569RootPenetration", "gost32569RootGeometry", "iso11666Amplitude", "iso11666TotalLength", "iso11666Dsr", "iso11666Grouping", "iso11666Mapping", "stoGazpromIndication", "fnp536VikInclusion", "fnp536RootConvexity", "fnp536Gap", "fnp536PvkRounded", "fnp536RkInclusion", "fnp536Uzk"]);
+const KNOWN_CUSTOM_RULES = new Set(["minimum", "applicability17640", "contactCorrection17640", "controlLevel17640", "frequency17640", "gost32569Table122", "gost32569Pvk", "gost32569Extended", "gost32569RootPenetration", "gost32569RootGeometry", "iso11666Amplitude", "iso11666TotalLength", "iso11666Dsr", "iso11666Grouping", "iso11666Mapping", "stoGazpromIndication", "fnp536VikInclusion", "fnp536RootConvexity", "fnp536Gap", "fnp536PvkRounded", "fnp536RkInclusion", "fnp536Uzk", "rvsUndercut", "rvsRk23055", "rvsUzkSp70"]);
 const NUMERIC_EPSILON = 1e-9;
 
 function atMost(measured, limit) {
@@ -318,6 +318,62 @@ function evaluateCustomRule(criterion, values, thickness) {
       thickness,
       values
     });
+  }
+
+  if (rule.type === "rvsUndercut") {
+    const tankClass = String(values.tankResponsibilityClass);
+    const jointType = String(values.rvsJointType);
+    const measuredDepth = Number(values.depth);
+    const measuredLength = Number(values.undercutLength);
+    const weldLength = Number(values.weldWithinPlateLength);
+    let depthLimit;
+    if (jointType === "vertical-bottom") {
+      depthLimit = tankClass === "KS-2b" ? Math.min(0.05 * thickness, 0.5) : tankClass === "KS-2a" ? 0.5 : 0.3;
+    } else if (jointType === "horizontal") {
+      depthLimit = tankClass === "KS-2b" ? Math.min(0.05 * thickness, 0.8) : tankClass === "KS-2a" ? Math.min(0.05 * thickness, 0.6) : Math.min(0.05 * thickness, 0.5);
+    } else {
+      depthLimit = tankClass === "KS-2b" ? Math.min(0.05 * thickness, 0.8) : Math.min(0.05 * thickness, 0.6);
+    }
+    const lengthLimit = 0.1 * weldLength;
+    const checks = [
+      { input: "depth", label: "Глубина подреза", measured: measuredDepth, limit: depthLimit, unit: "мм", passed: atMost(measuredDepth, depthLimit), calculation: `Класс ${tankClass}; ${jointType}; предел таблицы 24 = ${formatNumber(depthLimit)} мм` },
+      { input: "undercutLength", label: "Суммарная длина подреза", measured: measuredLength, limit: lengthLimit, unit: "мм", passed: atMost(measuredLength, lengthLimit), calculation: `10% длины шва в пределах листа: 0,1 × ${formatNumber(weldLength)} = ${formatNumber(lengthLimit)} мм` }
+    ];
+    const allowed = checks.every(check => check.passed);
+    return evaluatedResult({ allowed, decision: allowed ? "ДОПУСКАЕТСЯ" : "НЕ ДОПУСКАЕТСЯ", message: allowed ? "Глубина и суммарная длина подреза соответствуют таблице 24." : "Превышен предел глубины или суммарной длины подреза.", checks, thickness, values });
+  }
+
+  if (rule.type === "rvsRk23055") {
+    const tankClass = String(values.tankResponsibilityClass);
+    const rtClass = tankClass === "KS-2b" ? "6" : tankClass === "KS-2a" ? "5" : "4";
+    const range = findRange(rule.tables?.[rtClass], thickness);
+    if (!range) return { status: "outside", message: `Для толщины ${formatNumber(thickness)} мм в таблице класса ${rtClass} ГОСТ 23055-78 нет строки.` };
+    const checks = [
+      { input: "width", label: "Ширина / диаметр поры или включения", measured: Number(values.width), limit: Number(range.width), unit: "мм", passed: atMost(values.width, range.width), calculation: `Класс ${rtClass}; ${range.label}: ≤ ${formatNumber(range.width)} мм` },
+      { input: "length", label: "Длина поры или включения", measured: Number(values.length), limit: Number(range.length), unit: "мм", passed: atMost(values.length, range.length), calculation: `Класс ${rtClass}; ${range.label}: ≤ ${formatNumber(range.length)} мм` },
+      { input: "clusterLength", label: "Длина скопления", measured: Number(values.clusterLength), limit: 1.5 * Number(range.length), unit: "мм", passed: atMost(values.clusterLength, 1.5 * Number(range.length)), calculation: `1,5 × ${formatNumber(range.length)} = ${formatNumber(1.5 * Number(range.length))} мм` },
+      { input: "totalLength", label: "Суммарная длина на участке 100 мм", measured: Number(values.totalLength), limit: Number(range.total), unit: "мм", passed: atMost(values.totalLength, range.total), calculation: `Класс ${rtClass}; ${range.label}: ≤ ${formatNumber(range.total)} мм` }
+    ];
+    const allowed = checks.every(check => check.passed);
+    return evaluatedResult({ allowed, decision: allowed ? `ДОПУСКАЕТСЯ ПО КЛАССУ ${rtClass}` : "НЕ ДОПУСКАЕТСЯ", message: allowed ? `Размеры соответствуют классу ${rtClass} ГОСТ 23055-78.` : `Превышен хотя бы один предел класса ${rtClass} ГОСТ 23055-78.`, checks, thickness, values });
+  }
+
+  if (rule.type === "rvsUzkSp70") {
+    const range = findRange(rule.ranges, thickness);
+    if (!range) return { status: "outside", message: "Таблица 10.10 СП 70.13330.2012 задаёт критерии только для 6 < S ≤ 60 мм." };
+    const special = values.rvsUtCondition === "special";
+    const areaLimit = special ? Number(range.area) / 2 : Number(range.area);
+    const checks = [
+      { input: "equivalentArea", label: "Эквивалентная площадь одиночной несплошности", measured: Number(values.equivalentArea), limit: areaLimit, unit: "мм²", passed: atMost(values.equivalentArea, areaLimit), calculation: special ? `${range.label}; половина браковочной площади ${formatNumber(range.area)} / 2 = ${formatNumber(areaLimit)} мм²` : `${range.label}; браковочная площадь ≤ ${formatNumber(areaLimit)} мм²` },
+      { input: "length", label: "Условная протяжённость", measured: Number(values.length), limit: Number(range.length), unit: "мм", passed: atMost(values.length, range.length), calculation: `${range.label}; оценочный участок ${formatNumber(range.assessmentLength)} мм` },
+      { input: "defectCount", label: "Число одиночных несплошностей на оценочном участке", measured: Number(values.defectCount), limit: Number(range.count), unit: "шт.", passed: atMost(values.defectCount, range.count), calculation: `${range.label}; оценочный участок ${formatNumber(range.assessmentLength)} мм` }
+    ];
+    if (special) {
+      const spacingLimit = 2 * Number(range.assessmentLength);
+      checks.push({ input: "neighborDistance", label: "Расстояние между соседними несплошностями", measured: Number(values.neighborDistance), limit: spacingLimit, unit: "мм", passed: atLeast(values.neighborDistance, spacingLimit), limitText: `не менее ${formatNumber(spacingLimit)} мм`, calculation: `2 × ${formatNumber(range.assessmentLength)} = ${formatNumber(spacingLimit)} мм` });
+    }
+    const allowed = checks.every(check => check.passed);
+    return evaluatedResult({ allowed, decision: allowed ? "ДОПУСКАЕТСЯ" : "НЕ ДОПУСКАЕТСЯ", message: allowed ? `Параметры соответствуют строке ${range.label} таблицы 10.10${special ? " и специальному требованию п. 10.4.10" : ""}.` : "Превышен хотя бы один применимый предел СП 70.13330.2012.", checks, thickness, values });
   }
 
   if (rule.type === "applicability17640") {

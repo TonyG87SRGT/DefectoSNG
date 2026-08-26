@@ -64,6 +64,7 @@ test("прямые маршруты, назад, поиск и избранно�
 });
 
 test("мастер начинается с НТД, изолирует документы и рассчитывает выбранный критерий", async ({ page }) => {
+  test.setTimeout(60_000);
   await page.goto("/#task=criteria");
   await expect(page.getByRole("heading", { name: "Найти критерий", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "1. Нормативный документ", exact: true })).toBeVisible();
@@ -127,6 +128,15 @@ test("мастер начинается с НТД, изолирует докум
   await page.getByLabel(/Большая условная протяжённость/).fill("10");
   await page.getByRole("button", { name: "Проверить критерий" }).click();
   await expect(page.getByRole("heading", { name: "ТРЕБУЕТСЯ ДОПОЛНИТЕЛЬНАЯ НД", exact: true })).toBeVisible();
+
+  await page.getByLabel("Поиск НТД или объекта").fill("вертикальный резервуар");
+  await page.getByRole("button", { name: /РВС — ГОСТ 31385 \/ СП 365/ }).click();
+  await expect(page.getByText(/Для РК используется нормативная цепочка с ГОСТ 23055-78/)).toBeVisible();
+  await page.getByRole("button", { name: /^ВИК/ }).click();
+  await page.locator("#criteria-defect").selectOption("rvs-vik-prohibited-surface");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: "НЕ ДОПУСКАЕТСЯ", exact: true })).toBeVisible();
+  await expect(page.getByText(/Критерий: ГОСТ 31385-2023, п\. 9\.3\.5/)).toBeVisible();
 });
 
 test("карточка A1550 IntroVisor открывается, ищется и показывает практические блоки", async ({ page }) => {
