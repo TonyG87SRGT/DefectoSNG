@@ -96,6 +96,17 @@ test("мастер начинается с НТД, изолирует докум
   await expect(page.getByText("Как выполнить УЗК по ГОСТ Р ИСО 17640-2016", { exact: true })).toBeVisible();
   await page.locator("#criteria-defect").selectOption("gost11666-quality-mapping");
   await expect(page.getByLabel(/Уровень качества по ISO 5817/).locator("option")).toHaveCount(2);
+
+  await page.getByRole("button", { name: /СТО Газпром 15-1\.3-004-2023/ }).click();
+  await expect(page.getByText(/Стандарт применяют к объектам ПАО «Газпром»/)).toBeVisible();
+  await page.getByRole("button", { name: /^УЗК/ }).click();
+  await page.locator("#criteria-defect").selectOption("sto-gazprom-uzk-equivalent-area");
+  await page.getByLabel("Уровень качества").selectOption("B");
+  await page.getByLabel(/Толщина стенки S₁/).fill("8");
+  await page.getByRole("spinbutton", { name: /Эквивалентная площадь/ }).fill("1.5");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: "ГОДЕН ПО ВЫБРАННОМУ КРИТЕРИЮ", exact: true })).toBeVisible();
+  await expect(page.getByText(/Критерий: СТО Газпром 15-1\.3-004-2023, таблица 6\.4/)).toBeVisible();
 });
 
 test("карточка A1550 IntroVisor открывается, ищется и показывает практические блоки", async ({ page }) => {
@@ -111,6 +122,14 @@ test("карточка A1550 IntroVisor открывается, ищется и 
   const search = page.getByRole("searchbox", { name: "Поиск по справочнику" });
   await search.fill("M9170 настройка томографа");
   await expect(page.getByText("A1550 IntroVisor", { exact: true })).toBeVisible();
+});
+
+test("схема органов управления находится в начале карточки УСД-50 IPS", async ({ page }) => {
+  await page.goto("/#article=uzk:uzk-equipment-usd-50-ips");
+  await expect(page.getByRole("heading", { name: "УСД-50 IPS", exact: true })).toBeVisible();
+  const imageButton = page.getByRole("button", { name: /Открыть изображение: УСД-50 IPS с подписями/ });
+  await expect(imageButton).toBeVisible();
+  await expect.poll(() => imageButton.evaluate(image => image.naturalWidth)).toBeGreaterThan(0);
 });
 
 test("нормативная карточка ГОСТ 32569-2013 доступна и находится поиском", async ({ page }) => {

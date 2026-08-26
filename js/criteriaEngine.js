@@ -1,6 +1,6 @@
 const KNOWN_METHODS = new Set(["vik", "rk", "uzk", "pvk", "mk"]);
 const CURRENT_STATUSES = new Set(["current", "replaced", "cancelled"]);
-const KNOWN_CUSTOM_RULES = new Set(["minimum", "applicability17640", "contactCorrection17640", "controlLevel17640", "frequency17640", "gost32569Table122", "gost32569Pvk", "gost32569Extended", "gost32569RootPenetration", "gost32569RootGeometry", "iso11666Amplitude", "iso11666TotalLength", "iso11666Dsr", "iso11666Grouping", "iso11666Mapping"]);
+const KNOWN_CUSTOM_RULES = new Set(["minimum", "applicability17640", "contactCorrection17640", "controlLevel17640", "frequency17640", "gost32569Table122", "gost32569Pvk", "gost32569Extended", "gost32569RootPenetration", "gost32569RootGeometry", "iso11666Amplitude", "iso11666TotalLength", "iso11666Dsr", "iso11666Grouping", "iso11666Mapping", "stoGazpromIndication"]);
 
 export function effectiveThickness(values = {}) {
   const first = Number(values.thickness1);
@@ -81,6 +81,18 @@ export function evaluateExpression(expression, context) {
       const value = source * Number(expression.factor);
       return { value, text: `${formatNumber(expression.factor)} × ${expression.inputLabel || expression.input} = ${formatNumber(value)} ${expression.unit || "мм"}` };
     }
+    case "sto-gazprom-total": {
+      const weldLength = Number(context.values.weldLength);
+      if (!(weldLength > 0)) return null;
+      const base = Number(expression.value);
+      const value = weldLength < 300 ? base / 2 : base;
+      return {
+        value,
+        text: weldLength < 300
+          ? `Длина шва ${formatNumber(weldLength)} мм < 300 мм: Σ₃₀₀ / 2 = ${formatNumber(base)} / 2 = ${formatNumber(value)} мм`
+          : `Длина шва ${formatNumber(weldLength)} мм: Σ₃₀₀ ≤ ${formatNumber(base)} мм`
+      };
+    }
     case "min": {
       const options = (expression.values || []).map(item => evaluateExpression(item, context)).filter(Boolean);
       if (!options.length) return null;
@@ -140,6 +152,29 @@ function evaluateCustomRule(criterion, values, thickness) {
       decision: passed ? "ТРЕБОВАНИЕ ВЫПОЛНЕНО" : "ТРЕБОВАНИЕ НЕ ВЫПОЛНЕНО",
       message: passed ? rule.success : rule.failure,
       checks: [{ input: rule.input, label: rule.label, measured, limitText: `не менее ${formatNumber(limit)} ${rule.unit}`, measuredText: `${formatNumber(measured)} ${rule.unit}`, passed, calculation: rule.calculation }],
+      thickness,
+      values
+    });
+  }
+
+  if (rule.type === "stoGazpromIndication") {
+    const size = Number(values.indicationSize);
+    const isDefectSign = size > 1.6;
+    return evaluatedResult({
+      allowed: null,
+      decision: isDefectSign ? "ПРИЗНАК ОБНАРУЖЕНИЯ ДЕФЕКТА" : "ПОРОГ ПРИЗНАКА НЕ ПРЕВЫШЕН",
+      message: isDefectSign
+        ? "Индикаторный рисунок превышает 1,6 мм в одном из направлений. Определите тип дефекта и оцените его по таблице 6.2; сам рисунок ещё не является отдельным решением о годности."
+        : "Размер не превышает установленный п. 6.2.5 порог признака обнаружения. Это не отменяет оценку других выявленных признаков и требований технологии контроля.",
+      checks: [{
+        input: "indicationSize",
+        label: "Максимальный размер индикаторного рисунка",
+        measured: size,
+        limit: 1.6,
+        unit: "мм",
+        passed: !isDefectSign,
+        calculation: "Признак обнаружения дефекта: максимальный размер в любом направлении > 1,6 мм"
+      }],
       thickness,
       values
     });
@@ -336,7 +371,7 @@ export function evaluateCriterion(criterion, values = {}) {
   if (criterion.outcome === "reference-only") {
     return { status: "guidance", decision: "ОТКРОЙТЕ ПРИМЕНИМУЮ НОРМУ", message: criterion.guidance };
   }
-  if (criterion.outcome === "detection-only") {
+  if (criterion.outcome === "detection-only" && !criterion.customRule) {
     return { status: "guidance", decision: "ТРЕБУЕТ ОЦЕНКИ", message: criterion.guidance };
   }
 

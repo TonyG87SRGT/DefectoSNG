@@ -34,6 +34,15 @@
       "dimensions": [],
       "warning": "Стандарт устанавливает AL 2 и AL 3 для соединений с полным проплавлением из ферритных сталей, соответствующих уровням качества B и C. Уровень качества D находится вне области его применения.",
       "supportingGuideIds": ["gost17640"]
+    },
+    {
+      "id": "sto-gazprom-15-1.3-004-2023",
+      "title": "СТО Газпром 15-1.3-004-2023",
+      "shortTitle": "СТО Газпром 15-1.3-004-2023",
+      "description": "Сварные соединения промысловых и магистральных газопроводов",
+      "basisDocuments": ["sto-gazprom-15-1.3-004-2023"],
+      "dimensions": [],
+      "warning": "Стандарт применяют к объектам ПАО «Газпром» в установленной им области и при наличии ссылки на СТО в договорной/проектной документации. Для РНК и УЗК выберите назначенный уровень качества A, B или C; для продукта с H₂S/CO₂ действует специальное требование п. 6.1.13."
     }
   ],
   "guides": [
@@ -96,6 +105,14 @@
       "title": "Неразрушающий контроль сварных соединений. Ультразвуковой контроль. Уровни приемки",
       "status": "current",
       "role": "Уровни приёмки AL 2 и AL 3 при подтверждённой применимости"
+    },
+    {
+      "id": "sto-gazprom-15-1.3-004-2023",
+      "designation": "СТО Газпром 15-1.3-004-2023",
+      "title": "Неразрушающие методы контроля качества сварных соединений промысловых и магистральных трубопроводов",
+      "edition": "издание 2023 г., с изменением № 1",
+      "status": "current",
+      "role": "Самостоятельные нормы оценки ВИК, РНК, УЗК, ПВК и МПК для объектов ПАО «Газпром» в области стандарта"
     }
   ],
   "methods": [
@@ -139,6 +156,10 @@
     ,"dy": { "label": "Расстояние dy", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
     ,"dz": { "label": "Расстояние dz", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
     ,"weldQualityLevel": { "label": "Уровень качества по ISO 5817", "type": "select", "options": [{ "value": "B", "label": "B" }, { "value": "C", "label": "C" }] }
+    ,"stoPoreSpacing": { "label": "Расстояние между одиночными порами", "type": "select", "options": [{ "value": "3d", "label": "L ≥ 3d" }, { "value": "5d", "label": "L ≥ 5d" }] }
+    ,"maxDefectDimension": { "label": "Максимальный размер дефекта d / h / l / w", "type": "number", "unit": "мм", "min": 0, "step": 0.01 }
+    ,"indicationSize": { "label": "Максимальный размер индикаторного рисунка", "type": "number", "unit": "мм", "min": 0, "step": 0.1 }
+    ,"edgeOffset": { "label": "Смещение кромок Δ", "type": "number", "unit": "мм", "min": 0, "step": 0.01 }
   },
   "criteria": [
     {
@@ -582,6 +603,238 @@
       "id": "gost32569-mk-extended", "method": "mk", "medium": ["all"], "defect": "Протяжённая магнитная индикация", "aliases": ["магнитопорошковый контроль", "протяженная индикация", "МПК"], "inputs": [],
       "variants": [{ "when": {}, "outcome": "prohibited", "message": "При магнитопорошковом или магнитографическом контроле протяжённые дефекты не допускаются." }],
       "source": { "basisDocument": "gost-32569-2013", "basisClauses": ["12.3.13"], "criterionDocument": "gost-32569-2013", "criterionTable": "п. 12.3.13" }
+    },
+    {
+      "id": "sto-gazprom-vik-surface-defects", "method": "vik", "medium": ["all"], "defect": "Трещина, пора, включение, кратер или поверхностное несплавление", "aliases": ["трещина", "пора", "включение", "кратер", "несплавление", "свищ", "закат", "расслоение"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "Таблица 6.2 не допускает поверхностные/подповерхностные поры и включения, свищи и перечисленные дефекты поверхности, кратеры, трещины и несплавления по кромкам." }],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.2.1–6.2.3"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.2" }
+    },
+    {
+      "id": "sto-gazprom-vik-undercut", "method": "vik", "medium": ["all"], "defect": "Подрез", "aliases": ["подрезы", "канавка"], "inputs": ["thickness1", "depth", "length"],
+      "variants": [{ "when": {}, "limits": [
+        { "input": "depth", "label": "Глубина подреза", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 0.5, "unit": "мм" } },
+        { "input": "length", "label": "Протяжённость подреза", "unit": "мм", "max": { "type": "fixed", "value": 150, "unit": "мм" } }
+      ] }],
+      "notes": ["Подрез h ≤ 0,05S, но ≤ 0,2 мм не квалифицируют как нормируемый; длину измеряют на участках глубже 0,2 мм.", "При смещении кромок более 2 мм любые подрезы не допускаются; на участке максимально допустимого смещения любые дефекты не допускаются."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.2.3"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.2" }
+    },
+    {
+      "id": "sto-gazprom-vik-misalignment", "method": "vik", "medium": ["all"], "defect": "Смещение кромок электросварных труб", "aliases": ["смещение кромок", "разностенность", "ступенька"], "inputs": ["thickness1", "edgeOffset"],
+      "rangeTable": { "input": "edgeOffset", "label": "Смещение кромок", "unit": "мм", "ranges": [
+        { "min": 2, "max": 5.000001, "label": "2 ≤ S ≤ 5", "limit": 2 },
+        { "min": 5.000001, "max": 10.000001, "label": "5 < S ≤ 10", "limit": 2 },
+        { "min": 10.000001, "max": 15.000001, "label": "10 < S ≤ 15", "limit": 3 },
+        { "min": 15.000001, "max": 54.000001, "label": "15 < S ≤ 54", "limit": 3 }
+      ] },
+      "notes": ["Для 2–5 мм предел фактически равен 0,4S; отдельное расчётное правило применяется ниже.", "Для бесшовных труб наружное смещение не нормируют при обеспечении плавного перехода; для лазерной сварки — не более 2,0 мм."],
+      "variants": [
+        { "when": { "thicknessMin": 2, "thicknessMaxExclusive": 5.000001 }, "inputs": ["thickness1", "edgeOffset"], "limits": [{ "input": "edgeOffset", "label": "Смещение кромок", "unit": "мм", "max": { "type": "thickness-factor", "factor": 0.4, "unit": "мм" } }] },
+        { "when": { "thicknessMin": 5.000001, "thicknessMaxExclusive": 10.000001 }, "inputs": ["thickness1", "edgeOffset"], "limits": [{ "input": "edgeOffset", "label": "Смещение кромок", "unit": "мм", "max": { "type": "fixed", "value": 2, "unit": "мм" } }] },
+        { "when": { "thicknessMin": 10.000001, "thicknessMaxExclusive": 15.000001 }, "inputs": ["thickness1", "edgeOffset"], "limits": [{ "input": "edgeOffset", "label": "Смещение кромок", "unit": "мм", "max": { "type": "thickness-factor", "factor": 0.2, "unit": "мм" } }] },
+        { "when": { "thicknessMin": 15.000001, "thicknessMaxExclusive": 54.000001 }, "inputs": ["thickness1", "edgeOffset"], "limits": [{ "input": "edgeOffset", "label": "Смещение кромок", "unit": "мм", "max": { "type": "fixed", "value": 3, "unit": "мм" } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.2.3"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.2" }
+    },
+    {
+      "id": "sto-gazprom-rk-crack", "method": "rk", "medium": ["all"], "defect": "Трещина", "aliases": ["трещины", "плоскостный дефект"], "inputs": ["quality"],
+      "variants": [{ "when": { "quality": ["A", "B", "C"] }, "inputs": ["quality"], "outcome": "prohibited", "message": "Трещины любой длины и направления относительно сварного шва не допускаются при уровнях качества A, B и C." }],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, E" }
+    },
+    {
+      "id": "sto-gazprom-rk-single-pore", "method": "rk", "medium": ["all"], "defect": "Одиночная пора", "aliases": ["одиночные поры", "сферическая пора", "удлиненная пора", "Aa"], "inputs": ["quality", "stoPoreSpacing", "thickness1", "maxDefectDimension", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A", "stoPoreSpacing": ["3d", "5d"] }, "inputs": ["quality", "stoPoreSpacing", "thickness1", "maxDefectDimension", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Максимальный размер d/h/l/w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 2, "unit": "мм" } }, { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30, "unit": "мм" } }] },
+        { "when": { "quality": "B", "stoPoreSpacing": "3d" }, "inputs": ["quality", "stoPoreSpacing", "thickness1", "maxDefectDimension", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Максимальный размер d/h/l/w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.2, "cap": 2.5, "unit": "мм" } }, { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50, "unit": "мм" } }] },
+        { "when": { "quality": "B", "stoPoreSpacing": "5d" }, "inputs": ["quality", "stoPoreSpacing", "thickness1", "maxDefectDimension", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Максимальный размер d/h/l/w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.25, "cap": 3, "unit": "мм" } }, { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50, "unit": "мм" } }] },
+        { "when": { "quality": "C", "stoPoreSpacing": "3d" }, "inputs": ["quality", "stoPoreSpacing", "thickness1", "maxDefectDimension", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Максимальный размер d/h/l/w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.2, "cap": 3, "unit": "мм" } }, { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50, "unit": "мм" } }] },
+        { "when": { "quality": "C", "stoPoreSpacing": "5d" }, "inputs": ["quality", "stoPoreSpacing", "thickness1", "maxDefectDimension", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Максимальный размер d/h/l/w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.25, "cap": 3.5, "unit": "мм" } }, { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50, "unit": "мм" } }] }
+      ],
+      "notes": ["Размер d/h/l/w и сумму оценивают одновременно. При длине шва менее 300 мм допустимая сумма равна Σ₃₀₀/2 по п. 6.1.6."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.1.5–6.1.6", "6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Aa" }
+    },
+    {
+      "id": "sto-gazprom-rk-pore-chain", "method": "rk", "medium": ["all"], "defect": "Цепочка пор", "aliases": ["цепочка", "поры цепочкой", "Ab"], "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Размер d/h/w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 1.5, "unit": "мм" } }, { "input": "length", "label": "Длина цепочки", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1, "unit": "мм" }, { "type": "fixed", "value": 30, "unit": "мм" }] } }, { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30, "unit": "мм" } }] },
+        { "when": { "quality": "B" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Размер d/h/w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.15, "cap": 2, "unit": "мм" } }, { "input": "length", "label": "Длина цепочки", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1, "unit": "мм" }, { "type": "fixed", "value": 30, "unit": "мм" }] } }, { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30, "unit": "мм" } }] },
+        { "when": { "quality": "C" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Размер d/h/w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.2, "cap": 2.5, "unit": "мм" } }, { "input": "length", "label": "Длина цепочки", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2, "unit": "мм" }, { "type": "fixed", "value": 30, "unit": "мм" }] } }, { "input": "totalLength", "label": "Суммарная протяжённость", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50, "unit": "мм" } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.1.5–6.1.6", "6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Ab" }
+    },
+    {
+      "id": "sto-gazprom-rk-channel-pore", "method": "rk", "medium": ["all"], "defect": "Канальная (червеобразная) пора", "aliases": ["канальная пора", "червеобразная пора", "Ak"], "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality"], "outcome": "prohibited", "message": "Для уровня качества A канальные поры не допускаются." },
+        { "when": { "quality": "B" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Высота/ширина h,w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 1.5 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 0.5 }, { "type": "fixed", "value": 12.5 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 25 } }] },
+        { "when": { "quality": "C" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Высота/ширина h,w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 2 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 15 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Ak" }
+    },
+    {
+      "id": "sto-gazprom-rk-slag-single", "method": "rk", "medium": ["all"], "defect": "Одиночное компактное шлаковое включение", "aliases": ["шлаковое включение", "неметаллическое включение", "Ba"], "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Диаметр/высота d,h", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 2.5 } }, { "input": "length", "label": "Длина/ширина l,w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.5, "cap": 5 } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Диаметр/высота d,h", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 3 } }, { "input": "length", "label": "Длина/ширина l,w", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.5, "cap": 7 } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Ba" }
+    },
+    {
+      "id": "sto-gazprom-rk-interlayer-lack-fusion", "method": "rk", "medium": ["all"], "defect": "Межслойное несплавление", "aliases": ["межслойное несплавление", "несплавление", "Db"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": ["A", "B"] }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина/ширина l,w", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 25 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 25 } }] },
+        { "when": { "quality": "C" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина/ширина l,w", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 30 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] }
+      ],
+      "notes": ["Для продукта с H₂S/CO₂ действует специальная норма примечания 6 таблицы 6.3."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Db" }
+    },
+    {
+      "id": "sto-gazprom-rk-edge-lack-fusion", "method": "rk", "medium": ["all"], "defect": "Несплавление по разделке кромок", "aliases": ["краевое несплавление", "несплавление по кромке", "Dc1"], "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality"], "outcome": "prohibited", "message": "Для уровня качества A несплавление Dc1 не допускается." },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Ширина/высота w,h", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.05, "cap": 1 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 15 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 15 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Dc1" }
+    },
+    {
+      "id": "sto-gazprom-rk-root-incomplete", "method": "rk", "medium": ["all"], "defect": "Непровар в корне шва", "aliases": ["непровар", "корневой непровар", "Da1"], "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Ширина/высота w,h", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.05, "cap": 0.75, "unit": "мм" } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 12.5 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 25 } }] },
+        { "when": { "quality": "B" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Ширина/высота w,h", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.05, "cap": 0.75 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 15 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] },
+        { "when": { "quality": "C" }, "inputs": ["quality", "thickness1", "maxDefectDimension", "length", "weldLength", "totalLength"], "limits": [{ "input": "maxDefectDimension", "label": "Ширина/высота w,h", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.05, "cap": 1 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 25 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50 } }] }
+      ],
+      "notes": ["При внутренней подварке непровары и несплавления в корне не допускаются. Для продукта с H₂S/CO₂ непровары Da1–Da3 не допускаются."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Da1; примечания 4–5" }
+    },
+    {
+      "id": "sto-gazprom-rk-root-concavity", "method": "rk", "medium": ["all"], "defect": "Вогнутость корня шва", "aliases": ["утяжина", "вогнутость", "Fa"], "inputs": ["quality", "thickness1", "depth", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "depth", "length", "weldLength", "totalLength"], "limits": [{ "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.1, "cap": 1 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 30 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50 } }] },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "depth", "length", "weldLength", "totalLength"], "limits": [{ "input": "depth", "label": "Глубина", "unit": "мм", "max": { "type": "thickness-factor-cap", "factor": 0.2, "cap": 2 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 50 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 100 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Fa" }
+    },
+    {
+      "id": "sto-gazprom-rk-excess-penetration", "method": "rk", "medium": ["all"], "defect": "Превышение проплавления", "aliases": ["провис", "избыточное проплавление", "Fb"], "inputs": ["quality", "thickness1", "depth", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "depth", "length", "weldLength", "totalLength"], "limits": [{ "input": "depth", "label": "Высота", "unit": "мм", "max": { "type": "fixed", "value": 3 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "thickness-factor", "factor": 0.5 } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "depth", "length", "weldLength", "totalLength"], "limits": [{ "input": "depth", "label": "Высота", "unit": "мм", "max": { "type": "fixed", "value": 5 } }, { "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "thickness-factor", "factor": 1 } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50 } }] }
+      ],
+      "notes": ["Для кольцевых стыков газопроводов с H₂S/CO₂ применяется отдельное примечание 7 таблицы 6.3."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.3.2–6.3.4"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.3, Fb" }
+    },
+    {
+      "id": "sto-gazprom-uzk-equivalent-area", "method": "uzk", "medium": ["all"], "defect": "Максимальная эквивалентная площадь", "aliases": ["эквивалентная площадь", "Sбрак", "амплитуда", "таблица 6.4"], "inputs": ["quality", "thickness1", "equivalentArea"],
+      "rangeTable": { "input": "equivalentArea", "label": "Эквивалентная площадь", "unit": "мм²", "ranges": [
+        { "min": 4, "max": 6, "label": "4 ≤ S < 6", "limits": { "A": 0.7, "B": 1, "C": 1 } },
+        { "min": 6, "max": 8, "label": "6 ≤ S < 8", "limits": { "A": 0.85, "B": 1.2, "C": 1.2 } },
+        { "min": 8, "max": 12, "label": "8 ≤ S < 12", "limits": { "A": 1.05, "B": 1.5, "C": 1.5 } },
+        { "min": 12, "max": 15, "label": "12 ≤ S < 15", "limits": { "A": 1.4, "B": 2, "C": 2 } },
+        { "min": 15, "max": 20, "label": "15 ≤ S < 20", "limits": { "A": 1.75, "B": 2.5, "C": 2.5 } },
+        { "min": 20, "max": 26, "label": "20 ≤ S < 26", "limits": { "A": 2.5, "B": 3.5, "C": 3.5 } },
+        { "min": 26, "max": 40, "label": "26 ≤ S < 40", "limits": { "A": 3.5, "B": 5, "C": 5 } },
+        { "min": 40, "max": 54.000001, "label": "40 ≤ S ≤ 54", "limits": { "A": 5, "B": 7, "C": 7 } }
+      ] },
+      "notes": ["Для обычных кольцевых швов область нормы: 4–54 мм и диаметр от 57 мм. Строки свыше 54 мм относятся только к усиленным патрубкам и здесь намеренно не автоматизированы.", "Браковочный уровень соответствует сигналу от отражателя с максимально допустимой площадью; контрольный уровень — на 6 дБ ниже, если методика не устанавливает иное."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.2–6.4.7"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.4" }
+    },
+    {
+      "id": "sto-gazprom-uzk-nonextended-length", "method": "uzk", "medium": ["all"], "defect": "Классификация непротяжённого дефекта", "aliases": ["непротяженный дефект", "условная протяженность", "таблица 6.5"], "inputs": ["thickness1", "length"],
+      "rangeTable": { "input": "length", "label": "Условная протяжённость", "unit": "мм", "ranges": [
+        { "min": 4.000001, "max": 6.000001, "label": "4 < S ≤ 6", "limit": 5 },
+        { "min": 6.000001, "max": 9.000001, "label": "6 < S ≤ 9", "limit": 7 },
+        { "min": 9.000001, "max": 12.000001, "label": "9 < S ≤ 12", "limit": 10 },
+        { "min": 12.000001, "max": 15.000001, "label": "12 < S ≤ 15", "limit": 12 },
+        { "min": 15.000001, "max": null, "label": "S > 15", "limit": 15 }
+      ] },
+      "notes": ["Это классификационный порог таблицы 6.5. После классификации дефект оценивают по площади и допустимой длине/сумме таблицы 6.6."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.5" }
+    },
+    {
+      "id": "sto-gazprom-uzk-ls1", "method": "uzk", "medium": ["all"], "defect": "Объёмно-протяжённый дефект LS1", "aliases": ["LS1", "объемно-протяженный", "протяженный объемный"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина одного дефекта", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 15 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина одного дефекта", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 25 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.6, LS1" }
+    },
+    {
+      "id": "sto-gazprom-uzk-ls2", "method": "uzk", "medium": ["all"], "defect": "Плоскостной дефект по разделке кромок LS2", "aliases": ["LS2", "дефект по разделке", "плоскостной дефект"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality"], "outcome": "prohibited", "message": "Для уровня качества A дефект LS2 не допускается." },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина одного дефекта", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 15 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 15 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.6, LS2" }
+    },
+    {
+      "id": "sto-gazprom-uzk-ls3", "method": "uzk", "medium": ["all"], "defect": "Плоскостной дефект в металле шва LS3", "aliases": ["LS3", "плоскостной в металле шва"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 25 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 25 } }] },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 30 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.6, LS3" }
+    },
+    {
+      "id": "sto-gazprom-uzk-lb1", "method": "uzk", "medium": ["all"], "defect": "Плоскостной дефект в корне LB1", "aliases": ["LB1", "двухсторонний непровар", "непровар корня"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 12.5 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 25 } }] },
+        { "when": { "quality": "B" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 15 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] },
+        { "when": { "quality": "C" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 25 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.6, LB1" }
+    },
+    {
+      "id": "sto-gazprom-uzk-lb2", "method": "uzk", "medium": ["all"], "defect": "Непровар из-за смещения кромок LB2", "aliases": ["LB2", "непровар из-за смещения"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": ["A", "B"] }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 30 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50 } }] },
+        { "when": { "quality": "C" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 50 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 75 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.6, LB2" }
+    },
+    {
+      "id": "sto-gazprom-uzk-lb3", "method": "uzk", "medium": ["all"], "defect": "Утяжина или превышение проплава LB3", "aliases": ["LB3", "утяжина", "превышение проплава"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 30 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 50 } }] },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 2 }, { "type": "fixed", "value": 50 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 100 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.6, LB3" }
+    },
+    {
+      "id": "sto-gazprom-uzk-lb4", "method": "uzk", "medium": ["all"], "defect": "Плоскостной дефект по разделке кромок LB4", "aliases": ["LB4", "плоскостной в корне", "дефект по разделке"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality"], "outcome": "prohibited", "message": "Для уровня качества A дефект LB4 не допускается." },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 15 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 15 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.6, LB4" }
+    },
+    {
+      "id": "sto-gazprom-uzk-cluster", "method": "uzk", "medium": ["all"], "defect": "Цепочка или скопление непротяжённых дефектов CC", "aliases": ["CC", "скопление", "цепочка непротяженных"], "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"],
+      "variants": [
+        { "when": { "quality": "A" }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 12.5 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 25 } }] },
+        { "when": { "quality": ["B", "C"] }, "inputs": ["quality", "thickness1", "length", "weldLength", "totalLength"], "limits": [{ "input": "length", "label": "Длина", "unit": "мм", "max": { "type": "min", "values": [{ "type": "thickness-factor", "factor": 1 }, { "type": "fixed", "value": 15 }] } }, { "input": "totalLength", "label": "Сумма", "unit": "мм", "max": { "type": "sto-gazprom-total", "value": 30 } }] }
+      ],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.4.6"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.6, CC" }
+    },
+    {
+      "id": "sto-gazprom-pvk-indication", "method": "pvk", "medium": ["all"], "defect": "Порог признака обнаружения при ПВК", "aliases": ["индикаторный рисунок", "индикация", "1,6 мм", "капиллярный контроль"], "inputs": ["indicationSize"],
+      "outcome": "detection-only", "customRule": { "type": "stoGazpromIndication" },
+      "notes": ["После превышения порога тип дефекта оценивают по таблице 6.2. Трещины, поры, включения, кратеры и поверхностные несплавления не допускаются."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.2.5"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "п. 6.2.5 / таблица 6.2" }
+    },
+    {
+      "id": "sto-gazprom-pvk-prohibited", "method": "pvk", "medium": ["all"], "defect": "Трещина, пора, включение, кратер или несплавление", "aliases": ["трещина", "пора", "включение", "кратер", "несплавление"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "После идентификации по ПВК дефекты, перечисленные в таблице 6.2, не допускаются." }],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.2.3–6.2.5"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.2" }
+    },
+    {
+      "id": "sto-gazprom-mk-indication", "method": "mk", "medium": ["all"], "defect": "Порог признака обнаружения при МПК", "aliases": ["индикаторный рисунок", "магнитная индикация", "1,6 мм", "магнитопорошковый контроль"], "inputs": ["indicationSize"],
+      "outcome": "detection-only", "customRule": { "type": "stoGazpromIndication" },
+      "notes": ["После превышения порога тип дефекта оценивают по таблице 6.2. Учитывайте контролепригодность материала для МПК."],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.2.5"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "п. 6.2.5 / таблица 6.2" }
+    },
+    {
+      "id": "sto-gazprom-mk-prohibited", "method": "mk", "medium": ["all"], "defect": "Трещина, пора, включение, кратер или несплавление", "aliases": ["трещина", "пора", "включение", "кратер", "несплавление"], "inputs": [],
+      "variants": [{ "when": {}, "outcome": "prohibited", "message": "После идентификации по МПК дефекты, перечисленные в таблице 6.2, не допускаются." }],
+      "source": { "basisDocument": "sto-gazprom-15-1.3-004-2023", "basisClauses": ["6.2.3–6.2.5"], "criterionDocument": "sto-gazprom-15-1.3-004-2023", "criterionTable": "таблица 6.2" }
     },
     {
       "id": "gost17640-applicability", "method": "uzk", "medium": ["all"], "defect": "Область применения", "aliases": ["толщина 8 мм", "температура", "применимость"], "inputs": ["thickness1", "temperature"],

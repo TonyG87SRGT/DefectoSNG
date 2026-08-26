@@ -58,6 +58,7 @@ test("УЗК организован по этапам от основ до оф�
   assert.equal(usd50?.parentId, "uzk-equipment-section");
   assert.equal(usd50?.status, "published");
   assert.match(JSON.stringify(usd50), /УСД-50 IPS|ПРОТЕКТОР|ВРЧ|АРК|АРД|B-scan|TOFD/);
+  assert.equal(usd50?.sections?.[0]?.src, "images/articles/uzk/usd-50-ips-controls.jpg");
   const a1550 = uzk.find(item => item.id === "uzk-equipment-a1550-introvisor");
   assert.equal(a1550?.parentId, "uzk-equipment-section");
   assert.equal(a1550?.status, "published");

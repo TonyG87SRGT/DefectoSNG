@@ -11,7 +11,7 @@ test("модель нормативных критериев проходит о
 test("мастер предлагает все нормативные ветки до выбора метода", () => {
   assert.deepEqual(
     data.standards.map(item => item.id),
-    ["sp406-sp86", "gost32569", "gost11666"]
+    ["sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023"]
   );
   for (const standard of data.standards) {
     assert.ok(data.criteria.some(item => standard.basisDocuments.includes(item.source.basisDocument)), standard.id);
@@ -108,6 +108,52 @@ test("ГОСТ ISO 11666 применяет строгие условия гру
   assert.match(evaluateCriterion(grouped, { ...base, dx: 10 }).decision, /РАЗДЕЛЬНО/);
   const dsr = evaluateCriterion(byId.get("gost11666-dsr"), { thickness1: 20, waveType: "shear", frequency: 2 });
   assert.match(dsr.decision, /D_DSR/);
+});
+
+test("СТО Газпром представлен всеми пятью методами и текущим документом", () => {
+  const criteria = data.criteria.filter(item => item.source.basisDocument === "sto-gazprom-15-1.3-004-2023");
+  assert.deepEqual(new Set(criteria.map(item => item.method)), new Set(["vik", "rk", "uzk", "pvk", "mk"]));
+  assert.equal(data.documents.find(item => item.id === "sto-gazprom-15-1.3-004-2023").status, "current");
+});
+
+test("СТО Газпром рассчитывает подрез по таблице 6.2", () => {
+  const criterion = byId.get("sto-gazprom-vik-undercut");
+  assert.equal(evaluateCriterion(criterion, { thickness1: 4, depth: 0.4, length: 150 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { thickness1: 4, depth: 0.401, length: 150 }).allowed, false);
+  assert.equal(evaluateCriterion(criterion, { thickness1: 20, depth: 0.5, length: 150.1 }).allowed, false);
+});
+
+test("СТО Газпром не смешивает уровни качества одиночных пор", () => {
+  const criterion = byId.get("sto-gazprom-rk-single-pore");
+  const common = { thickness1: 20, weldLength: 300, totalLength: 50 };
+  assert.equal(evaluateCriterion(criterion, { ...common, quality: "B", stoPoreSpacing: "3d", maxDefectDimension: 2.5 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...common, quality: "B", stoPoreSpacing: "3d", maxDefectDimension: 2.51 }).allowed, false);
+  assert.equal(evaluateCriterion(criterion, { ...common, quality: "C", stoPoreSpacing: "5d", maxDefectDimension: 3.5 }).allowed, true);
+});
+
+test("СТО Газпром уменьшает допустимую сумму вдвое для шва короче 300 мм", () => {
+  const criterion = byId.get("sto-gazprom-rk-single-pore");
+  const values = { quality: "A", stoPoreSpacing: "3d", thickness1: 10, maxDefectDimension: 1, weldLength: 299, totalLength: 15 };
+  assert.equal(evaluateCriterion(criterion, values).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { ...values, totalLength: 15.01 }).allowed, false);
+  assert.match(evaluateCriterion(criterion, values).checks[1].calculation, /Σ₃₀₀ \/ 2/);
+});
+
+test("таблица 6.4 СТО Газпром корректно выбирает границы толщины и уровни B/C", () => {
+  const criterion = byId.get("sto-gazprom-uzk-equivalent-area");
+  assert.equal(evaluateCriterion(criterion, { quality: "A", thickness1: 4, equivalentArea: 0.7 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { quality: "B", thickness1: 6, equivalentArea: 1.2 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { quality: "C", thickness1: 40, equivalentArea: 7 }).allowed, true);
+  assert.equal(evaluateCriterion(criterion, { quality: "A", thickness1: 54.001, equivalentArea: 1 }).status, "outside");
+});
+
+test("ПВК и МПК СТО Газпром используют порог признака, а не готовый диагноз", () => {
+  const below = evaluateCriterion(byId.get("sto-gazprom-pvk-indication"), { indicationSize: 1.6 });
+  const above = evaluateCriterion(byId.get("sto-gazprom-mk-indication"), { indicationSize: 1.61 });
+  assert.equal(below.allowed, null);
+  assert.match(below.decision, /ПОРОГ/);
+  assert.equal(above.allowed, null);
+  assert.match(above.decision, /ПРИЗНАК/);
 });
 
 test("граница подреза считается по 0,1S, но не более 0,5 мм", () => {
