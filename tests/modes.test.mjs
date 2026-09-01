@@ -24,6 +24,13 @@ test("черновики и скрытые карточки не считают�
     status: "published",
     pipelineJoint: { parameters: [], images: { edgePreparation: null, weldSection: null } }
   }), false);
+  assert.equal(isPublicItem({
+    status: "published",
+    pipelineJoint: {
+      parameters: [],
+      images: { edgePreparation: "edge.svg", weldSection: "weld.svg" }
+    }
+  }), true);
 });
 
 test("история безопасно работает без браузерного localStorage", () => {

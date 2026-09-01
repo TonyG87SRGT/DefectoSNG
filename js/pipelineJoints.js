@@ -7,7 +7,7 @@ import { getArticles, getItem, getItemRoute, sortByOrder } from "./store.js";
 import { renderArticle, renderNotFound } from "./views.js";
 
 export const PIPELINE_CATEGORIES = Object.freeze([
-  Object.freeze({ id: "all", title: "Все тестовые карточки" }),
+  Object.freeze({ id: "all", title: "Все соединения" }),
   Object.freeze({ id: "butt", title: "Стыковые соединения", sectionId: "pipeline-butt" }),
   Object.freeze({ id: "lap", title: "Нахлесточные и муфтовые соединения", sectionId: "pipeline-lap" }),
   Object.freeze({ id: "corner", title: "Угловые соединения", sectionId: "pipeline-corner" })

@@ -7,7 +7,7 @@
     "title": "Сварные соединения трубопроводов",
     "sectionTitle": "Сварные соединения трубопроводов",
     "summary": "Атлас типов, конструктивных элементов и размеров сварных соединений стальных трубопроводов по ГОСТ 16037-80.",
-    "description": "Раздел содержит основные типы сварных соединений труб, арматуры, фланцев, штуцеров, отводов и муфт. Для каждого соединения будут приведены форма подготовки кромок, схема готового шва, способы сварки, диапазоны толщин и контролируемые размеры.",
+    "description": "Раздел содержит основные типы сварных соединений труб, арматуры, фланцев, штуцеров, отводов и муфт. Для каждого соединения приведены форма подготовки кромок и схема готового шва; способы сварки и диапазоны толщин указаны там, где они подтверждены таблицами стандарта.",
     "warning": "Раздел предназначен для определения конструктивного исполнения сварного соединения. Нормы допустимости дефектов следует определять по применяемой нормативной, проектной и технологической документации.",
     "standard": "ГОСТ 16037-80",
     "tags": [
@@ -135,7 +135,7 @@
     "status": "published",
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С2 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения С2. Конструктивные размеры будут перенесены из ГОСТ позднее.",
+    "summary": "Стыковое одностороннее соединение труб без скоса кромок.",
     "tags": [
       "С2",
       "C2",
@@ -152,12 +152,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 1,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/c2-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/c2-weld.svg"
       }
     }
   },
@@ -204,8 +204,8 @@
       ],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/c17-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/c17-weld.svg"
       }
     }
   },
@@ -217,7 +217,7 @@
     "status": "published",
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С18 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения С18. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Стыковое одностороннее соединение со скосом кромок на съёмной подкладке.",
     "tags": [
       "С18",
       "C18",
@@ -234,12 +234,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 8,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/c18-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/c18-weld.svg"
       }
     }
   },
@@ -251,7 +251,7 @@
     "status": "published",
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С19 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения С19. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Стыковое одностороннее соединение со скосом кромок на остающейся цилиндрической подкладке.",
     "tags": [
       "С19",
       "C19",
@@ -268,12 +268,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 9,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/c19-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/c19-weld.svg"
       }
     }
   },
@@ -285,7 +285,7 @@
     "status": "published",
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С46 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения С46. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Стыковое одностороннее соединение со скосом кромок и расплавляемой вставкой.",
     "tags": [
       "С46",
       "C46",
@@ -302,12 +302,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 10,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/c46-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/c46-weld.svg"
       }
     }
   },
@@ -319,7 +319,7 @@
     "status": "published",
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С54 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения С54. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Стыковое двустороннее соединение секторов колен и отводов со скосом кромок.",
     "tags": [
       "С54",
       "C54",
@@ -336,12 +336,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 18,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/c54-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/c54-weld.svg"
       }
     }
   },
@@ -353,7 +353,7 @@
     "status": "published",
     "category": "СТЫКОВОЕ СОЕДИНЕНИЕ",
     "title": "С56 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения С56. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Стыковое двустороннее соединение фланца с трубой с двумя несимметричными скосами кромок.",
     "tags": [
       "С56",
       "C56",
@@ -370,12 +370,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 20,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/c56-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/c56-weld.svg"
       }
     }
   },
@@ -387,7 +387,7 @@
     "status": "published",
     "category": "НАХЛЕСТОЧНОЕ ИЛИ МУФТОВОЕ СОЕДИНЕНИЕ",
     "title": "Н4 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения Н4. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Нахлесточное одностороннее двойное соединение труб с муфтой без скоса кромок.",
     "tags": [
       "Н4",
       "H4",
@@ -405,12 +405,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 23,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/n4-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/n4-weld.svg"
       }
     }
   },
@@ -422,7 +422,7 @@
     "status": "published",
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У17 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения У17. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Угловое одностороннее соединение отростка, штуцера или приварыша с трубой при Dₒ/Dₙ не более 0,5.",
     "tags": [
       "У17",
       "U17",
@@ -439,12 +439,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 29,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/u17-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/u17-weld.svg"
       }
     }
   },
@@ -456,7 +456,7 @@
     "status": "published",
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У18 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения У18. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Угловое одностороннее соединение отростка, штуцера или приварыша с трубой при Dₒ/Dₙ более 0,5.",
     "tags": [
       "У18",
       "U18",
@@ -473,12 +473,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 30,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/u18-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/u18-weld.svg"
       }
     }
   },
@@ -490,7 +490,7 @@
     "status": "published",
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У19 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения У19. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Угловое одностороннее соединение ответвления с подготовленной кромкой и трубой.",
     "tags": [
       "У19",
       "U19",
@@ -507,12 +507,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 31,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/u19-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/u19-weld.svg"
       }
     }
   },
@@ -524,7 +524,7 @@
     "status": "published",
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У20 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения У20. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Угловое одностороннее соединение втачного приварыша с трубой со скосом кромки.",
     "tags": [
       "У20",
       "U20",
@@ -541,12 +541,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 32,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/u20-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/u20-weld.svg"
       }
     }
   },
@@ -558,7 +558,7 @@
     "status": "published",
     "category": "УГЛОВОЕ СОЕДИНЕНИЕ",
     "title": "У21 — сварное соединение трубопроводов",
-    "summary": "Тестовая карточка соединения У21. Точные характеристики будут добавлены после переноса из ГОСТ.",
+    "summary": "Угловое одностороннее соединение приварыша с трубой со скосом кромки.",
     "tags": [
       "У21",
       "U21",
@@ -575,12 +575,12 @@
       "weldingMethods": [],
       "thicknessRange": null,
       "minimumDiameter": null,
-      "standardTable": null,
+      "standardTable": 33,
       "specialFilters": [],
       "parameters": [],
       "images": {
-        "edgePreparation": null,
-        "weldSection": null
+        "edgePreparation": "images/pipeline-welded-joints/u21-edge.svg",
+        "weldSection": "images/pipeline-welded-joints/u21-weld.svg"
       }
     }
   },

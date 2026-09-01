@@ -29,9 +29,7 @@ export function isPublicItem(item) {
     const images = item.pipelineJoint.images || {};
     return Boolean(
       images.edgePreparation &&
-      images.weldSection &&
-      Array.isArray(item.pipelineJoint.parameters) &&
-      item.pipelineJoint.parameters.length
+      images.weldSection
     );
   }
   return true;

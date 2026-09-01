@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">У19: сечение сварного шва</title>
+  <desc id="desc">Собственная техническая схема DefectoSNG по геометрии ГОСТ 16037-80, таблица 31. Размеры показаны условными обозначениями; изображение не в масштабе.</desc>
+  <defs>
+    <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="12" height="12" fill="#dbe5f2"/>
+      <line x1="0" y1="0" x2="0" y2="12" stroke="#7890aa" stroke-width="3"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <style>
+    .metal{fill:url(#hatch);stroke:#172033;stroke-width:4;stroke-linejoin:round}
+    .weld{fill:#f6b94c;stroke:#7c4700;stroke-width:4;stroke-linejoin:round}
+    .backing{fill:#a8b7c9;stroke:#172033;stroke-width:4}
+    .guide{stroke:#64748b;stroke-width:2;stroke-dasharray:7 6;fill:none}
+    .dimension{stroke:#334155;stroke-width:2;fill:none}
+    .label{font:600 20px Arial,sans-serif;fill:#243247}
+    .heading{font:700 25px Arial,sans-serif;fill:#0f172a}
+    .sub{font:17px Arial,sans-serif;fill:#526174}
+  </style>
+  <rect width="640" height="360" rx="18" fill="#ffffff"/>
+  <text x="32" y="42" class="heading">У19 · Сечение сварного шва</text>
+  <text x="608" y="42" class="sub" text-anchor="end">ГОСТ 16037-80 · табл. 31</text>
+  <g><path d="M248 70H338V198L284 252H248Z" class="metal"/><path d="M72 205Q320 148 568 205V282Q320 225 72 282Z" class="metal"/><path d="M284 252Q342 173 386 196Q351 227 337 259Z" class="weld"/>
+    <line x1="354" y1="175" x2="398" y2="218" class="dimension" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <text x="397" y="180" class="label" text-anchor="middle">e</text>
+  
+    <line x1="405" y1="205" x2="405" y2="170" class="dimension" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <text x="423" y="191" class="label" text-anchor="middle">g</text>
+  </g>
+  <text x="320" y="337" class="sub" text-anchor="middle">Условная схема; фактические размеры выбирают по строке таблицы ГОСТ.</text>
+</svg>
