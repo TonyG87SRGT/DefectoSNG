@@ -12,7 +12,6 @@ import {
   TASK_HUBS,
   getModeSectionIds
 } from "./navigationModel.js";
-import { getRecentItems, rememberRecentItem } from "./recent.js";
 import { getRouteHash, goBack, navigate } from "./router.js";
 import {
   METHODS,
@@ -83,7 +82,6 @@ function renderMethodModeCards(mode) {
 }
 
 export function renderHome() {
-  const recentItems = getRecentItems().slice(0, 5);
   content.innerHTML = `
     ${renderModeSwitcher("work")}
     <p class="mode-intro">Быстрый доступ к действиям, которые нужны непосредственно при контроле.</p>
@@ -92,7 +90,7 @@ export function renderHome() {
     <div class="work-actions">
       <a class="work-action" href="#task=setup" data-work-route="setup"><span aria-hidden="true">⚙</span><strong>Настроить прибор</strong></a>
       <a class="work-action" href="#task=criteria" data-work-route="criteria"><span aria-hidden="true">✓</span><strong>Найти критерий</strong></a>
-      <a class="work-action" href="#atlases" data-work-route="atlases"><span aria-hidden="true">▦</span><strong>Открыть атлас</strong></a>
+      <a class="work-action" href="#references" data-work-route="references"><span aria-hidden="true">⌘</span><strong>Таблицы</strong></a>
       <a class="work-action" href="#tools" data-work-route="tools"><span aria-hidden="true">⌗</span><strong>Инструменты</strong></a>
     </div>
 
@@ -101,22 +99,9 @@ export function renderHome() {
       ${renderMethodModeCards("work")}
     </div>
 
-    ${recentItems.length ? `
-      <p class="section-label quick-title">Недавно открытые</p>
-      <div class="recent-list">
-        ${recentItems.map((item, index) => `
-          <a class="recent-card" href="${getRouteHash(item.route)}" data-recent-index="${index}">
-            <small>${safeText(item.subtitle, "Материал")}</small>
-            <strong>${safeText(item.title)}</strong>
-          </a>
-        `).join("")}
-      </div>
-    ` : ""}
-
     <p class="section-label quick-title">Личное</p>
     <div class="quick-grid">
       <a class="quick-card" href="#favorites" data-quick="favorites"><span aria-hidden="true">☆</span><small>Избранное</small></a>
-      <a class="quick-card" href="#references" data-quick="references"><span aria-hidden="true">⌘</span><small>Таблицы</small></a>
       <a class="quick-card" href="#search" data-quick="search"><span aria-hidden="true">⌕</span><small>Поиск</small></a>
     </div>
   `;
@@ -130,7 +115,7 @@ export function renderHome() {
   const workRoutes = {
     setup: { view: "task", task: "setup" },
     criteria: { view: "task", task: "criteria" },
-    atlases: { view: "atlases" },
+    references: { view: "references" },
     tools: { view: "tools" }
   };
   content.querySelectorAll("[data-work-route]").forEach(link => {
@@ -139,18 +124,11 @@ export function renderHome() {
 
   const quickRoutes = {
     favorites: { view: "favorites" },
-    references: { view: "references" },
     search: { view: "search", query: "" }
   };
   content.querySelectorAll("[data-quick]").forEach(link => {
     link.addEventListener("click", event => {
       handleRouteLink(event, quickRoutes[link.dataset.quick] || { view: "home" });
-    });
-  });
-  content.querySelectorAll("[data-recent-index]").forEach(link => {
-    link.addEventListener("click", event => {
-      const item = recentItems[Number(link.dataset.recentIndex)];
-      if (item) handleRouteLink(event, item.route);
     });
   });
 }
@@ -319,11 +297,6 @@ export function renderMethod(methodKey) {
 export function renderArticleGroup(methodKey, groupArticle) {
   const method = METHODS[methodKey];
   const childArticles = getChildren(methodKey, groupArticle.id);
-  rememberRecentItem({
-    route: getItemRoute(methodKey, groupArticle),
-    title: groupArticle.sectionTitle || groupArticle.title,
-    subtitle: method.short
-  });
 
   content.innerHTML = `
     <div class="page-header">
@@ -387,11 +360,6 @@ export function renderArticleGroup(methodKey, groupArticle) {
 export function renderArticle(methodKey, article) {
   const method = METHODS[methodKey];
   const favorite = isFavorite(methodKey, article.id);
-  rememberRecentItem({
-    route: getItemRoute(methodKey, article),
-    title: article.title,
-    subtitle: method.short
-  });
   const normativeReference = article.normativeView
     ? getReference(article.normativeView.referenceId)
     : null;

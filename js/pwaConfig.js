@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.56.2";
+export const APP_VERSION = "0.56.3";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -37,7 +37,6 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "js/pwaConfig.js",
   "js/pwaPolicy.js",
   "js/references.js",
-  "js/recent.js",
   "js/renderers.js",
   "js/ringWeld.js",
   "js/router.js",
