@@ -54,7 +54,6 @@ export function buildSearchIndex(references = []) {
       article.atlas?.shortFeature || "",
       ...(article.atlas?.aliases || []),
       ...(article.atlas?.tags || []),
-      getSearchValue(article.pipelineJoint),
       getSectionSearchText(article.sections),
       getSectionSearchText(normativeSections),
       METHODS[article.methodKey]?.short || "",

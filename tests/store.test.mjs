@@ -15,7 +15,7 @@ test("ошибка одного data-файла не блокирует оста
   globalThis.fetch = async url => {
     const file = String(url).split("/").at(-1).replace(".json", "");
     if (file === "pvk") throw new Error("network unavailable");
-    const method = file === "pipeline-welded-joints" ? "pipeline" : file;
+    const method = file;
 
     return {
       ok: true,

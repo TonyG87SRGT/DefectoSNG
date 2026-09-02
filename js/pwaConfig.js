@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.56.1";
+export const APP_VERSION = "0.56.2";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -15,7 +15,6 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "css/sections.css",
   "css/modes.css",
   "css/references.css",
-  "css/pipeline-joints.css",
   "css/vibration.css",
   "css/vibration-diagnostic.css",
   "css/vibration-calculators.css",
@@ -37,7 +36,6 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "js/pwa.js",
   "js/pwaConfig.js",
   "js/pwaPolicy.js",
-  "js/pipelineJoints.js",
   "js/references.js",
   "js/recent.js",
   "js/renderers.js",
@@ -77,7 +75,6 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "data/rk.json",
   "data/vibration.json",
   "data/references.json",
-  "data/pipeline-welded-joints.json",
   "data/criteria.json"
 ]);
 
@@ -169,11 +166,6 @@ const UZK_ECHO_ATLAS_IMAGE_SLUGS = Object.freeze([
   "volumetric", "cluster", "backwall-loss", "poor-contact", "mode-conversion", "electrical-noise"
 ]);
 
-const PIPELINE_JOINT_SCHEME_SLUGS = Object.freeze([
-  "c2", "c17", "c18", "c19", "c46", "c54", "c56",
-  "n4", "u17", "u18", "u19", "u20", "u21"
-]);
-
 export const OPTIONAL_APP_PATHS = Object.freeze([
   "images/pvk-atlas/true-indications-cover.jpg",
   "images/pvk-atlas/nonrelevant-indications-cover.jpg",
@@ -227,10 +219,6 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
   ...UZK_ECHO_ATLAS_IMAGE_SLUGS.flatMap(slug => [
     `images/uzk-echo-atlas/${slug}-ascan.svg`,
     `images/uzk-echo-atlas/${slug}-scheme.svg`
-  ]),
-  ...PIPELINE_JOINT_SCHEME_SLUGS.flatMap(slug => [
-    `images/pipeline-welded-joints/${slug}-edge.svg`,
-    `images/pipeline-welded-joints/${slug}-weld.svg`
   ]),
   "images/articles/vibration/source-data/typical-pump-unit.jpg",
   "images/articles/vibration/source-data/source-data-diagram.jpg",

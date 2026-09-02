@@ -4,11 +4,6 @@ import { content, navButtons, searchInput, setActiveNav } from "./dom.js";
 import { renderFavorites, updateFavoriteBadge } from "./favorites.js";
 import { setupImageViewer } from "./imageViewer.js";
 import { registerPwa } from "./pwa.js";
-import {
-  renderPipelineAtlas,
-  renderPipelineJoint,
-  renderPipelineReference
-} from "./pipelineJoints.js";
 import { loadReferences, renderReference, renderReferences } from "./references.js";
 import { renderRingWeld } from "./ringWeld.js";
 import { renderCriteriaFinder } from "./criteria.js";
@@ -71,8 +66,7 @@ function renderRoute(route) {
     references: renderReferences,
     tools: renderTools,
     documents: () => renderComingSoon("documents"),
-    atlas: () => renderAtlas(route),
-    pipeline: () => renderPipelineAtlas(route)
+    atlas: () => renderAtlas(route)
   };
   if (staticRenderers[route.view]) {
     staticRenderers[route.view]();
@@ -91,16 +85,6 @@ function renderRoute(route) {
 
   if (route.view === "reference") {
     renderReference(route.referenceId);
-    return true;
-  }
-
-  if (route.view === "pipelineJoint") {
-    renderPipelineJoint(route.itemId);
-    return true;
-  }
-
-  if (route.view === "pipelineReference") {
-    renderPipelineReference(route.itemId);
     return true;
   }
 

@@ -24,7 +24,6 @@ const isObject = value => Boolean(value) &&
 const isNonEmptyString = value => typeof value === "string" && Boolean(value.trim());
 const isStringArray = value => Array.isArray(value) &&
   value.every(item => typeof item === "string");
-const PIPELINE_CATEGORY_IDS = new Set(["butt", "lap", "corner"]);
 const VIBRATION_TEMPLATE_IDS = new Set(["article", "fault", "spectrum", "scenario", "reference", "tool"]);
 const MEDIA_SLOT_TYPES = new Set(["photo", "diagram", "spectrum", "table", "gallery"]);
 
@@ -47,58 +46,6 @@ function validateVibrationMetadata(metadata) {
   }
   if (metadata.status && !ARTICLE_STATUSES.includes(metadata.status)) {
     errors.push(`metadata.status не поддерживается: ${String(metadata.status)}`);
-  }
-  return errors;
-}
-
-export function validatePipelineJointShape(joint) {
-  const errors = [];
-  if (!isObject(joint)) return ["pipelineJoint должен быть объектом"];
-  if (!isNonEmptyString(joint.designation)) errors.push("pipelineJoint.designation должен быть непустой строкой");
-  if (!PIPELINE_CATEGORY_IDS.has(joint.category)) errors.push(`pipelineJoint.category не поддерживается: ${String(joint.category)}`);
-
-  for (const field of [
-    "edgePreparation", "weldCharacter", "backing", "thicknessRange", "minimumDiameter"
-  ]) {
-    if (joint[field] != null && typeof joint[field] !== "string") {
-      errors.push(`pipelineJoint.${field} должен быть строкой или null`);
-    }
-  }
-  if (joint.connectedElements != null &&
-    !isNonEmptyString(joint.connectedElements) &&
-    !isStringArray(joint.connectedElements)) {
-    errors.push("pipelineJoint.connectedElements должен быть строкой, массивом строк или null");
-  }
-  for (const field of ["weldingMethods", "specialFilters"]) {
-    if (!isStringArray(joint[field])) errors.push(`pipelineJoint.${field} должен быть массивом строк`);
-  }
-  if (joint.standardTable != null && !Number.isFinite(Number(joint.standardTable))) {
-    errors.push("pipelineJoint.standardTable должен быть числом или null");
-  }
-  if (!Array.isArray(joint.parameters)) {
-    errors.push("pipelineJoint.parameters должен быть массивом");
-  } else {
-    joint.parameters.forEach((parameter, index) => {
-      if (!isObject(parameter) || !isNonEmptyString(parameter.name)) {
-        errors.push(`pipelineJoint.parameters[${index}] должен содержать строковое name`);
-      }
-    });
-  }
-  if (!isObject(joint.images)) {
-    errors.push("pipelineJoint.images должен быть объектом");
-  } else {
-    for (const field of ["edgePreparation", "weldSection"]) {
-      if (joint.images[field] != null && typeof joint.images[field] !== "string") {
-        errors.push(`pipelineJoint.images.${field} должен быть строкой или null`);
-      }
-    }
-  }
-  for (const field of [
-    "inspectionBeforeWelding", "inspectionAfterAssembly", "inspectionAfterWelding", "typicalNonconformities"
-  ]) {
-    if (joint[field] != null && !isStringArray(joint[field])) {
-      errors.push(`pipelineJoint.${field} должен быть массивом строк`);
-    }
   }
   return errors;
 }
@@ -354,21 +301,14 @@ export function validateArticleShape(article) {
   if (article.hidden != null && typeof article.hidden !== "boolean") {
     errors.push("hidden должен быть логическим значением");
   }
-  if (article.pipelineCategory != null && !PIPELINE_CATEGORY_IDS.has(article.pipelineCategory)) {
-    errors.push(`неподдерживаемый pipelineCategory: ${String(article.pipelineCategory)}`);
-  }
   if (article.designations != null && !isStringArray(article.designations)) {
     errors.push("designations должен быть массивом строк");
-  }
-  if (article.pipelineJoint != null) {
-    errors.push(...validatePipelineJointShape(article.pipelineJoint));
   }
 
   if (type === "article" &&
     !isNonEmptyString(article.text) &&
-    (!Array.isArray(article.sections) || !article.sections.length) &&
-    !article.pipelineJoint) {
-    errors.push("статья должна содержать text, непустой массив sections или pipelineJoint");
+    (!Array.isArray(article.sections) || !article.sections.length)) {
+    errors.push("статья должна содержать text или непустой массив sections");
   }
 
   return errors;

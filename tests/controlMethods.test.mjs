@@ -8,8 +8,7 @@ const uzk = read("uzk");
 const pvk = read("pvk");
 const rk = read("rk");
 const vibration = read("vibration");
-const pipeline = read("pipeline-welded-joints");
-const datasets = { vik, uzk, pvk, rk, vibration, pipeline };
+const datasets = { vik, uzk, pvk, rk, vibration };
 
 test("ВИК сохраняет прежние ID и получает полный практический маршрут", () => {
   const ids = new Set(vik.map(item => item.id));
@@ -204,32 +203,6 @@ test("РК покрывает безопасный маршрут от подг�
     "непровар корня", "несплавление", "трещина", "прожог", "вогнутость корня",
     "подрез", "смещение кромок", "артефакты изображения"
   ]) assert.match(atlasCorpus, new RegExp(term));
-});
-
-test("семь справочных карточек сварных соединений опубликованы и наполнены", () => {
-  const expected = [
-    "pipeline-reference-designations", "pipeline-reference-dimensions",
-    "pipeline-reference-different-thickness", "pipeline-reference-backings",
-    "pipeline-reference-fillet-welds", "pipeline-reference-vik",
-    "pipeline-reference-scope"
-  ];
-  const references = pipeline
-    .filter(item => item.parentId === "pipeline-reference-materials")
-    .sort((a, b) => a.order - b.order);
-  assert.deepEqual(references.map(item => item.id), expected);
-  assert.ok(references.every(item => item.status === "published"));
-  assert.ok(references.every(item => item.sections?.length >= 7));
-  assert.ok(references.every(item => !item.text));
-
-  const corpus = JSON.stringify(references).toLowerCase();
-  for (const term of [
-    "зп", "s₁", "подкладного кольца", "расплавляемая вставка",
-    "катет", "после сборки и прихватки", "нормы допустимости дефектов"
-  ]) assert.match(corpus, new RegExp(term));
-
-  const scope = pipeline.find(item => item.id === "pipeline-reference-scope");
-  assert.match(JSON.stringify(scope), /19 августа 2026 года/);
-  assert.match(JSON.stringify(scope), /листового или полосового материала/);
 });
 
 test("опубликованные материалы контроля не содержат служебных заглушек", () => {
