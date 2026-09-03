@@ -1,24 +1,20 @@
 export const METHODS = Object.freeze({
   vik: Object.freeze({
     short: "ВИК",
-    title: "Визуальный и измерительный контроль",
-    icon: "⌕"
+    title: "Визуальный и измерительный контроль"
   }),
   uzk: Object.freeze({
     short: "УЗК",
-    title: "Ультразвуковой контроль",
-    icon: "◉"
+    title: "Ультразвуковой контроль"
   }),
   pvk: Object.freeze({
     short: "ПВК",
-    title: "Капиллярный контроль",
-    icon: "◌"
+    title: "Капиллярный контроль"
   }),
-  rk: Object.freeze({ short: "РК", title: "Радиографический контроль", icon: "◈" }),
+  rk: Object.freeze({ short: "РК", title: "Радиографический контроль" }),
   vibration: Object.freeze({
     short: "ВД",
-    title: "Вибродиагностика",
-    icon: "📈"
+    title: "Вибродиагностика"
   })
 });
 

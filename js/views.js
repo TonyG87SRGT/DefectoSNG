@@ -3,6 +3,7 @@ import { getArticleTocEntries } from "./articleNavigation.js";
 import { isFavorite, toggleFavorite } from "./favorites.js";
 import { escapeAttribute, safeText } from "./html.js";
 import { buildKnowledgeGraph, getKnowledgeBacklinks } from "./knowledgeGraph.js";
+import { renderMethodIcon } from "./methodIcons.js";
 import { getReference } from "./references.js";
 import { renderStructuredArticle } from "./renderers.js";
 import { getVibrationKnowledgeBlocks } from "./vibrationKnowledge.js";
@@ -71,7 +72,7 @@ function renderMethodModeCards(mode) {
       const route = { view: "modeMethod", mode, method: methodKey };
       return `
         <a class="mode-method-card ${escapeAttribute(methodKey)}" href="${getRouteHash(route)}" data-mode-method="${escapeAttribute(methodKey)}">
-          <div class="method-icon" aria-hidden="true">${safeText(method.icon)}</div>
+          <div class="method-icon">${renderMethodIcon(methodKey)}</div>
           <div>
             <strong>${safeText(method.short)} · ${safeText(method.title)}</strong>
             <small>${safeText(MODE_DEFINITIONS[mode].description)}</small>

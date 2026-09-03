@@ -121,6 +121,9 @@
 
 .mode-method-card .method-icon {
   flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
 }
 
 .mode-method-card strong,

@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.56.3";
+export const APP_VERSION = "0.56.4";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -32,6 +32,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "js/html.js",
   "js/imageViewer.js",
   "js/knowledgeGraph.js",
+  "js/methodIcons.js",
   "js/navigationModel.js",
   "js/pwa.js",
   "js/pwaConfig.js",

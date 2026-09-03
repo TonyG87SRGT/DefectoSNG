@@ -196,28 +196,46 @@ button {
 
   border-radius: 16px;
 
-  font-size: 27px;
-  font-weight: 700;
 }
 
-.method-card.vik .method-icon {
+.method-icon svg {
+  width: 31px;
+  height: 31px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.method-card.vik .method-icon,
+.mode-method-card.vik .method-icon {
   background: rgba(34,160,107,.15);
   color: #43c58b;
 }
 
-.method-card.uzk .method-icon {
+.method-card.uzk .method-icon,
+.mode-method-card.uzk .method-icon {
   background: rgba(59,130,246,.15);
   color: #66a3ff;
 }
 
-.method-card.pvk .method-icon {
+.method-card.pvk .method-icon,
+.mode-method-card.pvk .method-icon {
   background: rgba(233,138,46,.15);
   color: #ffab59;
 }
 
-.method-card.rk .method-icon {
+.method-card.rk .method-icon,
+.mode-method-card.rk .method-icon {
   background: rgba(180,83,9,.16);
   color: #f5b84b;
+}
+
+.method-card.vibration .method-icon,
+.mode-method-card.vibration .method-icon {
+  background: rgba(168,85,247,.15);
+  color: #c084fc;
 }
 
 .method-info {
