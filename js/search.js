@@ -6,7 +6,7 @@ import {
   normalizeSearchText,
   tokenizeSearch
 } from "./searchCore.js";
-import { METHODS, getAllItems, getItem, getItemRoute } from "./store.js";
+import { METHODS, TOOL_DEFINITIONS, getAllItems, getItem, getItemRoute } from "./store.js";
 
 let cachedDocuments = null;
 
@@ -99,7 +99,22 @@ export function buildSearchIndex(references = []) {
       ].join(" "))
     };
   });
-  cachedDocuments = [...articleDocuments, ...referenceDocuments];
+  const toolDocuments = TOOL_DEFINITIONS.map(tool => {
+    const searchText = [tool.title, tool.description, tool.category, ...(tool.keywords || [])].join(" ");
+    return {
+      ...tool,
+      status: "published",
+      isTool: true,
+      methodKey: "tools",
+      category: tool.category || "Инструменты",
+      summary: tool.description,
+      searchText,
+      searchTokens: tokenizeSearch(searchText),
+      titleTokens: tokenizeSearch(tool.title),
+      primaryTokens: tokenizeSearch(searchText)
+    };
+  });
+  cachedDocuments = [...articleDocuments, ...referenceDocuments, ...toolDocuments];
 
   return cachedDocuments;
 }
@@ -158,7 +173,9 @@ export function renderSearch(query) {
         ${results.map(article => {
           const route = article.isReference
             ? { view: "reference", referenceId: article.id }
-            : getItemRoute(article.methodKey, article);
+            : article.isTool
+              ? { view: "tool", tool: article.id }
+              : getItemRoute(article.methodKey, article);
           return `
             <a
               class="article-card"
@@ -166,8 +183,9 @@ export function renderSearch(query) {
               data-search-article="${escapeAttribute(article.id)}"
               data-search-method="${escapeAttribute(article.methodKey)}"
               data-search-reference="${article.isReference ? "true" : "false"}"
+              data-search-tool="${article.isTool ? "true" : "false"}"
             >
-              <span class="article-category">${article.isReference ? "СПРАВОЧНИК" : `${safeText(METHODS[article.methodKey]?.short, article.methodKey)} · ${safeText(article.category)}`}</span>
+              <span class="article-category">${article.isReference ? "СПРАВОЧНИК" : article.isTool ? `ИНСТРУМЕНТ · ${safeText(article.category)}` : `${safeText(METHODS[article.methodKey]?.short, article.methodKey)} · ${safeText(article.category)}`}</span>
               ${article.status === "draft" ? `<span class="draft-badge">${article.parentId === "vibration-tools" ? "В разработке" : "Черновик"}</span>` : ""}
               <h3>${safeText(article.title)}</h3>
               <p>${safeText(article.summary || article.text, "Открыть материал")}</p>
@@ -184,6 +202,11 @@ export function renderSearch(query) {
       if (link.dataset.searchReference === "true") {
         event.preventDefault();
         navigate({ view: "reference", referenceId: link.dataset.searchArticle });
+        return;
+      }
+      if (link.dataset.searchTool === "true") {
+        event.preventDefault();
+        navigate({ view: "tool", tool: link.dataset.searchArticle });
         return;
       }
       const method = link.dataset.searchMethod;

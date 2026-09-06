@@ -292,6 +292,32 @@ test("клавиатура, ARIA, контраст и таблицы прохо�
   expect(lowContrast).toEqual([]);
 });
 
+test("все общие инструменты открываются, рассчитывают и находятся поиском", async ({ page }) => {
+  const tools = [
+    "ring-weld", "ut-coordinates", "ut-scan-zone", "db-calculator", "ring-position",
+    "thickness-analysis", "ndt-converter", "ndt-checklist", "vessel-strength"
+  ];
+  for (const tool of tools) {
+    await page.goto(`/#tool=${tool}`);
+    await page.locator(".tool-card").waitFor();
+    await expectNoHorizontalOverflow(page);
+  }
+
+  await page.goto("/#tool=vessel-strength");
+  await page.locator("#vs-diameter").fill("1000");
+  await page.locator("#vs-thickness").fill("12");
+  await page.locator("#vs-allowance").fill("2");
+  await page.locator("#vs-stress").fill("140");
+  await page.locator("#vs-factor").fill("0.9");
+  await page.locator("#vs-pressure").fill("2");
+  await expect(page.locator("#vs-pressure-result")).toContainText("2,495");
+  await expect(page.locator("#vs-status")).toContainText("не превышает");
+
+  await page.getByRole("button", { name: /Поиск/ }).click();
+  await page.getByRole("searchbox", { name: "Поиск по справочнику" }).fill("координаты отражателя");
+  await expect(page.getByRole("heading", { name: "Координаты отражателя УЗК", exact: true })).toBeVisible();
+});
+
 test("установленное приложение открывается offline", async ({ page, context }) => {
   await page.goto("/");
   await page.evaluate(() => navigator.serviceWorker?.ready);

@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.56.4";
+export const APP_VERSION = "0.57.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -29,6 +29,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "js/criteriaEngine.js",
   "js/dom.js",
   "js/favorites.js",
+  "js/fieldTools.js",
   "js/html.js",
   "js/imageViewer.js",
   "js/knowledgeGraph.js",
@@ -45,6 +46,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "js/search.js",
   "js/searchCore.js",
   "js/store.js",
+  "js/toolCalculations.js",
   "js/tools.js",
   "js/vibration.js",
   "js/vibrationDiagnosticAssistant.js",

@@ -1,17 +1,5 @@
 /* ===== Tools ===== */
 
-.tool-model-note {
-  margin-bottom: 18px;
-  padding: 16px;
-  border: 1px solid rgba(59, 130, 246, .32);
-  border-radius: 15px;
-  background: rgba(59, 130, 246, .07);
-}
-
-.tool-model-note h3 { margin: 0 0 8px; font-size: 16px; }
-.tool-model-note p { margin: 0 0 12px; color: #c8d1dc; line-height: 1.55; }
-.tool-model-note a { color: #9fc5ff; }
-
 .tool-card {
   padding: 20px;
   border: 1px solid var(--border);
@@ -28,6 +16,10 @@
   color: var(--muted);
   font-size: 14px;
   font-weight: 600;
+}
+
+.tool-label .tool-input {
+  margin-top: 8px;
 }
 
 .tool-input {
@@ -47,6 +39,26 @@
 .tool-input:focus {
   outline: none;
   border-color: var(--blue);
+}
+
+.tool-select {
+  appearance: auto;
+}
+
+.tool-textarea {
+  height: auto;
+  min-height: 112px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .tool-chip-grid {
@@ -99,4 +111,123 @@
   margin-top: 20px;
   color: var(--muted);
   font-size: 14px;
+}
+
+.tool-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tool-metrics-compact {
+  margin-top: 12px;
+}
+
+.tool-metric {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+.tool-metric small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.tool-metric strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.tool-notice,
+.tool-warning {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.tool-notice {
+  border: 1px solid rgba(59, 130, 246, .3);
+  background: rgba(59, 130, 246, .08);
+  color: var(--text);
+}
+
+.tool-warning {
+  border: 1px solid rgba(245, 158, 11, .4);
+  background: rgba(245, 158, 11, .1);
+  color: var(--text);
+}
+
+.tool-checklist {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tool-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.tool-check-item input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--blue);
+  flex: 0 0 auto;
+}
+
+.tool-check-item:has(input:checked) span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.tool-checklist-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.tool-secondary-button {
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .tool-card {
+    padding: 16px;
+  }
+
+  .tool-grid,
+  .tool-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-result-value {
+    font-size: 26px;
+  }
 }

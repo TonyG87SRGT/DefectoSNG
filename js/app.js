@@ -6,6 +6,16 @@ import { setupImageViewer } from "./imageViewer.js";
 import { registerPwa } from "./pwa.js";
 import { loadReferences, renderReference, renderReferences } from "./references.js";
 import { renderRingWeld } from "./ringWeld.js";
+import {
+  renderDbCalculator,
+  renderNdtChecklist,
+  renderNdtConverter,
+  renderRingPosition,
+  renderThicknessAnalysis,
+  renderUtCoordinates,
+  renderUtScanZone,
+  renderVesselStrength
+} from "./fieldTools.js";
 import { renderCriteriaFinder } from "./criteria.js";
 import { navigate, replaceRoute, startRouter } from "./router.js";
 import { buildSearchIndex, renderSearch } from "./search.js";
@@ -30,7 +40,15 @@ import {
 } from "./views.js";
 
 const TOOL_RENDERERS = Object.freeze({
-  "ring-weld": renderRingWeld
+  "ring-weld": renderRingWeld,
+  "ut-coordinates": renderUtCoordinates,
+  "ut-scan-zone": renderUtScanZone,
+  "db-calculator": renderDbCalculator,
+  "ring-position": renderRingPosition,
+  "thickness-analysis": renderThicknessAnalysis,
+  "ndt-converter": renderNdtConverter,
+  "ndt-checklist": renderNdtChecklist,
+  "vessel-strength": renderVesselStrength
 });
 
 function focusRenderedView(route) {
