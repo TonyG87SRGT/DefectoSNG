@@ -318,6 +318,30 @@ test("все общие инструменты открываются, расс�
   await expect(page.getByRole("heading", { name: "Координаты отражателя УЗК", exact: true })).toBeVisible();
 });
 
+test("сокращённые учебные статьи сохраняют ссылки, мобильную таблицу и offline", async ({ page, context }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/#article=vik:vik-purpose-scope");
+  await expect(page.getByRole("heading", { name: /Граница метода/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Практический порядок", exact: true })).toHaveCount(0);
+  await page.getByRole("link", { name: /Подготовка объекта контроля/ }).first().click();
+  await expect(page.getByRole("heading", { name: "Последовательность подготовки", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Практика на производстве", exact: true })).toHaveCount(0);
+  await page.getByRole("button", { name: /^Вернуться/ }).click();
+  await expect(page.getByRole("heading", { name: /Граница метода/ })).toBeVisible();
+  for (const route of ["uzk:uzk-physical-principles", "pvk:pvk-purpose-scope", "vibration:vibration-introduction", "vibration:vibration-basic-terms", "vibration:vibration-capabilities-limitations"]) {
+    await page.goto(`/#article=${route}`);
+    await page.locator("#app-content").waitFor();
+    await expectNoHorizontalOverflow(page);
+  }
+  await page.goto("/#article=uzk:uzk-physical-principles");
+  await expect(page.getByRole("cell", { name: "Продольная и поперечная волны", exact: true })).toBeVisible();
+  await page.evaluate(() => navigator.serviceWorker.ready);
+  await context.setOffline(true);
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("cell", { name: "Продольная и поперечная волны", exact: true })).toBeVisible();
+  await context.setOffline(false);
+});
+
 test("установленное приложение открывается offline", async ({ page, context }) => {
   await page.goto("/");
   await page.evaluate(() => navigator.serviceWorker?.ready);

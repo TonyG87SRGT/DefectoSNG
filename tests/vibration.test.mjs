@@ -78,7 +78,8 @@ test("все восемь основ опубликованы и связаны 
     assert.notEqual(article.status, "draft", article.id);
     assert.equal(article.futureBlocks, undefined, article.id);
     assert.equal(article.futureImageLabel, undefined, article.id);
-    assert.ok(article.sections.length >= 7, article.id);
+    const substantive = article.sections.filter(section => !["related", "documents"].includes(section.type));
+    assert.ok(substantive.length >= 3 && JSON.stringify(substantive).length >= 600, article.id);
     assert.ok(article.sections.some(section => section.type === "documents"), article.id);
     assert.ok(article.sections.some(section => section.type === "related"), article.id);
   });

@@ -212,7 +212,12 @@ test("опубликованные материалы контроля не со
       assert.doesNotMatch(text, /здесь будет|раздел находится в разработке/, `${method}/${item.id}`);
       if (item.type !== "section") {
         const hasCompleteProjection = item.normativeView?.sectionIds?.length >= 6;
-        assert.ok((item.sections || []).length >= 7 || hasCompleteProjection, `${method}/${item.id}`);
+        const substantive = (item.sections || []).filter(section => !["related", "image"].includes(section.type));
+        // Краткая статья не обязана повторять материал ради семи заголовков.
+        assert.ok((substantive.length >= 3 && JSON.stringify(substantive).length >= 600) || hasCompleteProjection, `${method}/${item.id}`);
+        if (!hasCompleteProjection) {
+          assert.ok(item.sections.some(section => section.type === "related" && section.items.length), `${method}/${item.id}: ссылки на продолжение`);
+        }
       }
     }
   }
