@@ -342,6 +342,29 @@ test("сокращённые учебные статьи сохраняют сс
   await context.setOffline(false);
 });
 
+test("снимки атласа РК заменяют схемы и открываются offline после просмотра", async ({ page, context }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  const slugs = ["single-pore", "cluster-porosity", "uniform-porosity", "linear-porosity", "elongated-cavity", "slag-inclusion", "incomplete-penetration", "crack"];
+  for (const slug of slugs) {
+    await page.goto(`/#article=rk:rk-atlas-${slug}`);
+    const photo = page.locator(`img[src$="${slug}-user.jpg"]`);
+    await expect(photo).toBeVisible();
+    await expect.poll(() => photo.evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+    await expect(page.locator('img[src$="-section.svg"], img[src$="-radiograph.svg"]')).toHaveCount(0);
+    await expectNoHorizontalOverflow(page);
+  }
+  await page.evaluate(() => navigator.serviceWorker.ready);
+  await expect.poll(() => page.evaluate(async () => Boolean(await caches.match(new URL('images/rk-atlas/crack-user.jpg', location.href).href)))).toBe(true);
+  await context.setOffline(true);
+  await page.reload({ waitUntil: "domcontentloaded" });
+  const photo = page.locator('img[src$="crack-user.jpg"]');
+  await expect(photo).toBeVisible();
+  await expect.poll(() => photo.evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+  await context.setOffline(false);
+  await page.goto('/#section=rk:rk-atlas-volumetric');
+  await expect(page.getByRole('link', { name: 'Металлическое включение', exact: true })).toHaveCount(0);
+});
+
 test("установленное приложение открывается offline", async ({ page, context }) => {
   await page.goto("/");
   await page.evaluate(() => navigator.serviceWorker?.ready);

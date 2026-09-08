@@ -172,7 +172,7 @@ test("РК покрывает безопасный маршрут от подг�
     ["rk-basics-section", "rk-equipment-section", "rk-preparation-section", "rk-control-section", "rk-analysis-section", "rk-radiographic-atlas", "rk-evaluation-section"]
   );
   assert.ok(rk.every(item => item.status === "published"));
-  assert.equal(rk.filter(item => item.type === "article").length, 35);
+  assert.equal(rk.filter(item => item.type === "article").length, 34);
   for (const id of [
     "rk-regulatory-documents", "rk-gost-32569-2013-ndt", "rk-radiation-sources", "rk-detector-systems",
     "rk-image-quality-indicators", "rk-exposure-geometry", "rk-marking-iqi-placement",
@@ -194,8 +194,12 @@ test("РК покрывает безопасный маршрут от подг�
     "rk-atlas-volumetric", "rk-atlas-planar", "rk-atlas-shape", "rk-atlas-artifacts"
   ]);
   const atlasCards = rk.filter(item => atlasGroups.some(group => group.id === item.parentId));
-  assert.equal(atlasCards.length, 18);
-  assert.ok(atlasCards.every(item => item.mediaSlots?.length === 2 && item.sections?.length === 9));
+  assert.equal(atlasCards.length, 17);
+  assert.ok(!rk.some(item => item.id === "rk-atlas-metallic-inclusion"));
+  const photoCards = atlasCards.filter(item => item.mediaSlots?.some(slot => slot.src.endsWith("-user.jpg")));
+  assert.equal(photoCards.length, 8);
+  assert.ok(photoCards.every(item => item.mediaSlots.length === 1 && item.mediaSlots[0].type === "photo"));
+  assert.ok(atlasCards.every(item => item.sections?.length === 9 && item.mediaSlots?.length >= 1));
   assert.ok(atlasCards.flatMap(item => item.mediaSlots).every(slot => fs.existsSync(new URL(`../${slot.src}`, import.meta.url))));
   const atlasCorpus = JSON.stringify(atlasCards).toLowerCase();
   for (const term of [

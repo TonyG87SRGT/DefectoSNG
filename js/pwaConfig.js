@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.57.1";
+export const APP_VERSION = "0.57.2";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -156,9 +156,7 @@ const VIK_FRACTOGRAPHY_IMAGE_SLUGS = Object.freeze([
 ]);
 
 const RK_ATLAS_IMAGE_SLUGS = Object.freeze([
-  "single-pore", "uniform-porosity", "cluster-porosity", "linear-porosity", "elongated-cavity",
-  "shrinkage-cavity", "slag-inclusion", "metallic-inclusion",
-  "incomplete-penetration", "lack-of-fusion", "crack", "burn-through",
+  "shrinkage-cavity", "lack-of-fusion", "burn-through",
   "excess-penetration", "root-concavity", "undercut", "misalignment",
   "incompletely-filled-groove", "image-artifacts"
 ]);
@@ -211,6 +209,10 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
   "images/rk-atlas/covers/planar.svg",
   "images/rk-atlas/covers/shape.svg",
   "images/rk-atlas/covers/artifacts.svg",
+  ...["single-pore", "cluster-porosity", "uniform-porosity", "linear-porosity",
+    "elongated-cavity", "slag-inclusion", "incomplete-penetration", "crack"].map(slug =>
+    `images/rk-atlas/${slug}-user.jpg`
+  ),
   ...RK_ATLAS_IMAGE_SLUGS.flatMap(slug => [
     `images/rk-atlas/${slug}-radiograph.svg`,
     `images/rk-atlas/${slug}-section.svg`
