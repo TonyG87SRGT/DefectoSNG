@@ -292,7 +292,19 @@ test("клавиатура, ARIA, контраст и таблицы прохо�
   expect(lowContrast).toEqual([]);
 });
 
-test("все общие инструменты открываются, рассчитывают и находятся поиском", async ({ page }) => {
+test("разделы Таблицы и Инструменты очищены, а технические маршруты сохранены", async ({ page }) => {
+  await page.goto("/#references");
+  await expect(page.getByRole("heading", { name: "Таблицы", exact: true })).toBeVisible();
+  await expect(page.locator("#app-content .article-card, #app-content .reference-table")).toHaveCount(0);
+
+  await page.goto("/#tools");
+  await expect(page.getByRole("heading", { name: "Инструменты", exact: true })).toBeVisible();
+  await expect(page.locator("#app-content .article-card, #app-content .tool-card")).toHaveCount(0);
+
+  await page.getByRole("button", { name: /Поиск/ }).click();
+  await page.getByRole("searchbox", { name: "Поиск по справочнику" }).fill("Координаты отражателя УЗК");
+  await expect(page.locator('[data-search-tool="true"]')).toHaveCount(0);
+
   const tools = [
     "ring-weld", "ut-coordinates", "ut-scan-zone", "db-calculator", "ring-position",
     "thickness-analysis", "ndt-converter", "ndt-checklist", "vessel-strength"
@@ -312,10 +324,6 @@ test("все общие инструменты открываются, расс�
   await page.locator("#vs-pressure").fill("2");
   await expect(page.locator("#vs-pressure-result")).toContainText("2,495");
   await expect(page.locator("#vs-status")).toContainText("не превышает");
-
-  await page.getByRole("button", { name: /Поиск/ }).click();
-  await page.getByRole("searchbox", { name: "Поиск по справочнику" }).fill("координаты отражателя");
-  await expect(page.getByRole("heading", { name: "Координаты отражателя УЗК", exact: true })).toBeVisible();
 });
 
 test("сокращённые учебные статьи сохраняют ссылки, мобильную таблицу и offline", async ({ page, context }) => {

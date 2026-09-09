@@ -71,54 +71,13 @@ function renderReferencesHeader(description = "Таблицы и инженер�
 
 export async function renderReferences() {
   content.innerHTML = `
-    ${renderReferencesHeader()}
-    <div class="empty-state" role="status">Загрузка справочных материалов…</div>
+    <div class="page-header">
+      <button class="back-button" id="back-button" aria-label="Вернуться назад">‹</button>
+      <div><h2 tabindex="-1">Таблицы</h2></div>
+    </div>
   `;
   content.querySelector("#back-button")
     .addEventListener("click", () => goBack({ view: "home" }));
-
-  try {
-    const references = await loadReferences();
-    content.innerHTML = `
-      ${renderReferencesHeader()}
-      <div class="article-list">
-        ${references.map(reference => {
-          const route = { view: "reference", referenceId: reference.id };
-          return `
-            <a
-              class="article-card"
-              href="${getRouteHash(route)}"
-              data-reference="${escapeAttribute(reference.id)}"
-            >
-              <span class="article-category">${safeText(reference.category, "Справочник")}</span>
-              ${renderDocumentStatus(reference, true)}
-              <h3>${safeText(reference.title)}</h3>
-              <p>${safeText(reference.description, "Открыть справочный материал")}</p>
-            </a>
-          `;
-        }).join("")}
-      </div>
-    `;
-
-    content.querySelector("#back-button")
-      .addEventListener("click", () => goBack({ view: "home" }));
-    content.querySelectorAll("[data-reference]").forEach(link => {
-      link.addEventListener("click", event => {
-        if (event.button !== 0 || event.metaKey || event.ctrlKey ||
-          event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        navigate({ view: "reference", referenceId: link.dataset.reference });
-      });
-    });
-  } catch (error) {
-    console.error(error);
-    content.innerHTML = `
-      ${renderReferencesHeader()}
-      <div class="empty-state" role="alert">Не удалось загрузить справочные материалы.</div>
-    `;
-    content.querySelector("#back-button")
-      .addEventListener("click", () => goBack({ view: "home" }));
-  }
 }
 
 export async function renderReference(referenceId) {

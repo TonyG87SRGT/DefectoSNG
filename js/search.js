@@ -6,7 +6,7 @@ import {
   normalizeSearchText,
   tokenizeSearch
 } from "./searchCore.js";
-import { METHODS, TOOL_DEFINITIONS, getAllItems, getItem, getItemRoute } from "./store.js";
+import { METHODS, getAllItems, getItem, getItemRoute } from "./store.js";
 
 let cachedDocuments = null;
 
@@ -99,22 +99,7 @@ export function buildSearchIndex(references = []) {
       ].join(" "))
     };
   });
-  const toolDocuments = TOOL_DEFINITIONS.map(tool => {
-    const searchText = [tool.title, tool.description, tool.category, ...(tool.keywords || [])].join(" ");
-    return {
-      ...tool,
-      status: "published",
-      isTool: true,
-      methodKey: "tools",
-      category: tool.category || "Инструменты",
-      summary: tool.description,
-      searchText,
-      searchTokens: tokenizeSearch(searchText),
-      titleTokens: tokenizeSearch(tool.title),
-      primaryTokens: tokenizeSearch(searchText)
-    };
-  });
-  cachedDocuments = [...articleDocuments, ...referenceDocuments, ...toolDocuments];
+  cachedDocuments = [...articleDocuments, ...referenceDocuments];
 
   return cachedDocuments;
 }
