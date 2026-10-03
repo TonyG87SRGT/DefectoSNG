@@ -6,12 +6,40 @@ import { assessmentLength, effectiveThickness, evaluateCriterion, validateCriter
 const data = JSON.parse(fs.readFileSync(new URL("../data/criteria.json", import.meta.url), "utf8"));
 const byId = new Map(data.criteria.map(item => [item.id, item]));
 
+test("ГОСТ 32569: смещение кромок, точные границы и пробел таблицы 12.1", () => {
+  const criterion = byId.get("gost32569-vik-edge-transverse");
+  for (const [thickness1, limit] of [[4, 0.7], [6, 0.9], [7, 1.05], [10, 1.5], [10.001, 1.50005], [20, 2], [20.001, 2.0001], [30, 3], [50, 3]]) {
+    for (const delta of [-0.001, 0, 0.001]) {
+      const result = evaluateCriterion(criterion, { thickness1, edgeOffset: limit + delta });
+      assert.equal(result.allowed, delta <= 0, `S=${thickness1}, Δ=${limit + delta}`);
+      assert.ok(Math.abs(result.checks[0].limit - limit) < 1e-9);
+    }
+  }
+  for (const thickness1 of [6.000001, 6.5, 6.999999]) {
+    assert.equal(evaluateCriterion(criterion, { thickness1, edgeOffset: 0 }).status, "outside");
+  }
+  assert.equal(evaluateCriterion(criterion, { thickness1: 10 }).status, "incomplete");
+});
+
+test("ГОСТ 32569: наружное и продольное смещения не смешиваются", () => {
+  for (const [id, thickness1, limit] of [
+    ["gost32569-vik-edge-external", 10, 3], ["gost32569-vik-edge-external", 20, 5],
+    ["gost32569-vik-edge-longitudinal", 10, 1], ["gost32569-vik-edge-longitudinal", 40, 3]
+  ]) {
+    const criterion = byId.get(id);
+    assert.equal(evaluateCriterion(criterion, { thickness1, edgeOffset: limit }).allowed, true);
+    const failed = evaluateCriterion(criterion, { thickness1, edgeOffset: limit + 0.01 });
+    assert.equal(failed.allowed, false);
+    assert.match(failed.message, /переход/);
+  }
+});
+
 test("модель нормативных критериев проходит отдельную валидацию", () => assert.deepEqual(validateCriteriaData(data), []));
 
 test("мастер предлагает все нормативные ветки до выбора метода", () => {
   assert.deepEqual(
     data.standards.map(item => item.id),
-    ["sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023", "fnp536", "rvs-gost31385-sp365"]
+    ["rvs-rb305", "sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023", "fnp536", "rvs-gost31385-sp365", "gost-iso-5817-2025"]
   );
   for (const standard of data.standards) {
     assert.ok(data.criteria.some(item => standard.basisDocuments.includes(item.source.basisDocument)), standard.id);

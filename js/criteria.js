@@ -1,7 +1,7 @@
 import { content } from "./dom.js";
 import { escapeAttribute, safeText } from "./html.js";
 import { goBack } from "./router.js";
-import { evaluateCriterion, formatNumber, selectVariant, validateCriteriaData } from "./criteriaEngine.js";
+import { evaluateCriterion, formatNumber, parseCriterionNumber, selectVariant, validateCriteriaData } from "./criteriaEngine.js";
 
 let criteriaDataPromise;
 const state = {
@@ -15,7 +15,7 @@ const state = {
   result: null
 };
 
-function loadCriteriaData() {
+export function loadCriteriaData() {
   if (!criteriaDataPromise) {
     criteriaDataPromise = fetch("data/criteria.json").then(response => {
       if (!response.ok) throw new Error(`criteria.json: HTTP ${response.status}`);
@@ -93,7 +93,7 @@ function ensureSelection(data) {
   state.standardId = standard.id;
   if (standard.defaultMedium && !["gas", "oil"].includes(state.medium)) state.medium = standard.defaultMedium;
   const methods = availableMethods(data);
-  if (!methods.some(method => method.id === state.method)) state.method = methods[0]?.id || "uzk";
+  if (!methods.some(method => method.id === state.method)) state.method = methods.some(method => method.id === "vik") ? "vik" : methods[0]?.id || "uzk";
   const criterion = currentCriterion(data);
   state.criterionId = criterion?.id || "";
   (criterion?.inputs || []).forEach(inputId => {
@@ -118,7 +118,7 @@ function inputHtml(data, inputId) {
   return `
     <label class="criteria-field">
       <span>${safeText(definition.label)}${definition.unit ? `, ${safeText(definition.unit)}` : ""}${definition.optional ? " — необязательно" : ""}</span>
-      <input name="${escapeAttribute(inputId)}" type="number" inputmode="decimal" value="${escapeAttribute(value)}"
+      <input name="${escapeAttribute(inputId)}" type="${currentCriterion(data)?.recommendation || currentCriterion(data)?.decimalInput ? "text" : "number"}" inputmode="decimal" value="${escapeAttribute(value)}"
         min="${escapeAttribute(definition.min ?? 0)}" step="${escapeAttribute(definition.step ?? "any")}">
     </label>`;
 }
@@ -126,6 +126,8 @@ function inputHtml(data, inputId) {
 function resultHtml(data, criterion, result) {
   if (!result) return "";
   const source = criterion.source;
+  const sourceDocument = data.documents.find(item => item.id === source.basisDocument);
+  const sourceLink = sourceDocument?.url?.startsWith("https://") ? sourceDocument.url : null;
   const tone = result.allowed === true ? "success" : result.allowed === false ? "danger" : "warning";
   const checks = (result.checks || []).map(check => `
     <div class="criteria-check ${check.passed ? "passed" : "failed"}">
@@ -142,9 +144,12 @@ function resultHtml(data, criterion, result) {
       <p>${safeText(result.message)}</p>
       ${result.usedSmallerThickness ? `<div class="criteria-calculation"><b>Разнотолщинный стык</b><br>S = min(S₁, S₂) = ${formatNumber(result.thickness)} мм — СП 406, п. 9.10.8.</div>` : ""}
       ${result.assessment ? `<div class="criteria-calculation"><b>Оценочный участок</b><br>${safeText(result.assessment.explanation)} Результат: ${formatNumber(result.assessment.value)} мм.</div>` : ""}
+      ${(result.facts || []).map(fact => `<div class="criteria-calculation"><b>${safeText(fact.label)}</b><br>${safeText(fact.value)}</div>`).join("")}
       ${checks}
+      ${sourceLink ? `<a class="criteria-related-link" href="${escapeAttribute(sourceLink)}" target="_blank" rel="noopener noreferrer">Открыть текст источника ↗ (внешняя ссылка, нужен интернет)</a>` : ""}
       <div class="criteria-source">
-        <b>Нормативное основание</b>
+        <b>${criterion.recommendation ? "Источник рекомендуемой нормы" : "Нормативное основание"}</b>
+        ${criterion.recommendation ? `<span>${safeText(data.documents.find(item => item.id === source.basisDocument)?.title)}</span>` : ""}
         <span>${safeText(documentTitle(data, source.basisDocument))}: ${safeText(source.basisClauses.join(", "))}</span>
         <span>Критерий: ${safeText(documentTitle(data, source.criterionDocument))}, ${safeText(source.criterionTable)}</span>
       </div>
@@ -155,7 +160,7 @@ function resultHtml(data, criterion, result) {
 function searchMatches(data) {
   const query = state.defectQuery.trim().toLocaleLowerCase("ru-RU");
   if (!query) return [];
-  return criteriaForStandard(data).filter(item => [item.defect, ...(item.aliases || [])]
+  return criteriaForStandard(data).filter(item => [methodTitle(data, item.method) + (currentStandard(data).id.startsWith("rvs-") ? " РВС" : ""), item.defect, ...(item.aliases || [])]
     .join(" ").toLocaleLowerCase("ru-RU").includes(query)).slice(0, 12);
 }
 
@@ -230,7 +235,8 @@ function renderLoaded(data) {
 
     ${criterion ? resultHtml(data, criterion, state.result) : ""}
 
-    ${criterion?.notes?.length ? `<details class="criteria-notes"><summary>Примечания к критерию</summary><ul>${criterion.notes.map(note => `<li>${safeText(note)}</li>`).join("")}</ul></details>` : ""}
+    ${criterion?.notes?.length ? `<details class="criteria-notes"${criterion.recommendation ? " open" : ""}><summary>Условия и примечания к критерию</summary><ul>${criterion.notes.map(note => `<li>${safeText(note)}</li>`).join("")}</ul></details>` : ""}
+    ${criterion?.relatedCriterion ? `<a href="#criterion=${escapeAttribute(criterion.relatedCriterion)}" class="criteria-related-link">Перейти к оценке фактического дефекта по ВИК</a>` : ""}
 
     <details class="criteria-notes"><summary>Как трактовать результат</summary>
       <p>Результат относится только к выбранной НТД и одному критерию. Нормы разных документов не объединяются автоматически.</p>
@@ -273,6 +279,11 @@ function renderLoaded(data) {
     state.result = null;
     renderLoaded(data);
   }));
+  content.querySelectorAll("#criteria-form input[name]").forEach(input => input.addEventListener("input", event => {
+    state.values[event.currentTarget.name] = event.currentTarget.value;
+    state.result = null;
+    content.querySelector(".criteria-result")?.remove();
+  }));
   content.querySelectorAll("#criteria-form select[name]").forEach(select => select.addEventListener("change", event => {
     state.values[event.currentTarget.name] = event.currentTarget.value;
     state.result = null;
@@ -284,18 +295,31 @@ function renderLoaded(data) {
     inputIds.forEach(inputId => {
       const definition = data.inputs[inputId];
       const raw = formData.get(inputId);
-      state.values[inputId] = definition?.type === "number" ? (raw === "" ? "" : Number(raw)) : String(raw || "");
+      state.values[inputId] = definition?.type === "number" ? parseCriterionNumber(raw) : String(raw || "");
     });
-    state.result = evaluateCriterion(currentCriterion(data), state.values);
+    const invalid = inputIds.find(inputId => {
+      const definition = data.inputs[inputId];
+      const value = state.values[inputId];
+      return definition?.type === "number" && value !== "" && (!Number.isFinite(value) || value < (definition.min ?? 0));
+    });
+    state.result = invalid ? { allowed: null, message: "Проверьте поле «" + data.inputs[invalid].label + "»: введите корректное число в допустимом диапазоне." } : evaluateCriterion(currentCriterion(data), state.values);
     renderLoaded(data);
     requestAnimationFrame(() => content.querySelector(".criteria-result")?.scrollIntoView({ behavior: "smooth", block: "start" }));
   });
 }
 
-export async function renderCriteriaFinder() {
+export async function renderCriteriaFinder(criterionId) {
   content.innerHTML = `<div class="empty-state">Загрузка нормативных критериев…</div>`;
   try {
     const data = await loadCriteriaData();
+    if (criterionId) {
+      const selected = data.criteria.find(item => item.id === criterionId);
+      const standard = selected && data.standards.find(item => item.basisDocuments.includes(selected.source.basisDocument));
+      if (selected && standard) {
+        state.standardId = standard.id; state.method = selected.method; state.criterionId = selected.id;
+        state.values = {}; state.result = null; state.standardQuery = ""; state.defectQuery = "";
+      }
+    }
     renderLoaded(data);
   } catch (error) {
     console.error(error);

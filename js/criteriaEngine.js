@@ -1,7 +1,15 @@
-const KNOWN_METHODS = new Set(["vik", "rk", "uzk", "pvk", "mk"]);
+const KNOWN_METHODS = new Set(["vik", "rk", "uzk", "pvk", "mk", "uzt", "ae", "leak"]);
 const CURRENT_STATUSES = new Set(["current", "replaced", "cancelled"]);
 const KNOWN_CUSTOM_RULES = new Set(["minimum", "applicability17640", "contactCorrection17640", "controlLevel17640", "frequency17640", "gost32569Table122", "gost32569Pvk", "gost32569Extended", "gost32569RootPenetration", "gost32569RootGeometry", "iso11666Amplitude", "iso11666TotalLength", "iso11666Dsr", "iso11666Grouping", "iso11666Mapping", "stoGazpromIndication", "fnp536VikInclusion", "fnp536RootConvexity", "fnp536Gap", "fnp536PvkRounded", "fnp536RkInclusion", "fnp536Uzk", "rvsUndercut", "rvsRk23055", "rvsUzkSp70"]);
 const NUMERIC_EPSILON = 1e-9;
+KNOWN_CUSTOM_RULES.add("rb305Table");
+KNOWN_CUSTOM_RULES.add("rb305Grouping");
+
+export function parseCriterionNumber(raw) {
+  if (raw == null || String(raw).trim() === "") return "";
+  const value = String(raw).trim().replace(",", ".");
+  return /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value) ? Number(value) : NaN;
+}
 
 function atMost(measured, limit) {
   return Number(measured) <= Number(limit) + NUMERIC_EPSILON;
@@ -47,6 +55,8 @@ export function formatNumber(value, digits = 3) {
 function conditionMatches(condition = {}, values = {}) {
   return Object.entries(condition).every(([key, accepted]) => {
     if (key === "thicknessMin") return Number(values.effectiveThickness) >= Number(accepted);
+    if (key === "thicknessMinExclusive") return Number(values.effectiveThickness) > Number(accepted);
+    if (key === "thicknessMax") return Number(values.effectiveThickness) <= Number(accepted);
     if (key === "thicknessMaxExclusive") return Number(values.effectiveThickness) < Number(accepted);
     const list = Array.isArray(accepted) ? accepted : [accepted];
     return list.includes(values[key]);
@@ -54,7 +64,10 @@ function conditionMatches(condition = {}, values = {}) {
 }
 
 export function selectVariant(criterion, values = {}) {
-  const enriched = { ...values, effectiveThickness: effectiveThickness(values) };
+  const criterionThickness = criterion?.thicknessInput
+    ? Number(values[criterion.thicknessInput])
+    : effectiveThickness(values);
+  const enriched = { ...values, effectiveThickness: criterionThickness };
   return (criterion.variants || []).find(variant => conditionMatches(variant.when, enriched)) || null;
 }
 
@@ -130,12 +143,12 @@ function findRange(ranges, thickness) {
     const rawMin = Number(range.min);
     const roundedMin = Math.round(rawMin);
     const encodedExclusiveMin = Math.abs(rawMin - roundedMin) > 0 && Math.abs(rawMin - roundedMin) < 0.00001;
-    const minMatches = encodedExclusiveMin ? thickness > roundedMin : thickness >= rawMin;
+    const minMatches = range.minExclusive ? thickness > rawMin : encodedExclusiveMin ? thickness > roundedMin : thickness >= rawMin;
     if (range.max == null) return minMatches;
     const rawMax = Number(range.max);
     const roundedMax = Math.round(rawMax);
     const encodedInclusiveMax = Math.abs(rawMax - roundedMax) > 0 && Math.abs(rawMax - roundedMax) < 0.00001;
-    const maxMatches = encodedInclusiveMax ? thickness <= roundedMax : thickness < rawMax;
+    const maxMatches = range.maxInclusive ? thickness <= rawMax : encodedInclusiveMax ? thickness <= roundedMax : thickness < rawMax;
     return minMatches && maxMatches;
   }) || null;
 }
@@ -163,6 +176,67 @@ function iso11666LengthBand(thickness, length) {
 function evaluateCustomRule(criterion, values, thickness) {
   const rule = criterion.customRule;
   if (!rule) return null;
+
+  if (rule.type === "rb305Grouping") {
+    const threshold = rule.inputs.reduce((sum, input) => sum + Number(values[input]), 0) * rule.factor;
+    const distance = Number(values[rule.distance]);
+    const grouped = rule.inclusive ? distance <= threshold : distance < threshold;
+    return { status: "guidance", allowed: null,
+      decision: grouped ? "РАССМАТРИВАТЬ КАК ОДИН ДЕФЕКТ" : "НЕ ОБЪЕДИНЯЮТСЯ ПО ЭТОМУ ПРАВИЛУ",
+      message: "Правило группировки не является заключением о допустимости дефектов.",
+      facts: [{ label: "Порог расстояния", value: formatNumber(threshold) + " мм" },
+        { label: "Расчёт", value: rule.factor + " × (" + rule.inputs.map(input => formatNumber(values[input])).join(" + ") + ") = " + formatNumber(threshold) + " мм" },
+        { label: "Условие объединения", value: (rule.inclusive ? "≤ " : "< ") + formatNumber(threshold) + " мм; измерено " + formatNumber(distance) + " мм" }] };
+  }
+
+  if (rule.type === "rb305Table") {
+    const ranges = rule.tables ? rule.tables[values[rule.selector]] : rule.ranges;
+    const range = findRange(ranges, thickness);
+    if (!range) return { status: "outside", allowed: null, message: "Для введённой толщины в выбранной таблице нет строки. Экстраполяция не выполняется." };
+    const cold = values.rb305Temperature === "cold";
+    const multiplier = cold ? rule.coldMultiplier : 1;
+    const area = range.area * multiplier;
+    const search = range.searchArea * multiplier;
+    const assessment = rule.kind === "ut" ? range.assessmentLength : rule.assessmentLength;
+    const facts = [{ label: "Диапазон", value: range.label + " мм" }, { label: "Оценочный участок", value: assessment + " мм" }];
+    const checks = [];
+    const missing = [];
+    const check = (input, label, limit, unit = "мм", minimum = false) => {
+      facts.push({ label, value: (minimum ? "≥ " : "≤ ") + formatNumber(limit) + " " + unit });
+      if (values[input] === "" || values[input] == null) { missing.push(input); return; }
+      checks.push({ input, label, measured: Number(values[input]), limit, unit,
+        passed: minimum ? atLeast(values[input], limit) : atMost(values[input], limit),
+        limitText: (minimum ? "≥ " : "≤ ") + formatNumber(limit) + " " + unit,
+        calculation: range.label + "; предел = " + formatNumber(limit) + " " + unit });
+    };
+    if (rule.kind === "ut") {
+      facts.push({ label: "Поисковая эквивалентная площадь", value: formatNumber(search) + " мм²" });
+      if (cold) facts.push({ label: "Температурная поправка площадей", value: range.searchArea + " × " + multiplier + " = " + formatNumber(search) + "; " + range.area + " × " + multiplier + " = " + formatNumber(area) + " мм²" });
+      check("equivalentArea", "Допустимая эквивалентная площадь", area, "мм²");
+      check("conditionalLength", "Условная протяжённость", assessment);
+      check("defectCount", "Количество одиночных дефектов", range.count, "шт.");
+      if (cold) {
+        facts.push({ label: "Минимальное расстояние между дефектами", value: rule.spacingFactor + " × " + assessment + " = " + (rule.spacingFactor * assessment) + " мм" });
+        if (!values.rb305NeighborState) missing.push("rb305NeighborState");
+        if (values.rb305NeighborState === "yes" || Number(values.defectCount) > 1) check("neighborDistance", "Расстояние между дефектами", rule.spacingFactor * assessment, "мм", true);
+      }
+    } else {
+      facts.push({ label: "Источник строки", value: "Приложение № 3, таблица № " + rule.tableNumbers[values[rule.selector]] });
+      check("width", "Ширина / диаметр", range.width);
+      check("length", "Длина одиночного дефекта", range.length);
+      check("clusterLength", "Длина скопления", rule.clusterFactor * range.length);
+      check("totalLength", "Суммарная длина на 100 мм", range.total);
+      facts.push({ label: "Расчёт длины скопления", value: rule.clusterFactor + " × " + range.length + " = " + formatNumber(rule.clusterFactor * range.length) + " мм" });
+    }
+    const ambiguous = rule.ambiguousBounds.includes(thickness);
+    const failed = checks.some(item => !item.passed);
+    const allowed = ambiguous ? null : failed ? false : missing.length ? null : true;
+    return { status: "evaluated", allowed, checks, facts, thickness,
+      decision: ambiguous ? "ТРЕБУЕТСЯ УТОЧНЕНИЕ ГРАНИЦЫ" : missing.length && !failed ? "ПАРАМЕТРЫ НОРМЫ — ВВЕДИТЕ ИЗМЕРЕНИЯ" : failed ? "НЕ ДОПУСКАЕТСЯ ПО РЕКОМЕНДУЕМОЙ НОРМЕ" : "СООТВЕТСТВУЕТ ПРОВЕРЕННЫМ ПАРАМЕТРАМ",
+      message: ambiguous
+        ? "В опубликованной таблице эта граница повторяется в двух строках. Показаны пределы предыдущей строки (по схеме задания), но заключение не выдаётся до подтверждения применимой строки программой диагностирования."
+        : "Оценка касается только показанных параметров. Отдельно проверьте группировку, суммарную площадь и дополнительные условия. Категория АЭ не заменяет заключение по пп. 75–76 приложения № 1." };
+  }
 
   if (rule.type === "minimum") {
     const measured = Number(values[rule.input]);
@@ -560,9 +634,35 @@ function evaluateCustomRule(criterion, values, thickness) {
   return null;
 }
 
-export function evaluateCriterion(criterion, values = {}) {
+export function evaluateCriterion(criterion, rawValues = {}) {
+  const values = { ...rawValues };
+  for (const input of criterion?.numericInputs || []) {
+    values[input] = parseCriterionNumber(values[input]);
+    if (values[input] === "") continue;
+    if (!Number.isFinite(values[input]) || values[input] < 0 || (criterion.positiveInputs?.includes(input) && values[input] <= 0) || (input === "defectCount" && !Number.isInteger(values[input]))) {
+      return { status: "incomplete", allowed: null, message: "Введите корректное число: размеры неотрицательны, толщина и номинальный катет больше нуля, количество дефектов целое." };
+    }
+  }
+  const result = evaluateCriterionValues(criterion, values);
+  if (criterion?.recommendation) {
+    result.usedSmallerThickness = false;
+    result.assessment = null;
+  }
+  if (criterion?.recommendation && result.allowed === true) {
+    result.decision = "СООТВЕТСТВУЕТ ВЫБРАННОЙ РЕКОМЕНДУЕМОЙ НОРМЕ";
+    result.message += " Это не заключение о годности резервуара в целом.";
+  }
+  if (criterion?.advisory && result.status === "evaluated") {
+    result.allowed = null;
+    result.decision = "ОРИЕНТИРОВОЧНЫЙ РАСЧЁТ — ТРЕБУЕТ ОЦЕНКИ";
+    result.message = "Расчёт по п. 49 не заменяет проект, расчёт прочности и конкретные нормы приложения № 3. Результат не разрешает эксплуатацию.";
+  }
+  return result;
+}
+
+function evaluateCriterionValues(criterion, values = {}) {
   if (!criterion) return { status: "error", message: "Критерий не найден." };
-  const thickness = effectiveThickness(values);
+  const thickness = criterion.thicknessInput ? Number(values[criterion.thicknessInput]) : effectiveThickness(values);
   const context = { thickness, values };
   if (criterion.outcome === "reference-only") {
     return { status: "guidance", decision: "ОТКРОЙТЕ ПРИМЕНИМУЮ НОРМУ", message: criterion.guidance };
@@ -580,9 +680,10 @@ export function evaluateCriterion(criterion, values = {}) {
     return { status: "incomplete", message: "Для выбранных условий вариант нормы не найден." };
   }
   const active = variant || criterion;
+  if (active.outcome === "detection-only" && !active.customRule && !criterion.customRule) return { status: "guidance", allowed: null, decision: "ТРЕБУЕТ ДОПОЛНИТЕЛЬНОЙ ОЦЕНКИ", message: active.guidance };
   const requiredInputs = active.outcome === "prohibited"
     ? selectorInputs
-    : (active.inputs || criterion.inputs || []);
+    : (active.requiredInputs || criterion.requiredInputs || active.inputs || criterion.inputs || []);
   const missing = requiredInputs.filter(input => {
     if (input === "thickness1") return !(Number(values[input]) > 0);
     if (input === "amplitudeState") return !values[input];
@@ -602,11 +703,12 @@ export function evaluateCriterion(criterion, values = {}) {
 
   const checks = [];
   if (active.rangeTable) {
-    if (!(thickness > 0)) return { status: "incomplete", missing: ["thickness1"], message: "Укажите толщину." };
-    const range = findRange(active.rangeTable.ranges, thickness);
+    if (!(Number(active.rangeTable.thicknessInput ? values[active.rangeTable.thicknessInput] : thickness) > 0)) return { status: "incomplete", missing: [active.rangeTable.thicknessInput || criterion.thicknessInput || "thickness1"], message: "Укажите положительную толщину / номинальный катет." };
+    const range = findRange(active.rangeTable.ranges, active.rangeTable.thicknessInput ? Number(values[active.rangeTable.thicknessInput]) : thickness);
     if (!range) return { status: "outside", message: "Для этой толщины в выбранной таблице нет строки." };
     const quality = values.quality;
-    const limitValue = quality ? range.limits?.[quality] : range.limit;
+    const expression = range.expression ? evaluateExpression(range.expression, context) : null;
+    const limitValue = expression ? expression.value : quality ? range.limits?.[quality] : range.limit;
     if (!Number.isFinite(Number(limitValue))) return { status: "outside", message: "Для выбранного уровня качества норма не задана." };
     const measured = Number(values[active.rangeTable.input]);
     checks.push({
@@ -615,13 +717,13 @@ export function evaluateCriterion(criterion, values = {}) {
       measured,
       limit: Number(limitValue),
       unit: active.rangeTable.unit,
-      passed: measured <= Number(limitValue),
-      calculation: `Диапазон S: ${range.label}; допустимо ≤ ${formatNumber(limitValue)} ${active.rangeTable.unit}`
+      passed: atMost(measured, limitValue),
+      calculation: `Диапазон S: ${range.label}; ${expression ? `${expression.text}; ` : ""}допустимо ≤ ${formatNumber(limitValue)} ${active.rangeTable.unit}`
     });
   }
 
   for (const limit of active.limits || []) {
-    const evaluated = evaluateExpression(limit.max, context);
+    const evaluated = evaluateExpression(limit.min || limit.max, context);
     if (!evaluated) return { status: "incomplete", message: `Недостаточно данных для расчёта «${limit.label}».` };
     const measured = Number(values[limit.input]);
     checks.push({
@@ -629,8 +731,9 @@ export function evaluateCriterion(criterion, values = {}) {
       label: limit.label,
       measured,
       limit: evaluated.value,
-      unit: limit.unit || limit.max.unit || "мм",
-      passed: atMost(measured, evaluated.value),
+      unit: limit.unit || (limit.min || limit.max).unit || "мм",
+      ...(limit.min ? { limitText: "≥ " + formatNumber(evaluated.value) + " " + (limit.unit || "мм") } : {}),
+      passed: limit.min ? atLeast(measured, evaluated.value) : atMost(measured, evaluated.value),
       calculation: evaluated.text
     });
   }
@@ -654,7 +757,7 @@ export function evaluateCriterion(criterion, values = {}) {
     decision: allowed ? "ГОДЕН ПО ВЫБРАННОМУ КРИТЕРИЮ" : "НЕ ДОПУСКАЕТСЯ",
     message: allowed
       ? "Введённые параметры не превышают выбранный нормативный предел."
-      : "Превышен хотя бы один нормативный предел. Дальнейшее решение о ремонте или вырезке принимают только по правилам выбранной НТД.",
+      : criterion.failureMessage || "Превышен хотя бы один нормативный предел. Дальнейшее решение о ремонте или вырезке принимают только по правилам выбранной НТД.",
     checks,
     thickness,
     usedSmallerThickness: Number(values.thickness2) > 0,
@@ -709,13 +812,15 @@ export function validateCriteriaData(data) {
         if (!data.inputs?.[input]) errors.push(`${location}: неизвестный вход варианта ${input}`);
       });
       for (const limit of variant.limits || []) {
-        if (!limit.input || !limit.unit || !limit.max?.type) errors.push(`${location}: неполное ограничение ${limit.label || "без названия"}`);
+        if (!limit.input || !limit.unit || !(limit.max?.type || limit.min?.type)) errors.push(`${location}: неполное ограничение ${limit.label || "без названия"}`);
       }
     }
     [criterion, ...(criterion.variants || [])].forEach(owner => {
       if (owner.customRule && !KNOWN_CUSTOM_RULES.has(owner.customRule.type)) errors.push(`${location}: неизвестное расчётное правило ${owner.customRule.type}`);
     });
     const rangeSets = [
+      ...[criterion, ...(criterion.variants || [])].map(owner => owner.rangeTable?.ranges).filter(Boolean),
+      ...Object.values(criterion.customRule?.tables || {}),
       ...(criterion.variants || []).map(variant => variant.rangeTable?.ranges).filter(Boolean),
       ...[criterion, ...(criterion.variants || [])].map(owner => owner.customRule?.ranges).filter(Boolean)
     ];

@@ -29,7 +29,7 @@ export function getSectionSearchText(sections = []) {
   }).join(" ");
 }
 
-export function buildSearchIndex(references = []) {
+export function buildSearchIndex(references = [], criteriaData = null) {
   const referencesById = new Map(references.map(reference => [reference.id, reference]));
   const articleDocuments = getAllItems().filter(isSearchableArticle).map(article => {
     const normativeReference = article.normativeView
@@ -99,7 +99,16 @@ export function buildSearchIndex(references = []) {
       ].join(" "))
     };
   });
-  cachedDocuments = [...articleDocuments, ...referenceDocuments];
+  const criterionDocuments = (criteriaData?.criteria || []).map(criterion => {
+    const standard = criteriaData.standards.find(item => item.basisDocuments.includes(criterion.source.basisDocument));
+    const method = criteriaData.methods.find(item => item.id === criterion.method);
+    const title = criterion.defect;
+    const summary = [standard?.shortTitle, method?.title, criterion.source.criterionTable].filter(Boolean).join(" · ");
+    const searchText = getSearchValue([title, summary, criterion.aliases, standard?.searchAliases, criterion.notes]);
+    return { id: criterion.id, title, summary, status: "published", isCriterion: true, methodKey: criterion.method, category: "Критерии",
+      searchText, searchTokens: tokenizeSearch(searchText), titleTokens: tokenizeSearch(title), primaryTokens: tokenizeSearch(title + " " + summary) };
+  });
+  cachedDocuments = [...articleDocuments, ...referenceDocuments, ...criterionDocuments];
 
   return cachedDocuments;
 }
@@ -156,7 +165,9 @@ export function renderSearch(query) {
     ${results.length ? `
       <div class="article-list">
         ${results.map(article => {
-          const route = article.isReference
+          const route = article.isCriterion
+            ? { view: "task", task: "criteria", criterionId: article.id }
+            : article.isReference
             ? { view: "reference", referenceId: article.id }
             : article.isTool
               ? { view: "tool", tool: article.id }

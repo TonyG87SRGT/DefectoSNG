@@ -66,7 +66,7 @@ export function registerPwa() {
     try {
       const registration = await navigator.serviceWorker.register(
         new URL("../sw.js", import.meta.url),
-        { type: "module" }
+        { type: "module", updateViaCache: "none" }
       );
 
       console.info("Service Worker registered:", registration.scope);

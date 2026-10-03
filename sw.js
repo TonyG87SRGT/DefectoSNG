@@ -6,6 +6,9 @@ import {
 } from "./js/pwaConfig.js";
 import { selectCacheStrategy } from "./js/pwaPolicy.js";
 
+// Меняется вместе с релизом, чтобы браузер гарантированно обнаруживал новую
+// версию самого Service Worker, даже если импортированный конфиг закэширован.
+const WORKER_REVISION = "0.58.1";
 const CACHE_PREFIX = "defectosng-";
 const PRECACHE_NAME = `${CACHE_PREFIX}precache-v${APP_VERSION}`;
 const RUNTIME_CACHE_NAME = `${CACHE_PREFIX}runtime-v${APP_VERSION}`;
@@ -102,7 +105,7 @@ async function networkFirst(request) {
 }
 
 self.addEventListener("install", event => {
-  event.waitUntil(precacheApp());
+  event.waitUntil(precacheApp().then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", event => {

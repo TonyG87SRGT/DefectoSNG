@@ -81,7 +81,7 @@ test("мастер начинается с НТД, изолирует докум
 
   await page.getByRole("button", { name: /ГОСТ 32569 Технологические/ }).click();
   await expect(page.getByText(/Применяйте только к технологическим/)).toBeVisible();
-  await expect(page.locator("#criteria-defect option")).toHaveCount(3);
+  await expect(page.locator("#criteria-defect option")).toHaveCount(6);
   await page.locator("#criteria-defect").selectOption("gost32569-vik-undercut");
   await page.getByLabel("Условия трубопровода").selectOption("standard");
   await page.getByLabel(/Толщина стенки S₁/).fill("10");

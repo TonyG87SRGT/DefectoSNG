@@ -16,7 +16,7 @@ import {
   renderUtScanZone,
   renderVesselStrength
 } from "./fieldTools.js";
-import { renderCriteriaFinder } from "./criteria.js";
+import { loadCriteriaData, renderCriteriaFinder } from "./criteria.js";
 import { navigate, replaceRoute, startRouter } from "./router.js";
 import { buildSearchIndex, renderSearch } from "./search.js";
 import { METHODS, getItem, getItemRoute, loadData } from "./store.js";
@@ -97,7 +97,7 @@ function renderRoute(route) {
   }
 
   if (route.view === "task") {
-    route.task === "criteria" ? renderCriteriaFinder() : renderTaskHub(route.task);
+    route.task === "criteria" ? renderCriteriaFinder(route.criterionId) : renderTaskHub(route.task);
     return true;
   }
 
@@ -207,7 +207,11 @@ async function bootstrap() {
       console.warn("Справочные таблицы не добавлены в общий поиск:", error);
       return [];
     });
-    buildSearchIndex(references);
+    const criteria = await loadCriteriaData().catch(error => {
+      console.warn("Критерии не добавлены в поиск:", error);
+      return null;
+    });
+    buildSearchIndex(references, criteria);
     updateFavoriteBadge();
     startRouter(applyRoute);
   } catch (error) {

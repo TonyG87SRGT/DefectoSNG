@@ -115,6 +115,7 @@ function parseVibrationKnowledgeRoute(hash) {
 }
 
 export function parseRoute(hash = globalThis.window?.location?.hash || "") {
+  if (hash.startsWith("#criterion=")) return { view: "task", task: "criteria", criterionId: decodeRoutePart(hash.slice("#criterion=".length)) };
   if (hash === "#vik") return { view: "method", method: "vik" };
   if (STATIC_ROUTES[hash]) return { ...STATIC_ROUTES[hash] };
 
@@ -142,6 +143,7 @@ export function parseRoute(hash = globalThis.window?.location?.hash || "") {
 }
 
 export function getRouteHash(route) {
+  if (route.view === "task" && route.task === "criteria" && route.criterionId) return "#criterion=" + encodeRoutePart(route.criterionId);
   if (route.view === "vibrationKnowledge") {
     const params = new URLSearchParams();
     for (const key of ["equipment", "fault", "sign", "parameter"]) {
