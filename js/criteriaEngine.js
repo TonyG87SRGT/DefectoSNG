@@ -4,6 +4,9 @@ const KNOWN_CUSTOM_RULES = new Set(["minimum", "applicability17640", "contactCor
 const NUMERIC_EPSILON = 1e-9;
 KNOWN_CUSTOM_RULES.add("rb305Table");
 KNOWN_CUSTOM_RULES.add("rb305Grouping");
+KNOWN_CUSTOM_RULES.add("gost34347VikPores");
+KNOWN_CUSTOM_RULES.add("gost34347Undercut");
+KNOWN_CUSTOM_RULES.add("gost34347Rk23055");
 
 export function parseCriterionNumber(raw) {
   if (raw == null || String(raw).trim() === "") return "";
@@ -430,6 +433,51 @@ function evaluateCustomRule(criterion, values, thickness) {
     ];
     const allowed = checks.every(check => check.passed);
     return evaluatedResult({ allowed, decision: allowed ? `ДОПУСКАЕТСЯ ПО КЛАССУ ${rtClass}` : "НЕ ДОПУСКАЕТСЯ", message: allowed ? `Размеры соответствуют классу ${rtClass} ГОСТ 23055-78.` : `Превышен хотя бы один предел класса ${rtClass} ГОСТ 23055-78.`, checks, thickness, values });
+  }
+
+  if (rule.type === "gost34347VikPores") {
+    const range = findRange(rule.ranges, thickness);
+    if (!range) return { status: "outside", allowed: null, message: "Таблица 15 устанавливает нормы для толщины наиболее тонкой детали от 2 мм. Экстраполяция не выполняется." };
+    const checks = [
+      { input: "width", label: "Максимальный размер наружной поры", measured: Number(values.width), limit: Number(range.size), unit: "мм", passed: atMost(values.width, range.size), calculation: `${range.label}: ≤ ${formatNumber(range.size)} мм` },
+      { input: "defectCount", label: "Количество пор на любых 100 мм шва", measured: Number(values.defectCount), limit: Number(range.count), unit: "шт.", passed: atMost(values.defectCount, range.count), calculation: `${range.label}: ≤ ${formatNumber(range.count)} шт. на 100 мм` }
+    ];
+    const allowed = checks.every(check => check.passed);
+    return evaluatedResult({ allowed, decision: allowed ? "ДОПУСКАЕТСЯ ПО ТАБЛИЦЕ 15" : "НЕ ДОПУСКАЕТСЯ", message: allowed ? "Размер и количество наружных пор не превышают нормы таблицы 15." : "Превышен размер или количество наружных пор на участке 100 мм.", checks, thickness, values });
+  }
+
+  if (rule.type === "gost34347Undercut") {
+    const group = String(values.gost34347VesselGroup);
+    const temperature = Number(values.temperature);
+    if (["1", "2"].includes(group) || !(temperature > 0)) {
+      return evaluatedResult({ allowed: false, decision: "НЕ ДОПУСКАЕТСЯ", message: ["1", "2"].includes(group) ? "Исключение для местных подрезов установлено только для сосудов групп 3, 4 и 5." : "Исключение применяется только при рабочей температуре выше 0 °C.", checks: [], thickness, values });
+    }
+    const depthLimit = Math.min(0.05 * thickness, 0.5);
+    const lengthLimit = 0.1 * Number(values.weldLength);
+    const checks = [
+      { input: "depth", label: "Глубина местного подреза", measured: Number(values.depth), limit: depthLimit, unit: "мм", passed: atMost(values.depth, depthLimit), calculation: `min(0,05 × ${formatNumber(thickness)}; 0,5) = ${formatNumber(depthLimit)} мм` },
+      { input: "undercutLength", label: "Протяжённость местного подреза", measured: Number(values.undercutLength), limit: lengthLimit, unit: "мм", passed: atMost(values.undercutLength, lengthLimit), calculation: `10 % × ${formatNumber(values.weldLength)} = ${formatNumber(lengthLimit)} мм` }
+    ];
+    const allowed = checks.every(check => check.passed);
+    return evaluatedResult({ allowed, decision: allowed ? "ДОПУСКАЕТСЯ КАК МЕСТНЫЙ ПОДРЕЗ" : "НЕ ДОПУСКАЕТСЯ", message: allowed ? `Выполнено исключение п. 5.10.2 для сосуда группы ${group} при температуре выше 0 °C.` : "Превышен предел глубины или протяжённости местного подреза.", checks, thickness, values });
+  }
+
+  if (rule.type === "gost34347Rk23055") {
+    const group = String(values.gost34347VesselGroup);
+    const joint = String(values.gost34347JointType);
+    const rtClass = String(rule.mapping?.[joint]?.[group] || "");
+    if (!rtClass) return { status: "outside", allowed: null, message: "Для выбранного вида соединения и группы сосуда таблица 16 не назначает класс дефектности." };
+    const range = findRange(rule.tables?.[rtClass], thickness);
+    if (!range) return { status: "outside", allowed: null, message: `Для толщины ${formatNumber(thickness)} мм в таблице класса ${rtClass} ГОСТ 23055-78 нет строки. Экстраполяция не выполняется.` };
+    const clusterLimit = 1.5 * Number(range.length);
+    const checks = [
+      { input: "width", label: "Ширина / диаметр поры или включения", measured: Number(values.width), limit: Number(range.width), unit: "мм", passed: atMost(values.width, range.width), calculation: `Группа ${group}; ${rule.jointLabels?.[joint]}; класс ${rtClass}; ${range.label}` },
+      { input: "length", label: "Длина поры или включения", measured: Number(values.length), limit: Number(range.length), unit: "мм", passed: atMost(values.length, range.length), calculation: `Таблица ${rtClass} ГОСТ 23055-78: ≤ ${formatNumber(range.length)} мм` },
+      { input: "clusterLength", label: "Длина скопления", measured: Number(values.clusterLength), limit: clusterLimit, unit: "мм", passed: atMost(values.clusterLength, clusterLimit), calculation: `1,5 × ${formatNumber(range.length)} = ${formatNumber(clusterLimit)} мм` },
+      { input: "totalLength", label: "Суммарная длина на участке 100 мм", measured: Number(values.totalLength), limit: Number(range.total), unit: "мм", passed: atMost(values.totalLength, range.total), calculation: `Таблица ${rtClass} ГОСТ 23055-78: ≤ ${formatNumber(range.total)} мм` }
+    ];
+    const allowed = checks.every(check => check.passed);
+    return evaluatedResult({ allowed, decision: allowed ? `ДОПУСКАЕТСЯ ПО КЛАССУ ${rtClass}` : "НЕ ДОПУСКАЕТСЯ", message: allowed ? `Параметры соответствуют базовому классу ${rtClass}, назначенному таблицей 16 ГОСТ 34347-2017.` : `Превышен хотя бы один предел класса ${rtClass} ГОСТ 23055-78.`, checks, thickness, values });
   }
 
   if (rule.type === "rvsUzkSp70") {

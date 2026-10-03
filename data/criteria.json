@@ -155,6 +155,35 @@
         "титан"
       ],
       "warning": "Область: сварка плавлением стали, никеля, титана и их сплавов (кроме лучевых способов), толщина от 0,5 мм, стыковые соединения с полным проплавлением и все угловые; положения применимы также к стыковым соединениям с частичным проплавлением. ГОСТ ISO 5817-2025 задаёт уровни качества несовершенств, но не назначает метод, объём и технологию НК. Группировка по ВИК, РК и УЗК в DefectoSNG служит для поиска по характеру выявления; применимый метод и чувствительность устанавливают стандарт на контроль, проект или НД на продукцию. Уровень B — наиболее строгий, D — наименее строгий. Для циклически нагруженных соединений дополнительно применяют приложение B; его уровни C63/B90/B125 этим калькулятором не оцениваются."
+    },
+    {
+      "id": "gost34347",
+      "title": "Сосуды и аппараты",
+      "shortTitle": "Сосуды и аппараты",
+      "description": "ГОСТ 34347-2017 — качество сварных соединений стальных сварных сосудов и аппаратов",
+      "basisDocuments": [
+        "gost-34347-2017"
+      ],
+      "dimensions": [],
+      "searchAliases": [
+        "ГОСТ 34347-2017",
+        "ГОСТ 34347",
+        "сосуд",
+        "сосуды",
+        "аппарат",
+        "аппараты",
+        "сосуд под давлением",
+        "стальной сварной сосуд",
+        "химический аппарат",
+        "нефтехимический аппарат"
+      ],
+      "warning": "Применяйте только в области ГОСТ 34347-2017: стальные сварные сосуды и аппараты, работающие под избыточным давлением, вакуумом с остаточным давлением не ниже 665 Па или без давления (под налив), рассчитываемые по указанным в стандарте нормам прочности. Группу сосуда, вид соединения, материал, рабочую температуру и применимость специальных исключений определяют по проектной документации. Нормы РК выводятся по классу ГОСТ 23055-78, назначенному таблицей 16; специальные разрешения из примечания к таблице 16 автоматически не применяются.",
+      "supportingDocuments": [
+        {
+          "documentId": "gost-23055-78",
+          "label": "Размеры пор и включений для классов дефектности 3–7 при РК"
+        }
+      ]
     }
   ],
   "guides": [
@@ -298,6 +327,16 @@
       "status": "current",
       "role": "Уровни качества B, C и D для несовершенств сварных соединений по таблице 1",
       "url": "https://protect.gost.ru/gost/details/d07e0b48-a0c2-4079-8adb-42bd55e6afed",
+      "verifiedOn": "2026-10-03"
+    },
+    {
+      "id": "gost-34347-2017",
+      "designation": "ГОСТ 34347-2017",
+      "title": "Сосуды и аппараты стальные сварные. Общие технические условия",
+      "edition": "введён с 01.08.2018; с поправками ИУС 7-2022 и ИУС 9-2023",
+      "status": "current",
+      "role": "Требования к качеству сварных соединений, методы контроля и назначение классов дефектности",
+      "url": "https://protect.gost.ru/gost/details/d23def37-813c-4d81-b6c7-261ffa4bd9b0",
       "verifiedOn": "2026-10-03"
     }
   ],
@@ -1119,6 +1158,83 @@
       "unit": "%",
       "min": 0,
       "step": "any"
+    },
+    "gost34347Thickness": {
+      "label": "Номинальная толщина наиболее тонкой детали S",
+      "type": "number",
+      "unit": "мм",
+      "min": 0.000001,
+      "step": "any"
+    },
+    "gost34347VesselGroup": {
+      "label": "Группа сосуда",
+      "type": "select",
+      "options": [
+        {
+          "value": "",
+          "label": "Выберите группу"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ]
+    },
+    "gost34347JointType": {
+      "label": "Вид сварного соединения",
+      "type": "select",
+      "options": [
+        {
+          "value": "",
+          "label": "Выберите соединение"
+        },
+        {
+          "value": "butt",
+          "label": "Стыковое"
+        },
+        {
+          "value": "fillet",
+          "label": "Угловое / тавровое"
+        },
+        {
+          "value": "lap",
+          "label": "Нахлёсточное"
+        }
+      ]
+    },
+    "gost34347MicrotearAlloy": {
+      "label": "Материал соединения",
+      "type": "select",
+      "options": [
+        {
+          "value": "",
+          "label": "Выберите материал"
+        },
+        {
+          "value": "listed",
+          "label": "03Х21Н21М4ГБ / 03ХН28МДТ / 06ХН28МДТ"
+        },
+        {
+          "value": "other",
+          "label": "Другой материал"
+        }
+      ]
     }
   },
   "criteria": [
@@ -14479,16 +14595,50 @@
     {
       "id": "iso5817-surface-lack-fusion",
       "method": "vik",
-      "medium": ["all"],
-      "defect": "Несплавление, выходящее на поверхность",
-      "aliases": ["поверхностное несплавление", "несплавление между валиками", "макроскопическое несплавление"],
-      "inputs": ["iso5817Quality"],
-      "variants": [
-        {"when":{"iso5817Quality":"B"},"outcome":"prohibited","message":"Макроскопическое несплавление не допускается."},
-        {"when":{"iso5817Quality":"C"},"outcome":"prohibited","message":"Макроскопическое несплавление не допускается."},
-        {"when":{"iso5817Quality":"D"},"outcome":"prohibited","message":"Макроскопическое несплавление не допускается."}
+      "medium": [
+        "all"
       ],
-      "source": {"basisDocument":"gost-iso-5817-2025","basisClauses":["5","таблица 1"],"criterionDocument":"gost-iso-5817-2025","criterionTable":"таблица 1, позиция 1.5"},
+      "defect": "Несплавление, выходящее на поверхность",
+      "aliases": [
+        "поверхностное несплавление",
+        "несплавление между валиками",
+        "макроскопическое несплавление"
+      ],
+      "inputs": [
+        "iso5817Quality"
+      ],
+      "variants": [
+        {
+          "when": {
+            "iso5817Quality": "B"
+          },
+          "outcome": "prohibited",
+          "message": "Макроскопическое несплавление не допускается."
+        },
+        {
+          "when": {
+            "iso5817Quality": "C"
+          },
+          "outcome": "prohibited",
+          "message": "Макроскопическое несплавление не допускается."
+        },
+        {
+          "when": {
+            "iso5817Quality": "D"
+          },
+          "outcome": "prohibited",
+          "message": "Макроскопическое несплавление не допускается."
+        }
+      ],
+      "source": {
+        "basisDocument": "gost-iso-5817-2025",
+        "basisClauses": [
+          "5",
+          "таблица 1"
+        ],
+        "criterionDocument": "gost-iso-5817-2025",
+        "criterionTable": "таблица 1, позиция 1.5"
+      },
       "decimalInput": true,
       "numericInputs": [],
       "positiveInputs": []
@@ -14496,32 +14646,107 @@
     {
       "id": "iso5817-shrinkage-cavity",
       "method": "rk",
-      "medium": ["all"],
-      "defect": "Усадочная раковина",
-      "aliases": ["усадочная раковина", "усадочная полость", "shrinkage cavity"],
-      "inputs": ["iso5817Quality","iso5817Thickness","iso5817Measured"],
-      "variants": [
-        {"when":{"iso5817Quality":"D"},"inputs":["iso5817Quality","iso5817Thickness","iso5817Measured"],"limits":[{"input":"iso5817Measured","label":"Высота h","unit":"мм","max":{"type":"thickness-factor-cap","factor":0.4,"cap":4,"unit":"мм"}}]},
-        {"when":{"iso5817Quality":"C"},"outcome":"prohibited","message":"Усадочная раковина не допускается для уровня C."},
-        {"when":{"iso5817Quality":"B"},"outcome":"prohibited","message":"Усадочная раковина не допускается для уровня B."}
+      "medium": [
+        "all"
       ],
-      "source": {"basisDocument":"gost-iso-5817-2025","basisClauses":["5","таблица 1"],"criterionDocument":"gost-iso-5817-2025","criterionTable":"таблица 1, позиция 2.7"},
-      "notes": ["Для уровня D допускается только короткая раковина, не выходящая на поверхность. Длину и выход на поверхность проверяют отдельно."],
+      "defect": "Усадочная раковина",
+      "aliases": [
+        "усадочная раковина",
+        "усадочная полость",
+        "shrinkage cavity"
+      ],
+      "inputs": [
+        "iso5817Quality",
+        "iso5817Thickness",
+        "iso5817Measured"
+      ],
+      "variants": [
+        {
+          "when": {
+            "iso5817Quality": "D"
+          },
+          "inputs": [
+            "iso5817Quality",
+            "iso5817Thickness",
+            "iso5817Measured"
+          ],
+          "limits": [
+            {
+              "input": "iso5817Measured",
+              "label": "Высота h",
+              "unit": "мм",
+              "max": {
+                "type": "thickness-factor-cap",
+                "factor": 0.4,
+                "cap": 4,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "iso5817Quality": "C"
+          },
+          "outcome": "prohibited",
+          "message": "Усадочная раковина не допускается для уровня C."
+        },
+        {
+          "when": {
+            "iso5817Quality": "B"
+          },
+          "outcome": "prohibited",
+          "message": "Усадочная раковина не допускается для уровня B."
+        }
+      ],
+      "source": {
+        "basisDocument": "gost-iso-5817-2025",
+        "basisClauses": [
+          "5",
+          "таблица 1"
+        ],
+        "criterionDocument": "gost-iso-5817-2025",
+        "criterionTable": "таблица 1, позиция 2.7"
+      },
+      "notes": [
+        "Для уровня D допускается только короткая раковина, не выходящая на поверхность. Длину и выход на поверхность проверяют отдельно."
+      ],
       "decimalInput": true,
       "thicknessInput": "iso5817Thickness",
-      "numericInputs": ["iso5817Thickness","iso5817Measured"],
-      "positiveInputs": ["iso5817Thickness"]
+      "numericInputs": [
+        "iso5817Thickness",
+        "iso5817Measured"
+      ],
+      "positiveInputs": [
+        "iso5817Thickness"
+      ]
     },
     {
       "id": "iso5817-special-assessment",
       "method": "rk",
-      "medium": ["all"],
+      "medium": [
+        "all"
+      ],
       "defect": "Скопление пор, микротрещины и пористость корня — специальные условия оценки",
-      "aliases": ["скопление пор", "кластер пор", "микротрещина", "микротрещины", "пористость корня"],
+      "aliases": [
+        "скопление пор",
+        "кластер пор",
+        "микротрещина",
+        "микротрещины",
+        "пористость корня"
+      ],
       "inputs": [],
       "outcome": "reference-only",
       "guidance": "Для скопления пор таблица 1 задаёт геометрические пределы области и запрещает систематические скопления; для микротрещин уровней C/B решение зависит от основного материала и склонности к образованию трещин; допустимость пористости корня зависит от назначения, материала и защиты от коррозии. Универсальное заключение без этих данных не выдаётся.",
-      "source": {"basisDocument":"gost-iso-5817-2025","basisClauses":["5","таблица 1"],"criterionDocument":"gost-iso-5817-2025","criterionTable":"таблица 1, позиции 1.18, 2.2, 2.4"}
+      "source": {
+        "basisDocument": "gost-iso-5817-2025",
+        "basisClauses": [
+          "5",
+          "таблица 1"
+        ],
+        "criterionDocument": "gost-iso-5817-2025",
+        "criterionTable": "таблица 1, позиции 1.18, 2.2, 2.4"
+      }
     },
     {
       "id": "iso5817-application-dependent",
@@ -14548,6 +14773,1537 @@
         ],
         "criterionDocument": "gost-iso-5817-2025",
         "criterionTable": "таблица 1, позиция 1.19, 1.22–1.24"
+      }
+    },
+    {
+      "id": "gost34347-vik-prohibited",
+      "method": "vik",
+      "medium": [
+        "all"
+      ],
+      "defect": "Безусловно недопустимые поверхностные дефекты",
+      "aliases": [
+        "трещина",
+        "трещины",
+        "свищ",
+        "наплыв",
+        "прожог",
+        "незаплавленный кратер",
+        "кратер"
+      ],
+      "inputs": [],
+      "variants": [
+        {
+          "when": {},
+          "outcome": "prohibited",
+          "message": "Не допускаются трещины всех видов и направлений, свищи, наплывы, прожоги и незаплавленные кратеры."
+        }
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.2"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "п. 5.10.2"
+      }
+    },
+    {
+      "id": "gost34347-vik-pores",
+      "method": "vik",
+      "medium": [
+        "all"
+      ],
+      "defect": "Наружные поры",
+      "aliases": [
+        "наружная пора",
+        "наружные поры",
+        "поверхностная пора",
+        "поры ВИК",
+        "таблица 15"
+      ],
+      "inputs": [
+        "gost34347Thickness",
+        "width",
+        "defectCount"
+      ],
+      "thicknessInput": "gost34347Thickness",
+      "numericInputs": [
+        "gost34347Thickness",
+        "width",
+        "defectCount"
+      ],
+      "positiveInputs": [
+        "gost34347Thickness"
+      ],
+      "decimalInput": true,
+      "customRule": {
+        "type": "gost34347VikPores",
+        "ranges": [
+          {
+            "min": 2,
+            "max": 3,
+            "maxInclusive": true,
+            "label": "2 ≤ S ≤ 3",
+            "size": 0.5,
+            "count": 3
+          },
+          {
+            "min": 3,
+            "minExclusive": true,
+            "max": 4,
+            "maxInclusive": true,
+            "label": "3 < S ≤ 4",
+            "size": 0.6,
+            "count": 4
+          },
+          {
+            "min": 4,
+            "minExclusive": true,
+            "max": 5,
+            "maxInclusive": true,
+            "label": "4 < S ≤ 5",
+            "size": 0.7,
+            "count": 4
+          },
+          {
+            "min": 5,
+            "minExclusive": true,
+            "max": 6,
+            "maxInclusive": true,
+            "label": "5 < S ≤ 6",
+            "size": 0.8,
+            "count": 4
+          },
+          {
+            "min": 6,
+            "minExclusive": true,
+            "max": 8,
+            "maxInclusive": true,
+            "label": "6 < S ≤ 8",
+            "size": 1,
+            "count": 5
+          },
+          {
+            "min": 8,
+            "minExclusive": true,
+            "max": 10,
+            "maxInclusive": true,
+            "label": "8 < S ≤ 10",
+            "size": 1.2,
+            "count": 5
+          },
+          {
+            "min": 10,
+            "minExclusive": true,
+            "max": 15,
+            "maxInclusive": true,
+            "label": "10 < S ≤ 15",
+            "size": 1.5,
+            "count": 5
+          },
+          {
+            "min": 15,
+            "minExclusive": true,
+            "max": 20,
+            "maxInclusive": true,
+            "label": "15 < S ≤ 20",
+            "size": 2,
+            "count": 6
+          },
+          {
+            "min": 20,
+            "minExclusive": true,
+            "max": 40,
+            "maxInclusive": true,
+            "label": "20 < S ≤ 40",
+            "size": 2.5,
+            "count": 7
+          },
+          {
+            "min": 40,
+            "minExclusive": true,
+            "label": "S > 40",
+            "size": 2.5,
+            "count": 8
+          }
+        ]
+      },
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.2"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "таблица 15"
+      }
+    },
+    {
+      "id": "gost34347-vik-undercut",
+      "method": "vik",
+      "medium": [
+        "all"
+      ],
+      "defect": "Местный подрез",
+      "aliases": [
+        "подрез",
+        "подрезы",
+        "местный подрез"
+      ],
+      "inputs": [
+        "gost34347VesselGroup",
+        "temperature",
+        "gost34347Thickness",
+        "depth",
+        "undercutLength",
+        "weldLength"
+      ],
+      "thicknessInput": "gost34347Thickness",
+      "numericInputs": [
+        "temperature",
+        "gost34347Thickness",
+        "depth",
+        "undercutLength",
+        "weldLength"
+      ],
+      "positiveInputs": [
+        "gost34347Thickness",
+        "weldLength"
+      ],
+      "decimalInput": true,
+      "customRule": {
+        "type": "gost34347Undercut"
+      },
+      "notes": [
+        "Исключение относится только к сосудам групп 3–5, предназначенным для работы при температуре выше 0 °C. В остальных случаях подрезы не допускаются."
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.2"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "п. 5.10.2, условие после таблицы 15"
+      }
+    },
+    {
+      "id": "gost34347-vik-microtear",
+      "method": "vik",
+      "medium": [
+        "all"
+      ],
+      "defect": "Отдельный микронадрыв",
+      "aliases": [
+        "микронадрыв",
+        "микронадрывы"
+      ],
+      "inputs": [
+        "gost34347MicrotearAlloy",
+        "length"
+      ],
+      "decimalInput": true,
+      "numericInputs": [
+        "length"
+      ],
+      "variants": [
+        {
+          "when": {
+            "gost34347MicrotearAlloy": "listed"
+          },
+          "inputs": [
+            "gost34347MicrotearAlloy",
+            "length"
+          ],
+          "limits": [
+            {
+              "input": "length",
+              "label": "Протяжённость микронадрыва",
+              "unit": "мм",
+              "max": {
+                "type": "fixed",
+                "value": 2,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "gost34347MicrotearAlloy": "other"
+          },
+          "outcome": "prohibited",
+          "message": "Исключение стандарта не распространяется на выбранный материал."
+        }
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.2"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "условие после таблицы 15"
+      }
+    },
+    {
+      "id": "gost34347-vik-pipe-offset",
+      "method": "vik",
+      "medium": [
+        "all"
+      ],
+      "defect": "Смещение кромок стыкуемых труб",
+      "aliases": [
+        "смещение кромок труб",
+        "разностенность труб",
+        "стыкуемые трубы",
+        "таблица 7"
+      ],
+      "inputs": [
+        "gost34347Thickness",
+        "edgeOffset"
+      ],
+      "thicknessInput": "gost34347Thickness",
+      "decimalInput": true,
+      "numericInputs": [
+        "gost34347Thickness",
+        "edgeOffset"
+      ],
+      "positiveInputs": [
+        "gost34347Thickness"
+      ],
+      "variants": [
+        {
+          "when": {
+            "thicknessMax": 3
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "thickness-factor",
+                "factor": 0.2,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "thicknessMinExclusive": 3,
+            "thicknessMax": 6
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "input-linear-cap",
+                "input": "gost34347Thickness",
+                "inputLabel": "S",
+                "factor": 0.1,
+                "offset": 0.3,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "thicknessMinExclusive": 6,
+            "thicknessMax": 10
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "thickness-factor",
+                "factor": 0.15,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "thicknessMinExclusive": 10,
+            "thicknessMax": 20
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "input-linear-cap",
+                "input": "gost34347Thickness",
+                "inputLabel": "S",
+                "factor": 0.05,
+                "offset": 1,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "thicknessMinExclusive": 20
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "thickness-factor-cap",
+                "factor": 0.1,
+                "cap": 3,
+                "unit": "мм"
+              }
+            }
+          ]
+        }
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.6.9"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "таблица 7"
+      }
+    },
+    {
+      "id": "gost34347-vik-sheet-offset-longitudinal",
+      "method": "vik",
+      "medium": [
+        "all"
+      ],
+      "defect": "Смещение кромок листов — продольные, хордовые и меридиональные швы",
+      "aliases": [
+        "смещение кромок листов",
+        "продольный шов",
+        "хордовый шов",
+        "меридиональный шов",
+        "таблица 12"
+      ],
+      "inputs": [
+        "gost34347Thickness",
+        "edgeOffset"
+      ],
+      "thicknessInput": "gost34347Thickness",
+      "decimalInput": true,
+      "numericInputs": [
+        "gost34347Thickness",
+        "edgeOffset"
+      ],
+      "positiveInputs": [
+        "gost34347Thickness"
+      ],
+      "limits": [
+        {
+          "input": "edgeOffset",
+          "label": "Смещение кромок B",
+          "unit": "мм",
+          "max": {
+            "type": "thickness-factor-cap",
+            "factor": 0.1,
+            "cap": 3,
+            "unit": "мм"
+          }
+        }
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.9.9"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "таблица 12"
+      }
+    },
+    {
+      "id": "gost34347-vik-sheet-offset-circumferential",
+      "method": "vik",
+      "medium": [
+        "all"
+      ],
+      "defect": "Смещение кромок листов — кольцевой шов",
+      "aliases": [
+        "смещение кромок кольцевого шва",
+        "кольцевой шов сосуда",
+        "таблица 12"
+      ],
+      "inputs": [
+        "gost34347Thickness",
+        "edgeOffset"
+      ],
+      "thicknessInput": "gost34347Thickness",
+      "decimalInput": true,
+      "numericInputs": [
+        "gost34347Thickness",
+        "edgeOffset"
+      ],
+      "positiveInputs": [
+        "gost34347Thickness"
+      ],
+      "variants": [
+        {
+          "when": {
+            "thicknessMax": 20
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "input-linear-cap",
+                "input": "gost34347Thickness",
+                "inputLabel": "S",
+                "factor": 0.1,
+                "offset": 1,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "thicknessMinExclusive": 20,
+            "thicknessMax": 50
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "thickness-factor-cap",
+                "factor": 0.15,
+                "cap": 5,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "thicknessMinExclusive": 50,
+            "thicknessMax": 100
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "input-linear-cap",
+                "input": "gost34347Thickness",
+                "inputLabel": "S",
+                "factor": 0.04,
+                "offset": 3.5,
+                "unit": "мм"
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "thicknessMinExclusive": 100
+          },
+          "inputs": [
+            "gost34347Thickness",
+            "edgeOffset"
+          ],
+          "limits": [
+            {
+              "input": "edgeOffset",
+              "label": "Смещение кромок B",
+              "unit": "мм",
+              "max": {
+                "type": "input-linear-cap",
+                "input": "gost34347Thickness",
+                "inputLabel": "S",
+                "factor": 0.025,
+                "offset": 5,
+                "cap": 10,
+                "unit": "мм"
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Для кольцевого шва, выполняемого электрошлаковой сваркой, действует отдельный предел 5 мм."
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.9.9"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "таблица 12"
+      }
+    },
+    {
+      "id": "gost34347-vik-shape",
+      "method": "vik",
+      "medium": [
+        "all"
+      ],
+      "defect": "Форма, размеры шва, чешуйчатость и впадины между валиками",
+      "aliases": [
+        "форма шва",
+        "размер шва",
+        "чешуйчатость",
+        "впадины между валиками",
+        "усиление шва"
+      ],
+      "inputs": [],
+      "outcome": "reference-only",
+      "guidance": "ГОСТ 34347-2017 не задаёт для этой позиции единого численного предела: форму и размеры сравнивают со стандартами, техническими условиями или проектом, а чешуйчатость и глубину впадин — с допуском на усиление конкретного шва по высоте.",
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.2"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "п. 5.10.2"
+      }
+    },
+    {
+      "id": "gost34347-rk-prohibited",
+      "method": "rk",
+      "medium": [
+        "all"
+      ],
+      "defect": "Трещины, свищи, непровары и несплавления",
+      "aliases": [
+        "внутренняя трещина",
+        "микротрещина",
+        "свищ",
+        "непровар",
+        "несплавление"
+      ],
+      "inputs": [],
+      "variants": [
+        {
+          "when": {},
+          "outcome": "prohibited",
+          "message": "Не допускаются внутренние трещины всех видов и направлений, включая микротрещины, свищи, непровары и несплавления в сечении соединения."
+        }
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.3"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "п. 5.10.3"
+      }
+    },
+    {
+      "id": "gost34347-rk-pores-inclusions",
+      "method": "rk",
+      "medium": [
+        "all"
+      ],
+      "defect": "Поры, шлаковые, вольфрамовые и окисные включения",
+      "aliases": [
+        "пора",
+        "поры",
+        "шлаковое включение",
+        "вольфрамовое включение",
+        "окисное включение",
+        "скопление",
+        "цепочка",
+        "ГОСТ 23055"
+      ],
+      "inputs": [
+        "gost34347VesselGroup",
+        "gost34347JointType",
+        "gost34347Thickness",
+        "width",
+        "length",
+        "clusterLength",
+        "totalLength"
+      ],
+      "thicknessInput": "gost34347Thickness",
+      "decimalInput": true,
+      "numericInputs": [
+        "gost34347Thickness",
+        "width",
+        "length",
+        "clusterLength",
+        "totalLength"
+      ],
+      "positiveInputs": [
+        "gost34347Thickness"
+      ],
+      "customRule": {
+        "type": "gost34347Rk23055",
+        "mapping": {
+          "butt": {
+            "1": "3",
+            "2": "3",
+            "3": "3",
+            "4": "4",
+            "5": "6"
+          },
+          "fillet": {
+            "1": "4",
+            "2": "4",
+            "3": "4",
+            "4": "5",
+            "5": "6"
+          },
+          "lap": {
+            "1": "5",
+            "2": "5",
+            "3": "5",
+            "4": "6",
+            "5": "7"
+          }
+        },
+        "jointLabels": {
+          "butt": "стыковое",
+          "fillet": "угловое / тавровое",
+          "lap": "нахлёсточное"
+        },
+        "tables": {
+          "3": [
+            {
+              "min": 0,
+              "max": 3,
+              "maxInclusive": true,
+              "label": "S ≤ 3",
+              "width": 0.4,
+              "length": 1.2,
+              "total": 4
+            },
+            {
+              "min": 3,
+              "minExclusive": true,
+              "max": 5,
+              "maxInclusive": true,
+              "label": "3 < S ≤ 5",
+              "width": 0.5,
+              "length": 1.5,
+              "total": 5
+            },
+            {
+              "min": 5,
+              "minExclusive": true,
+              "max": 8,
+              "maxInclusive": true,
+              "label": "5 < S ≤ 8",
+              "width": 0.6,
+              "length": 2,
+              "total": 6
+            },
+            {
+              "min": 8,
+              "minExclusive": true,
+              "max": 11,
+              "maxInclusive": true,
+              "label": "8 < S ≤ 11",
+              "width": 0.8,
+              "length": 2.5,
+              "total": 8
+            },
+            {
+              "min": 11,
+              "minExclusive": true,
+              "max": 14,
+              "maxInclusive": true,
+              "label": "11 < S ≤ 14",
+              "width": 1,
+              "length": 3,
+              "total": 10
+            },
+            {
+              "min": 14,
+              "minExclusive": true,
+              "max": 20,
+              "maxInclusive": true,
+              "label": "14 < S ≤ 20",
+              "width": 1.2,
+              "length": 3.5,
+              "total": 12
+            },
+            {
+              "min": 20,
+              "minExclusive": true,
+              "max": 26,
+              "maxInclusive": true,
+              "label": "20 < S ≤ 26",
+              "width": 1.5,
+              "length": 5,
+              "total": 15
+            },
+            {
+              "min": 26,
+              "minExclusive": true,
+              "max": 34,
+              "maxInclusive": true,
+              "label": "26 < S ≤ 34",
+              "width": 2,
+              "length": 6,
+              "total": 20
+            },
+            {
+              "min": 34,
+              "minExclusive": true,
+              "max": 45,
+              "maxInclusive": true,
+              "label": "34 < S ≤ 45",
+              "width": 2.5,
+              "length": 8,
+              "total": 25
+            },
+            {
+              "min": 45,
+              "minExclusive": true,
+              "max": 67,
+              "maxInclusive": true,
+              "label": "45 < S ≤ 67",
+              "width": 3,
+              "length": 9,
+              "total": 30
+            },
+            {
+              "min": 67,
+              "minExclusive": true,
+              "max": 90,
+              "maxInclusive": true,
+              "label": "67 < S ≤ 90",
+              "width": 4,
+              "length": 10,
+              "total": 40
+            },
+            {
+              "min": 90,
+              "minExclusive": true,
+              "max": 120,
+              "maxInclusive": true,
+              "label": "90 < S ≤ 120",
+              "width": 5,
+              "length": 10,
+              "total": 50
+            },
+            {
+              "min": 120,
+              "minExclusive": true,
+              "max": 200,
+              "maxInclusive": true,
+              "label": "120 < S ≤ 200",
+              "width": 5,
+              "length": 10,
+              "total": 60
+            },
+            {
+              "min": 200,
+              "minExclusive": true,
+              "max": 400,
+              "maxInclusive": true,
+              "label": "200 < S ≤ 400",
+              "width": 5,
+              "length": 10,
+              "total": 70
+            }
+          ],
+          "4": [
+            {
+              "min": 0,
+              "max": 3,
+              "maxInclusive": true,
+              "label": "S ≤ 3",
+              "width": 0.5,
+              "length": 1.5,
+              "total": 5
+            },
+            {
+              "min": 3,
+              "minExclusive": true,
+              "max": 5,
+              "maxInclusive": true,
+              "label": "3 < S ≤ 5",
+              "width": 0.6,
+              "length": 2,
+              "total": 6
+            },
+            {
+              "min": 5,
+              "minExclusive": true,
+              "max": 8,
+              "maxInclusive": true,
+              "label": "5 < S ≤ 8",
+              "width": 0.8,
+              "length": 2.5,
+              "total": 8
+            },
+            {
+              "min": 8,
+              "minExclusive": true,
+              "max": 11,
+              "maxInclusive": true,
+              "label": "8 < S ≤ 11",
+              "width": 1,
+              "length": 3,
+              "total": 10
+            },
+            {
+              "min": 11,
+              "minExclusive": true,
+              "max": 14,
+              "maxInclusive": true,
+              "label": "11 < S ≤ 14",
+              "width": 1.2,
+              "length": 3.5,
+              "total": 12
+            },
+            {
+              "min": 14,
+              "minExclusive": true,
+              "max": 20,
+              "maxInclusive": true,
+              "label": "14 < S ≤ 20",
+              "width": 1.5,
+              "length": 5,
+              "total": 15
+            },
+            {
+              "min": 20,
+              "minExclusive": true,
+              "max": 26,
+              "maxInclusive": true,
+              "label": "20 < S ≤ 26",
+              "width": 2,
+              "length": 6,
+              "total": 20
+            },
+            {
+              "min": 26,
+              "minExclusive": true,
+              "max": 34,
+              "maxInclusive": true,
+              "label": "26 < S ≤ 34",
+              "width": 2.5,
+              "length": 8,
+              "total": 25
+            },
+            {
+              "min": 34,
+              "minExclusive": true,
+              "max": 45,
+              "maxInclusive": true,
+              "label": "34 < S ≤ 45",
+              "width": 3,
+              "length": 9,
+              "total": 30
+            },
+            {
+              "min": 45,
+              "minExclusive": true,
+              "max": 67,
+              "maxInclusive": true,
+              "label": "45 < S ≤ 67",
+              "width": 4,
+              "length": 12,
+              "total": 40
+            },
+            {
+              "min": 67,
+              "minExclusive": true,
+              "max": 90,
+              "maxInclusive": true,
+              "label": "67 < S ≤ 90",
+              "width": 5,
+              "length": 12,
+              "total": 50
+            },
+            {
+              "min": 90,
+              "minExclusive": true,
+              "max": 120,
+              "maxInclusive": true,
+              "label": "90 < S ≤ 120",
+              "width": 5,
+              "length": 12,
+              "total": 60
+            },
+            {
+              "min": 120,
+              "minExclusive": true,
+              "max": 200,
+              "maxInclusive": true,
+              "label": "120 < S ≤ 200",
+              "width": 5,
+              "length": 12,
+              "total": 70
+            },
+            {
+              "min": 200,
+              "minExclusive": true,
+              "max": 400,
+              "maxInclusive": true,
+              "label": "200 < S ≤ 400",
+              "width": 5,
+              "length": 12,
+              "total": 80
+            }
+          ],
+          "5": [
+            {
+              "min": 0,
+              "max": 3,
+              "maxInclusive": true,
+              "label": "S ≤ 3",
+              "width": 0.6,
+              "length": 2,
+              "total": 6
+            },
+            {
+              "min": 3,
+              "minExclusive": true,
+              "max": 5,
+              "maxInclusive": true,
+              "label": "3 < S ≤ 5",
+              "width": 0.8,
+              "length": 2.5,
+              "total": 8
+            },
+            {
+              "min": 5,
+              "minExclusive": true,
+              "max": 8,
+              "maxInclusive": true,
+              "label": "5 < S ≤ 8",
+              "width": 1,
+              "length": 3,
+              "total": 10
+            },
+            {
+              "min": 8,
+              "minExclusive": true,
+              "max": 11,
+              "maxInclusive": true,
+              "label": "8 < S ≤ 11",
+              "width": 1.2,
+              "length": 3.5,
+              "total": 12
+            },
+            {
+              "min": 11,
+              "minExclusive": true,
+              "max": 14,
+              "maxInclusive": true,
+              "label": "11 < S ≤ 14",
+              "width": 1.5,
+              "length": 5,
+              "total": 15
+            },
+            {
+              "min": 14,
+              "minExclusive": true,
+              "max": 20,
+              "maxInclusive": true,
+              "label": "14 < S ≤ 20",
+              "width": 2,
+              "length": 6,
+              "total": 20
+            },
+            {
+              "min": 20,
+              "minExclusive": true,
+              "max": 26,
+              "maxInclusive": true,
+              "label": "20 < S ≤ 26",
+              "width": 2.5,
+              "length": 8,
+              "total": 25
+            },
+            {
+              "min": 26,
+              "minExclusive": true,
+              "max": 34,
+              "maxInclusive": true,
+              "label": "26 < S ≤ 34",
+              "width": 3,
+              "length": 10,
+              "total": 30
+            },
+            {
+              "min": 34,
+              "minExclusive": true,
+              "max": 45,
+              "maxInclusive": true,
+              "label": "34 < S ≤ 45",
+              "width": 4,
+              "length": 12,
+              "total": 40
+            },
+            {
+              "min": 45,
+              "minExclusive": true,
+              "max": 67,
+              "maxInclusive": true,
+              "label": "45 < S ≤ 67",
+              "width": 5,
+              "length": 15,
+              "total": 50
+            },
+            {
+              "min": 67,
+              "minExclusive": true,
+              "max": 90,
+              "maxInclusive": true,
+              "label": "67 < S ≤ 90",
+              "width": 5,
+              "length": 15,
+              "total": 60
+            },
+            {
+              "min": 90,
+              "minExclusive": true,
+              "max": 120,
+              "maxInclusive": true,
+              "label": "90 < S ≤ 120",
+              "width": 5,
+              "length": 15,
+              "total": 70
+            },
+            {
+              "min": 120,
+              "minExclusive": true,
+              "max": 200,
+              "maxInclusive": true,
+              "label": "120 < S ≤ 200",
+              "width": 5,
+              "length": 15,
+              "total": 80
+            },
+            {
+              "min": 200,
+              "minExclusive": true,
+              "max": 400,
+              "maxInclusive": true,
+              "label": "200 < S ≤ 400",
+              "width": 5,
+              "length": 15,
+              "total": 90
+            }
+          ],
+          "6": [
+            {
+              "min": 0,
+              "max": 3,
+              "maxInclusive": true,
+              "label": "S ≤ 3",
+              "width": 0.8,
+              "length": 3,
+              "total": 8
+            },
+            {
+              "min": 3,
+              "minExclusive": true,
+              "max": 5,
+              "maxInclusive": true,
+              "label": "3 < S ≤ 5",
+              "width": 1,
+              "length": 4,
+              "total": 10
+            },
+            {
+              "min": 5,
+              "minExclusive": true,
+              "max": 8,
+              "maxInclusive": true,
+              "label": "5 < S ≤ 8",
+              "width": 1.2,
+              "length": 5,
+              "total": 12
+            },
+            {
+              "min": 8,
+              "minExclusive": true,
+              "max": 11,
+              "maxInclusive": true,
+              "label": "8 < S ≤ 11",
+              "width": 1.5,
+              "length": 6,
+              "total": 15
+            },
+            {
+              "min": 11,
+              "minExclusive": true,
+              "max": 14,
+              "maxInclusive": true,
+              "label": "11 < S ≤ 14",
+              "width": 2,
+              "length": 8,
+              "total": 20
+            },
+            {
+              "min": 14,
+              "minExclusive": true,
+              "max": 20,
+              "maxInclusive": true,
+              "label": "14 < S ≤ 20",
+              "width": 2.5,
+              "length": 10,
+              "total": 25
+            },
+            {
+              "min": 20,
+              "minExclusive": true,
+              "max": 26,
+              "maxInclusive": true,
+              "label": "20 < S ≤ 26",
+              "width": 3,
+              "length": 12,
+              "total": 30
+            },
+            {
+              "min": 26,
+              "minExclusive": true,
+              "max": 34,
+              "maxInclusive": true,
+              "label": "26 < S ≤ 34",
+              "width": 4,
+              "length": 15,
+              "total": 40
+            },
+            {
+              "min": 34,
+              "minExclusive": true,
+              "max": 45,
+              "maxInclusive": true,
+              "label": "34 < S ≤ 45",
+              "width": 5,
+              "length": 20,
+              "total": 50
+            },
+            {
+              "min": 45,
+              "minExclusive": true,
+              "max": 67,
+              "maxInclusive": true,
+              "label": "45 < S ≤ 67",
+              "width": 5,
+              "length": 20,
+              "total": 60
+            },
+            {
+              "min": 67,
+              "minExclusive": true,
+              "max": 90,
+              "maxInclusive": true,
+              "label": "67 < S ≤ 90",
+              "width": 5,
+              "length": 20,
+              "total": 70
+            },
+            {
+              "min": 90,
+              "minExclusive": true,
+              "max": 120,
+              "maxInclusive": true,
+              "label": "90 < S ≤ 120",
+              "width": 5,
+              "length": 20,
+              "total": 80
+            },
+            {
+              "min": 120,
+              "minExclusive": true,
+              "max": 200,
+              "maxInclusive": true,
+              "label": "120 < S ≤ 200",
+              "width": 5,
+              "length": 20,
+              "total": 90
+            }
+          ],
+          "7": [
+            {
+              "min": 0,
+              "max": 3,
+              "maxInclusive": true,
+              "label": "S ≤ 3",
+              "width": 1,
+              "length": 5,
+              "total": 10
+            },
+            {
+              "min": 3,
+              "minExclusive": true,
+              "max": 5,
+              "maxInclusive": true,
+              "label": "3 < S ≤ 5",
+              "width": 1.2,
+              "length": 6,
+              "total": 12
+            },
+            {
+              "min": 5,
+              "minExclusive": true,
+              "max": 8,
+              "maxInclusive": true,
+              "label": "5 < S ≤ 8",
+              "width": 1.5,
+              "length": 8,
+              "total": 15
+            },
+            {
+              "min": 8,
+              "minExclusive": true,
+              "max": 11,
+              "maxInclusive": true,
+              "label": "8 < S ≤ 11",
+              "width": 2,
+              "length": 10,
+              "total": 20
+            },
+            {
+              "min": 11,
+              "minExclusive": true,
+              "max": 14,
+              "maxInclusive": true,
+              "label": "11 < S ≤ 14",
+              "width": 2.5,
+              "length": 12,
+              "total": 25
+            },
+            {
+              "min": 14,
+              "minExclusive": true,
+              "max": 20,
+              "maxInclusive": true,
+              "label": "14 < S ≤ 20",
+              "width": 3,
+              "length": 15,
+              "total": 30
+            },
+            {
+              "min": 20,
+              "minExclusive": true,
+              "max": 26,
+              "maxInclusive": true,
+              "label": "20 < S ≤ 26",
+              "width": 4,
+              "length": 20,
+              "total": 40
+            },
+            {
+              "min": 26,
+              "minExclusive": true,
+              "max": 34,
+              "maxInclusive": true,
+              "label": "26 < S ≤ 34",
+              "width": 5,
+              "length": 25,
+              "total": 50
+            },
+            {
+              "min": 34,
+              "minExclusive": true,
+              "max": 45,
+              "maxInclusive": true,
+              "label": "34 < S ≤ 45",
+              "width": 5,
+              "length": 25,
+              "total": 60
+            },
+            {
+              "min": 45,
+              "minExclusive": true,
+              "max": 67,
+              "maxInclusive": true,
+              "label": "45 < S ≤ 67",
+              "width": 5,
+              "length": 25,
+              "total": 70
+            },
+            {
+              "min": 67,
+              "minExclusive": true,
+              "max": 90,
+              "maxInclusive": true,
+              "label": "67 < S ≤ 90",
+              "width": 5,
+              "length": 25,
+              "total": 80
+            },
+            {
+              "min": 90,
+              "minExclusive": true,
+              "max": 120,
+              "maxInclusive": true,
+              "label": "90 < S ≤ 120",
+              "width": 5,
+              "length": 25,
+              "total": 90
+            }
+          ]
+        }
+      },
+      "notes": [
+        "Таблица 16 назначает базовый класс. Разрешённое примечанием смягчение оценки единичных дефектов при S ≤ 45 мм, цепочек и отдельных кольцевых швов вручную не применяется автоматически.",
+        "Поры или включения с расстоянием не более их максимальной ширины/диаметра рассматривают как один дефект. Длина скопления — не более 1,5 длины одиночного дефекта."
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.3"
+        ],
+        "criterionDocument": "gost-23055-78",
+        "criterionTable": "таблица 16 ГОСТ 34347-2017; таблицы 3–7 ГОСТ 23055-78"
+      }
+    },
+    {
+      "id": "gost34347-uzk-prohibited",
+      "method": "uzk",
+      "medium": [
+        "all"
+      ],
+      "defect": "Трещины, свищи, непровары и несплавления",
+      "aliases": [
+        "УЗК сосуда",
+        "трещина",
+        "свищ",
+        "непровар",
+        "несплавление"
+      ],
+      "inputs": [],
+      "variants": [
+        {
+          "when": {},
+          "outcome": "prohibited",
+          "message": "Подтверждённые внутренние трещины, свищи, непровары и несплавления не допускаются."
+        }
+      ],
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.3",
+          "7.7"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "пп. 5.10.3, 7.7"
+      }
+    },
+    {
+      "id": "gost34347-uzk-other",
+      "method": "uzk",
+      "medium": [
+        "all"
+      ],
+      "defect": "Поры и включения при ультразвуковом контроле",
+      "aliases": [
+        "эквивалентная площадь",
+        "поры УЗК",
+        "включения УЗК"
+      ],
+      "inputs": [],
+      "outcome": "reference-only",
+      "guidance": "ГОСТ 34347-2017 не устанавливает в п. 5.10.3 универсальную численную эквивалентную площадь для УЗК. Методика и нормы оценки определяются действующей НТД, документом на конкретное соединение и проектом; подставлять классы ГОСТ 23055 для УЗК нельзя.",
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "5.10.3",
+          "7.7.1–7.7.2"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "пп. 5.10.3, 7.7.1–7.7.2"
+      }
+    },
+    {
+      "id": "gost34347-pvk",
+      "method": "pvk",
+      "medium": [
+        "all"
+      ],
+      "defect": "Поверхностная индикация при капиллярном контроле",
+      "aliases": [
+        "ПВК сосуда",
+        "капиллярная индикация",
+        "цветная дефектоскопия"
+      ],
+      "inputs": [],
+      "outcome": "reference-only",
+      "guidance": "Капиллярный контроль выполняют по действующей НТД и ГОСТ 18442. Объём и класс чувствительности задают применимая НД и проект. Подтверждённый дефект оценивают по п. 5.10.2; отдельный универсальный размер индикаторного следа ГОСТ 34347-2017 не устанавливает.",
+      "relatedCriterion": "gost34347-vik-prohibited",
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "7.8",
+          "5.10.2"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "пп. 7.8, 5.10.2"
+      }
+    },
+    {
+      "id": "gost34347-mk",
+      "method": "mk",
+      "medium": [
+        "all"
+      ],
+      "defect": "Поверхностная или подповерхностная индикация при магнитопорошковом контроле",
+      "aliases": [
+        "МПК сосуда",
+        "МК сосуда",
+        "магнитопорошковая индикация"
+      ],
+      "inputs": [],
+      "outcome": "reference-only",
+      "guidance": "Магнитопорошковый контроль выполняют по действующей НТД. Подтверждённый дефект оценивают по п. 5.10.2; ГОСТ 34347-2017 не устанавливает отдельный универсальный численный размер магнитопорошковой индикации.",
+      "relatedCriterion": "gost34347-vik-prohibited",
+      "source": {
+        "basisDocument": "gost-34347-2017",
+        "basisClauses": [
+          "7.8",
+          "5.10.2"
+        ],
+        "criterionDocument": "gost-34347-2017",
+        "criterionTable": "пп. 7.8, 5.10.2"
       }
     }
   ]

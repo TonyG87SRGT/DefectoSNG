@@ -39,7 +39,7 @@ test("модель нормативных критериев проходит о
 test("мастер предлагает все нормативные ветки до выбора метода", () => {
   assert.deepEqual(
     data.standards.map(item => item.id),
-    ["rvs-rb305", "sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023", "fnp536", "rvs-gost31385-sp365", "gost-iso-5817-2025"]
+    ["rvs-rb305", "sp406-sp86", "gost32569", "gost11666", "sto-gazprom-15-1.3-004-2023", "fnp536", "rvs-gost31385-sp365", "gost-iso-5817-2025", "gost34347"]
   );
   for (const standard of data.standards) {
     assert.ok(data.criteria.some(item => standard.basisDocuments.includes(item.source.basisDocument)), standard.id);
