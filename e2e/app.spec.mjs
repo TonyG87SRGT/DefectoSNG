@@ -154,6 +154,40 @@ test("карточка A1550 IntroVisor открывается, ищется и 
   await expect(page.getByText("A1550 IntroVisor", { exact: true })).toBeVisible();
 });
 
+test("ветка СП 70 рассчитывает ВИК, РК и УЗК без смешивания с РВС", async ({ page }) => {
+  await page.goto("/#task=criteria");
+  await page.getByLabel("Поиск НТД или объекта").fill("СП 70");
+  await page.getByRole("button", { name: /Стальные конструкции — СП 70/ }).click();
+  await expect(page.getByText(/монтажным сварным соединениям стальных/)).toBeVisible();
+
+  await page.locator("#criteria-defect").selectOption("sp70-vik-undercut");
+  await page.getByLabel(/Толщина стенки S₁/).fill("10");
+  await page.getByLabel(/Глубина дефекта/).fill("0.5");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: "ГОДЕН ПО ВЫБРАННОМУ КРИТЕРИЮ", exact: true })).toBeVisible();
+  await expect(page.getByText(/Критерий: СП 70\.13330\.2012, таблица 10\.7/)).toBeVisible();
+
+  await page.getByRole("button", { name: /^РК/ }).click();
+  await page.locator("#criteria-defect").selectOption("sp70-rk-pores-inclusions");
+  await page.getByLabel("Тип поры или включения").selectOption("single");
+  await page.getByLabel(/Толщина стенки S₁/).fill("10");
+  await page.getByLabel(/Глубина дефекта/).fill("1.6");
+  await page.getByLabel(/Протяжённость одного дефекта/).fill("20");
+  await page.getByLabel(/Суммарная площадь дефектов/).fill("8");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: /ДОПУСКАЕТСЯ ПО ТАБЛИЦАМ 10\.8 И 10\.9/ })).toBeVisible();
+
+  await page.getByRole("button", { name: /^УЗК/ }).click();
+  await page.locator("#criteria-defect").selectOption("sp70-uzk-table1010");
+  await page.getByLabel(/Толщина стенки S₁/).fill("20");
+  await page.getByLabel(/Эквивалентная площадь/).fill("6");
+  await page.getByLabel(/Протяжённость одного дефекта/).fill("10");
+  await page.getByLabel(/Количество дефектов/).fill("2");
+  await page.getByRole("button", { name: "Проверить критерий" }).click();
+  await expect(page.getByRole("heading", { name: "ДОПУСКАЕТСЯ", exact: true })).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
+
 test("схема органов управления находится в начале карточки УСД-50 IPS", async ({ page }) => {
   await page.goto("/#article=uzk:uzk-equipment-usd-50-ips");
   await expect(page.getByRole("heading", { name: "УСД-50 IPS", exact: true })).toBeVisible();

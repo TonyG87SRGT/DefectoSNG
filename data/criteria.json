@@ -48,6 +48,76 @@
       ]
     },
     {
+      "id": "sp284-sp406",
+      "title": "Промысловые трубопроводы — СП 284 / СП 406",
+      "shortTitle": "Промысловые трубопроводы",
+      "description": "СП 284.1325800.2016 + СП 406.1325800.2018 — сварка и контроль промысловых трубопроводов для нефти и газа",
+      "basisDocuments": [
+        "sp-284-2016",
+        "sp-406-2018"
+      ],
+      "dimensions": [
+        "medium"
+      ],
+      "defaultMedium": "gas",
+      "searchAliases": [
+        "СП 284.1325800.2016",
+        "СП 284",
+        "СП 406.1325800.2018",
+        "СП 406",
+        "промысловый трубопровод",
+        "промысловые трубопроводы",
+        "нефтегазосборный трубопровод",
+        "газосборный трубопровод",
+        "нефтесборный трубопровод",
+        "трубопровод месторождения",
+        "сварной стык промыслового трубопровода"
+      ],
+      "warning": "Применяйте ветку только к промысловым стальным трубопроводам в совместной области СП 284.1325800.2016 и СП 406.1325800.2018. СП 284, пп. 19.8.2–19.8.5, определяет организацию, методы и объём контроля; СП 406, разделы 9.1 и 9.4–9.10, — выполнение и оценку НК. Численные карточки используют действующее приложение Д СП 86.13330.2022 вместо приложения А заменённого СП 86.13330.2014. Проект и план качества назначают применимые методы и могут увеличивать объём контроля.",
+      "applicationSource": {
+        "documentId": "sp-284-2016",
+        "clauses": [
+          "19.7.7",
+          "19.8.2–19.8.5"
+        ],
+        "label": "Объект и организация контроля"
+      },
+      "supportingDocuments": [
+        {
+          "documentId": "sp-284-2016",
+          "label": "Промысловый объект, организация и объём контроля — пп. 19.8.2–19.8.5"
+        },
+        {
+          "documentId": "sp-406-2018",
+          "label": "Методы НК, порядок оценки и категории результата — раздел 9"
+        },
+        {
+          "documentId": "sp-86-2022",
+          "label": "Действующие рекомендуемые численные критерии — приложение Д"
+        }
+      ]
+    },
+    {
+      "id": "sp70",
+      "title": "Стальные строительные конструкции",
+      "shortTitle": "Стальные конструкции — СП 70",
+      "description": "СП 70.13330.2012 — монтажные сварные соединения несущих и ограждающих стальных конструкций",
+      "basisDocuments": [
+        "sp-70-2012"
+      ],
+      "dimensions": [],
+      "searchAliases": [
+        "СП 70.13330.2012",
+        "СП 70",
+        "несущие конструкции",
+        "ограждающие конструкции",
+        "стальные конструкции",
+        "монтажные сварные соединения",
+        "сварные швы металлоконструкций"
+      ],
+      "warning": "Применяйте ветку к монтажным сварным соединениям стальных несущих и ограждающих конструкций в области СП 70.13330.2012. Проект, чертежи КМ/КМД и ППСР назначают применимые методы, объём контроля и специальные требования. Карточки воспроизводят нормы пп. 10.4.4–10.4.14 и таблиц 10.7–10.10; они не заменяют проверку проектной документации."
+    },
+    {
       "id": "gost32569",
       "title": "ГОСТ 32569-2013",
       "shortTitle": "ГОСТ 32569",
@@ -228,11 +298,23 @@
       "verifiedOn": "2026-09-23"
     },
     {
+      "id": "sp-284-2016",
+      "designation": "СП 284.1325800.2016",
+      "title": "Трубопроводы промысловые для нефти и газа. Правила проектирования и производства работ",
+      "edition": "с изменением № 1, введённым 08.04.2021",
+      "status": "current",
+      "role": "Область промысловых трубопроводов, организация контроля, методы и объём НК",
+      "url": "https://protect.gost.ru/sp/details/6e9306a0-bb5c-4452-9fbd-c7037be7451c",
+      "verifiedOn": "2026-10-03"
+    },
+    {
       "id": "sp-406-2018",
       "designation": "СП 406.1325800.2018",
       "title": "Трубопроводы магистральные и промысловые стальные для нефти и газа. Монтажные работы. Сварка и контроль ее выполнения",
       "status": "current",
-      "role": "Область применения, методы НК, порядок оценки и категории результата"
+      "role": "Область применения, методы НК, порядок оценки и категории результата",
+      "url": "https://protect.gost.ru/sp/details/d3b72ebb-af92-4818-b223-216b63ffac15",
+      "verifiedOn": "2026-10-03"
     },
     {
       "id": "sp-86-2022",
@@ -240,7 +322,9 @@
       "title": "Магистральные трубопроводы",
       "edition": "ред. от 06.06.2025, с изменением № 1",
       "status": "current",
-      "role": "Рекомендуемые критерии отбраковки дефектов, приложение Д"
+      "role": "Рекомендуемые критерии отбраковки дефектов, приложение Д",
+      "url": "https://protect.gost.ru/sp/details/ea0d2bf4-0f77-4f29-85de-1080baf38d9e",
+      "verifiedOn": "2026-10-03"
     },
     {
       "id": "sp-86-2014",
@@ -307,9 +391,11 @@
       "id": "sp-70-2012",
       "designation": "СП 70.13330.2012",
       "title": "Несущие и ограждающие конструкции",
-      "edition": "ред. от 06.02.2025, с изменением № 7",
+      "edition": "с изменениями № 1, 3–8",
       "status": "current",
-      "role": "Критерии оценки результатов УЗК по таблице 10.10"
+      "role": "Контроль качества монтажных сварных соединений стальных конструкций по разделу 10.4",
+      "url": "https://protect.gost.ru/sp/details/2239acf1-711f-4f1f-aaa7-902fa06a8a60",
+      "verifiedOn": "2026-10-06"
     },
     {
       "id": "gost-23055-78",
@@ -1233,6 +1319,95 @@
         {
           "value": "other",
           "label": "Другой материал"
+        }
+      ]
+    },
+    "sp70AssessmentLength": {
+      "label": "Длина оценочного участка",
+      "type": "number",
+      "unit": "мм",
+      "min": 0.000001,
+      "step": "any"
+    },
+    "sp70TotalDefectArea": {
+      "label": "Суммарная площадь дефектов в продольном сечении шва",
+      "type": "number",
+      "unit": "мм²",
+      "min": 0,
+      "step": "any"
+    },
+    "sp70SectionArea": {
+      "label": "Площадь продольного сечения шва на оценочном участке",
+      "type": "number",
+      "unit": "мм²",
+      "min": 0.000001,
+      "step": "any"
+    },
+    "sp70JointAccess": {
+      "label": "Доступность соединения для сварки",
+      "type": "select",
+      "options": [
+        {
+          "value": "",
+          "label": "Выберите вариант"
+        },
+        {
+          "value": "two",
+          "label": "С двух сторон / на подкладке"
+        },
+        {
+          "value": "one",
+          "label": "С одной стороны без подкладки"
+        }
+      ]
+    },
+    "sp70RkDefectType": {
+      "label": "Тип поры или включения",
+      "type": "select",
+      "options": [
+        {
+          "value": "",
+          "label": "Выберите тип"
+        },
+        {
+          "value": "single",
+          "label": "Одиночный сферический / удлинённый дефект"
+        },
+        {
+          "value": "chain",
+          "label": "Цепочка / скопление"
+        }
+      ]
+    },
+    "sp70Condition": {
+      "label": "Условия работы конструкции",
+      "type": "select",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Обычные условия"
+        },
+        {
+          "value": "special",
+          "label": "От −40 до −65 °C включительно или расчёт на выносливость"
+        }
+      ]
+    },
+    "sp70LeakState": {
+      "label": "Обнаружены признаки прохождения контрольной среды?",
+      "type": "select",
+      "options": [
+        {
+          "value": "",
+          "label": "Выберите результат"
+        },
+        {
+          "value": "no",
+          "label": "Нет"
+        },
+        {
+          "value": "yes",
+          "label": "Да"
         }
       ]
     }
@@ -16304,6 +16479,482 @@
         ],
         "criterionDocument": "gost-34347-2017",
         "criterionTable": "пп. 7.8, 5.10.2"
+      }
+    },
+    {
+      "id": "sp284-vik-repeat-repair",
+      "method": "vik",
+      "medium": [
+        "gas",
+        "oil"
+      ],
+      "defect": "Повторный ремонт того же дефектного участка сваркой",
+      "aliases": [
+        "повторный ремонт",
+        "ремонт сварного стыка",
+        "вырезка стыка",
+        "повторная выборка дефекта",
+        "ремонт одного участка дважды"
+      ],
+      "inputs": [],
+      "variants": [
+        {
+          "when": {},
+          "outcome": "prohibited",
+          "directCategory": "ВЫРЕЗАТЬ",
+          "message": "Повторный ремонт одного и того же дефектного участка сварного стыка с применением сварки не допускается; стык подлежит вырезке. Все отремонтированные участки до этого контролируют ВИК и физическими методами, назначенными для соединения."
+        }
+      ],
+      "source": {
+        "basisDocument": "sp-284-2016",
+        "basisClauses": [
+          "19.7.7"
+        ],
+        "criterionDocument": "sp-284-2016",
+        "criterionTable": "п. 19.7.7"
+      }
+    },
+    {
+      "id": "sp284-uzk-multilayer-joint",
+      "method": "uzk",
+      "medium": [
+        "gas",
+        "oil"
+      ],
+      "defect": "Контроль многослойного стыка с внутренней конструкцией",
+      "aliases": [
+        "внутреннее защитное покрытие",
+        "гладкостное покрытие",
+        "внутренняя конструкция",
+        "многослойная конструкция",
+        "контроль трубы с покрытием",
+        "УЗК многослойного стыка",
+        "РК многослойного стыка"
+      ],
+      "inputs": [],
+      "outcome": "reference-only",
+      "guidance": "Для трубопровода с внутренним защитным или гладкостным покрытием и предварительно установленной внутренней конструкцией на стыке нельзя применять универсальную схему контроля. Контроль выполняют по технологической карте, разработанной в составе проекта и учитывающей возможность контроля многослойной конструкции.",
+      "source": {
+        "basisDocument": "sp-284-2016",
+        "basisClauses": [
+          "19.8.5, абзац, введённый изменением № 1"
+        ],
+        "criterionDocument": "sp-284-2016",
+        "criterionTable": "п. 19.8.5"
+      }
+    },
+    {
+      "id": "sp70-vik-cracks",
+      "method": "vik",
+      "medium": ["all"],
+      "defect": "Трещины всех видов и размеров",
+      "aliases": ["трещина", "трещины", "наружная трещина", "металлоконструкция"],
+      "inputs": [],
+      "variants": [
+        {
+          "when": {},
+          "outcome": "prohibited",
+          "message": "Трещины всех видов и размеров не допускаются."
+        }
+      ],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.5"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "п. 10.4.5"
+      }
+    },
+    {
+      "id": "sp70-vik-surface",
+      "method": "vik",
+      "medium": ["all"],
+      "defect": "Прожоги, наплывы, сужения и перерывы поверхности шва",
+      "aliases": ["прожог", "наплыв", "сужение", "перерыв шва", "поверхность шва"],
+      "inputs": [],
+      "variants": [
+        {
+          "when": {},
+          "outcome": "prohibited",
+          "message": "Поверхность должна быть равномерно-чешуйчатой, без прожогов, наплывов, сужений и перерывов; переход к основному металлу — плавным, если это оговорено в КМ/КМД."
+        }
+      ],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.4"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблица 10.7"
+      }
+    },
+    {
+      "id": "sp70-vik-undercut",
+      "method": "vik",
+      "medium": ["all"],
+      "defect": "Подрез",
+      "aliases": ["подрез", "глубина подреза", "5 процентов толщины"],
+      "inputs": ["thickness1", "depth"],
+      "limits": [
+        {
+          "input": "depth",
+          "label": "Глубина подреза",
+          "max": {"type": "thickness-factor-cap", "factor": 0.05, "cap": 1, "unit": "мм"}
+        }
+      ],
+      "numericInputs": ["thickness1", "depth"],
+      "positiveInputs": ["thickness1"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.4"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблица 10.7"
+      }
+    },
+    {
+      "id": "sp70-vik-single-defect",
+      "method": "vik",
+      "medium": ["all"],
+      "defect": "Одиночный удлинённый или сферический наружный дефект",
+      "aliases": ["наружная пора", "одиночная пора", "удлиненный дефект", "сферический дефект"],
+      "inputs": ["thickness1", "sp70AssessmentLength", "depth", "length"],
+      "limits": [
+        {
+          "input": "depth",
+          "label": "Глубина одиночного дефекта",
+          "max": {"type": "thickness-factor-cap", "factor": 0.1, "cap": 3, "unit": "мм"}
+        },
+        {
+          "input": "length",
+          "label": "Длина одиночного дефекта",
+          "max": {"type": "input-factor", "input": "sp70AssessmentLength", "inputLabel": "длина оценочного участка", "factor": 0.2, "unit": "мм"}
+        }
+      ],
+      "notes": ["Длину оценочного участка выбирают по таблице 10.9 для наименьшей толщины элемента."],
+      "numericInputs": ["thickness1", "sp70AssessmentLength", "depth", "length"],
+      "positiveInputs": ["thickness1", "sp70AssessmentLength"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.4"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблица 10.7; оценочный участок — таблица 10.9"
+      }
+    },
+    {
+      "id": "sp70-vik-chain",
+      "method": "vik",
+      "medium": ["all"],
+      "defect": "Цепочка или скопление наружных дефектов",
+      "aliases": ["цепочка пор", "скопление пор", "цепочка дефектов", "скопление дефектов"],
+      "inputs": ["thickness1", "sp70AssessmentLength", "depth", "length"],
+      "limits": [
+        {
+          "input": "depth",
+          "label": "Глубина дефекта в цепочке / скоплении",
+          "max": {"type": "thickness-factor-cap", "factor": 0.05, "cap": 2, "unit": "мм"}
+        },
+        {
+          "input": "length",
+          "label": "Длина отдельного дефекта",
+          "max": {"type": "input-factor", "input": "sp70AssessmentLength", "inputLabel": "длина оценочного участка", "factor": 0.3, "unit": "мм"}
+        }
+      ],
+      "notes": [
+        "Длину оценочного участка выбирают по таблице 10.9.",
+        "В таблице 10.7 отдельно приведена формулировка о длине цепочки или скопления относительно удвоенной длины оценочного участка. Она показана без автоматического заключения, чтобы не исправлять текст нормы интерпретацией приложения."
+      ],
+      "numericInputs": ["thickness1", "sp70AssessmentLength", "depth", "length"],
+      "positiveInputs": ["thickness1", "sp70AssessmentLength"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.4"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблица 10.7; оценочный участок — таблица 10.9"
+      }
+    },
+    {
+      "id": "sp70-vik-transverse-local-undercut",
+      "method": "vik",
+      "medium": ["all"],
+      "defect": "Местный подрез поперёк усилия",
+      "aliases": ["подрез поперек усилия", "местный подрез", "поперечный подрез"],
+      "inputs": ["thickness1"],
+      "variants": [
+        {
+          "when": {"thicknessMax": 20},
+          "inputs": ["thickness1", "sp70AssessmentLength", "depth", "length"],
+          "limits": [
+            {"input": "depth", "label": "Глубина местного подреза", "unit": "мм", "max": {"type": "fixed", "value": 0.5, "unit": "мм"}},
+            {"input": "length", "label": "Длина местного подреза", "unit": "мм", "max": {"type": "input-factor", "input": "sp70AssessmentLength", "inputLabel": "длина оценочного участка", "factor": 2, "unit": "мм"}}
+          ]
+        },
+        {
+          "when": {"thicknessMinExclusive": 20},
+          "inputs": ["thickness1", "sp70AssessmentLength", "depth", "length"],
+          "limits": [
+            {"input": "depth", "label": "Глубина местного подреза", "unit": "мм", "max": {"type": "fixed", "value": 1, "unit": "мм"}},
+            {"input": "length", "label": "Длина местного подреза", "unit": "мм", "max": {"type": "input-factor", "input": "sp70AssessmentLength", "inputLabel": "длина оценочного участка", "factor": 2, "unit": "мм"}}
+          ]
+        }
+      ],
+      "numericInputs": ["thickness1", "sp70AssessmentLength", "depth", "length"],
+      "positiveInputs": ["thickness1", "sp70AssessmentLength"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.4"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблица 10.7; оценочный участок — таблица 10.9"
+      }
+    },
+    {
+      "id": "sp70-vik-cold-prohibited",
+      "method": "vik",
+      "medium": ["all"],
+      "defect": "Непровар, несплавление, цепочка или скопление при специальных условиях",
+      "aliases": ["холодный климат", "расчет на выносливость", "непровар", "несплавление"],
+      "inputs": [],
+      "variants": [
+        {
+          "when": {},
+          "outcome": "prohibited",
+          "message": "В наружных швах конструкций при расчётной температуре от −40 до −65 °C включительно или при расчёте на выносливость непровары, несплавления, цепочки и скопления наружных дефектов не допускаются."
+        }
+      ],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.4"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблица 10.7"
+      }
+    },
+    {
+      "id": "sp70-rk-root",
+      "method": "rk",
+      "medium": ["all"],
+      "defect": "Непровар в корне шва",
+      "aliases": ["непровар корня", "непровар при РК", "корень шва"],
+      "inputs": ["sp70JointAccess"],
+      "variants": [
+        {
+          "when": {"sp70JointAccess": "two"},
+          "inputs": ["sp70JointAccess", "thickness1", "sp70AssessmentLength", "depth", "length"],
+          "limits": [
+            {"input": "depth", "label": "Высота непровара", "unit": "мм", "max": {"type": "thickness-factor-cap", "factor": 0.05, "cap": 2, "unit": "мм"}},
+            {"input": "length", "label": "Длина непровара", "unit": "мм", "max": {"type": "input-factor", "input": "sp70AssessmentLength", "inputLabel": "длина оценочного участка", "factor": 2, "unit": "мм"}}
+          ]
+        },
+        {
+          "when": {"sp70JointAccess": "one"},
+          "inputs": ["sp70JointAccess", "thickness1", "depth"],
+          "limits": [
+            {"input": "depth", "label": "Высота непровара", "unit": "мм", "max": {"type": "thickness-factor-cap", "factor": 0.15, "cap": 3, "unit": "мм"}}
+          ]
+        }
+      ],
+      "notes": ["Для конструкций при температуре от −40 до −65 °C включительно и рассчитанных на выносливость непровары не допускаются."],
+      "numericInputs": ["thickness1", "sp70AssessmentLength", "depth", "length"],
+      "positiveInputs": ["thickness1", "sp70AssessmentLength"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.8"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблицы 10.8 и 10.9"
+      }
+    },
+    {
+      "id": "sp70-rk-pores-inclusions",
+      "method": "rk",
+      "medium": ["all"],
+      "defect": "Поры и включения при радиографическом контроле",
+      "aliases": ["пора", "поры", "включение", "цепочка пор", "скопление пор", "таблица 10.9"],
+      "inputs": ["sp70Condition", "sp70RkDefectType"],
+      "variants": [
+        {
+          "when": {"sp70Condition": "standard"},
+          "inputs": ["sp70Condition", "sp70RkDefectType", "thickness1", "depth", "length", "sp70TotalDefectArea"]
+        },
+        {
+          "when": {"sp70Condition": "special", "sp70RkDefectType": "single"},
+          "inputs": ["sp70Condition", "sp70RkDefectType", "thickness1", "depth", "neighborDistance"]
+        },
+        {
+          "when": {"sp70Condition": "special", "sp70RkDefectType": "chain"},
+          "inputs": ["sp70Condition", "sp70RkDefectType", "thickness1"]
+        }
+      ],
+      "customRule": {
+        "type": "sp70RkTable",
+        "ranges": [
+          {"min": 4, "max": 6, "maxInclusive": true, "label": "4 ≤ S ≤ 6", "assessmentLength": 15, "height": 0.8, "totalArea": 3},
+          {"min": 6, "minExclusive": true, "max": 8, "maxInclusive": true, "label": "6 < S ≤ 8", "assessmentLength": 20, "height": 1.2, "totalArea": 6},
+          {"min": 8, "minExclusive": true, "max": 10, "maxInclusive": true, "label": "8 < S ≤ 10", "assessmentLength": 20, "height": 1.6, "totalArea": 8},
+          {"min": 10, "minExclusive": true, "max": 12, "maxInclusive": true, "label": "10 < S ≤ 12", "assessmentLength": 25, "height": 2, "totalArea": 10},
+          {"min": 12, "minExclusive": true, "max": 14, "maxInclusive": true, "label": "12 < S ≤ 14", "assessmentLength": 25, "height": 2.4, "totalArea": 12},
+          {"min": 14, "minExclusive": true, "max": 16, "maxInclusive": true, "label": "14 < S ≤ 16", "assessmentLength": 25, "height": 2.8, "totalArea": 14},
+          {"min": 16, "minExclusive": true, "max": 18, "maxInclusive": true, "label": "16 < S ≤ 18", "assessmentLength": 25, "height": 3.2, "totalArea": 16},
+          {"min": 18, "minExclusive": true, "max": 20, "maxInclusive": true, "label": "18 < S ≤ 20", "assessmentLength": 25, "height": 3.6, "totalArea": 18},
+          {"min": 20, "minExclusive": true, "max": 60, "maxInclusive": true, "label": "20 < S ≤ 60", "assessmentLength": 30, "height": 4, "totalArea": 18}
+        ]
+      },
+      "notes": [
+        "За высоту сферической поры/включения принимают диаметр изображения, удлинённой — ширину.",
+        "Чувствительность радиографического контроля — по третьему классу ГОСТ 7512.",
+        "Для соседних непроваров, цепочек и скоплений пор в обычных условиях расстояние между ближайшими концами — не менее 200 мм. Для удлинённых дефектов дополнительно проверяют условие протяжённости S/h по таблице 10.8."
+      ],
+      "numericInputs": ["thickness1", "depth", "length", "sp70TotalDefectArea", "neighborDistance"],
+      "positiveInputs": ["thickness1"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.8"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблицы 10.8 и 10.9"
+      }
+    },
+    {
+      "id": "sp70-rk-neighbor-spacing",
+      "method": "rk",
+      "medium": ["all"],
+      "defect": "Расстояние между соседними непроварами, цепочками и скоплениями пор",
+      "aliases": ["расстояние между дефектами", "соседние дефекты", "200 мм", "цепочки пор"],
+      "inputs": ["neighborDistance"],
+      "limits": [
+        {
+          "input": "neighborDistance",
+          "label": "Расстояние между ближайшими концами",
+          "unit": "мм",
+          "min": {"type": "fixed", "value": 200, "unit": "мм"}
+        }
+      ],
+      "numericInputs": ["neighborDistance"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.8"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблица 10.8"
+      }
+    },
+    {
+      "id": "sp70-uzk-table1010",
+      "method": "uzk",
+      "medium": ["all"],
+      "defect": "Одиночные внутренние несплошности",
+      "aliases": ["эквивалентная площадь", "условная протяженность", "число дефектов", "таблица 10.10", "УЗК металлоконструкций"],
+      "inputs": ["sp70Condition"],
+      "variants": [
+        {
+          "when": {"sp70Condition": "standard"},
+          "inputs": ["sp70Condition", "thickness1", "equivalentArea", "length", "defectCount"]
+        },
+        {
+          "when": {"sp70Condition": "special"},
+          "inputs": ["sp70Condition", "thickness1", "equivalentArea", "length", "defectCount", "neighborDistance"]
+        }
+      ],
+      "customRule": {
+        "type": "rvsUzkSp70",
+        "conditionInput": "sp70Condition",
+        "ranges": [
+          {"min": 6.000001, "max": 10.000001, "label": "6 < S ≤ 10", "assessmentLength": 20, "area": 4, "length": 10, "count": 1},
+          {"min": 10.000001, "max": 20.000001, "label": "10 < S ≤ 20", "assessmentLength": 25, "area": 6, "length": 10, "count": 2},
+          {"min": 20.000001, "max": 30.000001, "label": "20 < S ≤ 30", "assessmentLength": 30, "area": 7, "length": 20, "count": 3},
+          {"min": 30.000001, "max": 60.000001, "label": "30 < S ≤ 60", "assessmentLength": 30, "area": 10, "length": 25, "count": 3}
+        ]
+      },
+      "notes": [
+        "Таблица применяется к стыковым, угловым, тавровым и нахлёсточным соединениям.",
+        "Контрольный уровень чувствительности устанавливают на 6 дБ, поисковый — на 12 дБ выше браковочного.",
+        "Для специальных условий эквивалентная площадь не должна превышать половины браковочной, а расстояние между дефектами — не менее удвоенной длины оценочного участка."
+      ],
+      "numericInputs": ["thickness1", "equivalentArea", "length", "defectCount", "neighborDistance"],
+      "positiveInputs": ["thickness1"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.9", "10.4.10"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "таблица 10.10"
+      }
+    },
+    {
+      "id": "sp70-all-total-area",
+      "method": "uzk",
+      "medium": ["all"],
+      "defect": "Суммарная площадь всех дефектов на оценочном участке",
+      "aliases": ["суммарная площадь", "5 процентов сечения", "10 процентов сечения", "все дефекты"],
+      "inputs": ["sp70JointAccess"],
+      "variants": [
+        {
+          "when": {"sp70JointAccess": "two"},
+          "inputs": ["sp70JointAccess", "sp70SectionArea", "sp70TotalDefectArea"],
+          "limits": [
+            {"input": "sp70TotalDefectArea", "label": "Суммарная площадь всех дефектов", "unit": "мм²", "max": {"type": "input-factor", "input": "sp70SectionArea", "inputLabel": "площадь продольного сечения шва", "factor": 0.05, "unit": "мм²"}}
+          ]
+        },
+        {
+          "when": {"sp70JointAccess": "one"},
+          "inputs": ["sp70JointAccess", "sp70SectionArea", "sp70TotalDefectArea"],
+          "limits": [
+            {"input": "sp70TotalDefectArea", "label": "Суммарная площадь всех дефектов", "unit": "мм²", "max": {"type": "input-factor", "input": "sp70SectionArea", "inputLabel": "площадь продольного сечения шва", "factor": 0.1, "unit": "мм²"}}
+          ]
+        }
+      ],
+      "numericInputs": ["sp70SectionArea", "sp70TotalDefectArea"],
+      "positiveInputs": ["sp70SectionArea"],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.11"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "п. 10.4.11"
+      }
+    },
+    {
+      "id": "sp70-pvk",
+      "method": "pvk",
+      "medium": ["all"],
+      "defect": "Поверхностная индикация при капиллярном контроле",
+      "aliases": ["ПВК", "капиллярный контроль", "проникающий контроль", "индикация"],
+      "inputs": [],
+      "outcome": "reference-only",
+      "guidance": "СП 70.13330.2012 не устанавливает универсальный численный размер индикаторного следа ПВК. Контроль выполняют по назначенному проектом/ППСР стандарту, а подтверждённый дефект оценивают по таблице 10.7 и п. 10.4.5.",
+      "relatedCriterion": "sp70-vik-cracks",
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.1", "10.4.24"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "пп. 10.4.1, 10.4.24; таблица 10.7"
+      }
+    },
+    {
+      "id": "sp70-mk",
+      "method": "mk",
+      "medium": ["all"],
+      "defect": "Поверхностная или подповерхностная индикация при магнитопорошковом контроле",
+      "aliases": ["МК", "МПК", "магнитопорошковый контроль", "магнитная индикация"],
+      "inputs": [],
+      "outcome": "reference-only",
+      "guidance": "СП 70.13330.2012 не задаёт отдельный универсальный размер магнитопорошковой индикации. Метод и объём назначают проект/ППСР; подтверждённый дефект сопоставляют с таблицей 10.7 и п. 10.4.5.",
+      "relatedCriterion": "sp70-vik-cracks",
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.1", "10.4.24"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "пп. 10.4.1, 10.4.24; таблица 10.7"
+      }
+    },
+    {
+      "id": "sp70-leak",
+      "method": "leak",
+      "medium": ["all"],
+      "defect": "Непроницаемость и герметичность сварного соединения",
+      "aliases": ["герметичность", "непроницаемость", "течь", "пузыри", "капиллярный метод", "вакуум"],
+      "inputs": ["sp70LeakState"],
+      "customRule": {"type": "sp70Leak"},
+      "notes": [
+        "Непроницаемость для жидкостей контролируют пузырьковым или капиллярным методом; разрежение при пузырьковом методе — не менее 2500 Па.",
+        "Продолжительность капиллярного контроля — не менее 4 ч при положительной и не менее 8 ч при отрицательной температуре.",
+        "Герметичность по газообразным веществам контролируют пузырьковым методом."
+      ],
+      "source": {
+        "basisDocument": "sp-70-2012",
+        "basisClauses": ["10.4.13", "10.4.14"],
+        "criterionDocument": "sp-70-2012",
+        "criterionTable": "пп. 10.4.13–10.4.14"
       }
     }
   ]

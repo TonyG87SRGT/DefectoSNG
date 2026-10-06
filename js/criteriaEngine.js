@@ -7,6 +7,8 @@ KNOWN_CUSTOM_RULES.add("rb305Grouping");
 KNOWN_CUSTOM_RULES.add("gost34347VikPores");
 KNOWN_CUSTOM_RULES.add("gost34347Undercut");
 KNOWN_CUSTOM_RULES.add("gost34347Rk23055");
+KNOWN_CUSTOM_RULES.add("sp70RkTable");
+KNOWN_CUSTOM_RULES.add("sp70Leak");
 
 export function parseCriterionNumber(raw) {
   if (raw == null || String(raw).trim() === "") return "";
@@ -483,7 +485,8 @@ function evaluateCustomRule(criterion, values, thickness) {
   if (rule.type === "rvsUzkSp70") {
     const range = findRange(rule.ranges, thickness);
     if (!range) return { status: "outside", message: "Таблица 10.10 СП 70.13330.2012 задаёт критерии только для 6 < S ≤ 60 мм." };
-    const special = values.rvsUtCondition === "special";
+    const conditionInput = rule.conditionInput || "rvsUtCondition";
+    const special = values[conditionInput] === "special";
     const areaLimit = special ? Number(range.area) / 2 : Number(range.area);
     const checks = [
       { input: "equivalentArea", label: "Эквивалентная площадь одиночной несплошности", measured: Number(values.equivalentArea), limit: areaLimit, unit: "мм²", passed: atMost(values.equivalentArea, areaLimit), calculation: special ? `${range.label}; половина браковочной площади ${formatNumber(range.area)} / 2 = ${formatNumber(areaLimit)} мм²` : `${range.label}; браковочная площадь ≤ ${formatNumber(areaLimit)} мм²` },
@@ -496,6 +499,36 @@ function evaluateCustomRule(criterion, values, thickness) {
     }
     const allowed = checks.every(check => check.passed);
     return evaluatedResult({ allowed, decision: allowed ? "ДОПУСКАЕТСЯ" : "НЕ ДОПУСКАЕТСЯ", message: allowed ? `Параметры соответствуют строке ${range.label} таблицы 10.10${special ? " и специальному требованию п. 10.4.10" : ""}.` : "Превышен хотя бы один применимый предел СП 70.13330.2012.", checks, thickness, values });
+  }
+
+  if (rule.type === "sp70RkTable") {
+    const range = findRange(rule.ranges, thickness);
+    if (!range) return { status: "outside", allowed: null, message: "Таблица 10.9 СП 70.13330.2012 задаёт строки только для 4 ≤ S ≤ 60 мм. Экстраполяция не выполняется." };
+    const defectType = String(values.sp70RkDefectType);
+    const special = values.sp70Condition === "special";
+    if (special && defectType !== "single") return evaluatedResult({ allowed: false, decision: "НЕ ДОПУСКАЕТСЯ", message: "В специальных условиях непровары, несплавления, удлинённые дефекты, цепочки и скопления дефектов не допускаются.", checks: [], thickness, values });
+    const heightLimit = special || defectType === "chain" ? Number(range.height) / 2 : Number(range.height);
+    if (special) {
+      const spacingLimit = 2 * Number(range.assessmentLength);
+      const checks = [
+        { input: "depth", label: "Высота одиночного сферического дефекта", measured: Number(values.depth), limit: heightLimit, unit: "мм", passed: atMost(values.depth, heightLimit), calculation: `0,5 × h = 0,5 × ${formatNumber(range.height)} = ${formatNumber(heightLimit)} мм` },
+        { input: "neighborDistance", label: "Расстояние между соседними дефектами", measured: Number(values.neighborDistance), limit: spacingLimit, unit: "мм", limitText: `≥ ${formatNumber(spacingLimit)} мм`, passed: atLeast(values.neighborDistance, spacingLimit), calculation: `2 × ${formatNumber(range.assessmentLength)} = ${formatNumber(spacingLimit)} мм` }
+      ];
+      const allowed = checks.every(check => check.passed);
+      return evaluatedResult({ allowed, decision: allowed ? "ДОПУСКАЕТСЯ В СПЕЦИАЛЬНЫХ УСЛОВИЯХ" : "НЕ ДОПУСКАЕТСЯ", message: allowed ? "Одиночный сферический дефект соответствует специальной строке таблицы 10.8." : "Превышена допустимая высота или не выдержано расстояние между дефектами.", checks, thickness, values });
+    }
+    const checks = [
+      { input: "depth", label: "Высота изображения дефекта", measured: Number(values.depth), limit: heightLimit, unit: "мм", passed: atMost(values.depth, heightLimit), calculation: defectType === "chain" ? `0,5 × h = 0,5 × ${formatNumber(range.height)} = ${formatNumber(heightLimit)} мм` : `${range.label}: h ≤ ${formatNumber(heightLimit)} мм` },
+      { input: "length", label: "Длина дефекта / цепочки / скопления", measured: Number(values.length), limit: Number(range.assessmentLength), unit: "мм", passed: atMost(values.length, range.assessmentLength), calculation: `${range.label}: длина не более оценочного участка ${formatNumber(range.assessmentLength)} мм` },
+      { input: "sp70TotalDefectArea", label: "Суммарная площадь дефектов", measured: Number(values.sp70TotalDefectArea), limit: Number(range.totalArea), unit: "мм²", passed: atMost(values.sp70TotalDefectArea, range.totalArea), calculation: `${range.label}: S ≤ ${formatNumber(range.totalArea)} мм² на оценочном участке` }
+    ];
+    const allowed = checks.every(check => check.passed);
+    return evaluatedResult({ allowed, decision: allowed ? "ДОПУСКАЕТСЯ ПО ТАБЛИЦАМ 10.8 И 10.9" : "НЕ ДОПУСКАЕТСЯ", message: allowed ? "Высота, длина и суммарная площадь не превышают применимые пределы." : "Превышен хотя бы один предел таблиц 10.8 и 10.9.", checks, thickness, values });
+  }
+
+  if (rule.type === "sp70Leak") {
+    const passed = values.sp70LeakState === "no";
+    return evaluatedResult({ allowed: passed, decision: passed ? "ПРИЗНАКИ НЕПРОНИЦАЕМОСТИ / ГЕРМЕТИЧНОСТИ НЕ НАРУШЕНЫ" : "НЕПРОНИЦАЕМОСТЬ / ГЕРМЕТИЧНОСТЬ НЕ ПОДТВЕРЖДЕНА", message: passed ? "При выбранном контроле признаки прохождения контрольной среды не обнаружены." : "Обнаруженный признак прохождения контрольной среды требует устранения несплошности и повторного контроля.", checks: [], thickness, values });
   }
 
   if (rule.type === "applicability17640") {
@@ -892,6 +925,12 @@ export function validateCriteriaData(data) {
     });
   });
   data.standards.forEach((standard, index) => {
+    if (standard.applicationSource && !documentIds.has(standard.applicationSource.documentId)) {
+      errors.push(`standards[${index}]: неизвестный документ области применения ${standard.applicationSource.documentId}`);
+    }
+    if (standard.applicationSource && !standard.applicationSource.clauses?.length) {
+      errors.push(`standards[${index}]: не заданы пункты области применения`);
+    }
     (standard.supportingDocuments || []).forEach(item => {
       if (!documentIds.has(item.documentId)) errors.push(`standards[${index}]: неизвестный связанный документ ${item.documentId}`);
     });

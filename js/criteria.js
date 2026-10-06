@@ -125,6 +125,7 @@ function inputHtml(data, inputId) {
 
 function resultHtml(data, criterion, result) {
   if (!result) return "";
+  const standard = currentStandard(data);
   const source = criterion.source;
   const sourceDocument = data.documents.find(item => item.id === source.basisDocument);
   const sourceLink = sourceDocument?.url?.startsWith("https://") ? sourceDocument.url : null;
@@ -149,6 +150,7 @@ function resultHtml(data, criterion, result) {
       ${sourceLink ? `<a class="criteria-related-link" href="${escapeAttribute(sourceLink)}" target="_blank" rel="noopener noreferrer">Открыть текст источника ↗ (внешняя ссылка, нужен интернет)</a>` : ""}
       <div class="criteria-source">
         <b>${criterion.recommendation ? "Источник рекомендуемой нормы" : "Нормативное основание"}</b>
+        ${standard.applicationSource ? `<span>${safeText(standard.applicationSource.label || "Область применения")}: ${safeText(documentTitle(data, standard.applicationSource.documentId))}, ${safeText((standard.applicationSource.clauses || []).join(", "))}</span>` : ""}
         ${criterion.recommendation ? `<span>${safeText(data.documents.find(item => item.id === source.basisDocument)?.title)}</span>` : ""}
         <span>${safeText(documentTitle(data, source.basisDocument))}: ${safeText(source.basisClauses.join(", "))}</span>
         <span>Критерий: ${safeText(documentTitle(data, source.criterionDocument))}, ${safeText(source.criterionTable)}</span>
@@ -175,7 +177,7 @@ function renderLoaded(data) {
   const standards = matchingStandards(data);
   const activeVariant = criterion ? selectVariant(criterion, state.values) : null;
   const inputIds = criterion ? [...(activeVariant?.inputs || criterion.inputs)] : [];
-  if (standard.id === "sp406-sp86" && inputIds.includes("thickness1") && !inputIds.includes("thickness2")) inputIds.splice(inputIds.indexOf("thickness1") + 1, 0, "thickness2");
+  if (standard.basisDocuments.includes("sp-406-2018") && inputIds.includes("thickness1") && !inputIds.includes("thickness2")) inputIds.splice(inputIds.indexOf("thickness1") + 1, 0, "thickness2");
 
   content.innerHTML = `
     <div class="page-header criteria-header">
