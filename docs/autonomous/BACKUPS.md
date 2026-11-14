@@ -1,5 +1,13 @@
 # Backups
 
+## 2026-11-15 — перед публикацией воспроизводимого CI
+
+- Snapshot: `/var/backups/defectosng/full-20261114-224929`.
+- Исходный production-коммит: `30729448a1df1d455a2a86c5f92e697bfaecd583`, версия 0.58.6.
+- Размер: 75 МБ.
+- `SHA256SUMS`: PASS; тестовая распаковка: PASS (`RESTORE_CHECK=passed`).
+- Snapshot расположен вне `/var/www/DefectoSNG`; предназначен для отката синхронизации CI-файлов и журналов, runtime/PWA не изменяются.
+
 ## 2026-11-14 — перед публикацией 0.58.6
 
 - Snapshot: `/var/backups/defectosng/full-20261114-215557`

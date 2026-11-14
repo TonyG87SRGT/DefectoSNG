@@ -1,5 +1,12 @@
 # Quality
 
+## 2026-11-15 — pre-deploy контроль воспроизводимого CI
+
+- GitHub Actions `Check project`, run `43634004283` на commit `918f0d881f3a9e88f71ce9d595ed8baebcce605e`: PASS.
+- Чистая установка из `package-lock.json` и полный локальный набор syntax/validator/unit/Playwright/mobile/offline/PWA: PASS.
+- Независимое ревью: PASS; нормативные данные, runtime и PWA-кэш не затронуты.
+- Pre-deploy snapshot `/var/backups/defectosng/full-20261114-224929`: checksum и тестовая распаковка PASS.
+
 ## Базовая версия 0.58.4
 
 - Синтаксис: 110 файлов, PASS.

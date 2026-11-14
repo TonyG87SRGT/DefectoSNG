@@ -1,5 +1,12 @@
 # Resume
 
+## 2026-11-15 00:49 Asia/Yekaterinburg
+
+- Малое улучшение воспроизводимости CI реализовано на ветке `automation/production-autonomous-20261115-0039`, commit `918f0d8`.
+- GitHub Actions run `43634004283`: PASS; независимое ревью и все локальные проверки: PASS.
+- Создан проверенный pre-deploy snapshot `/var/backups/defectosng/full-20261114-224929` (75 МБ, checksum/restore-check PASS).
+- Следующий безопасный шаг: зафиксировать журналы, повторно подтвердить CI, fast-forward в `main`, синхронизировать production и выполнить post-deploy smoke/PWA-проверки.
+
 - Дата контрольной точки: 2026-11-14, часовой пояс клиента Asia/Yekaterinburg.
 - Ветка: `automation/production-autonomous-20261114`.
 - База: production/main `4a54e126df1ad1eb369a47e186f8c70b6ef32a71`, приложение 0.58.4.
