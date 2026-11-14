@@ -19,3 +19,5 @@
 - Нормативные данные, критерии и формулы не изменялись. Следующий шаг: commit, CI, snapshot и одно воспроизводимое развёртывание.
 - Commit улучшения: `4424ddf`; GitHub Actions run `43629144479` — PASS (`check` и browser).
 - Проверенный pre-deploy snapshot: `/var/backups/defectosng/full-20261114-215557`, 74 МБ; checksum и restore-check — PASS.
+- Цикл 0.58.6 опубликован: runtime-коммит `bc57f66ef5550e10cc3d2281587846412e40f467`; production HTTP и реальный browser smoke — PASS, откат не требовался.
+- Nginx и посторонний сервис `korni` active; следующий цикл начинается с нового полного preflight.

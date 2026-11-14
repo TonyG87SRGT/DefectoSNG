@@ -36,3 +36,5 @@
 - Unit: 204/204 PASS.
 - Полный Playwright: 23/23 PASS, включая 375 px, маршруты инструментов, МК, сброс фильтров, accessibility и offline/PWA.
 - Независимое ревью после одного цикла исправления: PASS; нормативные данные и формулы не изменялись.
+- GitHub Actions runs `43629144479` и `43629520391`: PASS (`check` и browser).
+- Production HTTP/browser smoke: поиск инструмента, МК, сброс фильтров, ВИК, УЗК, вибродиагностика, изображение и PWA/service worker — PASS.
