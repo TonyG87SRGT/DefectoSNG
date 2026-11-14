@@ -1,5 +1,15 @@
 # Backups
 
+## full-20261114-174912
+
+- Создан: 2026-11-14 17:49–17:50 UTC+03:00 (19:49–19:50 Asia/Yekaterinburg).
+- VPS: `/var/backups/defectosng/full-20261114-174912`.
+- Размер: 74 МБ.
+- Версия до публикации: 0.58.4; commit `4a54e126df1ad1eb369a47e186f8c70b6ef32a71`; production working tree был чистым.
+- Состав и права соответствуют предыдущему полному snapshot; backup находится вне web-root.
+- Проверки: SHA-256 всех файлов, `gzip -t`, чтение архивов и тестовая распаковка с проверкой ключевых файлов — PASS (`RESTORE_CHECK=passed`).
+- Восстановление: следовать `RESTORE.md` внутри каталога snapshot; перед reload выполнить `nginx -t`.
+
 ## full-20261114-162700
 
 - Создан: 2026-11-14 16:27–16:29 UTC+03:00 (18:27–18:29 Asia/Yekaterinburg).

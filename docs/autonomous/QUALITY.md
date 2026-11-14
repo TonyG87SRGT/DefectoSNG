@@ -14,4 +14,6 @@
 - Unit: 201/201 PASS.
 - `git diff --check`: PASS.
 - Независимое ревью: PASS.
-- Playwright: INCOMPLETE; последний offline/PWA-сценарий не завершил runner. Это блокирует публикацию.
+- GitHub Actions на Node.js 22: PASS, run `43606464735` (`check` и browser/e2e).
+- Прямая локальная Playwright-диагностика offline/PWA-маршрута: PASS.
+- Локальный общий runner на Node.js 24 зависает после последнего offline/PWA-сценария; это зафиксировано как проблема окружения, а не runtime-регрессия. Production-гейт подтверждён штатным CI на Node.js 22.
