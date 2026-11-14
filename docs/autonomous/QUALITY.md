@@ -1,5 +1,12 @@
 # Quality
 
+## 2026-11-15 — ограничение локальной параллельности Playwright
+
+- Node.js 24: три диагностических и один финальный полный Playwright-запуск завершились 23/23 без зависания; число Node-процессов до и после запусков не изменилось.
+- Локально используются два worker-процесса, CI сохраняет один; набор и ожидания browser-тестов не менялись.
+- Целевой тест конфигурации: 2/2 PASS; syntax 112 файлов, validator PASS, unit 206/206, полный Playwright/mobile/offline/PWA 23/23, `git diff --check` PASS.
+- Независимое ревью: PASS; runtime, PWA и нормативные данные не затронуты.
+
 ## 2026-11-15 — pre-deploy контроль воспроизводимого CI
 
 - GitHub Actions `Check project`, run `43634004283` на commit `918f0d881f3a9e88f71ce9d595ed8baebcce605e`: PASS.

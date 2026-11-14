@@ -1,3 +1,3 @@
 # Backlog
 
-1. Отдельно исследовать зависание локального Playwright runner на Node.js 24; штатный CI Node.js 22 и прямой offline/PWA-сценарий проходят.
+1. Обновить GitHub Actions с Node.js 20 runtime после проверки актуальных major-версий `checkout`, `setup-node` и `upload-artifact`; текущие задания проходят, но GitHub выводит предупреждение о совместимости.
