@@ -1,5 +1,16 @@
 # Deployments
 
+## 2026-11-15 — ограничение локальной параллельности Playwright
+
+- Production до цикла: commit `d744eb5fc0c2df7cb7e7b468758dbd170010a762`, версия 0.58.6.
+- Локальная параллельность Playwright явно ограничена двумя worker-процессами; CI сохраняет один. Добавлена unit-проверка конфигурации, тестовые ожидания не ослаблялись.
+- Опубликован commit `d7b4e9d269a6f17b045ff0f4df5506eabcb20700`; runtime, нормативные данные, формулы и PWA-кэш не изменялись, версия остаётся 0.58.6.
+- Pre-deploy snapshot: `/var/backups/defectosng/full-20261114-235010`, checksum и restore-check PASS.
+- Локально: syntax/validator, unit 206/206, Playwright/mobile/offline/PWA 23/23, три диагностических запуска Node.js 24 и независимое ревью — PASS.
+- GitHub Actions runs `43639457093`, `43639682418` и main-run `43639837357` — PASS.
+- Post-deploy: главная, ВИК, УЗК, вибродиагностика, изображение УСД-50 IPS, JS и PWA/service worker — PASS; браузерная консоль без ошибок.
+- Nginx и посторонний сервис `korni` active; production working tree чистый. Регрессий нет, откат не требовался.
+
 ## 2026-11-15 — воспроизводимый CI
 
 - Production до цикла: commit `30729448a1df1d455a2a86c5f92e697bfaecd583`, версия 0.58.6.

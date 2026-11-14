@@ -8,6 +8,9 @@
 - Независимое ревью: PASS; runtime, PWA и нормативные данные не затронуты.
 - GitHub Actions run `43639457093`: PASS (`check` и browser).
 - Pre-deploy snapshot `/var/backups/defectosng/full-20261114-235010`: checksum и тестовая распаковка PASS.
+- Повторный branch-run `43639682418` и main-run `43639837357`: PASS.
+- Post-deploy HTTP и реальный браузер: главная, ВИК, УЗК, вибродиагностика, УСД-50 IPS (1280×885), JS и PWA/service worker PASS; ошибок консоли нет.
+- VPS: commit `d7b4e9d269a6f17b045ff0f4df5506eabcb20700`, чистое дерево; Nginx и `korni` active.
 
 ## 2026-11-15 — pre-deploy контроль воспроизводимого CI
 

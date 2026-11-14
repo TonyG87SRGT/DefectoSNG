@@ -7,7 +7,9 @@
 - Runtime, нормативные данные, формулы и PWA-кэш не изменялись; версия остаётся 0.58.6.
 - Полный check, Playwright/mobile/PWA, независимое ревью и GitHub Actions run `43639457093` — PASS.
 - Создан проверенный pre-deploy snapshot `/var/backups/defectosng/full-20261114-235010` (75 МБ, checksum/restore-check PASS).
-- Следующий шаг цикла: повторный CI после записи snapshot, fast-forward в `main`, production smoke и завершение журналов.
+- Цикл завершён: commit `d7b4e9d269a6f17b045ff0f4df5506eabcb20700` опубликован в `main` и синхронизирован на production.
+- Branch/main CI, post-deploy HTTP/браузерные проверки, ВИК, УЗК, вибродиагностика, изображение и PWA/service worker — PASS; откат не требовался.
+- Следующая задача из backlog: проверить и обновить major-версии GitHub Actions, использующие устаревающий Node.js 20 runtime.
 
 ## 2026-11-15 00:49 Asia/Yekaterinburg
 
