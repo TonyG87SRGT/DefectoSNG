@@ -22,5 +22,6 @@ Thumbs.db
 
 # Логи
 *.log
+.autonomous/RUN.lock
 vova-game/
 vova-game/

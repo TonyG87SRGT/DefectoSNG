@@ -19,7 +19,16 @@ const contentTypes = {
 };
 
 const server = http.createServer((request, response) => {
-  const pathname = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
+  let pathname;
+  try {
+    pathname = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
+  } catch (error) {
+    if (error instanceof URIError) {
+      response.writeHead(400, { "content-type": "text/plain; charset=utf-8" }).end("Bad request");
+      return;
+    }
+    throw error;
+  }
   const relative = pathname === "/" ? "index.html" : pathname.replace(/^\/+/, "");
   const filename = path.resolve(root, relative);
   if (filename !== root && !filename.startsWith(`${root}${path.sep}`)) {
@@ -40,6 +49,8 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(port, "127.0.0.1", () => {
-  console.log(`DefectoSNG test server: http://127.0.0.1:${port}`);
+  const address = server.address();
+  const activePort = typeof address === "object" && address ? address.port : port;
+  console.log(`DefectoSNG test server: http://127.0.0.1:${activePort}`);
 });
 
