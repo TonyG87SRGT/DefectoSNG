@@ -1,5 +1,13 @@
 # Backups
 
+## 2026-11-15 — перед публикацией ограничения Playwright workers
+
+- Snapshot: `/var/backups/defectosng/full-20261114-235010`.
+- Исходный production-коммит: `d744eb5fc0c2df7cb7e7b468758dbd170010a762`, версия 0.58.6.
+- Размер: 75 МБ.
+- `SHA256SUMS`: PASS; тестовая распаковка: PASS (`RESTORE_CHECK=passed`).
+- Snapshot расположен вне `/var/www/DefectoSNG`; runtime/PWA и нормативные данные в изменении не затрагиваются.
+
 ## 2026-11-15 — перед публикацией воспроизводимого CI
 
 - Snapshot: `/var/backups/defectosng/full-20261114-224929`.

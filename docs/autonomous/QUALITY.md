@@ -6,6 +6,8 @@
 - Локально используются два worker-процесса, CI сохраняет один; набор и ожидания browser-тестов не менялись.
 - Целевой тест конфигурации: 2/2 PASS; syntax 112 файлов, validator PASS, unit 206/206, полный Playwright/mobile/offline/PWA 23/23, `git diff --check` PASS.
 - Независимое ревью: PASS; runtime, PWA и нормативные данные не затронуты.
+- GitHub Actions run `43639457093`: PASS (`check` и browser).
+- Pre-deploy snapshot `/var/backups/defectosng/full-20261114-235010`: checksum и тестовая распаковка PASS.
 
 ## 2026-11-15 — pre-deploy контроль воспроизводимого CI
 

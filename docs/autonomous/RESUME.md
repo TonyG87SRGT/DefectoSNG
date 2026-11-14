@@ -5,7 +5,9 @@
 - Прежнее локальное зависание Playwright под Node.js 24 не воспроизводится после фиксации Playwright 1.62.0 и `npm ci`: три последовательных полных запуска завершились 23/23, число Node-процессов до и после не изменилось.
 - Локальная параллельность явно ограничена двумя worker-процессами, CI сохраняет один; добавлена регрессионная unit-проверка конфигурации.
 - Runtime, нормативные данные, формулы и PWA-кэш не изменялись; версия остаётся 0.58.6.
-- Следующий шаг цикла: полный check, Playwright/mobile/PWA, независимое ревью, CI, snapshot и безопасная публикация.
+- Полный check, Playwright/mobile/PWA, независимое ревью и GitHub Actions run `43639457093` — PASS.
+- Создан проверенный pre-deploy snapshot `/var/backups/defectosng/full-20261114-235010` (75 МБ, checksum/restore-check PASS).
+- Следующий шаг цикла: повторный CI после записи snapshot, fast-forward в `main`, production smoke и завершение журналов.
 
 ## 2026-11-15 00:49 Asia/Yekaterinburg
 
