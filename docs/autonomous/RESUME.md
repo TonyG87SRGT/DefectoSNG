@@ -14,3 +14,6 @@
 - GitHub Actions run `43612086903` и pre-deploy snapshot `/var/backups/defectosng/full-20261114-184922` — PASS.
 - Проверенный runtime-коммит production: `3f2ffb138da640d566d72e409bf97bbf8ba70222`; post-deploy mobile/PWA/offline smoke — PASS, откат не требовался.
 - Следующий цикл: после штатных preflight-проверок выбрать одну новую малую задачу из backlog.
+- Текущий цикл 0.58.6: глобальный поиск получил совместные фильтры по фактическим методам и типам результатов; реальные инструменты включены в индекс.
+- Локальные гейты: syntax/validator, unit 204/204, Playwright 23/23, mobile/offline/PWA, `git diff --check` и независимое ревью — PASS.
+- Нормативные данные, критерии и формулы не изменялись. Следующий шаг: commit, CI, snapshot и одно воспроизводимое развёртывание.

@@ -74,6 +74,38 @@ test("рабочая страница метода ведёт в связанн�
   await expect(page.getByRole("heading", { name: "Атлас эхо‑сигналов УЗК", exact: true })).toBeVisible();
 });
 
+test("глобальный поиск фильтрует выдачу по методу и типу на мобильном экране", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/#search");
+  const search = page.getByRole("searchbox", { name: "Поиск по справочнику" });
+  await search.fill("контроль");
+  const methodFilters = page.getByRole("group", { name: "Метод контроля" });
+  await methodFilters.getByRole("button", { name: "УЗК", exact: true }).click();
+  await expect(page.locator('[data-search-article]:visible')).toHaveCount(await page.locator('[data-search-article][data-search-method="uzk"]').count());
+  await expect(page.locator('[data-search-article]:visible').first()).toHaveAttribute("data-search-method", "uzk");
+  await expectNoHorizontalOverflow(page);
+
+  await search.fill("подрез");
+  const typeFilters = page.getByRole("group", { name: "Тип материала" });
+  await typeFilters.getByRole("button", { name: "Критерии", exact: true }).click();
+  await expect(page.locator('[data-search-article]:visible').first()).toHaveAttribute("data-search-type", "criterion");
+  await expect(page.getByRole("status")).toContainText(/Найдено: \d+ из \d+/);
+
+  await search.fill("Координаты отражателя УЗК");
+  await page.getByRole("button", { name: "Инструменты", exact: true }).click();
+  await expect(page.locator('[data-search-tool="true"]:visible')).toHaveCount(1);
+  await page.locator('[data-search-tool="true"]:visible').click();
+  await expect(page.locator(".tool-card")).toBeVisible();
+
+  await page.getByRole("button", { name: /Поиск/ }).click();
+  await search.fill("трещина");
+  await page.getByRole("button", { name: "МК", exact: true }).click();
+  await expect(page.locator('[data-search-article]:visible').first()).toHaveAttribute("data-search-method", "mk");
+
+  await search.fill("контроль");
+  await expect(page.getByRole("button", { name: "Все", exact: true }).first()).toHaveAttribute("aria-pressed", "true");
+});
+
 test("мастер начинается с НТД, изолирует документы и рассчитывает выбранный критерий", async ({ page }) => {
   test.setTimeout(60_000);
   await page.goto("/#task=criteria");
@@ -348,7 +380,7 @@ test("разделы Таблицы и Инструменты очищены, а
 
   await page.getByRole("button", { name: /Поиск/ }).click();
   await page.getByRole("searchbox", { name: "Поиск по справочнику" }).fill("Координаты отражателя УЗК");
-  await expect(page.locator('[data-search-tool="true"]')).toHaveCount(0);
+  await expect(page.locator('[data-search-tool="true"]')).toHaveCount(1);
 
   const tools = [
     "ring-weld", "ut-coordinates", "ut-scan-zone", "db-calculator", "ring-position",

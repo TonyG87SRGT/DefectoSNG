@@ -1,4 +1,5 @@
 import { content } from "./dom.js";
+import { TOOL_DEFINITIONS } from "./config.js";
 import { escapeAttribute, safeText } from "./html.js";
 import { getRouteHash, navigate } from "./router.js";
 import {
@@ -9,6 +10,40 @@ import {
 import { METHODS, getAllItems, getItem, getItemRoute } from "./store.js";
 
 let cachedDocuments = null;
+
+export const SEARCH_RESULT_TYPES = Object.freeze({
+  material: "Материалы",
+  criterion: "Критерии",
+  reference: "Таблицы",
+  tool: "Инструменты"
+});
+
+export function getSearchResultType(article) {
+  if (article?.isCriterion) return "criterion";
+  if (article?.isReference) return "reference";
+  if (article?.isTool) return "tool";
+  if (article?.metadata?.materialType === "tool") return "tool";
+  return "material";
+}
+
+export function getSearchMethodFacets(results = []) {
+  const facets = new Map();
+  results.forEach(article => {
+    if (!article?.methodKey || article.methodKey === "references" || article.methodKey === "tools") return;
+    const label = article.methodLabel || METHODS[article.methodKey]?.short || article.methodKey.toUpperCase();
+    if (!facets.has(article.methodKey)) facets.set(article.methodKey, label);
+  });
+  return [...facets].map(([id, label]) => ({ id, label }));
+}
+
+export function filterSearchResults(results, filters = {}) {
+  const method = filters.method || "all";
+  const type = filters.type || "all";
+  return results.filter(article =>
+    (method === "all" || article.methodKey === method) &&
+    (type === "all" || getSearchResultType(article) === type)
+  );
+}
 
 export function isSearchableArticle(article) {
   return article?.status === "published" && article?.hidden !== true;
@@ -62,6 +97,7 @@ export function buildSearchIndex(references = [], criteriaData = null) {
 
     return {
       ...article,
+      methodLabel: METHODS[article.methodKey]?.short || article.methodKey?.toUpperCase(),
       searchText,
       searchTokens: tokenizeSearch(searchText),
       titleTokens: tokenizeSearch(article.title),
@@ -105,10 +141,25 @@ export function buildSearchIndex(references = [], criteriaData = null) {
     const title = criterion.defect;
     const summary = [standard?.shortTitle, method?.title, criterion.source.criterionTable].filter(Boolean).join(" · ");
     const searchText = getSearchValue([title, summary, criterion.aliases, standard?.searchAliases, criterion.notes]);
-    return { id: criterion.id, title, summary, status: "published", isCriterion: true, methodKey: criterion.method, category: "Критерии",
+    return { id: criterion.id, title, summary, status: "published", isCriterion: true, methodKey: criterion.method, methodLabel: method?.title || criterion.method.toUpperCase(), category: "Критерии",
       searchText, searchTokens: tokenizeSearch(searchText), titleTokens: tokenizeSearch(title), primaryTokens: tokenizeSearch(title + " " + summary) };
   });
-  cachedDocuments = [...articleDocuments, ...referenceDocuments, ...criterionDocuments];
+  const toolDocuments = TOOL_DEFINITIONS.map(tool => {
+    const searchText = getSearchValue([tool.title, tool.description, tool.category, tool.keywords]);
+    return {
+      ...tool,
+      status: "published",
+      isTool: true,
+      methodKey: "tools",
+      category: tool.category || "Инструменты",
+      summary: tool.description,
+      searchText,
+      searchTokens: tokenizeSearch(searchText),
+      titleTokens: tokenizeSearch(tool.title),
+      primaryTokens: tokenizeSearch(searchText)
+    };
+  });
+  cachedDocuments = [...articleDocuments, ...referenceDocuments, ...criterionDocuments, ...toolDocuments];
 
   return cachedDocuments;
 }
@@ -160,11 +211,50 @@ export function renderSearch(query) {
   }
 
   const results = searchArticles(query);
+  const methodFacets = getSearchMethodFacets(results);
+  const typeFacets = Object.keys(SEARCH_RESULT_TYPES).filter(type =>
+    results.some(article => getSearchResultType(article) === type)
+  );
+  const filters = { method: "all", type: "all" };
   content.innerHTML = `
-    <div class="search-status" role="status" aria-live="polite">Найдено: ${results.length}</div>
-    ${results.length ? `
+    <div class="search-status" role="status" aria-live="polite" data-search-status>Найдено: ${results.length}</div>
+    ${results.length && (methodFacets.length > 1 || typeFacets.length > 1) ? `
+      <div class="search-filters" aria-label="Фильтры результатов поиска">
+        ${methodFacets.length > 1 ? `
+          <div class="search-filter-group" role="group" aria-label="Метод контроля">
+            <span>Метод</span>
+            <div class="search-filter-options">
+              <button type="button" aria-pressed="true" data-search-method-filter="all">Все</button>
+              ${methodFacets.map(method => `<button type="button" aria-pressed="false" data-search-method-filter="${escapeAttribute(method.id)}">${safeText(method.label, method.id)}</button>`).join("")}
+            </div>
+          </div>
+        ` : ""}
+        ${typeFacets.length > 1 ? `
+          <div class="search-filter-group" role="group" aria-label="Тип материала">
+            <span>Тип</span>
+            <div class="search-filter-options">
+              <button type="button" aria-pressed="true" data-search-type-filter="all">Все</button>
+              ${typeFacets.map(type => `<button type="button" aria-pressed="false" data-search-type-filter="${escapeAttribute(type)}">${safeText(SEARCH_RESULT_TYPES[type])}</button>`).join("")}
+            </div>
+          </div>
+        ` : ""}
+      </div>
+    ` : ""}
+    <div data-search-results></div>
+  `;
+
+  const resultsContainer = content.querySelector("[data-search-results]");
+  const status = content.querySelector("[data-search-status]");
+
+  function renderFilteredResults() {
+    const filteredResults = filterSearchResults(results, filters);
+    const hasActiveFilter = filters.method !== "all" || filters.type !== "all";
+    status.textContent = hasActiveFilter
+      ? `Найдено: ${filteredResults.length} из ${results.length}`
+      : `Найдено: ${results.length}`;
+    resultsContainer.innerHTML = filteredResults.length ? `
       <div class="article-list">
-        ${results.map(article => {
+        ${filteredResults.map(article => {
           const route = article.isCriterion
             ? { view: "task", task: "criteria", criterionId: article.id }
             : article.isReference
@@ -178,10 +268,11 @@ export function renderSearch(query) {
               href="${getRouteHash(route)}"
               data-search-article="${escapeAttribute(article.id)}"
               data-search-method="${escapeAttribute(article.methodKey)}"
+              data-search-type="${escapeAttribute(getSearchResultType(article))}"
               data-search-reference="${article.isReference ? "true" : "false"}"
               data-search-tool="${article.isTool ? "true" : "false"}"
             >
-              <span class="article-category">${article.isReference ? "СПРАВОЧНИК" : article.isTool ? `ИНСТРУМЕНТ · ${safeText(article.category)}` : `${safeText(METHODS[article.methodKey]?.short, article.methodKey)} · ${safeText(article.category)}`}</span>
+              <span class="article-category">${article.isReference ? "СПРАВОЧНИК" : article.isTool ? `ИНСТРУМЕНТ · ${safeText(article.category)}` : `${safeText(article.methodLabel || METHODS[article.methodKey]?.short, article.methodKey)} · ${safeText(article.category)}`}</span>
               ${article.status === "draft" ? `<span class="draft-badge">${article.parentId === "vibration-tools" ? "В разработке" : "Черновик"}</span>` : ""}
               <h3>${safeText(article.title)}</h3>
               <p>${safeText(article.summary || article.text, "Открыть материал")}</p>
@@ -189,28 +280,44 @@ export function renderSearch(query) {
           `;
         }).join("")}
       </div>
-    ` : `<div class="empty-state">Ничего не найдено.<br><br>Попробуйте изменить запрос.</div>`}
-  `;
+    ` : `<div class="empty-state">По выбранным фильтрам ничего не найдено.</div>`;
 
-  content.querySelectorAll("[data-search-article]").forEach(link => {
-    link.addEventListener("click", event => {
-      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      if (link.dataset.searchReference === "true") {
-        event.preventDefault();
-        navigate({ view: "reference", referenceId: link.dataset.searchArticle });
-        return;
-      }
-      if (link.dataset.searchTool === "true") {
-        event.preventDefault();
-        navigate({ view: "tool", tool: link.dataset.searchArticle });
-        return;
-      }
-      const method = link.dataset.searchMethod;
-      const article = getItem(method, link.dataset.searchArticle);
-      if (article) {
-        event.preventDefault();
-        navigate(getItemRoute(method, article));
-      }
+    resultsContainer.querySelectorAll("[data-search-article]").forEach(link => {
+      link.addEventListener("click", event => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (link.dataset.searchReference === "true") {
+          event.preventDefault();
+          navigate({ view: "reference", referenceId: link.dataset.searchArticle });
+          return;
+        }
+        if (link.dataset.searchTool === "true") {
+          event.preventDefault();
+          navigate({ view: "tool", tool: link.dataset.searchArticle });
+          return;
+        }
+        const method = link.dataset.searchMethod;
+        const article = getItem(method, link.dataset.searchArticle);
+        if (article) {
+          event.preventDefault();
+          navigate(getItemRoute(method, article));
+        }
+      });
     });
-  });
+  }
+
+  function bindFilter(selector, filterKey) {
+    content.querySelectorAll(selector).forEach(button => {
+      button.addEventListener("click", () => {
+        filters[filterKey] = button.dataset[filterKey === "method" ? "searchMethodFilter" : "searchTypeFilter"];
+        content.querySelectorAll(selector).forEach(option => {
+          option.setAttribute("aria-pressed", String(option === button));
+        });
+        renderFilteredResults();
+      });
+    });
+  }
+
+  bindFilter("[data-search-method-filter]", "method");
+  bindFilter("[data-search-type-filter]", "type");
+  renderFilteredResults();
 }
