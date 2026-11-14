@@ -6,6 +6,9 @@
 - Чистая установка из `package-lock.json` и полный локальный набор syntax/validator/unit/Playwright/mobile/offline/PWA: PASS.
 - Независимое ревью: PASS; нормативные данные, runtime и PWA-кэш не затронуты.
 - Pre-deploy snapshot `/var/backups/defectosng/full-20261114-224929`: checksum и тестовая распаковка PASS.
+- Повторный branch-run `43634267909` и main-run `43634422494`: PASS.
+- Post-deploy HTTP и реальный браузер: главная, ВИК, УЗК, вибродиагностика, УСД-50 IPS (1280×885), JS и PWA/service worker PASS; ошибок консоли нет.
+- VPS: commit `fec524b4e50bf811e138fefdb15519d73aff4916`, чистое дерево; Nginx и `korni` active.
 
 ## Базовая версия 0.58.4
 

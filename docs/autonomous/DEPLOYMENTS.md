@@ -1,5 +1,16 @@
 # Deployments
 
+## 2026-11-15 — воспроизводимый CI
+
+- Production до цикла: commit `30729448a1df1d455a2a86c5f92e697bfaecd583`, версия 0.58.6.
+- Добавлен `package-lock.json`; GitHub Actions и локальная инструкция переведены на детерминированный `npm ci`; добавлен unit-тест целостности CI-конфигурации. Runtime, нормативные данные, формулы и PWA-кэш не изменялись.
+- Опубликован commit `fec524b4e50bf811e138fefdb15519d73aff4916`; версия приложения остаётся 0.58.6.
+- Pre-deploy snapshot: `/var/backups/defectosng/full-20261114-224929`, checksum и restore-check PASS.
+- Локально: syntax/validator/unit 205/205, Playwright 23/23, mobile/offline/PWA, чистая изолированная установка и независимое ревью — PASS.
+- GitHub Actions runs `43634004283`, `43634267909` и main-run `43634422494` — PASS.
+- Post-deploy: главная, ВИК, УЗК, вибродиагностика, контрольное изображение УСД-50 IPS, JS и PWA/service worker — PASS; браузерная консоль без ошибок.
+- Nginx и посторонний сервис `korni` active; production working tree чистый. Регрессий нет, откат не требовался.
+
 ## 2026-11-15 — 0.58.6
 
 - Production до цикла: commit `eef1631bbad4a9b9a636d63eb8fe2279e7672e78`, версия 0.58.5.
