@@ -84,6 +84,10 @@ export const TASK_HUBS = Object.freeze({
   })
 });
 
+export function getAtlasEntries(methodKey) {
+  return ATLAS_ENTRIES.filter(entry => entry.method === methodKey);
+}
+
 export function getModeSectionIds(methodKey, mode) {
   return mode === "learning"
     ? LEARNING_SECTIONS[methodKey] || []

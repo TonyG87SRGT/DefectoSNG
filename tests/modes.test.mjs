@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { renderMethodIcon } from "../js/methodIcons.js";
-import { ATLAS_ENTRIES, TASK_HUBS, getModeSectionIds } from "../js/navigationModel.js";
+import { ATLAS_ENTRIES, TASK_HUBS, getAtlasEntries, getModeSectionIds } from "../js/navigationModel.js";
 import { isPublicItem } from "../js/store.js";
 
 test("рабочий и учебный режимы не смешивают базовые разделы УЗК", () => {
@@ -14,6 +14,19 @@ test("быстрые действия и атласы используют су�
   assert.ok(TASK_HUBS.setup.entries.some(entry => entry.itemId === "uzk-setup-section"));
   assert.ok(TASK_HUBS.criteria.entries.length >= 4);
   assert.ok(ATLAS_ENTRIES.some(entry => entry.itemId === "rk-radiographic-atlas"));
+});
+
+test("рабочая страница метода получает только собственные атласы", () => {
+  assert.deepEqual(
+    getAtlasEntries("uzk").map(entry => entry.itemId),
+    ["uzk-echo-atlas"]
+  );
+  assert.deepEqual(
+    getAtlasEntries("vik").map(entry => entry.itemId),
+    ["vik-defects", "vik-base-metal-defects", "vik-fractography"]
+  );
+  assert.ok(getAtlasEntries("vibration").every(entry => entry.method === "vibration"));
+  assert.deepEqual(getAtlasEntries("unknown"), []);
 });
 
 test("черновики и скрытые карточки не считаются публичными", () => {

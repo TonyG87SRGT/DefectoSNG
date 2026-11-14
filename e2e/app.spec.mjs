@@ -63,6 +63,17 @@ test("прямые маршруты, назад, поиск и избранно�
   await expect(page.getByRole("heading", { name: "Атлас эхо‑сигналов УЗК", exact: true })).toBeVisible();
 });
 
+test("рабочая страница метода ведёт в связанный атлас без горизонтального переполнения", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/#mode=work:uzk");
+  await expect(page.getByRole("heading", { name: "УЗК · Работа", exact: true })).toBeVisible();
+  const atlasSection = page.getByRole("region", { name: "Атласы метода" });
+  await expect(atlasSection.getByRole("link", { name: /Эхо-сигналы УЗК/ })).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+  await atlasSection.getByRole("link", { name: /Эхо-сигналы УЗК/ }).click();
+  await expect(page.getByRole("heading", { name: "Атлас эхо‑сигналов УЗК", exact: true })).toBeVisible();
+});
+
 test("мастер начинается с НТД, изолирует документы и рассчитывает выбранный критерий", async ({ page }) => {
   test.setTimeout(60_000);
   await page.goto("/#task=criteria");

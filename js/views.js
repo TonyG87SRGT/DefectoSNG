@@ -11,6 +11,7 @@ import {
   ATLAS_ENTRIES,
   MODE_DEFINITIONS,
   TASK_HUBS,
+  getAtlasEntries,
   getModeSectionIds
 } from "./navigationModel.js";
 import { getRouteHash, goBack, navigate } from "./router.js";
@@ -188,6 +189,11 @@ export function renderModeMethod(methodKey, mode = "work") {
   const method = METHODS[methodKey];
   if (!method) return renderNotFound("Метод контроля не найден");
   const items = getModeSectionIds(methodKey, mode).map(id => getItem(methodKey, id)).filter(Boolean);
+  const atlasEntries = mode === "work"
+    ? getAtlasEntries(methodKey)
+      .map(entry => ({ ...entry, item: getItem(entry.method, entry.itemId) }))
+      .filter(entry => entry.item)
+    : [];
   const fallbackRoute = mode === "learning" ? { view: "learning" } : { view: "home" };
   content.innerHTML = `
     <div class="page-header mode-method-header">
@@ -203,6 +209,20 @@ export function renderModeMethod(methodKey, mode = "work") {
         </a>
       `).join("")}
     </div>
+    ${atlasEntries.length ? `
+      <section aria-labelledby="method-atlases-title">
+        <p class="section-label quick-title" id="method-atlases-title">Атласы метода</p>
+        <div class="mode-card-list">
+          ${atlasEntries.map((entry, index) => `
+            <a class="mode-entry-card" href="${getRouteHash(getItemRoute(entry.method, entry.item))}" data-mode-atlas="${index}">
+              <small>${safeText(method.short)}</small>
+              <strong>${safeText(entry.label)}</strong>
+              <p>${safeText(entry.item.summary || entry.item.description, "Открыть атлас")}</p>
+            </a>
+          `).join("")}
+        </div>
+      </section>
+    ` : ""}
     ${mode === "learning" ? `
       <p class="section-label quick-title">Полная структура метода</p>
       <a class="mode-entry-card" href="${getRouteHash({ view: "method", method: methodKey })}" data-full-method>
@@ -216,6 +236,12 @@ export function renderModeMethod(methodKey, mode = "work") {
     link.addEventListener("click", event => {
       const item = items[Number(link.dataset.modeEntry)];
       if (item) handleRouteLink(event, getItemRoute(methodKey, item));
+    });
+  });
+  content.querySelectorAll("[data-mode-atlas]").forEach(link => {
+    link.addEventListener("click", event => {
+      const entry = atlasEntries[Number(link.dataset.modeAtlas)];
+      if (entry) handleRouteLink(event, getItemRoute(entry.method, entry.item));
     });
   });
   content.querySelector("[data-full-method]")?.addEventListener("click", event => {
