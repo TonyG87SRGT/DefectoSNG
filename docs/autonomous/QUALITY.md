@@ -26,3 +26,5 @@
 - Полный Playwright: 22/22 PASS, включая mobile, accessibility, изображения и offline/PWA.
 - Независимое ревью: PASS; нормативные данные и формулы не изменялись.
 - GitHub Actions на штатном Node.js 22: PASS, run `43612086903`.
+- Финальный GitHub Actions после записи release gates: PASS, run `43612494855`.
+- Production mobile/PWA smoke: УЗК, ВИК, оба перехода в атласы и offline reload — PASS; ошибок браузера не обнаружено.

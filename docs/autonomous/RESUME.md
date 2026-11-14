@@ -9,7 +9,8 @@
 - GitHub Actions на штатном Node.js 22: PASS, run `43606464735`; полный browser/e2e-гейт завершён успешно.
 - Прямая локальная Playwright-диагностика offline/PWA-маршрута: PASS. Зависание общего локального runner на Node.js 24 отнесено к окружению и оставлено отдельным техническим долгом.
 - Опубликованный runtime-коммит: `c7fb1fc848a97436121807bcdb9ca5791dd2473b`; post-deploy smoke-проверки прошли, откат не требовался.
-- Текущая ветка: `automation/production-autonomous-20261114-2039`; готово малое улучшение 0.58.5 — контекстные ссылки на атласы из рабочих страниц методов.
+- Завершён цикл 0.58.5: контекстные ссылки на атласы из рабочих страниц методов опубликованы.
 - Локальные гейты: syntax/validator/unit 202/202, Playwright 22/22, mobile/offline/PWA и независимое ревью — PASS.
 - GitHub Actions run `43612086903` и pre-deploy snapshot `/var/backups/defectosng/full-20261114-184922` — PASS.
-- Следующий шаг текущего цикла: выполнить одну fast-forward публикацию и обязательные post-deploy проверки.
+- Проверенный runtime-коммит production: `3f2ffb138da640d566d72e409bf97bbf8ba70222`; post-deploy mobile/PWA/offline smoke — PASS, откат не требовался.
+- Следующий цикл: после штатных preflight-проверок выбрать одну новую малую задачу из backlog.

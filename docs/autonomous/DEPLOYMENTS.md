@@ -1,5 +1,15 @@
 # Deployments
 
+## 2026-11-14 — 0.58.5
+
+- Production до цикла: commit `48ac6455c7f58a134a08c6c01a4b151c3991a661`, версия 0.58.4.
+- Опубликован контекстный блок «Атласы метода» на рабочих страницах ВИК, УЗК, РК, ПВК и вибродиагностики; нормативные данные и формулы не изменялись.
+- Проверенный runtime-коммит: `3f2ffb138da640d566d72e409bf97bbf8ba70222`; версия PWA/service worker 0.58.5.
+- Pre-deploy snapshot: `/var/backups/defectosng/full-20261114-184922`, checksum и restore-check PASS.
+- Локально: syntax/validator/unit 202/202, Playwright 22/22, mobile/offline/PWA и независимое ревью — PASS; GitHub Actions runs `43612086903` и `43612494855` — PASS.
+- Post-deploy: реальный mobile browser прошёл маршруты УЗК и ВИК, переходы в атласы и offline reload; главная, JS, PWA/service worker, данные ВИК/УЗК/вибродиагностики и изображение — PASS.
+- Nginx и посторонний сервис `korni` остались active; регрессий нет, откат не требовался.
+
 ## 2026-11-14
 
 - Production до цикла: commit `4a54e126df1ad1eb369a47e186f8c70b6ef32a71`, версия 0.58.4.
