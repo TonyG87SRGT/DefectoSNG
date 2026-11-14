@@ -1,5 +1,15 @@
 # Backups
 
+## full-20261114-184922
+
+- Создан: 2026-11-14 18:49–18:51 UTC+03:00 (20:49–20:51 Asia/Yekaterinburg).
+- VPS: `/var/backups/defectosng/full-20261114-184922`.
+- Размер: 74 МБ.
+- Версия до публикации: 0.58.4; commit `48ac6455c7f58a134a08c6c01a4b151c3991a661`; production working tree был чистым.
+- Назначение: pre-deploy snapshot для версии 0.58.5.
+- Проверки: SHA-256 всех файлов, `gzip -t`, чтение архивов и тестовая распаковка — PASS (`RESTORE_CHECK=passed`).
+- Восстановление: следовать `RESTORE.md` внутри каталога snapshot; перед reload выполнить `nginx -t`.
+
 ## full-20261114-175837
 
 - Создан: 2026-11-14 17:58–18:00 UTC+03:00 (19:58–20:00 Asia/Yekaterinburg).

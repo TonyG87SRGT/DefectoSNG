@@ -11,4 +11,5 @@
 - Опубликованный runtime-коммит: `c7fb1fc848a97436121807bcdb9ca5791dd2473b`; post-deploy smoke-проверки прошли, откат не требовался.
 - Текущая ветка: `automation/production-autonomous-20261114-2039`; готово малое улучшение 0.58.5 — контекстные ссылки на атласы из рабочих страниц методов.
 - Локальные гейты: syntax/validator/unit 202/202, Playwright 22/22, mobile/offline/PWA и независимое ревью — PASS.
-- Следующий шаг текущего цикла: зафиксировать ветку, получить штатный GitHub Actions, создать pre-deploy snapshot и выполнить одну публикацию.
+- GitHub Actions run `43612086903` и pre-deploy snapshot `/var/backups/defectosng/full-20261114-184922` — PASS.
+- Следующий шаг текущего цикла: выполнить одну fast-forward публикацию и обязательные post-deploy проверки.

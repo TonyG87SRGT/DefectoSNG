@@ -25,3 +25,4 @@
 - Новый мобильный Playwright-сценарий 375 px: PASS; целевой offline/PWA-сценарий: PASS.
 - Полный Playwright: 22/22 PASS, включая mobile, accessibility, изображения и offline/PWA.
 - Независимое ревью: PASS; нормативные данные и формулы не изменялись.
+- GitHub Actions на штатном Node.js 22: PASS, run `43612086903`.
