@@ -15,7 +15,7 @@ python -m http.server 8000
 Для проверки данных и модульных тестов нужен Node.js 22 или новее:
 
 ```bash
-npm install
+npm ci
 npm run check
 ```
 

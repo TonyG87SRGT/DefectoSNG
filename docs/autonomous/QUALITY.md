@@ -38,3 +38,11 @@
 - Независимое ревью после одного цикла исправления: PASS; нормативные данные и формулы не изменялись.
 - GitHub Actions runs `43629144479` и `43629520391`: PASS (`check` и browser).
 - Production HTTP/browser smoke: поиск инструмента, МК, сброс фильтров, ВИК, УЗК, вибродиагностика, изображение и PWA/service worker — PASS.
+
+## Воспроизводимый CI
+
+- `package-lock.json` v3 зафиксировал `@playwright/test` 1.62.0 и транзитивные зависимости с SHA-512 integrity.
+- Изолированный чистый `npm ci`: PASS; установлен `@playwright/test` 1.62.0.
+- Оба задания GitHub Actions используют `npm ci`; добавлен регрессионный unit-тест конфигурации.
+- Синтаксис: 112 файлов, PASS; валидатор: PASS; unit 205/205; Playwright 23/23; `git diff --check`: PASS.
+- Независимое ревью: PASS; runtime, PWA, нормативные данные и формулы не изменялись.

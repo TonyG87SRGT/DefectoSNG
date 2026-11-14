@@ -21,3 +21,6 @@
 - Проверенный pre-deploy snapshot: `/var/backups/defectosng/full-20261114-215557`, 74 МБ; checksum и restore-check — PASS.
 - Цикл 0.58.6 опубликован: runtime-коммит `bc57f66ef5550e10cc3d2281587846412e40f467`; production HTTP и реальный browser smoke — PASS, откат не требовался.
 - Nginx и посторонний сервис `korni` active; следующий цикл начинается с нового полного preflight.
+- Цикл воспроизводимости CI: добавлен `package-lock.json` v3, оба задания переведены с `npm install` на `npm ci`, инструкция README синхронизирована.
+- Локальные гейты: чистый изолированный `npm ci`, syntax/validator, unit 205/205, Playwright 23/23, `git diff --check` и независимое ревью — PASS.
+- Runtime, PWA, нормативные критерии, формулы и значения не изменялись. Следующий шаг: commit и GitHub Actions.
