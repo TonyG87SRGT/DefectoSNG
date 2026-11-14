@@ -17,3 +17,5 @@
 - Текущий цикл 0.58.6: глобальный поиск получил совместные фильтры по фактическим методам и типам результатов; реальные инструменты включены в индекс.
 - Локальные гейты: syntax/validator, unit 204/204, Playwright 23/23, mobile/offline/PWA, `git diff --check` и независимое ревью — PASS.
 - Нормативные данные, критерии и формулы не изменялись. Следующий шаг: commit, CI, snapshot и одно воспроизводимое развёртывание.
+- Commit улучшения: `4424ddf`; GitHub Actions run `43629144479` — PASS (`check` и browser).
+- Проверенный pre-deploy snapshot: `/var/backups/defectosng/full-20261114-215557`, 74 МБ; checksum и restore-check — PASS.
