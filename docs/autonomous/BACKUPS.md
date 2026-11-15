@@ -1,5 +1,13 @@
 # Backups
 
+## 2026-11-15 — перед публикацией постоянных ссылок / 0.58.7
+
+- Snapshot: `/var/backups/defectosng/full-20261115-045511`.
+- Исходный production-коммит: `a25d77c7a1a6f457b414de01c5d8e143d0d6d983`, версия 0.58.6.
+- Размер: 75 МБ.
+- `SHA256SUMS`: PASS; тестовая распаковка: PASS (`RESTORE_CHECK=passed`).
+- Snapshot расположен вне `/var/www/DefectoSNG`; предназначен для безопасного отката runtime/PWA-релиза 0.58.7.
+
 ## 2026-11-15 — перед публикацией GitHub Actions v7
 
 - Snapshot: `/var/backups/defectosng/full-20261115-034707`.

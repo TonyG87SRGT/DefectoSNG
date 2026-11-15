@@ -7,6 +7,8 @@
 - После замечания независимого ревью live-region сохранён в accessibility tree без `display: none`; это единственный цикл исправления.
 - Синтаксис: 114 файлов, validator PASS, unit 209/209, Playwright/mobile/offline/PWA 24/24, `git diff --check` PASS.
 - Версии package/manifest/PWA/service worker согласованы на 0.58.7; новый модуль входит в обязательный offline-кэш.
+- Независимое повторное ревью: PASS; GitHub Actions run `43665199728`: PASS (`check` и browser).
+- Pre-deploy snapshot `/var/backups/defectosng/full-20261115-045511`: checksum и тестовая распаковка PASS.
 
 ## 2026-11-15 — GitHub Actions v7 / Node.js 24 runtime
 
