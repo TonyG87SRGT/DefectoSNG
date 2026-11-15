@@ -1,5 +1,13 @@
 # Backups
 
+## 2026-11-15 — перед публикацией GitHub Actions v7
+
+- Snapshot: `/var/backups/defectosng/full-20261115-034707`.
+- Исходный production-коммит: `5ce18b83481a3c89c02dfb74fc1f0c5346f7fb20`, версия 0.58.6.
+- Размер: 75 МБ.
+- `SHA256SUMS`: PASS; тестовая распаковка: PASS (`RESTORE_CHECK=passed`).
+- Snapshot расположен вне `/var/www/DefectoSNG`; runtime/PWA и нормативные данные в изменении не затрагиваются.
+
 ## 2026-11-15 — перед публикацией ограничения Playwright workers
 
 - Snapshot: `/var/backups/defectosng/full-20261114-235010`.

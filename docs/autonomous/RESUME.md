@@ -6,7 +6,9 @@
 - Workflow обновлён с v4 до v7 без изменения событий, разрешений, Node.js 22 для проекта, команд установки и тестовых ожиданий.
 - Добавлена регрессионная unit-проверка количества action-вызовов и отсутствия старых v4.
 - Runtime приложения, нормативные данные, формулы и PWA-кэш не изменялись; версия остаётся 0.58.6.
-- Следующий шаг цикла: полный check, Playwright/mobile/PWA, независимое ревью и проверка обновлённого workflow в GitHub Actions.
+- Полный check, Playwright/mobile/PWA, независимое ревью и GitHub Actions v7 run `43659788335` — PASS; предупреждение о Node.js 20 исчезло.
+- Создан проверенный pre-deploy snapshot `/var/backups/defectosng/full-20261115-034707` (75 МБ, checksum/restore-check PASS).
+- Следующий шаг цикла: повторный CI после записи snapshot, fast-forward в `main`, production smoke и завершение журналов.
 
 ## 2026-11-15 01:46 Asia/Yekaterinburg
 
