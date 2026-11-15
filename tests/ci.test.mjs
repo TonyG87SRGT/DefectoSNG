@@ -15,6 +15,10 @@ test("CI устанавливает зафиксированные зависи�
   assert.equal(lock.packages["node_modules/@playwright/test"].version, packageJson.devDependencies["@playwright/test"]);
   assert.equal((workflow.match(/run: npm ci/g) || []).length, 2);
   assert.doesNotMatch(workflow, /run: npm install(?:\s|$)/);
+  assert.equal((workflow.match(/uses: actions\/checkout@v7/g) || []).length, 2);
+  assert.equal((workflow.match(/uses: actions\/setup-node@v7/g) || []).length, 2);
+  assert.equal((workflow.match(/uses: actions\/upload-artifact@v7/g) || []).length, 1);
+  assert.doesNotMatch(workflow, /uses: actions\/(?:checkout|setup-node|upload-artifact)@v4/);
 });
 
 test("Playwright ограничивает параллельность локально и в CI", async () => {

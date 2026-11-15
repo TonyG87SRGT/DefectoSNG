@@ -1,5 +1,12 @@
 # Quality
 
+## 2026-11-15 — GitHub Actions v7 / Node.js 24 runtime
+
+- Официальные релизы и `action.yml` подтверждены: checkout 7.0.1, setup-node 7.1.0, upload-artifact 7.0.2; все используют runtime Node.js 24.
+- Workflow сохраняет события `push`/`pull_request`, `contents: read`, Node.js 22 для проекта, `npm ci`, полный check, Chromium и browser smoke; permissions и тестовые ожидания не ослаблены.
+- Целевой тест CI-конфигурации: 2/2 PASS; syntax 112 файлов, validator PASS, unit 206/206, Playwright/mobile/offline/PWA 23/23, `git diff --check` PASS.
+- Независимое ревью: PASS; runtime, PWA и нормативные данные не затронуты.
+
 ## 2026-11-15 — ограничение локальной параллельности Playwright
 
 - Node.js 24: три диагностических и один финальный полный Playwright-запуск завершились 23/23 без зависания; число Node-процессов до и после запусков не изменилось.
