@@ -9,6 +9,9 @@
 - Версии package/manifest/PWA/service worker согласованы на 0.58.7; новый модуль входит в обязательный offline-кэш.
 - Независимое повторное ревью: PASS; GitHub Actions run `43665199728`: PASS (`check` и browser).
 - Pre-deploy snapshot `/var/backups/defectosng/full-20261115-045511`: checksum и тестовая распаковка PASS.
+- Повторный branch-run `43665454098` и main-run `43665582538`: PASS.
+- Post-deploy HTTP и реальный браузер: копирование ссылки, доступный статус, ВИК, УЗК, вибродиагностика, изображение УСД-50 IPS, JS и PWA/service worker PASS.
+- VPS: commit `c45817b247f8b9ad1aa40d108ebea5f904f91b15`, чистое дерево; Nginx и `korni` active.
 
 ## 2026-11-15 — GitHub Actions v7 / Node.js 24 runtime
 

@@ -1,5 +1,16 @@
 # Deployments
 
+## 2026-11-15 — постоянные ссылки на статьи / 0.58.7
+
+- Production до цикла: commit `a25d77c7a1a6f457b414de01c5d8e143d0d6d983`, версия 0.58.6.
+- После отдельного read-only аудита в заголовок обычных статей добавлено копирование канонической постоянной ссылки с доступным статусом и локальным fallback; нормативные данные, критерии и формулы не изменялись.
+- Опубликован commit `c45817b247f8b9ad1aa40d108ebea5f904f91b15`; версия PWA/service worker 0.58.7.
+- Pre-deploy snapshot: `/var/backups/defectosng/full-20261115-045511`, checksum и restore-check PASS.
+- Локально: syntax/validator, unit 209/209, Playwright/mobile/offline/PWA 24/24, `git diff --check` и независимое повторное ревью — PASS.
+- GitHub Actions runs `43665199728`, `43665454098` и main-run `43665582538` — PASS (`check` и browser).
+- Post-deploy: копирование ссылки и доступный статус, ВИК, УЗК, вибродиагностика, изображение УСД-50 IPS, JS и PWA/service worker — PASS; HTTP-ресурсы возвращают 200.
+- Nginx и посторонний сервис `korni` active; production working tree чистый. Регрессий нет, откат не требовался.
+
 ## 2026-11-15 — GitHub Actions v7 / Node.js 24 runtime
 
 - Production до цикла: commit `5ce18b83481a3c89c02dfb74fc1f0c5346f7fb20`, версия 0.58.6.
