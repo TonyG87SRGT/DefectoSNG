@@ -8,6 +8,9 @@
 - Независимое ревью: PASS; runtime, PWA и нормативные данные не затронуты.
 - GitHub Actions v7 run `43659788335`: PASS (`check` и browser); предупреждение о Node.js 20 отсутствует.
 - Pre-deploy snapshot `/var/backups/defectosng/full-20261115-034707`: checksum и тестовая распаковка PASS.
+- Повторный branch-run `43659971980` и main-run `43660103919`: PASS; предупреждение Node.js 20 отсутствует.
+- Post-deploy HTTP и реальный браузер: главная, ВИК, УЗК, вибродиагностика, УСД-50 IPS (1280×885), JS и PWA/service worker PASS; ошибок консоли нет.
+- VPS: commit `7b81b8ef61235bf03cc307467947f02293daa1f3`, чистое дерево; Nginx и `korni` active.
 
 ## 2026-11-15 — ограничение локальной параллельности Playwright
 

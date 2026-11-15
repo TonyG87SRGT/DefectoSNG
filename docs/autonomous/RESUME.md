@@ -8,7 +8,9 @@
 - Runtime приложения, нормативные данные, формулы и PWA-кэш не изменялись; версия остаётся 0.58.6.
 - Полный check, Playwright/mobile/PWA, независимое ревью и GitHub Actions v7 run `43659788335` — PASS; предупреждение о Node.js 20 исчезло.
 - Создан проверенный pre-deploy snapshot `/var/backups/defectosng/full-20261115-034707` (75 МБ, checksum/restore-check PASS).
-- Следующий шаг цикла: повторный CI после записи snapshot, fast-forward в `main`, production smoke и завершение журналов.
+- Цикл завершён: commit `7b81b8ef61235bf03cc307467947f02293daa1f3` опубликован в `main` и синхронизирован на production.
+- Branch/main CI v7, post-deploy HTTP/браузерные проверки, ВИК, УЗК, вибродиагностика, изображение и PWA/service worker — PASS; предупреждение Node.js 20 устранено, откат не требовался.
+- Следующий цикл: после полного preflight выполнить отдельный read-only аудит пользовательских маршрутов НК и выбрать одно малое улучшение без изменения нормативных критериев.
 
 ## 2026-11-15 01:46 Asia/Yekaterinburg
 

@@ -1,5 +1,16 @@
 # Deployments
 
+## 2026-11-15 — GitHub Actions v7 / Node.js 24 runtime
+
+- Production до цикла: commit `5ce18b83481a3c89c02dfb74fc1f0c5346f7fb20`, версия 0.58.6.
+- `actions/checkout`, `actions/setup-node` и `actions/upload-artifact` обновлены с v4 до v7 после проверки официальных релизов и `action.yml`; предупреждение об устаревшем Node.js 20 устранено.
+- Опубликован commit `7b81b8ef61235bf03cc307467947f02293daa1f3`; runtime приложения, нормативные данные, формулы и PWA-кэш не изменялись, версия остаётся 0.58.6.
+- Pre-deploy snapshot: `/var/backups/defectosng/full-20261115-034707`, checksum и restore-check PASS.
+- Локально: syntax/validator, unit 206/206, Playwright/mobile/offline/PWA 23/23, `git diff --check` и независимое ревью — PASS.
+- GitHub Actions v7 runs `43659788335`, `43659971980` и main-run `43660103919` — PASS; предупреждение о Node.js 20 отсутствует.
+- Post-deploy: главная, ВИК, УЗК, вибродиагностика, изображение УСД-50 IPS, JS и PWA/service worker — PASS; браузерная консоль без ошибок.
+- Nginx и посторонний сервис `korni` active; production working tree чистый. Регрессий нет, откат не требовался.
+
 ## 2026-11-15 — ограничение локальной параллельности Playwright
 
 - Production до цикла: commit `d744eb5fc0c2df7cb7e7b468758dbd170010a762`, версия 0.58.6.
