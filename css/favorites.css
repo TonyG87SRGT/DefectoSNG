@@ -10,9 +10,17 @@
 .article-title-row h2 {
   margin: 0;
   flex: 1;
+  min-width: 0;
 }
 
-.favorite-button {
+.article-title-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.favorite-button,
+.article-share-button {
   flex: 0 0 auto;
 
   width: 46px;
@@ -33,6 +41,32 @@
   cursor: pointer;
 }
 
+.article-share-button svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.article-share-button:active {
+  transform: scale(.94);
+}
+
+.article-share-status {
+  min-height: 1.3em;
+  margin: -8px 0 18px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity .16s ease;
+}
+
+.article-share-status:not(:empty) {
+  opacity: 1;
+}
+
 .favorite-button.active {
   color: #f5c451;
   border-color: rgba(245, 196, 81, .35);
@@ -41,6 +75,16 @@
 
 .favorite-button:active {
   transform: scale(.94);
+}
+
+@media (max-width: 360px) {
+  .article-title-row {
+    flex-wrap: wrap;
+  }
+
+  .article-title-actions {
+    width: 100%;
+  }
 }
 
 .favorite-badge {

@@ -74,6 +74,28 @@ test("рабочая страница метода ведёт в связанн�
   await expect(page.getByRole("heading", { name: "Атлас эхо‑сигналов УЗК", exact: true })).toBeVisible();
 });
 
+test("постоянная ссылка статьи копируется на мобильном экране и остаётся доступной offline", async ({ page, context }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("/#article=uzk:uzk-physical-principles");
+
+  const copyButton = page.getByRole("button", { name: "Скопировать ссылку на статью" });
+  await expect(copyButton).toBeVisible();
+  await copyButton.click();
+  await expect(page.getByRole("status")).toHaveText("Ссылка скопирована");
+  await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBe(
+    new URL("/#article=uzk:uzk-physical-principles", page.url()).href
+  );
+  await expectNoHorizontalOverflow(page);
+
+  await page.evaluate(async () => navigator.serviceWorker.ready);
+  await context.setOffline(true);
+  await page.reload();
+  await expect(copyButton).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+  await context.setOffline(false);
+});
+
 test("глобальный поиск фильтрует выдачу по методу и типу на мобильном экране", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/#search");

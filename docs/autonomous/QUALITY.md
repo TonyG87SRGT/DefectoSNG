@@ -1,5 +1,13 @@
 # Quality
 
+## 2026-11-15 — постоянные ссылки на статьи / 0.58.7
+
+- Read-only аудит маршрутов НК подтвердил пользу копирования точной статьи для ВИК, УЗК, РК, ПВК и вибродиагностики без изменения роутера и нормативных данных.
+- Clipboard API дополнен локальным fallback через временное поле; внешние сервисы и сетевые запросы не используются.
+- После замечания независимого ревью live-region сохранён в accessibility tree без `display: none`; это единственный цикл исправления.
+- Синтаксис: 114 файлов, validator PASS, unit 209/209, Playwright/mobile/offline/PWA 24/24, `git diff --check` PASS.
+- Версии package/manifest/PWA/service worker согласованы на 0.58.7; новый модуль входит в обязательный offline-кэш.
+
 ## 2026-11-15 — GitHub Actions v7 / Node.js 24 runtime
 
 - Официальные релизы и `action.yml` подтверждены: checkout 7.0.1, setup-node 7.1.0, upload-artifact 7.0.2; все используют runtime Node.js 24.

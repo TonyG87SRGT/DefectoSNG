@@ -1,5 +1,6 @@
 import { content } from "./dom.js";
 import { getArticleTocEntries } from "./articleNavigation.js";
+import { copyArticleShareUrl, getArticleShareUrl } from "./articleShare.js";
 import { isFavorite, toggleFavorite } from "./favorites.js";
 import { escapeAttribute, safeText } from "./html.js";
 import { buildKnowledgeGraph, getKnowledgeBacklinks } from "./knowledgeGraph.js";
@@ -516,13 +517,21 @@ export function renderArticle(methodKey, article) {
       ${renderDraftBadge(article)}
       <div class="article-title-row">
         <h2 tabindex="-1">${safeText(article.title)}</h2>
-        <button
-          class="favorite-button ${favorite ? "active" : ""}"
-          id="favorite-button"
-          aria-label="${favorite ? "Удалить статью из избранного" : "Добавить статью в избранное"}"
-          aria-pressed="${favorite}"
-        >${favorite ? "★" : "☆"}</button>
+        <div class="article-title-actions">
+          <button class="article-share-button" id="article-share-button" aria-label="Скопировать ссылку на статью">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+              <path d="M10.6 13.4a4 4 0 0 0 5.7.1l2.1-2.1a4 4 0 0 0-5.7-5.7l-1.2 1.2m1.9 3.7a4 4 0 0 0-5.7-.1l-2.1 2.1a4 4 0 1 0 5.7 5.7l1.2-1.2"/>
+            </svg>
+          </button>
+          <button
+            class="favorite-button ${favorite ? "active" : ""}"
+            id="favorite-button"
+            aria-label="${favorite ? "Удалить статью из избранного" : "Добавить статью в избранное"}"
+            aria-pressed="${favorite}"
+          >${favorite ? "★" : "☆"}</button>
+        </div>
       </div>
+      <p class="article-share-status" id="article-share-status" role="status" aria-live="polite"></p>
       ${article.summary ? `<p class="article-summary">${safeText(article.summary)}</p>` : ""}
       ${tocHtml}
       ${obsoleteNormativeHtml}
@@ -551,6 +560,17 @@ export function renderArticle(methodKey, article) {
       "aria-label",
       nowFavorite ? "Удалить статью из избранного" : "Добавить статью в избранное"
     );
+  });
+
+  content.querySelector("#article-share-button").addEventListener("click", async () => {
+    const status = content.querySelector("#article-share-status");
+    const shareUrl = getArticleShareUrl(getRouteHash(getItemRoute(methodKey, article)));
+    try {
+      await copyArticleShareUrl(shareUrl);
+      status.textContent = "Ссылка скопирована";
+    } catch {
+      status.textContent = "Не удалось скопировать ссылку";
+    }
   });
 
   content.querySelectorAll("[data-article-anchor]").forEach(button => {

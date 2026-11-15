@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.58.6";
+export const APP_VERSION = "0.58.7";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -23,6 +23,7 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "css/criteria.css",
   "js/app.js",
   "js/articleNavigation.js",
+  "js/articleShare.js",
   "js/atlas.js",
   "js/config.js",
   "js/criteria.js",
