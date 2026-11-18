@@ -43,12 +43,13 @@ test("текст из данных экранируется", () => {
   const html = renderSection({
     type: "note",
     title: "<script>alert(1)</script>",
-    content: "<img src=x onerror=alert(1)>"
+    content: "<IMG src=x onerror=alert(1)>"
   });
 
-  assert.doesNotMatch(html, /<script>/);
-  assert.doesNotMatch(html, /<img/);
+  assert.equal(html.includes("<script>"), false);
+  assert.equal(html.includes("<IMG"), false);
   assert.match(html, /&lt;script&gt;/);
+  assert.match(html, /&lt;IMG/);
 });
 
 test("известный тип секции рендерится", () => {
