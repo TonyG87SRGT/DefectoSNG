@@ -83,6 +83,8 @@ npm run test:e2e
 
 Для полноценной установки PWA нужен HTTPS (исключение — локальный `localhost`). Сервер должен отдавать `index.html`, `manifest.json`, `sw.js`, каталоги `js`, `css`, `data`, `images` и `icons` без изменения структуры.
 
+Production-конфигурация Nginx, ежедневный проверяемый backup и порядок их установки описаны в [`docs/operations.md`](docs/operations.md). Git metadata, тесты, логи и внутренняя документация не должны обслуживаться из публичного web-root.
+
 ## Выпуск новой версии
 
 1. Обновите версию в `package.json`.
