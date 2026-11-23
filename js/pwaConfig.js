@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.58.7";
+export const APP_VERSION = "0.59.0";
 
 export const ESSENTIAL_APP_PATHS = Object.freeze([
   "./",
@@ -7,69 +7,26 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "css/base.css",
   "css/structured-articles.css",
   "css/favorites.css",
-  "css/article-media.css",
-  "css/tools.css",
-  "css/article-components.css",
   "css/pwa.css",
-  "css/atlas.css",
-  "css/sections.css",
-  "css/modes.css",
-  "css/references.css",
-  "css/vibration.css",
-  "css/vibration-diagnostic.css",
-  "css/vibration-calculators.css",
-  "css/vibration-journal.css",
-  "css/vibration-data-analysis.css",
   "css/criteria.css",
+  "css/focused.css",
   "js/app.js",
-  "js/articleNavigation.js",
-  "js/articleShare.js",
-  "js/atlas.js",
   "js/config.js",
+  "js/criterionLinks.js",
   "js/criteria.js",
   "js/criteriaEngine.js",
   "js/dom.js",
   "js/favorites.js",
-  "js/fieldTools.js",
   "js/html.js",
   "js/imageViewer.js",
-  "js/knowledgeGraph.js",
-  "js/methodIcons.js",
-  "js/navigationModel.js",
   "js/pwa.js",
   "js/pwaConfig.js",
   "js/pwaPolicy.js",
-  "js/references.js",
   "js/renderers.js",
-  "js/ringWeld.js",
   "js/router.js",
-  "js/schema.js",
   "js/search.js",
   "js/searchCore.js",
   "js/store.js",
-  "js/toolCalculations.js",
-  "js/tools.js",
-  "js/vibration.js",
-  "js/vibrationDiagnosticAssistant.js",
-  "js/vibrationDiagnosticEngine.js",
-  "js/vibrationDiagnosticQuestions.js",
-  "js/vibrationDiagnosticRules.js",
-  "js/vibrationDiagnosticStorage.js",
-  "js/vibrationCalculations.js",
-  "js/vibrationCalculatorData.js",
-  "js/vibrationCalculatorStorage.js",
-  "js/vibrationCalculators.js",
-  "js/vibrationJournalCore.js",
-  "js/vibrationJournalDb.js",
-  "js/vibrationJournalChart.js",
-  "js/vibrationJournal.js",
-  "js/vibrationDataCore.js",
-  "js/vibrationDataChart.js",
-  "js/vibrationDataAnalysis.js",
-  "js/vibrationKnowledge.js",
-  "js/vibrationRelations.js",
-  "js/vibrationTaxonomy.js",
-  "js/vibrationTemplates.js",
   "js/views.js",
   "manifest.json",
   "data/vik.json",
@@ -77,7 +34,6 @@ export const ESSENTIAL_APP_PATHS = Object.freeze([
   "data/pvk.json",
   "data/rk.json",
   "data/vibration.json",
-  "data/references.json",
   "data/criteria.json"
 ]);
 
@@ -139,15 +95,6 @@ const VIBRATION_FAULT_WAVEFORM_SLUGS = Object.freeze([
   "journal-bearing-misalignment"
 ]);
 
-const VIBRATION_WAVEFORM_EXAMPLE_SLUGS = Object.freeze([
-  "harmonic", "impact", "modulation", "beats", "broadband", "subsync", "clipping", "nonlinear"
-]);
-
-const VIBRATION_EQUIPMENT_GUIDE_SLUGS = Object.freeze([
-  "pumps", "motors", "fans", "compressors", "gearboxes", "turbines", "generators",
-  "vertical-machines", "rolling-bearings", "journal-bearings", "smoke-exhausters"
-]);
-
 const VIK_BASE_METAL_IMAGE_SLUGS = Object.freeze([
   "corrosion", "service-cracks", "lamination"
 ]);
@@ -189,12 +136,6 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
   ...VIBRATION_FAULT_WAVEFORM_SLUGS.map(slug =>
     `images/vibration-atlas/faults/${slug}-waveform.svg`
   ),
-  ...VIBRATION_WAVEFORM_EXAMPLE_SLUGS.map(slug =>
-    `images/vibration-diagnostics/waveforms/${slug}.svg`
-  ),
-  ...VIBRATION_EQUIPMENT_GUIDE_SLUGS.map(slug =>
-    `images/vibration-diagnostics/equipment/${slug}.svg`
-  ),
   ...VIK_BASE_METAL_IMAGE_SLUGS.flatMap(slug => [
     `images/vik-atlas/base-metal/${slug}-overview.jpg`,
     `images/vik-atlas/base-metal/${slug}-detail.jpg`,
@@ -225,22 +166,9 @@ export const OPTIONAL_APP_PATHS = Object.freeze([
     `images/uzk-echo-atlas/${slug}-ascan.svg`,
     `images/uzk-echo-atlas/${slug}-scheme.svg`
   ]),
-  "images/articles/vibration/source-data/typical-pump-unit.jpg",
-  "images/articles/vibration/source-data/source-data-diagram.jpg",
-  "images/articles/vibration/source-data/source-data-reference-table.jpg",
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/apple-touch-icon.png",
-  "images/articles/uzk/echo-pulse-principle.webp",
-  "images/articles/uzk/pep-overview.webp",
-  "images/articles/uzk/dac-vrc-comparison.webp",
-  "images/articles/uzk/beam-input.webp",
-  "images/articles/uzk/beam-zones.webp",
-  "images/articles/uzk/dead-zone.webp",
-  "images/articles/uzk/a1550-array-weld-scan.svg",
-  "images/articles/uzk/a1550-tomogram-coordinates.svg",
-  "images/articles/uzk/a1550-two-side-control.svg",
-  "images/articles/uzk/usd-50-ips-controls.jpg",
   "images/defects/undercut.jpg",
   "images/defects/porosity.webp",
   "images/defects/cracks.webp",

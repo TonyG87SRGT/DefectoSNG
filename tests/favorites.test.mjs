@@ -18,7 +18,7 @@ test("старый массив ID мигрирует в ссылки method/id"
   ]);
 });
 
-test("миграция удаляет ссылку на убранное диагностическое дерево", () => {
+test("миграция удаляет ссылки на несуществующие карточки", () => {
   const articles = [{ id: "vibration-tool-fault-search", methodKey: "vibration" }];
   assert.deepEqual(normalizeFavorites([
     "vibration-tool-diagnostic-tree",
@@ -39,9 +39,10 @@ test("повреждённое хранилище не ломает избран
 
 test("избранное сохраняется с версией схемы", () => {
   const storage = createStorage();
-  assert.equal(saveFavorites([{ method: "vik", id: "vik-1" }], storage), true);
+  const articles = [{ methodKey: "vik", id: "vik-1" }];
+  assert.equal(saveFavorites([{ method: "vik", id: "vik-1" }], storage, articles), true);
   assert.deepEqual(JSON.parse(storage.value()), {
-    version: 2,
+    version: 3,
     items: [{ method: "vik", id: "vik-1" }]
   });
 });

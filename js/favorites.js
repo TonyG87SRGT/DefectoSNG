@@ -18,10 +18,11 @@ export function normalizeFavorites(value, articles = getAtlasLeafItems()) {
     }
     return [];
   });
+  const available = new Set(articles.map(item => `${item.methodKey || item.method}:${item.id}`));
   const seen = new Set();
   return normalized.filter(item => {
     const key = `${item.method}:${item.id}`;
-    if (seen.has(key) || !isAtlasItem(item.method, item.id)) return false;
+    if (seen.has(key) || !available.has(key)) return false;
     seen.add(key); return true;
   });
 }
@@ -32,9 +33,9 @@ export function getFavorites(storage = globalThis.localStorage) {
   catch (error) { console.warn("Не удалось прочитать избранное:", error); return []; }
 }
 
-export function saveFavorites(favorites, storage = globalThis.localStorage) {
+export function saveFavorites(favorites, storage = globalThis.localStorage, articles = getAtlasLeafItems()) {
   if (!storage) return false;
-  try { storage.setItem(FAVORITES_KEY, JSON.stringify({ version: FAVORITES_VERSION, items: normalizeFavorites(favorites) })); updateFavoriteBadge(); return true; }
+  try { storage.setItem(FAVORITES_KEY, JSON.stringify({ version: FAVORITES_VERSION, items: normalizeFavorites(favorites, articles) })); updateFavoriteBadge(); return true; }
   catch (error) { console.warn("Не удалось сохранить избранное:", error); return false; }
 }
 

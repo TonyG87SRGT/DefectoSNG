@@ -4,40 +4,27 @@ import { getRouteHash, parseRoute } from "../js/router.js";
 
 const routes = [
   { view: "home" },
-  { view: "atlases" },
-  { view: "learning" },
-  { view: "modeMethod", mode: "work", method: "uzk" },
-  { view: "modeMethod", mode: "learning", method: "rk" },
-  { view: "task", task: "criteria" },
   { view: "atlas" },
-  { view: "atlas", category: "shape", query: "смещение кромок" },
-  { view: "vibrationKnowledge", equipment: "Насосы", fault: "", sign: "Кавитация", parameter: "" },
+  { view: "atlasItem", method: "vik", itemId: "vik-cracks" },
+  { view: "criteria", query: "подрез" },
+  { view: "criteria", criterionId: "rvs-vik-prohibited-surface", query: "" },
   { view: "favorites" },
-  { view: "references" },
-  { view: "reference", referenceId: "sound-velocity" },
-  { view: "tools" },
-  { view: "documents" },
-  { view: "search", query: "сварной шов" },
-  { view: "tool", tool: "ring-weld" },
-  { view: "method", method: "pvk" },
-  { view: "section", method: "vik", itemId: "vik-preparation" },
-  { view: "article", method: "pvk", itemId: "pvk-1" }
+  { view: "search", query: "сварной шов" }
 ];
 
-test("маршруты преобразуются в hash и обратно", () => {
-  for (const route of routes) {
-    assert.deepEqual(parseRoute(getRouteHash(route)), route);
-  }
+test("маршруты упрощённого интерфейса преобразуются в hash и обратно", () => {
+  for (const route of routes) assert.deepEqual(parseRoute(getRouteHash(route)), route);
 });
 
 test("неизвестный hash ведёт на главную", () => {
   assert.deepEqual(parseRoute("#unknown=value"), { view: "home" });
 });
 
-test("старые ссылки атласа остаются совместимыми", () => {
-  assert.deepEqual(parseRoute("#article=vik-cracks"), {
-    view: "article",
-    method: "vik",
-    itemId: "vik-cracks"
+test("старые ссылки статей и разделов ведут в визуальную карточку", () => {
+  assert.deepEqual(parseRoute("#article=vik:vik-cracks"), {
+    view: "atlasItem", method: "vik", itemId: "vik-cracks"
+  });
+  assert.deepEqual(parseRoute("#section=rk:rk-radiographic-atlas"), {
+    view: "atlasItem", method: "rk", itemId: "rk-radiographic-atlas"
   });
 });

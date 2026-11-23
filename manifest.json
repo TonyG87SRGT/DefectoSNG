@@ -1,9 +1,9 @@
 {
   "name": "DefectoSNG",
   "short_name": "DefectoSNG",
-  "version": "0.58.7",
+  "version": "0.59.0",
   "id": "./",
-  "description": "Карманный справочник по неразрушающему контролю и вибродиагностике",
+  "description": "Визуальный атлас дефектов и критерии отбраковки",
   "lang": "ru",
   "start_url": "./",
   "scope": "./",

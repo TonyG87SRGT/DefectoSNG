@@ -130,12 +130,12 @@ test("Числа: пусто, отрицательные, ноль, текст, 
 });
 
 test("Поиск всех новых карточек и обратимый прямой маршрут", () => {
-  const index = buildSearchIndex([], data);
+  const index = buildSearchIndex(data);
   for (const query of ["РВС","смещение кромок","подрез","непровар","УЗК РВС","РК РВС","остаточная толщина","износ днища","герметичность"]) {
     assert.ok(searchArticles(query,index).some(c => c.id.startsWith("rb305-")),query);
   }
   for (const criterion of entries) {
-    const route = { view:"task",task:"criteria",criterionId:criterion.id };
+    const route = { view:"criteria",criterionId:criterion.id,query:"" };
     assert.deepEqual(parseRoute(getRouteHash(route)),route);
   }
 });
