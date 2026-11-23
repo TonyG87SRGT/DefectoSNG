@@ -33,3 +33,18 @@ test("визуальная карточка получает связанные 
   assert.deepEqual(findRelatedCriteria(data, item, "rk").map(item => item.id), ["rk-pore", "vik-pore"]);
   assert.match(getCriterionSearchTerm(item), /пор/);
 });
+
+test("ключевые карточки реального атласа связаны с нормативными критериями", () => {
+  const criteriaData = JSON.parse(readFileSync(new URL("../data/criteria.json", import.meta.url), "utf8"));
+  const cases = [
+    ["vik", { title: "Подрез", summary: "Углубление вдоль границы шва", tags: ["подрез"] }],
+    ["rk", { title: "Трещина", summary: "Линейная несплошность", tags: ["трещина"] }],
+    ["rk", { title: "Непровар в корне шва", summary: "Непровар", tags: ["непровар"] }],
+    ["pvk", { title: "Линейная индикация трещины", summary: "Поверхностная трещина", tags: ["трещина"] }]
+  ];
+  for (const [method, item] of cases) {
+    const matches = findRelatedCriteria(criteriaData, item, method);
+    assert.ok(matches.length > 0, `${method}: ${item.title}`);
+    assert.ok(matches.some(match => /подрез|трещ|непровар/i.test(match.defect)), `${method}: ${item.title}`);
+  }
+});
