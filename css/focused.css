@@ -1,0 +1,83 @@
+.brand { width: 100%; padding: 0; border: 0; color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.page-kicker, .focus-eyebrow, .section-heading span, .related-criteria-heading span { display: block; color: #72a8ff; font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.focus-hero { position: relative; overflow: hidden; padding: 28px; border: 1px solid #29415f; border-radius: 24px; background: linear-gradient(145deg, #17263a, #101720 62%, #111821); box-shadow: 0 24px 60px rgba(0,0,0,.24); }
+.focus-hero::after { content: ""; position: absolute; width: 210px; height: 210px; right: -90px; top: -110px; border-radius: 50%; background: rgba(59,130,246,.18); filter: blur(4px); }
+.focus-hero h2 { position: relative; max-width: 620px; margin: 10px 0 12px; font-size: clamp(1.75rem, 6vw, 2.7rem); line-height: 1.08; letter-spacing: -.04em; }
+.focus-hero > p { position: relative; max-width: 620px; margin: 0; color: #b8c6d8; font-size: 1rem; line-height: 1.6; }
+.focus-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.focus-stats span { padding: 9px 12px; border: 1px solid rgba(143,188,255,.2); border-radius: 999px; color: #bdc9d8; background: rgba(3,10,20,.28); font-size: .85rem; }
+.focus-stats b { color: #fff; }
+.focus-primary-actions { display: grid; gap: 14px; margin: 20px 0 28px; }
+.focus-action { display: flex; gap: 17px; min-width: 0; padding: 21px; border: 1px solid var(--border); border-radius: 21px; color: var(--text); background: var(--surface); text-decoration: none; }
+.focus-action:hover { border-color: #4779bd; transform: translateY(-1px); }
+.focus-action-icon { flex: 0 0 54px; width: 54px; height: 54px; display: grid; place-items: center; border-radius: 17px; font-size: 1.75rem; }
+.focus-action-atlas .focus-action-icon { color: #74e2ad; background: rgba(34,160,107,.16); }
+.focus-action-criteria .focus-action-icon { color: #8fbcff; background: rgba(59,130,246,.16); }
+.focus-action small { color: #7daef6; font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.focus-action h3 { margin: 4px 0 7px; font-size: 1.2rem; }
+.focus-action p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.48; }
+.section-heading, .related-criteria-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 13px; }
+.section-heading h3, .related-criteria-heading h3 { margin: 4px 0 0; font-size: 1.2rem; }
+.section-heading a, .related-criteria-heading a { color: #83b5ff; font-size: .88rem; font-weight: 700; text-decoration: none; }
+.home-collection-chips { display: flex; gap: 9px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; }
+.home-collection-chips a { flex: 0 0 auto; padding: 10px 13px; border: 1px solid var(--border); border-radius: 999px; color: #c5d0dd; background: var(--surface); text-decoration: none; font-size: .85rem; }
+.focus-disclaimer { margin-top: 24px; padding: 17px 18px; border-left: 3px solid #3b82f6; border-radius: 0 16px 16px 0; background: #101721; }
+.focus-disclaimer strong { color: #8fbcff; }
+.focus-disclaimer p { margin: 6px 0 0; color: var(--muted); line-height: 1.55; }
+.focused-page-header { align-items: flex-start; }
+.focused-page-header h2 { margin-top: 4px; }
+.atlas-collection-grid, .visual-card-grid, .focused-search-results { display: grid; gap: 14px; }
+.atlas-collection-card, .visual-card, .focused-search-card { min-width: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 20px; color: var(--text); background: var(--surface); text-decoration: none; }
+.atlas-collection-card { display: grid; grid-template-columns: 120px 1fr; min-height: 150px; }
+.atlas-collection-preview, .visual-card-image { position: relative; min-height: 130px; overflow: hidden; background: #090d12; }
+.atlas-collection-preview img, .visual-card-image img { width: 100%; height: 100%; object-fit: cover; }
+.atlas-collection-preview > span, .visual-card-image > span { width: 100%; height: 100%; display: grid; place-items: center; color: #6f839c; font-size: 2.1rem; }
+.atlas-collection-preview b { position: absolute; left: 10px; top: 10px; padding: 5px 8px; border-radius: 8px; color: #fff; background: rgba(6,12,20,.82); font-size: .72rem; }
+.atlas-collection-card > div:last-child { padding: 18px; }
+.atlas-collection-card h3, .visual-card h3, .focused-search-card h3 { margin: 0 0 7px; font-size: 1.08rem; line-height: 1.25; }
+.atlas-collection-card p, .visual-card p, .focused-search-card p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.48; }
+.atlas-collection-card small { display: block; margin-top: 12px; color: #79aef8; font-weight: 700; }
+.visual-card { display: grid; grid-template-columns: minmax(120px, 38%) 1fr; }
+.visual-card-image b { position: absolute; left: 10px; bottom: 10px; padding: 6px 8px; border-radius: 8px; background: rgba(4,10,18,.84); font-size: .72rem; }
+.visual-card > div:last-child { padding: 17px; }
+.visual-card > div:last-child > span, .focused-search-card > span { display: block; margin-bottom: 6px; color: #72a8ff; font-size: .74rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+.defect-title-actions { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+.defect-title-actions > span { color: #7daef6; font-size: .78rem; font-weight: 800; text-transform: uppercase; }
+.visual-gallery { display: grid; gap: 12px; margin-bottom: 22px; }
+.visual-gallery-item { overflow: hidden; margin: 0; border: 1px solid var(--border); border-radius: 18px; background: #070a0e; }
+.visual-gallery-item img { display: block; width: 100%; max-height: 560px; object-fit: contain; cursor: zoom-in; }
+.visual-gallery-item figcaption { display: grid; gap: 4px; padding: 12px 14px; color: var(--muted); font-size: .83rem; line-height: 1.45; background: var(--surface); }
+.visual-gallery-item figcaption strong { color: var(--text); }
+.defect-description { display: grid; gap: 12px; }
+.related-criteria { margin-top: 26px; padding: 20px; border: 1px solid #2c4970; border-radius: 21px; background: linear-gradient(145deg, #111d2b, #10161f); }
+.related-criteria-list { display: grid; gap: 9px; }
+.related-criteria-list a { display: grid; gap: 4px; padding: 14px; border: 1px solid #2b3a4c; border-radius: 14px; color: var(--text); background: rgba(9,15,23,.64); text-decoration: none; }
+.related-criteria-list span { color: #75aaff; font-size: .74rem; font-weight: 800; text-transform: uppercase; }
+.related-criteria-list small { color: var(--muted); line-height: 1.4; }
+.related-criteria-empty, .related-criteria-note { color: var(--muted); line-height: 1.55; }
+.related-criteria-note { margin: 14px 0 0; font-size: .82rem; }
+.focused-search-empty { min-height: 300px; display: grid; place-items: center; align-content: center; padding: 28px; text-align: center; }
+.focused-search-empty > span { color: #6d9fe6; font-size: 3rem; }
+.focused-search-empty h2 { margin: 12px 0 6px; }
+.focused-search-empty p { max-width: 480px; margin: 0; color: var(--muted); line-height: 1.55; }
+.focused-search-summary { display: flex; gap: 9px; margin: 0 0 15px; }
+.focused-search-summary span { padding: 8px 11px; border-radius: 999px; color: var(--muted); background: var(--surface); font-size: .8rem; }
+.focused-search-card { position: relative; display: block; padding: 17px 18px; }
+.focused-search-card .saved-star { position: absolute; right: 16px; top: 16px; color: #f8c24e; }
+@media (min-width: 640px) {
+  .focus-primary-actions, .atlas-collection-grid { grid-template-columns: 1fr 1fr; }
+  .atlas-collection-card, .visual-card { grid-template-columns: 1fr; }
+  .atlas-collection-preview { height: 175px; }
+  .visual-card-grid, .focused-search-results, .visual-gallery { grid-template-columns: 1fr 1fr; }
+  .visual-card-image { height: 190px; }
+  .visual-gallery-primary:only-child { grid-column: 1 / -1; }
+}
+@media (max-width: 430px) {
+  #app-content { padding-left: 14px; padding-right: 14px; }
+  .focus-hero { padding: 22px 19px; }
+  .atlas-collection-card { grid-template-columns: 104px 1fr; }
+  .atlas-collection-card > div:last-child { padding: 15px; }
+  .visual-card { grid-template-columns: 112px 1fr; }
+  .visual-card-image { min-height: 118px; }
+  .related-criteria { padding: 16px; }
+}

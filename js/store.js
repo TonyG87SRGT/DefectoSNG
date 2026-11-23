@@ -1,51 +1,30 @@
-export {
-  ATLAS_CATEGORIES,
-  ATLAS_CATEGORY_IDS,
-  DATA_FILES,
-  METHODS,
-  TOOL_DEFINITIONS
-} from "./config.js";
+import { ATLAS_COLLECTIONS, DATA_FILES } from "./config.js";
 
-import { DATA_FILES } from "./config.js";
-
-const articlesByMethod = Object.fromEntries(
-  Object.keys(DATA_FILES).map(method => [method, []])
-);
+const articlesByMethod = Object.fromEntries(Object.keys(DATA_FILES).map(method => [method, []]));
 const itemIndexes = new Map();
 const childrenIndexes = new Map();
 const loadErrors = new Map();
 
 export function sortByOrder(items) {
-  return [...items].sort((a, b) => {
-    const orderA = Number.isFinite(Number(a.order)) ? Number(a.order) : 9999;
-    const orderB = Number.isFinite(Number(b.order)) ? Number(b.order) : 9999;
-    return orderA - orderB;
-  });
+  return [...items].sort((a, b) => (Number(a.order) || 9999) - (Number(b.order) || 9999));
 }
 
 export function isPublicItem(item) {
-  if (item?.hidden === true || item?.status === "draft") return false;
-  return true;
+  return item?.hidden !== true && item?.status !== "draft";
 }
 
 function rebuildIndexes(methodKey, articles) {
   const itemIndex = new Map();
   const childrenIndex = new Map();
-
-  for (const article of articles) {
+  articles.forEach(article => {
     itemIndex.set(article.id, article);
-
     if (article.parentId) {
       const children = childrenIndex.get(article.parentId) || [];
       children.push(article);
       childrenIndex.set(article.parentId, children);
     }
-  }
-
-  for (const [parentId, children] of childrenIndex) {
-    childrenIndex.set(parentId, sortByOrder(children));
-  }
-
+  });
+  for (const [parentId, children] of childrenIndex) childrenIndex.set(parentId, sortByOrder(children));
   itemIndexes.set(methodKey, itemIndex);
   childrenIndexes.set(methodKey, childrenIndex);
 }
@@ -62,40 +41,48 @@ export function getChildren(methodKey, parentId) {
   return (childrenIndexes.get(methodKey)?.get(parentId) || []).filter(isPublicItem);
 }
 
-export function getAllItems() {
-  return Object.entries(articlesByMethod).flatMap(([methodKey, articles]) =>
-    articles.filter(isPublicItem).map(article => ({ ...article, methodKey }))
-  );
+function collectDescendants(methodKey, rootId) {
+  const result = [];
+  const queue = [rootId];
+  const seen = new Set();
+  while (queue.length) {
+    const itemId = queue.shift();
+    if (seen.has(itemId)) continue;
+    seen.add(itemId);
+    const item = getItem(methodKey, itemId);
+    if (!item || !isPublicItem(item)) continue;
+    result.push({ ...item, methodKey });
+    getChildren(methodKey, itemId).forEach(child => queue.push(child.id));
+  }
+  return result;
 }
 
-export function getMethodLoadError(methodKey) {
-  return loadErrors.get(methodKey) || null;
+export function getAtlasItems() {
+  const seen = new Set();
+  return ATLAS_COLLECTIONS.flatMap(collection => collectDescendants(collection.method, collection.rootId))
+    .filter(item => {
+      const key = `${item.methodKey}:${item.id}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 }
 
-export function getItemRoute(methodKey, article) {
-  if (methodKey === "vik" && article.id === "vik-defects") {
-    return { view: "atlas" };
-  }
+export function getAtlasLeafItems() {
+  return getAtlasItems().filter(item => !getChildren(item.methodKey, item.id).length);
+}
 
-  if (article.type === "section" || getChildren(methodKey, article.id).length) {
-    return {
-      view: "section",
-      method: methodKey,
-      itemId: article.id
-    };
-  }
+export function isAtlasItem(methodKey, itemId) {
+  return getAtlasItems().some(item => item.methodKey === methodKey && item.id === itemId);
+}
 
-  return {
-    view: "article",
-    method: methodKey,
-    itemId: article.id
-  };
+export function getAtlasItemRoute(methodKey, itemId) {
+  return { view: "atlasItem", method: methodKey, itemId };
 }
 
 async function fetchJson(relativePath, baseUrl) {
   const response = await fetch(new URL(relativePath, baseUrl));
   if (!response.ok) throw new Error(`${relativePath}: HTTP ${response.status}`);
-
   const value = await response.json();
   if (!Array.isArray(value)) throw new Error(`${relativePath}: ожидался массив`);
   return value;
@@ -103,37 +90,21 @@ async function fetchJson(relativePath, baseUrl) {
 
 export async function loadData(baseUrl = document.baseURI) {
   const entries = Object.entries(DATA_FILES);
-  const results = await Promise.allSettled(
-    entries.map(([, relativePath]) => fetchJson(relativePath, baseUrl))
-  );
-
+  const results = await Promise.allSettled(entries.map(([, path]) => fetchJson(path, baseUrl)));
   loadErrors.clear();
-  let loadedCount = 0;
-
+  let loaded = 0;
   results.forEach((result, index) => {
-    const [methodKey] = entries[index];
-
+    const methodKey = entries[index][0];
     if (result.status === "fulfilled") {
       articlesByMethod[methodKey] = Object.freeze(result.value.map(Object.freeze));
-      rebuildIndexes(methodKey, articlesByMethod[methodKey]);
-      loadedCount += 1;
+      loaded += 1;
     } else {
       articlesByMethod[methodKey] = [];
-      rebuildIndexes(methodKey, []);
       loadErrors.set(methodKey, result.reason);
       console.error(`Не удалось загрузить данные ${methodKey}:`, result.reason);
     }
+    rebuildIndexes(methodKey, articlesByMethod[methodKey]);
   });
-
-  if (!loadedCount) {
-    throw new AggregateError(
-      [...loadErrors.values()],
-      "Не удалось загрузить ни одного раздела справочника"
-    );
-  }
-
-  return {
-    loaded: loadedCount,
-    failed: loadErrors.size
-  };
+  if (!loaded) throw new AggregateError([...loadErrors.values()], "Не удалось загрузить атласы");
+  return { loaded, failed: loadErrors.size };
 }

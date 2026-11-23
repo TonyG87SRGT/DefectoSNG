@@ -162,8 +162,12 @@ function resultHtml(data, criterion, result) {
 function searchMatches(data) {
   const query = state.defectQuery.trim().toLocaleLowerCase("ru-RU");
   if (!query) return [];
-  return criteriaForStandard(data).filter(item => [methodTitle(data, item.method) + (currentStandard(data).id.startsWith("rvs-") ? " РВС" : ""), item.defect, ...(item.aliases || [])]
-    .join(" ").toLocaleLowerCase("ru-RU").includes(query)).slice(0, 12);
+  return data.criteria.filter(item => {
+    const standard = data.standards.find(candidate => candidate.basisDocuments.includes(item.source?.basisDocument));
+    return [methodTitle(data, item.method), item.defect, ...(item.aliases || []),
+      standard?.title, standard?.shortTitle, ...(standard?.searchAliases || [])]
+      .filter(Boolean).join(" ").toLocaleLowerCase("ru-RU").includes(query);
+  }).slice(0, 20);
 }
 
 function renderLoaded(data) {
@@ -181,8 +185,8 @@ function renderLoaded(data) {
 
   content.innerHTML = `
     <div class="page-header criteria-header">
-      <button class="back-button" id="back-button" aria-label="Вернуться к рабочему экрану">‹</button>
-      <div><h2 tabindex="-1">Найти критерий</h2><p>Сначала выберите нормативный документ</p></div>
+      <button class="back-button" id="back-button" aria-label="Вернуться на главную">‹</button>
+      <div><span class="page-kicker">Нормативная оценка</span><h2 tabindex="-1">Критерии отбраковки</h2><p>Выберите объект, НТД, метод и контролируемый параметр</p></div>
     </div>
 
     <div class="criteria-warning" role="note">
@@ -225,7 +229,10 @@ function renderLoaded(data) {
         <span>Поиск по дефекту</span>
         <input id="criteria-defect-search" type="search" value="${escapeAttribute(state.defectQuery)}" placeholder="Например: подрез, пора, трещина">
       </label>
-      ${matches.length ? `<div class="criteria-search-results">${matches.map(match => `<button type="button" data-match="${escapeAttribute(match.id)}" data-match-method="${escapeAttribute(match.method)}"><b>${safeText(match.defect)}</b><span>${safeText(methodTitle(data, match.method))}${usesMedium ? ` · ${match.medium.includes("gas") && match.medium.includes("oil") ? "газ / нефть" : match.medium.includes("gas") ? "газ" : "нефть"}` : ""}</span></button>`).join("")}</div>` : ""}
+      ${matches.length ? `<div class="criteria-search-results">${matches.map(match => {
+        const matchStandard = data.standards.find(item => item.basisDocuments.includes(match.source?.basisDocument));
+        return `<button type="button" data-match="${escapeAttribute(match.id)}" data-match-method="${escapeAttribute(match.method)}"><b>${safeText(match.defect)}</b><span>${safeText(matchStandard?.shortTitle || matchStandard?.title)} · ${safeText(methodTitle(data, match.method))}</span></button>`;
+      }).join("")}</div>` : ""}
       <label class="criteria-field">
         <span>Критерий</span>
         <select id="criteria-defect" name="criterionId">
@@ -274,6 +281,8 @@ function renderLoaded(data) {
   content.querySelectorAll("[data-match]").forEach(button => button.addEventListener("click", () => {
     const match = data.criteria.find(item => item.id === button.dataset.match);
     if (!match) return;
+    const matchStandard = data.standards.find(item => item.basisDocuments.includes(match.source?.basisDocument));
+    if (matchStandard) state.standardId = matchStandard.id;
     state.method = match.method;
     state.medium = match.medium.includes(state.medium) ? state.medium : match.medium[0];
     state.criterionId = match.id;
@@ -310,10 +319,12 @@ function renderLoaded(data) {
   });
 }
 
-export async function renderCriteriaFinder(criterionId) {
+export async function renderCriteriaFinder(options = {}) {
   content.innerHTML = `<div class="empty-state">Загрузка нормативных критериев…</div>`;
   try {
     const data = await loadCriteriaData();
+    const criterionId = typeof options === "string" ? options : options.criterionId;
+    const query = typeof options === "object" ? options.query || "" : "";
     if (criterionId) {
       const selected = data.criteria.find(item => item.id === criterionId);
       const standard = selected && data.standards.find(item => item.basisDocuments.includes(selected.source.basisDocument));
@@ -321,6 +332,10 @@ export async function renderCriteriaFinder(criterionId) {
         state.standardId = standard.id; state.method = selected.method; state.criterionId = selected.id;
         state.values = {}; state.result = null; state.standardQuery = ""; state.defectQuery = "";
       }
+    } else if (query) {
+      state.defectQuery = query;
+      state.criterionId = "";
+      state.result = null;
     }
     renderLoaded(data);
   } catch (error) {

@@ -14,7 +14,8 @@
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
 
-  <title>DefectoSNG</title>
+  <meta name="description" content="Визуальный атлас дефектов и критерии отбраковки сварных соединений">
+  <title>DefectoSNG — атлас дефектов и критерии отбраковки</title>
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -24,14 +25,14 @@
 <div class="app">
 
   <header class="header">
-    <div class="brand">
+    <button class="brand" id="brand-home" type="button" aria-label="Открыть главную страницу">
       <div class="brand-mark">D</div>
 
       <div>
         <h1>DefectoSNG</h1>
-        <p>Карманный справочник дефектоскописта</p>
+        <p>Атлас дефектов и критерии отбраковки</p>
       </div>
-    </div>
+    </button>
 
     <div class="search-box">
       <span>⌕</span>
@@ -39,8 +40,8 @@
       <input
         id="search"
         type="search"
-        aria-label="Поиск по справочнику"
-        placeholder="Поиск по справочнику..."
+        aria-label="Поиск дефекта или критерия"
+        placeholder="Найти дефект или критерий..."
         autocomplete="off"
       >
     </div>
@@ -53,14 +54,14 @@
 
 <nav class="bottom-nav" aria-label="Основная навигация">
 
-    <button class="nav-button active" data-action="home">
-      <span aria-hidden="true">⌂</span>
-      <small>Главная</small>
+    <button class="nav-button active" data-action="atlas">
+      <span aria-hidden="true">◫</span>
+      <small>Атлас</small>
     </button>
 
-    <button class="nav-button" data-action="search">
-      <span aria-hidden="true">⌕</span>
-      <small>Поиск</small>
+    <button class="nav-button" data-action="criteria">
+      <span aria-hidden="true">✓</span>
+      <small>Критерии</small>
     </button>
 
     <button class="nav-button" data-action="favorites">
