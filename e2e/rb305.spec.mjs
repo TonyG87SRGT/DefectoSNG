@@ -50,7 +50,7 @@ for (const width of [390, 768, 1440]) {
 test("РВС №305: глобальный поиск, прямая ссылка и offline", async ({ page, context }) => {
   test.setTimeout(60000);
   await page.goto("/#search=" + encodeURIComponent("УЗК РВС"));
-  const result = page.locator('[data-search-article="rb305-uzk-table"]');
+  const result = page.locator('[data-search-criterion="rb305-uzk-table"]');
   await expect(result).toBeVisible();
   await result.click();
   await expect(page.locator("#criteria-defect")).toHaveValue("rb305-uzk-table");

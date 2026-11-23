@@ -53,6 +53,9 @@ test("восемь визуальных коллекций открываютс�
   await page.getByRole("link", { name: /Одиночная газовая пора/ }).click();
   await expect(page.getByRole("heading", { name: /Одиночная газовая пора/ })).toBeVisible();
   await expect(page.locator(".visual-gallery img").first()).toBeVisible();
+  await page.goto("/#atlas=uzk:uzk-echo-backwall");
+  await expect(page.getByRole("heading", { name: "Донный эхо-сигнал", exact: true })).toBeVisible();
+  await expect(page.locator(".visual-gallery img")).toHaveCount(2);
 });
 
 test("визуальная карточка ведёт к найденному нормативному критерию", async ({ page }) => {

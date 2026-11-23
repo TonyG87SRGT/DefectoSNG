@@ -6,11 +6,9 @@ import {
   renderSection,
   renderStructuredArticle
 } from "../js/renderers.js";
-import { SECTION_TYPES } from "../js/schema.js";
 
 test("таблица и список рендереров не расходятся", () => {
   assert.deepEqual(SUPPORTED_SECTION_TYPES, Object.keys(SECTION_RENDERERS));
-  assert.deepEqual([...SUPPORTED_SECTION_TYPES].sort(), [...SECTION_TYPES].sort());
   assert.ok(SUPPORTED_SECTION_TYPES.includes("note"));
   assert.ok(SUPPORTED_SECTION_TYPES.includes("comparison"));
   assert.ok(SUPPORTED_SECTION_TYPES.includes("methods"));

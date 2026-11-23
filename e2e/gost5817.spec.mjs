@@ -8,7 +8,7 @@ test("Общие сварные соединения: выбор ГОСТ ISO 58
   await expect(page.locator(".criteria-warning")).toContainText("толщина от 0,5 мм");
   await expect(page.locator(".criteria-methods button")).toHaveCount(3);
   await page.locator("#criteria-defect-search").fill("подрез");
-  await page.locator(".criteria-search-results button").first().click();
+  await page.locator('[data-match="iso5817-undercut"]').click();
   await page.locator('select[name="iso5817Quality"]').selectOption("B");
   await page.locator('input[name="iso5817Thickness"]').fill("10");
   await page.locator('input[name="iso5817Measured"]').fill("0,5");
