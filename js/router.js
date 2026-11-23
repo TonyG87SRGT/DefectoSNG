@@ -1,227 +1,71 @@
 export const ROUTER_STATE_KEY = "defectoSngRoute";
-
 let routeHandler = null;
 let routerStarted = false;
 
-const STATIC_ROUTES = Object.freeze({
-  "": { view: "home" },
-  "#work": { view: "home" },
-  "#atlases": { view: "atlases" },
-  "#learning": { view: "learning" },
-  "#atlas": { view: "atlas" },
-  "#favorites": { view: "favorites" },
-  "#references": { view: "references" },
-  "#tools": { view: "tools" },
-  "#documents": { view: "documents" },
-  "#search": { view: "search", query: "" }
-});
+export function encodeRoutePart(value) { return encodeURIComponent(String(value || "")); }
+export function decodeRoutePart(value) { try { return decodeURIComponent(value); } catch { return ""; } }
 
-const STATIC_HASHES = Object.freeze(
-  Object.fromEntries(Object.entries(STATIC_ROUTES).map(([hash, route]) => [route.view, hash]))
-);
-
-export function encodeRoutePart(value) {
-  return encodeURIComponent(String(value || ""));
-}
-
-export function decodeRoutePart(value) {
-  try {
-    return decodeURIComponent(value);
-  } catch {
-    return "";
-  }
-}
-
-const DYNAMIC_ROUTES = Object.freeze([
-  {
-    view: "modeMethod",
-    pattern: /^#mode=(work|learning):([^:]+)$/,
-    parse: match => ({ view: "modeMethod", mode: match[1], method: decodeRoutePart(match[2]) }),
-    format: route => `#mode=${route.mode === "learning" ? "learning" : "work"}:${encodeRoutePart(route.method)}`
-  },
-  {
-    view: "task",
-    pattern: /^#task=([^:]+)$/,
-    parse: match => ({ view: "task", task: decodeRoutePart(match[1]) }),
-    format: route => `#task=${encodeRoutePart(route.task)}`
-  },
-  {
-    view: "reference",
-    pattern: /^#reference=(.+)$/,
-    parse: match => ({ view: "reference", referenceId: decodeRoutePart(match[1]) }),
-    format: route => `#reference=${encodeRoutePart(route.referenceId)}`
-  },
-  {
-    view: "search",
-    pattern: /^#search=(.*)$/,
-    parse: match => ({ view: "search", query: decodeRoutePart(match[1]) }),
-    format: route => `#search=${encodeRoutePart(route.query)}`
-  },
-  {
-    view: "tool",
-    pattern: /^#tool=(.+)$/,
-    parse: match => ({ view: "tool", tool: decodeRoutePart(match[1]) }),
-    format: route => `#tool=${encodeRoutePart(route.tool)}`
-  },
-  {
-    view: "method",
-    pattern: /^#method=([^:]+)$/,
-    parse: match => ({ view: "method", method: decodeRoutePart(match[1]) }),
-    format: route => `#method=${encodeRoutePart(route.method)}`
-  },
-  {
-    view: "section",
-    pattern: /^#section=([^:]+):(.+)$/,
-    parse: match => ({
-      view: "section",
-      method: decodeRoutePart(match[1]),
-      itemId: decodeRoutePart(match[2])
-    }),
-    format: route => `#section=${encodeRoutePart(route.method)}:${encodeRoutePart(route.itemId)}`
-  },
-  {
-    view: "article",
-    pattern: /^#article=([^:]+):(.+)$/,
-    parse: match => ({
-      view: "article",
-      method: decodeRoutePart(match[1]),
-      itemId: decodeRoutePart(match[2])
-    }),
-    format: route => `#article=${encodeRoutePart(route.method)}:${encodeRoutePart(route.itemId)}`
-  }
-]);
-
-function parseAtlasRoute(hash) {
-  if (!hash.startsWith("#atlas?")) return null;
-
-  const params = new URLSearchParams(hash.slice("#atlas?".length));
-  return {
-    view: "atlas",
-    category: params.get("category") || "all",
-    query: params.get("q") || ""
-  };
-}
-
-function parseVibrationKnowledgeRoute(hash) {
-  if (hash !== "#vibration-knowledge" && !hash.startsWith("#vibration-knowledge?")) return null;
-  const params = new URLSearchParams(hash.split("?", 2)[1] || "");
-  return {
-    view: "vibrationKnowledge",
-    equipment: params.get("equipment") || "",
-    fault: params.get("fault") || "",
-    sign: params.get("sign") || "",
-    parameter: params.get("parameter") || ""
-  };
+function parseCriteria(hash) {
+  if (hash === "#criteria" || hash === "#task=criteria") return { view: "criteria", query: "" };
+  if (!hash.startsWith("#criteria?")) return null;
+  const params = new URLSearchParams(hash.slice("#criteria?".length));
+  return { view: "criteria", query: params.get("q") || "" };
 }
 
 export function parseRoute(hash = globalThis.window?.location?.hash || "") {
-  if (hash.startsWith("#criterion=")) return { view: "task", task: "criteria", criterionId: decodeRoutePart(hash.slice("#criterion=".length)) };
-  if (hash === "#vik") return { view: "method", method: "vik" };
-  if (STATIC_ROUTES[hash]) return { ...STATIC_ROUTES[hash] };
-
-  const atlasRoute = parseAtlasRoute(hash);
-  if (atlasRoute) return atlasRoute;
-
-  const vibrationKnowledgeRoute = parseVibrationKnowledgeRoute(hash);
-  if (vibrationKnowledgeRoute) return vibrationKnowledgeRoute;
-
-  for (const routeDefinition of DYNAMIC_ROUTES) {
-    const match = hash.match(routeDefinition.pattern);
-    if (match) return routeDefinition.parse(match);
-  }
-
-  // Совместимость со ссылками атласа v0.10.0–v0.10.1.
-  if (hash.startsWith("#article=")) {
-    return {
-      view: "article",
-      method: "vik",
-      itemId: decodeRoutePart(hash.slice("#article=".length))
-    };
-  }
-
+  if (!hash || hash === "#home" || hash === "#work") return { view: "home" };
+  if (hash === "#atlas" || hash === "#atlases") return { view: "atlas" };
+  if (hash === "#favorites") return { view: "favorites" };
+  if (hash === "#search") return { view: "search", query: "" };
+  if (hash.startsWith("#search=")) return { view: "search", query: decodeRoutePart(hash.slice(8)) };
+  if (hash.startsWith("#criterion=")) return { view: "criteria", criterionId: decodeRoutePart(hash.slice(11)), query: "" };
+  const criteria = parseCriteria(hash);
+  if (criteria) return criteria;
+  const atlasItem = hash.match(/^#atlas=([^:]+):(.+)$/);
+  if (atlasItem) return { view: "atlasItem", method: decodeRoutePart(atlasItem[1]), itemId: decodeRoutePart(atlasItem[2]) };
+  const legacy = hash.match(/^#(?:article|section)=([^:]+):(.+)$/);
+  if (legacy) return { view: "atlasItem", method: decodeRoutePart(legacy[1]), itemId: decodeRoutePart(legacy[2]) };
+  if (hash === "#vik") return { view: "atlasItem", method: "vik", itemId: "vik-defects" };
   return { view: "home" };
 }
 
 export function getRouteHash(route) {
-  if (route.view === "task" && route.task === "criteria" && route.criterionId) return "#criterion=" + encodeRoutePart(route.criterionId);
-  if (route.view === "vibrationKnowledge") {
-    const params = new URLSearchParams();
-    for (const key of ["equipment", "fault", "sign", "parameter"]) {
-      if (route[key]) params.set(key, route[key]);
-    }
-    const suffix = params.toString();
-    return suffix ? `#vibration-knowledge?${suffix}` : "#vibration-knowledge";
+  if (route.view === "home") return "";
+  if (route.view === "atlas") return "#atlas";
+  if (route.view === "favorites") return "#favorites";
+  if (route.view === "search") return route.query ? `#search=${encodeRoutePart(route.query)}` : "#search";
+  if (route.view === "criteria") {
+    if (route.criterionId) return `#criterion=${encodeRoutePart(route.criterionId)}`;
+    return route.query ? `#criteria?q=${encodeRoutePart(route.query)}` : "#criteria";
   }
-  if (route.view === "atlas") {
-    const params = new URLSearchParams();
-    if (route.category && route.category !== "all") params.set("category", route.category);
-    if (route.query) params.set("q", route.query);
-    const suffix = params.toString();
-    return suffix ? `#atlas?${suffix}` : "#atlas";
-  }
-
-  if (route.view === "search") {
-    return route.query
-      ? DYNAMIC_ROUTES.find(item => item.view === "search").format(route)
-      : "#search";
-  }
-  if (Object.hasOwn(STATIC_HASHES, route.view)) return STATIC_HASHES[route.view];
-
-  const definition = DYNAMIC_ROUTES.find(item => item.view === route.view);
-  return definition ? definition.format(route) : "";
+  if (route.view === "atlasItem") return `#atlas=${encodeRoutePart(route.method)}:${encodeRoutePart(route.itemId)}`;
+  return "";
 }
 
-function getRouteUrl(route) {
-  return `${window.location.pathname}${window.location.search}${getRouteHash(route)}`;
-}
-
-function createRouteState(route, depth) {
-  return { [ROUTER_STATE_KEY]: true, depth, ...route };
-}
-
-function dispatch(route) {
-  if (!routeHandler) throw new Error("Router has not been started");
-  routeHandler(route);
-}
+function createState(route, depth) { return { [ROUTER_STATE_KEY]: true, depth, ...route }; }
+function dispatch(route) { if (routeHandler) routeHandler(route); }
 
 export function navigate(route, options = {}) {
   const replace = options.replace === true;
-  const shouldDispatch = options.dispatch !== false;
-  const currentDepth = history.state?.[ROUTER_STATE_KEY]
-    ? Number(history.state.depth) || 0
-    : 0;
-  const nextDepth = replace ? currentDepth : currentDepth + 1;
-  const method = replace ? "replaceState" : "pushState";
-
-  history[method](createRouteState(route, nextDepth), "", getRouteUrl(route));
-  if (shouldDispatch) dispatch(route);
+  const depth = history.state?.[ROUTER_STATE_KEY] ? Number(history.state.depth) || 0 : 0;
+  history[replace ? "replaceState" : "pushState"](createState(route, replace ? depth : depth + 1), "",
+    `${window.location.pathname}${window.location.search}${getRouteHash(route)}`);
+  if (options.dispatch !== false) dispatch(route);
 }
 
-export function replaceRoute(route, options = {}) {
-  navigate(route, { ...options, replace: true });
-}
-
+export function replaceRoute(route, options = {}) { navigate(route, { ...options, replace: true }); }
 export function goBack(fallbackRoute = { view: "home" }) {
-  const canGoBackInsideApp = history.state?.[ROUTER_STATE_KEY] &&
-    Number(history.state.depth) > 0;
-
-  if (canGoBackInsideApp) {
-    history.back();
-    return;
-  }
-
-  replaceRoute(fallbackRoute);
+  if (history.state?.[ROUTER_STATE_KEY] && Number(history.state.depth) > 0) history.back();
+  else replaceRoute(fallbackRoute);
 }
 
 export function startRouter(handler) {
   routeHandler = handler;
-  const initialRoute = parseRoute();
-  history.replaceState(createRouteState(initialRoute, 0), "", getRouteUrl(initialRoute));
-
+  const route = parseRoute();
+  history.replaceState(createState(route, 0), "", `${window.location.pathname}${window.location.search}${getRouteHash(route)}`);
   if (!routerStarted) {
     window.addEventListener("popstate", () => dispatch(parseRoute()));
     routerStarted = true;
   }
-
-  dispatch(initialRoute);
+  dispatch(route);
 }
